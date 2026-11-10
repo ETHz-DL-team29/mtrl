@@ -1,0 +1,9 @@
+# code -> English name (used in the prompt), fastText lid.176 label, allowed
+# char-length ratio len(translation)/len(src), and WMT26 target-language code.
+# len_ratio values are initial guesses; re-tune from the greedy zero-shot outputs.
+# WMT26 references: is and et have human references; hy, be, kk have none.
+is: {name: Icelandic,  fasttext: is, len_ratio: [0.6, 1.8], wmt26: isl_Latn}
+hy: {name: Armenian,   fasttext: hy, len_ratio: [0.6, 1.8], wmt26: hye_Armn}
+be: {name: Belarusian, fasttext: be, len_ratio: [0.6, 1.8], wmt26: bel_Cyrl}
+kk: {name: Kazakh,     fasttext: kk, len_ratio: [0.6, 1.8], wmt26: kaz_Cyrl}
+et: {name: Estonian,   fasttext: et, len_ratio: [0.6, 1.8], wmt26: ekk_Latn}

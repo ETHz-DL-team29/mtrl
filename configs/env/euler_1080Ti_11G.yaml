@@ -1,0 +1,7 @@
+# Placeholder - NOT used in the zero-shot stage, and the code has no branches for it.
+#
+# Planned use: ETH Euler cluster, GTX 1080 Ti 11GB (compute capability 6.1).
+#  - no bf16 (capability < 8.0)  -> dtype: fp32
+#  - no vLLM (capability < 7.0)  -> use_vllm: false; scoring jobs only
+#    (MetricX / COMET on rollouts generated elsewhere)
+#  - SLURM submission scripts will live outside this file.

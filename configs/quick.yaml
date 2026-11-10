@@ -1,0 +1,25 @@
+# Quick end-to-end check: one direction, the small model, thinking off, 5 documents.
+run_name: quick
+seed: 0
+directions: [en-is]
+split: test                 # WMT26 General MT test set (no dev set exists)
+n_per_direction: null       # null = all documents (198 per direction in WMT26)
+limit: 5
+models:
+  - {name: Qwen/Qwen3.5-0.8B, n_params: 0.8e9}
+thinking: [false]
+greedy: true
+sampling: {n: 8, temperature: 1.0, top_p: 1.0}
+max_tokens: {thinking_off: 3072, thinking_on: 6144}   # WMT26 inputs are documents (up to ~4.7k chars)
+chunk_size: 50              # segments per generate() call; one jsonl append per chunk (resume granularity)
+prompt_template: |
+  Translate the following English text into {tgt_lang_name}.
+  Output only the translation, nothing else.
+
+  {src}
+metrics: [metricx24_qe, cometkiwi22, chrf]        # reference-based metrics only score segments with a ref
+scorer_params: {metricx24_qe: 1.2e9, metricx24_ref: 1.2e9, cometkiwi22: 0.56e9, comet22: 0.56e9}
+gate:
+  copy_ratio_max: 0.8
+analysis:
+  low_variance_eps: 0.02

@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mtrl"
+version = "0.1.0"
+description = "Compute-efficient RL for low-resource English->xx MT (zero-shot evaluation stage)"
+requires-python = ">=3.10"
+# Heavy GPU deps (vllm, torch, comet, ...) are installed by setup/install_local_4070S_12G.sh.
+dependencies = ["pyyaml", "pandas", "matplotlib"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

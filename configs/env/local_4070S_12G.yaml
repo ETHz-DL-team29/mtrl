@@ -1,0 +1,20 @@
+# Naming rule: [provider]_[gpu]_[gdram]; file name, `name` and --env must match.
+name: local_4070S_12G
+n_gpus: 1
+gpu:
+  match: "4070 SUPER"          # case-insensitive substring of the NVML device name
+  mem_gb: 12                   # single-card memory; must equal the `12G` in the name
+paths:                         # relative paths are resolved against the repo root
+  hf_home: ~/.cache/huggingface
+  data_dir: ./data
+  runs_dir: ./runs
+  fasttext_lid: ./data/models/lid.176.bin
+dtype: bf16
+attn_impl: sdpa                # for HF models in training (later); vLLM / MetricX ignore it
+use_vllm: true
+vllm:
+  gpu_memory_utilization: 0.85
+  max_model_len: 8192          # prompt (<= ~1.5k tokens) + max_tokens.thinking_on
+  limit_mm_per_prompt: {image: 0, video: 0}   # Qwen3.5 is multimodal; skip vision memory
+scoring:
+  batch_size: 16               # tune on the server; lower it on OOM
