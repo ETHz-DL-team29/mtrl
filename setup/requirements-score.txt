@@ -3,6 +3,7 @@
 # conflict with vLLM + Qwen3.5 (transformers>=5); hence a separate env.
 # Exact versions are written to setup/requirements-score.lock.txt after install.
 unbabel-comet
+setuptools<81          # torchmetrics 0.10 (required by COMET) imports pkg_resources, removed in setuptools 81
 sacrebleu
 sentencepiece
 fasttext-wheel
