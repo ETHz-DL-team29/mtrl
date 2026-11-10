@@ -182,7 +182,7 @@ Run once on the GPU server after the quick check, before trusting any reward:
 conda activate mtrl-score && python scripts/verify_metricx.py configs/quick.yaml
 ```
 
-It scores the same inputs (the first 16 rollouts, or references if no rollouts exist yet) with our implementation and with the official `MT5ForRegression` from google-research/metricx (cloned into `data/external/metricx` on first use, never pip-installed), and prints both scores and their absolute difference per example, plus the maximum and mean difference for the QE and, when every example has a reference, the reference-based mode. It exits with `OK` and status 0 if the maximum difference is within the tolerance (0.05 for bf16, 1e-3 for fp32; override with `--tol`), and with `MISMATCH` and status 1 otherwise.
+It scores the same inputs (the first 16 rollouts, or references if no rollouts exist yet) with our implementation and with the official `MT5ForRegression` from google-research/metricx (cloned into `data/external/metricx` on first use, never pip-installed), and prints both scores and their absolute difference per example, plus the maximum and mean difference for the QE and, when every example has a reference, the reference-based mode. It exits with `OK` and status 0 if the maximum difference is within the tolerance (0.25 for bf16, i.e. two bf16 rounding steps in the 16-32 range, 0.05 for fp16, 1e-3 for fp32; override with `--tol`), and with `MISMATCH` and status 1 otherwise.
 
 ---
 

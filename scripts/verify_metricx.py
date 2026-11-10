@@ -33,7 +33,9 @@ from mtrl.common.jsonl_io import read_jsonl
 from mtrl.data.segment_loader import segments_path
 
 METRICX_GIT = "https://github.com/google-research/metricx"
-DEFAULT_TOL = {"bf16": 0.05, "fp16": 0.05, "fp32": 1e-3}
+# bf16 has an 8-bit mantissa: between 16 and 32 adjacent values are 0.125 apart, so
+# batched (padded) vs single-example runs can differ by one bf16 step. Allow two steps.
+DEFAULT_TOL = {"bf16": 0.25, "fp16": 0.05, "fp32": 1e-3}
 
 
 def collect_inputs(cfg, n: int):
@@ -122,7 +124,7 @@ def main():
     ap.add_argument("--n", type=int, default=16, help="number of examples (default 16)")
     ap.add_argument("--metricx-repo", type=Path,
                     help="existing checkout of google-research/metricx (default: clone into data/external/)")
-    ap.add_argument("--tol", type=float, help="max allowed |diff| (default 0.05 bf16, 1e-3 fp32)")
+    ap.add_argument("--tol", type=float, help="max allowed |diff| (default 0.25 bf16, 0.05 fp16, 1e-3 fp32)")
     args = ap.parse_args()
     cfg = load_config(args.config, args.env)
     setup_env(cfg.env)
