@@ -5,6 +5,8 @@
 
 Stages, each in its own process (generation and scoring never share the GPU):
     download -> prepare -> generate -> score -> analyze
+`generate` runs with the env config's python.generate interpreter (vLLM env), all other
+stages with python.score (scoring env); without a `python` entry, the current interpreter.
 Every stage is resumable, so re-running the same command continues where it stopped.
 Output of each stage is also written to runs/{run_name}/logs/{stage}.log.
 """
@@ -18,6 +20,10 @@ from mtrl.common.config import load_config
 STAGES = ["download", "prepare", "generate", "score", "analyze"]
 SCRIPTS = {"download": "download.py", "prepare": "prepare_data.py", "generate": "generate.py",
            "score": "score.py", "analyze": "analyze.py"}
+# Which interpreter group runs each stage (env config key `python`): vLLM lives in the
+# "generate" env; every other stage runs in the "score" env.
+STAGE_GROUP = {"download": "score", "prepare": "score", "generate": "generate",
+               "score": "score", "analyze": "score"}
 
 
 def main():
@@ -37,10 +43,16 @@ def main():
     log_dir = cfg.run_dir / "logs"
     log_dir.mkdir(parents=True, exist_ok=True)
     here = Path(__file__).resolve().parent
+    todo = [s for s in STAGES if s in stages]
+    try:   # resolve every interpreter before starting, so a missing env fails immediately
+        pythons = {s: cfg.env.python_for(STAGE_GROUP[s], default=sys.executable) for s in todo}
+    except FileNotFoundError as e:
+        raise SystemExit(str(e))
 
-    for stage in [s for s in STAGES if s in stages]:
-        cmd = [sys.executable, str(here / SCRIPTS[stage]), "--config", args.config, "--env", env_name]
-        print(f"\n===== {stage}: {' '.join(cmd[1:])}", flush=True)
+    for stage in todo:
+        python = pythons[stage]
+        cmd = [python, str(here / SCRIPTS[stage]), "--config", args.config, "--env", env_name]
+        print(f"\n===== {stage} [{python}]: {' '.join(cmd[1:])}", flush=True)
         with open(log_dir / f"{stage}.log", "a", encoding="utf-8") as log:
             proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)
             for line in proc.stdout:
@@ -50,7 +62,7 @@ def main():
         if rc != 0:
             raise SystemExit(f"stage '{stage}' failed (exit {rc}); see {log_dir / (stage + '.log')}. "
                              f"Fix it and re-run the same command to resume.")
-    print(f"\ndone: {', '.join(s for s in STAGES if s in stages)}. Run dir: {cfg.run_dir}")
+    print(f"\ndone: {', '.join(todo)}. Run dir: {cfg.run_dir}")
 
 
 if __name__ == "__main__":

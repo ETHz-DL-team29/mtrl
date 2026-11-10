@@ -47,7 +47,7 @@ Code is developed on a laptop; all scripts run on a single-GPU Linux server (RTX
 | `scripts/` (others) | One script per stage: `download.py`, `prepare_data.py`, `generate.py`, `score.py`, `analyze.py` |
 | `scripts/verify_metricx.py` | One-off check that our MetricX scores match the official implementation (Section 3.7) |
 | `scripts/_cli.py` | Shared command-line arguments of the stage scripts |
-| `setup/` | Dependency list and server install script |
+| `setup/` | Install script and dependency lists for the two conda envs (generation, scoring) |
 | `tests/` | CPU-only tests; no GPU packages required |
 | `data/`, `runs/` | Data and run outputs; not tracked by git (see Section 5) |
 
@@ -60,10 +60,19 @@ git clone https://github.com/ETHz-DL-team29/mtrl.git && cd mtrl
 ```
 
 ```bash
-bash setup/install_local_4070S_12G.sh mtrl
+bash setup/install_local_4070S_12G.sh
 ```
 
-The script creates the conda environment `mtrl` with Python 3.11 (or reuses an existing one; the server's current `mtrl` environment uses Python 3.12, which vLLM also supports), installs **vLLM first** so that vLLM determines the torch and CUDA versions, then installs `setup/requirements.txt` and the package itself (`pip install -e .`), and writes the installed versions to `setup/requirements.lock.txt`. **Commit that file after the first successful install.** The script downloads no models or data; `scripts/run.py` does that.
+The script creates (or reuses) **two conda environments**, because the generation and scoring dependencies cannot be installed together:
+
+| Env | Contents | Used by |
+| --- | --- | --- |
+| `mtrl` (Python 3.12) | vLLM, which pulls torch, CUDA and transformers 5.x (Qwen3.5 exists only in transformers >= 5) | `generate` |
+| `mtrl-score` (Python 3.11) | unbabel-comet (requires transformers < 5, numpy < 2, huggingface-hub < 1, protobuf < 5), MetricX, sacrebleu, fastText, pandas, matplotlib, pytest | `download`, `prepare`, `score`, `analyze`, tests, `verify_metricx.py` |
+
+In each env it installs the requirements (`setup/requirements-generate.txt`, `setup/requirements-score.txt`; vLLM first, so that it decides the torch and CUDA versions), installs the package itself (`pip install -e .`), and writes the installed versions to `setup/requirements-{generate,score}.lock.txt`. **Commit the two lock files after the first successful install.** The script downloads no models or data; `scripts/run.py` does that.
+
+The env config maps each stage group to its interpreter (`python.generate`, `python.score` in `configs/env/local_4070S_12G.yaml`); the script prints the actual paths at the end, so check that they match. A platform where everything fits in one env simply omits the `python` entry.
 
 Create the per-machine settings file:
 
@@ -81,14 +90,14 @@ Edit `.env` and set:
 Verify the install:
 
 ```bash
-conda activate mtrl && pytest -q
+conda activate mtrl-score && pytest -q
 ```
 
 ---
 
 ## 3. Running
 
-Everything is driven by one command and one config file. Run from the repository root inside the `mtrl` environment.
+Everything is driven by one command and one config file. Run from the repository root with the scoring env active (`conda activate mtrl-score`); `run.py` starts every stage with the interpreter of its env, so the active env only matters for `run.py` itself.
 
 ### 3.1 Quick end-to-end check (run this first)
 
@@ -108,15 +117,15 @@ Start it inside `tmux` so that it survives a dropped SSH connection. Results go 
 
 ### 3.3 What `run.py` does
 
-It runs five stages in order, each in its own process. Generation and scoring therefore never share the GPU, and scoring loads one metric model at a time.
+It runs five stages in order, each in its own process and with the interpreter of its conda env. Generation and scoring therefore never share the GPU, and scoring loads one metric model at a time.
 
-| Stage | Script | What it does |
-| --- | --- | --- |
-| `download` | `download.py` | **The only stage that uses the network.** Downloads the policy models, the scorer models and the tokenizers they load (MetricX + mT5, CometKiwi + InfoXLM, COMET-22 + XLM-R) into the Hugging Face cache, and the WMT26 test set and fastText `lid.176.bin` into `data/`. Fails early if a required model is unavailable; warns if a gated optional one (CometKiwi) is |
-| `prepare` | `prepare_data.py` | Offline: converts `data/raw/wmt26-genmt.jsonl` into `data/processed/{direction}/{split}.jsonl`; skips directions that already exist |
-| `generate` | `generate.py` | Greedy + G sampled outputs with vLLM -> `rollouts.jsonl` |
-| `score` | `score.py` | Gate, metrics, reward -> `scores.jsonl` |
-| `analyze` | `analyze.py` | Summary tables and figures -> `report/` |
+| Stage | Script | Env | What it does |
+| --- | --- | --- | --- |
+| `download` | `download.py` | `mtrl-score` | **The only stage that uses the network.** Downloads the policy models, the scorer models and the tokenizers they load (MetricX + mT5, CometKiwi + InfoXLM, COMET-22 + XLM-R) into the Hugging Face cache, and the WMT26 test set and fastText `lid.176.bin` into `data/`. Fails early if a required model is unavailable; warns if a gated optional one (CometKiwi) is |
+| `prepare` | `prepare_data.py` | `mtrl-score` | Offline: converts `data/raw/wmt26-genmt.jsonl` into `data/processed/{direction}/{split}.jsonl`; skips directions that already exist |
+| `generate` | `generate.py` | `mtrl` | Greedy + G sampled outputs with vLLM -> `rollouts.jsonl` |
+| `score` | `score.py` | `mtrl-score` | Gate, metrics, reward -> `scores.jsonl` |
+| `analyze` | `analyze.py` | `mtrl-score` | Summary tables and figures -> `report/` |
 
 Where downloads go: models and tokenizers in the Hugging Face cache (`paths.hf_home` in the env config); everything else under `data/` (`data/raw/` for the test set, `data/models/` for fastText, `data/processed/` for converted segments).
 
@@ -170,7 +179,7 @@ If the full run is not expected to finish overnight, report the estimate before 
 Run once on the GPU server after the quick check, before trusting any reward:
 
 ```bash
-python scripts/verify_metricx.py configs/quick.yaml
+conda activate mtrl-score && python scripts/verify_metricx.py configs/quick.yaml
 ```
 
 It scores the same inputs (the first 16 rollouts, or references if no rollouts exist yet) with our implementation and with the official `MT5ForRegression` from google-research/metricx (cloned into `data/external/metricx` on first use, never pip-installed), and prints both scores and their absolute difference per example, plus the maximum and mean difference for the QE and, when every example has a reference, the reference-based mode. It exits with `OK` and status 0 if the maximum difference is within the tolerance (0.05 for bf16, 1e-3 for fp32; override with `--tol`), and with `MISMATCH` and status 1 otherwise.

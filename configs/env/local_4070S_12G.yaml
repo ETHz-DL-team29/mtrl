@@ -18,3 +18,6 @@ vllm:
   limit_mm_per_prompt: {image: 0, video: 0}   # Qwen3.5 is multimodal; skip vision memory
 scoring:
   batch_size: 16               # tune on the server; lower it on OOM
+python:                        # interpreter per stage group (conda envs from setup/install_local_4070S_12G.sh)
+  generate: ~/miniforge3/envs/mtrl/bin/python         # vLLM, transformers 5.x
+  score: ~/miniforge3/envs/mtrl-score/bin/python      # COMET / MetricX / fastText, transformers 4.x; all other stages

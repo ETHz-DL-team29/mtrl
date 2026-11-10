@@ -39,10 +39,21 @@ class EnvConfig:
     use_vllm: bool
     vllm: dict
     scoring: dict
+    python: dict = field(default_factory=dict)   # {generate, score}: interpreter per env; empty = one env
 
     def path(self, key: str) -> Path:
         p = Path(self.paths[key]).expanduser()
         return p if p.is_absolute() else (REPO_ROOT / p).resolve()
+
+    def python_for(self, group: str, default: str) -> str:
+        """Interpreter for a stage group ("generate" or "score"); `default` if not configured."""
+        if group not in self.python:
+            return default
+        exe = Path(self.python[group]).expanduser()
+        if not exe.exists():
+            raise FileNotFoundError(f"env {self.name}: python.{group} = {exe} does not exist "
+                                    f"(create the env with the setup/ install script)")
+        return str(exe)
 
 
 @dataclass

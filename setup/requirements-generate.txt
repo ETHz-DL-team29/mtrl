@@ -1,0 +1,5 @@
+# Generation env (conda env `mtrl`): vLLM only. vllm itself is installed first by the
+# install script and decides torch / CUDA / transformers (5.x, required by Qwen3.5).
+# Exact versions are written to setup/requirements-generate.lock.txt after install.
+nvidia-ml-py
+pyyaml
