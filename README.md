@@ -247,6 +247,7 @@ Main columns of `summary`:
 - **Thinking switch.** Thinking is controlled by the chat-template argument `enable_thinking`, not by the prompt.
   - With thinking on, the Qwen3.5 template ends the prompt with `<think>`, so the output usually contains only the closing `</think>`. `parse_output` handles both forms.
   - Thinking on but no `</think>` in the output (typically truncation at the length limit) is recorded as `parse_ok = False`.
+  - Thinking off: a leading empty `<think></think>` block is tolerated; any other think tag (the 0.8B model sometimes emits a stray `</think>` mid-output) is recorded as `parse_ok = False`, so the output is gated as `parse_fail` and not scored. Its text is kept as the translation so that its tokens still count towards the FLOPs.
 - **Wrapper stripping.** The rules live in two lists in `generation/prompting.py`, `PREFIX_PATTERNS` and `QUOTE_PAIRS`; extend them there.
 - **Seeds.** Sampling seeds are derived from `seg_id`, so results do not depend on chunking or on where a run was resumed.
 - **MetricX-24.** The official repository is not a dependency.

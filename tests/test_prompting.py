@@ -56,3 +56,11 @@ def test_empty_output():
     assert parse_output("   ", thinking=False)[1] == ""
     r, t, ok = parse_output("<think>x</think>", thinking=True)
     assert ok and t == ""
+
+
+def test_stray_think_tag_with_thinking_off_is_parse_fail():
+    # seen on the server: thinking off, the model emitted text, then </think>, then more text
+    r, t, ok = parse_output("Melbourne vann leikinn </think> Hallo heimur", thinking=False)
+    assert ok is False and r == "" and "</think>" not in t and "Hallo heimur" in t
+    r, t, ok = parse_output("Hallo <think> hmm", thinking=False)
+    assert ok is False and r == ""

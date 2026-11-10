@@ -46,13 +46,20 @@ def strip_wrappers(text: str) -> str:
 
 
 def parse_output(raw: str, thinking: bool) -> tuple[str, str, bool]:
-    """Return (reasoning, translation, parse_ok)."""
-    if THINK_CLOSE in raw:
-        reasoning, answer = raw.split(THINK_CLOSE, 1)
-        reasoning = reasoning.replace(THINK_OPEN, "").strip()
-        return reasoning, strip_wrappers(answer), True
-    if thinking:  # reasoning never closed (typically truncated by max_tokens)
+    """Return (reasoning, translation, parse_ok).
+
+    Thinking on: the reasoning ends at the first `</think>`; no closing tag (typically
+    truncation at max_tokens) -> parse_ok False, everything counted as reasoning.
+    Thinking off: a leading empty `<think></think>` block is tolerated; any other think
+    tag means a malformed output -> parse_ok False. The text (tags removed) is kept as
+    the translation so that its tokens are still counted, but it is not scored.
+    """
+    if thinking:
+        if THINK_CLOSE in raw:
+            reasoning, answer = raw.split(THINK_CLOSE, 1)
+            return reasoning.replace(THINK_OPEN, "").strip(), strip_wrappers(answer), True
         return raw.replace(THINK_OPEN, "").strip(), "", False
-    if THINK_OPEN in raw:  # thinking off but the model opened a block anyway
-        return raw.replace(THINK_OPEN, "").strip(), "", False
-    return "", strip_wrappers(raw), True
+    text = re.sub(r"^\s*<think>\s*</think>", "", raw)
+    if THINK_OPEN in text or THINK_CLOSE in text:
+        return "", strip_wrappers(text.replace(THINK_OPEN, " ").replace(THINK_CLOSE, " ")), False
+    return "", strip_wrappers(text), True

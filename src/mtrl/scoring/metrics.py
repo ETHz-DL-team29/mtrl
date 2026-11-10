@@ -110,7 +110,8 @@ def _metricx(srcs, hyps, refs, *, batch_size, env_cfg) -> list[float]:
                 att[j, :len(ids[i])] = 1
             inp, att = inp.cuda(), att.cuda()
             dec = torch.zeros(len(idx), 1, dtype=torch.long, device="cuda")
-            logits = model(input_ids=inp, attention_mask=att, decoder_input_ids=dec).logits
+            logits = model(input_ids=inp, attention_mask=att, decoder_input_ids=dec,
+                           use_cache=False).logits   # one decoder step; no KV cache needed
             pred = logits[:, 0, METRICX_SCORE_TOKEN].float().clamp(0, 25).tolist()
             for j, i in enumerate(idx):
                 scores[i] = pred[j]

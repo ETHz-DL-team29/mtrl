@@ -97,7 +97,9 @@ def official_scores(model, srcs, hyps, refs):
     with torch.inference_mode():
         for ids in M.metricx_tokenize(M.metricx_inputs(srcs, hyps, refs)):
             inp = torch.tensor([ids], device="cuda")
-            pred = model(input_ids=inp, attention_mask=torch.ones_like(inp)).predictions
+            # use_cache=False: with the cache on, the official forward fails under
+            # transformers 4.57 (off-by-one size mismatch in decoder cross-attention).
+            pred = model(input_ids=inp, attention_mask=torch.ones_like(inp), use_cache=False).predictions
             out.append(float(pred.float()[0]))
     return out
 
