@@ -3,9 +3,9 @@
 # conflict with vLLM + Qwen3.5 (transformers>=5); hence a separate env.
 # Exact versions are written to setup/requirements-score.lock.txt after install.
 unbabel-comet
-setuptools<81          # torchmetrics 0.10 (required by COMET) imports pkg_resources, removed in setuptools 81
+setuptools<81           # torchmetrics 0.10 (required by COMET) imports pkg_resources, removed in setuptools 81
 sacrebleu
-sentencepiece
+sentencepiece<0.2.2     # 0.2.3 needs protobuf>=5.26 (google.protobuf.runtime_version); COMET pins protobuf<5
 fasttext-wheel
 nvidia-ml-py
 pyyaml
