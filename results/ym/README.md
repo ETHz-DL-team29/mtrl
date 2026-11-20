@@ -1,8 +1,8 @@
-# ym · night experiments
+# Experiments
 
-`_zh.html` 是中文实验报告（Tufte 1120，KaTeX/highlight.js 本地）。
+实验报告见`results_1120_zh.html`
 
-## 训练
+## Training
 ```
 cd results/ym
 bash train/run_dapo.sh train/configs/wide_all_ref.json   # DAPO
