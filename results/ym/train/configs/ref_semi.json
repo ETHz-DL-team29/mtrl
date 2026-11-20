@@ -1,0 +1,1 @@
+{"tag":"ref_semi","train":"data/train.jsonl","val":"data/val.jsonl","langs":"isl_Latn,lij_Latn,lld_Latn","mode":"full","targets":"attn","layers":"0-23","bs":1,"group":8,"max_new":224,"temperature":0.9,"rep_penalty":1.0,"lr":0.00002,"retries":2,"lid":1,"reward_mode":"ref","mask_mode":"semi","mask_q":0.2,"semi_lambda":0.3,"ckpt_every":100,"steps":100000}

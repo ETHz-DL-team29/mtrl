@@ -1,0 +1,1 @@
+{"tag":"sft_full","langs":"isl_Latn,lij_Latn,lld_Latn","lr":0.0001,"bs":1,"accum":8,"max_len":1024,"seed":0,"ckpt_every":100}
