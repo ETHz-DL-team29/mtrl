@@ -1,0 +1,6 @@
+# SFT -> RL: start from the ym_sft_full adapter, then reference-MetricX RL as in
+# ym/wide_all_ref (results/ym "ref_sft" lost chrF this way; re-checked on FLORES+).
+base: ../ym/wide_all_ref.yaml
+run_name: explore_sft_then_ref
+init: {from: ym_sft_full}
+schedule: {steps: 500}

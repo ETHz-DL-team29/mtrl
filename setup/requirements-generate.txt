@@ -1,5 +1,9 @@
-# Generation env (conda env `mtrl`): vLLM only. vllm itself is installed first by the
+# Generation + training env (conda env `mtrl`). vllm itself is installed first by the
 # install script and decides torch / CUDA / transformers (5.x, required by Qwen3.5).
 # Exact versions are written to setup/requirements-generate.lock.txt after install.
 nvidia-ml-py
 pyyaml
+peft>=0.17                # LoRA adapters (mtrl.train); 0.22.0 verified 2026-11-21
+fasttext-numpy2-wheel     # language ID for the reward gate during training (numpy 2 build)
+sacrebleu                 # chrF++ during in-training validation
+huggingface_hub

@@ -1,0 +1,24 @@
+# Google Colab with a T4 (16 GB, compute capability 7.5: no bf16 -> fp16).
+# One Python env: install setup/requirements-generate.txt + requirements-score.txt into
+# the Colab runtime; if MetricX and transformers 5.x conflict there, run the scorer in a
+# separate venv and set python.score. Sessions disconnect: keep checkpoints on Drive.
+# NOT yet tested (written 2026-11-21).
+name: colab_T4_16G
+n_gpus: 1
+gpu:
+  match: "T4"
+  mem_gb: 16
+paths:
+  hf_home: /content/drive/MyDrive/mtrl/hf
+  data_dir: ./data
+  runs_dir: /content/drive/MyDrive/mtrl/runs
+  ckpt_dir: /content/drive/MyDrive/mtrl/ckpt
+  fasttext_lid: ./data/models/lid.176.bin
+dtype: fp16
+attn_impl: sdpa
+use_vllm: false
+vllm: {}
+scoring:
+  batch_size: 8
+train:
+  grad_checkpointing: true

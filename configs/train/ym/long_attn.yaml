@@ -1,0 +1,6 @@
+# results/ym long_attn: QE reward, LoRA on attention (all 24 layers), lr 5e-5.
+base: ../_base_rl.yaml
+run_name: ym_long_attn
+adapter: {targets: attn}
+optim: {lr: 5.0e-5}
+reward: {mode: qe}

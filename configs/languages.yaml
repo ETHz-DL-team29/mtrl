@@ -1,9 +1,16 @@
 # code -> English name (used in the prompt), fastText lid.176 label, allowed
-# char-length ratio len(translation)/len(src), and WMT26 target-language code.
-# len_ratio values are initial guesses; re-tune from the greedy zero-shot outputs.
-# WMT26 references: is and et have human references; hy, be, kk have none.
-is: {name: Icelandic,  fasttext: is, len_ratio: [0.6, 1.8], wmt26: isl_Latn}
-hy: {name: Armenian,   fasttext: hy, len_ratio: [0.6, 1.8], wmt26: hye_Armn}
-be: {name: Belarusian, fasttext: be, len_ratio: [0.6, 1.8], wmt26: bel_Cyrl}
-kk: {name: Kazakh,     fasttext: kk, len_ratio: [0.6, 1.8], wmt26: kaz_Cyrl}
-et: {name: Estonian,   fasttext: et, len_ratio: [0.6, 1.8], wmt26: ekk_Latn}
+# char-length ratio len(translation)/len(src), WMT26 / FLORES+ language code, and script.
+# len_ratio: FLORES+ dev references fall inside [0.67, 1.59] (1st-99th percentile) for
+# every language below, so [0.6, 1.8] rejects only clear truncation / run-on outputs.
+# fasttext: null means lid.176 has no label for the language (measured on FLORES+ dev,
+# 2026-11-21: Ligurian is predicted as it/fr/ro/pms..., Ladin as es/pt/rm/it...). The gate
+# then only rejects outputs identified as English (an untranslated copy).
+# WMT26 references: is, et, lij, lld have human references; hy, be, kk have none.
+# FLORES+ (openlanguagedata/flores_plus) has dev/devtest for all of these except be.
+is:  {name: Icelandic,  fasttext: is,   len_ratio: [0.6, 1.8], wmt26: isl_Latn, script: Latn}
+hy:  {name: Armenian,   fasttext: hy,   len_ratio: [0.6, 1.8], wmt26: hye_Armn, script: Armn}
+be:  {name: Belarusian, fasttext: be,   len_ratio: [0.6, 1.8], wmt26: bel_Cyrl, script: Cyrl}
+kk:  {name: Kazakh,     fasttext: kk,   len_ratio: [0.6, 1.8], wmt26: kaz_Cyrl, script: Cyrl}
+et:  {name: Estonian,   fasttext: et,   len_ratio: [0.6, 1.8], wmt26: ekk_Latn, script: Latn}
+lij: {name: Ligurian,   fasttext: null, len_ratio: [0.6, 1.8], wmt26: lij_Latn, script: Latn}
+lld: {name: Ladin,      fasttext: null, len_ratio: [0.6, 1.8], wmt26: lld_Latn, script: Latn}

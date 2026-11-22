@@ -1,0 +1,27 @@
+# ETH D-INFK Student Cluster (student-cluster-courses.inf.ethz.ch), GTX 1080 Ti 11GB,
+# compute capability 6.1: no bf16 -> fp16 (LoRA weights stay fp32 in peft), no vLLM ->
+# HF generation everywhere (training rollouts and evaluation use it anyway).
+# Course tag dl_jobs: max 12 h per job, so long runs rely on checkpoint resume.
+# Storage: /work/courses/dl/team-29 (50 GiB, backed up) and /scratch/users/<user>
+# (100 GiB, NO backup). Paths below assume the repo is checked out in /work and use
+# scratch for caches; set them in a local copy if your layout differs.
+# NOT yet tested on the cluster (written 2026-11-21 from the cluster dashboard).
+name: dinfk_1080Ti_11G
+n_gpus: 1
+gpu:
+  match: "1080 Ti"
+  mem_gb: 11
+paths:
+  hf_home: /scratch/users/${USER}/hf
+  data_dir: ./data
+  runs_dir: ./runs
+  ckpt_dir: /work/courses/dl/team-29/ckpt      # backed up; checkpoints are small (LoRA)
+  fasttext_lid: ./data/models/lid.176.bin
+dtype: fp16
+attn_impl: sdpa
+use_vllm: false
+vllm: {}
+scoring:
+  batch_size: 8
+train:
+  grad_checkpointing: true

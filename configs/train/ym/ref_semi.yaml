@@ -1,0 +1,5 @@
+# results/ym ref_semi: as wide_all_ref, but a random 20% of tokens get full weight and the
+# rest weight 0.3.
+base: wide_all_ref.yaml
+run_name: ym_ref_semi
+mask: {name: semi, q: 0.2, lam: 0.3}

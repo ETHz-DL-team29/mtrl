@@ -19,6 +19,9 @@ def setup_env(env_cfg: EnvConfig) -> None:
         if key in env_cfg.paths:
             os.environ[var] = str(env_cfg.path(key))
     os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+    # Training and the MetricX service share one GPU; expandable segments let freed
+    # memory be returned and reused instead of fragmenting.
+    os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
 
 def check_capabilities(env_cfg: EnvConfig) -> dict:

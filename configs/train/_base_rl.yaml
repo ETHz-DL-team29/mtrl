@@ -1,0 +1,18 @@
+# Group policy-gradient RL (GRPO / DAPO family) on MetricX rewards.
+base: _common.yaml
+method: rl
+algorithm:
+  group: 8                     # samples per source sentence (G)
+  prompts_per_step: 1          # source sentences per step (B); B*G rollouts per step
+  ppo_epochs: 1                # 1 = purely on-policy (ratio == 1, clipping inactive, as in results/ym)
+  clip_low: 0.2                # PPO clip range [1-low, 1+high]; DAPO "clip-higher" uses high > low
+  clip_high: 0.28
+  zero_var_retries: 2          # resample when every group has identical rewards (DAPO dynamic sampling)
+  ent_coef: 0.0
+  micro_batch: 2               # rollouts per forward/backward
+rollout: {temperature: 0.9, top_p: 1.0, rep_penalty: 1.0, max_new_tokens: 224}
+reward:
+  mode: qe                     # qe: MetricX-24 QE; ref: MetricX-24 with the reference
+  gate: main                   # main: mtrl.scoring.rule_gate.gate; ym_compat: results/ym gate
+  copy_ratio_max: 0.8
+mask: {name: full}             # see mtrl.train.masks.MASKS

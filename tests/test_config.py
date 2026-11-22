@@ -29,3 +29,15 @@ def test_python_for_uses_default_when_not_configured_and_checks_existence(tmp_pa
         env.python_for("score", default=sys.executable)
     env.python = {"score": sys.executable}
     assert env.python_for("score", default="unused") == sys.executable
+
+
+def test_all_env_configs_load_and_expand_vars(monkeypatch):
+    from pathlib import Path
+
+    monkeypatch.setenv("USER", "alice")
+    for p in sorted(Path(__file__).resolve().parents[1].glob("configs/env/*.yaml")):
+        env = load_env(p.stem)
+        assert env.name == p.stem
+    env = load_env("dinfk_1080Ti_11G")
+    assert env.dtype == "fp16" and not env.use_vllm
+    assert str(env.path("hf_home")) == "/scratch/users/alice/hf"

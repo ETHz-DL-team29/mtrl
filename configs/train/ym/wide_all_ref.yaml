@@ -1,0 +1,7 @@
+# results/ym wide_all_ref (best RL run in the 2026-11-20 report): reference-based MetricX
+# reward, LoRA on attention (all 24 layers), lr 2e-5.
+base: ../_base_rl.yaml
+run_name: ym_wide_all_ref
+adapter: {targets: attn}
+optim: {lr: 2.0e-5}
+reward: {mode: ref}

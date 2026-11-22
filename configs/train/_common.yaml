@@ -1,0 +1,27 @@
+# Shared defaults for every training run. Children set `base: _common.yaml` (or a file
+# that does) and override what they change. See src/mtrl/common/train_config.py.
+seed: 0
+model: {name: Qwen/Qwen3.5-0.8B, n_params: 0.8e9}
+data:
+  directions: [en-is, en-lij, en-lld]
+  train_split: flores_dev      # FLORES+ dev (997 sentences per direction), scripts/prepare_train_data.py
+  val_split: flores_devtest    # FLORES+ devtest (1012 per direction); WMT26 `test` stays untouched
+  train_limit: null            # first N per direction (quick runs)
+  val_limit: 50                # per direction, for the in-training validation
+thinking: false
+prompt_template: |
+  Translate the following English text into {tgt_lang_name}.
+  Output only the translation, nothing else.
+
+  {src}
+init: {from: base}
+adapter: {r: 16, alpha: 32, dropout: 0.0, targets: all, layers: "0-23"}
+optim: {lr: 1.0e-4, betas: [0.9, 0.99], weight_decay: 0.0, grad_clip: 1.0}
+schedule:
+  steps: 1000
+  max_hours: null              # stop cleanly (with a checkpoint) after this wall time
+  ckpt_every: 100
+  keep_ckpts: 3
+  val_every: 100               # 0 = no in-training validation
+  log_every: 1
+eval: {split: flores_devtest, limit: 200, max_new_tokens: 256, batch_size: 16}

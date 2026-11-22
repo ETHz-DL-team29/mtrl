@@ -33,16 +33,17 @@ class EnvConfig:
     name: str
     n_gpus: int
     gpu: dict              # {match: str, mem_gb: int}
-    paths: dict            # hf_home, data_dir, runs_dir, fasttext_lid (+ optional torch_home, pip_cache)
+    paths: dict            # hf_home, data_dir, runs_dir, fasttext_lid (+ optional torch_home, pip_cache, ckpt_dir)
     dtype: str             # bf16 / fp16 / fp32
     attn_impl: str
     use_vllm: bool
     vllm: dict
     scoring: dict
     python: dict = field(default_factory=dict)   # {generate, score}: interpreter per env; empty = one env
+    train: dict = field(default_factory=dict)    # training memory knobs (micro_batch, grad_checkpointing)
 
     def path(self, key: str) -> Path:
-        p = Path(self.paths[key]).expanduser()
+        p = Path(os.path.expandvars(str(self.paths[key]))).expanduser()   # ${USER} etc.
         return p if p.is_absolute() else (REPO_ROOT / p).resolve()
 
     def python_for(self, group: str, default: str) -> str:
