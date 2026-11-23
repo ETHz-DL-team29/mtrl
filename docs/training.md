@@ -5,17 +5,9 @@ and the migration from `results/ym` are described in [train_merge_plan.md](train
 
 ## 1. The flow
 
-```
-WMT26 mtdata corpora (train) ──► [optional SFT] ──► RL loop ──► checkpoints ──► greedy eval on NTREX-128
-                                            │
-          ┌─────────────────────────────────┴────────────────────────────────┐
-          │ 1 rollout   B sources x G samples      generation/hf_generate.py │
-          │ 2 reward    gate x (1 - MetricX/25)    scoring/reward.py         │
-          │ 3 advantage standardise per group      train/advantage.py        │
-          │ 4 mask      token weights              train/masks.py            │
-          │ 5 update    clipped PG, token-level    train/losses.py, train/rl │
-          └──────────────────────────────────────────────────────────────────┘
-```
+![Post-training flow: data, optional SFT, RL loop (rollout, reward, advantage, mask, update), checkpoints, evaluation](figures/training_flow.png)
+
+(Figure source: `docs/figures/make_training_flow.py`.)
 
 Every box is chosen in the training YAML; a new method is usually one registered
 function plus one YAML.
