@@ -1,0 +1,23 @@
+# Shared part of every Google Colab env (not an env itself: files starting with `_` are
+# bases). Each card file sets `base: _colab.yaml` and adds name, gpu, dtype, batch sizes.
+# Set up by setup/colab_smoke_test.ipynb, which also picks the card file from the GPU:
+#   - training (transformers 5.x, peft) runs in the Colab runtime's own Python;
+#   - MetricX needs transformers 4.x, so the scorer runs in a venv (python.score);
+#   - mtdata (training-data download) gets its own venv (python.mtdata).
+# Sessions disconnect: runs, checkpoints and the HF cache live on Google Drive; re-running
+# the same training command resumes from the last checkpoint.
+n_gpus: 1
+paths:
+  hf_home: /content/drive/MyDrive/mtrl/hf
+  data_dir: ./data
+  runs_dir: /content/drive/MyDrive/mtrl/runs
+  ckpt_dir: /content/drive/MyDrive/mtrl/ckpt
+  fasttext_lid: ./data/models/lid.176.bin
+attn_impl: sdpa
+use_vllm: false              # rollouts and evaluation use the HF backend on every platform
+vllm: {}
+python:
+  score: /content/score-venv/bin/python     # MetricX service, transformers 4.x
+  mtdata: /content/mtdata-venv/bin/python   # mtdata 0.5.1, data download only
+train:
+  grad_checkpointing: true

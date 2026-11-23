@@ -10,13 +10,13 @@ any model is loaded.
 """
 from __future__ import annotations
 
-import copy
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 import yaml
 
-from mtrl.common.config import REPO_ROOT, EnvConfig, _git_commit, load_env, resolve_env_name
+from mtrl.common.config import (REPO_ROOT, EnvConfig, _git_commit, deep_merge,  # noqa: F401 (deep_merge re-exported)
+                                load_env, read_yaml_with_base, resolve_env_name)
 
 METHODS = ("rl", "sft")
 ADAPTER_TARGETS = ("all", "attn", "mlp")
@@ -82,23 +82,8 @@ class TrainRunConfig:
         return {"code": tgt, **self.languages[tgt]}
 
 
-def deep_merge(base: dict, child: dict) -> dict:
-    out = copy.deepcopy(base)
-    for k, v in child.items():
-        out[k] = deep_merge(out[k], v) if isinstance(v, dict) and isinstance(out.get(k), dict) else v
-    return out
-
-
-def read_train_yaml(path, _seen=()) -> dict:
-    path = Path(path).resolve()
-    if path in _seen:
-        raise ValueError(f"cyclic `base:` chain at {path}")
-    with open(path, encoding="utf-8") as f:
-        d = yaml.safe_load(f) or {}
-    parent = d.pop("base", None)
-    if parent:
-        d = deep_merge(read_train_yaml(path.parent / parent, _seen + (path,)), d)
-    return d
+def read_train_yaml(path) -> dict:
+    return read_yaml_with_base(path)
 
 
 def validate(cfg: TrainConfig) -> None:

@@ -1,0 +1,8 @@
+# Colab A100 80 GB (Ampere, compute capability 8.0): bf16. Separate from the 40 GB file
+# because the name carries the memory and check_capabilities verifies it (+-15%).
+# NOT yet tested.
+base: _colab.yaml
+name: colab_A100_80G
+gpu: {match: "A100", mem_gb: 80}
+dtype: bf16
+scoring: {batch_size: 64}

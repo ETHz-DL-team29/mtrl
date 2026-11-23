@@ -79,13 +79,19 @@ directory for `eval_adapter.py --adapter` or `init.from`.
 
 ## 5. Platforms
 
-One env config per machine (`configs/env/`); the training YAML never changes.
+One env config per machine (`configs/env/`); the training YAML never changes. Env configs
+may share a parent with `base:` (files starting with `_` are bases, e.g. `_colab.yaml`).
+On Colab, `setup/colab_smoke_test.ipynb` picks the file from the GPU
+(`python scripts/pick_env.py colab`). Training checks at start that the GPU matches the env
+(name, memory within 15%, bf16 support).
 
 | Env | GPU | dtype | vLLM | Status |
 |---|---|---|---|---|
 | `local_4070S_12G` | RTX 4070 SUPER | bf16 | yes | tested |
 | `dinfk_1080Ti_11G` | GTX 1080 Ti (D-INFK student cluster) | fp16 | no | written, not tested |
-| `colab_T4_16G` | T4 | fp16 | no | written, not tested |
+| `colab_L4_24G` | L4 (Colab) | bf16 | no | written, not tested; recommended Colab card |
+| `colab_A100_40G`, `colab_A100_80G` | A100 (Colab) | bf16 | no | written, not tested |
+| `colab_T4_16G` | T4 (Colab free tier) | fp16 | no | written, not tested; fp16 may overflow |
 
 Set `max_hours` in `schedule` below the job limit (12 h on the cluster); the run stops
 with a checkpoint and the same command resumes it.

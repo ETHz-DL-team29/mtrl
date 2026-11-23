@@ -1,0 +1,7 @@
+# Colab A100 40 GB (Ampere, compute capability 8.0): bf16. For larger runs (4B, larger G).
+# NOT yet tested.
+base: _colab.yaml
+name: colab_A100_40G
+gpu: {match: "A100", mem_gb: 40}
+dtype: bf16
+scoring: {batch_size: 32}

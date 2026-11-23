@@ -72,9 +72,12 @@ def resolve_init_adapter(run: TrainRunConfig, init: str) -> Path:
 
 
 def start(run: TrainRunConfig, *, need_scorer: bool) -> Session:
-    from mtrl.common.env_setup import setup_env
+    from mtrl.common.env_setup import check_capabilities, setup_env
 
     setup_env(run.env)
+    caps = check_capabilities(run.env)   # wrong card / bf16 on a pre-Ampere GPU fails here, not mid-run
+    print(f"[train] env {run.env.name}: {caps['gpu_name']} ({caps['gpu_mem_gb']} GB, cc {caps['compute_capability']}), "
+          f"dtype {run.env.dtype}", flush=True)
     import numpy as np
     import torch
 
