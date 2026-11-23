@@ -21,5 +21,6 @@ scoring:
 python:                        # interpreter per stage group (conda envs from setup/install_local_4070S_12G.sh)
   generate: ~/miniforge3/envs/mtrl/bin/python         # vLLM, transformers 5.x
   score: ~/miniforge3/envs/mtrl-score/bin/python      # COMET / MetricX / fastText, transformers 4.x; all other stages
+  mtdata: ~/miniforge3/envs/mtdata/bin/python         # mtdata 0.5.1 (training-data download only)
 train:
   grad_checkpointing: true

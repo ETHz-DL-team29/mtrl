@@ -6,7 +6,7 @@ and the migration from `results/ym` are described in [train_merge_plan.md](train
 ## 1. The flow
 
 ```
-FLORES+ dev (train) ──► [optional SFT] ──► RL loop ──► checkpoints ──► greedy eval on FLORES+ devtest
+WMT26 mtdata corpora (train) ──► [optional SFT] ──► RL loop ──► checkpoints ──► greedy eval on NTREX-128
                                             │
           ┌─────────────────────────────────┴────────────────────────────────┐
           │ 1 rollout   B sources x G samples      generation/hf_generate.py │
@@ -45,16 +45,18 @@ answers. Both share the GPU: Qwen3.5-0.8B + LoRA training and MetricX-24-large f
 
 ```bash
 conda activate mtrl
-python scripts/prepare_train_data.py configs/train/quick_rl.yaml      # FLORES+ -> data/processed (once)
+python scripts/prepare_train_data.py                                 # configs/train_data.yaml -> data/processed (once)
 python scripts/train.py configs/train/quick_rl.yaml                   # 6-step smoke test
 python scripts/train.py configs/train/ym/wide_all_ref.yaml            # a real run; re-run to resume
-python scripts/eval_adapter.py configs/train/ym/wide_all_ref.yaml     # latest checkpoint on FLORES+ devtest
+python scripts/eval_adapter.py configs/train/ym/wide_all_ref.yaml     # latest checkpoint on NTREX-128 (ntrex_dev)
 python scripts/eval_adapter.py configs/train/quick_rl.yaml --base     # base model, same data and prompt
-python scripts/compare_runs.py                                        # table over runs/*/eval
+python scripts/compare_runs.py --split ntrex_dev                      # table over runs/*/eval
 ```
 
-FLORES+ is gated on Hugging Face: accept its terms with the account of `HF_TOKEN` first.
-`scripts/check_language_drift.py` reports, for en-lij and en-lld, how many outputs are closer
+`scripts/prepare_train_data.py` needs the `mtdata` tool (env config `python.mtdata`, e.g. a
+conda env with `pip install mtdata==0.5.1`).
+
+Historical (FLORES+ era, en-lij / en-lld): `scripts/check_language_drift.py` reports, for en-lij and en-lld, how many outputs are closer
 to the Italian FLORES+ reference than to the target one: MetricX cannot tell these
 languages from Italian, and RL from the base model drifts into Italian (see
 train_merge_plan.md, section 3). Watch it on every RL run for these directions.
@@ -90,12 +92,16 @@ with a checkpoint and the same command resumes it.
 
 ## 6. Data
 
+Which directions and datasets, and why: [data.md](data.md) (pilot behind it:
+[language_selection.md](language_selection.md)). Built by `scripts/prepare_train_data.py`
+from `configs/train_data.yaml`.
+
 | Split | Source | Use |
 |---|---|---|
-| `flores_dev` | FLORES+ dev, 997 sentences per language | training |
-| `flores_devtest` | FLORES+ devtest, 1012 sentences | validation and development evaluation |
-| `test` | WMT26 General MT, 198 documents per direction | final evaluation only (zero-shot pipeline) |
+| `wmt_train` | WMT26 mtdata recipe corpora (TED2020, QED, Wikimedia, Tatoeba, News Commentary), cleaned with the reward gate, deduplicated, decontaminated, 20k pairs per direction | training (SFT targets, RL sources) |
+| `ntrex_val` | NTREX-128, 200 sentences | validation during training |
+| `ntrex_dev` | NTREX-128, 1797 sentences | model selection, development evaluation |
+| `wmt26_test` | WMT26 General MT, 198 documents per direction; human reference (is, cs) or PseudoRef (hy, kk, be) | final evaluation only |
 
-Default directions: en-is, en-lij, en-lld (WMT26 directions with references and FLORES+
-coverage). lid.176 has no label for Ligurian or Ladin, so for those the gate only rejects
-outputs identified as English (`configs/languages.yaml`).
+Default directions: en-hy, en-kk, en-be, en-is (low-resource) and en-cs (mid-resource
+control); default model Qwen3.5-2B. The `ym/` presets keep ym's Qwen3.5-0.8B.

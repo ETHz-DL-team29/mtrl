@@ -1,6 +1,7 @@
 # results/ym sft_full: LoRA on all modules, lr 1e-4, batch 1 x accum 8, max_len 1024.
 # ym ran it for ~4 h on a 1080 Ti; 1000 updates = 8000 examples (~2.7 epochs of 3 x 997).
 base: ../_base_sft.yaml
+model: {name: Qwen/Qwen3.5-0.8B, n_params: 0.8e9}   # ym's model; data follows _common.yaml
 run_name: ym_sft_full
 optim: {lr: 1.0e-4}
 schedule: {steps: 1000}

@@ -43,6 +43,8 @@
 
 ### 1.2 已定下的设计决策
 
+> **2026-11-23 更新**：第 1、2 条已被替换。按 proposal，训练数据改为 WMT26 mtdata 配方里的人工翻译语料，开发集改为 NTREX-128，方向改为 en-hy / en-kk / en-be / en-is + en-cs 对照，主模型改为 2B。理由见 [data.md](data.md) 和 [language_selection.md](language_selection.md)。第 3 节的 FLORES+ 探索实验保留为历史记录。
+
 1. **训练数据用 FLORES+，不用 WMT26。** WMT26 只有 test 集；ym 的数据字段（`prompt`/`source`/`ref`/`tgt_lang`）和语言集合（isl/lij/lld/sme，正好是 WMT26 中带参考译文的方向）都指向它是从 WMT26 test 切出来的，这一点尚未向 ym 确认。如果属实，ym 的结果有测试集泄漏。FLORES+ dev（997 句）训练、devtest（1012 句）做验证和开发评测，WMT26 只留作最终测试。
 2. **默认方向 en-is、en-lij、en-lld。** 这三个方向在 WMT26 有参考译文，FLORES+ 也有覆盖（FLORES+ 没有 sme）。
 3. **lid.176 识别不了利古里亚语和拉登语。** 实测 FLORES+ dev 的参考译文：lij 被判成 it/fr/ro/pms…，lld 被判成 es/pt/rm/it…，没有一句判对。所以这两种语言的 gate 只拒绝"被判成英文"的输出（即没翻译），再加书写系统检查。

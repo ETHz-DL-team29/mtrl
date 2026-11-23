@@ -5,7 +5,8 @@
 # fasttext: null means lid.176 has no label for the language (measured on FLORES+ dev,
 # 2026-11-21: Ligurian is predicted as it/fr/ro/pms..., Ladin as es/pt/rm/it...). The gate
 # then only rejects outputs identified as English (an untranslated copy).
-# WMT26 references: is, et, lij, lld have human references; hy, be, kk have none.
+# WMT26 references: is, et, cs, lij, lld, sme, arz have human references; hy, be, kk only the
+# PseudoRef synthetic ones (2026-09-20). Directions in use and why: docs/data.md.
 # FLORES+ (openlanguagedata/flores_plus) has dev/devtest for all of these except be.
 is:  {name: Icelandic,  fasttext: is,   len_ratio: [0.6, 1.8], wmt26: isl_Latn, script: Latn}
 hy:  {name: Armenian,   fasttext: hy,   len_ratio: [0.6, 1.8], wmt26: hye_Armn, script: Armn}
@@ -14,3 +15,6 @@ kk:  {name: Kazakh,     fasttext: kk,   len_ratio: [0.6, 1.8], wmt26: kaz_Cyrl, 
 et:  {name: Estonian,   fasttext: et,   len_ratio: [0.6, 1.8], wmt26: ekk_Latn, script: Latn}
 lij: {name: Ligurian,   fasttext: null, len_ratio: [0.6, 1.8], wmt26: lij_Latn, script: Latn}
 lld: {name: Ladin,      fasttext: null, len_ratio: [0.6, 1.8], wmt26: lld_Latn, script: Latn}
+sme: {name: Northern Sami, fasttext: null, len_ratio: [0.6, 1.8], wmt26: sme_Latn, script: Latn}   # lid.176 has no Sami label
+arz: {name: Egyptian Arabic, fasttext: null, len_ratio: [0.5, 1.8], wmt26: arz_Arab, script: Arab}   # lid.176 often says ar for Egyptian
+cs:  {name: Czech,      fasttext: cs,   len_ratio: [0.6, 1.8], wmt26: ces_Latn, script: Latn}   # mid-resource control

@@ -1,13 +1,13 @@
 # Shared defaults for every training run. Children set `base: _common.yaml` (or a file
 # that does) and override what they change. See src/mtrl/common/train_config.py.
 seed: 0
-model: {name: Qwen/Qwen3.5-0.8B, n_params: 0.8e9}
-data:
-  directions: [en-is, en-lij, en-lld]
-  train_split: flores_dev      # FLORES+ dev (997 sentences per direction), scripts/prepare_train_data.py
-  val_split: flores_devtest    # FLORES+ devtest (1012 per direction); WMT26 `test` stays untouched
+model: {name: Qwen/Qwen3.5-2B, n_params: 2.0e9}   # main model (docs/language_selection.md); 0.8B for scale comparison
+data:                          # built by scripts/prepare_train_data.py from configs/train_data.yaml; why: docs/data.md
+  directions: [en-hy, en-kk, en-be, en-is, en-cs]   # hy/kk/be/is low-resource, cs mid-resource control
+  train_split: wmt_train       # WMT26 mtdata recipe corpora, cleaned, 20k pairs per direction
+  val_split: ntrex_val         # NTREX-128, 200 per direction; WMT26 `wmt26_test` stays untouched
   train_limit: null            # first N per direction (quick runs)
-  val_limit: 50                # per direction, for the in-training validation
+  val_limit: 40                # per direction, for the in-training validation
 thinking: false
 prompt_template: |
   Translate the following English text into {tgt_lang_name}.
@@ -24,4 +24,4 @@ schedule:
   keep_ckpts: 3
   val_every: 100               # 0 = no in-training validation
   log_every: 1
-eval: {split: flores_devtest, limit: 200, max_new_tokens: 256, batch_size: 16}
+eval: {split: ntrex_dev, limit: 200, max_new_tokens: 256, batch_size: 16}

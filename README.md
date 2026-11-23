@@ -9,7 +9,7 @@ Compute-efficient reinforcement learning (GRPO-style) for low-resource English-t
 3. When sampling G = 8 translations per segment at T = 1.0, how much does the reward vary within a group? Near-zero variance means GRPO gets no learning signal.
 4. How often do outputs fail the rule-based gate (parse failure, empty output, copied source, wrong language, abnormal length), and for which reasons?
 
-**Post-training (added 2026-11-21):** LoRA SFT and group policy-gradient RL (GRPO / DAPO family) on MetricX rewards, trained on FLORES+ and evaluated on FLORES+ devtest; WMT26 stays the untouched test set. Usage, outputs and platforms: [docs/training.md](docs/training.md). The migration from the `results/ym` scripts and the exploration results: [docs/train_merge_plan.md](docs/train_merge_plan.md).
+**Post-training (added 2026-11-21):** LoRA SFT and group policy-gradient RL (GRPO / DAPO family) on MetricX rewards, trained on WMT26 mtdata corpora (en-hy, en-kk, en-be, en-is, en-cs control) and developed on NTREX-128; WMT26 stays the untouched test set. Usage, outputs and platforms: [docs/training.md](docs/training.md). The migration from the `results/ym` scripts and the exploration results: [docs/train_merge_plan.md](docs/train_merge_plan.md).
 
 **Core data convention:** every model output is split into a *reasoning* part and a *translation* part, and the tokens of each part are counted separately (`Rollout.reasoning`, `Rollout.translation`). Both planned methods, selective token updates and reasoning-prefix reuse, depend on this split.
 
@@ -49,7 +49,7 @@ Code is developed on a laptop; all scripts run on a single-GPU Linux server (RTX
 | `src/mtrl/generation/hf_generate.py` | HF generation for training rollouts and adapter evaluation |
 | `src/mtrl/scoring/server.py`, `client.py` | MetricX HTTP service (scoring env) and its client (training env) |
 | `scripts/train.py`, `eval_adapter.py`, `compare_runs.py` | Train a config, evaluate adapters / the base model, tabulate runs |
-| `scripts/prepare_train_data.py`, `scorer_server.py`, `convert_ym_ckpt.py` | FLORES+ download, scoring service, results/ym checkpoint conversion |
+| `scripts/prepare_train_data.py`, `scorer_server.py`, `convert_ym_ckpt.py` | training / dev / test data (`configs/train_data.yaml`, rationale in `docs/data.md`), scoring service, results/ym checkpoint conversion |
 | `scripts/check_rollout_logprobs.py`, `check_language_drift.py`, `run_explore.sh` | Diagnostics: rollout/forward log-prob match; drift of lij/lld outputs into Italian; the 2026-11-22 exploration batch |
 | `scripts/run.py` | **Main entry point**: runs all stages for one config |
 | `scripts/` (others) | One script per stage: `download.py`, `prepare_data.py`, `generate.py`, `score.py`, `analyze.py` |

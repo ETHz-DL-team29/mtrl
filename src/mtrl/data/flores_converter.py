@@ -1,5 +1,9 @@
 """FLORES+ (openlanguagedata/flores_plus, gated on Hugging Face) -> Segment rows.
 
+Historical: the first exploration (2026-11-22, en-is / en-lij / en-lld) trained on FLORES+.
+The current data is configs/train_data.yaml (docs/data.md); FLORES+ is now only a
+decontamination list and the pivot for scripts/check_language_drift.py.
+
 Used as training / validation data so that the WMT26 test set is never trained on:
   flores_dev     <- FLORES+ dev     (997 sentences, the training split)
   flores_devtest <- FLORES+ devtest (1012 sentences, validation / development eval)

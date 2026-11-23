@@ -1,6 +1,6 @@
 """Table of evaluation summaries across runs:
 
-    python scripts/compare_runs.py [--split flores_devtest] [--runs-dir runs]
+    python scripts/compare_runs.py [--split ntrex_dev] [--runs-dir runs]
 
 Reads runs/*/eval/{split}_summary.json (written by scripts/eval_adapter.py) and prints
 one row per run and direction; writes runs/compare_{split}.csv.
@@ -17,7 +17,7 @@ COLS = ["chrf", "metricx_ref", "qe_all", "reward", "gate_pass", "ym_gate_pass", 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--split", default="flores_devtest")
+    ap.add_argument("--split", default="ntrex_dev")
     ap.add_argument("--runs-dir", default=str(REPO_ROOT / "runs"))
     args = ap.parse_args()
     rows = []
