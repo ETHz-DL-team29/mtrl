@@ -89,9 +89,22 @@ On Colab, `setup/colab_smoke_test.ipynb` picks the file from the GPU
 |---|---|---|---|---|
 | `local_4070S_12G` | RTX 4070 SUPER | bf16 | yes | tested |
 | `dinfk_1080Ti_11G` | GTX 1080 Ti (D-INFK student cluster) | fp16 | no | written, not tested |
-| `colab_L4_24G` | L4 (Colab) | bf16 | no | written, not tested; recommended Colab card |
+| `colab_L4_24G` | L4 (Colab) | bf16 | no | smoke test passed 2026-11-23 (`setup/colab_smoke_test.ipynb`) |
 | `colab_A100_40G`, `colab_A100_80G` | A100 (Colab) | bf16 | no | written, not tested |
 | `colab_T4_16G` | T4 (Colab free tier) | fp16 | no | written, not tested; fp16 may overflow |
+
+Speed (`python scripts/bench_speed.py`, Qwen3.5-2B, 2026-11-23):
+
+| | 4070 SUPER + Ryzen 7 9700X | Colab L4 + Xeon 2.20 GHz |
+|---|---|---|
+| train fwd+bwd, batch 1 / 4 / 8 x 128 tok | 86 / 122 / 281 ms | 254 / 264 / 450 ms |
+| generation, per decoding step (8 seqs) | 15 ms | 49 ms |
+| smoke test, SFT / RL s/step | 1.1 / 1.3-1.9 | 4.1 / 5.8 |
+
+Small batches and token-by-token decoding are bound by CPU-side kernel-launch overhead,
+so the slow Colab CPU costs ~3x there (an A100 would not help); at batch 8 the gap is the
+GPU gap (~1.6x). Run RL (generation-heavy) locally; SFT and large-batch work fit on Colab.
+Fewer kernel launches in rollouts (vLLM or CUDA graphs) would speed up both.
 
 Set `max_hours` in `schedule` below the job limit (12 h on the cluster); the run stops
 with a checkpoint and the same command resumes it.
