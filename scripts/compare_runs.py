@@ -1,6 +1,6 @@
 """Table of evaluation summaries across runs:
 
-    python scripts/compare_runs.py [--split ntrex_dev] [--runs-dir runs]
+    python scripts/compare_runs.py [--split ntrex_dev] [--runs-dir runs] [--runs NAME ...]
 
 Reads runs/*/eval/{split}_summary.json (written by scripts/eval_adapter.py) and prints
 one row per run and direction; writes runs/compare_{split}.csv.
@@ -19,9 +19,12 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--split", default="ntrex_dev")
     ap.add_argument("--runs-dir", default=str(REPO_ROOT / "runs"))
+    ap.add_argument("--runs", nargs="*", help="only these run names (default: every run with an eval summary)")
     args = ap.parse_args()
     rows = []
     for p in sorted(Path(args.runs_dir).glob(f"*/eval/{args.split}_summary.json")):
+        if args.runs and p.parent.parent.name not in args.runs:
+            continue
         summary = json.loads(p.read_text())
         for d, v in summary.items():
             if d.startswith("_"):

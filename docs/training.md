@@ -43,6 +43,8 @@ python scripts/train.py configs/train/ym/wide_all_ref.yaml            # a real r
 python scripts/eval_adapter.py configs/train/ym/wide_all_ref.yaml     # latest checkpoint on NTREX-128 (ntrex_dev)
 python scripts/eval_adapter.py configs/train/quick_rl.yaml --base     # base model, same data and prompt
 python scripts/compare_runs.py --split ntrex_dev                      # table over runs/*/eval
+python scripts/run_experiments.py configs/train/ym/sft_full.yaml configs/train/ym/wide_all_ref.yaml
+                                         # all of the above for a list of configs: data, train, eval, compare
 ```
 
 `scripts/prepare_train_data.py` needs the `mtdata` tool (env config `python.mtdata`, e.g. a
@@ -73,7 +75,7 @@ directory for `eval_adapter.py --adapter` or `init.from`.
 
 One env config per machine (`configs/env/`); the training YAML never changes. Env configs
 may share a parent with `base:` (files starting with `_` are bases, e.g. `_colab.yaml`).
-On Colab, `setup/colab_smoke_test.ipynb` picks the file from the GPU
+On Colab, `setup/colab_setup.sh` picks the file from the GPU
 (`python scripts/pick_env.py colab`). Training checks at start that the GPU matches the env
 (name, memory within 15%, bf16 support).
 
@@ -101,7 +103,42 @@ Fewer kernel launches in rollouts (vLLM or CUDA graphs) would speed up both.
 Set `max_hours` in `schedule` below the job limit (12 h on the cluster); the run stops
 with a checkpoint and the same command resumes it.
 
-## 6. Data
+## 6. Running on Colab
+
+The experiment is a training YAML; the notebook only runs it, with the same command as on
+the server (`scripts/run_experiments.py`).
+
+1. Open `setup/colab_run.ipynb` in Colab (File → Open notebook → GitHub, or
+   `https://colab.research.google.com/github/ETHz-DL-team29/mtrl/blob/<commit>/setup/colab_run.ipynb`;
+   use a commit or `main` in the link, Colab cannot open branch names with a `/`).
+2. Runtime → Change runtime type → **L4** (or A100).
+3. In the first code cell set `REF` (branch or commit of the code) and `CONFIGS`
+   (training YAMLs), then Runtime → Run all.
+
+| Piece | Role |
+|---|---|
+| `setup/colab_setup.sh` | Idempotent install: runtime packages, scorer venv and mtdata venv (Python 3.12), editable `mtrl`, fastText model, `MTRL_ENV` for this GPU. A second run takes ~20 s. |
+| `scripts/run_experiments.py` | Data for the configs' directions → train each config → evaluate → compare. Works on every platform. |
+| `scripts/data_cache.py` | Keeps `data/processed` as one archive on Drive (`mtrl/data_cache`), keyed by a hash of the data config and code, so a new session skips the data build. |
+| Drive `mtrl/runs`, `mtrl/ckpt` | Logs, resolved configs, checkpoints. Run all again after a disconnect: training resumes. |
+| `setup/colab_smoke_test.ipynb` | Checks a fresh runtime (setup, tests, SFT, RL, resume). |
+| `setup/make_colab_notebooks.py` | Writes both notebooks; edit it, not the `.ipynb` files. |
+
+**Trying a variation without committing it**: put a YAML on Drive that inherits from one
+in the repo, and list its path in `CONFIGS`:
+
+```yaml
+# /content/drive/MyDrive/mtrl/configs/try_lr.yaml
+base: /content/mtrl/configs/train/ym/wide_all_ref.yaml
+run_name: try_lr_5e-5
+optim: {lr: 5.0e-5}
+```
+
+The merged config and the git commit are saved in `runs/try_lr_5e-5/config.resolved.yaml`;
+configs worth keeping move into `configs/train/`. Overriding parameters inside the notebook
+is deliberately not supported: those changes would not be recorded anywhere.
+
+## 7. Data
 
 Which directions and datasets, and why: [data.md](data.md) (pilot behind it:
 [language_selection.md](language_selection.md)). Built by `scripts/prepare_train_data.py`
