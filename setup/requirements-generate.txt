@@ -7,4 +7,4 @@ peft>=0.17                # LoRA adapters (mtrl.train); 0.22.0 verified 2026-11-
 fasttext-numpy2-wheel     # language ID for the reward gate during training (numpy 2 build)
 sacrebleu                 # chrF++ during in-training validation
 huggingface_hub
-flash-linear-attention==0.6.0   # Triton kernels for Qwen3.5 linear attention (3-4x faster training); verified 2026-11-22
+flash-linear-attention==0.6.0   # Triton kernels for Qwen3.5 linear attention (Colab L4 smoke test: ~10% faster steps); verified 2026-11-22
