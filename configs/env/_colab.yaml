@@ -4,11 +4,13 @@
 #   - training (transformers 5.x, peft) runs in the Colab runtime's own Python;
 #   - MetricX needs transformers 4.x, so the scorer runs in a venv (python.score);
 #   - mtdata (training-data download) gets its own venv (python.mtdata).
-# Sessions disconnect: runs, checkpoints and the HF cache live on Google Drive; re-running
-# the same training command resumes from the last checkpoint.
+# Sessions disconnect: runs and checkpoints live on Google Drive; re-running the same
+# training command resumes from the last checkpoint. The Hugging Face cache stays on the
+# local disk: on the Drive mount, downloads came back as empty files (no symlinks, delayed
+# writes) and tokenizer loading failed; re-downloading Qwen3.5-2B per session takes ~1-2 min.
 n_gpus: 1
 paths:
-  hf_home: /content/drive/MyDrive/mtrl/hf
+  hf_home: /content/hf                     # local disk, not Drive (see above)
   data_dir: ./data
   runs_dir: /content/drive/MyDrive/mtrl/runs
   ckpt_dir: /content/drive/MyDrive/mtrl/ckpt
