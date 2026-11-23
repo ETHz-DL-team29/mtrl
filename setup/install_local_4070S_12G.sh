@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# Install mtrl on the RTX 4070 Super Linux box. Creates (or reuses) two conda envs:
-#   mtrl        generation (vLLM; transformers 5.x, needed by Qwen3.5)
-#   mtrl-score  everything else: download, prepare, score, analyze, tests
+# Install mtrl on the RTX 4070 Super Linux box. Creates (or reuses) three conda envs:
+#   mtrl        generation and training (vLLM, peft; transformers 5.x, needed by Qwen3.5)
+#   mtrl-score  everything else: download, prepare, score (MetricX service), analyze, tests
 #               (COMET needs transformers<5, numpy<2, so it cannot share the vLLM env)
+#   mtdata      the mtdata tool, only for scripts/prepare_train_data.py (training data)
 # scripts/run.py starts each stage with the right interpreter (env config key `python`).
 # Models and data are downloaded later by scripts/run.py, not here.
 # Usage (from the repo root): bash setup/install_local_4070S_12G.sh
@@ -10,8 +11,10 @@ set -euo pipefail
 
 GEN_ENV="mtrl"
 SCORE_ENV="mtrl-score"
+MTDATA_ENV="mtdata"
 GEN_PY="3.12"
 SCORE_PY="3.11"
+MTDATA_PY="3.11"
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
 eval "$(conda shell.bash hook)"
@@ -43,9 +46,17 @@ python -c "import torch, transformers, comet; print('[install] score env: torch'
 pip freeze --exclude-editable > "$REPO_ROOT/setup/requirements-score.lock.txt"
 conda deactivate
 
+# 3) mtdata env: training-data download only (configs/train_data.yaml)
+make_env "$MTDATA_ENV" "$MTDATA_PY"
+conda activate "$MTDATA_ENV"
+pip install "mtdata==0.5.1"
+mtdata --version
+conda deactivate
+
 echo "[install] done. Commit setup/requirements-*.lock.txt."
 echo "[install] check that configs/env/local_4070S_12G.yaml 'python:' points at:"
 echo "          $(conda env list | awk -v n="$GEN_ENV" '$1==n {print $NF}')/bin/python"
 echo "          $(conda env list | awk -v n="$SCORE_ENV" '$1==n {print $NF}')/bin/python"
+echo "          $(conda env list | awk -v n="$MTDATA_ENV" '$1==n {print $NF}')/bin/python   (python.mtdata)"
 echo "[install] next: cp .env.example .env, fill in HF_TOKEN, then:"
 echo "          conda activate $SCORE_ENV && python scripts/run.py configs/quick.yaml"

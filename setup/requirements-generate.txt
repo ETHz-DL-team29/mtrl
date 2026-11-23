@@ -8,3 +8,4 @@ fasttext-numpy2-wheel     # language ID for the reward gate during training (num
 sacrebleu                 # chrF++ during in-training validation
 huggingface_hub
 flash-linear-attention==0.6.0   # Triton kernels for Qwen3.5 linear attention (Colab L4 smoke test: ~10% faster steps); verified 2026-11-22
+pytest                    # unit tests also run in this env (they need torch + peft)
