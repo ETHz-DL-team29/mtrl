@@ -1,24 +1,22 @@
-# P22 全部逐句证据 / Complete paired translation casebook
+# Complete paired translation casebook
 
 2026-11-23 · Europe/Berlin
 
-64来源、461个去重候选全部逐条复核；相同源文/译文共享一次判断。标签在模型身份与奖励隐藏时封存，随后解盲并追加MetricX评分。P保留关键意义，F有明确关键错误，U为真实不确定；并非冰岛语母语或医疗专业认证。文字P仍须未截断才能计入G8来源覆盖。
-
 All64sources and461unique candidates were read individually. Exact source/translation duplicates share one judgment. Labels were sealed with model identity and reward hidden,then unblinded and scored withMetricX.P preserves critical meaning,F confirms a critical error,U denotes genuine uncertainty.This is not native Icelandic or clinical certification.Text-P only counts towardG8source coverage when untruncated.
 
-before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX误差越低越好，仅为事后诊断；它不定义P/F/U。 / LowerMetricXerror is better;post-hoc scores do not define semantic labels.
+before = original P18 R0; after = P22step120. Lower MetricX error is better, but post-hoc scores do not define P/F/U semantic labels.
 
-[返回主报告 / Main report](DAPO_METRICX_REFERENCE_RESULTS_2026-11-23.html)
+[Main report](DAPO_METRICX_REFERENCE_RESULTS_2026-11-23.html)
 
 <details><summary>0 · technical_medium · p22official21:test:eso:605</summary>
 
-<p><strong>源文 / Source</strong><br>The new estimate is based on detailed observations of two slightly different forms of water in Marss atmosphere.</p>
+<p><strong>Source</strong><br>The new estimate is based on detailed observations of two slightly different forms of water in Marss atmosphere.</p>
 
-<p><strong>参考 / Reference</strong><br>Nýja matið er byggt á nákvæmum mælingum á tveimur mismunandi gerðum vatns í lofthjúpi Mars.</p>
+<p><strong>Reference</strong><br>Nýja matið er byggt á nákvæmum mælingum á tveimur mismunandi gerðum vatns í lofthjúpi Mars.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Nýja matið byggist á nákvæmum mælingum á tveimur örlítið mismunandi vökvaformum í Marsloftinu.</td><td>F</td><td>False</td><td>3.75</td><td>Mars air retained, but the specifically water forms are changed to generic fluid forms.</td></tr>
 <tr><td>after</td><td>Nýja matið byggist á nákvæmum mælingum á tveimur lítillega mismunandi vökvaformum í Marsslokkur.</td><td>F</td><td>False</td><td>5.8125</td><td>Water becomes generic fluid forms; Mars atmosphere is replaced by an unintelligible Marsslokkur.</td></tr>
 </tbody></table>
@@ -27,20 +25,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>1 · technical_short · p22official21:test:ema:1851</summary>
 
-<p><strong>源文 / Source</strong><br>Reduce next dose by 25%.</p>
+<p><strong>Source</strong><br>Reduce next dose by 25%.</p>
 
-<p><strong>参考 / Reference</strong><br>Næsti skammtur minnkaður um 25%.</p>
+<p><strong>Reference</strong><br>Næsti skammtur minnkaður um 25%.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Færið skammtinum í næstu skammti um 25%.</td><td>F</td><td>False</td><td>8.8125</td><td>Moving dose into the next dose lacks the required reduction.</td></tr>
 <tr><td>after</td><td>Færið skammtinn í næstu skammti um 25%.</td><td>F</td><td>False</td><td>10.3125</td><td>Move dose into the next dose does not express reducing it.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Færið skammtinum yfir í 25%.</td><td>F</td><td>False</td><td>4.4375</td><td>Move over to 25 percent changes the target amount and omits next-dose scope.</td></tr>
 <tr><td>1</td><td>Færið skammtinum næstu um 25%.</td><td>F</td><td>False</td><td>12.5625</td><td>Move next dose by 25 percent lacks the required reduction direction.</td></tr>
 <tr><td>2</td><td>Fást að skömmtunni næstu skammti um 25%.</td><td>F</td><td>False</td><td>16.0</td><td>Malformed get/dosing construction does not convey reduce the next dose.</td></tr>
@@ -53,7 +51,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Færið skammtinum yfir í 25%.</td><td>F</td><td>False</td><td>4.4375</td><td>Move over to 25 percent changes the target amount and omits next-dose scope.</td></tr>
 <tr><td>1</td><td>Færið skammtinum næsta um 25%.</td><td>F</td><td>False</td><td>11.125</td><td>Move the next dose by 25 percent does not specify reducing it.</td></tr>
 <tr><td>2</td><td>Fást skammtinum minnkaður um 25%.</td><td>F</td><td>False</td><td>9.875</td><td>Reduction by 25 percent appears, but next-dose timing is omitted.</td></tr>
@@ -68,13 +66,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>2 · technical_short · p22official21:test:ema:2673</summary>
 
-<p><strong>源文 / Source</strong><br>Always use a new needle for activation.</p>
+<p><strong>Source</strong><br>Always use a new needle for activation.</p>
 
-<p><strong>参考 / Reference</strong><br>Notaðu ávallt nýja nál við virkjunarferlið.</p>
+<p><strong>Reference</strong><br>Notaðu ávallt nýja nál við virkjunarferlið.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Notið alltaf nýja nál til virkjunar.</td><td>P</td><td>False</td><td>1.3984375</td><td>Always use a new needle for activation; all key content retained.</td></tr>
 <tr><td>after</td><td>Notið alltaf nýja nál til virkjunar.</td><td>P</td><td>False</td><td>1.3984375</td><td>Always use a new needle for activation; all key content retained.</td></tr>
 </tbody></table>
@@ -83,20 +81,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>3 · technical_long · p22official21:test:eea:45</summary>
 
-<p><strong>源文 / Source</strong><br>Soil residue studies must be reported where DT50lab is greater than one-third of the period between the application and harvest and where absorption by the succeeding crop is possible, except where soil residues at sowing or planting of a succeeding crop can be reliably estimated from the data of the soil dissipation studies or where it can be justified that these residues can not be phytotoxic to or leave unacceptable residues in rotational crops.</p>
+<p><strong>Source</strong><br>Soil residue studies must be reported where DT50lab is greater than one-third of the period between the application and harvest and where absorption by the succeeding crop is possible, except where soil residues at sowing or planting of a succeeding crop can be reliably estimated from the data of the soil dissipation studies or where it can be justified that these residues can not be phytotoxic to or leave unacceptable residues in rotational crops.</p>
 
-<p><strong>参考 / Reference</strong><br>Gera skal grein fyrir rannsóknum á efnaleifum þegar DT50lab er meira en einn þriðji af tímabilinu frá meðhöndlun og fram að uppskeru og möguleiki er á að næsta ræktun geti sogað upp efnaleifar, nema þegar unnt er að meta efnaleifar í jarðvegi við sáningu eða gróðursetningu fyrir næstu ræktun með áreiðanlegum hætti út frá gögnum úr rannsóknum á dreifingu í jarðvegi eða þegar unnt er að færa rök að því að þessar efnaleifar geti ekki verið plöntum skaðvænlegar eða skilið eftir sig óviðunandi leifar í víxleftirtekju.</p>
+<p><strong>Reference</strong><br>Gera skal grein fyrir rannsóknum á efnaleifum þegar DT50lab er meira en einn þriðji af tímabilinu frá meðhöndlun og fram að uppskeru og möguleiki er á að næsta ræktun geti sogað upp efnaleifar, nema þegar unnt er að meta efnaleifar í jarðvegi við sáningu eða gróðursetningu fyrir næstu ræktun með áreiðanlegum hætti út frá gögnum úr rannsóknum á dreifingu í jarðvegi eða þegar unnt er að færa rök að því að þessar efnaleifar geti ekki verið plöntum skaðvænlegar eða skilið eftir sig óviðunandi leifar í víxleftirtekju.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Greina verður frá rannsóknum á leifa úr jarðvegi þegar DT50lab er meiri en einn þriðjungur af tímabilinu milli aðgerðar og uppskeru og þegar frásog á næstu ávinningsgetu er mögulegt, nema þegar hægt sé að áætla leifa úr jarðvegi við söl eða plating næstu ávinningsgetu út frá niðurstöðum rannsókna á leifum úr jarðvegi eða þegar hægt er að rökstýra að þessi leifar geti ekki verið fæðubælandi eða leiddi fram óásættanlegar leifar í áætlunarávinnustöðum.</td><td>F</td><td>False</td><td>13.125</td><td>Succeeding crop becomes benefit capacity and phytotoxicity becomes feeding inhibition.</td></tr>
 <tr><td>after</td><td>Greina verður frá rannsóknum á leifa úr jarðvegi þegar DT50lab er meiri en einn þriðjungur af tímabilinu milli notkunar og uppskeru og þegar frásog á næstu ávinnings er mögulegt, nema þegar hægt sé að áætla leifa úr jarðvegi við söl eða sett á næstu ávinnings með áreiðanlegum gögnum úr rannsóknum á leifum úr jarðvegi eða þegar hægt er að rökstýra að þessi leifar geti ekki verið fræðisvölduþrengandi eða leiddar ósamþykktar leifar í áætlunarávinnustöðum.</td><td>F</td><td>False</td><td>14.5</td><td>Crop becomes benefit and phytotoxicity/rotational crop exception is corrupted.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Greina verður frá rannsóknum á leifa úr jarðvegi þegar DT50lab er meiri en þrjátali framanlega tímabilið frá notkun og frislnings og þegar frásog til síðari vaxtarvegs er mögulegt, nema þegar hægt sé að meta sótthexandi úrraunum fyrir útsetningu jarðvegsleifa við fæðingu eða frambúð mæltar vaxtarvegs eða þegar hægt er að rökstýra að þessi leifar hugsanlega verði ekki fæðileg áhrifu eða leiddu ekki ófullnægjandi leifum í vaxtarvegsrot.</td><td>F</td><td>False</td><td>17.875</td><td>One-third interval, harvest and toxicity exception contain invented terms and lost relations.</td></tr>
 <tr><td>1</td><td>Greina verður frá rannsóknum á leifa úr jarðvegi þegar DT50lab er stærri en þrjár hlutir af frestinni milli að aðlingi og uppbót og þegar frásog á næstu ætlunarveg er hugsanleg á grundvelli gagna úr rannsóknum á jarðvegsútsetningu, nema þegar hægt er að meta, án fylgjur, útsetningu á jarðvegi við sækjun eða aðlögun næstu ætlunarvegs eða þegar hægt er að rökstýra að þessar leifar geti ekki verið fræðisvöldum af baksviðs og leifar af baksviðs heldur ekki viðunandi.</td><td>F</td><td>False</td><td>20.125</td><td>One third becomes three parts; harvest and crop/phytotoxicity conditions are corrupted.</td></tr>
 <tr><td>2</td><td>Greina verður frá rannsóknum á sundurhvarfi í jarðvegi þegar DT50lab er meiri en þrjátítrar tímann síðan ánotað er og þegar frásog aukinnar uppruna er mögulegt, nema að því er varðar það þegar hægt er að áætla þau í jarðvegargreiningum við sölutíma eða fæðingu aukinnar uppruna eða þegar hægt er að rökstýra að þau séu ekki völdum ávextisaðgerðum eða föggur einstaklingsbundið jarðvegsafn í gegnumferðarupprunalegum upprunum.</td><td>F</td><td>False</td><td>17.125</td><td>One-third and succeeding crop become corrupted time/origin phrases; toxicity condition lost.</td></tr>
@@ -109,7 +107,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Greina verður frá rannsóknum á leifa úr jarðvegi þegar DT50lab er meiri en einn þriðjungur áferðarinnar milli notkunar og upptöku og þegar frásog samtengdra fræs er mögulegt, nema greinileg sé á að ákvarða leif í jarðverðinni við fræ- eða plástrun samtengdra fræs frá gögnum úr rannsóknum á útfellingu jarðvegarefna eða greint sé af því að rétt sé að þessir leifar geti ekki verið skrýtið á plöntufarandi fræi eða leita óviðunandi leifar í plöntufarandi fræi.</td><td>F</td><td>False</td><td>16.0</td><td>Successive crop becomes connected seed; phytotoxicity exception loses its meaning.</td></tr>
 <tr><td>1</td><td>Greina verður framlag í jarðvegi þar sem DT50lab er hærri en einn þriðjungur af tímabilið milli notkunar og upptöku og þar sem frásog á næði í næstu árotinn er mögulegt, nema sé hægt að áætla uppsæði frumlingsjarðarfrásogs rannsókna til að meta framlag í jarðvegi við sowing eða planting næðinnar árotta eða hægt er að rökstýra það að þessi frumlingsjarðarfrásöfn geti ekki verið fræðistvísaleg ógarnir í næði árotta.</td><td>F</td><td>False</td><td>21.25</td><td>Succeeding crop and phytotoxic/rotational residue conditions become nonmeaningful compounds.</td></tr>
 <tr><td>2</td><td>Greina verður frá rannsóknum á sundurhröðum í jarðvegi þegar DT50lab er hærri en einn þriðjá þeirra tíðna milli notkunar og uppskerunar og ef frásog á næstu plöntu er mögulegt, nema þegar hægt sé að ákvarða samtengda jarðvegsbroti við söl eða meðgang á næstu plöntu frá niðurstöðum rannsókna á jarðvegsbroti eða þegar hægt er að rökstýra það að þessir sundurskeri séu ekki fæðubælandi eða leyst ófullnægjandi í ferðalíkani.</td><td>F</td><td>False</td><td>16.5</td><td>Residue studies become decomposition and rotational crop residues become a travel model.</td></tr>
@@ -124,20 +122,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>4 · technical_long · p22official21:test:eea:326</summary>
 
-<p><strong>源文 / Source</strong><br>To facilitate the mutual acceptance of test data generated for submission to Regulatory Authorities of the OECD member countries, harmonisation of the procedures adopted to monitor good laboratory practice compliance, as well as comparability of their quality and rigour, are essential.</p>
+<p><strong>Source</strong><br>To facilitate the mutual acceptance of test data generated for submission to Regulatory Authorities of the OECD member countries, harmonisation of the procedures adopted to monitor good laboratory practice compliance, as well as comparability of their quality and rigour, are essential.</p>
 
-<p><strong>参考 / Reference</strong><br>Til að auðvelda gagnkvæma viðurkenningu á prófunargögnum sem eru lögð fyrir lögbær yfirvöld í aðildarríkjum Efnahags- og framfarastofnunarinnar er mikilvægt að aðferðir við eftirlit með góðum starfsvenjum við rannsóknir séu samræmdar og að hægt sé að gera samanburð á því hversu góðar og strangar þær eru.</p>
+<p><strong>Reference</strong><br>Til að auðvelda gagnkvæma viðurkenningu á prófunargögnum sem eru lögð fyrir lögbær yfirvöld í aðildarríkjum Efnahags- og framfarastofnunarinnar er mikilvægt að aðferðir við eftirlit með góðum starfsvenjum við rannsóknir séu samræmdar og að hægt sé að gera samanburð á því hversu góðar og strangar þær eru.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Til að auðvelda gagnkvæma samþykki á prófunargögnum, sem eru gefnar til reglueftirlitsyfirvalda í aðildarríkjum Efnahags- og framfarastofnunarinnar, er nauðsynlegt að gera samræmingar á málsmeðferðum sem samþykktar eru til að fylgjast með samræmi við fyrirhugaðar rannsóknarráðstafanir, ásamt samanburði á gæði og þróun þeirra.</td><td>F</td><td>False</td><td>2.75</td><td>GLP becomes planned research measures and rigour becomes development.</td></tr>
 <tr><td>after</td><td>Til að auðvelda gagnkvæma samþykki á prófunargögnum sem eru framleiddar til skila reglueftirlitsyfirvalda í aðildarríkjum Efnahags- og framfarastofnunarinnar, er nauðsynlegt að samræma málsmeðferðina sem samþykktar eru til að fylgjast með samræmi við fyrirhugaðar rannsóknarráðstafanir, sem og að gæði og skilvirkni séu samanburðarmáttar.</td><td>F</td><td>False</td><td>3.4375</td><td>Good laboratory practice becomes planned research measures; rigour becomes efficiency.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Til að auðvelda henni gagnkvæma viðurkenningu árannsóknargögnum sem eru gefnar til lyfjastofnanir bandalags Evrópsku og Annar Efnahættulandsins (OECD) er það nauðsynlegt að gera samræmingu á ferlinu sem samþykktar eru til að hafa eftirlit með að farið sé að fyrirskipunum árfræðilegrar starfsemi og að gæta gæðs og þrýstingar í þeim.</td><td>F</td><td>False</td><td>14.8125</td><td>OECD authorities become European drug bodies; GLP and rigour are corrupted.</td></tr>
 <tr><td>1</td><td>Til að auðvelda samþykkt mótverða niðurstöðna úr prófunum, sem eru útbúin til að lagðar verði fyrir opinbera bandalagsins að lagðar við eftirlit með uppfyllingu þágerða í rannsóknarstofum, er gert ráð fyrir samhæfingu starfsferla sem einnig eru samræmdir á gæði og öflugni þeirra.</td><td>F</td><td>False</td><td>17.375</td><td>OECD member-state authorities and GLP compliance are not retained.</td></tr>
 <tr><td>2</td><td>Til að auðvelda gagnkvæma samþykki á prófunargögnum sem eru framleiddar til lagbóta er nauðsynlegt að gera samræmingar á málefnum og að þau verði samanburðarmarg og skarpgreind.</td><td>F</td><td>False</td><td>12.375</td><td>Regulatory authorities, OECD and GLP compliance are omitted.</td></tr>
@@ -150,7 +148,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Til að auðvelda gagnvart samþykki mismunandi ráðgjafaraðila fyrir prófunargögn, sem eru farið út í samráði við regluröð yfir- félagsins, er nauðsynlegt að samræma málsmeðferðinni sem samþykkt er og er miðar saman að hæfni og endurskoðanleika.</td><td>F</td><td>False</td><td>15.1875</td><td>OECD/GLP compliance and rigour are omitted or replaced by advisers/capacity.</td></tr>
 <tr><td>1</td><td>Til að auðvelda samþykki í báðum sinni samanburðarupplýsinga, sem eru framleiddar til skila til eftirlitsstofnana í aðildarríkjum Efnis- og framfarastofnunar Asa ökutækja, ber að gera samræmingu á málsmeðferðunum, sem samþykktar hafa verið til að fylgja á samræmi við aðsetningu viðræðastaðla rannsóknar- stofa, sem og samanburð á gæði og öflugni þeirra.</td><td>F</td><td>False</td><td>16.375</td><td>OECD identity becomes Asia vehicles; GLP standards are unintelligible.</td></tr>
 <tr><td>2</td><td>Til að auðvelda gagnkvæma samþykki á prófunargögnum sem framleidd eru til skila reglueftirlitsstofnana í OECD- aðildarríkjunum er nauðsynlegt að gera samræmingar á málsmeðferðunum sem samþykktar eru til að fylgjast með samræmi við gæðar rannsóknarstofu og að gæta samanburðar á gæði og verkun þeirra.</td><td>F</td><td>False</td><td>3.0</td><td>Good laboratory practice compliance becomes quality of a laboratory; rigour becomes operation/effect.</td></tr>
@@ -165,13 +163,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>5 · general · p22official21:test:opensubtitles:779</summary>
 
-<p><strong>源文 / Source</strong><br>I didn‘t argue with her.</p>
+<p><strong>Source</strong><br>I didn‘t argue with her.</p>
 
-<p><strong>参考 / Reference</strong><br>Ég þrætti ekki við hana.</p>
+<p><strong>Reference</strong><br>Ég þrætti ekki við hana.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Ég ræddi henni ekki.</td><td>F</td><td>False</td><td>6.8125</td><td>Discussed-her construction does not preserve arguing with her.</td></tr>
 <tr><td>after</td><td>Ég ræddi ekki við hana.</td><td>F</td><td>False</td><td>2.71875</td><td>Did not discuss/talk to her is not did not argue with her.</td></tr>
 </tbody></table>
@@ -180,13 +178,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>6 · technical_short · p22official21:test:ema:1929</summary>
 
-<p><strong>源文 / Source</strong><br>Co-administration of Ribavirin Mylan and didanosine is not recommended.</p>
+<p><strong>Source</strong><br>Co-administration of Ribavirin Mylan and didanosine is not recommended.</p>
 
-<p><strong>参考 / Reference</strong><br>Samhliða gjöf Ribavirin Mylan og dídanósíns er ekki ráðlögð.</p>
+<p><strong>Reference</strong><br>Samhliða gjöf Ribavirin Mylan og dídanósíns er ekki ráðlögð.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Samhliða notkun Ribavirin Mylan og didanosíns er ekki ráðlögð.</td><td>P</td><td>False</td><td>0.18359375</td><td>Concomitant use of both named medicines is not recommended.</td></tr>
 <tr><td>after</td><td>Samhliða lyfjagjöf Ribavirin Mylan og didanosíns er ekki ráðlögð.</td><td>P</td><td>False</td><td>0.0</td><td>Co-administration and negative recommendation retain both medicines.</td></tr>
 </tbody></table>
@@ -195,13 +193,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>7 · technical_long · p22official21:test:ema:2334</summary>
 
-<p><strong>源文 / Source</strong><br>Solutions of CINQAERO diluted in sodium chloride 9 mg/mL (0.9%) solution for infusion may be stored refrigerated at 2 °C-8 °C (or not above 25 °C if dilution has taken place in controlled and validated aseptic conditions), protected from light for up to 16 hours.</p>
+<p><strong>Source</strong><br>Solutions of CINQAERO diluted in sodium chloride 9 mg/mL (0.9%) solution for infusion may be stored refrigerated at 2 °C-8 °C (or not above 25 °C if dilution has taken place in controlled and validated aseptic conditions), protected from light for up to 16 hours.</p>
 
-<p><strong>参考 / Reference</strong><br>Geyma má CINQAERO lausnir þynntar með natríum klóríð 9 mg/ml (0,9%) innrennslislyfi, lausn í kæli við 2°C-8°C (eða ekki við hærra hitastig en 25°C ef þynning hefur farið fram við stýrðar og gildaðar smitgátaraðstæður), varðar gegn ljósi í allt að 16 klst.</p>
+<p><strong>Reference</strong><br>Geyma má CINQAERO lausnir þynntar með natríum klóríð 9 mg/ml (0,9%) innrennslislyfi, lausn í kæli við 2°C-8°C (eða ekki við hærra hitastig en 25°C ef þynning hefur farið fram við stýrðar og gildaðar smitgátaraðstæður), varðar gegn ljósi í allt að 16 klst.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Lausn af CINQAERO þynnuð með 9 mg/ml (0,9%) natríumklóríð innrennslislausn má geyma í kæli við 2°C-8°C (eða ekki hærri en 25°C ef þynning hefur orðið í samanburði og staðfestu óseiðu aðstæðum), verndað gegn ljósi í allt að 16 klukkustundir.</td><td>F</td><td>False</td><td>8.8125</td><td>Controlled aseptic conditions become comparison and an unintelligible condition; critical storage exception altered.</td></tr>
 <tr><td>after</td><td>Lausn af CINQAERO þynnuð með 9 mg/ml (0,9%) natríumklóríð innrennslislausn má geyma í kæli við 2 °C-8 °C (eða ekki hærri en 25 °C ef þynning var gerð í samanburði og staðfestu óseiðsmyndandi aðstæðum), verndað gegn ljósi í allt að 16 klukkustundir.</td><td>F</td><td>False</td><td>7.8125</td><td>Controlled validated aseptic condition is replaced by comparison and an unintelligible aseptic term.</td></tr>
 </tbody></table>
@@ -210,20 +208,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>8 · technical_short · p22official21:test:ema:959</summary>
 
-<p><strong>源文 / Source</strong><br>Allergic type hypersensitivity reactions are possible with OBIZUR.</p>
+<p><strong>Source</strong><br>Allergic type hypersensitivity reactions are possible with OBIZUR.</p>
 
-<p><strong>参考 / Reference</strong><br>Ofnæmisviðbrögð eru möguleg við notkun OBIZUR.</p>
+<p><strong>Reference</strong><br>Ofnæmisviðbrögð eru möguleg við notkun OBIZUR.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Ofnæmisviðbrögð eru hugsanleg við notkun OBIZUR.</td><td>P</td><td>False</td><td>0.09619140625</td><td>Possible allergic reactions with OBIZUR retained.</td></tr>
 <tr><td>after</td><td>Ofnæmisvart ofnæmisviðbrögð eru möguleg við notkun OBIZUR.</td><td>P</td><td>False</td><td>2.890625</td><td>Redundant malformed modifier; normal allergic-reaction phrase, possibility and medicine remain clear.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Ofnæmisviðbrögð er mögulegt við notkun OBIZUR.</td><td>P</td><td>False</td><td>0.1767578125</td><td>Minor agreement error; allergic-reaction possibility and medicine retained.</td></tr>
 <tr><td>1</td><td>Ofnæmisvart ofnæmisviðbrögð geta komið fyrir af völdum OBIZUR.</td><td>P</td><td>False</td><td>4.65625</td><td>Redundant malformed modifier, but normal allergic-reaction phrase and possibility with OBIZUR retained.</td></tr>
 <tr><td>2</td><td>Ofnæmisviðbrögð eru möguleg við notkun OBIZUR.</td><td>P</td><td>False</td><td>0.0</td><td>Allergic reactions are possible with OBIZUR; faithful.</td></tr>
@@ -236,7 +234,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Ofnæmisviðbrögð er mögulegt við notkun OBIZUR.</td><td>P</td><td>False</td><td>0.1767578125</td><td>Minor agreement error; allergic-reaction possibility and medicine retained.</td></tr>
 <tr><td>1</td><td>Ofnæmisvart ofnæmisviðbrögð geta komið fyrir af völdum OBIZUR.</td><td>P</td><td>False</td><td>4.65625</td><td>Redundant malformed modifier, but normal allergic-reaction phrase and possibility with OBIZUR retained.</td></tr>
 <tr><td>2</td><td>Ofnæmisviðbrögð eru möguleg við notkun OBIZUR.</td><td>P</td><td>False</td><td>0.0</td><td>Allergic reactions are possible with OBIZUR; faithful.</td></tr>
@@ -251,13 +249,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>9 · general · p22official21:test:opensubtitles:1715</summary>
 
-<p><strong>源文 / Source</strong><br>Break it up, I tell you.</p>
+<p><strong>Source</strong><br>Break it up, I tell you.</p>
 
-<p><strong>参考 / Reference</strong><br>Ég sagði, hættið að slást.</p>
+<p><strong>Reference</strong><br>Ég sagði, hættið að slást.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Þrýstið þér upp, ég segi þér.</td><td>F</td><td>False</td><td>10.0</td><td>Push yourself up changes the instruction to stop fighting.</td></tr>
 <tr><td>after</td><td>Brekkið upp, ég segi þér.</td><td>F</td><td>False</td><td>6.5625</td><td>Brekkið upp does not convey the contextual instruction to stop fighting.</td></tr>
 </tbody></table>
@@ -266,13 +264,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>10 · technical_long · p22official21:test:eea:478</summary>
 
-<p><strong>源文 / Source</strong><br>Member States shall bring into force the laws, regulations and administrative provisions necessary to comply with this Directive by 1 October 1999; however, if the publication of the texts referred to in Article 3 is delayed beyond 1 April 1999, the Member States shall comply with this obligation six months after the actual date of publication of these texts.</p>
+<p><strong>Source</strong><br>Member States shall bring into force the laws, regulations and administrative provisions necessary to comply with this Directive by 1 October 1999; however, if the publication of the texts referred to in Article 3 is delayed beyond 1 April 1999, the Member States shall comply with this obligation six months after the actual date of publication of these texts.</p>
 
-<p><strong>参考 / Reference</strong><br>Aðildarríkin skulu samþykkja nauðsynleg lög og stjórnsýslufyrirmæli til að fara að tilskipun þessari eigi síðar en 1. október 1999; hafi birting textanna, sem um getur í 3. gr., dregist fram yfir 1. apríl 1999 ber aðildarríkjunum að standa við þessa skuldbindingu innan sex mánaða frá birtingu fyrrnefndra texta.</p>
+<p><strong>Reference</strong><br>Aðildarríkin skulu samþykkja nauðsynleg lög og stjórnsýslufyrirmæli til að fara að tilskipun þessari eigi síðar en 1. október 1999; hafi birting textanna, sem um getur í 3. gr., dregist fram yfir 1. apríl 1999 ber aðildarríkjunum að standa við þessa skuldbindingu innan sex mánaða frá birtingu fyrrnefndra texta.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Aðildarríkin skulu samþykkja nauðsynleg lög og stjórnsýslufyrirmæli til að fara að tilskipun þessari eigi síðar en 1. október 1999; en ef birtun texta, sem um getur í 3. gr., er seinkað eftir 1. apríl 1999 skulu aðildarríkin fara að þessari skyldu sex mánuðum eftir að birtun textanna hefur farið fram.</td><td>P</td><td>False</td><td>0.6328125</td><td>Both dates, Article 3, delayed-publication exception and six-month obligation preserved; minor spelling only.</td></tr>
 <tr><td>after</td><td>Aðildarríkin skulu samþykkja nauðsynleg lög og stjórnsýslufyrirmæli til að fara að tilskipun þessari eigi síðar en 1. október 1999; en ef birtun texta, sem um getur í 3. gr., er seinkað eftir 1. apríl 1999 skulu aðildarríkin fara að þessari skyldu sex mánuðum eftir að birtun textanna hefur farið fram.</td><td>P</td><td>False</td><td>0.6328125</td><td>Both dates, Article 3, delayed-publication exception and six-month obligation preserved; minor spelling only.</td></tr>
 </tbody></table>
@@ -281,20 +279,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>11 · technical_long · p22official21:test:eea:1927</summary>
 
-<p><strong>源文 / Source</strong><br>A puttable instrument is a financial instrument that gives the holder the right to put the instrument back to the issuer for cash or another financial asset or is automatically put back to the issuer on the occurrence of an uncertain future event or the death or retirement of the instrument holder.</p>
+<p><strong>Source</strong><br>A puttable instrument is a financial instrument that gives the holder the right to put the instrument back to the issuer for cash or another financial asset or is automatically put back to the issuer on the occurrence of an uncertain future event or the death or retirement of the instrument holder.</p>
 
-<p><strong>参考 / Reference</strong><br>Innleysanlegur gerningur er fjármálagerningur sem gefur handhafa rétt til að skila gerningnum aftur til útgefanda gegn handbæru fé eða annarri fjáreign, eða er sjálfkrafa innleyst hjá útgefanda við óþekktan atburð sem á sér stað í framtíðinni eða við andlát eða starfslok handhafa gerningsins.</p>
+<p><strong>Reference</strong><br>Innleysanlegur gerningur er fjármálagerningur sem gefur handhafa rétt til að skila gerningnum aftur til útgefanda gegn handbæru fé eða annarri fjáreign, eða er sjálfkrafa innleyst hjá útgefanda við óþekktan atburð sem á sér stað í framtíðinni eða við andlát eða starfslok handhafa gerningsins.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Fjárhagsvætt er fjárhagsvætt sem veitir haldandi rétt til að setja vottorðið aftur á útgáfuþegi í peninga eða annað fjárhagsverð eða setjið aftur á útgáfuþegi þegar óvissur framtíðarvirkni á sér stað eða þegar haldandi vottorðsins er dauðsfallinn eða hættur á starfsemi hans.</td><td>F</td><td>False</td><td>18.0</td><td>Automatic issuer return is omitted and financial-instrument terminology is corrupted.</td></tr>
 <tr><td>after</td><td>Tilhögun er fjármálavör unnið sem er fjármálavör sem veitir haldandi rétt til að setja unnið aftur til útgáfuma í peninga eða annarri fjármálavöru eða setja unnið aftur til útgáfuma þegar óvissa framtíðarvöxtur ákveðnar er að gerast eða hætt er á haldandi unnið eða hann er hættur í launamála.</td><td>F</td><td>False</td><td>24.625</td><td>Uncertain future event becomes future growth; automatic return and death are lost.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Minnkjalíkur eru fjármálamál sem veita haldandi hlutverki rétt á að minnkjalíkurinn sé sett aftur í útgáfu þess af yrki eða öðru fjármálavöru eða haldið aftur á útgáfu af yrki eða fjármálavöru sem þeir er sett í af yrki eða fjármálavöru sem þeir eru sett í af yrki eða fjármálavöru sem þeir eru sett í, þegar óvissa framtíðarfyrirbygging eða dauðsfall eða áskilun hinna sem hafa hlutverkinn í á.</td><td>F</td><td>False</td><td>25.0</td><td>Puttable instrument becomes an invented term with repeated asset clauses; retirement lost.</td></tr>
 <tr><td>1</td><td>Fjárlægð hæfi er fjármálahæfi sem veitir haldandi hæfileika rétt til að gefa hæfileikann til útgefanda í peninga eða annarra fjármálaverða eða er laus fyrir útgefanda til að gefa hæfileikann til útgefanda ef óvissur framtíðarhætti, dauði eða aðgangsjáar haldandi hæfileika á sér stað.</td><td>F</td><td>False</td><td>20.0</td><td>Financial instrument becomes ability; automatic return and retirement are corrupted.</td></tr>
 <tr><td>2</td><td>Lyfjaútbeining er fjármálamál sem gefur úthlutandinn rétt á að leggja útbeininguna aftur á útgáfuþegi fyrir peninga eða önnur fjármala eða leggja útbeininguna aftur á útgáfuþegi með sjálfvirku aðferð þegar óvissa tilfinningur kemur fram eða það er dennt eða hættur eftir fara úr handa útbeiningum.</td><td>F</td><td>False</td><td>18.875</td><td>Instrument becomes medicine instructions and holder/issuer roles and events are corrupted.</td></tr>
@@ -307,7 +305,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Minnkjalíkur eru fjármálagerningar sem gefa eignaraðilinn rétt á að minnkjalíkurinn sé settur aftur í útgáfu útgáfuvanmæla til endurgreiðslu eða aðrar fjármála eða hafa sérstaklega verið sett aftur í útgáfa útgáfuvanmæla þegar óvissa framtíðarskyldi ákveðnar eða síðkomið er eignaraðilur eða hunið náðist.</td><td>F</td><td>False</td><td>21.125</td><td>Automatic return and holder death/retirement events are unintelligible.</td></tr>
 <tr><td>1</td><td>Forðaerill er fjármálaverill sem veitir haldandællum rétt til að flytja verið inni aftur til útgáfuendur í peningum eða öðru fjárlag eða er flytja inni aftar til útgáfuendurs sjálfur þegar óþekktur fyrirframtengd ástand komi á eða ef haldandi erlendur láti sig líða eða hætta.</td><td>F</td><td>False</td><td>22.25</td><td>Puttable instrument and holder return-right terminology is corrupted beyond reliable meaning.</td></tr>
 <tr><td>2</td><td>Lyfjaútbeitingarvörð er fjármálavörður sem veitir viðtakanda rétt til að skila vörunni aftur til útgefnanda í pörun eða annan fjármálaveri eða skila hana aftur til útgefnanda með sjálfvirkum skilningi þegar óvissa fjölgunartengda tilvik, dauði eða lausn viðtakanda af vörunni koma upp.</td><td>F</td><td>False</td><td>17.625</td><td>Cash becomes a pair/mating term and instrument/retirement terminology is corrupted.</td></tr>
@@ -322,13 +320,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>12 · technical_medium · p22official21:test:ema:116</summary>
 
-<p><strong>源文 / Source</strong><br>Cases of photosensitivity reactions have been reported with thiazides diuretics (see section 4.8).</p>
+<p><strong>Source</strong><br>Cases of photosensitivity reactions have been reported with thiazides diuretics (see section 4.8).</p>
 
-<p><strong>参考 / Reference</strong><br>Greint hefur verið frá tilfellum um ljósnæmisviðbrögð við gjöf tíazíð þvagræsilyfja (sjá kafla 4.8).</p>
+<p><strong>Reference</strong><br>Greint hefur verið frá tilfellum um ljósnæmisviðbrögð við gjöf tíazíð þvagræsilyfja (sjá kafla 4.8).</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Greint hefur verið frá ljósnæmisviðbrögðum af völdum tíazíð þvagræsilyfja (sjá kafla 4.8).</td><td>P</td><td>False</td><td>0.022705078125</td><td>Reported photosensitivity reactions with thiazide diuretics and section 4.8 retained.</td></tr>
 <tr><td>after</td><td>Greint hefur verið frá sýkingum af ljósnæmi með tilliti til tiazíða þvagræsilyfja (sjá kafla 4.8).</td><td>F</td><td>False</td><td>4.5625</td><td>Photosensitivity reactions become infections of photosensitivity.</td></tr>
 </tbody></table>
@@ -337,13 +335,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>13 · general · p22official21:test:opensubtitles:373</summary>
 
-<p><strong>源文 / Source</strong><br>We are not adorable, okay?</p>
+<p><strong>Source</strong><br>We are not adorable, okay?</p>
 
-<p><strong>参考 / Reference</strong><br>Við erum ekki sæt, ókei?</p>
+<p><strong>Reference</strong><br>Við erum ekki sæt, ókei?</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Við erum ekki sæt, allt í lagi?</td><td>P</td><td>False</td><td>1.046875</td><td>We are not cute/adorable and the okay question retained.</td></tr>
 <tr><td>after</td><td>Við erum ekki sæt, allt í lagi?</td><td>P</td><td>False</td><td>1.046875</td><td>We are not cute/adorable and the okay question retained.</td></tr>
 </tbody></table>
@@ -352,13 +350,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>14 · general · p22official21:test:opensubtitles:115</summary>
 
-<p><strong>源文 / Source</strong><br>But, Sonny, you work in a tollbooth.</p>
+<p><strong>Source</strong><br>But, Sonny, you work in a tollbooth.</p>
 
-<p><strong>参考 / Reference</strong><br>En þú innheimtir vegtoll, Sonny.</p>
+<p><strong>Reference</strong><br>En þú innheimtir vegtoll, Sonny.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>En, Sonny, þú vinnur í tollbúð.</td><td>U</td><td>False</td><td>5.03125</td><td>Sonny and work location retained; uncertain whether tollbud adequately denotes a road tollbooth rather than a customs shop.</td></tr>
 <tr><td>after</td><td>En, Sonny, þú vinnur í tollbúð.</td><td>U</td><td>False</td><td>5.03125</td><td>Sonny and work location retained; uncertain whether tollbud adequately denotes a road tollbooth rather than a customs shop.</td></tr>
 </tbody></table>
@@ -367,13 +365,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>15 · technical_medium · p22official21:test:ema:3131</summary>
 
-<p><strong>源文 / Source</strong><br>This can lead to swelling of the clear layer in the front of the eye and cause blurred vision.</p>
+<p><strong>Source</strong><br>This can lead to swelling of the clear layer in the front of the eye and cause blurred vision.</p>
 
-<p><strong>参考 / Reference</strong><br>Þetta getur valdið bólgu í glæra laginu framan á auganu og valdið óskýrri sjón.</p>
+<p><strong>Reference</strong><br>Þetta getur valdið bólgu í glæra laginu framan á auganu og valdið óskýrri sjón.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Þetta getur leitt til þrota í gegnumþokunni í auganum og valdið þokunni í sjón.</td><td>F</td><td>False</td><td>7.28125</td><td>Clear layer and its front-of-eye location are lost in a through-fog expression.</td></tr>
 <tr><td>after</td><td>Þetta getur leitt til þrota í gegnumþokunni í framhluta augans og valdi þokunni í sjón.</td><td>F</td><td>False</td><td>7.65625</td><td>Clear front layer of the eye becomes an unintelligible through-fog structure.</td></tr>
 </tbody></table>
@@ -382,13 +380,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>16 · technical_medium · p22official21:test:eso:431</summary>
 
-<p><strong>源文 / Source</strong><br>The special filter for observing hydrogen emission was kindly made available by the VPHAS+ Consortium.</p>
+<p><strong>Source</strong><br>The special filter for observing hydrogen emission was kindly made available by the VPHAS+ Consortium.</p>
 
-<p><strong>参考 / Reference</strong><br>VPHAS+ samstarfið lagði góðfúslega fram síuna sem notuð var til að safna vetnisljómuninni.</p>
+<p><strong>Reference</strong><br>VPHAS+ samstarfið lagði góðfúslega fram síuna sem notuð var til að safna vetnisljómuninni.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>VPHAS+ samstarfsins gerði sérstakri þurrætinu til að fylgjast með hýdrógenið út í ljós.</td><td>F</td><td>False</td><td>13.4375</td><td>Filter and hydrogen-emission observing relationship are corrupted into drying/bringing hydrogen to light.</td></tr>
 <tr><td>after</td><td>Sérstakur gegnþurrðartækið til að fylgjast með hýdrógenlosun var fráhugað af VPHAS+ samstarfinu.</td><td>F</td><td>False</td><td>10.875</td><td>Observing filter becomes a drying-related device and made available is not retained.</td></tr>
 </tbody></table>
@@ -397,13 +395,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>17 · technical_long · p22official21:test:eea:1980</summary>
 
-<p><strong>源文 / Source</strong><br>AG14E The total expected cash flows of the instrument over the life of the instrument must be substantially based on the profit or loss, change in the recognised net assets or fair value of the recognised and unrecognised net assets of the entity over the life of the instrument.</p>
+<p><strong>Source</strong><br>AG14E The total expected cash flows of the instrument over the life of the instrument must be substantially based on the profit or loss, change in the recognised net assets or fair value of the recognised and unrecognised net assets of the entity over the life of the instrument.</p>
 
-<p><strong>参考 / Reference</strong><br>AG14E Samanlagt vænt sjóðstreymi á gildistíma gerningsins skal byggjast að verulegu leyti á rekstrarreikningi, breytingum á færðri, hreinni eign eða gangvirði færðrar og ófærðrar, hreinnar eignar einingarinnar á gildistíma gerningsins.</p>
+<p><strong>Reference</strong><br>AG14E Samanlagt vænt sjóðstreymi á gildistíma gerningsins skal byggjast að verulegu leyti á rekstrarreikningi, breytingum á færðri, hreinni eign eða gangvirði færðrar og ófærðrar, hreinnar eignar einingarinnar á gildistíma gerningsins.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>AG14E Heildarætlanir í gegnum líf gernings gerningsins verða að vera verulega byggðar á ávinningi eða losun, breytingum á viðurkenndum hleðsluverðvirkum eignum eða hlutfallslegu gildi viðurkenndra og óviðurkenndra hleðsluverðvirkra eigna í gegnum líf gernings gerningsins.</td><td>F</td><td>False</td><td>14.0</td><td>Cash flows become plans and net assets/fair value become invented loaded-value asset terms.</td></tr>
 <tr><td>after</td><td>AG14E Heildarætlanir, sem búast má við við útbreiðslu tækniflokkar í gegnum líf tækniflokkar, verða að vera verulega byggðar á ávinnings- eða losum, breytingum á viðurkenndum hleðsluverðvirkum eignum eða hlutfallslegu verðvirkum eignum sem viðurkenndir eru eða eru ekki viðurkenndir, gegnum líf tækniflokkarinnar.</td><td>F</td><td>False</td><td>16.875</td><td>Expected cash flows become total plans; instrument becomes technical class and net/fair assets are corrupted.</td></tr>
 </tbody></table>
@@ -412,20 +410,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>18 · technical_long · p22official21:test:eso:944</summary>
 
-<p><strong>源文 / Source</strong><br>We now know that this was caused by the larger star of the pair expelling huge amounts of gas and dust in a short amount of time, which led to the distinctive lobes, known as the Homunculus Nebula, that we see in the system today.</p>
+<p><strong>Source</strong><br>We now know that this was caused by the larger star of the pair expelling huge amounts of gas and dust in a short amount of time, which led to the distinctive lobes, known as the Homunculus Nebula, that we see in the system today.</p>
 
-<p><strong>参考 / Reference</strong><br>Í dag vitum við að ástæða þess var sú að stærri stjarnan í kerfinu varpaði frá sér miklu magni af gasi og ryki á mjög stuttum tíma sem leiddi til myndunar tveggja kekkja sem kallast Litli maðurinn og við sjáum í kerfinu í dag.</p>
+<p><strong>Reference</strong><br>Í dag vitum við að ástæða þess var sú að stærri stjarnan í kerfinu varpaði frá sér miklu magni af gasi og ryki á mjög stuttum tíma sem leiddi til myndunar tveggja kekkja sem kallast Litli maðurinn og við sjáum í kerfinu í dag.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Við vita nú nú að þetta var af völdum stjarnannar í tvíhliðinu sem drifði stór miga af gass og ryki á stuttum tíma, sem leiddi til þess að það varðstætt með því að það drifði stóra þokum sem við sjáum í kerfinu í dag.</td><td>F</td><td>False</td><td>15.3125</td><td>Larger-star distinction and Homunculus name omitted; lobes become large clouds.</td></tr>
 <tr><td>after</td><td>Nú veita við það að þetta var af völdum stjarnannar í tvíhliðinni sem skilgreind er með stórum magni gasa og ryks á skemmju tíma sem leiddi til skilgreindra húðar, sem kallast Homunculus nebla, sem við sjáum í kerfinu í dag.</td><td>F</td><td>False</td><td>16.875</td><td>Expulsion becomes being defined with gas/dust and lobes become skins.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Nú vita við að þetta var þau stærri stjörnur í tvíliminum af geimverjum, sem skolum miklu magni gassa og ryks á stuttum tíma, sem leitti til þess efri ólíklega flögu sem við sjáum í kerfinu í dag.</td><td>F</td><td>False</td><td>14.1875</td><td>Adds aliens, loses Homunculus name and corrupts lobes.</td></tr>
 <tr><td>1</td><td>Við vita nú nú að það varð byggt af því að stjörnurin sem er stærri hafi fargað þoku af ryki og ryks í skamman tíma, sem leiddi til þess að útbrotin voru merktar með þeim skýjöldum sem við sjáum á dag, Homunculus nebla.</td><td>F</td><td>False</td><td>17.25</td><td>Gas becomes dust-and-dust and distinctive lobes are lost.</td></tr>
 <tr><td>2</td><td>Við vôi nú nú alveg að þetta sé framkallað af stjörnunnar af fólksemmlunni sem fyrirvarar eru stórar magnir af gasi og ryki í stuttan tíma, en það leiddu til þess að verulegir þörföstur komu fram sem kallast Homunculusþokan sem við sjáum í kerfinu í dag.</td><td>F</td><td>False</td><td>15.625</td><td>Pair relation and distinctive lobes become unintelligible unrelated compounds.</td></tr>
@@ -438,7 +436,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Nú veistum við að þetta var af völdum stórstarsinnar í tvíhliðinni sem sprautaði miklum magni gassa og ryks skösmiðum tímanum sem leiddi til undarlegtum húðum sem kallaðar eru Hómúntulusþokan sem sýnilega sést í kerfinu í dag.</td><td>F</td><td>False</td><td>13.5</td><td>Distinctive lobes become strange skins rather than the astronomical structures.</td></tr>
 <tr><td>1</td><td>Við vita nú nú að þetta var vandlað af stóru stjörnu pörunnar sem flysti miklum magni af gass og ryki í skemmja tíma, sem leiddi til þess að útarsigtilið, sem kallast Homunculus þokan, er sem sýnt er í kerfinu í dag.</td><td>F</td><td>False</td><td>19.25</td><td>Expelled gas/dust and name partly retained, but distinctive lobes become an unintelligible structure.</td></tr>
 <tr><td>2</td><td>Við vita nú nú að þetta var orsakinn af stóru stjörnu flogfrá fólkastjörnu síðkominu, sem sprautuðu miklu mikið gróf og ryk í smásundrun, sem leiddu til skilgreindra nefiðu í sér, sem vitað er sem Homunculus neysklár, sem við sjáum í kerfinu í dag.</td><td>F</td><td>False</td><td>19.25</td><td>Gas becomes rough material and pair/star relationship is corrupted.</td></tr>
@@ -453,13 +451,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>19 · general · p22official21:test:opensubtitles:1</summary>
 
-<p><strong>源文 / Source</strong><br>Everyone present, sir, but the surgeon.</p>
+<p><strong>Source</strong><br>Everyone present, sir, but the surgeon.</p>
 
-<p><strong>参考 / Reference</strong><br>Já, herra, allir nema læknirinn.</p>
+<p><strong>Reference</strong><br>Já, herra, allir nema læknirinn.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Allir sem eru, herra, nema skurðlækninn.</td><td>P</td><td>False</td><td>3.703125</td><td>All present except the surgeon, with sir address; awkward but critical meaning retained.</td></tr>
 <tr><td>after</td><td>Allir sem eru, herra, nema skurðlækninn.</td><td>P</td><td>False</td><td>3.703125</td><td>All present except the surgeon, with sir address; awkward but critical meaning retained.</td></tr>
 </tbody></table>
@@ -468,13 +466,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>20 · technical_short · p22official21:test:ema:1115</summary>
 
-<p><strong>源文 / Source</strong><br>Therefore, the combination should be administered with caution, especially in the elderly.</p>
+<p><strong>Source</strong><br>Therefore, the combination should be administered with caution, especially in the elderly.</p>
 
-<p><strong>参考 / Reference</strong><br>Því skal nota þessar samsetningar með varúð, einkum hjá öldruðum.</p>
+<p><strong>Reference</strong><br>Því skal nota þessar samsetningar með varúð, einkum hjá öldruðum.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Því skal gæta varúðar við samsetninguna, sérstaklega hjá öldruðum.</td><td>P</td><td>False</td><td>0.55859375</td><td>Therefore caution with combination, especially elderly, retained.</td></tr>
 <tr><td>after</td><td>Því skal gæta varúðar við samsetninguna, sérstaklega hjá öldruðum.</td><td>P</td><td>False</td><td>0.55859375</td><td>Therefore caution with combination, especially elderly, retained.</td></tr>
 </tbody></table>
@@ -483,20 +481,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>21 · technical_short · p22official21:test:ema:48</summary>
 
-<p><strong>源文 / Source</strong><br>After preparing the Enbrel solution, immediate use is recommended.</p>
+<p><strong>Source</strong><br>After preparing the Enbrel solution, immediate use is recommended.</p>
 
-<p><strong>参考 / Reference</strong><br>Ráðlagt er að nota Enbrel lausn strax eftir blöndun.</p>
+<p><strong>Reference</strong><br>Ráðlagt er að nota Enbrel lausn strax eftir blöndun.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Eftir að lausninn hefur verið búinn skal nota Enbrel tafarlaust.</td><td>F</td><td>False</td><td>1.890625</td><td>Recommended use becomes shall use, strengthening the medical instruction into an obligation.</td></tr>
 <tr><td>after</td><td>Eftir að undirbúin varði Enbrel lausnin er ráðlagt að nota hana tafarlaust.</td><td>U</td><td>False</td><td>7.46875</td><td>Preparation phrase contains vardi with uncertain temporal/semantic role.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Eftir að enbrel mixtúraðgerðinni hefur farið fram er mælt með því að henni byrjaðist notkun samstundis.</td><td>U</td><td>False</td><td>10.875</td><td>Immediate-use intent present; uncertain whether nonstandard mixture-procedure term preserves solution preparation.</td></tr>
 <tr><td>1</td><td>Eftir að undirbúin var Enbrel lausnin er mælt með því að hún sé notað strax.</td><td>P</td><td>False</td><td>4.25</td><td>After prepared Enbrel solution, immediate use recommended; minor agreement error.</td></tr>
 <tr><td>2</td><td>Eftir að undirbúin var lausn af Enbrel er ráðlagt að nota hana tafarlaust.</td><td>P</td><td>False</td><td>4.53125</td><td>After preparing Enbrel solution, immediate use is recommended.</td></tr>
@@ -509,7 +507,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Eftir að enbrel lausnin hefur verið undirhnað er mælt með notkun hafnaðar.</td><td>F</td><td>False</td><td>15.3125</td><td>Immediate use is lost and usage is described with rejection wording.</td></tr>
 <tr><td>1</td><td>Eftir að undirbúin var Enbrel lausnin er mælt með því að hún sé notað strax.</td><td>P</td><td>False</td><td>4.25</td><td>After prepared Enbrel solution, immediate use recommended; minor agreement error.</td></tr>
 <tr><td>2</td><td>Eftir að undirbúin var lausn Enbrel er mælt með að hún sé notuð tafarlaust.</td><td>P</td><td>False</td><td>2.734375</td><td>Preparation of named solution and immediate-use recommendation retained.</td></tr>
@@ -524,13 +522,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>22 · general · p22official21:test:opensubtitles:1258</summary>
 
-<p><strong>源文 / Source</strong><br>It has to mean something.</p>
+<p><strong>Source</strong><br>It has to mean something.</p>
 
-<p><strong>参考 / Reference</strong><br>Hún hlýtur að hafa merkingu.</p>
+<p><strong>Reference</strong><br>Hún hlýtur að hafa merkingu.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Það þarf að þýða eitthvað.</td><td>P</td><td>False</td><td>1.9375</td><td>It has to mean something retained.</td></tr>
 <tr><td>after</td><td>Það þarf að koma fyrir eitthvað.</td><td>F</td><td>False</td><td>11.25</td><td>Must mean something becomes something must happen.</td></tr>
 </tbody></table>
@@ -539,20 +537,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>23 · technical_long · p22official21:test:eea:2080</summary>
 
-<p><strong>源文 / Source</strong><br>Where appropriate, with regard to the nature of the payment transaction concerned, for all invoicing of goods and services in the Community, a supplier of goods and services that accepts payments covered by this Regulation shall communicate its IBAN and the BIC of its payment service provider to its customers.</p>
+<p><strong>Source</strong><br>Where appropriate, with regard to the nature of the payment transaction concerned, for all invoicing of goods and services in the Community, a supplier of goods and services that accepts payments covered by this Regulation shall communicate its IBAN and the BIC of its payment service provider to its customers.</p>
 
-<p><strong>参考 / Reference</strong><br>Þegar við á vegna eðlis viðkomandi greiðslna að því er varðar gerð allra vöru- og þjónustureikninga í Bandalaginu skal aðili, sem býður vöru og þjónustu og tekur við greiðslum, sem falla undir þessa reglugerð, upplýsa viðskiptavini sína um alþjóðlegt bankareikningsnúmer sitt og auðkenniskóða banka greiðslumiðlunar sinnar.</p>
+<p><strong>Reference</strong><br>Þegar við á vegna eðlis viðkomandi greiðslna að því er varðar gerð allra vöru- og þjónustureikninga í Bandalaginu skal aðili, sem býður vöru og þjónustu og tekur við greiðslum, sem falla undir þessa reglugerð, upplýsa viðskiptavini sína um alþjóðlegt bankareikningsnúmer sitt og auðkenniskóða banka greiðslumiðlunar sinnar.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Ef við á, með tilliti til eðlis viðkomandi greiðslu, skal veitandi vörum og þjónustu, sem tekur greiðslur sem falla undir þessa reglugerð, senda viðskiptavinum IBAN- númer og BIC- númer greiðsluþjónustuveitanda síns.</td><td>F</td><td>False</td><td>5.8125</td><td>Core account communication retained, but all invoicing within the Community scope is entirely omitted.</td></tr>
 <tr><td>after</td><td>Ef við á, með tilliti til eðlis viðkomandi greiðslu, skal veitandi vörum og þjónustu, sem samþykkir greiðslur sem falla undir þessa reglugerð, senda viðskiptavinum IBAN- númer og BIC- númer greiðsluþjónustuveitanda síns IBAN- númer og BIC- númer greiðsluþjónustuveitanda síns IBAN- númer og BIC- númer greiðsluþjónustuveitanda síns.</td><td>F</td><td>False</td><td>10.125</td><td>Invoicing within Community scope omitted and provider account phrase repeated three times.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Ef við á, með tilliti til eðlis viðkomandi greiðslu, skal viðskiptavörði vöru og þjónustu, sem taka greiðslur sem falla undir þessa reglugerð, senda viðskiptavinum sínum IBAN- númer og BIC- númer viðskiptaaðilans síns.</td><td>F</td><td>False</td><td>6.9375</td><td>Community/invoicing scope omitted; payment provider becomes business counterparty.</td></tr>
 <tr><td>1</td><td>Við umsókn á vörum og þjónustu innan Bandalagsins skal vörum og þjónustuveitanda, sem tekur á gegnum pörunnar sem um er að ræða, gefa neytendum þeirra IBAN- númer og BIC-efnis fyrir pöruna sem veitir er til að þeir rita á sér.</td><td>F</td><td>False</td><td>13.3125</td><td>Payment nature, regulation coverage and supplier/account relations are corrupted.</td></tr>
 <tr><td>2</td><td>Við hvernig við á, með tilliti til þess hvernig umræddar sendingar er, fyrir öllum viðskiptum á vöru og þjónustu í bandalaginu skal fram- gardælli, sem taka greiðslur sem falla undir þessa reglugerð, gefa viðskiptavinum sínum IBAN- númer og BIC- númer tækniaðila greiðsluþjónustunnar síns.</td><td>F</td><td>False</td><td>13.875</td><td>All invoicing becomes all transactions and supplier is an unintelligible compound.</td></tr>
@@ -565,7 +563,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Ef við á, með tilliti til eðlis viðkomandi greiðslu, fyrir allar viðskipti með vöru ogþjónustu í Bandalaginu skal fram- gefandi vörum og þjónustu, sem samþykkir greiðslur sem gilda undir þessa reglugerð, senda viðtökum sínum IBAN og BIC greiðsluþjónustu þeirra.</td><td>F</td><td>False</td><td>12.6875</td><td>Invoicing scope becomes all transactions; payment-provider BIC ownership is not retained clearly.</td></tr>
 <tr><td>1</td><td>Við eftirlit, með hliðsjón af eðli viðkomandi greiðslu, fyrir allar upplýsingar á vöru og þjónustu innan Bandalagsins skal veitandi vöru- og þjónustu, sem samþykki greiðslur, sem falla undir þessa reglugerð, senda krafni sína IBAN og BIC viðtaka greiðsluþjónustu síns til krafanda.</td><td>F</td><td>False</td><td>11.75</td><td>Where appropriate becomes under supervision and customers become claimants.</td></tr>
 <tr><td>2</td><td>Við eftirlit með skráningu viðskipta sem á umráði við erfiðleikann efnis greina, fyrir allar endurgreiningar varðandi vörur og þjónustu í Bandalaginu, skal veitendur vöruaðskilnaðar og þjónustu, sem taka greiðslur, sem falla undir þessa reglugerð, gefa neytendum þeirra IBAN og BIC gagnvart greiðsluþjónustu þeirra.</td><td>F</td><td>False</td><td>15.75</td><td>Relevant payment nature and invoicing become difficult registration/reanalysis constructs.</td></tr>
@@ -580,13 +578,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>24 · general · p22official21:test:opensubtitles:685</summary>
 
-<p><strong>源文 / Source</strong><br>Oh man, I have been banned from banks for like the next 7 years, and there is a guy down state willing to sell me a human skull, but he says all I have to do is send him a check.</p>
+<p><strong>Source</strong><br>Oh man, I have been banned from banks for like the next 7 years, and there is a guy down state willing to sell me a human skull, but he says all I have to do is send him a check.</p>
 
-<p><strong>参考 / Reference</strong><br>Ég er í bankabanni næstu 7 árin og það er maður sem vill selja mér hauskúpu úr manni en hann segir að ég verði að senda honum ávísun.</p>
+<p><strong>Reference</strong><br>Ég er í bankabanni næstu 7 árin og það er maður sem vill selja mér hauskúpu úr manni en hann segir að ég verði að senda honum ávísun.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Mér hefur verið bannist frá banka í næstu 7 ár og það er náungi hér í landi sem vill selt húðmannskeið til mín en hann segir að það eina sem ég þarf að senda honum er skrá.</td><td>F</td><td>False</td><td>13.0625</td><td>Human skull becomes an unintelligible skin-person compound and cheque becomes registry/file.</td></tr>
 <tr><td>after</td><td>Mér hefur verið bannist frá bankum í nokkru 7 ár næstu og þá er maður í statinu sem vill selt húðmanni, en hann segir að það eina sem ég þarf að senda honum er skrá.</td><td>F</td><td>False</td><td>19.0</td><td>Human skull becomes skin-person wording and cheque becomes a registry/file.</td></tr>
 </tbody></table>
@@ -595,13 +593,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>25 · technical_long · p22official21:test:eea:41</summary>
 
-<p><strong>源文 / Source</strong><br>Similar studies for one soil must be reported for all relevant metobolites, degradation and reaction products which occur in soil and which at any time during the studies account for more than 10 % of the amount of active substance added, except where their DT50 values were able to be determined from the results of the degradation studies with the active substance.</p>
+<p><strong>Source</strong><br>Similar studies for one soil must be reported for all relevant metobolites, degradation and reaction products which occur in soil and which at any time during the studies account for more than 10 % of the amount of active substance added, except where their DT50 values were able to be determined from the results of the degradation studies with the active substance.</p>
 
-<p><strong>参考 / Reference</strong><br>Gera skal grein fyrir svipuðum rannsóknum á einni jarðvegsgerð með tilliti til allra umbrots-, niðurbrots- og hvarfaefna sem koma fyrir í jarðvegi, og nema á einhverjum tímapunkti meðan á rannsókninni stendur meira en 10% af viðbættu magni virka efnisins, nema þegar unnt er að ákvarða DT50-gildi þeirra á grundvelli niðurstaðna úr niðurbrotsrannsóknum með virka efninu.</p>
+<p><strong>Reference</strong><br>Gera skal grein fyrir svipuðum rannsóknum á einni jarðvegsgerð með tilliti til allra umbrots-, niðurbrots- og hvarfaefna sem koma fyrir í jarðvegi, og nema á einhverjum tímapunkti meðan á rannsókninni stendur meira en 10% af viðbættu magni virka efnisins, nema þegar unnt er að ákvarða DT50-gildi þeirra á grundvelli niðurstaðna úr niðurbrotsrannsóknum með virka efninu.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Greina skal sambærilegar rannsóknir á einni jarðvegi fyrir öll viðkomandi umbrotsefni, umbrotsefni og afleiðingar sem eru til staðar í jarðvegi og sem hafa meira en 10% af hlutfalli virka efnisins sem bætti var í rannsóknunum, nema þegar þessi gildi DT50 gæti verið ákvarðað út frá niðurstöðum umbrotsrannsóknanna á virku efninu.</td><td>F</td><td>False</td><td>9.5</td><td>Degradation/reaction products become repeated metabolites and effects; any-time condition is omitted.</td></tr>
 <tr><td>after</td><td>Greina skal sambærilegar rannsóknir á einni jarðvegi fyrir öll viðkomandi umbrotsefni, umbrotsefni og afleiðingar sem eru til staðar í jarðvegi og sem ná yfir 10% af heildarþéttni virka efnisins sem bætti var í rannsóknina, nema DT50 gildi þeirra hafi verið ákvarðað út frá niðurstöðum umbrotsrannsóknanna með virku efninu.</td><td>F</td><td>False</td><td>7.90625</td><td>Amount added becomes total concentration; degradation/reaction classes and any-time condition altered.</td></tr>
 </tbody></table>
@@ -610,13 +608,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>26 · technical_medium · p22official21:test:ema:2586</summary>
 
-<p><strong>源文 / Source</strong><br>Non-clinical data from cynomolgus monkeys revealed no special hazards for humans based on repeat- dose toxicity studies, safety pharmacology evaluations, and reproductive and developmental toxicity studies.</p>
+<p><strong>Source</strong><br>Non-clinical data from cynomolgus monkeys revealed no special hazards for humans based on repeat- dose toxicity studies, safety pharmacology evaluations, and reproductive and developmental toxicity studies.</p>
 
-<p><strong>参考 / Reference</strong><br>Forklínískar upplýsingar úr rannsóknum á cynomolgus-öpum sýndu ekki fram á sérstaka áhættu fyrir menn á grundvelli rannsókna á eiturverkunum eftir endurtekna skammta, lyfjafræðilegu öryggi og eiturverkunum á æxlun og þroska.</p>
+<p><strong>Reference</strong><br>Forklínískar upplýsingar úr rannsóknum á cynomolgus-öpum sýndu ekki fram á sérstaka áhættu fyrir menn á grundvelli rannsókna á eiturverkunum eftir endurtekna skammta, lyfjafræðilegu öryggi og eiturverkunum á æxlun og þroska.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Ekki kom fram nein sérstakur hætta vegna manna úr upplýsingum frá rannsóknum án klínískra áhrifa hjá cynomolgus öpum, á grundvelli endurtekna rannsókna á eiturverkunum við endurtekna skammta, matarlyfjaskoðana á öryggi og rannsókna á eiturverkunum á æxlun og þroska.</td><td>F</td><td>False</td><td>8.1875</td><td>Nonclinical data becomes studies without clinical effects and safety pharmacology becomes a food-medicine compound.</td></tr>
 <tr><td>after</td><td>Ekki kom fram neinar sérstöðugir hætta vegna manna úr upplýsingum sem ekki eru klínískar úr cynomolgus öpum og varða eiturverkanir eftir endurtekna skammta, öryggisprófir á lyfjafræði og eiturverkanir á æxlun og þroska.</td><td>U</td><td>False</td><td>9.5</td><td>Study types retained, but vegna manna makes hazards for humans versus caused by humans linguistically uncertain.</td></tr>
 </tbody></table>
@@ -625,20 +623,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>27 · technical_long · p22official21:test:eea:1597</summary>
 
-<p><strong>源文 / Source</strong><br>Actions will aim to promote cooperation and exchange of best practices, tools, methods, experience and infomation at international level in order to encourage common approaches and methods of work and improve and enhance the effectiveness, cost-efficiency and the range of global initiatives.</p>
+<p><strong>Source</strong><br>Actions will aim to promote cooperation and exchange of best practices, tools, methods, experience and infomation at international level in order to encourage common approaches and methods of work and improve and enhance the effectiveness, cost-efficiency and the range of global initiatives.</p>
 
-<p><strong>参考 / Reference</strong><br>Aðgerðir skulu miða að því að efla samstarf og skipti á bestu starfsvenjum, úrræðum, aðferðum, reynslu og upplýsingum á alþjóðlegum vettvangi með það að markmiði að hvetja til sameiginlegra nálgana og vinnuaðferða og bæta og efla skilvirkni, kostnaðarhagkvæmni og alþjóðleg framtaksverkefni.</p>
+<p><strong>Reference</strong><br>Aðgerðir skulu miða að því að efla samstarf og skipti á bestu starfsvenjum, úrræðum, aðferðum, reynslu og upplýsingum á alþjóðlegum vettvangi með það að markmiði að hvetja til sameiginlegra nálgana og vinnuaðferða og bæta og efla skilvirkni, kostnaðarhagkvæmni og alþjóðleg framtaksverkefni.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Aðgerðir verða að markmiði að stuðla að samvinnu og skiptum á bestu starfsvenjum, tækjum, aðferðum, reynslu og upplýsingum á alþjóða vettvangi til að stuðla að sameiginlegum aðferðum og starfsaðferðum og auka og bæta skilvirkni, kostnaðarhæfni og sviði alþjóða- aðgerða.</td><td>P</td><td>False</td><td>3.546875</td><td>International exchange, common work methods, effectiveness, cost fitness and scope of global actions retained; awkward grammar.</td></tr>
 <tr><td>after</td><td>Aðgerðirinn munur aðeins vera að stuðla að samvinnu og skiptum bestu starfsvenjur, tækjum, aðferðum, reynslu og upplýsingum á alþjóða vettvangi til að stuðla að sameiginlegum aðferðum og starfsaðferðum og auka og bæta skilvirkni, kostnaðarhæfni og sviði alþjóðlegra aðgerða.</td><td>P</td><td>False</td><td>5.53125</td><td>All listed exchange items, international scope, common methods, effectiveness, cost fitness and initiative scope retained.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Ráðstafanir eru beint til að stuðla að samvinnu og skiptum á bestu starfsskili, tæknilegum hlutlögum, aðferðum, reynslu og upplýsingum á alþjóða vettvangi til að stuðla að sameiginlegum aðferðum og vinnuheiti og auka skilvirkni, kostnaðarhæfni og alþjóðasafaðgerðaóvinnumagnið.</td><td>F</td><td>False</td><td>6.8125</td><td>Global initiative range becomes an unintelligible no-work-volume compound.</td></tr>
 <tr><td>1</td><td>Aðgerðirinn mun vera hún að stuðla að samvinnu og skiptum um bestu starfsvenjum, tækjum, aðferðum, reynslu og upplýsingum á alþjóðastigi til að stuðla að sameiginlegum aðferðum og starfsaðferðum og auka hæfi og kostnaðarhag og hagsvaranum alþjóða- áætlana.</td><td>F</td><td>False</td><td>8.0625</td><td>Range of global initiatives becomes an unintelligible interest-defender term.</td></tr>
 <tr><td>2</td><td>Aðgerðir leggast til að stuðla að samstarf og skiptum um bestu starfsvenjur, tækjum, aðferðum, reynslu og upplýsingum á alþjóða vettvangi til að stuðla að sameiginlegum aðferðum og áætlunum og auka virknin og kostnaðarhagshæfni og röð alþjóðaframkvæmda.</td><td>U</td><td>False</td><td>3.140625</td><td>Cooperation and many objectives retained; common work methods and initiative range are ambiguously plans/series.</td></tr>
@@ -651,7 +649,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Ráðstafana munu vera að stuðla að samvinnu og skipti á bestu viðmæli, tækjum, aðferðum, reynslu og upplýsingum á alþjóðavettvangi í því skyni að stuðla að sameiginlegum aðferðum og atvinnuferli og eyða og bæta skilvirki, kostnaðarþræðingu og umfang sameinaðra verkefna.</td><td>F</td><td>False</td><td>6.0</td><td>Best practices become interlocutor/advice wording and cost efficiency becomes an unrelated compound.</td></tr>
 <tr><td>1</td><td>Aðgerðirinn mun vera hún að stuðla að samvinnu og skipti um bestu viðhaldsanleifum, tækjum, aðferðum, reynslu og upplýsingum á vettvangi í því skyni að hrinda til meðhöndlunar samkeppnis og vinnumarkaðssjóða og auka og bæta skilvaranleika, kostnaðarhæfni og gildiskrári heimsráðstafana.</td><td>F</td><td>False</td><td>8.9375</td><td>Best practices/common approaches become maintenance remains and competition/labour funds.</td></tr>
 <tr><td>2</td><td>Aðgerðir leggast til að stuðla að samvinnu og skiptum um bestu starfsvenjur, tækjum, aðferðum, reynslu og upplýsingum að alþjóðalínu í því skyni að hvetja til sameiginlegra meðferðar og starfræksla og auka og stuðla að skilvirkni, kostnaðarhæfni og sviði alþjóðlegra framtaks.</td><td>U</td><td>False</td><td>4.34375</td><td>Shared approaches/work methods become treatment/operation wording; target-language adequacy uncertain.</td></tr>
@@ -666,13 +664,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>28 · technical_short · p22official21:test:ema:1359</summary>
 
-<p><strong>源文 / Source</strong><br>Proteinuria has been observed with cabozantinib.</p>
+<p><strong>Source</strong><br>Proteinuria has been observed with cabozantinib.</p>
 
-<p><strong>参考 / Reference</strong><br>Prótein í þvagi hefur komið fram við notkun cabozantinibs.</p>
+<p><strong>Reference</strong><br>Prótein í þvagi hefur komið fram við notkun cabozantinibs.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Proteínmyndun hefur komið fram við notkun cabozantinibs.</td><td>F</td><td>False</td><td>4.6875</td><td>Proteinuria becomes protein production, losing the urinary adverse event.</td></tr>
 <tr><td>after</td><td>Proteínmyndun hefur komið fram við notkun cabozantinibs.</td><td>F</td><td>False</td><td>4.6875</td><td>Proteinuria becomes protein production, losing the urinary adverse event.</td></tr>
 </tbody></table>
@@ -681,20 +679,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>29 · technical_medium · p22official21:test:ema:151</summary>
 
-<p><strong>源文 / Source</strong><br>Correspondingly, the incidences of nocturnal hypoglycaemia were 32% in the insulin glargine / lispro group versus 52% in the NPH / regular group.</p>
+<p><strong>Source</strong><br>Correspondingly, the incidences of nocturnal hypoglycaemia were 32% in the insulin glargine / lispro group versus 52% in the NPH / regular group.</p>
 
-<p><strong>参考 / Reference</strong><br>Samsvarandi tíðni blóðsykursfalls að nóttu var 32% í glargíninsúlín/líspró hópnum á móti 52% í NPH/ venjulega hópnum.</p>
+<p><strong>Reference</strong><br>Samsvarandi tíðni blóðsykursfalls að nóttu var 32% í glargíninsúlín/líspró hópnum á móti 52% í NPH/ venjulega hópnum.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Samsvarandi var tíðni blóðsykursfalls að nóttu 32% hjá insúlín glargín / lispró hópnum á móti 52% hjá NPH / reglulegu hópnum.</td><td>P</td><td>False</td><td>6.0625</td><td>Faithful nocturnal hypoglycaemia rate comparison with 32 and 52 percent.</td></tr>
 <tr><td>after</td><td>Samsvarandi var tíðni blóðsykursfalla að nóttu 32% hjá insúlínglargríni/lispró hópnum samanborið við 52% hjá NPH/venjulegu hópnum.</td><td>P</td><td>False</td><td>2.171875</td><td>Nocturnal hypoglycaemia, both insulin arms and 32 versus 52 percent retained; minor drug spelling.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Samsvarandi var tíðni blóðsykursfalls að nóttu 32% hjá insúlínglargín/lispró hópnum, á móti 52% hjá NPH / venjulegu hópnum.</td><td>P</td><td>False</td><td>2.078125</td><td>All critical event, timing, treatment and percentage details retained.</td></tr>
 <tr><td>1</td><td>Á sama hátt var tíðni blóðsykursfalls fyrir kvöld 32% hjá insúlín glargín / lispró hópnum á móti 52% hjá NPH / venjulegu hópnum.</td><td>F</td><td>False</td><td>5.625</td><td>Nocturnal events become events before evening.</td></tr>
 <tr><td>2</td><td>Eins og áður var tíðni blóðsykursfalls á nóttu 32% hjá insúlínglargín / lispró hópnum á móti 52% hjá NPH / venjulegu (regular) hópnum.</td><td>P</td><td>False</td><td>4.8125</td><td>Nighttime event, rates and glargine/lispro versus NPH/regular retained.</td></tr>
@@ -707,7 +705,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Samsvarandi var tíðni blóðsykursfalls að nóttu 32% hjá insúlínglargín/lispró hópnum, samanborið við 52% hjá NPH / regluklóp hópnum.</td><td>U</td><td>False</td><td>7.375</td><td>Comparator drug regular is corrupted into regluklop; cannot certify its identification.</td></tr>
 <tr><td>1</td><td>Á sama hátt var tíðni blóðsykursfalls fyrir svefn 32% í insúlín glargíni / lispró hópnum samanborið við 52% í NPH / reglulegum hópnum.</td><td>F</td><td>False</td><td>6.59375</td><td>Nocturnal timing becomes before sleep, a different time window.</td></tr>
 <tr><td>2</td><td>Eins og áður var tíðni blóðsykursfalls á nótt 32% hjá insúlín glargín / lispró hópnum á móti 52% hjá NPH / venjulegu hópnum.</td><td>P</td><td>False</td><td>3.25</td><td>Nighttime hypoglycaemia and correct percentages/arms retained; minor phrasing.</td></tr>
@@ -722,20 +720,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>30 · technical_long · p22official21:test:eso:1000</summary>
 
-<p><strong>源文 / Source</strong><br>These galaxies are known for a much higher rate of star formation compared to sedate Milky Way-like galaxies, making these structures ideal to study galaxy growth and the interplay between gas, dust, stars, and the black holes at the centres of galaxies.</p>
+<p><strong>Source</strong><br>These galaxies are known for a much higher rate of star formation compared to sedate Milky Way-like galaxies, making these structures ideal to study galaxy growth and the interplay between gas, dust, stars, and the black holes at the centres of galaxies.</p>
 
-<p><strong>参考 / Reference</strong><br>Þessar vetrarbrautir eru þekktar fyrir miklu örari stjörnumyndun samanborið við vetrarbrautir á borð við okkar eigin, sem gerir þær kjörnar til rannsókna á vexti vetrarbrauta og víxlverkunar gass, ryks, stjarna og svarthola í miðju þeirra.</p>
+<p><strong>Reference</strong><br>Þessar vetrarbrautir eru þekktar fyrir miklu örari stjörnumyndun samanborið við vetrarbrautir á borð við okkar eigin, sem gerir þær kjörnar til rannsókna á vexti vetrarbrauta og víxlverkunar gass, ryks, stjarna og svarthola í miðju þeirra.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Þessi vetrarbrautir eru þekktar fyrir miklu hærri stjörnumyndun samanborið við vetrarbrautir sem líka eru í hvíta vetrarbrautshlutanum, sem gerir þessi myndir ákveðin fyrir að rannsaka vetrarbrautafjölgun og millifreið milli gasa, ryks, stjarna og svarthorns í miðju vetrarbrauta.</td><td>F</td><td>False</td><td>15.875</td><td>Milky-Way-like comparator becomes galaxies in a white galaxy section; black holes corrupted.</td></tr>
 <tr><td>after</td><td>Þessi vetrarbrautir eru þekktar fyrir miklu hærri stjörnumyndunarhraða samanborið við hæfileika vetrarbrauta eins og Vetrarbrautin, sem gerir þessar vörur háttar til að rannsaka vetrarbrautafjölgun og milliverkun á gasi, ryki, stjörnum og svartholum í miðju vetrarbrauta.</td><td>F</td><td>False</td><td>9.75</td><td>Sedate comparator becomes galaxy abilities and galaxy growth becomes galaxy multiplication.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Þessi vetrarbrautir er þekkt fyrir miklu hærri stjörnumyndun samanborið við óóslandi vetrarbrautir í kringum vetrarbrautinu og þessi myndir eru í fullum sambandi við að rannsaka vetrarbrautafjölgun og milliverkanir á vökva, ryki, stjörnum og svartholum í miðju vetrarbrautar.</td><td>F</td><td>False</td><td>10.0625</td><td>Milky-Way-like comparison becomes galaxies around a galaxy; gas becomes fluid.</td></tr>
 <tr><td>1</td><td>Þessi vetrarbrautir eru þekktar fyrir miklu hærri stjörnumyndun samanborið við vetrarbrautir sem líka hafa nýmyndun í þeirri hring, þannig að þessar myndunum getur verið fyrir hæfilegan rannsókn á vetrarbrauta og milliverkun á gas, ryki, stjörnum og svarthol um miðstaðar vetrarbrautta.</td><td>F</td><td>False</td><td>15.5</td><td>Sedate Milky-Way-like comparator becomes galaxies with new formation in a ring.</td></tr>
 <tr><td>2</td><td>Þessar vetrarbrautir eru þekktar fyrir miklu hærra stjörnumyndun samanborið við þættilega vetrarbrautir eins og Vetrarbrautin en þar sem mikið hafnar að myndast stjörnur, sem gera þessa myndar háðar til þess að rannsaka þróun vetrarbrauta og mikilvæga milliverkun þeirra á gasi, ryki, stjörnum og djöfullum í miðju vetrarbrauta.</td><td>F</td><td>False</td><td>7.8125</td><td>Central black holes become devils, changing a key scientific object.</td></tr>
@@ -748,7 +746,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Þessi vetrarbrautir er þekktar fyrir mikilli hærra stjörnumyndunarhraða samanborið við slöngu vetrarbraut og nálgun þeirra er mikill þar sem þeir eru fyrirhugstæðir til að rannsaka vetrarbrautmyndun og milliverkanir milli gasa, ryks, stjarna og svarthópa í miðju vetrarbrauta.</td><td>F</td><td>False</td><td>9.8125</td><td>Comparator becomes snake galaxy and black holes become black groups.</td></tr>
 <tr><td>1</td><td>Þessi vetrarbrautir eru þekktar fyrir miklu hærri migt stjörnumyndunarhraða samanborið við gyðgjöf á svöruhliða víxlanu, sem gerir þessi myndir hátt til að rannsaka vetrarbrautamyndun og milliverkun á gass, ryki, stjörnum og svarthólum í miðju vetrarbrauta.</td><td>F</td><td>False</td><td>9.3125</td><td>Milky Way comparator becomes an unintelligible ritual/response phrase.</td></tr>
 <tr><td>2</td><td>Þessar vetrarbrautir eru þekktar fyrir miklu hærra stjörnumyndunarhraða samanborið við vetrarbrautir sem líka taka til, sem gerir þessar tilhléi til að rannsaka vetrarbrautarþroska og milliverkun varanleika, ryks, stjarna og svarthorns í miðju vetrarbrautanna.</td><td>F</td><td>False</td><td>14.1875</td><td>Gas becomes permanence and black holes become black horns; Milky Way comparison lost.</td></tr>
@@ -763,20 +761,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>31 · technical_short · p22official21:test:ema:973</summary>
 
-<p><strong>源文 / Source</strong><br>Most side effects are mild to moderate.</p>
+<p><strong>Source</strong><br>Most side effects are mild to moderate.</p>
 
-<p><strong>参考 / Reference</strong><br>Flestar aukaverkanirnar eru vægar eða miðlungs alvarlegar.</p>
+<p><strong>Reference</strong><br>Flestar aukaverkanirnar eru vægar eða miðlungs alvarlegar.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Flestar aukaverkanir eru vægar til miðlungs mikil.</td><td>P</td><td>False</td><td>2.078125</td><td>Mild to moderate intensity of most effects retained.</td></tr>
 <tr><td>after</td><td>Flestar aukaverkanir eru vægar til miðlungs mikil.</td><td>P</td><td>False</td><td>2.078125</td><td>Mild to moderate intensity of most effects retained.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Flestar aukaverkanir eru vægar til miðlungs mikil.</td><td>P</td><td>False</td><td>2.078125</td><td>Mild to moderate intensity of most effects retained.</td></tr>
 <tr><td>1</td><td>Flestar aukaverkanir eru vægar til miðlungsmikil.</td><td>P</td><td>False</td><td>1.59375</td><td>Most effects mild to moderate intensity; faithful meaning.</td></tr>
 <tr><td>2</td><td>Flestar aukaverkanir eru vægar til í meðallagi mikið.</td><td>P</td><td>False</td><td>1.7890625</td><td>Most adverse effects mild to moderate intensity; minor agreement.</td></tr>
@@ -789,7 +787,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Flestar aukaverkanir eru vægar til miðlungs mikil.</td><td>P</td><td>False</td><td>2.078125</td><td>Mild to moderate intensity of most effects retained.</td></tr>
 <tr><td>1</td><td>Flestar aukaverkanir eru vægar til miðlungsmikil.</td><td>P</td><td>False</td><td>1.59375</td><td>Most effects mild to moderate intensity; faithful meaning.</td></tr>
 <tr><td>2</td><td>Flestar aukaverkanir eru vægar til í meðallagi alvarlegar.</td><td>P</td><td>False</td><td>0.0</td><td>Most effects mild to moderately serious retained.</td></tr>
@@ -804,13 +802,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>32 · general · p22official21:test:opensubtitles:1951</summary>
 
-<p><strong>源文 / Source</strong><br>How do you feel about that?</p>
+<p><strong>Source</strong><br>How do you feel about that?</p>
 
-<p><strong>参考 / Reference</strong><br>Hvað finnst þér um það?</p>
+<p><strong>Reference</strong><br>Hvað finnst þér um það?</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Hvernig líður þér um þetta?</td><td>P</td><td>False</td><td>0.8203125</td><td>How you feel about this retained; acceptable conversational rendering.</td></tr>
 <tr><td>after</td><td>Hvernig líður þér um þetta?</td><td>P</td><td>False</td><td>0.8203125</td><td>How you feel about this retained; acceptable conversational rendering.</td></tr>
 </tbody></table>
@@ -819,13 +817,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>33 · technical_long · p22official21:test:eea:1295</summary>
 
-<p><strong>源文 / Source</strong><br>The Competent Bodies are recommended to take into account the implementation of recognised environmental management schemes, such as EMAS or ISO 14001, when assessing applications and monitoring compliance with the criteria (note: it is not required to implement such management schemes).</p>
+<p><strong>Source</strong><br>The Competent Bodies are recommended to take into account the implementation of recognised environmental management schemes, such as EMAS or ISO 14001, when assessing applications and monitoring compliance with the criteria (note: it is not required to implement such management schemes).</p>
 
-<p><strong>参考 / Reference</strong><br>Mælt er með því að þar til bærar stofnanir taki tillit til þess, við mat á umsóknum og eftirlit með því að viðmiðanir séu uppfylltar, hvort viðurkenndum umhverfisstjórnunarkerfum, svo sem EMAS eða ISO 14001, er beitt (aths.: ekki er gerð krafa um að slíkum stjórnunarkerfum sé beitt).</p>
+<p><strong>Reference</strong><br>Mælt er með því að þar til bærar stofnanir taki tillit til þess, við mat á umsóknum og eftirlit með því að viðmiðanir séu uppfylltar, hvort viðurkenndum umhverfisstjórnunarkerfum, svo sem EMAS eða ISO 14001, er beitt (aths.: ekki er gerð krafa um að slíkum stjórnunarkerfum sé beitt).</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Nytjaleyfishafi eru ráðlagðar að taka tillit til framkvæmdar viðurkenndra umhverfisstjórnunaráætlana, svo sem EMAS-áætlunarinnar eða ISO 14001, þegar þeir meta umsóknir og fylgjast með að viðmiðanirnar séu uppfylltar (tilgreining: ekki er þörf á framkvæmd slíkra stjórnunaráætlana).</td><td>F</td><td>False</td><td>3.140625</td><td>Competent bodies become licence holders despite otherwise retained management-scheme conditions.</td></tr>
 <tr><td>after</td><td>Nytjaleyfishafi eru ráðlagðar að taka tillit til framkvæmdar viðurkenndra umhverfisstjórnunaráætlananna, svo sem EMAS-áætlunarinnar eða ISO 14001, þegar þeir meta umsóknir og eftirlit með samræmi við viðmiðanirnar (tilgreining: ekki er krafist að framkvæma slíkar stjórnunaraætlana).</td><td>F</td><td>False</td><td>3.59375</td><td>Competent assessing bodies become licence holders, changing the responsible actor.</td></tr>
 </tbody></table>
@@ -834,20 +832,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>34 · technical_medium · p22official21:test:eea:1388</summary>
 
-<p><strong>源文 / Source</strong><br>Port security plans shall be approved by the Member State concerned before implementation.</p>
+<p><strong>Source</strong><br>Port security plans shall be approved by the Member State concerned before implementation.</p>
 
-<p><strong>参考 / Reference</strong><br>Hlutaðeigandi aðildarríki skal samþykkja verndaráætlanir hafna áður en þeim er hrint í framkvæmd.</p>
+<p><strong>Reference</strong><br>Hlutaðeigandi aðildarríki skal samþykkja verndaráætlanir hafna áður en þeim er hrint í framkvæmd.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Portverndaráætlanir skulu samþykktar af hlutaðeigandi aðildarríki áður en þær eru framkvæmdar.</td><td>P</td><td>False</td><td>0.60546875</td><td>Port security plans, concerned Member State approval and prior timing retained.</td></tr>
 <tr><td>after</td><td>Portvæntaráðstafanir skulu samþykktar af hlutaðeigandi aðildarríki áður en þær eru framkvæmdar.</td><td>F</td><td>False</td><td>1.4375</td><td>Security plans become port-expectation measures, losing protection/planning meaning.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Lagt skal undirn afvís umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer um</td><td>F</td><td>True</td><td>19.25</td><td>Repeated umfer loop fails to translate the approval rule.</td></tr>
 <tr><td>1</td><td>Lögsanstraðla um öryggi skipa skal samþykkt hinsráðhópsildru aðildarríkis fyrir framkvæmd.</td><td>F</td><td>False</td><td>8.8125</td><td>Port security becomes ship security and the approving authority is corrupted.</td></tr>
 <tr><td>2</td><td>Aðildarríkið með árum yfir það skal samþykkja port-öryggisáætlunina áður en hún er framkvæmd.</td><td>U</td><td>False</td><td>10.125</td><td>Approval, state and port plan retained, but extra years-over-it phrase makes concerned-state relation uncertain.</td></tr>
@@ -860,7 +858,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Portvörnaráætlan skulu samþykkt fyrir framkvæmd af viðkomandi aðildarríki.</td><td>P</td><td>False</td><td>2.84375</td><td>Port protection plans approved by concerned Member State before implementation retained.</td></tr>
 <tr><td>1</td><td>Lögreglur um vörn skál vera samþykkt áviðstæðu aðildarríki áður en þær eru framkvæmdar.</td><td>F</td><td>False</td><td>12.6875</td><td>Port security plans become police/protection rules without port scope.</td></tr>
 <tr><td>2</td><td>Lögregldar á port-öryggisáætlanum skulu komið þar til bæði samræmdum og samþykktu af viðkomandi aðildarríki áður en þær veitra framkvæmd.</td><td>F</td><td>False</td><td>9.8125</td><td>Adds police/coordination requirements and corrupts plan/approval relationship.</td></tr>
@@ -875,13 +873,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>35 · technical_medium · p22official21:test:eso:162</summary>
 
-<p><strong>源文 / Source</strong><br>It is bright and recognisable enough to be seen even in observations of very faint and faraway galaxies.</p>
+<p><strong>Source</strong><br>It is bright and recognisable enough to be seen even in observations of very faint and faraway galaxies.</p>
 
-<p><strong>参考 / Reference</strong><br>Hún er björt og auðþekkjanleg, jafnvel í ljósi mjög daufra og fjarlægra vetrarbrauta.</p>
+<p><strong>Reference</strong><br>Hún er björt og auðþekkjanleg, jafnvel í ljósi mjög daufra og fjarlægra vetrarbrauta.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Það er glítur og þekkt nokkuð nægilega til að sjást jafnvel í mælingum á mjög daufum og fjarlægum vetrarbrautum.</td><td>U</td><td>False</td><td>10.875</td><td>Distant faint galaxies and visibility retained; uncertain whether glitur adequately conveys bright.</td></tr>
 <tr><td>after</td><td>Það er glítur og þekkt nokkuð nægilega til að sjást jafnvel í mælingum á mjög daufum og fjarlægum vetrarbrautum.</td><td>U</td><td>False</td><td>10.875</td><td>Distant faint galaxies and visibility retained; uncertain whether glitur adequately conveys bright.</td></tr>
 </tbody></table>
@@ -890,13 +888,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>36 · technical_short · p22official21:test:eea:2003</summary>
 
-<p><strong>源文 / Source</strong><br>After paragraph 136, a heading and paragraph 136A are inserted.</p>
+<p><strong>Source</strong><br>After paragraph 136, a heading and paragraph 136A are inserted.</p>
 
-<p><strong>参考 / Reference</strong><br>Nýrri fyrirsögn og lið 136A er bætt við á eftir 136. lið.</p>
+<p><strong>Reference</strong><br>Nýrri fyrirsögn og lið 136A er bætt við á eftir 136. lið.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Eftir 136. lið bætast við undirgrein og 136A. lið.</td><td>F</td><td>False</td><td>9.0</td><td>Heading becomes subparagraph despite correct 136/136A placement.</td></tr>
 <tr><td>after</td><td>Eftir 136. lið bætast við undirgrein og 136A-lið.</td><td>F</td><td>False</td><td>8.25</td><td>Inserted heading becomes a subparagraph, changing the legal amendment object.</td></tr>
 </tbody></table>
@@ -905,13 +903,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>37 · technical_medium · p22official21:test:eea:931</summary>
 
-<p><strong>源文 / Source</strong><br>Following rinsing with PBS-Tween-20 buffer, biotinylated antibodies of a specificity corresponding to that of the coating antibodies are added and allowed to react for 60 minutes at 20 °C.</p>
+<p><strong>Source</strong><br>Following rinsing with PBS-Tween-20 buffer, biotinylated antibodies of a specificity corresponding to that of the coating antibodies are added and allowed to react for 60 minutes at 20 °C.</p>
 
-<p><strong>参考 / Reference</strong><br>Eftir skolun með PBS-Tween-20 jafnalausn er bíótínuðum mótefnum, með sérhæfni sem svarar til sérhæfni húðunarefnanna, bætt við og leyft að bindast í 60 mínútur við 20 °C.</p>
+<p><strong>Reference</strong><br>Eftir skolun með PBS-Tween-20 jafnalausn er bíótínuðum mótefnum, með sérhæfni sem svarar til sérhæfni húðunarefnanna, bætt við og leyft að bindast í 60 mínútur við 20 °C.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Eftir að PBS-Tween-20-búfaðlið er notuð er bítóntengd mótefni sem eru sértækileg í samræmi við mótefnið sem eru notuð til að húfa eru bætt við og laus til að viðbrögðin verði 60 mínútur við 20°C.</td><td>F</td><td>False</td><td>10.875</td><td>Required rinsing step becomes merely buffer use; antibody-coating description also corrupted.</td></tr>
 <tr><td>after</td><td>Eftir að PBS-Tween-20-búfaðli hefur verið notað til skilunar, bætast biótínleit mótefni sem eru sértækileg í samræmi við mótefni sem eru í húðina og laus fyrir 60 mínútur við 20°C.</td><td>F</td><td>False</td><td>13.1875</td><td>Rinsing becomes separation and biotinylated/coating antibody properties are corrupted.</td></tr>
 </tbody></table>
@@ -920,20 +918,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>38 · technical_medium · p22official21:test:eea:198</summary>
 
-<p><strong>源文 / Source</strong><br>The results of the audits and reviews should be brought to the attention of all personnel having responsibility in the area involved.</p>
+<p><strong>Source</strong><br>The results of the audits and reviews should be brought to the attention of all personnel having responsibility in the area involved.</p>
 
-<p><strong>参考 / Reference</strong><br>Niðurstöður endurskoðana og endurmats skulu kynntar þeim starfsmönnum sem bera ábyrgð á viðkomandi svæði.</p>
+<p><strong>Reference</strong><br>Niðurstöður endurskoðana og endurmats skulu kynntar þeim starfsmönnum sem bera ábyrgð á viðkomandi svæði.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Niðurstöður endurskoðana og endurskoðunar eiga að láta allan starfsmenn, sem hafa ábyrgð á því sviði, vita.</td><td>P</td><td>False</td><td>4.8125</td><td>All personnel responsible for that area should be informed of the results.</td></tr>
 <tr><td>after</td><td>Niðurstöður endurskoðana og endurskoðunar skal láta öll starfsmenn, sem hafa ábyrgð á þeim sviði sem varðar, vita.</td><td>P</td><td>False</td><td>3.53125</td><td>Notify all responsible staff of results retained.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Niðurstöður endurskoðana og endurskoðunar sem ekki eru endurskoðana skal láta allir starfsmenn, sem bera ábyrgð á því sviðinu, vita um.</td><td>F</td><td>False</td><td>6.96875</td><td>Adds reviews that are not audits, changing the result category/scope.</td></tr>
 <tr><td>1</td><td>Niðurstöður endurskoðana og endurskoðunarfræðinga skulu láttar allri starfsmenn, sem eru á ábyrgð á því sviði, vita.</td><td>F</td><td>False</td><td>3.984375</td><td>Reviews become review specialists/auditors, changing source of results.</td></tr>
 <tr><td>2</td><td>Niðurstöður endurskoðana og endurskoðana skulu látt hafa í sér allir starfsmenn sem hafa ábyrgð á því sviði.</td><td>U</td><td>False</td><td>10.5625</td><td>Results and responsible staff present, but have-in-themselves construction leaves notification direction uncertain.</td></tr>
@@ -946,7 +944,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Niðurstöður endurskoðana og endurskoðunar skal láta öll starfsmenn sem eru á ábyrgð á því svæði tilkynna um tilrála.</td><td>F</td><td>False</td><td>10.5</td><td>Staff become subjects notifying advice rather than recipients of results.</td></tr>
 <tr><td>1</td><td>Niðurstöður endurskoðana og endurskoðunar skal láta tilkynna alla starfsfólk sem á ábyrgð á því sviði.</td><td>P</td><td>False</td><td>4.21875</td><td>Results notified to all responsible personnel retained.</td></tr>
 <tr><td>2</td><td>Niðurstöður endurskoðana og endurskoðana skulu látt hafa áhersla allra starfsmanna sem bera ábyrgð á þeim sviði sem varðar.</td><td>U</td><td>False</td><td>8.9375</td><td>Responsible staff and results present, but have emphasis of all staff is uncertain as a notification instruction.</td></tr>
@@ -961,20 +959,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>39 · technical_medium · p22official21:test:eso:546</summary>
 
-<p><strong>源文 / Source</strong><br>The strikingly different colours of NGC 2014 and NGC 200 are the result of both the different chemical makeup of the surrounding gas and the temperatures of the stars that are causing the clouds to glow.</p>
+<p><strong>Source</strong><br>The strikingly different colours of NGC 2014 and NGC 200 are the result of both the different chemical makeup of the surrounding gas and the temperatures of the stars that are causing the clouds to glow.</p>
 
-<p><strong>参考 / Reference</strong><br>Litamuninn á NGC 2014 og NGC 200 má bæði rekja til mismunandi efnasamsetningar gassins í kring og hitastigs stjarnanna sem lýsa upp skýin.</p>
+<p><strong>Reference</strong><br>Litamuninn á NGC 2014 og NGC 200 má bæði rekja til mismunandi efnasamsetningar gassins í kring og hitastigs stjarnanna sem lýsa upp skýin.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Það sem er ósköpunlegt munur á NGC 2014 og NGC 200 er af völdum bæði mismunandi efnafræðilegrar samsetningar gasins í kringum þau og hita stjarnanna sem valda glóin í þokunum.</td><td>F</td><td>False</td><td>2.171875</td><td>The specifically colour difference is omitted, becoming an unspecified difference between objects.</td></tr>
 <tr><td>after</td><td>Sköpum mismunandi litana NGC 2014 og NGC 200 eru bæði mismunandi efnafræðileg samsetning vasa í kringum þær og hitastig stjarna sem orsa þær gegnum gló.</td><td>F</td><td>False</td><td>16.75</td><td>Surrounding gas becomes pockets/vases and cloud relation is corrupted.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Óhjákvægri muninn litur NGC 2014 og NGC 200 stafi bæði ólíku tilskildri efnafræðilegu samsetningu gasins um um það og hita stjarnanna sem leiða til glóuðu þarna.</td><td>F</td><td>False</td><td>14.75</td><td>Stars causing clouds to glow becomes stars leading to glowing there, losing the cloud object.</td></tr>
 <tr><td>1</td><td>Þær óhjákvæmdar breytilegar litur af NGC 2014 og NGC 200 eru vegna bæði mismunandi efnafræðilegrar samsetningar gassins og hita stjarnanna sem valda glóin í þokunum.</td><td>P</td><td>False</td><td>2.671875</td><td>Different colours, gas chemistry and temperatures of stars causing nebula glow retained; awkward emphasis/grammar.</td></tr>
 <tr><td>2</td><td>Öflugu breytilegar litur NGC 2014 og NGC 200 eru afleiðingin bæði mismunandi efnafræðilegra samsetningar vefjarins í kringum þau og hita stjarna sem örva hvítrúnina.</td><td>F</td><td>False</td><td>8.5</td><td>Gas becomes tissue and cloud glow becomes a white-hair term.</td></tr>
@@ -987,7 +985,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Ósköpunarmáttar litar NGC 2014 og NGC 200 eru af fleiri en einn ólíkum tilvikum: bæði mismunandi efnafræðileg samsetning mungríkans og hita stjarnanna sem gefa skýunum rauðu ljós.</td><td>F</td><td>False</td><td>10.3125</td><td>Gas composition corrupted and red light is added without support.</td></tr>
 <tr><td>1</td><td>Þær óhóflega mismunandi lit NGC 2014 og NGC 200 eru afleiðingin bæði mismunandi efnafræðilegs samsettunar gassins í kringum þau og hitahæðar stjarna sem vega það til að glóa.</td><td>U</td><td>False</td><td>6.84375</td><td>Colours, gas chemistry and temperature present; uncertain causative construction and missing explicit cloud object.</td></tr>
 <tr><td>2</td><td>Öflugu breytilegar litur NGC 2014 og NGC 200 eru afleiðingin bæði mismunandi efnafræðilegra samsetningar vopnins í umhverfið og hita stjarna sem örva hvíldin.</td><td>F</td><td>False</td><td>9.5</td><td>Gas becomes weapons and stellar glow action is corrupted.</td></tr>
@@ -1002,20 +1000,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>40 · technical_short · p22official21:test:eea:1324</summary>
 
-<p><strong>源文 / Source</strong><br>The weight of refill packaging shall not exceed 1,7 g per wash.</p>
+<p><strong>Source</strong><br>The weight of refill packaging shall not exceed 1,7 g per wash.</p>
 
-<p><strong>参考 / Reference</strong><br>Þyngd umbúða með áfyllingu skal ekki fara yfir 1,7 grömm á þvott.</p>
+<p><strong>Reference</strong><br>Þyngd umbúða með áfyllingu skal ekki fara yfir 1,7 grömm á þvott.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Vefi endurtekna umbúða skal ekki fara yfir 1,7 g í hverja þvag.</td><td>F</td><td>False</td><td>8.0</td><td>Weight/refill/wash become web/repeated/urine wording.</td></tr>
 <tr><td>after</td><td>Vefi endurfillpakkningar skal ekki fara yfir 1,7 g fyrir hverja þvag.</td><td>F</td><td>False</td><td>11.125</td><td>Weight becomes web and per wash becomes per urine.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Öryggisbundin pakking skal ekki vera þyngri en 1,7 g í hverja þvau.</td><td>F</td><td>False</td><td>8.8125</td><td>Refill packaging becomes safety-bound packaging.</td></tr>
 <tr><td>1</td><td>Vigt endurtekna umbúta skal ekki fara yfir 1,7 g í hverri þvagun.</td><td>F</td><td>False</td><td>8.8125</td><td>Refill becomes repeated packaging and wash becomes urination.</td></tr>
 <tr><td>2</td><td>Vöginn í endurrotunarpakkningum skal ekki fara yfir 1,7 g fyrir hverja þvag.</td><td>F</td><td>False</td><td>7.65625</td><td>Refill becomes recycling and wash becomes urine.</td></tr>
@@ -1028,7 +1026,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Öryggispackinu, sem siktur enduranteytindi, skal ekki verað meiri en 1,7 g í hverja þvag.</td><td>F</td><td>False</td><td>17.25</td><td>Wash becomes urine and packaging type is unintelligible.</td></tr>
 <tr><td>1</td><td>Vigt endurtekna umbúta skal ekki fara yfir 1,7 g í hverri þvagun.</td><td>F</td><td>False</td><td>8.8125</td><td>Refill becomes repeated packaging and wash becomes urination.</td></tr>
 <tr><td>2</td><td>Vög endurnýtingarpakkningar skal ekki vera meiri en 1,7 g fyrir hverja þvaskipti.</td><td>F</td><td>False</td><td>14.5</td><td>Refill packaging becomes reuse packaging; wash-unit term also corrupted.</td></tr>
@@ -1043,20 +1041,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>41 · technical_long · p22official21:test:ema:938</summary>
 
-<p><strong>源文 / Source</strong><br>It is unclear whether or not there is a direct association between pioglitazone and macular oedema but prescribers should be alert to the possibility of macular oedema if patients report disturbances in visual acuity; an appropriate ophthalmological referral should be considered.</p>
+<p><strong>Source</strong><br>It is unclear whether or not there is a direct association between pioglitazone and macular oedema but prescribers should be alert to the possibility of macular oedema if patients report disturbances in visual acuity; an appropriate ophthalmological referral should be considered.</p>
 
-<p><strong>参考 / Reference</strong><br>Ekki er ljóst hvort beint samband er á milli pioglitazóns og sjónudepilsbjúgs, en þeir sem ávísa lyfinu ættu að vera á varðbergi gagnvart mögulegum sjónudepilsbjúg ef sjúklingar lýsa truflun á sjónskerpu; íhuga þarf þá viðeigandi tilvísun til augnlæknis.</p>
+<p><strong>Reference</strong><br>Ekki er ljóst hvort beint samband er á milli pioglitazóns og sjónudepilsbjúgs, en þeir sem ávísa lyfinu ættu að vera á varðbergi gagnvart mögulegum sjónudepilsbjúg ef sjúklingar lýsa truflun á sjónskerpu; íhuga þarf þá viðeigandi tilvísun til augnlæknis.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Ekki er klár hvort eða ekki sé bein tengsl milli pioglitazóns og blóðþynningar í sjónuklukkum en læknar sem ávísa lyfið ættu að vera áberandi við hugsanlega blóðþynningar í sjónuklukkum ef sjúklingar gefa til kynna truflanir á sjónskerpu; íhuga skal viðeigandi sjónaukarannsókn.</td><td>F</td><td>False</td><td>2.421875</td><td>Oedema becomes blood thinning in retinal-clock-like structures.</td></tr>
 <tr><td>after</td><td>Ekki er klár hvort eða ekki sé bein tengsl milli pioglitazóns og blóðþurrðar í sjónuklófum en læknarsemendur ættu að vera í vart við hugsanlegan blóðþurrð í sjónuklóf ef sjúklingar gefa til kynna truflanir á sjónskerpu; íhuga skal viðeigandi sjónarlækning.</td><td>F</td><td>False</td><td>2.8125</td><td>Oedema becomes ischaemia, changing the warning condition.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Ekki er klár hvort eða ekki verður bein samband á milli pioglítazóns og eggjaáhæðar (macular) en læknar sem ávísa lyfinu skulu vera gátlaust fyrir því að hætta stjórnun á eggjaáhæð ef sjúklingar segja frá truflunum í sjónskerpi; ítarlega skal finna í grundvalli vísa til augnheilkardinna.</td><td>F</td><td>False</td><td>12.5</td><td>Macular oedema becomes egg-height wording and alert becomes careless.</td></tr>
 <tr><td>1</td><td>Ekki er skýrt hvort eða ekki verður víðtengda tengsl á milli pioglitazóns og jörtubláa og áþekkja þarf sjónauðmiða ef sjúklingar gefa til kynna skerðingu á sjónskerpu og íhuga skal viðeigandi sjónarlækningsfyrirmæli.</td><td>F</td><td>False</td><td>14.625</td><td>Named oedema condition becomes an unintelligible term and direct association is altered.</td></tr>
 <tr><td>2</td><td>Ekki er klár hvort eða ekki sé bein tengsl milli pioglitazóns og bláæðaseitil á mjólkursjónar og læknar skal gæta þess að því er varðar bláæðaseitil á mjólkursjónar ef sjúklingar gefa sögu um truflun á sjónskerpu; íhuga skal viðeigandi sjónaukarferð.</td><td>F</td><td>False</td><td>12.875</td><td>Macular oedema becomes venous/lymphatic milk-vision wording.</td></tr>
@@ -1069,7 +1067,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Ekki er klár hvort eða ekki sé bein tengsl milli pioglitazóns og mjótaþrýstingar en læknarsemillum ætti að vera ávarnir við möguleigan um mjótaþrýsting ef sjúklingar gefa til kynna truflanir á sjónskerpu; ílagt skal við viðeigandi sjúkrahag til augna.</td><td>F</td><td>False</td><td>6.90625</td><td>Oedema becomes a pressure-like condition rather than the specified pathology.</td></tr>
 <tr><td>1</td><td>Ekki er skýrt hvort bein tengsl séu milli pioglítazóns og blóðþurrðar í sjónukerfi séu til staðar en læknar sem ávísa lyfið skulu vera ávarnir um hugsanlegan blóðþurrð í sjónukerfi ef sjúklingar gefa til kynna truflun á sjónskerpu; íhuga skal viðeigandi sjónakeðjapróf.</td><td>F</td><td>False</td><td>6.875</td><td>Oedema becomes ischaemia in the visual system.</td></tr>
 <tr><td>2</td><td>Ekki er klár hvort eða ekki sé beina tengsl á milli próglitazóns og blóðþurrðar í sjónudeili en ráðgjafendur ættu að hafa gætu fyrir sig áhyggjur af hugsanlegri blóðþurrð í sjónudeili ef sjúklingar gefu upp tilkynningu um skerðingu á sjónskerpu; íhuga skal viðeigandi sjónarlæknisskoðun.</td><td>F</td><td>False</td><td>3.296875</td><td>Macular oedema becomes retinal ischaemia, a different pathology.</td></tr>
@@ -1084,20 +1082,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>42 · technical_medium · p22official21:test:ema:2302</summary>
 
-<p><strong>源文 / Source</strong><br>At week 16, all ACR Ped components demonstrated clinically relevant improvement from baseline (see Table 8).</p>
+<p><strong>Source</strong><br>At week 16, all ACR Ped components demonstrated clinically relevant improvement from baseline (see Table 8).</p>
 
-<p><strong>参考 / Reference</strong><br>Í 16. viku sýndu allir þættir ACR Ped ávinning sem skipti máli klínískt frá grunnlínu (sjá töflu 8).</p>
+<p><strong>Reference</strong><br>Í 16. viku sýndu allir þættir ACR Ped ávinning sem skipti máli klínískt frá grunnlínu (sjá töflu 8).</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Í viku 16 sýndu allar ACR Ped þætti klínískt mikilvægum bata frá upphafi (sjá töflu 8).</td><td>P</td><td>False</td><td>2.5625</td><td>Correct week, all components, clinical improvement, baseline and table retained.</td></tr>
 <tr><td>after</td><td>Í viku 16 sýndu allar ACR Ped-hluta klínískt marktæk bata frá upphafi (sjá töflu 8).</td><td>P</td><td>False</td><td>4.9375</td><td>All key clinical-improvement details retained; agreement errors only.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Í viku 16 voru allar ACR Ped þætti meðal sjúklinganna þekktir hvað varðar klínískan vægi frá upphafsgildi (sjá töflu 8).</td><td>F</td><td>False</td><td>7.40625</td><td>Improvement is replaced by components known regarding clinical weight in patients.</td></tr>
 <tr><td>1</td><td>Í viku 16 sýndust klínískt marktæk bata hjá öllum ACR Ped þýðingaskiptum frá upphafi (sjá töflu 8).</td><td>F</td><td>False</td><td>6.53125</td><td>Components become significance-change/translation-change terms.</td></tr>
 <tr><td>2</td><td>Í 16. viku sýndu allar ACR Ped-hluta klínískt marktækt bata frá upphafi (sjá töflu 8).</td><td>P</td><td>False</td><td>4.9375</td><td>Week 16, all ACR Ped components, clinically significant improvement from baseline and Table 8 retained.</td></tr>
@@ -1110,7 +1108,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Í viku 16 sýndust klínískt mikilvæg breyting frá grunngildi hjá öllum ACR Ped samsetningunum (sjá töflu 8).</td><td>F</td><td>False</td><td>4.03125</td><td>Improvement becomes nondirectional change and components become combinations.</td></tr>
 <tr><td>1</td><td>Í viku 16 sýndust klínískt marktæk bata frá upphafi hjá öllum ACR Ped samsetningunum (sjá töflu 8).</td><td>F</td><td>False</td><td>3.328125</td><td>Components become combinations rather than individual measures.</td></tr>
 <tr><td>2</td><td>Í 16. viku sýndu allar ACR Ped-hluta klínískt marktæk bata frá upphafi (sjá töflu 8).</td><td>P</td><td>False</td><td>4.6875</td><td>Week, components, clinically significant improvement, baseline and table preserved.</td></tr>
@@ -1125,13 +1123,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>43 · technical_short · p22official21:test:ema:3088</summary>
 
-<p><strong>源文 / Source</strong><br>Cardboard box with 1 or 10 PET bottles of 10 doses.</p>
+<p><strong>Source</strong><br>Cardboard box with 1 or 10 PET bottles of 10 doses.</p>
 
-<p><strong>参考 / Reference</strong><br>Pappaaskja með 1 eða 10 PET glösum sem innihalda 10 skammta.</p>
+<p><strong>Reference</strong><br>Pappaaskja með 1 eða 10 PET glösum sem innihalda 10 skammta.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Pappaaskja með 1 eða 10 PET glösum með 10 skömmtum.</td><td>P</td><td>False</td><td>0.91796875</td><td>Cardboard box, 1 or 10 PET bottles and 10 doses retained.</td></tr>
 <tr><td>after</td><td>Pappaaskja með 1 eða 10 PET glösum með 10 skömmtum.</td><td>P</td><td>False</td><td>0.91796875</td><td>Cardboard box, 1 or 10 PET bottles and 10 doses retained.</td></tr>
 </tbody></table>
@@ -1140,13 +1138,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>44 · general · p22official21:test:opensubtitles:3227</summary>
 
-<p><strong>源文 / Source</strong><br>You&#x27;re not supposed to use your powers outside of school.</p>
+<p><strong>Source</strong><br>You&#x27;re not supposed to use your powers outside of school.</p>
 
-<p><strong>参考 / Reference</strong><br>Þú mátt ekki nota kraftana utan skólans.</p>
+<p><strong>Reference</strong><br>Þú mátt ekki nota kraftana utan skólans.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Þú ættir ekki að nota skyn þína utan skóla.</td><td>F</td><td>False</td><td>8.9375</td><td>Powers become senses, changing the prohibited ability.</td></tr>
 <tr><td>after</td><td>Þú átt ekki að nota skyn þína utan skóla.</td><td>F</td><td>False</td><td>8.625</td><td>Powers become senses rather than the source abilities.</td></tr>
 </tbody></table>
@@ -1155,20 +1153,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>45 · technical_medium · p22official21:test:ema:2285</summary>
 
-<p><strong>源文 / Source</strong><br>Angiotensin II is the principal pressor agent of the RAAS, with effects that include vasoconstriction, stimulation of synthesis and release of aldosterone, cardiac stimulation, and renal reabsorption of sodium.</p>
+<p><strong>Source</strong><br>Angiotensin II is the principal pressor agent of the RAAS, with effects that include vasoconstriction, stimulation of synthesis and release of aldosterone, cardiac stimulation, and renal reabsorption of sodium.</p>
 
-<p><strong>参考 / Reference</strong><br>Angíótensín II er helsta þrýstingsvaldandi efnið í RAAS og eru helstu áhrif þess æðasamdráttur, örvun nýmyndunar og losunar aldósteróns, hjartaörvun og endurupptaka natríums í nýrum.</p>
+<p><strong>Reference</strong><br>Angíótensín II er helsta þrýstingsvaldandi efnið í RAAS og eru helstu áhrif þess æðasamdráttur, örvun nýmyndunar og losunar aldósteróns, hjartaörvun og endurupptaka natríums í nýrum.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Angíótensín II er helsta þrýstingshækkandi lyfja í RAAS, sem hefur áhrif sem ná yfir æðaskynnun, örva myndun og losun aldósteróns, hjartastýring og endurupptöku natríums í nýrum.</td><td>F</td><td>False</td><td>2.78125</td><td>Vasoconstriction becomes vessel perception and cardiac stimulation becomes regulation.</td></tr>
 <tr><td>after</td><td>Angíótensín II er helsta þrýstingshækkandi lyfja í RAAS, sem hefur áhrif sem ná allt frá blóðþrýstingskústur, örva myndunar og losunar aldósteróns, hjartastillandi og endurupptöku natríums í nýrum.</td><td>F</td><td>False</td><td>5.09375</td><td>Vasoconstriction becomes blood-pressure broom wording.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Angíótensín II er helsta þrýstingshækkandi lyf í RAAS hópnum, með áhrifum sem eru æðaskammtaraukning, örvun framleiðslu aldosteróns, hjartastýrslu og endur uphleypun natríums í nýrum.</td><td>F</td><td>False</td><td>4.53125</td><td>Aldosterone release is omitted and vasoconstriction becomes increased vascular doses.</td></tr>
 <tr><td>1</td><td>Angíótensín II er aðal háþrýstingsvirkjandi lyfja hjá RAAS (renin-angiotensín-aldhormóns skilvirki) og hefur áhrif á æðahömlun, örvaðina til síðurbúnaðar og losunar aldosteróns, hjartastýringu og endurupptöku natríums í nýrum.</td><td>F</td><td>False</td><td>6.78125</td><td>Aldosterone synthesis becomes a typesetting/preparation-like term; cardiac stimulation altered.</td></tr>
 <tr><td>2</td><td>Angíótensín II er helstu lyfið til aukningar hjá RAAS með áhrifum sem eru æðaskötjum, örva frumudreifingu (synthesis) og losun aldósteróns, hjartastillandi og endurupptöku natríums í nýrum.</td><td>F</td><td>False</td><td>9.9375</td><td>Aldosterone synthesis becomes cell spreading and vascular effect is corrupted.</td></tr>
@@ -1181,7 +1179,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Angíótensín II er helsta þrýstingshækkandi lyfjaáhrif RAAS-gefna, með áhrifum sem gera þyngdarþrýstingi, örvaða eða afvöxtu aldosteróns, hjartastillandi og endurvinnslu natríums í nýrum.</td><td>F</td><td>False</td><td>11.0</td><td>Vasoconstriction becomes gravity pressure and aldosterone synthesis/release list corrupted.</td></tr>
 <tr><td>1</td><td>Angíótensín II er aðal háþrýstingsvirkjandi lyfja hjá RAAS (renin-angíótensín-hormónaætlun), sem hefur afleiðingar á meðal annars þrýstingsbælingu, örvað samtengingu og losun aldósteróns, hjartastillandi og endurupptöku natríums í nýrum.</td><td>F</td><td>False</td><td>4.3125</td><td>Vasoconstriction becomes pressure suppression and RAAS expansion is corrupted.</td></tr>
 <tr><td>2</td><td>Angíótensín II er helstu lyfið til aukningar hjá RAAS með áhrifum sem flokka æðarþykki, örva semja og losun aldósteróns, hjartastillun og endurupptöku natríums í nýru.</td><td>F</td><td>False</td><td>10.375</td><td>Vasoconstriction becomes vessel thickening and synthesis becomes negotiation wording.</td></tr>
@@ -1196,20 +1194,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>46 · technical_short · p22official21:test:eso:1067</summary>
 
-<p><strong>源文 / Source</strong><br>The team tested several hypotheses to explain the unexpected change in speed.</p>
+<p><strong>Source</strong><br>The team tested several hypotheses to explain the unexpected change in speed.</p>
 
-<p><strong>参考 / Reference</strong><br>Stjörnufræðingarnir prófuðu ýmsar tilgátur til að útskýra þessa óvæntu hraðabreytingu.</p>
+<p><strong>Reference</strong><br>Stjörnufræðingarnir prófuðu ýmsar tilgátur til að útskýra þessa óvæntu hraðabreytingu.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Hópurinn prófaði nokkrar hugsanir til að skýra óvænta breytingu á hraða.</td><td>P</td><td>False</td><td>6.34375</td><td>Testing several explanatory ideas for unexpected speed change retained.</td></tr>
 <tr><td>after</td><td>Hópurinn prófaði nokkrar hugsanir til að skýra óvænta breytingu á hraða.</td><td>P</td><td>False</td><td>6.34375</td><td>Testing several explanatory ideas for unexpected speed change retained.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Hópurinn prófaði ýmsu hyfjunum til að útskýra óvæntu hraðni bati.</td><td>F</td><td>False</td><td>16.875</td><td>Unexpected speed change becomes speed improvement.</td></tr>
 <tr><td>1</td><td>Hópurinn prófaði nokkrar áthugasemdir til að skýra óvænta breytingu á hraða.</td><td>F</td><td>False</td><td>6.28125</td><td>Hypotheses become comments/remarks, changing the tested scientific objects.</td></tr>
 <tr><td>2</td><td>Teymið prófaði nokkrar hópgrein til að skýra óvæntum breytingu á hraða.</td><td>F</td><td>False</td><td>18.5</td><td>Hypotheses become a group-branch term.</td></tr>
@@ -1222,7 +1220,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Hópurinn prófaði nokkrar hyargar tilgreiningar til að skýra óvæntu hraðni breytinguna.</td><td>U</td><td>False</td><td>12.1875</td><td>Unexpected speed change retained; hyargar tilgreiningar is uncertain as hypotheses.</td></tr>
 <tr><td>1</td><td>Hópurinn prófaði nokkrar grunngreiningar til að skýra óvænta hreyfingaráhrif.</td><td>F</td><td>False</td><td>12.5625</td><td>Hypotheses become basic analyses and speed change becomes movement effects.</td></tr>
 <tr><td>2</td><td>Teymið prófaði nokkrar hugsanir til að skýra óvænta breytingu á hraða.</td><td>P</td><td>False</td><td>4.0625</td><td>Team tests several ideas to explain unexpected speed change; faithful paraphrase.</td></tr>
@@ -1237,13 +1235,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>47 · general · p22official21:test:opensubtitles:530</summary>
 
-<p><strong>源文 / Source</strong><br>I want you to meet Betty.</p>
+<p><strong>Source</strong><br>I want you to meet Betty.</p>
 
-<p><strong>参考 / Reference</strong><br>Ég vil þú hittir Betty.</p>
+<p><strong>Reference</strong><br>Ég vil þú hittir Betty.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Ég vil að þú hitti Betty.</td><td>P</td><td>False</td><td>0.08837890625</td><td>I want you to meet Betty retained.</td></tr>
 <tr><td>after</td><td>Ég vil að þú hitti Betty.</td><td>P</td><td>False</td><td>0.08837890625</td><td>I want you to meet Betty retained.</td></tr>
 </tbody></table>
@@ -1252,13 +1250,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>48 · technical_medium · p22official21:test:ema:2726</summary>
 
-<p><strong>源文 / Source</strong><br>The ALIMTA maintenance safety profiles from the two studies JMEN and PARAMOUNT were similar.</p>
+<p><strong>Source</strong><br>The ALIMTA maintenance safety profiles from the two studies JMEN and PARAMOUNT were similar.</p>
 
-<p><strong>参考 / Reference</strong><br>Öryggissnið fyrir ALIMTA sem viðhaldsmeðferð var svipað í JMEN og PARAMOUNT rannsóknunum.</p>
+<p><strong>Reference</strong><br>Öryggissnið fyrir ALIMTA sem viðhaldsmeðferð var svipað í JMEN og PARAMOUNT rannsóknunum.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Öryggisupplýsingar um viðhaldsmeðferð með ALIMTA úr rannsóknum JMEN og PARAMOUNT voru svipuð.</td><td>P</td><td>False</td><td>2.84375</td><td>Similar ALIMTA maintenance safety information across both named studies retained.</td></tr>
 <tr><td>after</td><td>Öryggisupplýsingar frá ALIMTA viðhaldsmeðferðar úr rannsóknunum JMEN og PARAMOUNT voru svipaðar.</td><td>P</td><td>False</td><td>6.03125</td><td>ALIMTA maintenance safety profiles/information from JMEN and PARAMOUNT similar; faithful.</td></tr>
 </tbody></table>
@@ -1267,20 +1265,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>49 · technical_short · p22official21:test:ema:2134</summary>
 
-<p><strong>源文 / Source</strong><br>Never take your inhaler apart.</p>
+<p><strong>Source</strong><br>Never take your inhaler apart.</p>
 
-<p><strong>参考 / Reference</strong><br>Þú skalt aldrei taka innöndunartækið í sundur.</p>
+<p><strong>Reference</strong><br>Þú skalt aldrei taka innöndunartækið í sundur.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Ekki að taka innöndunartækið í aðstæður.</td><td>F</td><td>False</td><td>13.375</td><td>Taking apart becomes taking into circumstances.</td></tr>
 <tr><td>after</td><td>Aldrei skiptið innöndunartækið í aðlögun.</td><td>F</td><td>False</td><td>8.375</td><td>Dismantle becomes change into adjustment.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Alltaf skal ekki að skipta innöndunartækið saman.</td><td>F</td><td>False</td><td>1.96875</td><td>Apart becomes together, changing the prohibited action.</td></tr>
 <tr><td>1</td><td>Hvorki má skipta úr innöndunartæki.</td><td>F</td><td>False</td><td>8.0</td><td>Taking apart becomes switching out of an inhaler.</td></tr>
 <tr><td>2</td><td>Aldrei snúa innöndunartækið saman.</td><td>F</td><td>False</td><td>2.140625</td><td>Taking apart becomes twisting together.</td></tr>
@@ -1293,7 +1291,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Alltaf skal ekki skipta innöndunartækið saman.</td><td>F</td><td>False</td><td>1.2890625</td><td>Taking apart becomes combining together.</td></tr>
 <tr><td>1</td><td>Akaðu aldrei innöndunartækið í smástöð.</td><td>F</td><td>False</td><td>9.375</td><td>Dismantling becomes driving inhaler to a small station.</td></tr>
 <tr><td>2</td><td>Aldrei skipta innöndunartækið saman.</td><td>F</td><td>False</td><td>1.2109375</td><td>Taking apart becomes combining together.</td></tr>
@@ -1308,13 +1306,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>50 · technical_long · p22official21:test:ema:2271</summary>
 
-<p><strong>源文 / Source</strong><br>The MAH commits to performing the studies and additional pharmacovigilance activities detailed in the Pharmacovigilance Plan, as agreed in the version dated 28 February 2005 of the Risk Management Plan (RMP) presented in Module 1.8.2. of the Marketing Authorisation and any subsequent updates of the RMP agreed by the CHMP.</p>
+<p><strong>Source</strong><br>The MAH commits to performing the studies and additional pharmacovigilance activities detailed in the Pharmacovigilance Plan, as agreed in the version dated 28 February 2005 of the Risk Management Plan (RMP) presented in Module 1.8.2. of the Marketing Authorisation and any subsequent updates of the RMP agreed by the CHMP.</p>
 
-<p><strong>参考 / Reference</strong><br>Markaðsleyfishafi skuldbindur sig til að gera rannsóknir og vinna viðbótarverkefni tengd lyfjagát sem tilgreind eru í áætlun um lyfjagát, eins og fram kemur í útgáfu dagsett 28. febrúar 2005 af áætlun um áhættustjórnun sem lýst er í kafla 1.8.2. í markaðsleyfinu og öllum uppfærslum á áætlun um áhættustjórnun sem CHMP samþykkir.</p>
+<p><strong>Reference</strong><br>Markaðsleyfishafi skuldbindur sig til að gera rannsóknir og vinna viðbótarverkefni tengd lyfjagát sem tilgreind eru í áætlun um lyfjagát, eins og fram kemur í útgáfu dagsett 28. febrúar 2005 af áætlun um áhættustjórnun sem lýst er í kafla 1.8.2. í markaðsleyfinu og öllum uppfærslum á áætlun um áhættustjórnun sem CHMP samþykkir.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Markaðsleyfishafi skulur að framkvæma þær rannsóknir og viðbótar- lyfjafræðilegar aðgerðir sem tilgreindar eru í áætlun um lyfjagát, eins og komið var á í útgáfu frá 28. febrúar 2005 af áætlun um áhættustýringu sem er að finna í 1.8.2. hluta markaðsleyfisins og öllum síðari uppfærslum á áætlun um áhættustýringu sem CHMP hefur samþykkt.</td><td>F</td><td>False</td><td>1.640625</td><td>Additional pharmacovigilance activities become pharmacological actions, changing the required safety-monitoring activity type.</td></tr>
 <tr><td>after</td><td>Markaðsleyfishafi skulur að framkvæma rannsóknirnar og viðbótarviðmiðunarverkefni varðandi lyfjagát sem tilgreind eru í lyfjagátáætluninni, eins og komið var í samyni við útgáfu þess, sem er á þeirri dag 28. febrúar 2005, af áætlun um áhættustýringu sem er sett fram í 1.8.2. hluta markaðsleyfisins og öll síðari uppfærslur á áætluninni um áhættustýringu sem CHMP samiði við.</td><td>U</td><td>False</td><td>3.703125</td><td>Date/module/RMP retained; extra reference-benchmark activity qualifier and CHMP agreement construction have uncertain scope.</td></tr>
 </tbody></table>
@@ -1323,13 +1321,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>51 · technical_short · p22official21:test:ema:2646</summary>
 
-<p><strong>源文 / Source</strong><br>Metabolites and parent drug are excreted in the bile.</p>
+<p><strong>Source</strong><br>Metabolites and parent drug are excreted in the bile.</p>
 
-<p><strong>参考 / Reference</strong><br>Umbrotsefni og lyfið skiljast út með galli.</p>
+<p><strong>Reference</strong><br>Umbrotsefni og lyfið skiljast út með galli.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Umbrotsefni og upprunaleyfi skiljast út í galli.</td><td>F</td><td>False</td><td>9.3125</td><td>Parent drug becomes original licence, losing the excreted substance.</td></tr>
 <tr><td>after</td><td>Umbrotsefni og upprunaleyfi skiljast út í galli.</td><td>F</td><td>False</td><td>9.3125</td><td>Parent drug becomes original licence, losing the excreted substance.</td></tr>
 </tbody></table>
@@ -1338,13 +1336,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>52 · general · p22official21:test:opensubtitles:1162</summary>
 
-<p><strong>源文 / Source</strong><br>I don&#x27;t know why you&#x27;re torturing him.</p>
+<p><strong>Source</strong><br>I don&#x27;t know why you&#x27;re torturing him.</p>
 
-<p><strong>参考 / Reference</strong><br>Ég veit ekki hvers vegna þú kvelur hann.</p>
+<p><strong>Reference</strong><br>Ég veit ekki hvers vegna þú kvelur hann.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Ég veit ekki af hverju þú ert að skírta hann.</td><td>U</td><td>False</td><td>10.125</td><td>Uncertain lexical adequacy of skirta for torture; not certified correct or wrong without native confirmation.</td></tr>
 <tr><td>after</td><td>Ég veit ekki af hverju þú erð að skírta hann.</td><td>U</td><td>False</td><td>12.1875</td><td>Pronouns/ignorance retained; cannot certify skirta as torturing versus an erroneous action word.</td></tr>
 </tbody></table>
@@ -1353,13 +1351,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>53 · general · p22official21:test:opensubtitles:2999</summary>
 
-<p><strong>源文 / Source</strong><br>I want you to train me.</p>
+<p><strong>Source</strong><br>I want you to train me.</p>
 
-<p><strong>参考 / Reference</strong><br>Ég vil að þú þjálfir mig.</p>
+<p><strong>Reference</strong><br>Ég vil að þú þjálfir mig.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Ég vil að þú ættir að þjála mér.</td><td>U</td><td>False</td><td>10.625</td><td>Uncertain whether thjala is a minor corruption of training or a different make-pliable verb.</td></tr>
 <tr><td>after</td><td>Ég vil að þú ættir að þróa mig.</td><td>F</td><td>False</td><td>7.96875</td><td>Train me becomes develop me, losing the specific requested training action.</td></tr>
 </tbody></table>
@@ -1368,20 +1366,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>54 · technical_short · p22official21:test:ema:144</summary>
 
-<p><strong>源文 / Source</strong><br>Consumption of alcohol and medicinal products containing alcohol should be avoided.</p>
+<p><strong>Source</strong><br>Consumption of alcohol and medicinal products containing alcohol should be avoided.</p>
 
-<p><strong>参考 / Reference</strong><br>Forðast skal neyslu áfengis og lyf sem innihalda alkóhól.</p>
+<p><strong>Reference</strong><br>Forðast skal neyslu áfengis og lyf sem innihalda alkóhól.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Forðast skal neyslu áfengis og lyfja sem innihalda áfengi.</td><td>P</td><td>False</td><td>0.10986328125</td><td>Avoid both alcohol and medicines containing it; faithful.</td></tr>
 <tr><td>after</td><td>Forðast skal neyslu áfengis og lyfja sem innihalda áfengi.</td><td>P</td><td>False</td><td>0.10986328125</td><td>Avoid both alcohol and medicines containing it; faithful.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Forðast skal neyslu áfengis og lyfja sem innihalda áfengi.</td><td>P</td><td>False</td><td>0.10986328125</td><td>Avoid both alcohol and medicines containing it; faithful.</td></tr>
 <tr><td>1</td><td>Forðast skal neyslu áfengis og lyfja sem innihalda áfengi.</td><td>P</td><td>False</td><td>0.10986328125</td><td>Avoid both alcohol and medicines containing it; faithful.</td></tr>
 <tr><td>2</td><td>Forðast skal neyslu alkóhóls og lyfja sem innihalda alkóhóli.</td><td>P</td><td>False</td><td>0.0</td><td>Both alcohol consumption and alcohol-containing medicines avoided; minor case ending.</td></tr>
@@ -1394,7 +1392,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Forðast skal neyslu alkóhóls og lyfja sem innihalda alkóhol.</td><td>P</td><td>False</td><td>0.0</td><td>Alcohol and medicines containing alcohol avoided; minor spelling.</td></tr>
 <tr><td>1</td><td>Forðast skal neyslu alkóhóls og lyfja sem innihalda alkóhól.</td><td>P</td><td>False</td><td>0.0</td><td>Avoid alcohol and alcohol-containing medicines retained.</td></tr>
 <tr><td>2</td><td>Forðast skal neyslu alkóhóls og lyfja sem innihalda alkóhóli.</td><td>P</td><td>False</td><td>0.0</td><td>Both alcohol consumption and alcohol-containing medicines avoided; minor case ending.</td></tr>
@@ -1409,13 +1407,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>55 · general · p22official21:test:opensubtitles:354</summary>
 
-<p><strong>源文 / Source</strong><br>Hey, Johnny, I just had a great idea.</p>
+<p><strong>Source</strong><br>Hey, Johnny, I just had a great idea.</p>
 
-<p><strong>参考 / Reference</strong><br>Johnny, ég fékk frábæra hugmynd.</p>
+<p><strong>Reference</strong><br>Johnny, ég fékk frábæra hugmynd.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Johnny, ég átti frábær hugmynd.</td><td>P</td><td>False</td><td>2.421875</td><td>Speaker had a great idea, addressed to Johnny; critical meaning retained.</td></tr>
 <tr><td>after</td><td>Hey, Johnny, ég hef fengið frábær hugmynd.</td><td>P</td><td>False</td><td>3.03125</td><td>Johnny addressed and speaker just got a great idea; minor agreement.</td></tr>
 </tbody></table>
@@ -1424,13 +1422,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>56 · technical_long · p22official21:test:eea:1959</summary>
 
-<p><strong>源文 / Source</strong><br>Except as stated in paragraph 22A, a contract that will be settled by the entity (receiving or) delivering a fixed number of its own equity instruments in exchange for a fixed amount of cash or another financial asset is an equity instrument.</p>
+<p><strong>Source</strong><br>Except as stated in paragraph 22A, a contract that will be settled by the entity (receiving or) delivering a fixed number of its own equity instruments in exchange for a fixed amount of cash or another financial asset is an equity instrument.</p>
 
-<p><strong>参考 / Reference</strong><br>Að undanskildu því sem tekið er fram í lið 22A er samningur, sem einingin gerir upp með því að (taka við eða) afhenda fastan fjölda eiginfjárgerninga sinna í skiptum fyrir fasta fjárhæð handbærs fjár eða annarrar fjáreignar, eiginfjárgerningur.</p>
+<p><strong>Reference</strong><br>Að undanskildu því sem tekið er fram í lið 22A er samningur, sem einingin gerir upp með því að (taka við eða) afhenda fastan fjölda eiginfjárgerninga sinna í skiptum fyrir fasta fjárhæð handbærs fjár eða annarrar fjáreignar, eiginfjárgerningur.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Að undanskildum því sem kveðið er á um í lið 22A er samningur, sem einingur (einnig eða) gefur upp til borgaralegra fjárhagsafurða sína í tilhlýðilegu fjölda í skipti fyrir tilhlýðilega fjárhagslega fjárhagsaða, skilningarfjárhagsafurð.</td><td>F</td><td>False</td><td>17.375</td><td>Fixed number becomes suitable number and own equity instruments become civil financial products.</td></tr>
 <tr><td>after</td><td>Að undanskildum því sem kveðið er á um í lið 22A er samningur, sem einingur (sem fær eða gefur) fasta fjölda eigin reikningssjóða í skipti við fasta fjárhæð peninga eða annars fjárhagsaðstæða, reikningssjóð.</td><td>F</td><td>False</td><td>15.8125</td><td>Own equity instruments and equity classification become accounting funds.</td></tr>
 </tbody></table>
@@ -1439,13 +1437,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>57 · general · p22official21:test:opensubtitles:3625</summary>
 
-<p><strong>源文 / Source</strong><br>Max, is this just an excuse to grope Marcy?</p>
+<p><strong>Source</strong><br>Max, is this just an excuse to grope Marcy?</p>
 
-<p><strong>参考 / Reference</strong><br>Max, er þetta afsökun til að káfa á Marcy?</p>
+<p><strong>Reference</strong><br>Max, er þetta afsökun til að káfa á Marcy?</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Max, er þetta bara ábending til að ræða Marcy?</td><td>F</td><td>False</td><td>17.375</td><td>Excuse to grope becomes a hint to discuss Marcy.</td></tr>
 <tr><td>after</td><td>Max, er þetta bara ábending til að snúa Marcy?</td><td>F</td><td>False</td><td>16.0</td><td>Excuse to grope becomes a hint to turn/twist Marcy.</td></tr>
 </tbody></table>
@@ -1454,13 +1452,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>58 · general · p22official21:test:opensubtitles:3355</summary>
 
-<p><strong>源文 / Source</strong><br>He knows that Sicily, not Sardinia, has always been the key to Italy.</p>
+<p><strong>Source</strong><br>He knows that Sicily, not Sardinia, has always been the key to Italy.</p>
 
-<p><strong>参考 / Reference</strong><br>Hann veit að Sikiley, ekki Sardinía, er lykillinn að Ítalíu.</p>
+<p><strong>Reference</strong><br>Hann veit að Sikiley, ekki Sardinía, er lykillinn að Ítalíu.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Hann veit að Síklína, ekki Sardína, hefur alltaf verið lykillinn við Ítalíu.</td><td>U</td><td>False</td><td>2.125</td><td>Core contrast retained; nonstandard Sik lina/Sardina names need native geographical confirmation.</td></tr>
 <tr><td>after</td><td>Hann veit að Síklíu, ekki Sardíu, hefur alltaf verið lykillinn við Ítalíu.</td><td>U</td><td>False</td><td>5.15625</td><td>Contrast, knowledge and Italy relation retained; cannot certify nonstandard Sikliu/Sardiu island names.</td></tr>
 </tbody></table>
@@ -1469,20 +1467,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>59 · technical_medium · p22official21:test:eso:215</summary>
 
-<p><strong>源文 / Source</strong><br>It shows not just the brilliant massive stars, but hundreds of thousands of much fainter stars that were previously invisible.</p>
+<p><strong>Source</strong><br>It shows not just the brilliant massive stars, but hundreds of thousands of much fainter stars that were previously invisible.</p>
 
-<p><strong>参考 / Reference</strong><br>Á henni sjást ekki einungis skærar og massamiklar stjörnur heldur mörg hundruð þúsund miklu daufari stjörnur sem voru áður ósýnilegar.</p>
+<p><strong>Reference</strong><br>Á henni sjást ekki einungis skærar og massamiklar stjörnur heldur mörg hundruð þúsund miklu daufari stjörnur sem voru áður ósýnilegar.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Það sýnir ekki aðeins risastóru stjörnur, heldur hundruð þúsund stjarna sem voru fyrr ósýnilegar vegna þess að þær voru mjög þungar og daufar.</td><td>F</td><td>False</td><td>1.40625</td><td>Adds that faint stars were very heavy as a cause of invisibility.</td></tr>
 <tr><td>after</td><td>Það sýnir ekki aðeins skýjaða, massamikla stjörnur heldur hundruð þúsund minni stjörnur sem áður hafa ekki verið sýndar.</td><td>F</td><td>False</td><td>4.53125</td><td>Bright becomes cloudy and much fainter becomes smaller.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Það sýnir fyrir utan hálfu af ljósastjörnunum og alls mörgum hundruð þúsundum fjarlægari stjörnum sem áður voru ósjónleikandi.</td><td>F</td><td>False</td><td>12.375</td><td>Fainter becomes farther away and bright massive stars are altered.</td></tr>
 <tr><td>1</td><td>Það sýnir ekki því bara bjartar stórstjörnur, heldur hundruð þúsund fyrir sig örlítið stjörnur sem því áður hafa ekki sést.</td><td>F</td><td>False</td><td>7.15625</td><td>Much fainter becomes tiny individual stars.</td></tr>
 <tr><td>2</td><td>Það sýnir ekki aðeins kastaloðan sterkir stjörnur heldur þúsundir okkar þunga minni stjörnur sem hafa áður verið ósýnilegar.</td><td>F</td><td>False</td><td>12.75</td><td>Hundreds of thousands becomes thousands; massive/brightness descriptions corrupted.</td></tr>
@@ -1495,7 +1493,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Það sýnir ekki aðeins skýjaða meginstirnastjörnur heldur hundruð þúsund fjarlægari stjörnur sem hafa áður verið ósýrnar.</td><td>F</td><td>False</td><td>5.875</td><td>Bright massive becomes cloudy and fainter becomes farther away.</td></tr>
 <tr><td>1</td><td>Það sýnir ekki aðeins sköftan massamiklar stjörnur heldur hundruð þúsund næmir stjörnur sem voru fyrr ósýnilegar.</td><td>F</td><td>False</td><td>7.28125</td><td>Fainter becomes sensitive stars rather than lower luminosity.</td></tr>
 <tr><td>2</td><td>Það sýnir ekki aðeins kraftlega stjörnur, heldur mun hundruð þúsund minnkaðra stjarna sem voru fyrr ósíðum.</td><td>F</td><td>False</td><td>14.375</td><td>Fainter becomes reduced/smaller stars, changing brightness into size.</td></tr>
@@ -1510,20 +1508,20 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>60 · technical_medium · p22official21:test:eea:1272</summary>
 
-<p><strong>源文 / Source</strong><br>The Commission shall make available to the Agency any information the latter considers relevant to that evaluation.</p>
+<p><strong>Source</strong><br>The Commission shall make available to the Agency any information the latter considers relevant to that evaluation.</p>
 
-<p><strong>参考 / Reference</strong><br>Framkvæmdastjórnin skal láta stofnuninni í té hvers kyns upplýsingar sem stofnunin telur að skipti máli í tengslum við matið.</p>
+<p><strong>Reference</strong><br>Framkvæmdastjórnin skal láta stofnuninni í té hvers kyns upplýsingar sem stofnunin telur að skipti máli í tengslum við matið.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Framkvæmdastjórnin skal gera stofnuninni aðgang að allar upplýsingar sem síðari er átt að gera að því er varðar þessa mat.</td><td>F</td><td>False</td><td>6.84375</td><td>Agency relevance judgement becomes a meant-to-do construction.</td></tr>
 <tr><td>after</td><td>Framkvæmdastjórnin skal gera stofnuninni aðgang að allar upplýsingar sem síðara er átt að gera ráð fyrir þeirri mat.</td><td>F</td><td>False</td><td>6.90625</td><td>Agency considering information relevant is replaced by a meant-to-assume phrase.</td></tr>
 </tbody></table>
 
 <p><strong>before · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Framkvæmdastjórnin skal gera boðsveit fyrirtækið allar upplýsingar sem síðara stofnunin telur skipta máli fyrir þessa mati.</td><td>F</td><td>False</td><td>10.375</td><td>Recipient agency becomes messenger company.</td></tr>
 <tr><td>1</td><td>Framkvæmdastjórnin skal gera stofnuninni aðgang að allri þeirri upplýsingum sem síðari er, sem hún telur skipta máli við þessa mat.</td><td>P</td><td>False</td><td>7.375</td><td>Commission gives Agency access to all information it considers relevant to evaluation; minor grammar/redundancy.</td></tr>
 <tr><td>2</td><td>Framkvæmdastjórnin skal gera starfsmann flugöryggisstofnunarinnar aðgengileg öllum upplýsingum sem síðari eru að hlýtur að því er varðar mat á því.</td><td>F</td><td>False</td><td>12.6875</td><td>Adds an aviation-safety-agency employee instead of the source Agency.</td></tr>
@@ -1536,7 +1534,7 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <p><strong>after · G8</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>0</td><td>Framkvæmdastjórnin skal gera boðsveit fyrirtækið allar upplýsingar sem síðara skýrar er skýra að þessari mati.</td><td>F</td><td>False</td><td>16.125</td><td>Agency becomes messenger company and relevance relationship is corrupted.</td></tr>
 <tr><td>1</td><td>Framkvæmdastjórnin skal gera stofnuninni fyrirboð á allar upplýsingar sem síðara kynna mikilvægar fyrir þá mat sem gerð er á.</td><td>F</td><td>False</td><td>7.5</td><td>Making information available becomes a foreboding/notice construction and agency relevance judgement lost.</td></tr>
 <tr><td>2</td><td>Framkvæmdastjórnin skal gera starfsmann sá aðil aðgerðarmyndunar aðgengileg aðferðaráðstofnuninni allar upplýsingar sem síðara er teljast hafa mikilvægi vegna þessarar matar.</td><td>F</td><td>False</td><td>15.375</td><td>Adds staff/action-formation actors and corrupts the recipient-agency relationship.</td></tr>
@@ -1551,13 +1549,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>61 · technical_long · p22official21:test:eea:1608</summary>
 
-<p><strong>源文 / Source</strong><br>Taking account of national legislation, activities will aim to complement the existing actions by improving cooperation with domain name registries in Member States, and encouraging positive relationships with registries outside the EU to enable earlier detection of potentially illegal content and minimise the longevity of websites known to offer child sexual abuse content.</p>
+<p><strong>Source</strong><br>Taking account of national legislation, activities will aim to complement the existing actions by improving cooperation with domain name registries in Member States, and encouraging positive relationships with registries outside the EU to enable earlier detection of potentially illegal content and minimise the longevity of websites known to offer child sexual abuse content.</p>
 
-<p><strong>参考 / Reference</strong><br>Að teknu tilliti til landslöggjafar skulu aðgerðir miða að því að vera til fyllingar fyrirliggjandi aðgerðum með auknu samstarfi við skráningarstöðvar yfir lénsheiti í aðildarríkjunum, og verða hvatning til árangursríks sambands við skráningarstöðvar utan Evrópusambandsins svo að unnt verði að fylgjast með innihaldi sem hugsanlega er ólöglegt og lágmarka líftíma vefsetra sem vitað er að bjóða efni þar sem börn eru misnotuð kynferðislega.</p>
+<p><strong>Reference</strong><br>Að teknu tilliti til landslöggjafar skulu aðgerðir miða að því að vera til fyllingar fyrirliggjandi aðgerðum með auknu samstarfi við skráningarstöðvar yfir lénsheiti í aðildarríkjunum, og verða hvatning til árangursríks sambands við skráningarstöðvar utan Evrópusambandsins svo að unnt verði að fylgjast með innihaldi sem hugsanlega er ólöglegt og lágmarka líftíma vefsetra sem vitað er að bjóða efni þar sem börn eru misnotuð kynferðislega.</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Að teknu tilliti til landslöggjafar verða starfsemi að munur að því að bæta áfram þær aðgerðir sem þegar eru með því að bæta samstarf við skráningarstofur á landsvæðum og að hvetja til þess að þeirri samfélagsi sem eru við stofur utan ESB geti komið snemma í veg fyrir að greinist hafi af hugsanlega ólöglegri innihaldi og minnka það tíma sem búnaður á vefjum sem eru þekktur og eru tilgreindir sem gefa kynslóðaæskileika barna.</td><td>F</td><td>False</td><td>21.0</td><td>Domain-name registries lost; early detection becomes preventing detection and child-abuse-content meaning corrupted.</td></tr>
 <tr><td>after</td><td>Að teknu tilliti til landslaga mun starfsemi vera að marka að auka þær aðgerðir sem liggja fyrir með að bæta samstarf við skráningarkerfi í aðildarríkjum og hvetja til aðstoðar við samstarf við skráningarkerfi utan EB til að greiða fyrir snemmingu á hugsanlega ólöglegu innihaldi og minnka þann tíma sem vefseti sem vita að bjóða upp kynslaómesi fyrir barni sé áframhaldandi.</td><td>F</td><td>False</td><td>17.375</td><td>Domain-name registry specificity and child sexual-abuse-content meaning are not retained.</td></tr>
 </tbody></table>
@@ -1566,13 +1564,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>62 · general · p22official21:test:opensubtitles:1892</summary>
 
-<p><strong>源文 / Source</strong><br>You mean the other one&#x27;s here too?</p>
+<p><strong>Source</strong><br>You mean the other one&#x27;s here too?</p>
 
-<p><strong>参考 / Reference</strong><br>Áttu við að hinn sé líka hér?</p>
+<p><strong>Reference</strong><br>Áttu við að hinn sé líka hér?</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Ertu að segja að hún sé hérna líka?</td><td>F</td><td>False</td><td>18.0</td><td>The other one becomes merely she, losing the distinguishing other-person relation.</td></tr>
 <tr><td>after</td><td>Ætlaðir þið að hin sé hérna líka?</td><td>F</td><td>False</td><td>5.21875</td><td>Do you mean becomes did you intend, changing interpretation into intention.</td></tr>
 </tbody></table>
@@ -1581,13 +1579,13 @@ before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX
 
 <details><summary>63 · technical_short · p22official21:test:ema:1466</summary>
 
-<p><strong>源文 / Source</strong><br>Each capsule contains 80 mg of sucrose (in the 80 mg capsule).</p>
+<p><strong>Source</strong><br>Each capsule contains 80 mg of sucrose (in the 80 mg capsule).</p>
 
-<p><strong>参考 / Reference</strong><br>Hvert hylki inniheldur 80 mg af súkrósa (í 80 mg hylkinu).</p>
+<p><strong>Reference</strong><br>Hvert hylki inniheldur 80 mg af súkrósa (í 80 mg hylkinu).</p>
 
-<p><strong>贪心生成 / Greedy</strong></p>
+<p><strong>Greedy</strong></p>
 
-<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<table><thead><tr><th>Model/draw</th><th>Translation</th><th>Semantic grade</th><th>Truncated</th><th>MetricX error ↓</th><th>Semantic note</th></tr></thead><tbody>
 <tr><td>before</td><td>Hvert hylki inniheldur 80 mg af súkrósa (í 80 mg hylkinu).</td><td>P</td><td>False</td><td>0.0031280517578125</td><td>Each capsule, 80 mg sucrose and parenthetical 80 mg capsule all retained.</td></tr>
 <tr><td>after</td><td>Hvert hylki inniheldur 80 mg af súkrósa (í 80 mg hylkinu).</td><td>P</td><td>False</td><td>0.0031280517578125</td><td>Each capsule, 80 mg sucrose and parenthetical 80 mg capsule all retained.</td></tr>
 </tbody></table>

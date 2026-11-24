@@ -47,7 +47,7 @@
       "reference_chrfpp": 71.75145362637859,
       "metricx_qe": 0.34638354182243347,
       "actual_reward": 0.9861446583271026,
-      "note_zh": "奖励选中项。G8 选中项使用非标准形式“þýst”，参考 oracle 把“翻译”变成了另一动词“tölja”。补充贪心输出却与参考完全一致：基础能力已改善，但 T=1 的这8次采样没有复现该正确句。高 chrF 或高奖励都不能单独证明动词正确。",
+      "note_zh": "Reward-selected. The selected G8 output has the nonstandard form þýst; the reference oracle instead uses tölja, changing the key verb. Greedy decoding exactly matches the reference, so capability has improved but these eight T=1 samples fail to reproduce that correct sentence. High reference overlap or reward alone does not certify the verb.",
       "note_en": "Reward-selected. The selected G8 output has the nonstandard form þýst; the reference oracle instead uses tölja, changing the key verb. Greedy decoding exactly matches the reference, so capability has improved but these eight T=1 samples fail to reproduce that correct sentence. High reference overlap or reward alone does not certify the verb.",
       "show_in_report": true
     },
@@ -62,7 +62,7 @@
       "reference_chrfpp": 73.70714010067145,
       "metricx_qe": 7.164074897766113,
       "actual_reward": 0.7134370040893554,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。G8 选中项使用非标准形式“þýst”，参考 oracle 把“翻译”变成了另一动词“tölja”。补充贪心输出却与参考完全一致：基础能力已改善，但 T=1 的这8次采样没有复现该正确句。高 chrF 或高奖励都不能单独证明动词正确。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. The G8 reward choice uses nonstandard þýst; the reference oracle changes translate to tölja. Supplementary greedy exactly matches the reference: base ability improves, but these eight T=1 draws fail to reproduce it. High chrF/reward alone cannot establish a correct verb.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. The selected G8 output has the nonstandard form þýst; the reference oracle instead uses tölja, changing the key verb. Greedy decoding exactly matches the reference, so capability has improved but these eight T=1 samples fail to reproduce that correct sentence. High reference overlap or reward alone does not certify the verb.",
       "show_in_report": false
     },
@@ -77,7 +77,7 @@
       "reference_chrfpp": 65.65391310095664,
       "metricx_qe": 0.25968068838119507,
       "actual_reward": 0.9896127724647522,
-      "note_zh": "奖励选中项。候选保留“关门”的核心，但“Mal”等变形及语法问题仍在。比完全无关的句子更接近目标，尚不是规范冰岛语；不将此例计为母语者确认的正确翻译。",
+      "note_zh": "Reward-selected. The candidates preserve the core door-closing action, with malformed words such as Mal and grammatical issues. This is closer than unrelated output but is not certified fluent Icelandic.",
       "note_en": "Reward-selected. The candidates preserve the core door-closing action, with malformed words such as Mal and grammatical issues. This is closer than unrelated output but is not certified fluent Icelandic.",
       "show_in_report": true
     },
@@ -92,7 +92,7 @@
       "reference_chrfpp": 17.79502929478249,
       "metricx_qe": 16.537342071533203,
       "actual_reward": 0.33850631713867185,
-      "note_zh": "奖励选中项。“数学家是诗人、必须证明想象所创造之物”的关系没有被可靠保留，内容词和句法大量变形。参考 oracle 也不是语义金标准。",
+      "note_zh": "Reward-selected candidate. The mathematician-as-poet/proving-what-imagination-creates relationship is not faithfully retained; content words and syntax are heavily distorted. The reference oracle is not semantic ground truth either.",
       "note_en": "Reward-selected. The relation between mathematicians, poets, proof and imagination is not reliably preserved; content words and syntax are heavily malformed. The reference oracle is not a semantic gold standard.",
       "show_in_report": false
     },
@@ -107,7 +107,7 @@
       "reference_chrfpp": 31.341521192898604,
       "metricx_qe": 19.36626434326172,
       "actual_reward": 0.22534942626953125,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。“数学家是诗人、必须证明想象所创造之物”的关系没有被可靠保留，内容词和句法大量变形。参考 oracle 也不是语义金标准。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. The mathematician-as-poet/proving-what-imagination-creates relationship is not faithfully retained; content words and syntax are heavily distorted.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. The relation between mathematicians, poets, proof and imagination is not reliably preserved; content words and syntax are heavily malformed. The reference oracle is not a semantic gold standard.",
       "show_in_report": false
     },
@@ -122,7 +122,7 @@
       "reference_chrfpp": 23.633632302365143,
       "metricx_qe": 22.40688705444336,
       "actual_reward": 0.10372451782226566,
-      "note_zh": "奖励选中项。源文是碳水化合物、脑功能与130 g摄入要求；候选出现药物/心脏等不相干或变形内容。复制130 g不等于保留论点。",
+      "note_zh": "Reward-selected. The source concerns carbohydrates, brain function and a130g intake requirement; candidates contain unrelated or malformed drug/heart content. Copying130g does not preserve the proposition.",
       "note_en": "Reward-selected. The source concerns carbohydrates, brain function and a130g intake requirement; candidates contain unrelated or malformed drug/heart content. Copying130g does not preserve the proposition.",
       "show_in_report": true
     },
@@ -137,7 +137,7 @@
       "reference_chrfpp": 24.190975839586184,
       "metricx_qe": 25.0,
       "actual_reward": 0.0,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。源文是碳水化合物、脑功能与130 g摄入要求；候选出现药物/心脏等不相干或变形内容。复制130 g不等于保留论点。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. The source concerns carbohydrates, brain function and130g intake. The candidate introduces unrelated drug/heart material. Copying130g does not preserve the argument.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. The source concerns carbohydrates, brain function and a130g intake requirement; candidates contain unrelated or malformed drug/heart content. Copying130g does not preserve the proposition.",
       "show_in_report": false
     },
@@ -152,7 +152,7 @@
       "reference_chrfpp": 17.543783490838607,
       "metricx_qe": 9.33103084564209,
       "actual_reward": 0.6267587661743164,
-      "note_zh": "奖励选中项。8个候选中未见清楚表达“被解雇”的rekinn或可确认的等义表达。奖励选中项使用slökkt，贪心也是slökkvaður；仍存在关键动词错误。chrF oracle 的relstoðinn也不能据形似判为正确。",
+      "note_zh": "Reward-selected. None of the eight inspected candidates clearly expresses dismissal from employment with rekinn or a confirmed equivalent. The reward choice uses slökkt and greedy uses slökkvaður, retaining a key-verb error. The oracle’s relstoðinn cannot be accepted merely for its spelling overlap.",
       "note_en": "Reward-selected. None of the eight inspected candidates clearly expresses dismissal from employment with rekinn or a confirmed equivalent. The reward choice uses slökkt and greedy uses slökkvaður, retaining a key-verb error. The oracle’s relstoðinn cannot be accepted merely for its spelling overlap.",
       "show_in_report": true
     },
@@ -167,7 +167,7 @@
       "reference_chrfpp": 59.16440191350711,
       "metricx_qe": 9.493337631225586,
       "actual_reward": 0.6202664947509766,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。8个候选中未见清楚表达“被解雇”的rekinn或可确认的等义表达。奖励选中项使用slökkt，贪心也是slökkvaður；仍存在关键动词错误。chrF oracle 的relstoðinn也不能据形似判为正确。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. None of eight candidates clearly expresses fired via rekinn or a confirmed equivalent. Reward selection uses slökkt; greedy uses slökkvaður. Critical verb errors remain. The oracle's relstoðinn cannot be judged correct from superficial resemblance.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. None of the eight inspected candidates clearly expresses dismissal from employment with rekinn or a confirmed equivalent. The reward choice uses slökkt and greedy uses slökkvaður, retaining a key-verb error. The oracle’s relstoðinn cannot be accepted merely for its spelling overlap.",
       "show_in_report": false
     },
@@ -182,7 +182,7 @@
       "reference_chrfpp": 30.81154301805079,
       "metricx_qe": 19.468914031982422,
       "actual_reward": 0.22124343872070318,
-      "note_zh": "奖励选中项。法律依据、不同主管机关的分歧与协助达成协议的条件被删改或混乱。保留部分条款号和格式不构成完整翻译。",
+      "note_zh": "Reward-selected. The legal authority, disagreement between competent authorities and conditions for assistance are omitted or confused. Retaining some article numbers and formatting is insufficient.",
       "note_en": "Reward-selected. The legal authority, disagreement between competent authorities and conditions for assistance are omitted or confused. Retaining some article numbers and formatting is insufficient.",
       "show_in_report": true
     },
@@ -197,7 +197,7 @@
       "reference_chrfpp": 35.4671510865149,
       "metricx_qe": 19.475738525390625,
       "actual_reward": 0.22097045898437495,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。法律依据、不同主管机关的分歧与协助达成协议的条件被删改或混乱。保留部分条款号和格式不构成完整翻译。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. The legal basis, disagreement between competent authorities and conditions for helping agreement are omitted/altered/confused. Clause numbers and formatting do not constitute a complete translation.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. The legal authority, disagreement between competent authorities and conditions for assistance are omitted or confused. Retaining some article numbers and formatting is insufficient.",
       "show_in_report": false
     },
@@ -212,7 +212,7 @@
       "reference_chrfpp": 18.60482545686526,
       "metricx_qe": 24.95355224609375,
       "actual_reward": 0.001857910156250031,
-      "note_zh": "奖励选中项。社会经济、三个优先主题与可持续发展之间的关系没有形成可辨认的忠实译文；分数接近QE上限错误区。",
+      "note_zh": "Reward-selected candidate. Social economy, three priority themes and sustainable development do not form an identifiable faithful translation; the QE error is near its upper limit.",
       "note_en": "Reward-selected. The relation between socioeconomic aspects, three priority themes and sustainable development is not rendered recognizably faithfully; QE is near its error ceiling.",
       "show_in_report": false
     },
@@ -227,7 +227,7 @@
       "reference_chrfpp": 21.51063192705916,
       "metricx_qe": 25.0,
       "actual_reward": 0.0,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。社会经济、三个优先主题与可持续发展之间的关系没有形成可辨认的忠实译文；分数接近QE上限错误区。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. Social economy, three priority themes and sustainable development are not faithfully related; QE error is near its upper limit.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. The relation between socioeconomic aspects, three priority themes and sustainable development is not rendered recognizably faithfully; QE is near its error ceiling.",
       "show_in_report": false
     },
@@ -242,7 +242,7 @@
       "reference_chrfpp": 21.371773136212028,
       "metricx_qe": 12.73488998413086,
       "actual_reward": 0.4906044006347656,
-      "note_zh": "奖励选中项。严重皮疹及肝转氨酶升高等关键医学概念没有可靠保留。出现若干“副作用”相关字形，不足以表示医学含义正确。",
+      "note_zh": "Reward-selected candidate. Severe rash and increased hepatic transaminases are not reliably retained. A few side-effect-like word forms do not establish correct medical meaning.",
       "note_en": "Reward-selected. Key concepts such as serious rashes and hepatic transaminase elevations are not reliably preserved. Partial adverse-effect word overlap does not establish medical-semantic adequacy.",
       "show_in_report": false
     },
@@ -257,7 +257,7 @@
       "reference_chrfpp": 26.034636650253212,
       "metricx_qe": 16.302627563476562,
       "actual_reward": 0.3478948974609375,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。严重皮疹及肝转氨酶升高等关键医学概念没有可靠保留。出现若干“副作用”相关字形，不足以表示医学含义正确。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. Severe rash and increased hepatic transaminases are not reliably retained. Side-effect-like word forms do not establish medical correctness.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. Key concepts such as serious rashes and hepatic transaminase elevations are not reliably preserved. Partial adverse-effect word overlap does not establish medical-semantic adequacy.",
       "show_in_report": false
     },
@@ -272,7 +272,7 @@
       "reference_chrfpp": 53.55813508465883,
       "metricx_qe": 4.34153938293457,
       "actual_reward": 0.8263384246826172,
-      "note_zh": "奖励选中项。考试、第一道题等局部信息保留，但“为什么漏答”的动作表达变形。不能将约54分参考相似度当作语义已完全保留。",
+      "note_zh": "Reward-selected candidate. Exam/first-question details remain, but the action in why it was left unanswered is distorted. Reference similarity near54 does not establish full semantic retention.",
       "note_en": "Reward-selected. The exam and first-question fragments survive, while the action of leaving out the question is malformed. A reference score around54 is not complete adequacy.",
       "show_in_report": false
     },
@@ -287,7 +287,7 @@
       "reference_chrfpp": 55.3918692570936,
       "metricx_qe": 6.965288162231445,
       "actual_reward": 0.7213884735107422,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。考试、第一道题等局部信息保留，但“为什么漏答”的动作表达变形。不能将约54分参考相似度当作语义已完全保留。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. Exam/first-question details remain, but why it was left unanswered is distorted. Similarity near54 does not establish full semantic retention.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. The exam and first-question fragments survive, while the action of leaving out the question is malformed. A reference score around54 is not complete adequacy.",
       "show_in_report": false
     },
@@ -302,7 +302,7 @@
       "reference_chrfpp": 36.40530085199103,
       "metricx_qe": 10.356201171875,
       "actual_reward": 0.585751953125,
-      "note_zh": "奖励选中项。条件、否定和“借口”有部分保留，“信守承诺”的内容仍不完整或变形；检查全部8项也未见可确认的完整忠实译文。",
+      "note_zh": "Reward-selected. The conditional, negation and excuse are partly retained, while keeping a promise remains incomplete or malformed. Inspection of all eight did not identify a clearly faithful full rendering.",
       "note_en": "Reward-selected. The conditional, negation and excuse are partly retained, while keeping a promise remains incomplete or malformed. Inspection of all eight did not identify a clearly faithful full rendering.",
       "show_in_report": true
     },
@@ -317,7 +317,7 @@
       "reference_chrfpp": 70.60875581338696,
       "metricx_qe": 3.7091856002807617,
       "actual_reward": 0.8516325759887695,
-      "note_zh": "奖励选中项。相对旧SFT的“房间很危险”，新选中项更接近“房间很热”，但heyt仍非参考中的规范heitt。贪心输出把房间改成房子。应承认相对进步，也保留词义/词形问题。",
+      "note_zh": "Reward-selected. Relative to the old “dangerous room” output, the new choice is closer to a hot room, but heyt remains nonstandard relative to heitt. Greedy changes room to house. This is relative progress with residual lexical/form errors.",
       "note_en": "Reward-selected. Relative to the old “dangerous room” output, the new choice is closer to a hot room, but heyt remains nonstandard relative to heitt. Greedy changes room to house. This is relative progress with residual lexical/form errors.",
       "show_in_report": true
     },
@@ -332,7 +332,7 @@
       "reference_chrfpp": 38.48994979291554,
       "metricx_qe": 1.311493992805481,
       "actual_reward": 0.9475402402877807,
-      "note_zh": "奖励选中项。年龄近似关系部分可辨认，但候选表达和格变化不规范。参考oracle与奖励选择不同，单凭参考分差不能判定哪一句母语质量更好。",
+      "note_zh": "Reward-selected candidate. Approximate age is partly identifiable, but wording/case are nonstandard. The reference oracle and reward choose differently; their reference-score difference alone cannot rank native-language quality.",
       "note_en": "Reward-selected. The approximate-age relation is partly recognizable, with nonstandard phrasing and inflection. The oracle/reward disagreement alone does not establish native-speaker preference.",
       "show_in_report": false
     },
@@ -347,7 +347,7 @@
       "reference_chrfpp": 53.73224101768117,
       "metricx_qe": 16.727895736694336,
       "actual_reward": 0.3308841705322265,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。年龄近似关系部分可辨认，但候选表达和格变化不规范。参考oracle与奖励选择不同，单凭参考分差不能判定哪一句母语质量更好。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. Approximate age is partly identifiable, but wording/case are nonstandard. A score difference from the reward choice does not determine native-language quality.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. The approximate-age relation is partly recognizable, with nonstandard phrasing and inflection. The oracle/reward disagreement alone does not establish native-speaker preference.",
       "show_in_report": false
     },
@@ -362,7 +362,7 @@
       "reference_chrfpp": 20.97396023222922,
       "metricx_qe": 14.850187301635742,
       "actual_reward": 0.4059925079345703,
-      "note_zh": "奖励选中项。源文是课程由两个可单独或合并修读的模块构成；候选把核心名词变为不可靠表达。保留“两个/单独/一起”不足以覆盖核心概念。",
+      "note_zh": "Reward-selected. The source describes two course modules that can be taken separately or together; core nouns are unreliable. Retaining two/separate/together is insufficient.",
       "note_en": "Reward-selected. The source describes two course modules that can be taken separately or together; core nouns are unreliable. Retaining two/separate/together is insufficient.",
       "show_in_report": true
     },
@@ -377,7 +377,7 @@
       "reference_chrfpp": 25.768846399218504,
       "metricx_qe": 19.520347595214844,
       "actual_reward": 0.21918609619140628,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。源文是课程由两个可单独或合并修读的模块构成；候选把核心名词变为不可靠表达。保留“两个/单独/一起”不足以覆盖核心概念。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. The course has two modules that can be taken separately or together; the candidate mistranslates the central nouns. Retaining two/separately/together is insufficient.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. The source describes two course modules that can be taken separately or together; core nouns are unreliable. Retaining two/separate/together is insufficient.",
       "show_in_report": false
     },
@@ -388,11 +388,11 @@
       "candidate_index": 1,
       "source": "A pensioner who is entitled to draw pensions under the legislation of two or more Member States, of which one is that of the Member State in whose territory he resides, and who is entitled to benefits under the legislation of the latter Member State, taking account where appropriate of the provisions of Article 18 and Annex VI, shall, with the members of his family, receive such benefits from the institution of the place of residence and at the expense of that institution as though the person concerned were a pensioner whose pension was payable solely under the legislation of the latter Member State.",
       "reference": "Lífeyrisþegi sem á rétt á lífeyri samkvæmt löggjöf tveggja eða fleiri aðildarríkja, að meðtalinni löggjöf þess aðildarríkis sem hann er búsettur í, þar sem hann á rétt á bótum samkvæmt löggjöf þess ríkis, með tilliti til ákvæða 18. gr. og VI. viðauka eftir því sem við á, skal, ásamt aðstandendum, fá bætur frá stofnun á búsetustaðnum og á kostnað hennar eins og sá sem í hlut á væri lífeyrisþegi sem ætti eingöngu rétt á lífeyri samkvæmt löggjöf þess ríkis.",
-      "hypothesis": "ægis, eigi annað deki, beffa, eigi trágar, þess vegna um annað deki,óm annað trávgar, er eigi að af einnig þeim vekni sem fást í þann eðlilega málinum í henni eigi hafnina hafa að klára með vörum, búnaðum ásamt hvers konar efleikar, og ná MINHARA sem Einar er, með það að ræninni efnið að því á að það, eigi að sami mótiri, leyfi skuldbótaniques landprofoss að eftir sína hafi eigi sáu á eðli þess sem eigi að eftir sem ein生物质 er efsluð fyrir hverjum.",
+      "hypothesis": "ægis, eigi annað deki, beffa, eigi trágar, þess vegna um annað deki,óm annað trávgar, er eigi að af einnig þeim vekni sem fást í þann eðlilega málinum í henni eigi hafnina hafa að klára með vörum, búnaðum ásamt hvers konar efleikar, og ná MINHARA sem Einar er, með það að ræninni efnið að því á að það, eigi að sami mótiri, leyfi skuldbótaniques landprofoss að eftir sína hafi eigi sáu á eðli þess sem eigi að eftir sem ein[biomass] er efsluð fyrir hverjum.",
       "reference_chrfpp": 20.379265259430486,
       "metricx_qe": 25.0,
       "actual_reward": 0.0,
-      "note_zh": "奖励选中项。源文的养老金权利、居住地机构与承担费用的关系未被可靠保留，且候选含跨文字系统混写。本组奖励全零，展示项只是固定种子的并列代表，不是有效选优。",
+      "note_zh": "Reward-selected candidate. Pension rights, the institution at the place of residence and cost liability are not faithfully related; scripts are mixed. All rewards are zero, so the displayed item is only a fixed-seed tie representative, not effective selection.",
       "note_en": "Reward-selected. Pension entitlements, residence institutions and liability for costs are not reliably preserved, with script intrusions. This all-zero-reward group displays a seeded tie representative, not successful ranking.",
       "show_in_report": false
     },
@@ -407,7 +407,7 @@
       "reference_chrfpp": 34.27407692794178,
       "metricx_qe": 25.0,
       "actual_reward": 0.0,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。源文的养老金权利、居住地机构与承担费用的关系未被可靠保留，且候选含跨文字系统混写。本组奖励全零，展示项只是固定种子的并列代表，不是有效选优。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. Pension rights, the residence institution and cost liability are not faithfully related; scripts are mixed. All rewards are zero; the displayed tie representative is not effective selection.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. Pension entitlements, residence institutions and liability for costs are not reliably preserved, with script intrusions. This all-zero-reward group displays a seeded tie representative, not successful ranking.",
       "show_in_report": false
     },
@@ -422,7 +422,7 @@
       "reference_chrfpp": 22.10840419535063,
       "metricx_qe": 14.502001762390137,
       "actual_reward": 0.4199199295043945,
-      "note_zh": "奖励选中项。极高剂量、夸大药理作用、血液黏度增加与灌注下降的因果链没有可靠表达。词形相似不能替代因果关系保真。",
+      "note_zh": "Reward-selected candidate. Very high doses→exaggerated pharmacology→increased blood viscosity→reduced perfusion is not faithfully expressed. Similar word forms cannot replace causal fidelity.",
       "note_en": "Reward-selected. The causal chain involving very high doses, pharmacological effects, viscosity and perfusion is unreliable. Similar-looking words do not establish causal fidelity.",
       "show_in_report": false
     },
@@ -437,7 +437,7 @@
       "reference_chrfpp": 24.42204105502216,
       "metricx_qe": 24.40444564819336,
       "actual_reward": 0.02382217407226561,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。极高剂量、夸大药理作用、血液黏度增加与灌注下降的因果链没有可靠表达。词形相似不能替代因果关系保真。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. The very-high-dose/pharmacology/viscosity/perfusion causal chain is not faithful; word-form resemblance does not establish it.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. The causal chain involving very high doses, pharmacological effects, viscosity and perfusion is unreliable. Similar-looking words do not establish causal fidelity.",
       "show_in_report": false
     },
@@ -452,7 +452,7 @@
       "reference_chrfpp": 33.480577670316904,
       "metricx_qe": 11.833720207214355,
       "actual_reward": 0.5266511917114258,
-      "note_zh": "奖励选中项。药名Tafinlar和6个月得以保留，较旧案例的药名幻觉有局部进步；但开始用药前、用药期间每月、停药后6个月的时间安排被漏掉或改变。",
+      "note_zh": "Reward-selected. Tafinlar and six months survive, a local improvement over the prior name hallucination, but the before-treatment/monthly-during-treatment/six-months-after schedule is omitted or altered.",
       "note_en": "Reward-selected. Tafinlar and six months survive, a local improvement over the prior name hallucination, but the before-treatment/monthly-during-treatment/six-months-after schedule is omitted or altered.",
       "show_in_report": true
     },
@@ -467,7 +467,7 @@
       "reference_chrfpp": 42.977509966419255,
       "metricx_qe": 21.8912353515625,
       "actual_reward": 0.12435058593750004,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。药名Tafinlar和6个月得以保留，较旧案例的药名幻觉有局部进步；但开始用药前、用药期间每月、停药后6个月的时间安排被漏掉或改变。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. Tafinlar and six months remain, improving locally over earlier drug-name hallucinations. However, the schedule before starting, monthly during treatment and six months after stopping is omitted/altered.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. Tafinlar and six months survive, a local improvement over the prior name hallucination, but the before-treatment/monthly-during-treatment/six-months-after schedule is omitted or altered.",
       "show_in_report": false
     },
@@ -482,7 +482,7 @@
       "reference_chrfpp": 20.995354908164423,
       "metricx_qe": 25.0,
       "actual_reward": 0.0,
-      "note_zh": "奖励选中项。投诉管理规则、电话/邮件/传真与处理流程大量缺失或变形。本组全零奖励，不能将并列代表解释为可靠MetricX选择。",
+      "note_zh": "Reward-selected candidate. Complaint-management rules, telephone/email/fax and handling procedures are heavily omitted/distorted. All rewards are zero; the tied representative does not demonstrate reliable MetricX selection.",
       "note_en": "Reward-selected. Complaint-management rules, contact channels and handling procedures are largely missing or malformed. This all-zero group does not demonstrate reliable MetricX selection.",
       "show_in_report": false
     },
@@ -497,7 +497,7 @@
       "reference_chrfpp": 27.540930292533478,
       "metricx_qe": 25.0,
       "actual_reward": 0.0,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。投诉管理规则、电话/邮件/传真与处理流程大量缺失或变形。本组全零奖励，不能将并列代表解释为可靠MetricX选择。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. Complaint rules, communication channels and handling procedures are heavily omitted/distorted. All rewards are zero, so the tie representative is not reliable MetricX selection.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. Complaint-management rules, contact channels and handling procedures are largely missing or malformed. This all-zero group does not demonstrate reliable MetricX selection.",
       "show_in_report": false
     },
@@ -512,7 +512,7 @@
       "reference_chrfpp": 46.051417240682206,
       "metricx_qe": 11.628095626831055,
       "actual_reward": 0.5348761749267579,
-      "note_zh": "奖励选中项。长假、立即辞职、环游世界的连续事件未被完整保留；候选虽有相似句框，仍有关键事件错译/删改。",
+      "note_zh": "Reward-selected. The sequence of a long holiday, immediately quitting and travelling around the world is not intact. Similar sentence framing conceals event errors and omissions.",
       "note_en": "Reward-selected. The sequence of a long holiday, immediately quitting and travelling around the world is not intact. Similar sentence framing conceals event errors and omissions.",
       "show_in_report": true
     },
@@ -527,7 +527,7 @@
       "reference_chrfpp": 48.016527870808304,
       "metricx_qe": 13.281901359558105,
       "actual_reward": 0.46872394561767583,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。长假、立即辞职、环游世界的连续事件未被完整保留；候选虽有相似句框，仍有关键事件错译/删改。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. The sequence of a long vacation, immediate resignation and world travel is incomplete. A similar sentence frame still contains critical event errors/omissions.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. The sequence of a long holiday, immediately quitting and travelling around the world is not intact. Similar sentence framing conceals event errors and omissions.",
       "show_in_report": false
     },
@@ -542,7 +542,7 @@
       "reference_chrfpp": 34.5155103036796,
       "metricx_qe": 8.188164710998535,
       "actual_reward": 0.6724734115600586,
-      "note_zh": "奖励选中项。Nancy保留，但“班里最高的女孩”的名词与最高级表达严重变形；不能仅凭名字与句型判定有效翻译。",
+      "note_zh": "Reward-selected candidate. Nancy remains, but the noun/superlative in the tallest girl in class is severely distorted. A name and sentence pattern do not establish a valid translation.",
       "note_en": "Reward-selected. Nancy is retained, but tallest girl in her class is heavily malformed. A preserved name and sentence frame do not establish adequacy.",
       "show_in_report": false
     },
@@ -557,7 +557,7 @@
       "reference_chrfpp": 35.07651905344584,
       "metricx_qe": 17.956459045410156,
       "actual_reward": 0.28174163818359377,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。Nancy保留，但“班里最高的女孩”的名词与最高级表达严重变形；不能仅凭名字与句型判定有效翻译。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. Nancy remains, but the tallest girl in class has severely distorted nouns/superlatives; the name/pattern is insufficient.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. Nancy is retained, but tallest girl in her class is heavily malformed. A preserved name and sentence frame do not establish adequacy.",
       "show_in_report": false
     },
@@ -572,7 +572,7 @@
       "reference_chrfpp": 27.178729799445378,
       "metricx_qe": 7.9860920906066895,
       "actual_reward": 0.6805563163757324,
-      "note_zh": "奖励选中项。Skurðlæknirinn对应外科医生，但“说服我接受器官移植”的核心内容未可靠保留，出现混合或伪词。",
+      "note_zh": "Reward-selected candidate. Skurðlæknirinn denotes surgeon, but persuading me to undergo an organ transplant is not faithfully retained; mixed forms/pseudowords appear.",
       "note_en": "Reward-selected. Skurðlæknirinn preserves surgeon, but persuasion and undergoing an organ transplant are unreliable, with mixed or invented words.",
       "show_in_report": false
     },
@@ -587,7 +587,7 @@
       "reference_chrfpp": 29.243237092971686,
       "metricx_qe": 25.0,
       "actual_reward": 0.0,
-      "note_zh": "奖励选中项。生物杀灭产品、活性物质退出审查、成员国必要使用及期限条件未可靠保留，候选含跨文字混写。本组全零，不能用其并列项证明排序能力。",
+      "note_zh": "Reward-selected candidate. Biocidal products, withdrawal of active substances from review, member-state essential use and deadlines are not faithfully retained; scripts are mixed. All rewards are zero, so tied items do not establish ranking ability.",
       "note_en": "Reward-selected. Biocidal products, review exclusion, essential national use and time limits are unreliable, with script mixing. All rewards are zero, so the tie representative is not ranking evidence.",
       "show_in_report": false
     },
@@ -602,7 +602,7 @@
       "reference_chrfpp": 32.097697805816075,
       "metricx_qe": 25.0,
       "actual_reward": 0.0,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。生物杀灭产品、活性物质退出审查、成员国必要使用及期限条件未可靠保留，候选含跨文字混写。本组全零，不能用其并列项证明排序能力。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. Biocidal products, review withdrawal, essential use and deadlines are not faithful; scripts are mixed. All-zero tied items do not establish ranking ability.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. Biocidal products, review exclusion, essential national use and time limits are unreliable, with script mixing. All rewards are zero, so the tie representative is not ranking evidence.",
       "show_in_report": false
     },
@@ -617,7 +617,7 @@
       "reference_chrfpp": 23.15582564270858,
       "metricx_qe": 24.434612274169922,
       "actual_reward": 0.022615509033203085,
-      "note_zh": "奖励选中项。不得再投资、现金等价物的例外、短结算期及利息归属等约束不完整或混乱；极小的非零奖励只表示数值有差异。",
+      "note_zh": "Reward-selected. The reinvestment prohibition, cash-equivalent exception, settlement period and interest allocation are incomplete or confused. A tiny nonzero reward establishes numerical variation only.",
       "note_en": "Reward-selected. The reinvestment prohibition, cash-equivalent exception, settlement period and interest allocation are incomplete or confused. A tiny nonzero reward establishes numerical variation only.",
       "show_in_report": true
     },
@@ -628,11 +628,11 @@
       "candidate_index": 5,
       "source": "In addition, the entity is not entitled to reinvest such cash flows, except for investments in cash or cash equivalents (as defined in IAS 7 Cash-flow statements) during the short settlement period from the collection date to the date of required remittance to the eventual recipients, and interest earned on such investments is passed to the eventual recipients.",
       "reference": "Auk þess hefur einingin ekki rétt á að endurfjárfesta þess háttar sjóðstreymi ef undan eru skildar fjárfestingar í handbæru fé eða ígildi handbærs fjár (eins og það er skilgreint í IAS-staðli 7, yfirlit um sjóðstreymi) á því stutta greiðslutímabili frá innheimtudegi til þess dags þegar krafist er greiðslu til endanlegra viðtakenda, og vextir sem safnast á slíkar fjárfestingar greiðast endanlegum viðtakendum.",
-      "hypothesis": "Auk þessar ábyrgyðingarmáli er staðbót ekki hægt að endurvirkja slíkur reiknáðgaríðæði, að því er varðar investir í reiknangörva, sjálfbæjar eða sjálfbæjarþrýstingar (sjálfbæjarþrýstingar sem klárnar eru á á FSB tilskilstarkenjum, í SBK), sem eru samþekkir í IAS 7 útgjörðarskírtni skj之分ningaraðgerða, í togimarkenforminum og efrainvintum þáreikunin er lýst til gagnafelaðra profunda.",
+      "hypothesis": "Auk þessar ábyrgyðingarmáli er staðbót ekki hægt að endurvirkja slíkur reiknáðgaríðæði, að því er varðar investir í reiknangörva, sjálfbæjar eða sjálfbæjarþrýstingar (sjálfbæjarþrýstingar sem klárnar eru á á FSB tilskilstarkenjum, í SBK), sem eru samþekkir í IAS 7 útgjörðarskírtni skj[division of]ningaraðgerða, í togimarkenforminum og efrainvintum þáreikunin er lýst til gagnafelaðra profunda.",
       "reference_chrfpp": 23.57403464871756,
       "metricx_qe": 25.0,
       "actual_reward": 0.0,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。不得再投资、现金等价物的例外、短结算期及利息归属等约束不完整或混乱；极小的非零奖励只表示数值有差异。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. No-reinvestment rules, the cash-equivalent exception, short settlement and interest allocation are incomplete/confused. Tiny nonzero rewards show only numerical differences.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. The reinvestment prohibition, cash-equivalent exception, settlement period and interest allocation are incomplete or confused. A tiny nonzero reward establishes numerical variation only.",
       "show_in_report": false
     },
@@ -647,7 +647,7 @@
       "reference_chrfpp": 41.111010969757096,
       "metricx_qe": 1.6064403057098389,
       "actual_reward": 0.9357423877716065,
-      "note_zh": "奖励选中项。“事先消除全部危险”的关键动作和宾语变形。选中项QE错误仅约1.61，显示评分器可对不可靠词义给出很高奖励。",
+      "note_zh": "Reward-selected candidate. Eliminating all hazards beforehand has distorted action/object. QE error is only about1.61, illustrating high reward for unreliable lexical meaning.",
       "note_en": "Reward-selected. The action/object in eliminating all danger beforehand are malformed. QE error near1.61 shows that unreliable lexical meaning can still receive high reward.",
       "show_in_report": false
     },
@@ -662,7 +662,7 @@
       "reference_chrfpp": 44.687855730057564,
       "metricx_qe": 13.364023208618164,
       "actual_reward": 0.46543907165527343,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。“事先消除全部危险”的关键动作和宾语变形。选中项QE错误仅约1.61，显示评分器可对不可靠词义给出很高奖励。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. Eliminating all hazards beforehand has distorted action/object despite selected QE error near1.61; high reward can accompany unreliable semantics.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. The action/object in eliminating all danger beforehand are malformed. QE error near1.61 shows that unreliable lexical meaning can still receive high reward.",
       "show_in_report": false
     },
@@ -677,7 +677,7 @@
       "reference_chrfpp": 27.07213815683105,
       "metricx_qe": 18.417551040649414,
       "actual_reward": 0.2632979583740235,
-      "note_zh": "奖励选中项。章节号4.1.3.4/4.1.3.5保留，但混合物急/慢性毒性数据不足、桥接原则或加和方法等核心术语未可靠保留。",
+      "note_zh": "Reward-selected. Section numbers survive, while missing acute/chronic mixture data and bridging/summation terminology do not reliably survive.",
       "note_en": "Reward-selected. Section numbers survive, while missing acute/chronic mixture data and bridging/summation terminology do not reliably survive.",
       "show_in_report": true
     },
@@ -692,7 +692,7 @@
       "reference_chrfpp": 34.02917676229572,
       "metricx_qe": 19.234825134277344,
       "actual_reward": 0.23060699462890621,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。章节号4.1.3.4/4.1.3.5保留，但混合物急/慢性毒性数据不足、桥接原则或加和方法等核心术语未可靠保留。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. Sections4.1.3.4/4.1.3.5 remain, but insufficient acute/chronic mixture toxicity data, bridging principles and additivity methods are not faithfully retained.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. Section numbers survive, while missing acute/chronic mixture data and bridging/summation terminology do not reliably survive.",
       "show_in_report": false
     },
@@ -707,7 +707,7 @@
       "reference_chrfpp": 22.700940457704924,
       "metricx_qe": 1.689186453819275,
       "actual_reward": 0.932432541847229,
-      "note_zh": "奖励选中项。“解决问题”的核心谓词/宾语并未可靠表达，QE错误却只有约1.69（奖励约0.93）。这是需要校准评分器的具体反例。",
+      "note_zh": "Reward-selected. Solving the problem is not reliably rendered, yet QE error is only about1.69(reward about0.93). This is a concrete scorer-calibration counterexample.",
       "note_en": "Reward-selected. Solving the problem is not reliably rendered, yet QE error is only about1.69(reward about0.93). This is a concrete scorer-calibration counterexample.",
       "show_in_report": true
     },
@@ -722,7 +722,7 @@
       "reference_chrfpp": 36.19767486469579,
       "metricx_qe": 5.112536430358887,
       "actual_reward": 0.7954985427856445,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。“解决问题”的核心谓词/宾语并未可靠表达，QE错误却只有约1.69（奖励约0.93）。这是需要校准评分器的具体反例。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. Solving the problem has an unreliable central predicate/object, yet QE error is about1.69, reward about0.93. This is a concrete scorer-calibration counterexample.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. Solving the problem is not reliably rendered, yet QE error is only about1.69(reward about0.93). This is a concrete scorer-calibration counterexample.",
       "show_in_report": false
     },
@@ -737,7 +737,7 @@
       "reference_chrfpp": 36.75473287077733,
       "metricx_qe": 11.908884048461914,
       "actual_reward": 0.5236446380615234,
-      "note_zh": "奖励选中项。条款号和五年保留，特殊操作的要求及“生效后最迟五年”关系仍不完整。数字一致不是完整语义一致。",
+      "note_zh": "Reward-selected candidate. Clause numbers and five years remain, but special-operation requirements and no later than five years after entry into force are incomplete. Numeric agreement is not full semantic agreement.",
       "note_en": "Reward-selected. Clause numbers and five years survive, while manoeuvre requirements and the no-later-than relation to entry into force remain incomplete. Number overlap is not full fidelity.",
       "show_in_report": false
     },
@@ -752,7 +752,7 @@
       "reference_chrfpp": 41.43306802382397,
       "metricx_qe": 16.40212059020996,
       "actual_reward": 0.3439151763916015,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。条款号和五年保留，特殊操作的要求及“生效后最迟五年”关系仍不完整。数字一致不是完整语义一致。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. Clause numbers/five years remain, but special operations and the effective-date deadline are incomplete. Numeric agreement is not full semantic agreement.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. Clause numbers and five years survive, while manoeuvre requirements and the no-later-than relation to entry into force remain incomplete. Number overlap is not full fidelity.",
       "show_in_report": false
     },
@@ -767,7 +767,7 @@
       "reference_chrfpp": 33.54756852364123,
       "metricx_qe": 21.24302864074707,
       "actual_reward": 0.15027885437011723,
-      "note_zh": "奖励选中项。公司、成员国和市场等局部词形保留，但上市股份、对等披露和估值条件的关系混乱。",
+      "note_zh": "Reward-selected candidate. Some company/member-state/market word forms remain, but listed shares, equivalent disclosure and valuation conditions are confused.",
       "note_en": "Reward-selected. Some company/member-state/market fragments survive, but listed shares, equivalent disclosure and valuation conditions are confused.",
       "show_in_report": false
     },
@@ -782,7 +782,7 @@
       "reference_chrfpp": 25.718947175595414,
       "metricx_qe": 6.174076557159424,
       "actual_reward": 0.753036937713623,
-      "note_zh": "奖励选中项。地名近似保留，“穆斯林国家”的关键表达变形或混入英文片段；高于旧模型的字形分不代表整句规范。",
+      "note_zh": "Reward-selected candidate. Place names approximately remain, but Muslim country is distorted or mixed with English. Higher character overlap than older models does not establish a well-formed sentence.",
       "note_en": "Reward-selected. The country name is approximately preserved, while Muslim country is malformed or mixed with English. Better character overlap does not establish a correct sentence.",
       "show_in_report": false
     },
@@ -797,7 +797,7 @@
       "reference_chrfpp": 34.39207297697863,
       "metricx_qe": 14.080183029174805,
       "actual_reward": 0.43679267883300776,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。地名近似保留，“穆斯林国家”的关键表达变形或混入英文片段；高于旧模型的字形分不代表整句规范。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. Place names approximately remain, but Muslim country is distorted/mixed with English. Higher overlap does not establish a correct sentence.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. The country name is approximately preserved, while Muslim country is malformed or mixed with English. Better character overlap does not establish a correct sentence.",
       "show_in_report": false
     },
@@ -812,7 +812,7 @@
       "reference_chrfpp": 29.029594160523644,
       "metricx_qe": 0.1700999140739441,
       "actual_reward": 0.9931960034370423,
-      "note_zh": "奖励选中项。奖励选中项大体保留“不知道该做什么”的含义，但存在格/表达问题。参考oracle分更高却使用不可靠的greiðu；本例说明较低chrF的意译可能在语义上更接近。",
+      "note_zh": "Reward-selected. The reward choice broadly conveys not knowing what to do, with grammatical issues. The higher-chrF oracle uses unreliable greiðu; this illustrates why a lower-overlap paraphrase may be semantically closer.",
       "note_en": "Reward-selected. The reward choice broadly conveys not knowing what to do, with grammatical issues. The higher-chrF oracle uses unreliable greiðu; this illustrates why a lower-overlap paraphrase may be semantically closer.",
       "show_in_report": true
     },
@@ -827,7 +827,7 @@
       "reference_chrfpp": 35.10812053279865,
       "metricx_qe": 2.888465404510498,
       "actual_reward": 0.8844613838195801,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。奖励选中项大体保留“不知道该做什么”的含义，但存在格/表达问题。参考oracle分更高却使用不可靠的greiðu；本例说明较低chrF的意译可能在语义上更接近。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. The reward choice broadly retains not knowing what to do, with case/wording issues. The higher-chrF oracle uses unreliable greiðu, showing that a lower-chrF paraphrase can be semantically closer.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. The reward choice broadly conveys not knowing what to do, with grammatical issues. The higher-chrF oracle uses unreliable greiðu; this illustrates why a lower-overlap paraphrase may be semantically closer.",
       "show_in_report": false
     },
@@ -842,7 +842,7 @@
       "reference_chrfpp": 52.74785874021845,
       "metricx_qe": 7.029828071594238,
       "actual_reward": 0.7188068771362305,
-      "note_zh": "奖励选中项。通知、信息和符合某种要求的框架保留，但“完整并符合事实”的关键内容不够可靠（如fullgingu、gerðirnar）。52.75分仍不等于法律语义正确。",
+      "note_zh": "Reward-selected. The notification/information/compliance frame survives, but completeness and factual accuracy remain unreliable(e.g.fullgingu/gerðirnar). A52.75score is not legal-semantic correctness.",
       "note_en": "Reward-selected. The notification/information/compliance frame survives, but completeness and factual accuracy remain unreliable(e.g.fullgingu/gerðirnar). A52.75score is not legal-semantic correctness.",
       "show_in_report": true
     },
@@ -857,7 +857,7 @@
       "reference_chrfpp": 22.266602645995086,
       "metricx_qe": 22.255535125732422,
       "actual_reward": 0.10977859497070308,
-      "note_zh": "奖励选中项。牛/羊/山羊、第三国进口、卫生证书与主管机关签署声明等关键实体和条件未被可靠保留。",
+      "note_zh": "Reward-selected. Bovine/ovine/caprine material, third-country imports, health certificates and competent-authority declarations are not reliably preserved.",
       "note_en": "Reward-selected. Bovine/ovine/caprine material, third-country imports, health certificates and competent-authority declarations are not reliably preserved.",
       "show_in_report": true
     },
@@ -872,7 +872,7 @@
       "reference_chrfpp": 34.30149605969671,
       "metricx_qe": 25.0,
       "actual_reward": 0.0,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。牛/羊/山羊、第三国进口、卫生证书与主管机关签署声明等关键实体和条件未被可靠保留。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. Cattle/sheep/goats, third-country imports, health certificates and competent-authority signed declarations are not faithfully retained.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. Bovine/ovine/caprine material, third-country imports, health certificates and competent-authority declarations are not reliably preserved.",
       "show_in_report": false
     },
@@ -887,7 +887,7 @@
       "reference_chrfpp": 17.820008105653265,
       "metricx_qe": 20.669511795043945,
       "actual_reward": 0.17321952819824216,
-      "note_zh": "奖励选中项。南极臭氧洞与另需六十年的关键事实丢失或变形；参考oracle还出现不同年数及混合词。",
+      "note_zh": "Reward-selected. The Antarctic ozone hole and another sixty years are lost or distorted; the oracle also contains different time references and mixed words.",
       "note_en": "Reward-selected. The Antarctic ozone hole and another sixty years are lost or distorted; the oracle also contains different time references and mixed words.",
       "show_in_report": true
     },
@@ -902,7 +902,7 @@
       "reference_chrfpp": 33.59349362967778,
       "metricx_qe": 25.0,
       "actual_reward": 0.0,
-      "note_zh": "参考 chrF oracle；并非语义 oracle。南极臭氧洞与另需六十年的关键事实丢失或变形；参考oracle还出现不同年数及混合词。",
+      "note_zh": "Reference-chrF oracle, not a semantic oracle. The Antarctic ozone hole and another sixty years are lost/distorted; the oracle also changes years and mixes word forms.",
       "note_en": "Reference-chrF oracle, not a semantic oracle. The Antarctic ozone hole and another sixty years are lost or distorted; the oracle also contains different time references and mixed words.",
       "show_in_report": false
     }

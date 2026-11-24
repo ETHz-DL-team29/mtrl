@@ -1,0 +1,118 @@
+{
+  "encoding": "base64 of original UTF-8 strings",
+  "source_commit": "f82bd685352c5f64b69ce1c6b080592ede059c97",
+  "strings": [
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/reports/r0_v2_2026-11-12/R0_V2_SOURCE_REVIEW_2026-11-12.json",
+      "location": "/examples/23/hypothesis",
+      "original_sha256": "791df7320fab69949a0df1f2100a0e4faf1a59577b6c56f693f13fa484e2c276",
+      "original_utf8_base64": "w6ZnaXMsIGVpZ2kgYW5uYcOwIGRla2ksIGJlZmZhLCBlaWdpIHRyw6FnYXIsIMO+ZXNzIHZlZ25hIHVtIGFubmHDsCBkZWtpLMOzbSBhbm5hw7AgdHLDoXZnYXIsIGVyIGVpZ2kgYcOwIGFmIGVpbm5pZyDDvmVpbSB2ZWtuaSBzZW0gZsOhc3Qgw60gw75hbm4gZcOwbGlsZWdhIG3DoWxpbnVtIMOtIGhlbm5pIGVpZ2kgaGFmbmluYSBoYWZhIGHDsCBrbMOhcmEgbWXDsCB2w7ZydW0sIGLDum5hw7B1bSDDoXNhbXQgaHZlcnMga29uYXIgZWZsZWlrYXIsIG9nIG7DoSBNSU5IQVJBIHNlbSBFaW5hciBlciwgbWXDsCDDvmHDsCBhw7AgcsOmbmlubmkgZWZuacOwIGHDsCDDvnbDrSDDoSBhw7Agw75hw7AsIGVpZ2kgYcOwIHNhbWkgbcOzdGlyaSwgbGV5Zmkgc2t1bGRiw7N0YW5pcXVlcyBsYW5kcHJvZm9zcyBhw7AgZWZ0aXIgc8OtbmEgaGFmaSBlaWdpIHPDoXUgw6EgZcOwbGkgw75lc3Mgc2VtIGVpZ2kgYcOwIGVmdGlyIHNlbSBlaW7nlJ/nianotKggZXIgZWZzbHXDsCBmeXJpciBodmVyanVtLg==",
+      "english_display_sha256": "38df900788f362922315c196124b65ce523076d881b44de2635ea736731c361c"
+    },
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/reports/r0_v2_2026-11-12/R0_V2_SOURCE_REVIEW_2026-11-12.json",
+      "location": "/examples/39/hypothesis",
+      "original_sha256": "28133f678534834cd1dee8b790bf2a81b207a872dc574c42ced5362feef5fb88",
+      "original_utf8_base64": "QXVrIMO+ZXNzYXIgw6FieXJnecOwaW5nYXJtw6FsaSBlciBzdGHDsGLDs3QgZWtraSBow6ZndCBhw7AgZW5kdXJ2aXJramEgc2zDrWt1ciByZWlrbsOhw7BnYXLDrcOww6bDsGksIGHDsCDDvnbDrSBlciB2YXLDsGFyIGludmVzdGlyIMOtIHJlaWtuYW5nw7ZydmEsIHNqw6FsZmLDpmphciBlw7BhIHNqw6FsZmLDpmphcsO+csO9c3RpbmdhciAoc2rDoWxmYsOmamFyw75yw71zdGluZ2FyIHNlbSBrbMOhcm5hciBlcnUgw6Egw6EgRlNCIHRpbHNraWxzdGFya2VuanVtLCDDrSBTQkspLCBzZW0gZXJ1IHNhbcO+ZWtraXIgw60gSUFTIDcgw7p0Z2rDtnLDsGFyc2vDrXJ0bmkgc2tq5LmL5YiGbmluZ2FyYcOwZ2Vyw7BhLCDDrSB0b2dpbWFya2VuZm9ybWludW0gb2cgZWZyYWludmludHVtIMO+w6FyZWlrdW5pbiBlciBsw71zdCB0aWwgZ2FnbmFmZWxhw7ByYSBwcm9mdW5kYS4=",
+      "english_display_sha256": "a9ccd0300a5529fa55421e64e29686520dda8b33233b21ee39af00e453a4be01"
+    },
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/runs/r0_3b_coverage_sft_2026-11-20/exported/run/evaluation/after_g8.jsonl",
+      "location": "/54/outputs/7/raw_output",
+      "original_sha256": "4257a640d88cf330830ae2e451146960a20e95394a12bee4f3de2ad688e5831e",
+      "original_utf8_base64": "THlucGFyemEgZXIgw6Z0bGHDsCB0aWwgZWlubHlmamFtZcOwZmVyw7BhciB2acOwIHZpw7BoYWxkc21lw7BmZXLDsCBoasOhIGZ1bGxvcsOwbnVtIHNqw7prbGluZ3VtIG1lw7AgYnLDrXNpbnMtIGhqw6F0cnVzw7ZndSAoZ2VybWxpbi0gb2cvZcOwYSBsw61rYW1hbnMpIMOzaGVpbGJyaWfDsGEgc2Vyw61za3JpIMOmZ2lzaGFsZG5hIGt5cm5pbmdhc2rDumtkw7NtcyDDrSBtYWdhLCBreXJuaW5nYXNsYWdhc2xhZywgZcOwYSBncnVubmtsw61udmVpcnUgc2rDumtkw7NtcyBtZcOwIGtyeXBpciAoa29taW5uIMOtIGZ1bGxhbmxlZ3UgKHZpw7BmdWxsYW5sZWdhKSBlw7BhIGhsdXRmYWxsc2xlZ2FuICh2acOwaGx1dGZhbGxzbGVnYW4pIHN2w7ZydW4pIGZyw6HmjqXnp43ljJbnlpdwbGF0aW4u",
+      "english_display_sha256": "ae7e657e58adc3fd141b285ee00725ca0edc4106e6cd07c019cd85a27539517b"
+    },
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/runs/r0_3b_coverage_sft_2026-11-20/exported/run/evaluation/after_g8.jsonl",
+      "location": "/54/outputs/7/hypothesis",
+      "original_sha256": "4257a640d88cf330830ae2e451146960a20e95394a12bee4f3de2ad688e5831e",
+      "original_utf8_base64": "THlucGFyemEgZXIgw6Z0bGHDsCB0aWwgZWlubHlmamFtZcOwZmVyw7BhciB2acOwIHZpw7BoYWxkc21lw7BmZXLDsCBoasOhIGZ1bGxvcsOwbnVtIHNqw7prbGluZ3VtIG1lw7AgYnLDrXNpbnMtIGhqw6F0cnVzw7ZndSAoZ2VybWxpbi0gb2cvZcOwYSBsw61rYW1hbnMpIMOzaGVpbGJyaWfDsGEgc2Vyw61za3JpIMOmZ2lzaGFsZG5hIGt5cm5pbmdhc2rDumtkw7NtcyDDrSBtYWdhLCBreXJuaW5nYXNsYWdhc2xhZywgZcOwYSBncnVubmtsw61udmVpcnUgc2rDumtkw7NtcyBtZcOwIGtyeXBpciAoa29taW5uIMOtIGZ1bGxhbmxlZ3UgKHZpw7BmdWxsYW5sZWdhKSBlw7BhIGhsdXRmYWxsc2xlZ2FuICh2acOwaGx1dGZhbGxzbGVnYW4pIHN2w7ZydW4pIGZyw6HmjqXnp43ljJbnlpdwbGF0aW4u",
+      "english_display_sha256": "ae7e657e58adc3fd141b285ee00725ca0edc4106e6cd07c019cd85a27539517b"
+    },
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/runs/r0_3b_recovery_sft_2026-11-21/exported/run/evaluation/dev_t1983726.jsonl",
+      "location": "/103/raw_output",
+      "original_sha256": "1363e8e1244e6f2777d35b3ade4766286eba1fe1f9ac8d81be116d20b09c753b",
+      "original_utf8_base64": "w40gc2vDvXJzbHVubmkgdW0gZnJhbWt2w6ZtZCDDoWt2YXLDsGFuYSB1bSBzdGHDsGxhw7Agc2FtbmluZ3NlaW5rZW5uaSBmeXJpciBzZW5kaW5ndSBwZXJzw7NudXVwcGzDvXNpbmdhIHRpbCDDvnJpw7BqdSBsYW5kYSB2YXIgcsOhw7BsYWd0IGHDsCBrb21hIMOhIGbDs3QgdmnDsGVpZ2FuZGkgc3Rhw7BsYcOwdW0gc2FtbmluZ3NlaW5rZW5udW0gZnlyaXIgc8Otw7Bhcmkgc2VuZGluZ2FyIGZyw6EgZ2FnbmHDtui/kOi9rHNldHR1IHNlbSBoZWZ1ciBzdGHDsGZlc3Qgw60gw75yacOwamEgbGFuZGkgdGlsIGFubmFycyBnYWduYcO26L+Q6L2sc2V0dGEgKGlubi0gb2cgYWZ0dXJnYWduYcO26L+Q6L2sc2V0dGEpLCB0aWwgYcOwIHRha2EgdGlsbGl0IHRpbCBmeXJpcnTDpmtpc3N0asOzcm5hciBvZyBzdGFyZnN2ZW5qdXIgdGlsIGHDsCBoYWZhIGhsacOwc2rDs24gYWYgbWVpcmEgb2cgbWVpcmEgYWzDvmrDs8OwbGVncmkgZ2FnbmHDtui/kOi9rHZlcmtpLg==",
+      "english_display_sha256": "a2f1c4c79de8e35803da28c4524bd27b63870e0cd258ca9ef964d378e429ce65"
+    },
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/runs/r0_3b_recovery_sft_2026-11-21/exported/run/evaluation/dev_t1983726.jsonl",
+      "location": "/103/hypothesis",
+      "original_sha256": "1363e8e1244e6f2777d35b3ade4766286eba1fe1f9ac8d81be116d20b09c753b",
+      "original_utf8_base64": "w40gc2vDvXJzbHVubmkgdW0gZnJhbWt2w6ZtZCDDoWt2YXLDsGFuYSB1bSBzdGHDsGxhw7Agc2FtbmluZ3NlaW5rZW5uaSBmeXJpciBzZW5kaW5ndSBwZXJzw7NudXVwcGzDvXNpbmdhIHRpbCDDvnJpw7BqdSBsYW5kYSB2YXIgcsOhw7BsYWd0IGHDsCBrb21hIMOhIGbDs3QgdmnDsGVpZ2FuZGkgc3Rhw7BsYcOwdW0gc2FtbmluZ3NlaW5rZW5udW0gZnlyaXIgc8Otw7Bhcmkgc2VuZGluZ2FyIGZyw6EgZ2FnbmHDtui/kOi9rHNldHR1IHNlbSBoZWZ1ciBzdGHDsGZlc3Qgw60gw75yacOwamEgbGFuZGkgdGlsIGFubmFycyBnYWduYcO26L+Q6L2sc2V0dGEgKGlubi0gb2cgYWZ0dXJnYWduYcO26L+Q6L2sc2V0dGEpLCB0aWwgYcOwIHRha2EgdGlsbGl0IHRpbCBmeXJpcnTDpmtpc3N0asOzcm5hciBvZyBzdGFyZnN2ZW5qdXIgdGlsIGHDsCBoYWZhIGhsacOwc2rDs24gYWYgbWVpcmEgb2cgbWVpcmEgYWzDvmrDs8OwbGVncmkgZ2FnbmHDtui/kOi9rHZlcmtpLg==",
+      "english_display_sha256": "a2f1c4c79de8e35803da28c4524bd27b63870e0cd258ca9ef964d378e429ce65"
+    },
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/runs/r0_3b_round1_2026-11-17/analysis/G8_groups.json",
+      "location": "/15/conditions/old_SFT200/outputs/4/raw_output",
+      "original_sha256": "4b47b54e5c16d9f774476bfc3b5cf2a7afa126d286da0b921793084127c9c2c6",
+      "original_utf8_base64": "U2Ftc+S4uHQgw6EgYcOwIG5lZnJhIMOhaMOmdHR1bGVncmkgw6FmZW5naSDDrSDDvnJlbXVyIGhsdXR1bSBvZyBzYW1icmVpw7BzbHUgYWYgw75laW0gbWXDsCBhbG1lbm51IG3DoWxpw7AgdW0gc3TDtsOwdWd0IMO+csOzdW4u",
+      "english_display_sha256": "6331e630c432d4f55f9f389c284a81f18720f9277f7a17a470a4689f5981337d"
+    },
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/runs/r0_3b_round1_2026-11-17/analysis/G8_groups.json",
+      "location": "/15/conditions/old_SFT200/outputs/4/hypothesis",
+      "original_sha256": "4b47b54e5c16d9f774476bfc3b5cf2a7afa126d286da0b921793084127c9c2c6",
+      "original_utf8_base64": "U2Ftc+S4uHQgw6EgYcOwIG5lZnJhIMOhaMOmdHR1bGVncmkgw6FmZW5naSDDrSDDvnJlbXVyIGhsdXR1bSBvZyBzYW1icmVpw7BzbHUgYWYgw75laW0gbWXDsCBhbG1lbm51IG3DoWxpw7AgdW0gc3TDtsOwdWd0IMO+csOzdW4u",
+      "english_display_sha256": "6331e630c432d4f55f9f389c284a81f18720f9277f7a17a470a4689f5981337d"
+    },
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/runs/r0_3b_round1_2026-11-17/analysis/greedy128.json",
+      "location": "/58/conditions/initial_3B/hypothesis",
+      "original_sha256": "44762cc61a744e5cdaa87f424eeb559c8037e0ddd93a6f6201f74d784d632f6f",
+      "original_utf8_base64": "SHZhw7Dkuovmg4XnmbznlJ/lnKjpgqPpoYbph5HlrZDlv4PnmoTlppPlpbPouqvkuIrvvJ8=",
+      "english_display_sha256": "b5ea331e4941a815b74be08f32b3880e5736bf398a388529b29ff3666d1c39a9"
+    },
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/runs/r0_3b_round1_2026-11-17/exported/run/evaluation/initial_fp32_128.jsonl",
+      "location": "/58/raw_output",
+      "original_sha256": "44762cc61a744e5cdaa87f424eeb559c8037e0ddd93a6f6201f74d784d632f6f",
+      "original_utf8_base64": "SHZhw7Dkuovmg4XnmbznlJ/lnKjpgqPpoYbph5HlrZDlv4PnmoTlppPlpbPouqvkuIrvvJ8=",
+      "english_display_sha256": "b5ea331e4941a815b74be08f32b3880e5736bf398a388529b29ff3666d1c39a9"
+    },
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/runs/r0_3b_round1_2026-11-17/exported/run/evaluation/initial_fp32_128.jsonl",
+      "location": "/58/hypothesis",
+      "original_sha256": "44762cc61a744e5cdaa87f424eeb559c8037e0ddd93a6f6201f74d784d632f6f",
+      "original_utf8_base64": "SHZhw7Dkuovmg4XnmbznlJ/lnKjpgqPpoYbph5HlrZDlv4PnmoTlppPlpbPouqvkuIrvvJ8=",
+      "english_display_sha256": "b5ea331e4941a815b74be08f32b3880e5736bf398a388529b29ff3666d1c39a9"
+    },
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/runs/r0_technical_sft_2026-11-17/analysis/paired_G8_groups.json",
+      "location": "/15/conditions/SFT/outputs/4/raw_output",
+      "original_sha256": "4b47b54e5c16d9f774476bfc3b5cf2a7afa126d286da0b921793084127c9c2c6",
+      "original_utf8_base64": "U2Ftc+S4uHQgw6EgYcOwIG5lZnJhIMOhaMOmdHR1bGVncmkgw6FmZW5naSDDrSDDvnJlbXVyIGhsdXR1bSBvZyBzYW1icmVpw7BzbHUgYWYgw75laW0gbWXDsCBhbG1lbm51IG3DoWxpw7AgdW0gc3TDtsOwdWd0IMO+csOzdW4u",
+      "english_display_sha256": "6331e630c432d4f55f9f389c284a81f18720f9277f7a17a470a4689f5981337d"
+    },
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/runs/r0_technical_sft_2026-11-17/analysis/paired_G8_groups.json",
+      "location": "/15/conditions/SFT/outputs/4/hypothesis",
+      "original_sha256": "4b47b54e5c16d9f774476bfc3b5cf2a7afa126d286da0b921793084127c9c2c6",
+      "original_utf8_base64": "U2Ftc+S4uHQgw6EgYcOwIG5lZnJhIMOhaMOmdHR1bGVncmkgw6FmZW5naSDDrSDDvnJlbXVyIGhsdXR1bSBvZyBzYW1icmVpw7BzbHUgYWYgw75laW0gbWXDsCBhbG1lbm51IG3DoWxpw7AgdW0gc3TDtsOwdWd0IMO+csOzdW4u",
+      "english_display_sha256": "6331e630c432d4f55f9f389c284a81f18720f9277f7a17a470a4689f5981337d"
+    },
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/runs/r0_technical_sft_2026-11-17/exported/run/evaluation/g8_SFT.jsonl",
+      "location": "/15/outputs/4/raw_output",
+      "original_sha256": "4b47b54e5c16d9f774476bfc3b5cf2a7afa126d286da0b921793084127c9c2c6",
+      "original_utf8_base64": "U2Ftc+S4uHQgw6EgYcOwIG5lZnJhIMOhaMOmdHR1bGVncmkgw6FmZW5naSDDrSDDvnJlbXVyIGhsdXR1bSBvZyBzYW1icmVpw7BzbHUgYWYgw75laW0gbWXDsCBhbG1lbm51IG3DoWxpw7AgdW0gc3TDtsOwdWd0IMO+csOzdW4u",
+      "english_display_sha256": "6331e630c432d4f55f9f389c284a81f18720f9277f7a17a470a4689f5981337d"
+    },
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/runs/r0_technical_sft_2026-11-17/exported/run/evaluation/g8_SFT.jsonl",
+      "location": "/15/outputs/4/hypothesis",
+      "original_sha256": "4b47b54e5c16d9f774476bfc3b5cf2a7afa126d286da0b921793084127c9c2c6",
+      "original_utf8_base64": "U2Ftc+S4uHQgw6EgYcOwIG5lZnJhIMOhaMOmdHR1bGVncmkgw6FmZW5naSDDrSDDvnJlbXVyIGhsdXR1bSBvZyBzYW1icmVpw7BzbHUgYWYgw75laW0gbWXDsCBhbG1lbm51IG3DoWxpw7AgdW0gc3TDtsOwdWd0IMO+csOzdW4u",
+      "english_display_sha256": "6331e630c432d4f55f9f389c284a81f18720f9277f7a17a470a4689f5981337d"
+    },
+    {
+      "file": "results/local_translation_release_2026-11-24/project_snapshot/runs/r0_technical_sft_2026-11-17/t6_review_cards.json",
+      "location": "/15/B/4/text",
+      "original_sha256": "4b47b54e5c16d9f774476bfc3b5cf2a7afa126d286da0b921793084127c9c2c6",
+      "original_utf8_base64": "U2Ftc+S4uHQgw6EgYcOwIG5lZnJhIMOhaMOmdHR1bGVncmkgw6FmZW5naSDDrSDDvnJlbXVyIGhsdXR1bSBvZyBzYW1icmVpw7BzbHUgYWYgw75laW0gbWXDsCBhbG1lbm51IG3DoWxpw7AgdW0gc3TDtsOwdWd0IMO+csOzdW4u",
+      "english_display_sha256": "6331e630c432d4f55f9f389c284a81f18720f9277f7a17a470a4689f5981337d"
+    }
+  ]
+}

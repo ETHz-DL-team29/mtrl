@@ -1,14 +1,12 @@
 # FINAL — OWNED GPU RELEASED
 
-# 3B首轮完成 / First3B round complete — 2026-11-17
-
-首轮3B训练和诊断已完成，但未得到可替代旧0.8B的可靠综合R0；保留为实验候选，不晋升，不进入正式DAPO效率对比。
+# First3B round complete — 2026-11-17
 
 The first 3B training and diagnostic round is complete, but it has not produced a reliable broad R0 that replaces the old 0.8B checkpoint. Preserve it as an experimental candidate without promotion or formal DAPO efficiency comparisons.
 
 Report: D:\deep learning project\reports\r0_3b_round1_2026-11-17\R0_3B_ROUND1_RESULTS_2026-11-17.html
 
-GPU已释放；观测消耗 4.5975 CU。
+GPU released; observed usage4.5975CU.
 
 
 Historical notes below are stale.

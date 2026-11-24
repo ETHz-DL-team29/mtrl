@@ -89,19 +89,19 @@ tags:
 
 # {suffix}
 
-English→Icelandic research LoRA adapter / 英→冰岛语研究适配器 · 2026-11-24
+English→Icelandic research LoRA adapter
 
 This repository contains a LoRA delta, not standalone base weights. It can be loaded for inference or further adapter training. The required base is **{entry['base_model']}**, pinned to **{entry['base_revision']}**. Base-license metadata: **{entry['base_license']}**; see BASE_MODEL_LICENSE.md. No additional commercial permission or new project-wide license is asserted by this model card.
 
-该库只含适配器。基座、训练数据与项目授权条件继续适用；不是经认证的生产翻译系统，也不保证其他语言或任务能力。
+This repository contains adapters only. Base-model, training-data and project terms remain applicable. It is not a certified production translation system and does not guarantee other-language/task capability.
 
-## Load / 加载
+## Load
 
 See `load_example.py`. Authenticate with your own authorized Hugging Face account for private-repo access. The example reproduces the recorded-style FP32 path and needs enough GPU memory. Ordinary reduced-precision inference may use less memory but is not score-identical. No hosted inference service or paid endpoint was deployed.
 
 To continue training, set `is_trainable=True` when attaching this adapter to the same pinned base, then create your own optimizer. This is not an exact optimizer/RNG resume.
 
-## Evaluation / 结果
+## Evaluation
 
 '''
         if model_id == "qwen25-3b-dapo-shortmid":
@@ -112,7 +112,7 @@ To continue training, set `is_trainable=True` when attaching this adapter to the
             header += '''Preserved0.8B R0-v3 minimum-development-NLL adapter. Historical results are ParIce project holdouts and use different evaluation/selection settings. No matched WMT26 score is claimed for this adapter in the latest3B comparison. It is not the collaborator's multilingual isl/lij/lld model.\n\n'''
         header += f'''Full results/code are in the local mtrl project delivery. GitHub code publication is pending owner review; no GitHub push was performed during this model upload. See https://github.com/ETHz-DL-team29/mtrl for the project root, but do not assume the new local files are already published there.
 
-## Provenance / 出处
+## Provenance
 
 - Local registry ID: `{model_id}`
 - Adapter weight SHA256: `{entry['files']['adapter_model.safetensors']['sha256']}`

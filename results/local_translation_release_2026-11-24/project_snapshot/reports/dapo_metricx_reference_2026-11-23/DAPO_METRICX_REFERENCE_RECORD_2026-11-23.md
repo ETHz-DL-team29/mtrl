@@ -1,80 +1,56 @@
-# 固定 P18：参考式 MetricX DAPO 实验记录 / Fixed-P18 reference-MetricX DAPO experiment record
+# Fixed-P18 reference-MetricX DAPO experiment record
 
-日期 / Date: 2026-11-23 · Europe/Berlin
-
-**状态：数据与源码已准备；GPU 尚未成功分配；奖励校准及 DAPO 尚未执行。**
+Date: 2026-11-23 · Europe/Berlin
 
 **Status: data and source prepared; GPU allocation has not succeeded. Reward calibration and DAPO have not run.**
 
-本文件是准备和故障记录，不是训练结果报告；没有新 checkpoint，也没有本轮 chrF++、BLEU 或奖励排序结果。
-
 This is a preparation and connection-failure record, not a training-results report. No new checkpoint or new translation/reward-ranking measurements exist.
 
-## 目标与不可变条件 / Objective and fixed conditions
-
-继续使用通用模型 Qwen2.5-3B-Instruct 的现有 P18 SFT 基座，在英语→冰岛语技术翻译任务上，检验经过参考核查及离线奖励校准的 DAPO 是否有效。保留原 R0，本轮没有新 SFT、不换为专用翻译模型。
+## Objective and fixed conditions
 
 Use the existing P18 SFT checkpoint of general-purpose Qwen2.5-3B-Instruct to test calibrated DAPO for English→Icelandic technical translation. Preserve the original R0. No new SFT and no translation-specialist replacement model.
 
-用户授权上限六小时，准备、连接、训练、评估和保存均计入。开始计时：**2026-11-23 10:49:30 CET**；策略训练截止 **15:19:30 CET**；最终总截止 **16:49:30 CET**。分配失败或重连不会重置预算。未执行的工作不能算成训练时间。
-
 The six-hour user wall budget includes preparation, setup, training, evaluation and persistence. Anchor: **10:49:30 CET**; policy-training cutoff **15:19:30 CET**; absolute deadline **16:49:30 CET**. Allocation/reconnection does not reset it. Unexecuted work is not training time.
 
-原基座路径 / Original checkpoint:
+Original checkpoint:
 
 `D:\deep learning project\runs\r0_3b_recovery_sft_2026-11-21\final_selected_adapter`
 
-原 adapter SHA256 / Original adapter SHA256:
+Original adapter SHA256:
 
 `7f7a4914c5f403e757fdb882c3576ac68f2b0fa6edc00e537087716b28ddb07e`
 
-冻结输入时重新核对该 SHA256 一致。原文件未覆盖。基础模型 revision：`aa8e72537993ba99e69dfaafa59ed015b17504d1`；LoRA r64、alpha128。
-
 The adapter SHA256 was rechecked when inputs were frozen; original files were not overwritten. Base-model revision above, LoRA r64/alpha128.
 
-## 为什么继续做这一轮 / Why this round
-
-历史 P21 的同组128句 chrF++ 约49.401→49.887，95%配对变化区间跨零；BLEU约29.398→29.319。贪心语义通过来源20/64→23/64，而技术G=8中至少一个通过候选的来源10/32→8/32，技术长句为0/12→0/12。这是已有结果的背景摘要，不是本轮测量，也不能证明模型容量已达上限或必须继续SFT。完整来源为前一轮保存报告。
+## Why this round
 
 Historical P21 on the reused 128 sources gave chrF++ about49.401→49.887 with a paired interval spanning zero, and BLEU29.398→29.319. Same-assistant semantic source passes were20/64→23/64 for greedy and10/32→8/32 for technicalG8, with long sources0/12→0/12. This is historical context, not a new measurement or proof of a capacity ceiling/mandatory SFT.
 
-本轮扩大训练来源池、核查参考、建立新的分离评估来源，并先验证自动奖励。此前已经试过参考式MetricX；不能把“加入参考”包装成从未尝试的新方法。
-
 This round enlarges the source pool, audits references, uses separated evaluation sources and validates automatic rewards first. Reference-mode MetricX has already been tried historically; adding a reference is not presented as an unprecedented fix.
 
-## 数据来源与实际规模 / Data provenance and actual sizes
-
-训练来源取自现有 P18 生产 SFT 分区17,911对，不引入 WMT 测试集。主要为 ParIce21.10 的 EMA、EEA、ESO；通用部分含 OpenSubtitles18、Tatoeba、TED2020及统计语料等。这里的本地 ParIce21.10 不能称为“WMT26训练集”或声称等同于全部官方推荐资源。
+## Data provenance and actual sizes
 
 Training sources come from the existing17,911-pair P18 production SFT partition, without WMT test training. Technical subsets are primarily ParIce21.10 EMA/EEA/ESO; general examples include OpenSubtitles18/Tatoeba/TED2020/statistics. The local ParIce21.10 artifact is not synonymous with a WMT26 training set or all officially listed resources.
 
-|分层 / Stratum|实际来源 / Sources|初始目标 / Target|
+|Stratum|Sources|Target|
 |---|---:|---:|
-|通用 / General|400|400|
-|技术短句 / Technical short|400|400|
-|技术中句 / Technical medium|700|700|
-|技术长句 / Technical long|499|500|
-|合计 / Total|1999|2000|
-
-原计划2000条；参考抽查和替换后剔除一条不可靠长句，保留1999，未强行用未经审核的替补凑整。配比约为20%/20%/35%/25%。来源池规模不是实际更新量，最终应报告尝试组、有效组、生成token和真实GPU时间。
+|General|400|400|
+|Technical short|400|400|
+|Technical medium|700|700|
+|Technical long|499|500|
+|Total|1999|2000|
 
 The initial2000 pool becomes1999 after an unreliable replacement reference is excluded. The approximate20/20/35/25 mixture is retained without padding with an unaudited substitute. Pool size is not update count; attempted/used groups, generated tokens and actual GPU time must be reported.
 
-## 参考审核与隔离 / Reference audit and isolation
-
-共逐条审阅246张源文＋参考卡片。A表示核心含义保留，允许轻微语法或表述差异；R表示明确含义、提取或标识错误；U表示语义或缺失上下文不确定。全部为同一AI助手判断，并非独立冰岛语母语认证。
+## Reference audit and isolation
 
 246 source/reference cards were individually inspected. A preserves core meaning with minor grammar/phrasing tolerance; R marks clear fidelity/extraction/identifier problems; U marks uncertain semantics or missing context. These are same-assistant judgments, not independent native certification.
 
-校准初选32条保留27条，一次有界补选5条接受4条，最终31来源：fit16、validation15。规则阈值不因排除而放宽。训练池原分层抽查13条中10A、2R、1U；替补3条中2A、1R。**没有逐条人工式审核全部1999条训练参考，不能宣称全池无错误。**
-
 Calibration retains27of32 originals and4of5 in one bounded replacement round, giving31 sources:16fit/15validation. Gate thresholds are not relaxed. The13 original stratified training audit examples contain10A/2R/1U;3 replacements contain2A/1R. **Not all1999 training references were individually reviewed; the pool is not certified error-free.**
-
-错误实例包括：总死亡率缩窄为心血管死亡率、EC/ESB法规后缀不一致、DT90/DT50不一致、up to1000译成more than1000、planet candidates译成已发现行星，以及“提到的其他药物”译成“所提药物以外的药物”。这些说明过滤后的语料仍有参考风险；这个定向抽查不能估计全语料错误率。
 
 Examples include all-cause→cardiovascular mortality narrowing, EC/ESB identifier changes, DT90/DT50 mismatch, up-to1000→more-than1000, planet-candidates→confirmed-planets and mentioned-medicines→medicines-other-than-those-mentioned. These establish residual reference risks, not a representative corpus-wide error estimate.
 
-<details><summary>逐面板审核计数 / Per-panel reference counts</summary>
+<details><summary>Per-panel reference counts</summary>
 
 ```json
 {
@@ -125,15 +101,11 @@ Examples include all-cause→cardiovascular mortality narrowing, EC/ESB identifi
 
 </details>
 
-新开发集48条（每层12）、新测试集96条（每层24），均只从已接受参考中按事前顺序选取；最终语义贪心面板64来源，技术G8面板24来源（短/中/长各8）。这些是本项目新的研究留出来源，不是官方WMT26测试成绩，也不能证明预训练未见过。此前拟64/128的面板在任何本轮输出前因参考质量缩小至48/96。
-
 The new dev set has48sources(12perstratum), final set96(24perstratum), chosen in predeclared order from accepted references. Greedy semantic review uses64sources; technicalG8 uses24(8each length). These are new project research heldouts, not official WMT26 benchmark scores or proof of pretraining novelty. The earlier proposed64/128 panels shrink to48/96 before any new output due to reference audit.
-
-已排除58个历史评估输入文件中的精确来源/参考重复；完整100,642条训练池及旧实际血缘38,640个来源指纹用于保护。当前训练/开发/测试/校准两两来源和参考精确交集为零，fit/validation源文交集为零。对全部256条预留开发/测试候选与100,642训练条目做词5-gram Jaccard≥0.85核查，匹配0；候选内部亦匹配0。短于5词仅依靠精确匹配保护；这不是语义、文档级或预训练去污染证明。
 
 Exact source/reference protection covers58 historical evaluation files, the100,642 training pool and38,640 historical actual-lineage source hashes. Train/dev/test/calibration pairwise exact intersections and fit/validation source overlap are zero. Word5gram Jaccard≥.85 finds zero matches between all256 reserve candidates and the100,642 training rows, and zero internal candidate matches. Inputs shorter than5words use exact protection only. This is not semantic/document/pretraining decontamination proof.
 
-<details><summary>数据冻结指纹及实际规模 / Frozen inputs and counts</summary>
+<details><summary>Frozen inputs and counts</summary>
 
 ```json
 {
@@ -210,7 +182,7 @@ Exact source/reference protection covers58 historical evaluation files, the100,6
 
 </details>
 
-<details><summary>近重复核查 / Near-duplicate audit</summary>
+<details><summary>Near-duplicate audit</summary>
 
 ```json
 {
@@ -227,29 +199,19 @@ Exact source/reference protection covers58 historical evaluation files, the100,6
 
 </details>
 
-## 奖励校准与停止规则 / Reward calibration and stop rules
-
-数据流为 **源文→R0采样候选→评分器读取源文＋候选＋参考→DAPO**。参考不进入actor提示，也没有参考逐token交叉熵监督。
+## Reward calibration and stop rules
 
 Flow: **source→R0 candidates→scorer reads source+candidate+reference→DAPO**. References never enter actor prompts; no reference-token cross-entropy is applied.
 
-评分器固定为 `google/metricx-24-hybrid-large-v2p6`，revision `51e875ba5c525c81627cfd135ee10f43c87dce00`；tokenizer `google/mt5-xl`，revision `63fc6450d80515b48e026b69ef2fbbd426433e84`。使用实际BF16评分精度进行校准，最大1536输入token，过长拒绝而非静默截断。误差越低越好，基础reward=1−clip(error,0,25)/25。
-
 Pinned MetricX and tokenizer revisions above; calibrate the actual BF16 inference precision. Maximum1536inputtokens, reject overlong rather than silently truncate. Lower error is better; base reward=1−clip(error,0,25)/25.
-
-两套候选奖励：原始参考式分数；另一个加保守数字/单位与参考确认的EMA品牌保护。剂量等价换算不惩罚；数字文字化、千分/小数歧义时保守跳过。这些规则不能检测所有否定、关系、因果、符号、术语及漏译错误，不是语义oracle。
 
 Compare raw reference-mode rewards and conservative numeric/unit/reference-confirmed EMA brand guards. Equivalent dose conversions are allowed; spelled numbers/ambiguous thousands trigger conservative skips. Guards do not detect every negation, relation, cause, sign, terminology or omission error; they are not a semantic oracle.
 
-仅fit选奖励版本：按来源平衡的P/F排序准确率最高者，平手选raw；阈值仅用fit选择，要求proxy-positive precision≥90%且至少8个正预测，最大化balanced accuracy。阈值并列按precision、再更高阈值决定。validation不参与选择。
-
 Onlyfit selects the recipe by source-balanced P/F ranking accuracy,tie raw. Onlyfit selects a threshold with≥90%proxy-positive precision and≥8positive predictions, maximizing balanced accuracy; tie precision then highest threshold. Validation never selects the recipe/threshold.
-
-验证门槛同时满足：整体来源平衡排序≥75%；技术中长句排序≥60%；正预测precision≥80%；至少8个验证正预测；至少3个混合proxy组。未通过就零策略更新并提前停止，不降低门槛、不转回逐组人工在线奖励。相关候选配对不是独立样本；标签来自旧模型输出的同一AI判断，precision受校准类别分布影响，不能保证实际低正确率训练组也有同样precision。
 
 Validation must meet all: overall source-balanced ranking≥75%, technical medium/long ranking≥60%, proxy-positive precision≥80%,≥8positive candidates and≥3mixed-proxy groups. Failure means zero policy updates and early stop, with no gate relaxation/manual online-reward fallback. Candidate pairs are correlated; labels are historical same-assistant judgments, and class prevalence affects precision. Calibration precision does not guarantee equal precision on low-success deployment groups.
 
-<details><summary>原始校准协议 / Original calibration protocol</summary>
+<details><summary>Original calibration protocol</summary>
 
 ```json
 {
@@ -307,7 +269,7 @@ Validation must meet all: overall source-balanced ranking≥75%, technical mediu
 
 </details>
 
-<details><summary>审核后实际校准清单及修订 / Audited calibration manifest and amendment</summary>
+<details><summary>Audited calibration manifest and amendment</summary>
 
 ```json
 {
@@ -329,43 +291,27 @@ Validation must meet all: overall source-balanced ranking≥75%, technical mediu
 
 </details>
 
-## 通过校准后才执行的 DAPO / DAPO only after calibration passes
-
-这部分为待执行方案，不是已完成结果。actor保留FP32 base＋LoRA、SDPA、TF32关闭；评分器BF16共驻GPU。须先在实际GPU上通过采样/teacher概率一致性、原生采样一致性、有限非零梯度、首步参数变化及显存预检。预检失败不静默更改精度后继续。
+## DAPO only after calibration passes
 
 This is an unexecuted plan. Actor FP32base+LoRA/SDPA/TF32off, BF16scorer resident on GPU. Actual-GPU preflight must validate native sampler parity, teacher/sampler probabilities, finite nonzero gradients, first-update parameter movement and memory. Do not silently change precision after failure.
 
-固定G8、T0.7、top-p1/top-k0，prompt上限1024、completion512，EOS计入、prompt/pad及截断候选不进loss；soft-length buffer64。学习率3e−6，AdamW(0.9,0.999),eps1e−8,weight_decay0,gradclip1；clip-low0.2/high0.28，每个rollout4个有效来源、2个优化epoch，上限120次实际更新，每rollout至多尝试32来源。
-
 FixedG8/T.7/top-p1/top-k0,prompt1024/completion512,EOSincluded,prompt/pad/truncatedexcluded,soft-lengthbuffer64. LR3e−6,AdamW(.9,.999),eps1e−8,weight_decay0,gradclip1; clips.2/.28,4accepted sources/rollout,2epochs,maximum120actualupdates and32attempts/rollout.
-
-有效组须至少2个有效候选、proxy阈值两侧都有候选且reward方差非零。它们只能称“校准代理混合组”，不能把proxy正例直接称为确认正确翻译。记录全部尝试、排除原因、候选、reward、advantage、old/newlogps、梯度、裁剪比例和资源数据。
 
 An eligible group needs≥2valid candidates,both sides of the calibrated proxy threshold and nonzero reward variance. These are proxy-mixed groups, not confirmed-correct translation groups. Log all attempts,exclusions,candidates,rewards,advantages,old/newlogps,gradients,clipping and resources.
 
-每20实际更新做48来源dev并立即保存该点权重和云端优化器/RNG，避免只发现最佳点却未保存。每个dev点权重回存D盘；仅最终选中点承诺回存完整优化器/RNG，其他云端optimizer是临时scratch。选择仅看dev技术chrF+++BLEU，general/overall chrF保留容忍1.5；平手选更早。原R0始终保留，updated endpoint不自动晋升。
-
 Every20updates evaluate48devsources and immediately save that point’s weights/cloud optimizer+RNG. Mirror every dev weight checkpoint toD; only the selected endpoint promises durable optimizer+RNG. Other cloud optimizer states are temporary scratch. Select by dev technical chrF+++BLEU with general/overall chrF retention within1.5,tie earliest. Preserve R0 without automatic promotion.
-
-提前停止：单次整体dev chrF较R0下降>2或通用>3；连续两次整体下降>1.5；或最近两次技术组合分数均低于更早最佳>0.5；有效组不足；数值/显存/概率一致性失败；以及时间截止。最终比较96来源贪心、24技术来源G8和64来源语义评审，配对bootstrap区间；新测试不用于选checkpoint。单次小预算探索不能替代多种子正式效率对照。
 
 Early stop: single overalldev chrFdrop>2 or generaldrop>3;two overall drops>1.5;two latest technical combined scores below prior best>.5;insufficient eligible groups;numeric/memory/parity failure;time cutoff. Final comparisons use96greedy sources,24technicalG8 sources and64semantic sources with paired bootstrap intervals. Final data never selects checkpoints. One bounded exploratory run is not a multiseed formal efficiency comparison.
 
-## Colab连接实测与当前阻塞 / Observed Colab connection blocker
-
-官方CLI的L4/A100分配POST多次返回503，单次H100请求在GET阶段返回400（不支持的请求，未得到GPU）。没有成功分配任何本轮GPU，没有在用户CPU运行时执行训练，也没有充值。随后用户手动连接，接口检测到1个accelerator=NONE的CPU运行时；计算单元余额406.6471255，消耗率0.08单位/小时。正余额排除“已耗尽余额”，不能排除供给、策略限制、账户或连接问题。不能仅凭503认定封号。
+## Observed Colab connection blocker
 
 Official-CLI L4/A100 allocation POSTs repeatedly return503. One H100 request returns400 at GET (unsupported request,noGPU). No experiment GPU has been allocated,no training executes in the user CPU runtime,and no compute units are purchased. After manual connection,the API shows one NONE/CPU runtime,balance406.6471255 and rate.08units/hour. Positive balance rules out exhausted balance,not capacity/policy/account/connection issues.503 alone is not proof of an account ban.
 
-已停止连续自动分配；不会释放或重启未绑定到本实验的用户运行时。若用户本次手动GPU成功，只在确认单一L4/A100且明确为本实验后接管，沿用原截止时间。界面只读检查曾因安全工具不能可靠确认当前网址而停止；没有因此绕过工具或改浏览器设置。
-
 Continuous allocation attempts are stopped. Unbound user runtimes are not released/restarted. A manually connected singleL4/A100 explicitly for this experiment can be adopted under the original deadline. A read-only UI check stopped because the safety tool could not reliably determine the browser URL; no bypass or browser-setting change followed.
-
-[Colab官方FAQ：余额与硬件可用性 / Official FAQ](https://research.google.com/colaboratory/faq.html)说明付费及正余额也不保证特定GPU随时可用。官方仓库的他人503报告只能说明错误具有多种可能，不能用于诊断本账户。
 
 The officialFAQ explains dynamic hardware availability even with paid access. Other users’503reports do not diagnose this account.
 
-<details><summary>已保存运行状态 / Saved run state</summary>
+<details><summary>Saved run state</summary>
 
 ```json
 {
@@ -382,28 +328,24 @@ The officialFAQ explains dynamic hardware availability even with paid access. Ot
 
 </details>
 
-## 可核对的文件 / Reviewable artifacts
+## Reviewable artifacts
 
-- 实验目录 / Experiment: `D:\deep learning project\experiments\dapo_metricx_reference_2026-11-23`
-- 运行记录 / Run: `D:\deep learning project\runs\dapo_metricx_reference_2026-11-23`
-- 源代码及固定输入 / Source and fixed inputs: `D:\deep learning project\experiments\dapo_metricx_reference_2026-11-23\source`
-- 参考卡片与逐条标签 / Reference cards/labels: `reference_QA/cards.jsonl`, `reference_QA/labels.jsonl`（位于实验目录 / under experiment）
-- 原始协议 / Protocol: `calibration_protocol.json`
-- 输入冻结 / Frozen inputs: `input_freeze.json`
-- 近重复审计 / Near duplicates: `near_duplicate_audit.json`
-- 血缘审计 / Lineage audit: `historical_lineage_exact_audit.json`
-- 校准选择数学 / Gate math: `host_scripts/p22_gate_math.py`
-- 训练源码 / Training source: `source/p22_train.py`, `source/p22_worker.py`
-
-本机仅进行数据处理、轻量测试和传输，不加载神经网络。数据与模型副本在D盘；宿主脚本仍保留原工作区副本。源码语法检查通过不等于GPU执行验证通过。
+- Experiment: `D:\deep learning project\experiments\dapo_metricx_reference_2026-11-23`
+- Run: `D:\deep learning project\runs\dapo_metricx_reference_2026-11-23`
+- Source and fixed inputs: `D:\deep learning project\experiments\dapo_metricx_reference_2026-11-23\source`
+- Reference cards/labels: `reference_QA/cards.jsonl`, `reference_QA/labels.jsonl`under experiment）
+- Protocol: `calibration_protocol.json`
+- Frozen inputs: `input_freeze.json`
+- Near duplicates: `near_duplicate_audit.json`
+- Lineage audit: `historical_lineage_exact_audit.json`
+- Gate math: `host_scripts/p22_gate_math.py`
+- Training source: `source/p22_train.py`, `source/p22_worker.py`
 
 Local work is data processing,light tests and transfer,without neural model loading. Data/model copies reside onD; host scripts also remain in the original workspace. Syntax success is not GPU execution validation.
 
-关键后续顺序 / Next sequence: **GPU成功分配→安装硬截止保护→31来源奖励校准→冻结通过/失败决定→通过才上传actor并做GPU预检→DAPO→独立评估→校验回存→释放本实验GPU**。若GPU始终不可用，报告应停留为基础设施阻塞，不把它写成DAPO方向失败。
-
 If GPU allocation remains unavailable,the outcome is an infrastructure blocker,not evidence that DAPO fails.
 
-<details><summary>完整参考审阅 / Full reference audit: calibration</summary>
+<details><summary>Full reference audit: calibration</summary>
 
 ```json
 [
@@ -764,7 +706,7 @@ If GPU allocation remains unavailable,the outcome is an infrastructure blocker,n
 
 </details>
 
-<details><summary>完整参考审阅 / Full reference audit: calibration_reserve</summary>
+<details><summary>Full reference audit: calibration_reserve</summary>
 
 ```json
 [
@@ -828,7 +770,7 @@ If GPU allocation remains unavailable,the outcome is an infrastructure blocker,n
 
 </details>
 
-<details><summary>完整参考审阅 / Full reference audit: dev</summary>
+<details><summary>Full reference audit: dev</summary>
 
 ```json
 [
@@ -1541,7 +1483,7 @@ If GPU allocation remains unavailable,the outcome is an infrastructure blocker,n
 
 </details>
 
-<details><summary>完整参考审阅 / Full reference audit: test</summary>
+<details><summary>Full reference audit: test</summary>
 
 ```json
 [
@@ -2958,7 +2900,7 @@ If GPU allocation remains unavailable,the outcome is an infrastructure blocker,n
 
 </details>
 
-<details><summary>完整参考审阅 / Full reference audit: test_reserve</summary>
+<details><summary>Full reference audit: test_reserve</summary>
 
 ```json
 [
@@ -2978,7 +2920,7 @@ If GPU allocation remains unavailable,the outcome is an infrastructure blocker,n
 
 </details>
 
-<details><summary>完整参考审阅 / Full reference audit: train_replacement</summary>
+<details><summary>Full reference audit: train_replacement</summary>
 
 ```json
 [
@@ -3020,7 +2962,7 @@ If GPU allocation remains unavailable,the outcome is an infrastructure blocker,n
 
 </details>
 
-<details><summary>完整参考审阅 / Full reference audit: train_sample</summary>
+<details><summary>Full reference audit: train_sample</summary>
 
 ```json
 [

@@ -1,1 +1,220 @@
-<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>R0_3B_FILTERED_SFT_RUNNING_2026-11-19</title><style>body{background:#f3f6fa;color:#1c3040;font:16px/1.7 system-ui,Segoe UI,sans-serif;margin:0}main{max-width:1200px;margin:28px auto;padding:32px;background:#fff;border-radius:14px}h1{font-size:30px;color:#126782;line-height:1.3}h2{color:#185c77;border-top:2px solid #dce9f0;padding-top:12px;margin-top:40px}h3{color:#26566c}p,td{overflow-wrap:anywhere}a{color:#086b9f}code{background:#edf3f8;padding:2px 4px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border:1px solid #d8e4ec;padding:9px 12px;vertical-align:top;text-align:left}th{background:#e8f2f7}tr:nth-child(even){background:#f8fafc}.table{overflow-x:auto;margin:18px 0}details{border:1px solid #d9e5ed;border-radius:8px;padding:12px 15px;margin:12px 0}summary{cursor:pointer;font-weight:650;color:#126782}img{max-width:100%;height:auto}figure{margin:24px 0}figcaption{font-size:13px;color:#526878}button,input{font:inherit;padding:8px 12px;margin:5px 8px 5px 0}input{min-width:260px}aside{background:#e9f5f8;padding:14px;border-left:4px solid #126782}.toolbar{position:sticky;top:0;background:#fffef4ee;padding:8px;border-bottom:1px solid #e5e8da;z-index:1}@media print{.toolbar{display:none}body{background:white}main{margin:0;padding:0}table{font-size:10px}}</style><main><aside>2026-11-19 · 3B R0 · 中文 / English</aside><div class="toolbar"><button onclick="document.querySelectorAll('details').forEach(x=>x.open=true)">展开全部 / Expand</button><button onclick="document.querySelectorAll('details').forEach(x=>x.open=false)">收起 / Collapse</button><input type="search" placeholder="搜索逐条结果 / Search cases" oninput="const q=this.value.toLowerCase();document.querySelectorAll('.case-card').forEach(x=>x.hidden=!x.textContent.toLowerCase().includes(q))"><button onclick="window.print()">打印 / Print</button></div><h1>3B R0 过滤后 SFT：启动与执行记录 / Filtered-data SFT execution record</h1><p>2026-11-19 · Updated UTC: 2026-11-19T13:37:06.381194+00:00</p><p>当前是正在运行的训练记录，不是训练完成报告。只有真实观测到的更新计数在下表列为结果；最终翻译质量、正确候选率和 DAPO 适用性尚未得出结论。</p><p>This is a running record, not a completed-results report. Only observed optimizer updates are reported as facts; final translation quality, correct-candidate coverage and DAPO suitability remain pending.</p><h2>1. 目标和保留基线 / Objective and preserved baseline</h2><p>从通用 Qwen2.5-3B-Instruct 的现有 A 适配器继续监督微调，改善未见技术中长句的翻译和 G=8 正确候选覆盖率，同时保留一般句能力。原 A 不覆盖，本轮不训练 DAPO，也不调用 MetricX。</p><p>Continue supervised fine-tuning the existing A adapter of general-purpose Qwen2.5-3B-Instruct, targeting unseen technical medium/long translation and G=8 correct-candidate coverage while preserving general translation. Original A is unchanged; this phase performs no DAPO or MetricX calls.</p><p>Original A: D:\deep learning project\runs\r0_3b_overnight_2026-11-18\final_selected_adapter</p><p>A weights SHA256: 9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199</p><h2>2. 已核实进度与预算 / Verified progress and budget</h2><div class="table"><table><thead><tr><th>项目 / Item</th><th>值 / Value</th></tr></thead><tbody><tr><td>GPU</td><td>Colab NVIDIA L4, native BF16</td></tr><tr><td>Observed optimizer updates</td><td>401</td></tr><tr><td>Observed new target tokens</td><td>500990</td></tr><tr><td>Timing-locked target</td><td>3000000</td></tr><tr><td>Measured trainable parameters</td><td>29933568</td></tr><tr><td>Trainable tensors / dtype</td><td>504 / FP32</td></tr><tr><td>Effective / microbatch</td><td>32 / 4 (OOM fallback 2/1)</td></tr><tr><td>Hard GPU deadline Berlin/CET</td><td>2026-11-19T21:41:08.702343+01:00</td></tr><tr><td>Maximum allocation wall time</td><td>8 h, includes setup, dev, final evaluation and export</td></tr><tr><td>Training cutoff</td><td>6 h after first allocation; final 2 h reserved</td></tr></tbody></table></div><p>用户随后增加时间约束：18:00需关闭电脑、20:00后恢复。已安排17:00冻结和完整备份，校验完成后释放本轮GPU。上表21:41是原连续分配的截止；晚上若重新分配，将按第一段实际已用GPU时间计算剩余预算，两段累计不超过8小时，暂停不算GPU占用。不会在20:00自动申请新运行时。</p><p>Subsequent user constraint: computer off by18:00 and resume after20:00. A17:00 freeze/full backup is scheduled, followed by owned-GPU release only after verification. The21:41 entry above is the original continuous-allocation deadline. Any evening allocation must use only the remaining cumulative8h budget after subtracting actual segment1 usage; the released pause is not GPU time. No20:00 allocation is automatic.</p><p>Pause/resume plan: D:\deep learning project\experiments\r0_3b_filtered_sft_2026-11-19\USER_PAUSE_AND_RESUME_2026-11-19.md</p><p>训练目标由前100步的保守吞吐、剩余评估时间和0.8安全系数锁定为300万新增目标token，不按翻译分数更改预算；EOS计入目标token，提示词与填充不计入。整句边界会令实际数略低于300万。</p><p>The first100 updates locked3M new target tokens from conservative measured throughput, remaining evaluation time and a0.8 safety factor, without using quality scores. Counts include EOS and exclude prompt/padding; whole-example boundaries may leave a small shortfall.</p><h2>3. 数据与训练方式 / Data and training recipe</h2><div class="table"><table><thead><tr><th>项目 / Item</th><th>值 / Value</th></tr></thead><tbody><tr><td>Frozen parallel pairs</td><td>100642</td></tr><tr><td>Unique-pool target tokens incl EOS</td><td>4748344</td></tr><tr><td>Pool SHA256</td><td>ed37570b262f7653f7b9a240c1691753095664a85558c7a6f037f7107b0e3f73</td></tr><tr><td>Target-token mix general/technical short/mid/long</td><td>25% /20% /30% /25%</td></tr><tr><td>3M prefix distinct sources</td><td>67382</td></tr><tr><td>3M prefix example exposures</td><td>81348</td></tr><tr><td>3M prefix maximum source fraction</td><td>50.74%, documented approximate50% target deviation</td></tr><tr><td>Loss</td><td>Global valid target-token mean causal CE; prompt/pad excluded</td></tr><tr><td>LoRA</td><td>rank16 alpha32 dropout0.05; all7 q/k/v/o/gate/up/down projections</td></tr><tr><td>Optimizer</td><td>Fresh AdamW LR5e-5, betas0.9/0.999, wd0.01, gradclip1</td></tr><tr><td>Schedule</td><td>60k target-token warmup; peak until timing lock; cosine to20%</td></tr><tr><td>Context</td><td>prompt≤1024, target≤512, total≤1536; no packing</td></tr></tbody></table></div><p>使用已完成GPU过滤的ParIce等平行语料池；并非全部数据都来自WMT。冻结顺序按累计目标token配比交错，避免先把一个领域顺序训完。每对最多暴露2次，3M前缀约6.74万独立源文。</p><p>Use the GPU-filtered parallel corpus pool, including ParIce sources; this is not an all-WMT training set. Exposure order interleaves strata by cumulative target-token deficit. At most2 visits per pair; the3M prefix has about67.4k distinct sources.</p><h2>4. 训练前核查 / Preflight verification</h2><p>全量10万条重新分词并核对输入、目标长度；修复模板API返回结构造成的旧提示长度元数据问题后才开训。CPU数学测试3项通过；GPU上逐位确认A加载一致，显式shift与目标loss差值为0，首步参数确实变化且梯度有限。</p><p>All100k pairs were retokenized and input/target lengths verified before training, after correcting older prompt-length metadata affected by the chat-template return type. Three meaningful CPU math tests passed. GPU checks confirmed the exact A weights, zero explicit-shift loss difference, finite gradients and a nonzero first-update parameter delta.</p><p>First-update evidence: {&quot;parameter_L2_delta&quot;: 0.006688808290085558, &quot;finite&quot;: true, &quot;grad_norm&quot;: 4.554614543914795}</p><p>冻结训练协议中保留了祖先方案的几个false草稿标志；它们不是本轮未获授权或未冻结的状态。当前用户授权、数据冻结、CPU准备和真实GPU更新另存有日期的执行账本；为保持检查点绑定的协议哈希，开训后不回写训练协议。</p><p>The frozen protocol retains several false draft flags from its ancestor proposal. They do not describe the current execution. Current authorization, data freeze, CPU readiness and real GPU updates are recorded in a dated execution ledger; the checkpoint-bound protocol hash is not rewritten after updates begin.</p><h2>5. 开发集、检查点和最后评估 / Development, checkpoints and final evaluation</h2><p>开发集128条，每层32条；每50万目标token测greedy和NLL，每100万及末期测固定24条技术句G=8。选择仅用已完成语义审查且满足一般句回退约束的开发检查点；最终测试256条和G=8技术64条在权重封存后生成，不用于选模型。</p><p>Development has128 sources,32 per stratum. Greedy/NLL are checked every500k targets; a fixed24-source technical G=8 set at1M intervals and the endpoint. Selection uses reviewed development checkpoints with general-regression safeguards. The256-source final greedy test and64-source technical G=8 are generated only after weights are sealed and never select the model.</p><p>这些是官方历史留出集的固定子集，不声称从未被历史评估用过。语义审查按源文判断：P=关键意义正确，F=明确错误，U=不确定；G=8确认至少一个P即可记覆盖，判F须看完所有不同候选。同一助手隐藏检查点名称辅助审查，不冒充外部母语认证。</p><p>These are fixed subsets of historical official holdouts, not a never-evaluated new benchmark. Source-based labels are P=key meaning correct, F=clear error, U=uncertain. A G=8 group is covered after confirming at least one P; F requires inspecting all distinct candidates. Checkpoint names are hidden during same-assistant review, without claiming external native certification.</p><div class="table"><table><thead><tr><th>A开发基线 / A development baseline</th><th>值 / Value</th></tr></thead><tbody><tr><td>Overall chrF++</td><td>36.32325711068724</td></tr><tr><td>Technical chrF++</td><td>36.59669402064523</td></tr><tr><td>Technical medium/long chrF++</td><td>36.61265000576855</td></tr><tr><td>Target NLL</td><td>1.5703537802019245</td></tr></tbody></table></div><p>这些分数只是在本轮固定开发集上的起点，不应与以前不同样本集的50分或44分直接比较；尚不能用它们推断本轮提升。</p><p>These scores identify the starting point on this fixed development set. Do not directly compare them with historical50/44 scores on different samples; they do not yet establish an improvement.</p><h2>6. 保存、断线与费用 / Persistence, interruptions and cost</h2><p>每100更新或25万目标token保存完整adapter、Adam状态、RNG、游标和协议哈希；逐块SHA和整包SHA校验后镜像到D盘。上传曾在20/27块中断，已在同一运行时恢复且整包校验通过。同步网络问题只修复本地下载助手，训练进程未重启，8小时期限未重置。</p><p>Every100 updates or250k targets, save the adapter, Adam state, RNG, data cursor and protocol hashes. D-drive mirrors verify every chunk and whole archive. Input upload resumed from20/27 chunks in the same runtime and passed the final hash. Mirror repairs affected only the local downloader; the training worker and original8h deadline were preserved.</p><p>独立后台收尾程序只操作本轮拥有的运行时：校验双份最终导出、在原预算允许时跑预先冻结的历史16句候选面板，随后释放GPU；另有8小时硬上限保护。最终报告需等真实输出和语义审查完成，不能把训练loss下降或文件导出成功写成翻译能力通过。</p><p>An independent aftercare helper touches only this phase-owned runtime: verify two final exports, run the pre-frozen historical16-source panel if the original budget allows, then release GPU. A separate hard8h guard remains. The final report requires actual predictions and semantic review; lower training loss or successful export is not a translation-quality qualification.</p><h2>7. 文件索引 / Artifact index</h2><div class="table"><table><thead><tr><th>内容 / Content</th><th>位置 / Location</th></tr></thead><tbody><tr><td>Training/source protocol</td><td>D:\deep learning project\experiments\r0_3b_filtered_sft_2026-11-19\source</td></tr><tr><td>Execution ledger</td><td>D:\deep learning project\experiments\r0_3b_filtered_sft_2026-11-19\execution_authorization_and_observations.json</td></tr><tr><td>Operational repairs</td><td>D:\deep learning project\experiments\r0_3b_filtered_sft_2026-11-19\operational_events.json</td></tr><tr><td>Live updates/evaluation</td><td>D:\deep learning project\runs\r0_3b_filtered_sft_2026-11-19\live_mirror</td></tr><tr><td>Verified full-state checkpoints</td><td>D:\deep learning project\runs\r0_3b_filtered_sft_2026-11-19\snapshots</td></tr><tr><td>Raw preflight proof</td><td>D:\deep learning project\runs\r0_3b_filtered_sft_2026-11-19\preflight_verified</td></tr><tr><td>Development semantic audit</td><td>D:\deep learning project\experiments\r0_3b_filtered_sft_2026-11-19\development_review</td></tr><tr><td>Frozen timing budget</td><td>D:\deep learning project\runs\r0_3b_filtered_sft_2026-11-19\live_mirror\frozen_budget.json</td></tr><tr><td>Aftercare status</td><td>D:\deep learning project\runs\r0_3b_filtered_sft_2026-11-19\aftercare.json</td></tr><tr><td>Final export when complete</td><td>D:\deep learning project\runs\r0_3b_filtered_sft_2026-11-19\exported</td></tr><tr><td>Final analysis when complete</td><td>D:\deep learning project\runs\r0_3b_filtered_sft_2026-11-19\analysis</td></tr><tr><td>Reports</td><td>D:\deep learning project\reports\r0_3b_filtered_sft_2026-11-19</td></tr></tbody></table></div></main></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Filtered-data SFT execution record</title><style>body{background:#f3f6fa;color:#1c3040;font:16px/1.7 system-ui,Segoe UI,sans-serif;margin:0}main{max-width:1200px;margin:28px auto;padding:32px;background:#fff;border-radius:14px}h1{font-size:30px;color:#126782;line-height:1.3}h2{color:#185c77;border-top:2px solid #dce9f0;padding-top:12px;margin-top:40px}h3{color:#26566c}p,td{overflow-wrap:anywhere}a{color:#086b9f}code{background:#edf3f8;padding:2px 4px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border:1px solid #d8e4ec;padding:9px 12px;vertical-align:top;text-align:left}th{background:#e8f2f7}tr:nth-child(even){background:#f8fafc}.table{overflow-x:auto;margin:18px 0}details{border:1px solid #d9e5ed;border-radius:8px;padding:12px 15px;margin:12px 0}summary{cursor:pointer;font-weight:650;color:#126782}img{max-width:100%;height:auto}figure{margin:24px 0}figcaption{font-size:13px;color:#526878}button,input{font:inherit;padding:8px 12px;margin:5px 8px 5px 0}input{min-width:260px}aside{background:#e9f5f8;padding:14px;border-left:4px solid #126782}.toolbar{position:sticky;top:0;background:#fffef4ee;padding:8px;border-bottom:1px solid #e5e8da;z-index:1}@media print{.toolbar{display:none}body{background:white}main{margin:0;padding:0}table{font-size:10px}}
+pre{overflow:auto;background:#f3f6fa;padding:14px;border-radius:6px}img{max-width:100%;height:auto}p,li,td{overflow-wrap:anywhere}aside{padding:12px;border-left:4px solid #126782;background:#eef5fa;margin-bottom:24px}.table{overflow-x:auto}details{margin:12px 0}summary{cursor:pointer;font-weight:600}</style></head><body><main><aside>English edition · 2026-11-24. Historical experiment values and labels are unchanged. Original wording and model-output bytes are retained in source commit f82bd68. See the repository English-localization record before rescoring translated display excerpts.</aside><h1>Filtered-data SFT execution record</h1>
+<p>2026-11-19 · Updated UTC: 2026-11-19T13:37:06.381194+00:00</p>
+<p>This is a running record, not a completed-results report. Only observed optimizer updates are reported as facts; final translation quality, correct-candidate coverage and DAPO suitability remain pending.</p>
+<h2>Objective and preserved baseline</h2>
+<p>Continue supervised fine-tuning the existing A adapter of general-purpose Qwen2.5-3B-Instruct, targeting unseen technical medium/long translation and G=8 correct-candidate coverage while preserving general translation. Original A is unchanged; this phase performs no DAPO or MetricX calls.</p>
+<p>Original A: D:\deep learning project\runs\r0_3b_overnight_2026-11-18\final_selected_adapter</p>
+<p>A weights SHA256: 9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199</p>
+<h2>Verified progress and budget</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPU</td>
+<td>Colab NVIDIA L4, native BF16</td>
+</tr>
+<tr>
+<td>Observed optimizer updates</td>
+<td>401</td>
+</tr>
+<tr>
+<td>Observed new target tokens</td>
+<td>500990</td>
+</tr>
+<tr>
+<td>Timing-locked target</td>
+<td>3000000</td>
+</tr>
+<tr>
+<td>Measured trainable parameters</td>
+<td>29933568</td>
+</tr>
+<tr>
+<td>Trainable tensors / dtype</td>
+<td>504 / FP32</td>
+</tr>
+<tr>
+<td>Effective / microbatch</td>
+<td>32 / 4 (OOM fallback 2/1)</td>
+</tr>
+<tr>
+<td>Hard GPU deadline Berlin/CET</td>
+<td>2026-11-19T21:41:08.702343+01:00</td>
+</tr>
+<tr>
+<td>Maximum allocation wall time</td>
+<td>8 h, includes setup, dev, final evaluation and export</td>
+</tr>
+<tr>
+<td>Training cutoff</td>
+<td>6 h after first allocation; final 2 h reserved</td>
+</tr>
+</tbody>
+</table>
+<p>Subsequent user constraint: computer off by18:00 and resume after20:00. A17:00 freeze/full backup is scheduled, followed by owned-GPU release only after verification. The21:41 entry above is the original continuous-allocation deadline. Any evening allocation must use only the remaining cumulative8h budget after subtracting actual segment1 usage; the released pause is not GPU time. No20:00 allocation is automatic.</p>
+<p>Pause/resume plan: D:\deep learning project\experiments\r0_3b_filtered_sft_2026-11-19\USER_PAUSE_AND_RESUME_2026-11-19.md</p>
+<p>The first100 updates locked3M new target tokens from conservative measured throughput, remaining evaluation time and a0.8 safety factor, without using quality scores. Counts include EOS and exclude prompt/padding; whole-example boundaries may leave a small shortfall.</p>
+<h2>Data and training recipe</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frozen parallel pairs</td>
+<td>100642</td>
+</tr>
+<tr>
+<td>Unique-pool target tokens incl EOS</td>
+<td>4748344</td>
+</tr>
+<tr>
+<td>Pool SHA256</td>
+<td>ed37570b262f7653f7b9a240c1691753095664a85558c7a6f037f7107b0e3f73</td>
+</tr>
+<tr>
+<td>Target-token mix general/technical short/mid/long</td>
+<td>25% /20% /30% /25%</td>
+</tr>
+<tr>
+<td>3M prefix distinct sources</td>
+<td>67382</td>
+</tr>
+<tr>
+<td>3M prefix example exposures</td>
+<td>81348</td>
+</tr>
+<tr>
+<td>3M prefix maximum source fraction</td>
+<td>50.74%, documented approximate50% target deviation</td>
+</tr>
+<tr>
+<td>Loss</td>
+<td>Global valid target-token mean causal CE; prompt/pad excluded</td>
+</tr>
+<tr>
+<td>LoRA</td>
+<td>rank16 alpha32 dropout0.05; all7 q/k/v/o/gate/up/down projections</td>
+</tr>
+<tr>
+<td>Optimizer</td>
+<td>Fresh AdamW LR5e-5, betas0.9/0.999, wd0.01, gradclip1</td>
+</tr>
+<tr>
+<td>Schedule</td>
+<td>60k target-token warmup; peak until timing lock; cosine to20%</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>prompt≤1024, target≤512, total≤1536; no packing</td>
+</tr>
+</tbody>
+</table>
+<p>Use the GPU-filtered parallel corpus pool, including ParIce sources; this is not an all-WMT training set. Exposure order interleaves strata by cumulative target-token deficit. At most2 visits per pair; the3M prefix has about67.4k distinct sources.</p>
+<h2>Preflight verification</h2>
+<p>All100k pairs were retokenized and input/target lengths verified before training, after correcting older prompt-length metadata affected by the chat-template return type. Three meaningful CPU math tests passed. GPU checks confirmed the exact A weights, zero explicit-shift loss difference, finite gradients and a nonzero first-update parameter delta.</p>
+<p>First-update evidence: {&quot;parameter_L2_delta&quot;: 0.006688808290085558, &quot;finite&quot;: true, &quot;grad_norm&quot;: 4.554614543914795}</p>
+<p>The frozen protocol retains several false draft flags from its ancestor proposal. They do not describe the current execution. Current authorization, data freeze, CPU readiness and real GPU updates are recorded in a dated execution ledger; the checkpoint-bound protocol hash is not rewritten after updates begin.</p>
+<h2>Development, checkpoints and final evaluation</h2>
+<p>Development has128 sources,32 per stratum. Greedy/NLL are checked every500k targets; a fixed24-source technical G=8 set at1M intervals and the endpoint. Selection uses reviewed development checkpoints with general-regression safeguards. The256-source final greedy test and64-source technical G=8 are generated only after weights are sealed and never select the model.</p>
+<p>These are fixed subsets of historical official holdouts, not a never-evaluated new benchmark. Source-based labels are P=key meaning correct, F=clear error, U=uncertain. A G=8 group is covered after confirming at least one P; F requires inspecting all distinct candidates. Checkpoint names are hidden during same-assistant review, without claiming external native certification.</p>
+<table>
+<thead>
+<tr>
+<th>A development baseline</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Overall chrF++</td>
+<td>36.32325711068724</td>
+</tr>
+<tr>
+<td>Technical chrF++</td>
+<td>36.59669402064523</td>
+</tr>
+<tr>
+<td>Technical medium/long chrF++</td>
+<td>36.61265000576855</td>
+</tr>
+<tr>
+<td>Target NLL</td>
+<td>1.5703537802019245</td>
+</tr>
+</tbody>
+</table>
+<p>These scores identify the starting point on this fixed development set. Do not directly compare them with historical50/44 scores on different samples; they do not yet establish an improvement.</p>
+<h2>Persistence, interruptions and cost</h2>
+<p>Every100 updates or250k targets, save the adapter, Adam state, RNG, data cursor and protocol hashes. D-drive mirrors verify every chunk and whole archive. Input upload resumed from20/27 chunks in the same runtime and passed the final hash. Mirror repairs affected only the local downloader; the training worker and original8h deadline were preserved.</p>
+<p>An independent aftercare helper touches only this phase-owned runtime: verify two final exports, run the pre-frozen historical16-source panel if the original budget allows, then release GPU. A separate hard8h guard remains. The final report requires actual predictions and semantic review; lower training loss or successful export is not a translation-quality qualification.</p>
+<h2>Artifact index</h2>
+<table>
+<thead>
+<tr>
+<th>Content</th>
+<th>Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Training/source protocol</td>
+<td>D:\deep learning project\experiments\r0_3b_filtered_sft_2026-11-19\source</td>
+</tr>
+<tr>
+<td>Execution ledger</td>
+<td>D:\deep learning project\experiments\r0_3b_filtered_sft_2026-11-19\execution_authorization_and_observations.json</td>
+</tr>
+<tr>
+<td>Operational repairs</td>
+<td>D:\deep learning project\experiments\r0_3b_filtered_sft_2026-11-19\operational_events.json</td>
+</tr>
+<tr>
+<td>Live updates/evaluation</td>
+<td>D:\deep learning project\runs\r0_3b_filtered_sft_2026-11-19\live_mirror</td>
+</tr>
+<tr>
+<td>Verified full-state checkpoints</td>
+<td>D:\deep learning project\runs\r0_3b_filtered_sft_2026-11-19\snapshots</td>
+</tr>
+<tr>
+<td>Raw preflight proof</td>
+<td>D:\deep learning project\runs\r0_3b_filtered_sft_2026-11-19\preflight_verified</td>
+</tr>
+<tr>
+<td>Development semantic audit</td>
+<td>D:\deep learning project\experiments\r0_3b_filtered_sft_2026-11-19\development_review</td>
+</tr>
+<tr>
+<td>Frozen timing budget</td>
+<td>D:\deep learning project\runs\r0_3b_filtered_sft_2026-11-19\live_mirror\frozen_budget.json</td>
+</tr>
+<tr>
+<td>Aftercare status</td>
+<td>D:\deep learning project\runs\r0_3b_filtered_sft_2026-11-19\aftercare.json</td>
+</tr>
+<tr>
+<td>Final export when complete</td>
+<td>D:\deep learning project\runs\r0_3b_filtered_sft_2026-11-19\exported</td>
+</tr>
+<tr>
+<td>Final analysis when complete</td>
+<td>D:\deep learning project\runs\r0_3b_filtered_sft_2026-11-19\analysis</td>
+</tr>
+<tr>
+<td>Reports</td>
+<td>D:\deep learning project\reports\r0_3b_filtered_sft_2026-11-19</td>
+</tr>
+</tbody>
+</table>
+</main></body></html>

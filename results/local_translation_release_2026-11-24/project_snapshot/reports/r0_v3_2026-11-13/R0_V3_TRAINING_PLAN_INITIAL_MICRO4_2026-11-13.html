@@ -1,12 +1,12 @@
-<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>R0-v3 Training Plan · 2026-11-13</title><style>body{max-width:980px;margin:40px auto;padding:20px;font:16px/1.75 "Segoe UI","Microsoft YaHei",sans-serif;color:#183044}code{overflow-wrap:anywhere;background:#eef2f6}h1,h2{line-height:1.3}</style><h1>R0-v3 SFT 补强计划 / SFT strengthening protocol</h1>
-<p>日期 / Date: 2026-11-13. 状态：数据与代码已冻结，训练结果待验证 / Data and code frozen; training outcome pending.</p>
-<h2>目标 / Objective</h2>
-<p>在 0.8B 不变的前提下，从 R0-v2 接着提升一般词义和句子关系，保留中长专业翻译能力，为后续 DAPO 提供更好的候选分布。原模型保留；本轮独立目录，不覆盖任何旧结果。</p>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SFT strengthening protocol</title><style>body{max-width:980px;margin:40px auto;padding:20px;font:16px/1.75 "Segoe UI","Microsoft YaHei",sans-serif;color:#183044}code{overflow-wrap:anywhere;background:#eef2f6}h1,h2{line-height:1.3}
+pre{overflow:auto;background:#f3f6fa;padding:14px;border-radius:6px}img{max-width:100%;height:auto}p,li,td{overflow-wrap:anywhere}aside{padding:12px;border-left:4px solid #126782;background:#eef5fa;margin-bottom:24px}.table{overflow-x:auto}details{margin:12px 0}summary{cursor:pointer;font-weight:600}</style></head><body><main><aside>English edition · 2026-11-24. Historical experiment values and labels are unchanged. Original wording and model-output bytes are retained in source commit f82bd68. See the repository English-localization record before rescoring translated display excerpts.</aside><h1>SFT strengthening protocol</h1>
+<p>Date:2026-11-13. Data and code are frozen; training outcome is pending validation.</p>
+<h2>Objective</h2>
 <p>Continue R0-v2 on broader general translation data with technical replay. Keep the 0.8B model, preserve prior adapters, and measure whether generated candidates become a sound starting distribution for DAPO. A higher chrF score alone does not establish semantic adequacy.</p>
-<h2>依据 / Rationale</h2>
-<p>上轮 R0-v2 相比旧 SFT 已有实测改善，但仍出现常用动词义项混淆、专业句关系错误与长句异常。上轮新增语料中 fired 仅有两条不同训练句（一个解雇义、一个开枪义）；这仅说明该轮上下文覆盖薄，不能推断预训练和旧 SFT 完全没见过此词，也不能据此判定 0.8B 的能力上限。</p>
+<h2>Rationale</h2>
 <p>Prior measured improvements coexist with content errors. Thin lexical/context coverage in the added corpus motivates broader data before formal RL comparisons; it does not prove a model-capacity ceiling. Do not handcraft translations of failed held-out sentences into training.</p>
-<h2>冻结数据 / Frozen data</h2>
+<h2>Frozen data</h2>
 <ul>
 <li>Training pairs: 38799; new filtered general pairs: 25308; replay pairs: 13491.</li>
 <li>Unique target tokens: 1068396; planned exposure: 1999994 target tokens.</li>
@@ -16,28 +16,24 @@
 <li>Full language inventory for language identification; bounded lengths/ratios, numeric and punctuation agreement, foreign-script, metadata and OCR filtering. No target truncation. AI spot screening is not native-speaker certification.</li>
 <li>Training-only auxiliary MetricX QE error≤6 filters the added subtitle pairs after encoding/structural/language screening. No development/test pair is removed by this QE rule. The pinned FP32 scorer and all training-pair scores are recorded; the screening itself uses GPU time. Some valid translations are rejected and some errors can remain. Because the later reward uses the same MetricX, QE gains are not independent evidence of improvement.</li>
 </ul>
-<p>新增一般数据来自 OPUS OpenSubtitles v2018；不能把下载的总量称为全部可用高质量训练数据。字幕存在语境依赖和错配，因此经过清洗、去重和源参考抽查。技术回放来自上轮已清洗数据，同时排除本轮新发现的官方留出样本。</p>
 <p>The added general data are filtered OPUS subtitles, with remaining context and alignment limitations. Technical replay preserves coverage; all newly protected official evaluation pairs are removed from replay too.</p>
-<p>第一次抽查发现大面积疑似编码污染（如冰岛语字母被其他拉丁字母替代），因此在任何 SFT 更新前归档了未审核版本并重建。原始字幕中1,019,209条命中已知字符模式；这是规则命中数，不是人工确认错误率。拒绝受影响样本，没有猜测转码修补。旧 SFT 和上轮 R0-v2 训练数据中该模式命中为0。</p>
 <p>The preliminary unreviewed subtitle split was archived and rebuilt before any SFT update. Known character-pattern rules matched1,019,209 raw rows, a heuristic count rather than a human error-rate estimate. Affected targets were rejected rather than guessed/repaired. Earlier SFT/R0-v2 training files had zero matches for the same patterns. Sparse evaluation of the unchanged97-class language identifier matched stock predictions and probabilities on200 checked texts; this speeds preparation without narrowing the language inventory.</p>
-<h2>训练 / Training</h2>
+<h2>Training</h2>
 <p>Initial adapter SHA256: <code>806b9857024868131140da43ad3975d7c8653b97e5687420e4499a3769995847</code>. Pinned base revision: <code>2fc06364715b967f1860aea9cf38778875588b17</code>.</p>
 <p>LoRA r16/alpha32 unchanged. Fresh optimizer because the data mixture changes. Peak LR 3e-5, 3% warmup, cosine schedule over 2M added target tokens, effective batch32 / microbatch4. BF16 on L4. Target-only token-weighted CE includes EOS; prompt and padding labels ignored. Maximum complete training sequence768, target256 tokens; no silent truncation.</p>
-<p>对同一有效批次内的样本按长度分组，减少微批次填充。最多训练200万新增目标token或累计4小时，先到者停；每20万token验证，连续4次验证无改善且达到45万token后早停；约每5分钟保存完整可恢复状态。</p>
 <p>Sort within an effective batch to reduce padding without changing its examples or loss weights. Stop at 2M added target tokens or4 accumulated training hours. Validate every200k tokens; early-stop after4 stale validations once450k tokens are consumed. Save adapter, optimizer and RNG about every5min. A stopped run is not automatically a successful new R0.</p>
-<h2>评估与决定 / Evaluation and decision</h2>
+<h2>Evaluation and decision</h2>
 <p>The expanded greedy development score keeps general and technical domains equally weighted, with equal weighting across technical lengths; NLL breaks ties. Re-evaluate the identical held-out prompts for R0-v2 and the new selected candidate. Inspect content words, negation, numbers and sentence relations, alongside chrF++ and structural failures.</p>
 <p>G=8/T=1 matched sampling and pinned MetricX QE diagnose actual candidate utility and ranking. The newly reserved official test subset helps distinguish gains on previously diagnosed prompts from generalization. Reference-based oracle chrF is an upper bound only for that sampled bank and reference metric; it is not a semantic ceiling. Wrong-language gates and high reward are not proof of correct translation.</p>
-<p>若候选质量、专业中长句及排序信号都有实证改善，才能讨论小规模 DAPO 试验；若只是字符重合变高而词义继续错，不将其宣称为合格 R0。正式方法比较需固定同一个合格基座及训练/评测协议。本轮不运行 DAPO。</p>
 <p>Qualification is conditional on measured candidate quality and meaningful reward signals, with semantic inspection. Do not promote from character overlap alone. Formal method comparisons must share one frozen starting checkpoint and protocol. No DAPO updates in this round.</p>
-<h2>保存与复现 / Preservation and reproducibility</h2>
+<h2>Preservation and reproducibility</h2>
 <p>New source/data: <code>D:/deep learning project/experiments/r2_sft_2026-11-13</code>. New model/results: <code>D:/deep learning project/runs/r0_v3_colab_2026-11-13</code>. Prior R0-v2 remains in its Nov12 directory. Source bundle SHA256: <code>3427808b038e896deb68f0c8841cd01672be765cbd1c0672d06ae4edcfe2d0f1</code>.</p>
 <p>Remote checkpoints are periodically copied back to the same D-drive workspace; completed artifacts require SHA256 and ZIP integrity verification. Only the runtime allocated for this run is released afterward. Authentication/session secrets are never included in deliverables.</p>
-<h2>数据来源与引用 / Data sources and attribution</h2>
+<h2>Data sources and attribution</h2>
 <ul>
 <li><a href="https://parice.arnastofnun.is/">ParIce official overview</a> and <a href="https://aclanthology.org/W19-6115/">Barkarson &amp; Steingrímsson 2019</a>.</li>
 <li><a href="https://hdl.handle.net/20.500.12537/146">ParIce evaluation sets 21.10</a>, <a href="https://hdl.handle.net/20.500.12537/24">20.05 splits</a>, CC BY4.0.</li>
 <li><a href="https://opus.nlpl.eu/legacy/OpenSubtitles-v2018.php">OPUS OpenSubtitles v2018</a>; <a href="https://www.opensubtitles.org/">OpenSubtitles provider</a>. Cite Lison &amp; Tiedemann2016, OpenSubtitles2016: Extracting Large Parallel Corpora from Movie and TV Subtitles.</li>
 <li>The filtered ParIce package was downloaded for provenance/inspection; the added general training rows in this round come from the separately identified OPUS subtitle archive. Do not misattribute the alignment version to the ParIce authors.</li>
 </ul>
-</html>
+</main></body></html>

@@ -1002,7 +1002,7 @@
       }
     },
     "note": {
-      "zh": "八个输出均未可靠保留送饼干和完成舞蹈课的具体事件；部分保留否定/直到句式，但关键对象与活动变成不可靠词。",
+      "zh": "None reliably retains delivering cookies after dance class; negation/until fragments remain but objects and activities are corrupted.",
       "en": "None reliably retains delivering cookies after dance class; negation/until fragments remain but objects and activities are corrupted."
     }
   },
@@ -1878,7 +1878,7 @@
       }
     },
     "note": {
-      "zh": "八个输出都未表达相反以及真正走运；多为无关或不连贯描述。",
+      "zh": "All eight lose on the contrary and a real stroke of luck, producing unrelated or incoherent descriptions.",
       "en": "All eight lose on the contrary and a real stroke of luck, producing unrelated or incoherent descriptions."
     }
   },
@@ -2937,7 +2937,7 @@
       }
     },
     "note": {
-      "zh": "0/3/5仍有改变安全/保护代码或设置的部分含义，但机构与中午时间错误；其余连具体安全代码事件也未可靠保留。",
+      "zh": "0/3/5 partly retain changes to security/protection codes or settings, but corrupt the institution and noon; the others also lose the specific event.",
       "en": "0/3/5 partly retain changes to security/protection codes or settings, but corrupt the institution and noon; the others also lose the specific event."
     }
   },
@@ -3700,7 +3700,7 @@
       }
     },
     "note": {
-      "zh": "1/7保留房间热这一核心，词形生硬；0/3/4/6换成房屋，5房间词不可靠，2主体错误。",
+      "zh": "1/7 retain the room being hot despite inflection problems; 0/3/4/6 change it to a house/housing, 5 has an unreliable room term, and 2 changes the subject.",
       "en": "1/7 retain the room being hot despite inflection problems; 0/3/4/6 change it to a house/housing, 5 has an unreliable room term, and 2 changes the subject."
     }
   },
@@ -4623,7 +4623,7 @@
       }
     },
     "note": {
-      "zh": "2/3/5保留不知道该做什么；1语法和疑问内容受损，4改成没有兴趣，6/7改成假设条件式，0基本丢失。",
+      "zh": "2/3/5 preserve not knowing what to do; 1 corrupts the question, 4 changes idea to interest, 6/7 use counterfactual modality, and 0 largely loses the meaning.",
       "en": "2/3/5 preserve not knowing what to do; 1 corrupts the question, 4 changes idea to interest, 6/7 use counterfactual modality, and 0 largely loses the meaning."
     }
   },
@@ -5408,7 +5408,7 @@
       }
     },
     "note": {
-      "zh": "0/3/4虽格和介词错误仍保留与对方年龄相近；7遗漏与你比较，其他输出缺少年龄或关系错误。",
+      "zh": "0/3/4 retain being around your age despite case/preposition errors; 7 drops the comparison with you, and the others lose age or change the relation.",
       "en": "0/3/4 retain being around your age despite case/preposition errors; 7 drops the comparison with you, and the others lose age or change the relation."
     }
   },
@@ -6157,7 +6157,7 @@
       }
     },
     "note": {
-      "zh": "没有一个可靠表达被解雇。4仅为被拒绝，其他变成介绍、到场、悲伤或不可靠词。",
+      "zh": "None reliably expresses being fired. 4 says rejected, while others mean introduced, present, sorrowful or use unreliable words.",
       "en": "None reliably expresses being fired. 4 says rejected, while others mean introduced, present, sorrowful or use unreliable words."
     }
   },
@@ -7031,7 +7031,7 @@
       }
     },
     "note": {
-      "zh": "均保留她会在某条件下回来，但饥饿条件全部变成沉重、害怕、疼痛或不可靠词。",
+      "zh": "All retain her returning under a condition, but replace hungry with heavy, afraid, painful or unreliable words.",
       "en": "All retain her returning under a condition, but replace hungry with heavy, afraid, painful or unreliable words."
     }
   },
@@ -8165,7 +8165,7 @@
       }
     },
     "note": {
-      "zh": "没有可靠保留清澈至微乳光、无色至淡黄色。6/7保留部分清澈液体/颜色描述，其他多为不相关词。",
+      "zh": "None preserves clear-to-opalescent and colourless-to-pale-yellow. 6/7 retain partial clear-liquid/colour descriptions; the others are largely incoherent.",
       "en": "None preserves clear-to-opalescent and colourless-to-pale-yellow. 6/7 retain partial clear-liquid/colour descriptions; the others are largely incoherent."
     }
   },
@@ -9202,7 +9202,7 @@
       }
     },
     "note": {
-      "zh": "除1将CML替换为不可靠血液疾病描述外，其余保留药名、儿童青少年和CML，格变化错误不改变核心。",
+      "zh": "All except1 retain the drug, children/adolescents and CML despite case errors; 1 substitutes an unreliable blood-disease description.",
       "en": "All except1 retain the drug, children/adolescents and CML despite case errors; 1 substitutes an unreliable blood-disease description."
     }
   },
@@ -10277,7 +10277,7 @@
       }
     },
     "note": {
-      "zh": "0保留兽医与两次的框架但疫苗错成生长；6有两个疫苗词形线索但职业/考虑行为不可靠；其余核心事件丢失。",
+      "zh": "0 retains veterinarians/two but replaces vaccinations with growth; 6 has a vaccine fragment but unreliable profession/action; others lose the event.",
       "en": "0 retains veterinarians/two but replaces vaccinations with growth; 6 has a vaccine fragment but unreliable profession/action; others lose the event."
     }
   },
@@ -11475,7 +11475,7 @@
       }
     },
     "note": {
-      "zh": "没有正确保留Science Verification数据。1/3/4/5/7保留结果使用部分信息或验证的片段；0/2/6主要不连贯或重复。",
+      "zh": "None correctly retains Science Verification data. 1/3/4/5/7 preserve partial results/data/verification relations; 0/2/6 are largely incoherent or repetitive.",
       "en": "None correctly retains Science Verification data. 1/3/4/5/7 preserve partial results/data/verification relations; 0/2/6 are largely incoherent or repetitive."
     }
   },
@@ -12864,7 +12864,7 @@
       }
     },
     "note": {
-      "zh": "0/7保留生产者或发明者、部分地理与展示线索，但自豪和向公众展示珍品错误；其余核心描述无法可靠恢复。",
+      "zh": "0/7 retain producer/inventor, partial geography and presentation fragments but lose pride/public treasures; the others are largely unrecoverable.",
       "en": "0/7 retain producer/inventor, partial geography and presentation fragments but lose pride/public treasures; the others are largely unrecoverable."
     }
   },
@@ -14754,7 +14754,7 @@
       }
     },
     "note": {
-      "zh": "均保留减少B相关数量和BLyS的一部分机制，但把B细胞译成B物质，蛋白、寿命或高表达等关键机制也有缺损，无完整正确候选。",
+      "zh": "All partly retain reducing a B-related count and BLyS, but replace B cells with substances and corrupt protein/survival/high-level details; no complete good candidate.",
       "en": "All partly retain reducing a B-related count and BLyS, but replace B cells with substances and corrupt protein/survival/high-level details; no complete good candidate."
     }
   },
@@ -15894,7 +15894,7 @@
       }
     },
     "note": {
-      "zh": "7用两块组成、可合并或各自参加，保留课程结构。0/1/2/6部分保留两单元但单元/单独与合并关系失准；3/4/5主体和单元都不可靠。",
+      "zh": "7 preserves a course of two blocks taken together or separately. 0/1/2/6 retain partial two-unit structure but corrupt units or alternatives; 3/4/5 corrupt subject and units.",
       "en": "7 preserves a course of two blocks taken together or separately. 0/1/2/6 retain partial two-unit structure but corrupt units or alternatives; 3/4/5 corrupt subject and units."
     }
   },
@@ -16412,8 +16412,8 @@
           },
           {
             "index": 4,
-            "raw_output": "Sams丸t á að nefra áhættulegri áfengi í þremur hlutum og sambreiðslu af þeim með almennu málið um stöðugt þróun.",
-            "hypothesis": "Sams丸t á að nefra áhættulegri áfengi í þremur hlutum og sambreiðslu af þeim með almennu málið um stöðugt þróun.",
+            "raw_output": "Sams[pill]t á að nefra áhættulegri áfengi í þremur hlutum og sambreiðslu af þeim með almennu málið um stöðugt þróun.",
+            "hypothesis": "Sams[pill]t á að nefra áhættulegri áfengi í þremur hlutum og sambreiðslu af þeim með almennu málið um stöðugt þróun.",
             "completion_ids": [
               50,
               3986,
@@ -17644,7 +17644,7 @@
       }
     },
     "note": {
-      "zh": "八个候选均未可靠表达三个优先主题内的社会经济因素以及可持续发展的关联。",
+      "zh": "None reliably expresses socio-economic aspects in the three priority themes linked to sustainable development.",
       "en": "None reliably expresses socio-economic aspects in the three priority themes linked to sustainable development."
     }
   },
@@ -19350,7 +19350,7 @@
       }
     },
     "note": {
-      "zh": "1/2/3/4/7保留高剂量不良反应/药理联系的一部分，但组织灌注和黏稠度机制均错误；0/5/6主要核心也严重损坏。",
+      "zh": "1/2/3/4/7 partly retain high-dose adverse/pharmacological relations but corrupt tissue perfusion and viscosity; 0/5/6 also heavily corrupt the main claim.",
       "en": "1/2/3/4/7 partly retain high-dose adverse/pharmacological relations but corrupt tissue perfusion and viscosity; 0/5/6 also heavily corrupt the main claim."
     }
   },
@@ -21017,7 +21017,7 @@
       }
     },
     "note": {
-      "zh": "均保留条款编号、五年及指令线索，但特殊操作、最迟期限或生效基点不可靠；4/6尤其把期限变为至少/五年之后。",
+      "zh": "All retain clause numbers, five years and the Directive but corrupt manoeuvres, latest deadline or entry-into-force trigger; 4/6 especially reverse timing to at least/after five years.",
       "en": "All retain clause numbers, five years and the Directive but corrupt manoeuvres, latest deadline or entry-into-force trigger; 4/6 especially reverse timing to at least/after five years."
     }
   },
@@ -23240,7 +23240,7 @@
       }
     },
     "note": {
-      "zh": "均未可靠保留急慢性毒性数据、完整混合物和两种指定方法。4/5尚有缺数据/混合物和求和方法片段，其余主要条件或方法基本不可恢复。",
+      "zh": "None reliably retains acute/chronic toxicity data, the whole mixture and both named methods. 4/5 retain partial mixture/data/summation fragments; the others largely lose the condition or methods.",
       "en": "None reliably retains acute/chronic toxicity data, the whole mixture and both named methods. 4/5 retain partial mixture/data/summation fragments; the others largely lose the condition or methods."
     }
   },
@@ -24920,7 +24920,7 @@
       }
     },
     "note": {
-      "zh": "2/3/4/6保留继续改进合作或愿景的一部分，但北欧合作部长和声明内容有缺损；其余核心更严重丢失或反转。",
+      "zh": "2/3/4/6 partly retain continuing partnership work or a vision, but corrupt Nordic ministers and the statement; the others lose or reverse more of the claim.",
       "en": "2/3/4/6 partly retain continuing partnership work or a vision, but corrupt Nordic ministers and the statement; the others lose or reverse more of the claim."
     }
   },
@@ -26396,7 +26396,7 @@
       }
     },
     "note": {
-      "zh": "0/4大多数化学名无法识别；其余虽保留若干成分及80/2等数字，但至少一种关键化学名或注射用水错误，没有完整正确清单。",
+      "zh": "0/4 render most chemicals unrecognisably; others keep some ingredients/numbers but corrupt at least one key chemical or water-for-injection, so none gives the full correct list.",
       "en": "0/4 render most chemicals unrecognisably; others keep some ingredients/numbers but corrupt at least one key chemical or water-for-injection, so none gives the full correct list."
     }
   },
@@ -27568,7 +27568,7 @@
       }
     },
     "note": {
-      "zh": "1/2/3/4保留问题、重要/靠前和引述者的一部分，但政府议程被替换或不明确；其余主张变成武器、杀戮或不连贯重复。",
+      "zh": "1/2/3/4 retain issues, prominence and attribution in part but corrupt government agendas; the others become weapons, killing or incoherent repetition.",
       "en": "1/2/3/4 retain issues, prominence and attribution in part but corrupt government agendas; the others become weapons, killing or incoherent repetition."
     }
   },
@@ -29747,7 +29747,7 @@
       }
     },
     "note": {
-      "zh": "4/5/6保留热/大、双星或内部混合的一部分，6最接近但best case错成柜子且作者身份损坏；其余星体性质与混合主张主要丢失。",
+      "zh": "4/5/6 retain parts of hot/massive, double-star or internal mixing; 6 is closest but changes case to cabinet and corrupts attribution. Others largely lose the stellar claim.",
       "en": "4/5/6 retain parts of hot/massive, double-star or internal mixing; 6 is closest but changes case to cabinet and corrupts attribution. Others largely lose the stellar claim."
     }
   },
@@ -33110,7 +33110,7 @@
       }
     },
     "note": {
-      "zh": "4保留主体不可再投资现金流和例外的一部分，但现金等价物、结算期限及利息转付错误；其余大段不连贯，未可靠表达完整财务规则。",
+      "zh": "4 partly retains no reinvestment of cash flows and an exception, but corrupts cash equivalents, settlement timing and passing on interest. Others largely fail to express the financial rule.",
       "en": "4 partly retains no reinvestment of cash flows and an exception, but corrupts cash equivalents, settlement timing and passing on interest. Others largely fail to express the financial rule."
     }
   },
@@ -37621,7 +37621,7 @@
       }
     },
     "note": {
-      "zh": "0/1/2/4保留成员国、居住地机构、资格或费用框架的一部分，但退休金/受益人、家属及本国单一养老金等价待遇不完整。3/5/6/7核心主体或给付类型严重错乱，3还重复。",
+      "zh": "0/1/2/4 retain parts of Member-State, residence-institution or entitlement/cost structure but corrupt pensions, family or equal-treatment conditions. 3/5/6/7 heavily corrupt subject/benefit type; 3 also repeats.",
       "en": "0/1/2/4 retain parts of Member-State, residence-institution or entitlement/cost structure but corrupt pensions, family or equal-treatment conditions. 3/5/6/7 heavily corrupt subject/benefit type; 3 also repeats."
     }
   },
@@ -41415,7 +41415,7 @@
       }
     },
     "note": {
-      "zh": "除1/2主要不连贯或改变请求协助外，其余保留部分跨机关程序、条文和协助达成协议框架；但权力保留、分歧、行动/不行动或跨成员国条件均有重大缺损。",
+      "zh": "Apart from1/2, which are largely incoherent or change requesting assistance, outputs retain some authority/procedure/agreement structure, but corrupt powers, disagreement, action/inaction or cross-state conditions.",
       "en": "Apart from1/2, which are largely incoherent or change requesting assistance, outputs retain some authority/procedure/agreement structure, but corrupt powers, disagreement, action/inaction or cross-state conditions."
     }
   },
@@ -44340,7 +44340,7 @@
       }
     },
     "note": {
-      "zh": "多数保留动物产品进口、第三国、证书或主管机关声明的一部分，但牛羊山羊、生产国签署声明和证书关系不完整；6主要成分更难理解。",
+      "zh": "Most retain parts of animal-product imports, third countries, certificates or an authority declaration, but corrupt species and the signed production-country declaration/certificate relationship; 6 is mostly incoherent.",
       "en": "Most retain parts of animal-product imports, third countries, certificates or an authority declaration, but corrupt species and the signed production-country declaration/certificate relationship; 6 is mostly incoherent."
     }
   },
@@ -47386,7 +47386,7 @@
       }
     },
     "note": {
-      "zh": "虽保留130g/日等表面数字，但碳水化合物、维持脑功能和满足大脑葡萄糖需求的核心健康声明在八个候选中均丢失。",
+      "zh": "Despite surface figures such as130g/day, all eight lose carbohydrates, maintenance of brain function and the brain glucose requirement.",
       "en": "Despite surface figures such as130g/day, all eight lose carbohydrates, maintenance of brain function and the brain glucose requirement."
     }
   },
@@ -50648,7 +50648,7 @@
       }
     },
     "note": {
-      "zh": "均保留Meloxivet、4天或剂量调整片段，但临床反应的前提、最低有效个体剂量或疼痛炎症/慢性肌骨病随时间变化至少一项严重错误。",
+      "zh": "All retain Meloxivet, four days or adjustment fragments, but materially corrupt clinical response, lowest effective individual dose or changing pain/inflammation in chronic musculoskeletal disorders.",
       "en": "All retain Meloxivet, four days or adjustment fragments, but materially corrupt clinical response, lowest effective individual dose or changing pain/inflammation in chronic musculoskeletal disorders."
     }
   },
@@ -53016,7 +53016,7 @@
       }
     },
     "note": {
-      "zh": "5/6部分保留星系相遇比前研究更长的比较，但微小摩擦逐渐积累造成可测滞后丢失；其余连碰撞对象/比较也更严重损坏。",
+      "zh": "5/6 partly retain a longer galaxy encounter than the previous study, but lose tiny friction accumulating to measurable lag; the others also heavily corrupt the event/comparison.",
       "en": "5/6 partly retain a longer galaxy encounter than the previous study, but lose tiny friction accumulating to measurable lag; the others also heavily corrupt the event/comparison."
     }
   },
@@ -56952,7 +56952,7 @@
       }
     },
     "note": {
-      "zh": "多数保留公司/市场和向成员国提供相当信息的部分框架，但股份、证券交易所、两类上市条件或估值前提不可靠；2/7重复或核心对象更严重丢失。",
+      "zh": "Most partly retain company/market and equivalent-information disclosure, but corrupt shares, exchanges, dual listing or valuation conditions. 2/7 repeat or lose more of the core objects.",
       "en": "Most partly retain company/market and equivalent-information disclosure, but corrupt shares, exchanges, dual listing or valuation conditions. 2/7 repeat or lose more of the core objects."
     }
   },
@@ -59628,7 +59628,7 @@
       }
     },
     "note": {
-      "zh": "1/2/4/5/6/7保留28天、2–8℃或开封后存放的一部分，但化学/物理/微生物稳定性、最大期限或用户责任不完整；0/3连储存动作/时序也严重受损。",
+      "zh": "1/2/4/5/6/7 retain 28days,2–8C or post-opening storage in part, but corrupt stability types, maximum duration or user responsibility; 0/3 also heavily corrupt storage/action timing.",
       "en": "1/2/4/5/6/7 retain 28days,2–8C or post-opening storage in part, but corrupt stability types, maximum duration or user responsibility; 0/3 also heavily corrupt storage/action timing."
     }
   }

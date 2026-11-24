@@ -1,41 +1,128 @@
-<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>P18 progress</title><style>body{font:16px/1.65 system-ui;max-width:1000px;margin:32px auto;padding:16px;background:#f6f8fb}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;padding:24px;border-radius:12px}</style><pre># 3B R0恢复训练进度 / 3B R0 recovery progress
-
-Updated UTC: 2026-11-21T23:42:37.991320+00:00
-
-状态必须按实际日志读取；小样本拟合通过不是最终泛化验收。 / Status reflects saved execution records; passing the fit probe is not final qualification.
-
-总上限截止 / Absolute release deadline: **2026-11-22 04:40 CET Berlin**. Original8hanchor includes research and preparation.
-
-| Review | Greedy P | Long P | G8 P | Fit gate passed |
-|---|---:|---:|---:|---|
-| dev_A | 10 | NA | 12 | NA |
-| dev_t0500632 | 6 | NA | 10 | NA |
-| dev_t1000811 | 12 | NA | 13 | NA |
-| dev_t1501693 | 10 | NA | 12 | NA |
-| dev_t1983726 | 12 | NA | 13 | NA |
-| final | NA | NA | NA | NA |
-| final_g8_after_component | NA | NA | NA | NA |
-| final_g8_before_component | NA | NA | NA | NA |
-| final_greedy_after_component | NA | NA | NA | NA |
-| final_greedy_before_component | NA | NA | NA | NA |
-| fit_0025667 | 24 | 9 | NA | False |
-| fit_0100154 | 30 | 15 | NA | True |
-| fit_before | 5 | 2 | NA | False |
-| train_selected_main | 12 | 5 | NA | NA |
-
-Latest mirrored cloud event
-
-```json
-{
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>3B R0 recovery progress</title><style>body{font:16px/1.65 system-ui;max-width:1000px;margin:32px auto;padding:16px;background:#f6f8fb}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;padding:24px;border-radius:12px}
+pre{overflow:auto;background:#f3f6fa;padding:14px;border-radius:6px}img{max-width:100%;height:auto}p,li,td{overflow-wrap:anywhere}aside{padding:12px;border-left:4px solid #126782;background:#eef5fa;margin-bottom:24px}.table{overflow-x:auto}details{margin:12px 0}summary{cursor:pointer;font-weight:600}</style></head><body><main><aside>English edition · 2026-11-24. Historical experiment values and labels are unchanged. Original wording and model-output bytes are retained in source commit f82bd68. See the repository English-localization record before rescoring translated display excerpts.</aside><h1>3B R0 recovery progress</h1>
+<p>Updated UTC: 2026-11-21T23:42:37.991320+00:00</p>
+<p>Status reflects saved execution records; passing the fit probe is not final qualification.</p>
+<p>Absolute release deadline: <strong>2026-11-22 04:40 CET Berlin</strong>. Original8hanchor includes research and preparation.</p>
+<table>
+<thead>
+<tr>
+<th>Review</th>
+<th style="text-align:right">Greedy P</th>
+<th style="text-align:right">Long P</th>
+<th style="text-align:right">G8 P</th>
+<th>Fit gate passed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dev_A</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">12</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>dev_t0500632</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">10</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>dev_t1000811</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">13</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>dev_t1501693</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">12</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>dev_t1983726</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">13</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>final</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>final_g8_after_component</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>final_g8_before_component</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>final_greedy_after_component</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>final_greedy_before_component</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">NA</td>
+<td style="text-align:right">NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>fit_0025667</td>
+<td style="text-align:right">24</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">NA</td>
+<td>False</td>
+</tr>
+<tr>
+<td>fit_0100154</td>
+<td style="text-align:right">30</td>
+<td style="text-align:right">15</td>
+<td style="text-align:right">NA</td>
+<td>True</td>
+</tr>
+<tr>
+<td>fit_before</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">NA</td>
+<td>False</td>
+</tr>
+<tr>
+<td>train_selected_main</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">NA</td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
+<p>Latest mirrored cloud event</p>
+<pre><code class="language-json">{
   &quot;phase&quot;: &quot;exporting&quot;,
   &quot;unix&quot;: 1795303473.9609296
 }
-```
-
-fit_gate_outcome.json
-
-```json
-{
+</code></pre>
+<p>fit_gate_outcome.json</p>
+<details><summary>Recorded data or code</summary><pre><code class="language-json">{
   &quot;passed&quot;: true,
   &quot;target_tokens&quot;: 100154,
   &quot;steps&quot;: 121,
@@ -164,25 +251,18 @@ fit_gate_outcome.json
   ],
   &quot;production_weights_not_initialized_from_fit&quot;: true
 }
-```
-
-frozen_budget.json
-
-```json
-{
+</code></pre></details>
+<p>frozen_budget.json</p>
+<pre><code class="language-json">{
   &quot;target_tokens&quot;: 1983726,
   &quot;quality_used&quot;: false,
   &quot;measured_target_tokens_per_second&quot;: 327.4510308321926,
   &quot;available_seconds&quot;: 12469.20816540718,
   &quot;maximum_main_end&quot;: 1795307377.125894
 }
-```
-
-本次正式SFT从扩容但函数保持的原R0开始；拟合诊断适配器不作为正式起点。训练期间保留原R0及不可变恢复检查点。 / Production restarts from function-preserving expanded original R0, not the fit adapter. Original and immutable recovery snapshots are retained.
-
-只有留出最终评估及语义审核完成，才判断新checkpoint是否合格。 / Qualification awaits held-out final evaluation and semantic review.
-
-Raw journals: D:\deep learning project\runs\r0_3b_recovery_sft_2026-11-21\live_mirror
+</code></pre>
+<p>Production restarts from function-preserving expanded original R0, not the fit adapter. Original and immutable recovery snapshots are retained.</p>
+<p>Raw journals: D:\deep learning project\runs\r0_3b_recovery_sft_2026-11-21\live_mirror
 Reviews: D:\deep learning project\experiments\r0_3b_recovery_sft_2026-11-21\reviews
-Literature and frozen plan: D:\deep learning project\reports\r0_3b_recovery_sft_2026-11-21\RESEARCH_AND_8H_EXECUTION_2026-11-21.html
-</pre></html>
+Literature and frozen plan: D:\deep learning project\reports\r0_3b_recovery_sft_2026-11-21\RESEARCH_AND_8H_EXECUTION_2026-11-21.html</p>
+</main></body></html>

@@ -1,16 +1,12 @@
-# 系统性3B翻译SFT：数据准备与停止结果 / Systematic 3B translation SFT: data preparation and stop report
+# Systematic 3B translation SFT: data preparation and stop report
 
 2026-11-19 · Europe/Berlin · STOPPED BEFORE GPU — NO NEW R0
 
-已执行CPU数据准备，但未启动训练。首次200对参考审查有21对R、7对U；按方案完成唯一一次过滤修订后，另外200对有13对R、10对U。两次均未满足预先提出的启动门槛，因此停在GPU分配之前。原A及其他旧模型保留，本轮GPU时间和计算单元消耗均为0，没有产生新R0。
-
 CPU data preparation was executed, but training was not launched. The first200-pair reference audit yielded21R and7U. After the one permitted filter revision, a disjoint200-pair audit yielded13R and10U. Both missed the registered launch gate, so execution stopped before GPU allocation. OriginalA and older models are preserved. This task used0GPU minutes/compute units and created no newR0.
-
-这里的R是本次AI辅助源文/参考审查判定的重要监督缺陷，包含错配、重要含义变化和严重OCR；不是母语专家认证的全语料错误率。部分严格忠实性判断可能有争议，全部句子和注释均保留。没有新的Qwen训练或翻译评估，所以不能把本报告称为“又一轮SFT效果不好”。
 
 R denotes material supervision problems in this AI-assisted source/reference audit, including misalignment, important meaning changes and severeOCR. It is not a native-certified corpus-wide error rate. Some strict-fidelity judgements may be disputed; all pairs/notes remain available. No newQwen training or translation-quality evaluation occurred, so this is not another failed-SFT result.
 
-| 状态 / Status | 实测 / Actual |
+| Status | Actual |
 | --- | --- |
 | Raw pairs scanned | 3,221,716 |
 | V1 eligible candidates | 181,287; not semantically approved |
@@ -22,21 +18,17 @@ R denotes material supervision problems in this AI-assisted source/reference aud
 | Colab assignments / GPU minutes / CU | 0 / 0 / 0 |
 | Preserved A SHA256 | 9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199 |
 
-## 1. 执行范围与事前停止规则 / Scope and preregistered stop rule
-
-用户于2026-11-19授权按昨日方案开始。该方案明确要求先做CPU数据准备和200对审查；R≤4/200、U≤20/200、各层R比例≤5%才启动GPU。首次失败后最多修订一次过滤规则，并用不重合的200对复审；再次失败则停止。此处执行原规则，没有根据结果降低阈值，也没有进行第三次筛选复审。
+## Scope and preregistered stop rule
 
 The user authorized execution on2026-11-19. The written plan requires CPU preparation and200-pairQA before GPU: R≤4/200, U≤20/200, and stratumR≤5%. One filter revision plus a disjoint200-pair re-audit is allowed after failure. A second failure stops execution. Thresholds were not lowered and no third screening/review was performed.
 
-这些是本项目控制预算的工程启动线，不是WMT标准或“噪声超过2%就一定训不好”的科学定律。停止说明本批数据没有满足已承诺的准备要求，不证明在更宽松噪声条件下训练一定无效。
-
 These are project budget/quality guards, notWMT standards or a law that more than2%noise makesSFT fail. Stopping means this preparation did not meet its promised requirements, not that training under looser noise conditions is proven ineffective.
 
-原方案 / Original proposal: D:\deep learning project\reports\r0_3b_systematic_sft_2026-11-18\R0_3B_SYSTEMATIC_SFT_PLAN_2026-11-18.md
+Original proposal: D:\deep learning project\reports\r0_3b_systematic_sft_2026-11-18\R0_3B_SYSTEMATIC_SFT_PLAN_2026-11-18.md
 
-本次授权与方案哈希 / Authorization and proposal hash: D:\deep learning project\experiments\r0_3b_systematic_sft_2026-11-19\execution_authorization.json
+Authorization and proposal hash: D:\deep learning project\experiments\r0_3b_systematic_sft_2026-11-19\execution_authorization.json
 
-## 2. 数据、处理步骤与来源 / Data, preparation and provenance
+## Data, preparation and provenance
 
 ParIceFiltered · D:\deep learning project\data\raw\r2_2026-11-13\parice_filtered.zip · SHA256 3dfbca7d7f4e0c03dc3e9a888baba9620691090b32f3b57db40fb29316b28094
 
@@ -44,7 +36,7 @@ OpenSubtitles18 · D:\deep learning project\data\raw\r2_2026-11-13\OpenSubtitles
 
 Tatoeba · D:\deep learning project\data\raw\train\Tatoeba-v2023-04-12-en-is.zip · SHA256 58e68029f73646a261d651f9caddd30f8fdd3ca924a88e620c8906db642c2718
 
-| 步骤 / Step | 已完成 / Completed |
+| Step | Completed |
 | --- | --- |
 | 1 | Verified parentA weights and copiedA into a separate dated preparation directory |
 | 2 | Built separate actualA lineage, known held-out protection and conservative prior-training test exclusions |
@@ -57,17 +49,13 @@ Tatoeba · D:\deep learning project\data\raw\train\Tatoeba-v2023-04-12-en-is.zip
 | 9 | Re-read all400 pairs directly from originalZIPs; confirmed exact match and unchanged archives/A |
 | 10 | Offline count/gate replay,full400-caseCSV/JSONL,bilingualMD/HTML,figure and browserQA |
 
-训练池与评估来源按规范化源文/参考精确匹配、5gram/Jaccard≥0.85启发式和来源组隔离。字幕有成对XML文档ID；扁平ParIce/Tatoeba缺少真实文档ID，使用相邻100行组只是代理，不能称完整文档去污染。历史来源清单也有追溯局限。没有为了“新”而一概排除所有从未训练的候选池。
-
 Protection uses normalized exact source/reference matches,5gram/Jaccard≥0.85 heuristics and source groups. Subtitles retain pairedXML documentIDs; flatParIce/Tatoeba use100-line adjacency proxies, not true document decontamination. Historical inventories also have limits. Entire untrained candidate pools were not categorically excluded merely to manufacture novelty.
-
-准备时修正过一次来源清单分类：自动QE接受全池不等于人工看过的保留集，初稿清单已存provenance_v0_before_inventory_fix；修正发生在原始扫描之前。首次扫描调用因threadpoolctl导入路径中止，调整为使用已有依赖后才开始正式扫描。这些都是CPU准备问题，没有GPU工作或模型更新。
 
 An early inventory correction distinguished a whole automaticQE pool from inspected held-out cards; the initial inventory is preserved. It preceded raw scanning. The first scan invocation stopped at a threadpoolctl import-path issue; the retained scan used existing dependencies. These were CPU preparation issues, with no GPU work or model updates.
 
-## 3. 两次锁定审查的全部统计 / Complete locked audit counts
+## Complete locked audit counts
 
-| 版本 / Version | 层 / Stratum | N | A | C | R | U | R / N |
+| Version | Stratum | N | A | C | R | U | R / N |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | v1 | general | 40 | 22 | 10 | 6 | 2 | 15.0% |
 | v1 | technical_short | 40 | 25 | 13 | 1 | 1 | 2.5% |
@@ -78,20 +66,16 @@ An early inventory correction distinguished a whole automaticQE pool from inspec
 | v2 | technical_medium | 60 | 36 | 15 | 6 | 3 | 10.0% |
 | v2 | technical_long | 60 | 37 | 20 | 1 | 2 | 1.7% |
 
-| 版本 / Version | 200对汇总 / Counts | 总R门槛 / R≤4 | 不确定门槛 / U≤20 | 分层门槛 / StratumR≤5% | 结果 / Outcome |
+| Version | Counts | Total R threshold: R≤4 | Uncertainty threshold: U≤20 | StratumR≤5% | Outcome |
 | --- | --- | --- | --- | --- | --- |
 | v1 | {'C': 52, 'A': 120, 'R': 21, 'U': 7} | False | True | False | NOT PASSED |
 | v2 | {'A': 129, 'R': 13, 'C': 48, 'U': 10} | False | True | False | NOT PASSED |
 
-A表示可用参考；C表示主要含义可用但有小的措辞、语法、格式或孤立OCR问题；R表示重要监督缺陷；U表示无法可靠判断。A/C不等于全量人工认证。审查只看源文和参考，没有MetricX分数或新actor译文。V1/V2样本、池和部分领域标签不同，21降至13只作描述，不能称配对或因果意义的改善，也不估计整个语料的真实错误率。
-
 A is usable;C retains main meaning with minor wording,grammar,formatting or isolatedOCR issues;R is a material supervision defect;U is uncertain. A/C is not full human certification. Only source/reference text was reviewed,withoutMetricX or newactor translations. V1/V2 use different samples/pools and some revised domains.21→13 is descriptive,not a paired/causal gain or a corpus-wide true error estimate.
 
-![不同200对样本的AI辅助审查计数；无新训练 / AI-assisted counts on different200-pair samples; no new training](QA_screening.png)
+![AI-assisted counts on different200-pair samples; no new training](QA_screening.png)
 
-## 4. 重要可复核案例 / Material auditable examples
-
-以下案例用于说明问题不全是风格差异，并非第三轮审查、另一位专家裁决或事后修改标签。某些专业原文在完整文档里允许用代词或上下文简写，但不能直接当作当前“只给一个英文句段”的完整监督目标。
+## Material auditable examples
 
 These cases illustrate problems beyond style; they are not a third audit,independent expert adjudication or relabeling. Some pronouns/contextual shorthand may be valid in the original document yet unsuitable as complete targets for the current standalone English-segment input.
 
@@ -215,9 +199,9 @@ Review: Dual-instruction flight time is rendered as instrument/blind-flying time
 
 </details>
 
-## 5. 一次修订做了什么，以及仍没解决什么 / The one revision and its limits
+## The one revision and its limits
 
-| 修订 / Revision | 结果边界 / Limit |
+| Revision | Limit |
 | --- | --- |
 | Context risk | Removed many non-Tatoeba first-person/contraction/very-short context-dependent pairs; cannot detect every third-person/book paraphrase |
 | Completeness anchors | Checked explicitnegation,alternatives,participation,subjectidentity,modality andselectedtemporal cases; heuristics can falsely reject valid paraphrases |
@@ -225,39 +209,27 @@ Review: Dual-instruction flight time is rendered as instrument/blind-flying time
 | OCR hygiene | Removed known split suffixes,isolated letters andgluedlegal dates; previously unseenOCR forms remain |
 | Domain metadata | Expanded lexicalanchors,not authoritative subcorpuslabels; treatment can mean vehicle-waste treatment or equal treatment,notmedicine |
 
-V2留下99,937对，隔离候选保留来源组后训练候选为92,677对；它们仍未获本轮启动资格，不能写成“已准备好9万高质量训练数据”。领域标签由词汇规则产生，抽查发现跨领域误标，不能用这些计数宣称医疗、法律、天文已经真正均衡。全部规则、拒绝列表、改类计数与原始版本均已保存。
-
 V2 retained99,937 pairs,or92,677 training candidates after held-out group exclusion. They did not qualify for launch; do not call them90k approved high-quality training pairs. Lexical domains contain cross-domain mistakes,so counts do not establish a truly balanced medical/legal/astronomy distribution. Rules,rejections,reclassification and prior versions are preserved.
 
-## 6. 对旧0.8B和3B原因判断的含义 / Implications for earlier0.8B and3B diagnoses
-
-本轮直接证明的是“新准备的训练池仍含当前任务下的重要监督问题，且未通过自己的启动规则”。两轮所有R源文与A已知实际训练链的精确源文重合都是0；所以不能说这些具体坏样本导致了旧A失败，也不能据此估计旧训练集噪声。精确不重合仍不等于语义、近重复或预训练完全未见。
+## Implications for earlier0.8B and3B diagnoses
 
 This audit establishes important supervision problems in the newly prepared pool and failure of the project launch rule. EveryR source has0 exact overlap with A’s known actual training-source hashes. Therefore these particular cases do not demonstrate the cause of priorA’s failures or estimate old-data noise. Exact nonoverlap does not establish semantic/near/pretraining novelty.
 
-既有结论保留：0.8B能记忆小集合但未泛化；3B SFT有过真实收益但技术正确候选仍少；MetricX错排是另一条问题。新数据QA不是新的SFT/DAPO对照，不能量化这些因素对旧训练结果的贡献，不能宣布参数容量上限，也不能断言“只修数据就一定得到强R0”。
-
 Earlier findings remain:0.8B memorized a tiny set without generalizing;3B SFT produced real gains but weak technical candidate availability;MetricX misranking is separate. DataQA is not a newSFT/DAPO comparison and cannot allocate causal contributions,establish a capacity ceiling,or guarantee that fixing data alone yields a strongR0.
 
-## 7. 下一步应改变数据构建方式 / Next: change data construction, not another word-rule pass
-
-保持通用Qwen3B与现有A。下一项应是按原始子语料和文档对齐来源构建监督，而不是对同一混合扁平句对池再加第三轮关键词过滤：保留EEA、EMA、ESO、通用来源及文档ID，先检查对齐、缺句和上下文依赖，再按来源选择可用训练部分。领域归属由真实来源辅助，而不是只靠shall、treatment或galaxy命中。
+## Next: change data construction, not another word-rule pass
 
 Keep general-purposeQwen3B andA. The next preparation should use original subcorpus/document-alignment provenance rather than a third word-rule pass over the same flat mixture. Retain EEA,EMA,ESO,general-source anddocument identities; inspect alignment,missingclauses andcontext dependence before selecting usable training subsets. Domain assignment should use provenance,not only shall/treatment/galaxy hits.
-
-ParIce提供方明确区分多个子语料，原始发布页也展示了XML文档结构；这说明有值得检查的来源级路径，不保证其中任何一份训练子集已经达到质量目标。官网提到人工核查的dev/test不能拿来训练。本轮仅查了目录，没有下载或审核新的训练版本，也没有启动新的数据筛选试验。
 
 The ParIce provider lists separate subcorpora and the original release catalog exposesXML document structure. That is a concrete provenance-level route to inspect,not proof that a particular training subset passes quality targets. Manually checked dev/test material must not be used for training. Only catalogs were inspected here; no new release was downloaded/audited and no further screening experiment was launched.
 
 [ParIce provider](https://parice.arnastofnun.is/) · [Original corpus catalog](https://repository.clarin.is/repository/xmlui/handle/20.500.12537/16) · [Split catalog](https://repository.clarin.is/repository/xmlui/handle/20.500.12537/24)
 
-这是后续建议，不是已完成的数据修复。下一轮仍须在GPU前固定实际数据与验收规则；来源级准备若无法提供足够可靠监督，应报告资源缺口，而非继续承诺一次8小时SFT会解决。
-
 This is a recommendation,not completed data repair. Any next execution must freeze actual data and acceptance before GPU. If provenance-level preparation cannot supply adequate supervision,report that resource gap rather than promise an8-hourSFT cure.
 
-## 8. 成本、权重与实现状态 / Cost, weights and implementation status
+## Cost, weights and implementation status
 
-| 项目 / Item | 实际 / Actual |
+| Item | Actual |
 | --- | --- |
 | GPU allocation request | None; no ownership/allocation_request file |
 | Colab assignments | 0 |
@@ -269,13 +241,11 @@ This is a recommendation,not completed data repair. Any next execution must free
 | Training implementation | Draft core/trainer prepared; not GPU-integrated or validated; no launchbundle |
 | Finaltest/G8 outputs | Not generated;512reference candidates are not completed evaluation results |
 
-CPU准备、语言识别和分词不是GPU训练；本轮没有重新登录、挂载Drive、申请GPU或购买额度。草稿代码不能当作已验证的训练交付，不应绕过数据门槛直接运行。
-
 CPU preparation,languageID andtokenization are notGPU training. No newlogin,Drive mount,GPU request or quota purchase occurred. Draft training code is not a validated training deliverable and should not be run to bypass the data gate.
 
-## 9. 文件索引与CPU复算 / Artifacts and offline replay
+## Artifacts and offline replay
 
-| 用途 / Purpose | 路径 / Path |
+| Purpose | Path |
 | --- | --- |
 | ReportMD/HTML | D:\deep learning project\reports\r0_3b_systematic_sft_2026-11-19 |
 | Plan/authorization/provenance/filter versions | D:\deep learning project\experiments\r0_3b_systematic_sft_2026-11-19 |
@@ -286,11 +256,9 @@ CPU preparation,languageID andtokenization are notGPU training. No newlogin,Driv
 | Executionstate | D:\deep learning project\runs\r0_3b_systematic_sft_2026-11-19\current_state.json |
 | PreservedA | D:\deep learning project\runs\r0_3b_overnight_2026-11-18\final_selected_adapter |
 
-用项目Python运行execution_tools中的p11_reproduce_QA.py可离线复算锁定计数、分层结果和门槛；它不会重新调用模型、重标注、发起网络请求或训练。原始400对回读的独立核对已单独记录，复算脚本不重复整个扫描。
-
 Run p11_reproduce_QA.py with the projectPython to recompute locked counts,strata andgates offline. It does not callmodels,relabel,network ortrain. The separate400-pair raw recheck is recorded; the countreplay does not repeat the entire scan.
 
-## 10. 全部400对审查 / All400 reviewed pairs
+## All400 reviewed pairs
 
 <details><summary>v1 · 0 · general · C · ParIceFiltered:537535</summary>
 

@@ -2,8 +2,6 @@
 
 # 3B R0 —2026-11-18
 
-本轮SFT有可复核的实际收益，但没有实现综合中长句都强的目标。选中A在独立新主集合112条上chrF++44.17、BLEU25.11；原3B为41.27/21.67，配对chrF增益+2.90、95%区间[+1.17,+4.71]。新技术G8确认正确候选覆盖A5/16、原3B1/16、旧0.8B1/16；A中句3/6，长句仍0/6。保存A为当前3B翻译R0及受限试验候选，不将其认证为综合正式DAPO/Efficient-ML基线。
-
 SFT delivers reproducible gains, but the goal of a broadly strong medium/long-segment base is not met. Selected A scores 44.17 chrF++/25.11 BLEU on 112 fresh primary cases versus 41.27/21.67 for the original 3B, paired chrF gain+2.90 with 95% interval[+1.17, +4.71]. Fresh technical G8 good-candidate coverage is A 5/16, parent 1/16, older 0.8B1/16; A covers 3/6 medium but 0/6 long sources. Retain A as the current 3B translation R0 and restricted-pilot candidate, not a certified comprehensive DAPO/Efficient-ML baseline.
 
 GPU released: 347.97min / 11.0967CU.
@@ -48,13 +46,13 @@ Generated selectiondev64 is distinctfromteacherNLLdev144(64G24S28M28L,8649target
 ## 01:20UTC:750k evaluation and latest next steps
 A695updates750317targets;weighted37.66208311,general37.56550421,short51.62583453,mid34.81546731,long37.83574290,failures1,NLL1.45834506. Incrementvs500k+.17447<.3 so plateau bad1;continueend898707 per frozenplan. Usernotifiedlongstillflat,keepbestnotlast andG8decidesparent. HTTPpoll38754timedout,butmirrorcopiedmetricsby01:20,nottrainingfailure. DidNOTchange/restartmirrors (CIMreadunavailable),alloriginalsessionsremain. NEWQELAUNCH:work/n8_launch_QE_remote.py prefetch AFTERAworker_exit0 andmasteractive_trainingFalse. Workerfileuploadedroot/data_QE_worker.py,hash4d68ab2f157a0664e929ec0e8897c1265b611c3daaff2bb171a97e1f594abebd;E/data_QE/worker_source.py+worker_identity.json freeze. Wrapperpersistsanyerrorandclearscontext,numericsunchanged;workerincludesactualassetSHAchecks,batch8vssingle2rawparity<.02,20mincap,crossstratumprefixinput. TransferdataQE via n8_transfer_aux.py data_QE (nowrequiresbatch_parity.json). n8_prepare_QE_launcher.py alreadyrun,doNOTsilentlyrefreezeafterexecution. ExecuteGPUQEonlyAFTERA fullyexits;whileQE scoring CPUgradeA288. PostQEreview32 via n8_review_qe_data.py make/show/append/lock,thenBdecision/prepare/tests/upload/foreB. FinalrankingassetsScorer+planalreadyuploaded;ranksummarybankSHAaddedbeforeexecution;notdoneyet. LengthauditG8instructionoverridecorrected maxprompt158(notinitial173),refmaxunchanged215,initialauditpreserved. Finalreserve>=75,min70requiredbyfinaleval;finalchoice last_executed_stage fieldessential. Fullresults/repro/finalize codepreparedonly,W scriptslatestcopiedEexecutiontools.
 
-## 2026-11-18T02:33:14.833702+00:00 — Stage B active / 第二阶段已启动
+## 2026-11-18T02:33:14.833702+00:00 — Stage B active
 A completed898707targets834updates,dev38.70,NLL1.4401,reused12836.93;technicalG8 4/24,long0/10,notqualifiedR0. A full export2copies verified and288semanticlabels locked. Data QE28948complete852.3sec. First32 QA FAILED20A9C2R1U retained. V4globalrules+cutoff3,disjoint32QA19A11C2U PASSED,exclude2U+7OCR,approved17282. B frozen46files,bundleSHA099ec4d72fdada8f48efb75ea1cbcbb7a4b1f15e0816c384a51dcbb7607762cf,11CPUtestsPASSEDwithUTF8;earlierGBKdecodefailureenvironmentonlyrecorded. Same3Brank16,AselectedparentSHA9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199. B planned1799948targets,55010exposures,14792freshpairs,LR3e-5. Liveforeground45692,snapshot55312,mirror68460. No newallocation. Fresh128NOTgenerated;finalchoicebeforeholdout. DeadlineUTC07:35:19 unchanged.
 
-## 2026-11-18T03:53:12.625843+00:00 — Optional C SKIPPED / 取消可选C
-修正领域标签后的独立32对复查21A7C4R，超过固定R+U≤2门槛；包括恒星单复数、作者姓名、相对发生率丢失及需上文消解的指代。取消拟均衡加权的C，不通过提高权重重复稀少但有问题的数据。不修改已经冻结运行的B；B按原开发集选择和停止规则完成，之后封存最佳权重并独立评估。
+## 2026-11-18T03:53:12.625843+00:00 — Optional C SKIPPED
 A disjoint32-pair review after domain correction gives21A7C4R,exceeding the fixed R+U≤2 gate. Problems include star plurality,author identity,omitted comparative incidence and context-resolved references. Skip C instead of upweighting rare but unreliable data. Do not rewrite running B;complete its frozen selection/stopping protocol,then seal the best weights and evaluate independently.
-原V4总体32QA通过，不代表稀少领域全部可靠；不同抽样配比的两次32不能当作同分布人口错误率。额外QA及标签修订保留，未用于训练。
+A disjoint32-pair review after domain correction gives21A7C4R,exceeding the fixed R+U≤2 gate. Problems include star plurality,author identity,omitted comparative incidence and context-resolved references. Skip C instead of upweighting rare but unreliable data. Do not rewrite running B;complete its frozen selection/stopping protocol,then seal the best weights and evaluate independently.
+The original V4's overall32-case QA pass does not certify every scarce domain. Two32-case samples with different mixtures cannot estimate a common-distribution population error rate. Supplementary QA/label revisions are preserved and were not used for training.
 
 ## 2026-11-18T04:51:21.694554+00:00 — FINAL_INDEPENDENT_EVALUATION_RUNNING
 B stopped1000317targets955updates,NLL1.3197 butdev38.304<500k38.881. All19snapshots/46sourcefiles/two683979006Bexports verifiedSHAa1e5826063e7df20aa3336d714b96512c0559413a06e70e4a3350ab6c32efa9d. B288labelslocked,raw12837.966/BLEU17.479;technicalG8G2/24+2uncertainvsA4/24. Asealedbeforefreshoutputs,chosenforDAPOcandidatecoverage;Bkept. Cnevertrained(QAv2fourR). MetricXreference technicaltop1G4/4 oncoveredgroups,globalfailedcontrolsremain. Fresh3x128+3x16x8 eval93493. No modelselection/trainingafterfresh.

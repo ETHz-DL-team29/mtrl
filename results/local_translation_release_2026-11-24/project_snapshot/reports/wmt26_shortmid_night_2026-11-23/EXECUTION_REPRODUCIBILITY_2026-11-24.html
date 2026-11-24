@@ -1,60 +1,46 @@
-<!doctype html><html lang="zh"><meta charset="utf-8"><style>body{max-width:1080px;margin:30px auto;padding:20px;font:16px/1.7 system-ui,Microsoft YaHei;overflow-wrap:anywhere}code{background:#f1f5f9}</style><h1>执行步骤与复现说明 / Execution and reproducibility</h1>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Execution and reproducibility</title><style>body{max-width:1080px;margin:30px auto;padding:20px;font:16px/1.7 system-ui,Microsoft YaHei;overflow-wrap:anywhere}code{background:#f1f5f9}
+pre{overflow:auto;background:#f3f6fa;padding:14px;border-radius:6px}img{max-width:100%;height:auto}p,li,td{overflow-wrap:anywhere}aside{padding:12px;border-left:4px solid #126782;background:#eef5fa;margin-bottom:24px}.table{overflow-x:auto}details{margin:12px 0}summary{cursor:pointer;font-weight:600}</style></head><body><main><aside>English edition · 2026-11-24. Historical experiment values and labels are unchanged. Original wording and model-output bytes are retained in source commit f82bd68. See the repository English-localization record before rescoring translated display excerpts.</aside><h1>Execution and reproducibility</h1>
 <p>2026-11-24 · Europe/Berlin</p>
-<p>本文件记录本轮实际流程，<strong>不触发新训练或新GPU分配</strong>。原任务2026-11-23 21:50:49 CET开始，硬截止2026-11-24 07:50:49 CET。旧预算具有绝对截止时间，不能直接用它启动另一晚实验。</p>
 <p>This records the executed workflow and <strong>does not launch a new run or allocate a GPU</strong>. The original window is November23 at21:50:49 CET to November24 at07:50:49 CET. Its budget contains an absolute deadline and must not be reused to silently authorize another night.</p>
-<h2>1. 固定输入 / Freeze inputs</h2>
+<h2>Freeze inputs</h2>
 <ul>
-<li>原SFT基座：<code>D:\deep learning project\runs\r0_3b_recovery_sft_2026-11-21\final_selected_adapter</code>，权重SHA256：<code>7f7a4914c5f403e757fdb882c3576ac68f2b0fa6edc00e537087716b28ddb07e</code>。</li>
-<li>已有DAPO-120：<code>D:\deep learning project\experiments\wmt26_shortmid_night_2026-11-23\source\candidate_adapter</code>，其指纹、旧原始位置和配置见<code>protocol.json</code>。</li>
-<li>通用起点仅Qwen/Qwen2.5-3B-Instruct，revision <code>aa8e72537993ba99e69dfaafa59ed015b17504d1</code>。</li>
-<li>WMT原始发布：wmt-conference/wmt26-general-mt，commit <code>63aa5d24311a7e7e3e8173528f3771c7e8b4be78</code>；raw SHA256 <code>de286ce336f10367bedfe0611764b2569b538a9c57db20467fc8c1fa84838291</code>。</li>
-<li>198篇英语→冰岛语文档，完整官方refA。源文使用<code>src_text</code>，不以<code>gold_transcript</code>替换ASR文字，也未补充图像或音频。</li>
+<li>Original SFT baseline:<code>D:\deep learning project\runs\r0_3b_recovery_sft_2026-11-21\final_selected_adapter</code>, weight SHA256:<code>7f7a4914c5f403e757fdb882c3576ac68f2b0fa6edc00e537087716b28ddb07e</code>。</li>
+<li>Existing DAPO-120:<code>D:\deep learning project\experiments\wmt26_shortmid_night_2026-11-23\source\candidate_adapter</code>; its fingerprint, original location and configuration are recorded in<code>protocol.json</code>。</li>
+<li>The only general-purpose starting base is Qwen/Qwen2.5-3B-Instruct, revision <code>aa8e72537993ba99e69dfaafa59ed015b17504d1</code>。</li>
+<li>Original WMT release: wmt-conference/wmt26-general-mt, commit <code>63aa5d24311a7e7e3e8173528f3771c7e8b4be78</code>；raw SHA256 <code>de286ce336f10367bedfe0611764b2569b538a9c57db20467fc8c1fa84838291</code>。</li>
+<li>198English-to-Icelandic documents with complete official refA. Source uses<code>src_text</code>, without using<code>gold_transcript</code>to replace ASR text; no images or audio are supplied.</li>
 </ul>
 <p>Freeze the original SFT R0 and existing DAPO-120 adapters and their fingerprints. Use the pinned general-purpose Qwen model and WMT data revisions above. Preserve all198 English-to-Icelandic documents and official refA. Inputs are text-only src_text; do not replace ASR text with gold_transcript or add other media.</p>
-<h2>2. 源文切分与数据准备 / Segment source and prepare data</h2>
-<p><code>p25_segments.py</code>使用pySBD0.3.4英文规则，记录字符位置、分隔符和尾部；不从代码围栏、行内代码及URL内部切断。7个边界回归例和全部198篇原文无损重组检查通过。得到2551个单元，含251个明显的纯HTML/计数格式单元；不能称作2551个自然语言句子。三个模型都原样保留了这251个格式单元。</p>
+<h2>Segment source and prepare data</h2>
 <p>Source segmentation uses pySBD0.3.4 with exact offsets, separators and tails, protecting fenced/inline code and URLs. Seven boundary cases and lossless reconstruction of all198 sources passed. The2551 units include251 obvious markup/counter units, all copied exactly by all three models; they are not2551 natural-language sentences.</p>
-<p>训练池在看WMT输出之前固定为1200条：通用、技术短句、技术中句各400。来源仍是已有SFT训练分区；开发36、历史留出72条。短≤12词，中13–40词；按英语空格词数计数。排除与WMT源单元精确规范化重合；这不等于证明近重复、旧SFT训练或通用预训练完全无污染。</p>
 <p>Before WMT outputs, freeze1200 training sources:400general,400technical-short and400technical-medium, plus36dev and72historical holdout sources. Short means≤12 English whitespace words and medium13–40. Exclude exact normalized WMT source-unit overlaps. This is not proof against every near duplicate or overlap with prior SFT/pretraining.</p>
-<h2>3. Colab运行时 / Colab runtime</h2>
-<p>本机入口<code>p25_supervisor.py</code>通过已有官方Colab CLI登录创建本轮专属L4，未操作其他运行时。模型计算全部在<code>/content/p25_project</code>，本机只运行低优先级CPU准备、统计和限速传输。实验包142块，上传上限1MiB/s；模型回存单下载器512KiB/s，原子推理批次额外备份上限128KiB/s。没有购买额度或在本地加载神经模型。</p>
+<h2>Colab runtime</h2>
 <p>The host supervisor used existing official Colab CLI authentication to create this experiment's L4, preserving unrelated runtimes. Neural work runs under /content/p25_project. Host work is below-normal-priority CPU preparation/statistics and capped transfer:142 upload parts at≤1MiB/s, one512KiB/s checkpoint downloader and an additional≤128KiB/s completed-batch backup. No purchase or local neural-model loading occurred.</p>
-<p>远端<code>p25_worker.py</code>验证source_manifest后安装固定依赖；环境详情在<code>run/environment.json</code>。actor使用FP32、SDPA、关闭TF32；检查批量与逐条下一token数值、native G8采样及teacher logprob一致性。第1次更新的梯度及权重差值也记录在updates.jsonl，最终用保存的实际logprob逐步复算全部240次损失。</p>
 <p>The remote worker verifies source_manifest and installs pinned dependencies; see run/environment.json. The actor uses FP32, SDPA and TF32 disabled. Checks cover batch-versus-single next-token logits, native G8 sampling, sampler/teacher log-probability parity and actual nonzero parameter updates. Final CPU replay reconstructs every one of the240 actual optimizer losses from saved traces.</p>
-<h2>4. 原R0对照旧DAPO / Initial WMT comparison</h2>
-<p><code>p25_eval.py</code>逐8个原始文档块交替运行两模型，每批4单元；greedy、max_new_tokens1024、源prompt上限2048且不截断。逐批JSON原子保存并回存，完成后按原映射重组文档。官方refA从未传给actor。所有长单元、难例及截断输出保留在主结果中。</p>
+<h2>Initial WMT comparison</h2>
 <p>Alternate adapters by blocks of eight original documents, with four units per batch, greedy decoding, max_new_tokens1024 and a2048-token nontruncating prompt limit. Persist atomic batch JSONs, reconstruct original documents, and score unchanged refA. The actor never receives reference text. Retain long units, difficult cases and truncated outputs in primary scores.</p>
-<p>指标为sacrebleu2.6.0 chrF++（word_order2）和BLEU13a。置信区间按原始文档、域内配对bootstrap2000次，固定seed。初始预设门槛是全量chrF++差值区间下界&gt;0且BLEU点估计不下降。该门槛未通过，按方案触发专项；没有重新抽bootstrap seed去追求显著。</p>
 <p>Metrics are sacrebleu2.6.0 chrF++ with word_order2 and BLEU13a. Use2000 fixed-seed paired bootstrap resamples of original documents within domains. The initial predeclared rule requires positive chrF++ interval lower bound and nonnegative BLEU point difference. It failed, triggering the frozen conditional arm. No bootstrap seeds were searched for significance.</p>
-<h2>5. 短中句DAPO / Specialized DAPO</h2>
-<p>从原P18重新开始，非续训旧DAPO。奖励仍为固定MetricX-24-hybrid-large-v2p6：源文+候选+参考，BF16；raw error裁剪到[0,25]，reward=1-error/25。奖励模型revision <code>51e875ba5c525c81627cfd135ee10f43c87dce00</code>，mt5-xl tokenizer revision <code>63fc6450d80515b48e026b69ef2fbbd426433e84</code>。没有新SFT、逐token参考监督或新的人工标签奖励。</p>
+<h2>Specialized DAPO</h2>
 <p>Restart from original P18 rather than continue old DAPO. The pinned MetricX scorer receives source+candidate+reference in BF16, clamps raw error to[0,25] and uses1-error/25 reward. Revisions are listed above. There is no new SFT, reference-token supervised loss or new human-label reward.</p>
-<p>G8、T0.7、top_p1、top_k0，最大生成512、soft-length buffer64；每次rollout收集4个可接受源组，最多尝试32组。至少2个有效候选、非零实际奖励方差和至少2种词/标点序列才保留。这个筛选不认证语义正确或P/F混合；绝对proxy阈值只记录、不决定组保留。</p>
 <p>Use G8,T0.7,top_p1,top_k0,max completion512 and soft-length buffer64. Collect four accepted source groups per rollout within32 attempts. Retain groups with≥2valid candidates, nonzero actual reward variance and≥2word/punctuation sequences. This does not certify semantic correctness or P/F mixtures. The absolute proxy threshold is logged but not used for eligibility.</p>
-<p>AdamW LR3e-6、两epoch、clip下界0.2/上界0.28、梯度裁剪1、按全局有效token数归一。完成全部240次更新；每20步开发评估与存权重。<strong>没有按暂时降分早停。</strong> 时间/数值/数据安全保护继续有效。开发集在overall/general chrF++不低于R0超过1.5的条件下，最大化技术短/中chrF++宏平均，再比较BLEU，平手取更早步数。最终选中第120步。WMT和历史72条均未用于选步数。</p>
 <p>AdamW uses LR3e-6, two epochs, dual clip.2/.28, gradient clipping1 and global active-token normalization. Complete all240 updates, evaluating dev and saving weights every20. <strong>No metric-regression early stop.</strong> Time, numerical and data protections remain. Dev selection maximizes technical short/medium macro chrF++ among checkpoints retaining overall/general within1.5 of R0, then BLEU, then earliest step. Step120 was selected without using WMT or the historical72.</p>
-<h2>6. 最终评估及辅助核查 / Endpoint evaluation and auxiliary audit</h2>
-<p>只对开发集所选一个专项checkpoint重跑全部198篇WMT。原R0结果复用同一初始预测。另评历史ParIce72条，承认它们以前已查看，不称作新盲测。</p>
+<h2>Endpoint evaluation and auxiliary audit</h2>
 <p>Evaluate one dev-selected endpoint on all198 WMT documents, reusing the identical original-R0 predictions. Score the historical72 ParIce pairs separately and disclose their prior examination.</p>
-<p>长度次要分析保留整篇refA：55篇所有单元≤12词（全speech）；153篇所有单元≤40词（3news/18social/132speech）。阈值沿用原方案，但该文档子集分析在初始WMT结果后、专项WMT分数前补充，明确标为探索性，未校正多重比较，不能替代198篇主结果。</p>
 <p>Exploratory length subsets retain whole refA:55all-units≤12-word documents (all speech), and153all-units≤40-word documents (3news/18social/132speech). Thresholds match the original protocol, but this subset analysis was added after initial WMT and before specialized endpoint scores. It is exploratory, unadjusted for multiple comparisons and does not replace the198-document primary result.</p>
-<p>语义核查事前选定24源单元（软件域无合格短/中单元，未事后补样）；三个模型72对，去重后52对。先隐藏模型身份判断P/F/U并封存哈希，再解盲。5个格式/计数源单元单独统计，剩余19个实质内容单元。核查由同一助手完成，不是独立冰岛语母语认证，也不代表总体正确率；完整译文及理由另存逐例报告。</p>
 <p>The pre-output audit selected24sources (no eligible short/medium software units; no post-output replacements), yielding72model/source pairs and52deduplicated blind judgments. Seal P/F/U annotations and hashes before opening identity mappings. Report five formatting/counter sources separately from19 substantive sources. This same-assistant audit is not independent Icelandic-native certification or a population correctness estimate. Preserve all outputs and reasons in the casebook.</p>
-<h2>7. 回存、恢复与完整性 / Persistence, resume and integrity</h2>
-<p>12个常规权重checkpoint（20…240）以及一个<code>shortmid_selected_full</code>保存到本轮runs/snapshots；只有最终所选完整检查点包含AdamW/RNG，其他仅保留权重，不能称作精确优化器续训状态。每块、ZIP和内部文件均校验SHA256；科学结果导出另存两份ZIP，但同在D盘，不冒称异地备份。确认全部导出后仅释放本轮拥有的L4，再只读验证该运行时已不在分配列表中；绝对10小时释放保护优先。</p>
+<h2>Persistence, resume and integrity</h2>
 <p>Persist12regular weight checkpoints (20…240) and one shortmid_selected_full under runs/snapshots. Only the selected full checkpoint includes AdamW/RNG; other weights are warm-startable, not exact optimizer resumes. Verify chunk, ZIP and internal-file SHA256s. Keep two scientific-export ZIP copies on D; they are not offsite backups. Release only this run's L4 after verification, then confirm its assignment is absent. The absolute ten-hour release guard takes priority.</p>
-<p>本次只是标准DAPO专项探索与WMT对照，尚未实施选择性token更新或前缀复用对照。最终候选在120步，但完整探索花了240步；不能只报所选120步的开销而隐去模型选择成本。也不能把“接受组率”当成“正确候选覆盖率”。</p>
 <p>This is a specialized DAPO/WMT pilot, not yet a selective-token-update or prefix-reuse comparison. The selected endpoint is step120, but exploration consumed240updates; do not hide selection/search cost by reporting only120steps. Accepted-group rate is not correct-candidate coverage.</p>
-<h2>文件入口 / Artifact entry points</h2>
+<h2>Artifact entry points</h2>
 <ul>
-<li>完整报告 / Main report: <code>reports/wmt26_shortmid_night_2026-11-23/WMT26_AND_SHORTMID_DAPO_RESULTS_2026-11-23.html</code></li>
-<li>全部逐例 / Full casebook: <code>reports/wmt26_shortmid_night_2026-11-23/WMT26_SEMANTIC_CASEBOOK_2026-11-24.html</code></li>
-<li>原始代码、数据、哈希 / Frozen code,data,hashes: <code>experiments/wmt26_shortmid_night_2026-11-23/source</code></li>
-<li>本机执行脚本 / Host execution scripts: <code>experiments/wmt26_shortmid_night_2026-11-23/host_scripts</code></li>
-<li>科学输出 / Scientific export: <code>runs/wmt26_shortmid_night_2026-11-23/exported</code></li>
-<li>模型目录 / Checkpoint catalog: <code>runs/wmt26_shortmid_night_2026-11-23/checkpoint_catalog.json</code></li>
-<li>资源记录 / Resource ledger: <code>runs/wmt26_shortmid_night_2026-11-23/resource_ledger.json</code></li>
+<li>Main report: <code>reports/wmt26_shortmid_night_2026-11-23/WMT26_AND_SHORTMID_DAPO_RESULTS_2026-11-23.html</code></li>
+<li>Full casebook: <code>reports/wmt26_shortmid_night_2026-11-23/WMT26_SEMANTIC_CASEBOOK_2026-11-24.html</code></li>
+<li>Frozen code,data,hashes: <code>experiments/wmt26_shortmid_night_2026-11-23/source</code></li>
+<li>Host execution scripts: <code>experiments/wmt26_shortmid_night_2026-11-23/host_scripts</code></li>
+<li>Scientific export: <code>runs/wmt26_shortmid_night_2026-11-23/exported</code></li>
+<li>Checkpoint catalog: <code>runs/wmt26_shortmid_night_2026-11-23/checkpoint_catalog.json</code></li>
+<li>Resource ledger: <code>runs/wmt26_shortmid_night_2026-11-23/resource_ledger.json</code></li>
 </ul>
-<p>新实验需要新目录、新的明确预算和绝对截止，再固定代码/数据/selection；不要覆盖本轮，不用WMT输出挑训练句。加载适配器时仍需同一通用Qwen基座和revision，LoRA文件不是独立的完整3B模型。模型代码只在Colab执行。</p>
 <p>A new experiment requires a new directory, explicitly authorized budget and absolute deadline, followed by frozen code/data/selection. Do not overwrite this run or choose training examples from WMT output quality. Loading an adapter requires the same general Qwen base and revision; a LoRA adapter is not a standalone3B model. Execute neural code only on Colab.</p>
-</html>
+</main></body></html>

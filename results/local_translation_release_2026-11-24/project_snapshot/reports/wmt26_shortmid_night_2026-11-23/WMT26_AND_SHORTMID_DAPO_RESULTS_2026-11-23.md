@@ -1,106 +1,80 @@
-# WMT26与条件短中句DAPO：运行记录 / WMT26 and conditional short/medium DAPO record
+# WMT26 and conditional short/medium DAPO record
 
-2026-11-23夜间—2026-11-24 · Europe/Berlin
+Night of2026-11-23 through2026-11-24 · Europe/Berlin
 
-更新 / Updated: 2026-11-24T03:06:07.097763+00:00
-
-**本轮总上限10小时，2026-11-23 21:50:49 CET开始，2026-11-24 07:50:49 CET截止；连接、代码准备、上传、评估、训练和回存全部计入。不会重置计时，不沿用白天截止。**
+Updated: 2026-11-24T03:06:07.097763+00:00
 
 **Ten-hour total cap: 2026-11-23 21:50:49 CET to 2026-11-24 07:50:49 CET. Queue,preparation,upload,evaluation,training and persistence all count;no clock reset.**
 
-## 最终判断与下一步 / Final interpretation and next step
-
-**值得保留这版短中句DAPO候选，但不能称为已经证实综合更强的翻译模型。原P18 R0继续作为共同SFT起点；本轮新增的是DAPO候选，不把它改名为新的SFT R0。**
+## Final interpretation and next step
 
 **Keep the specialized DAPO candidate, while recognizing that a reliably stronger general translation model has not been established. Original P18 remains the shared SFT R0. The new artifact is a DAPO candidate, not a relabeled SFT baseline.**
 
-|模型 / Model|WMT26 chrF++|WMT26 BLEU|
+|Model|WMT26 chrF++|WMT26 BLEU|
 |---|---:|---:|
-|原P18 R0 / Original SFT R0|39.72|19.76|
-|旧P22 DAPO-120 / Existing DAPO-120|39.91|20.87|
-|本轮短中句DAPO，第120步 / Specialized endpoint|40.83|21.70|
-
-本轮相对原R0：chrF++ **+1.12**，95%区间 **[-0.06,+2.56]**；BLEU **+1.94**，区间 **[-0.07,+5.22]**。两个点估计都更好，但区间仍略跨零，未通过预设的198文档主门槛。没有更换bootstrap seed、删掉困难文档或改用别的主指标来追求“通过”。
+|Original SFT R0|39.72|19.76|
+|Existing DAPO-120|39.91|20.87|
+|Specialized endpoint|40.83|21.70|
 
 Relative to original R0, full WMT chrF++ is **+1.12** with95%CI **[-0.06,+2.56]**, and BLEU **+1.94** withCI **[-0.07,+5.22]**. Both point estimates improve, but both intervals narrowly include zero. The predeclared198-document primary rule is not met. Bootstrap seeds, difficult documents and the primary metric were not changed to obtain a pass.
 
-### 中短句到底有没有信号 / What the short-medium evidence says
+### What the short-medium evidence says
 
-- **153篇所有输入单元≤40词的完整WMT文档**：chrF++ **40.42→41.88**，差值区间 **[+0.02,+2.69]**；BLEU **17.33→20.33**，区间 **[+0.46,+4.83]**。这是积极的探索性证据。该子集132篇为speech，且分析在初始WMT后补充、未校正多重比较，不能替代全量确认。
-- **55篇所有单元≤12词的完整文档**：chrF++ **43.66→43.61**，BLEU **21.46→21.33**，均无可靠改善。**不能说纯短句已经变强。**
-- **历史ParIce72条**：chrF++ **51.69→52.25**，BLEU **23.91→25.13**，两个区间均跨零。技术短句和中句点估计向好，通用组chrF++ **41.28→40.18**；仍有取舍和不确定性，不能只报最好的分组。
+- **153complete WMT documents with all source units≤40words**: chrF++ **40.42→41.88**, difference interval **[+0.02,+2.69]**; BLEU **17.33→20.33**, interval **[+0.46,+4.83]**. Positive exploratory evidence. The subset includes132speech documents; analysis was added after initial WMT and lacks multiplicity correction, so it cannot replace full-test confirmation.
+- **55complete documents with all units≤12words**: chrF++ **43.66→43.61**, BLEU **21.46→21.33**, without reliable gain. **Pure-short improvement is not established.**
+- **Historical ParIce72cases**: chrF++ **51.69→52.25**, BLEU **23.91→25.13**, both intervals crossing zero. Technical short/medium point estimates improve, while general chrF++ **41.28→40.18**. Report tradeoffs and uncertainty rather than only the best subgroup.
 
 The153whole-document short/medium subset shows positive exploratory differences: chrF++ **+1.46**,CI **[+0.02,+2.69]**, and BLEU **+3.00**,CI **[+0.46,+4.83]**. However132documents are speech, the analysis was added after initial WMT, and multiplicity is unadjusted. The55all-short documents show no reliable gain. The historical72-pair ParIce set has positive overall/technical point estimates but zero-crossing intervals and a general-subset decline. Thus the evidence supports a promising short/medium candidate, not a confirmed pure-short or universal improvement.
 
-### 具体译文说明什么 / What individual outputs show
-
-盲化核查实际24个源单元，其中19个是实质内容、5个是格式/计数。19条内容中，同一助手判断原R0为P4/F13/U2，本轮为P5/F11/U3；只出现1条明确F→P，另有1条F→U，没有观察到P→F。样本小且非母语专家认证，**不把5/19称作全模型正确率**。
+### What individual outputs show
 
 The actual blind audit contains24source units, including19substantive items and five formatting/counter items. On the19, the same assistant labeled original R0 P4/F13/U2 and the specialized candidate P5/F11/U3: oneF→P and oneF→U, with no observedP→F. This small, non-native-certified audit is **not a population correctness estimate**.
 
-- Jade与Beck复合的例子中，原R0遗漏“告诉他”的关键动作，本轮恢复为`segja honum það`，是可追踪的实际语义改善。
-- `volcano`、`organizing the strike`等简单但关键的词义，在三个模型里仍有明显问题；句子短并不自动容易。
-- Robin Roefs的例子里，旧DAPO出现严重重复，本轮没有该重复，但三版仍有实质比赛信息错误。减少某个输出的重复，不等于整句翻译已正确。
-- 所有抽样和全部三版译文都保存在逐例报告，不仅展示上述几个例子。WMT全量里251个明显纯格式单元三模型均逐字保留，不拿它们冒充翻译成功病例。
+- In the Jade/Beck reunion example, original R0 omits the key tell-him action; this round restores`segja honum það`, a traceable semantic improvement.
+- `volcano`、`organizing the strike`and other simple but critical meanings remain problematic across all three models. Short does not automatically mean easy.
+- Old DAPO severely repeats in the Robin Roefs example; this round does not, but all three versions still contain material match-information errors. Removing repetition does not make the whole translation correct.
+- The casebook retains all sampled sources and all three translations, not just selected illustrations. All models copy251obvious formatting-only WMT units exactly; these are not counted as substantive translation successes.
 
 The Jade/Beck example recovers the missing tell-him action. Volcano and organizing the strike remain problematic across all three models. The old DAPO loops on the Robin Roefs example, whereas the new version does not, yet the new sentence still contains material match-information errors. The complete casebook retains every selected source/output. All three models copy the251obvious formatting units exactly; these are not counted as successful language translations in the substantive audit.
 
-### 能否归因于SFT不够 / Does this prove insufficient SFT
-
-**不能把本轮结果归结为“R0根本不能跑DAPO，必须继续SFT”。** 本轮没有任何新增SFT，却有方向一致的WMT/技术子集改善信号；也没有证据说明3B到容量上限。与此同时，关键词义错误仍在，不能说基座已经精通翻译。
+### Does this prove insufficient SFT
 
 The evidence does **not** support the absolute claim that R0 cannot undergo DAPO and must receive more SFT first. There were zero new SFT updates, yet positive WMT/technical signals appeared. Nor does this establish a3B capacity ceiling. Persistent key lexical errors also prevent claiming translation mastery.
 
-本轮核实了采样/teacher概率一致、实际权重更新、全部240步目标复算与全量WMT重组；这排除了这些已检查实现环节的明显失效，**不是奖励语义正确性的证明**。本轮没有重新做逐源G8正确候选覆盖率与MetricX排序的独立核查，因此无法把剩余瓶颈的比例准确分给“候选能力不足”或“奖励错排”。贪心失败例不证明该源句八个候选全错；单个自动分数提高也不证明语义全对。
-
 Sampler/teacher parity, actual parameter changes, all240objective replays and complete WMT reconstruction pass. This checks those implementation components, **not reward semantic validity**. This round does not repeat an independent per-source G8 correctness/ranker audit, so it cannot quantify the remaining candidate-coverage versus reward-ranking bottlenecks. A bad greedy output does not prove all eight samples are wrong; a higher automatic metric does not prove complete semantic correctness.
 
-### 明确的下一步 / One concrete next step
-
-**下一轮先复现本次短中句DAPO配方，不再盲目增加SFT或只延长训练。** 从同一原P18 R0、同一1200源句池出发，换一个预先固定的采样/顺序seed，最多120步，固定120步端点；不再根据WMT挑步数。沿用相同评分与解码，报告全量WMT、同一长度次要集及关键语义审查。可按本轮实测为单L4预留约3–4小时（含准备、评估与回存；排队不可保证）。这只是下一轮建议，本轮未启动它。
+### One concrete next step
 
 **Next, replicate this short/medium DAPO recipe rather than blindly add SFT or merely extend training.** Start from the same original P18 and1200-source pool with one new prespecified sampling/order seed, run up to120updates and evaluate the fixed120-step endpoint without WMT checkpoint selection. Preserve identical scoring/decoding and report full WMT, the same secondary subsets and key semantic checks. Based on this run, reserve roughly3–4hours on one L4 including setup/evaluation/export, excluding unpredictable queuing. This is a next-round recommendation; it was not launched here.
 
-复现若支持短中句收益，再把“原R0→标准DAPO”锁为对照，研究选择性token更新/前缀复用，以同起点、同数据、同预算和真实GPU时间/显存比较。若仅分数改善、关键语义和复现均不支持，再审计实际G8候选与参考奖励，按证据决定奖励修正或少量定向SFT；不宣布容量到顶。本轮没有实现效率方法对照，不能把任何速度记作创新收益。
-
 If replication supports the short/medium gain, freeze original-R0→standard-DAPO as the control before selective-token/prefix-reuse comparisons, matching starts,data,budgets and actual GPU time/memory. If gains remain metric-only or nonreplicable, audit actual G8 candidates and reference-based reward before choosing reward changes or targeted SFT. Do not infer a capacity ceiling. No efficiency-method comparison was implemented in this round, so no speed result is an innovation gain.
 
-### 效率方向的实际证据 / What the profiling says about efficiency
-
-整轮240步实际尝试514个源组、接受480组，生成4112个候选、152262个completion token。**新增排版多样性筛选仅额外剔除1组**；因此不能把本轮质量变化归因于这一筛选，或把它包装成已经验证的效率创新。接受率不等于正确候选覆盖率。
+### What the profiling says about efficiency
 
 Across240updates, attempt514source groups, accept480, and generate4112candidates with152262completion tokens. **The extra formatting-diversity filter rejects only1otherwise-eligible group.** Quality changes cannot be attributed to this filter or presented as a validated efficiency innovation. Acceptance rate is not correct-candidate coverage.
 
-全240步优化阶段累计59.24分钟；完整DAPO阶段另含生成、打分、teacher前向、开发评估、存盘等，共约2.39小时。模型选择实际花240步，最终候选只保留120步参数，不能隐藏搜索成本。后续应分别报告训练管线耗时、质量以及包括WMT/回存的实验总开销；loss上乘token mask并不自动证明矩阵运算变少，本轮也没有验证该速度收益。
-
 Optimizer phases sum to59.24minutes; the complete DAPO phase, including generation,scoring,teacher passes,dev and snapshots, spans about2.39hours. Search consumed240updates even though the selected parameters are from120. Report training-pipeline time and quality separately from the entire evaluation/export-inclusive experiment. Multiplying losses by a token mask alone does not establish reduced matrix computation; no such speed gain was tested here.
 
-### 已交付的checkpoint与资源 / Delivered checkpoint and resources
+### Delivered checkpoint and resources
 
-- 专项候选 / Specialized candidate: **P25-shortmid-step120**，完整适配器目录 / full adapter folder: `D:\deep learning project\runs\wmt26_shortmid_night_2026-11-23\snapshots\shortmid_selected_full\files\adapter`。
-- 权重SHA256 / weights SHA256: `40ee8312ead89272fd5e8190a3b8e1da91d5f0ff641721840600585ff4308c86`。该适配器仍需同一Qwen3B通用基座，不能独立运行。
-- 原R0未覆盖且哈希复核一致。20…240共12个常规权重及所选完整AdamW/RNG均回存；其他常规权重不冒称具有精确优化器续训状态。
-- GPU分配到释放 / GPU allocation to release: **6.03h**；任务开始到释放 / request start to release: **6.23h**；账号计算单元余额变化 / account compute-unit difference: **11.68**（若存在其他账号活动不能独占归因）。科学结果导出、内部文件及checkpoint已校验，专属L4已释放并只读确认不在分配列表中。
+- Specialized candidate: **P25-shortmid-step120**, full adapter folder: `D:\deep learning project\runs\wmt26_shortmid_night_2026-11-23\snapshots\shortmid_selected_full\files\adapter`。
+- weights SHA256: `40ee8312ead89272fd5e8190a3b8e1da91d5f0ff641721840600585ff4308c86`. This adapter still requires the same general-purpose Qwen3B base and cannot run independently.
+- Original R0 is preserved and hash-verified. All12regular checkpoints from20…240and the selected full AdamW/RNG state are persisted. Other regular checkpoints are not claimed to support exact optimizer resumption.
+- GPU allocation to release: **6.03h**; request start to release: **6.23h**; account compute-unit difference: **11.68**, not exclusively attributable if the account had other activity. Scientific exports, internal files and checkpoints are verified. The dedicated L4 is released and confirmed absent from allocation listings.
 
 Original R0 is hash-verified and preserved. All12regular checkpoints and the selected full AdamW/RNG state are saved. The account balance difference is not exclusive attribution if there was other account activity. Verified scientific exports and checkpoints are on D, and this run's L4 is released and confirmed absent. All neural work ran on Colab.
 
-## 第一阶段已经得到的结果 / Completed first-stage finding
-
-全部198个文档：chrF++ **39.72 → 39.91**，差值 **+0.19**，95%区间 [-1.33, +1.95]；BLEU **19.76 → 20.87**，差值 **+1.11**，95%区间 [-1.33, +4.31]。**点估计上升，但两个区间均跨零，不能据此认定旧DAPO-120可靠改善了WMT翻译。**
+## Completed first-stage finding
 
 Across all 198 documents, chrF++ changed from **39.72 to 39.91** and BLEU from **19.76 to 20.87**. Both paired 95% intervals include zero. The positive point estimates do not establish a reliable WMT improvement from the existing DAPO-120 checkpoint. This is the first-stage finding, not a substitute for the conditional arm's final results.
 
-分域结果方向不一致：social/software点估计上升，news/speech下降。software只有7个文档，区间特别宽；不能将整体BLEU增加解释为每一类文本都变好。旧的ParIce项目49.07与本轮WMT分数来自不同数据和评价单元，不能直接相减判断退化。
-
 Domain results differ: social/software point estimates improve, while news/speech decline. The software subset contains only seven documents and has wide uncertainty. An overall BLEU increase does not mean every domain improves. The earlier ParIce score of 49.07 uses different data and evaluation units and cannot be subtracted from the WMT score to diagnose regression.
 
-## 专项结果的当前判定 / Specialized endpoint finding
-
-240次更新全部完成，没有按开发集暂时下降早停；固定规则在开发集选中第120步。全量WMT：chrF++ **39.72 → 40.83**（Δ+1.12，95%区间[-0.06,+2.56]），BLEU **19.76 → 21.70**（Δ+1.94，95%区间[-0.07,+5.22]）。**这是正向改善信号，但未通过事前固定的全量可靠提升门槛。不能把略跨零改写成已经证明无效，也不能改写成已经证明综合变强。**
+## Specialized endpoint finding
 
 All240 planned updates were completed without a metric-regression early stop. Dev-only selection chose step120. Full WMT chrF++ improved by +1.12 and BLEU by +1.94, with the paired intervals shown above. These are positive signals, but the predeclared full-test gain rule is not met. A narrowly zero-crossing interval proves neither ineffectiveness nor a reliable overall improvement.
 
-<details><summary>已完成模型运算摘要 / Completed model-work summary</summary>
+<details><summary>Completed model-work summary</summary>
 
 ```json
 {
@@ -116,7 +90,7 @@ All240 planned updates were completed without a metric-regression early stop. De
 
 </details>
 
-<details><summary>控制器状态 / Controller status</summary>
+<details><summary>Controller status</summary>
 
 ```json
 {
@@ -128,9 +102,9 @@ All240 planned updates were completed without a metric-regression early stop. De
 
 </details>
 
-![WMT26配对差值与短中句开发轨迹 / Paired WMT26 differences and specialization dev trajectory](results_overview.png)
+![Paired WMT26 differences and specialization dev trajectory](results_overview.png)
 
-<details><summary>最近模型进度 / Latest model progress</summary>
+<details><summary>Latest model progress</summary>
 
 ```json
 {
@@ -141,7 +115,7 @@ All240 planned updates were completed without a metric-regression early stop. De
 
 </details>
 
-<details><summary>最近专项训练进度 / Latest specialization progress</summary>
+<details><summary>Latest specialization progress</summary>
 
 ```json
 {
@@ -154,19 +128,15 @@ All240 planned updates were completed without a metric-regression early stop. De
 
 </details>
 
-## 固定对照与分支 / Frozen comparison and branch
-
-先在全部198个WMT26英→冰原始文档上，对比P18原R0与已有P22 DAPO-120。源文切成2551个单元，逐单元翻译后无损按映射重组；官方refA保持完整，仅用于评分。纯文本src_text输入，不替换gold_transcript，不额外提供图片或音频。所有长单元保留，不将句级输出错配到独立切分的参考。
+## Frozen comparison and branch
 
 Compare originalP18R0 and existingP22DAPO-120 on all198officialWMT26English→Icelandic documents.Segment source into2551units,translate and reconstruct by the lossless map;unchanged officialrefA is scoring-only.Text-onlysrc_text,no gold-transcript substitution or added media.Retain all long units;never pair independently split references by index.
 
-初始“可靠收益”操作性门槛事前固定为：全量chrF++差值的分域文档配对95%区间下界>0，且BLEU点估计不降。只有两臂198文档完整、未达到门槛、GPU支持且预算够，才从原P18重新启动一次短中句专项DAPO。未完成评估不能算“没提升”。
-
 The predeclared operational gain rule requires full-testchrF++paired stratified-document95%lower bound>0 andnonnegativeBLEUpointdelta.Only a complete198-document pair failing this rule,on a supportedGPU with enough time,triggers one short/mediumDAPOarm from originalP18.Incomplete evaluation is never treated as no gain.
 
-## 原R0与旧DAPO-120 / R0 versus oldDAPO-120
+## R0 versus oldDAPO-120
 
-|域 / Domain|n|R0 chrF++|候选 / Candidate|Δ / 95%CI|R0 BLEU|候选 / Candidate|Δ / 95%CI|
+|Domain|n|R0 chrF++|Candidate|Δ / 95%CI|R0 BLEU|Candidate|Δ / 95%CI|
 |---|---:|---:|---:|---|---:|---:|---|
 
 |overall|198|39.719|39.912|+0.193 / [-1.33, +1.95]|19.757|20.869|+1.112 / [-1.33, +4.31]|
@@ -179,7 +149,7 @@ The predeclared operational gain rule requires full-testchrF++paired stratified-
 
 |speech|133|42.545|41.955|-0.589 / [-1.53, +0.09]|18.981|17.707|-1.273 / [-3.18, +0.08]|
 
-<details><summary>指标签名和统计 / Metric signatures and statistics</summary>
+<details><summary>Metric signatures and statistics</summary>
 
 ```json
 {
@@ -303,9 +273,9 @@ The predeclared operational gain rule requires full-testchrF++paired stratified-
 
 </details>
 
-## 原R0与专项候选 / R0 versus specialized endpoint
+## R0 versus specialized endpoint
 
-|域 / Domain|n|R0 chrF++|候选 / Candidate|Δ / 95%CI|R0 BLEU|候选 / Candidate|Δ / 95%CI|
+|Domain|n|R0 chrF++|Candidate|Δ / 95%CI|R0 BLEU|Candidate|Δ / 95%CI|
 |---|---:|---:|---:|---|---:|---:|---|
 
 |overall|198|39.719|40.835|+1.116 / [-0.06, +2.56]|19.757|21.697|+1.940 / [-0.07, +5.22]|
@@ -318,7 +288,7 @@ The predeclared operational gain rule requires full-testchrF++paired stratified-
 
 |speech|133|42.545|42.474|-0.071 / [-0.47, +0.34]|18.981|18.759|-0.222 / [-0.65, +0.21]|
 
-<details><summary>指标签名和统计 / Metric signatures and statistics</summary>
+<details><summary>Metric signatures and statistics</summary>
 
 ```json
 {
@@ -442,7 +412,7 @@ The predeclared operational gain rule requires full-testchrF++paired stratified-
 
 </details>
 
-<details><summary>实际分支决定与动态预留 / Executed branch and measured reserve</summary>
+<details><summary>Executed branch and measured reserve</summary>
 
 ```json
 {
@@ -459,7 +429,7 @@ The predeclared operational gain rule requires full-testchrF++paired stratified-
 
 </details>
 
-<details><summary>全量覆盖、耗时与截断 / Complete coverage, duration and truncation</summary>
+<details><summary>Complete coverage, duration and truncation</summary>
 
 ```json
 {
@@ -475,27 +445,19 @@ The predeclared operational gain rule requires full-testchrF++paired stratified-
 
 </details>
 
-## 预先固定的短中句专项 / Predeclared short/medium specialization
-
-训练源句1200条，通用、技术短句、技术中句各400；均来自已有SFT训练分区，源句≤40词，排除WMT源单元精确重合，保留困难例而非按模型表现挑样本。开发36条、历史项目留出72条，均与本轮训练来源/参考精确分离；该72条以前已经查看过，不能称为新盲测或WMT成绩。
+## Predeclared short/medium specialization
 
 The1200source pool has400general,400technical-short and400technical-medium items from existingSFTtraining data,all≤40source words and excluding exactWMTsource-unit overlap.Difficult cases remain;selection ignores model outputs.Dev36and historical project holdout72are source/reference disjoint from training.The72sources have been examined before and are neither fresh blind evidence norWMTscores.
 
-同一原P18基座、G8/T0.7、raw MetricX源文+候选+参考奖励、AdamW LR3e-6、双侧clip0.2/0.28、两轮全局有效token损失。专项最多240次实际更新，每20步开发评估及保存权重；完整AdamW/RNG仅随最终所选checkpoint回存。无按分数下降早停；时间、数值、数据不足等技术保护仍有效。
-
 SameP18start,G8/T.7,rawMetricXsource+candidate+reference reward,AdamWLR3e-6,dualclip.2/.28,twoepochs and global active-token loss.Up to240actual updates,dev/save every20.FullAdamW/RNG is durably exported with the selected checkpoint.No metric-regression early stop;time,numerical and data protections remain.
-
-新增筛选仅拒绝有效候选词/标点序列完全相同的排版变体；保留问号、小数和词语差异，仍要求至少2有效候选与非零奖励方差。该规则不识别语义正确，不保证P/F混合；四个真实函数回归案例已通过。这是一次缩小任务和廉价排版过滤的探索性组合，不能把收益归因于其中单一因素。
 
 The extra filter rejects only formatting variants with identical word/punctuation-token sequences,preserving question marks,decimals and lexical changes;≥2valid candidates and nonzero reward variance remain.It does not certify semanticP/Fmixtures.Fouractual-function regression cases passed.This combines a narrower task and cheap formatting filtering,not a single-variable causal ablation.
 
-checkpoint只按开发集短/中句chrF++宏平均、BLEU及原R0整体/通用保留规则选择，WMT不参与挑步数。专项配置在初始WMT输出前已固定；末期仅对一个开发集所选候选再评WMT，属于条件执行后的探索性复测，不冒称未触碰确认性验收。原R0及所有旧检查点不覆盖，也不承诺必然得到更好模型。
-
 Checkpoint choice uses dev macro short/mediumchrF++,BLEU and overall/general retention,neverWMTstep selection.The arm was frozen before initialWMToutputs;one dev-selected endpoint receives an exploratory WMTre-evaluation after conditional execution,not untouched confirmatory acceptance.OriginalR0 and all prior checkpoints remain;improvement is not guaranteed.
 
-## 专项开发轨迹 / Specialization dev trajectory
+## Specialization dev trajectory
 
-|步 / Step|Overall chrF++|General chrF++|Short chrF++|Medium chrF++|Macro short/medium|
+|Step|Overall chrF++|General chrF++|Short chrF++|Medium chrF++|Macro short/medium|
 |---:|---:|---:|---:|---:|---:|
 
 |0|41.771|38.907|45.561|40.940|43.250|
@@ -524,7 +486,7 @@ Checkpoint choice uses dev macro short/mediumchrF++,BLEU and overall/general ret
 
 |240|41.986|39.406|45.231|41.349|43.290|
 
-<details><summary>实际专项训练摘要 / Executed training summary</summary>
+<details><summary>Executed training summary</summary>
 
 ```json
 {
@@ -542,7 +504,7 @@ Checkpoint choice uses dev macro short/mediumchrF++,BLEU and overall/general ret
 
 </details>
 
-<details><summary>本地CPU独立重组与统计复算 / Independent CPU reconstruction and statistics replay</summary>
+<details><summary>Independent CPU reconstruction and statistics replay</summary>
 
 ```json
 {
@@ -611,7 +573,7 @@ Checkpoint choice uses dev macro short/mediumchrF++,BLEU and overall/general ret
 
 </details>
 
-<details><summary>专项与旧DAPO的次要探索比较 / Secondary exploratory comparison with old DAPO</summary>
+<details><summary>Secondary exploratory comparison with old DAPO</summary>
 
 ```json
 {
@@ -741,7 +703,7 @@ Checkpoint choice uses dev macro short/mediumchrF++,BLEU and overall/general ret
 
 </details>
 
-<details><summary>WMT完整文档长度子集次要分析 / Secondary WMT whole-document length subsets</summary>
+<details><summary>Secondary WMT whole-document length subsets</summary>
 
 ```json
 {
@@ -863,7 +825,7 @@ Checkpoint choice uses dev macro short/mediumchrF++,BLEU and overall/general ret
 
 </details>
 
-<details><summary>输出长度和截断诊断 / Output-length and truncation diagnostics</summary>
+<details><summary>Output-length and truncation diagnostics</summary>
 
 ```json
 {
@@ -1148,7 +1110,7 @@ Checkpoint choice uses dev macro short/mediumchrF++,BLEU and overall/general ret
 
 </details>
 
-<details><summary>历史短中句留出评估 / Historical short-medium holdout results</summary>
+<details><summary>Historical short-medium holdout results</summary>
 
 ```json
 {
@@ -1288,7 +1250,7 @@ Checkpoint choice uses dev macro short/mediumchrF++,BLEU and overall/general ret
 
 </details>
 
-<details><summary>实际训练目标逐步复算 / Replay of every actual optimizer update</summary>
+<details><summary>Replay of every actual optimizer update</summary>
 
 ```json
 {
@@ -6827,7 +6789,7 @@ Checkpoint choice uses dev macro short/mediumchrF++,BLEU and overall/general ret
 
 </details>
 
-<details><summary>采样、优化与模型选择成本 / Sampling, optimization and model-selection cost</summary>
+<details><summary>Sampling, optimization and model-selection cost</summary>
 
 ```json
 {
@@ -6868,7 +6830,7 @@ Checkpoint choice uses dev macro short/mediumchrF++,BLEU and overall/general ret
 
 </details>
 
-<details><summary>预先选定WMT短中句语义核查 / Preselected WMT short-medium semantic audit</summary>
+<details><summary>Preselected WMT short-medium semantic audit</summary>
 
 ```json
 {
@@ -7030,7 +6992,7 @@ Checkpoint choice uses dev macro short/mediumchrF++,BLEU and overall/general ret
 
 </details>
 
-<details><summary>检查点目录与恢复条件 / Checkpoint catalog and resume conditions</summary>
+<details><summary>Checkpoint catalog and resume conditions</summary>
 
 ```json
 {
@@ -7177,7 +7139,7 @@ Checkpoint choice uses dev macro short/mediumchrF++,BLEU and overall/general ret
 
 </details>
 
-<details><summary>资源和计算单元记录 / Resource and compute-unit ledger</summary>
+<details><summary>Resource and compute-unit ledger</summary>
 
 ```json
 {
@@ -7234,37 +7196,25 @@ Checkpoint choice uses dev macro short/mediumchrF++,BLEU and overall/general ret
 
 </details>
 
-## 短中句结论怎样判定 / How short-medium conclusions are assessed
-
-WMT参考保留原始文档，因此本轮不会制造“源句第i句对应参考第i句”的伪对齐，也不会冒称得到官方短句chrF++。整篇重组后的198文档分数是主要WMT证据；按源文事前固定的24条短中单元用于盲化语义核查，另用ParIce历史72条对齐句对检查专项方向。核查原目标每域最多4短+4中，但software没有满足条件的单元，实际固定24条，未事后补样；其中19条是实质语言内容，5条是格式/计数单元，分开统计。切分单元可能含HTML或代码，不能把2551个单元全部称为自然语言句子。
+## How short-medium conclusions are assessed
 
 WMT references remain at document level. We do not fabricate an alignment between source sentence i and reference sentence i or label a derived score as official short-sentence chrF++. The198 reconstructed documents provide the primary WMT evidence. The pre-output audit selection actually contains24 source units: the intended maximum was four short plus four medium per domain, but software has no eligible unit. No post-output replacements were added. Report the19 substantive language units separately from five formatting/counter units. A separate historical ParIce set of72 aligned pairs checks specialization. The2551 segmented units may include HTML or code and are not all natural-language sentences.
 
-语义核查由同一助手完成，只能作为可追踪的辅助检查，不是冰岛语母语专家认证，不是总体正确率，也不用于选checkpoint。完整源文、三个模型译文、标签和理由见[逐例报告](WMT26_SEMANTIC_CASEBOOK_2026-11-24.html)。
-
 This same-assistant audit is a traceable auxiliary check, not independent Icelandic-native certification or a population correctness rate. It is not used to select a checkpoint. The[complete casebook](WMT26_SEMANTIC_CASEBOOK_2026-11-24.html) contains every selected source, all three outputs, labels and reasons.
 
-## 限制与完整性 / Limits and integrity
-
-本轮是按句翻译再重组的纯文本系统比较，不能解释为完整上下文翻译或官方人工排名。WMT26有133个speech、44个social、14个news、7个software文档。文档数量以speech为主，但语料级指标并非各文档等权平均，还受篇幅与n-gram数量影响；不能仅据文档数推断整体分数的领域权重。小域区间不宜过度解释。置信区间按原文档在域内配对bootstrap2000次，不把切分句当作独立文档，也不包含训练种子不确定性。
+## Limits and integrity
 
 This compares a text-only sentence translation and document reconstruction system, not full-context inference or official human rankings. There are 133 speech, 44 social, 14 news and 7 software documents. Speech dominates document counts, but corpus metrics are not equal-weight document means: text length and n-gram counts also matter. Domain counts alone do not determine aggregate score weights. Small-domain intervals are uncertain. The 2000 paired bootstrap resamples operate on original documents within domains and exclude training-seed uncertainty.
 
-若未获得GPU或未完成198文档，报告资源/实际配对覆盖，不填造全量分数。回存每块结果、原始输出、映射、模型/代码哈希和资源日志。正常流程在科学结果与检查点导出验证完成后释放本轮绑定GPU；硬截止保护优先，即使导出未完成也不能突破10小时。本机只做CPU准备/统计和限速传输，不运行神经模型。
-
 Unavailable GPUs or incomplete coverage are reported without invented full-test scores. Preserve completed batches, raw outputs, reconstruction maps, model/code hashes and resource logs. Normal release follows verified result/checkpoint exports. The hard ten-hour release guard takes priority even if exports are incomplete. Host work is CPU preparation/statistics and capped transfer only.
 
-## 补充的WMT长度子集 / Additional WMT source-length subsets
-
-次要分析保留完整官方文档及refA，按源句单元最大长度选取：所有单元≤12词的55篇（全为speech）；所有单元≤40词的153篇（news 3、social 18、speech 132，无software）。它们包含所有满足条件的文档，没有按模型分数或译文质量筛选。文档内仍可能有多句，因此不叫“官方对齐短句分数”。领域构成不同，子集成绩不能只归因于句长。
+## Additional WMT source-length subsets
 
 The secondary subsets preserve whole official documents and refA: 55 documents whose every source unit has at most12 words (all speech), and 153 whose every unit has at most40 words (3 news,18 social,132 speech,no software). Include every matching document without filtering by model score or output quality. Documents may contain several sentences, so these are not official sentence-aligned scores. Their different domain composition prevents a length-only causal interpretation.
 
-12/40词阈值沿用原方案；本项文档子集分析在初始WMT结果之后、专项WMT分数产生前补充固定。它属于探索性次要分析，不改变198文档主结论、提升门槛或开发集checkpoint选择，也未做多重比较校正。
-
 The12/40-word thresholds come from the original protocol. This whole-document subset analysis was added after the initial WMT comparison but before the specialized endpoint scores. It is exploratory, does not redefine the198-document primary result or select a checkpoint, and has no multiplicity adjustment.
 
-<details><summary>长度子集冻结记录 / Frozen length-subset record</summary>
+<details><summary>Frozen length-subset record</summary>
 
 ```json
 {
@@ -7514,9 +7464,9 @@ The12/40-word thresholds come from the original protocol. This whole-document su
 
 </details>
 
-### 次要长度结果 / Secondary length results
+### Secondary length results
 
-|完整文档条件 / Whole-document condition|n|模型 / Model|R0 chrF++|候选 / Candidate|Δ / 95%CI|R0 BLEU|候选 / Candidate|Δ / 95%CI|
+|Whole-document condition|n|Model|R0 chrF++|Candidate|Δ / 95%CI|R0 BLEU|Candidate|Δ / 95%CI|
 |---|---:|---|---:|---:|---|---:|---:|---|
 
 |all_units_short|55|oldDAPO120|43.663|43.846|+0.183 / [-0.51, +0.89]|21.462|21.155|-0.307 / [-1.10, +0.56]|
@@ -7527,7 +7477,7 @@ The12/40-word thresholds come from the original protocol. This whole-document su
 
 |all_units_shortmid|153|shortmidDAPO|40.420|41.876|+1.456 / [+0.02, +2.69]|17.329|20.330|+3.001 / [+0.46, +4.83]|
 
-<details><summary>领域文本量 / Text volume by domain</summary>
+<details><summary>Text volume by domain</summary>
 
 ```json
 {
@@ -7565,7 +7515,7 @@ The12/40-word thresholds come from the original protocol. This whole-document su
 
 </details>
 
-<details><summary>输入冻结与无损检查 / Input freeze and lossless checks</summary>
+<details><summary>Input freeze and lossless checks</summary>
 
 ```json
 {
@@ -7601,7 +7551,7 @@ The12/40-word thresholds come from the original protocol. This whole-document su
 
 </details>
 
-<details><summary>实际协议 / Executable protocol</summary>
+<details><summary>Executable protocol</summary>
 
 ```json
 {
@@ -7673,7 +7623,7 @@ The12/40-word thresholds come from the original protocol. This whole-document su
 
 </details>
 
-<details><summary>科学导出验证 / Scientific export verification</summary>
+<details><summary>Scientific export verification</summary>
 
 ```json
 {
@@ -7702,7 +7652,7 @@ The12/40-word thresholds come from the original protocol. This whole-document su
 
 </details>
 
-<details><summary>最终完成与资源 / Final completion and resources</summary>
+<details><summary>Final completion and resources</summary>
 
 ```json
 {
@@ -7732,19 +7682,19 @@ The12/40-word thresholds come from the original protocol. This whole-document su
 
 </details>
 
-## 文件入口 / Artifact index
+## Artifact index
 
-- [冻结输入 / Frozen inputs](../../experiments/wmt26_shortmid_night_2026-11-23/source/data/)
-- [配置与模型指纹 / Protocol and model hashes](../../experiments/wmt26_shortmid_night_2026-11-23/protocol.json)
-- [输入与切分证明 / Input and segmentation proof](../../experiments/wmt26_shortmid_night_2026-11-23/input_freeze.json)
-- [后台事件 / Controller events](../../runs/wmt26_shortmid_night_2026-11-23/background/events.jsonl)
+- [Frozen inputs](../../experiments/wmt26_shortmid_night_2026-11-23/source/data/)
+- [Protocol and model hashes](../../experiments/wmt26_shortmid_night_2026-11-23/protocol.json)
+- [Input and segmentation proof](../../experiments/wmt26_shortmid_night_2026-11-23/input_freeze.json)
+- [Controller events](../../runs/wmt26_shortmid_night_2026-11-23/background/events.jsonl)
 
-来源 / Sources: [WMT26official data](https://github.com/wmt-conference/wmt26-general-mt),[pySBD](https://github.com/nipunsadvilkar/pySBD).
+Sources: [WMT26official data](https://github.com/wmt-conference/wmt26-general-mt),[pySBD](https://github.com/nipunsadvilkar/pySBD).
 
-- [完整执行与复现步骤 / Executed workflow and reproducibility](EXECUTION_REPRODUCIBILITY_2026-11-24.html)
-- [全部逐例语义核查 / Complete semantic casebook](WMT26_SEMANTIC_CASEBOOK_2026-11-24.html)
-- [独立结论与下一步 / Standalone interpretation](CONCLUSIONS_AND_NEXT_STEP_2026-11-24.html)
-- [检查点目录 / Checkpoint catalog](../../runs/wmt26_shortmid_night_2026-11-23/checkpoint_catalog.json)
-- [资源与预算 / Resource ledger](../../runs/wmt26_shortmid_night_2026-11-23/resource_ledger.json)
+- [Executed workflow and reproducibility](EXECUTION_REPRODUCIBILITY_2026-11-24.html)
+- [Complete semantic casebook](WMT26_SEMANTIC_CASEBOOK_2026-11-24.html)
+- [Standalone interpretation](CONCLUSIONS_AND_NEXT_STEP_2026-11-24.html)
+- [Checkpoint catalog](../../runs/wmt26_shortmid_night_2026-11-23/checkpoint_catalog.json)
+- [Resource ledger](../../runs/wmt26_shortmid_night_2026-11-23/resource_ledger.json)
 
-- [完整原始科学结果ZIP / Raw scientific export ZIP](../../runs/wmt26_shortmid_night_2026-11-23/p25_export.zip)
+- [Raw scientific export ZIP](../../runs/wmt26_shortmid_night_2026-11-23/p25_export.zip)

@@ -1,16 +1,12 @@
-# Local sharing delivery / 本地分享交付 — 2026-11-24
+# Model and experiment delivery — 2026-11-24
 
-- 14份适配器真实副本：12 SFT、2 DAPO，含0.8B/3B默认基线和明确标记的历史版本；原文件未移动或覆盖。
-- 首页和LATEST_RESULTS.md突出最新P25结果，主WMT对照、探索性子集、置信区间和未证明事项均保留。
-- 统一命令：`python scripts/models.py list`、`python scripts/models.py verify`、`python scripts/models.py generate --model qwen25-3b-sft-r0 --text "Hello."`。
-- Python继续训练入口：`mtrl.checkpoints.load_translation_model(...,trainable=True)`；不含完整优化器状态，不等同精确续跑旧实验。
-- 完整41项CPU测试通过；14份模型哈希/张量结构通过。未在本机重新加载神经模型、推理或训练，未分配GPU。
-- 已修改的原有文件只有README.md和.gitignore；原训练/评分代码保留。新代码和结果未git add/commit/push，三个核心适配器已公开上传HF。
-- 可给朋友的完整ZIP在deliveries/mtrl-models-2026-11-24.zip，压缩包顶层为mtrl；大权重位于artifacts且被Git忽略。
-- 单独git clone不会取得权重。ZIP包含LoRA而非完整Qwen基座；首次显式加载需要同一固定revision的公开基座，或使用自己的本地缓存。
-- Hugging Face已公开托管两个SFT基线及最新DAPO候选；GitHub代码、注册表和报告只保留本地，待用户审核后自行推送。
-- 基座许可不同：0.8B Apache-2.0；3B qwen-research。朋友的使用仍须遵守对应许可及数据条款。
+- Fourteen actual LoRA adapters are preserved locally: twelve SFT and two DAPO, including default 0.8B/3B baselines and labeled historical variants. Original weights were not moved, merged, quantized or overwritten.
+- Three core adapters are public on Hugging Face: 0.8B SFT R0, 3B SFT R0 and the latest 3B DAPO candidate. Anonymous configuration access and remote LFS weight hashes were verified. See [public links and instructions](models/HUGGING_FACE.md).
+- The homepage and [LATEST_RESULTS.md](LATEST_RESULTS.md) highlight P25 with matched WMT26 results, exploratory subsets, confidence intervals and limitations.
+- Portable commands expose model listing, integrity checks, hosted downloads and inference. The Python loader supports trainable adapters for new experiments, but does not restore historical optimizer/RNG state.
+- All 41 CPU tests passed during delivery. Fourteen adapter hashes/tensor structures passed. Packaging/localization did not allocate a GPU, retrain models or rerun neural inference.
+- The complete local delivery ZIP contains code, reports and actual adapters; it excludes full Qwen base weights and credentials. Files under artifacts/ and deliveries/ are Git-ignored. The preserved original ZIPs predate this English-only edition.
+- Base licenses remain applicable: Apache-2.0 for Qwen3.5-0.8B and qwen-research for Qwen2.5-3B-Instruct, together with source-data/project terms.
+- The original code/results delivery was pushed by the owner as commit f82bd68 on huaq. This English edition is prepared as a new local commit named `update md file and code`, for the owner to push.
 
-GitHub code/results remain local; three selected adapters are public on Hugging Face. The original research files and collaborator implementation remain preserved. The recipient ZIP contains code, reports and14 hash-verified LoRA adapters, without base weights, credentials or private runtime sessions.41 CPU tests pass. No neural run, Git commit or push was performed; the three authorized HF model uploads were verified. See models/README.md for portable usage and LATEST_RESULTS.md for the latest evidence.
-
-公开仓库与固定版本：[models/HUGGING_FACE.md](models/HUGGING_FACE.md)。更新交付ZIP：`deliveries/mtrl-models-2026-11-24-hf-linked.zip`；原ZIP保留。
+All Git-managed text and embedded archive text have English editions. Historical failed generations containing Chinese fragments use explicitly bracketed English explanations; recorded metric values continue to describe the original predictions. See [English-edition provenance and recovery](results/local_translation_release_2026-11-24/ENGLISH_EDITION.md) before rescoring display excerpts.

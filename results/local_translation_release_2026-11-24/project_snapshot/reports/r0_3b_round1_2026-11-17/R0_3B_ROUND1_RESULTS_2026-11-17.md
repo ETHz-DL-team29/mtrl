@@ -1,8 +1,6 @@
-# 3B R0首轮完整结果 / First 3B R0 Round: Full Results
+# First 3B R0 Round: Full Results
 
-2026-11-17 · Colab L4 · 原0.8B检查点保留，GPU已释放。 / Prior 0.8B checkpoints preserved; owned GPU released.
-
-**首轮3B训练和诊断已完成，但未得到可替代旧0.8B的可靠综合R0；保留为实验候选，不晋升，不进入正式DAPO效率对比。**
+Prior 0.8B checkpoints preserved; owned GPU released.
 
 **The first 3B training and diagnostic round is complete, but it has not produced a reliable broad R0 that replaces the old 0.8B checkpoint. Preserve it as an experimental candidate without promotion or formal DAPO efficiency comparisons.**
 
@@ -29,49 +27,33 @@
 | prespecified120 | 120 | initial_3B | 21.243 | 4.227 |
 | prespecified120 | 120 | selected_3B | 34.687 | 14.746 |
 
-统一128条匹配FP32评估：3B初始chrF++20.957，经SFT到34.457，BLEU到14.510；旧R0为34.567/15.701，旧SFT200为36.037/16.031。相对旧SFT200的chrF++差为−1.580，配对95%区间[−3.505,+0.674]，不能说显著更差，也没有可靠更好证据。
-
 On the same 128 matched-FP32 cases, 3B improves from20.957 to34.457 chrF++ and reaches14.510 BLEU, versus old R0 at34.567/15.701 and old SFT200 at36.037/16.031. The chrF++ difference versus SFT200 is−1.580,95% paired CI[−3.505,+0.674]: neither significant inferiority nor reliable superiority is established.
-
-技术64条chrF++34.770，对旧SFT200差−1.091，区间[−3.193,+1.645]；中长48条为35.170，对照36.518。开发选模长句分数上涨，并未转化为这组独立于选模的复用诊断样本上可靠优势。
 
 Technical 64 chrF++ is34.770, a−1.091 difference versus SFT200 with CI[−3.193,+1.645]. Medium/long48 scores35.170 versus36.518. Selection-development long-sentence gains do not establish reliable superiority on the separate reused diagnostic set.
 
-锁定全部288个新语义判断后：技术G8仅2/24组观察到G，旧SFT200为3/24；长句仍0/10。全部32组覆盖5/32，旧模型7/32。固定greedy32两模型均3个G，但新3B有8个B，旧模型3个B。语义证据没有支持晋升。
-
 After locking all 288 new semantic judgements, technical G8 coverage is2/24 versus3/24 for SFT200; long coverage remains0/10. All 32 coverage is5/32 versus7/32. Both have3 G outputs on the fixed greedy32, but new 3B has8 B outputs versus3. Semantics do not support promotion.
-
-具体缺损包括platelet变成血型、novel变成新书、星系/双星/尘带等术语变成不可靠词、临床人群和法律时限改变。这些不是仅靠调chrF或奖励归一化就能修正的表面格式问题。
 
 Observed errors include platelets becoming blood groups, novel becoming new book, unreliable galaxy/binary-star/dust-lane terms, and changed clinical populations or legal deadlines. These semantic defects are not merely formatting issues solved by score normalization.
 
-新3B技术G8中，固定reference MetricX在有G的2组均选到G；全奖励跨层可比较候选对192顺序一致、36逆序、9平分。旧SFT200有G的3组也均选G。当前直接可见的限制是大量组没有观察到完整正确候选；但本轮没有训练DAPO，不能据此给旧30步DAPO的失败原因做唯一或最大贡献归因。历史奖励错排控制也仍未通过。
-
 Reference MetricX selects G in both covered technical groups for new 3B; full reward has192 concordant,36 discordant and9 tied cross-tier pairs. It also selects G in all 3 covered old-SFT groups. Scarce observed correct candidates are a direct current limitation, but no DAPO is trained here and causal contributions to the old 30-step result remain unisolated. Historical failed reward controls still fail.
-
-只读廉价奖励核对不支持直接用chrF替掉MetricX：新3B技术组，原始chrF跨层逆序60对、完整chrF奖励逆序56对，且有G的2组只选到1组；旧SFT200对应chrF逆序90对、选G2/3。不能因为便宜就宣称其语义排序更可靠。
 
 The cheap read-only comparison does not support simply replacing MetricX with chrF. On new 3B technical groups, raw/full chrF gives60/56 discordant pairs and selects G in only1/2 covered groups; old-SFT chrF gives90 discordant pairs and2/3 selections. Lower cost does not establish more reliable semantic ranking.
 
-训练确实学习且未出现已观察的数值故障：926更新、999931目标token，开发NLL3.486→1.586、开发加权chrF++20.067→36.476，末期最佳、结构失败0；没有观察到开发曲线的平台。这说明本轮预算末尚在改善，不证明达到3B容量上限，也不证明追加训练必然达到目标。
-
 Training learns without an observed numerical failure:926 updates,999931 targets, dev NLL3.486→1.586 and weighted chrF++20.067→36.476, with the final checkpoint best and zero structural failures. The observed curve has not plateaued; this neither establishes a 3B capacity ceiling nor guarantees success from more training.
-
-较可信的项目判断是：参数量没有解决起点与英冰任务的匹配问题。本轮未经SFT的3B起点很弱，有限SFT使其明显变好，却未获得可用候选覆盖。模型代际、预训练、分词器及累计SFT历史同时不同，无法拆出“训练量不够”与“起点语言基础/数据覆盖”各自贡献。
 
 The supported project judgement is that size alone has not solved starting-point/task fit. The raw3B is weak and bounded SFT improves it substantially without adequate candidate coverage. Model generation, pretraining, tokenizer and cumulative SFT history all differ, so training exposure versus language foundation/data coverage cannot be separately attributed.
 
-![固定诊断开发集翻译质量 / Fixed diagnostic-development translation quality](translation_quality.png)
+![Fixed diagnostic-development translation quality](translation_quality.png)
 
-## 1. 为什么切换与保留什么 / Rationale and preserved checkpoints
+## Rationale and preserved checkpoints
 
-本轮为建立实用翻译基座而切换到3B，不是证明0.8B达到绝对容量上限。候选不足是优先工作判断，MetricX错排是另一实测问题；没有只换奖励的因果对照，不能给两者贡献排序。 / The practical3B transition does not establish an absolute0.8B ceiling. Candidate weakness is the working priority and MetricX misranking is separately observed; their causal contributions are not isolated.
+The practical3B transition does not establish an absolute0.8B ceiling. Candidate weakness is the working priority and MetricX misranking is separately observed; their causal contributions are not isolated.
 
-0.8B完整原因与57个检查点路径见同日TRANSITION_AND_CHECKPOINTS文档及JSON/CSV清单，原位保存。LoRA adapter需要匹配的base，诊断过拟合模型不应误作更强R0。 / The transition report inventories57 checkpoint paths and evidence with hashes; all remain in place. Adapters require their base and fitting probes are not stronger R0s.
+The transition report inventories57 checkpoint paths and evidence with hashes; all remain in place. Adapters require their base and fitting probes are not stronger R0s.
 
-3B选择[Qwen/Qwen2.5-3B-Instruct](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct)，revision aa8e72537993ba99e69dfaafa59ed015b17504d1。模型代际、分词器和预训练同时变化，所以不作仅参数量的因果归因；官方多语说明不能代替冰岛语验证。 / Model generation,tokenizer and pretraining change alongside size;multilingual claims do not establish Icelandic quality.
+3B selection[Qwen/Qwen2.5-3B-Instruct]Model generation,tokenizer and pretraining change alongside size;multilingual claims do not establish Icelandic quality.
 
-## 2. 冻结数据与训练配方 / Frozen data and recipe
+## Frozen data and recipe
 
 | Item | Value |
 | --- | --- |
@@ -85,19 +67,19 @@ The supported project judgement is that size alone has not solved starting-point
 | Semantic excluded IDs | 31 |
 | Candidate-pool SHA256 | 13393429c1234556cd7b5d6561408964fc39d44b33bffdd670503377ed9761b4 |
 
-从T6完整候选池重新用3B tokenizer编码，不复制0.8B token长度；排除31条已有语义隔离样本，不静默截断。使用已有源/参考精确排除和近重复启发式，不能声称完整文档分离或全量母语审核。 / Re-encode the complete protected T6 pool with the 3B tokenizer, exclude31 known semantic defects and never silently truncate. Source/reference and heuristic near-duplicate exclusion is not complete document separation or full native review.
+Re-encode the complete protected T6 pool with the 3B tokenizer, exclude31 known semantic defects and never silently truncate. Source/reference and heuristic near-duplicate exclusion is not complete document separation or full native review.
 
-额外探索性质量抽查：在初始3B评估期间、尚未观察到SFT更新时，按固定ID哈希分层阅读本轮选中32对（8/4/10/10）；31对未见明显主要缺损，1条字幕省略career而依赖上下文，另有少量术语/枚举注意项。未据此改变冻结输入，不能推断全量质量。全部卡片和判断保存在additional_data_audit。 / An exploratory fixed-hash32-pair reference review during initial evaluation found31 without a clear major defect and one context-dependent subtitle omission, plus minor terminology/enumeration cautions. Inputs did not change; this is not full-pool quality certification.
+An exploratory fixed-hash32-pair reference review during initial evaluation found31 without a clear major defect and one context-dependent subtitle omission, plus minor terminology/enumeration cautions. Inputs did not change; this is not full-pool quality certification.
 
-Fresh LoRA rank16/alpha32，q/k/v/o/gate/up/down七类模块；原生BF16冻结base、FP32 adapter，AdamW LR1e-4，5% warmup后cosine到20%，dropout.05、weight_decay.01、clip1、有效batch32、micro4可降2/1、总长1024/目标384、seed2026111721。 / Fixed fresh-LoRA recipe with these parameters; all trainable weights and targets are archived.
+Fixed fresh-LoRA recipe with these parameters; all trainable weights and targets are archived.
 
-训练历史不相等：旧0.8B的V3从已有SFT adapter继续，V3本身新增1,400,474目标token，SFT200再新增200,770；更早的warm-start训练另计。本轮3B从instruct base的新LoRA开始，最多约100万目标token，且分词器不同。因此这里只比较可用checkpoint的实用质量，不能称同训练规模下的参数量对照，也不能将质量差异单独归因于训练量。原始来源哈希保存在training_history_context.json。 / Training histories differ: old V3 continues an existing SFT adapter, adds1,400,474 target tokens and SFT200 adds200,770 more, excluding earlier warm-start training. This 3B round uses fresh LoRA with at most about1M targets and a different tokenizer. This is practical checkpoint selection, not a matched-exposure size ablation or proof that exposure causes any observed quality difference.
+Training histories differ: old V3 continues an existing SFT adapter, adds1,400,474 target tokens and SFT200 adds200,770 more, excluding earlier warm-start training. This 3B round uses fresh LoRA with at most about1M targets and a different tokenizer. This is practical checkpoint selection, not a matched-exposure size ablation or proof that exposure causes any observed quality difference.
 
-先保存零B矩阵adapter，确认等价于未微调起点；最终greedy/G8采用同一BF16舍入base提升FP32，TF32关闭,max320。旧0.8B缓存来自已核验的匹配FP32协议，比较相同源句/参考，不声称跨模型token一致。 / The zero-B initial adapter represents the unadapted base. Final generation uses matchedFP32 from BF16-rounded base values. Historical0.8B cached outputs use the verified matchedFP32 protocol; cross-model token identity is not expected.
+The zero-B initial adapter represents the unadapted base. Final generation uses matchedFP32 from BF16-rounded base values. Historical0.8B cached outputs use the verified matchedFP32 protocol; cross-model token identity is not expected.
 
-本地分词器长度核对：选模开发参考最长257 token、最终128条最长240、G8参考最长215，均含EOS且低于320输出上限；实际生成仍可能因冗长或循环截断，已单独计数。 / Reference-length audit finds maxima257 for selection development,240 for final128 and215 forG8, includingEOS. All fit within320; verbose/repetitive generated outputs can still truncate and are counted separately.
+Reference-length audit finds maxima257 for selection development,240 for final128 and215 forG8, includingEOS. All fit within320; verbose/repetitive generated outputs can still truncate and are counted separately.
 
-最终补充核对：选模64与评估128没有相同ID或完全相同源文，但二者仍是复用开发材料。全部初始、选模和最终生成均未出现基础模型EOS 151643，未发现该备用终止token被漏停而影响本轮结果的证据。核对文件为selection_evaluation_overlap_audit.json和final_generation_stop_token_audit.json。 / Selection64 and evaluation128 have no shared IDs or exact sources, while both remain reused development material. No generated bank contains base EOS151643, so the audit finds no evidence that missing this alternate stopping token affected the round. Both checks are archived separately.
+Selection64 and evaluation128 have no shared IDs or exact sources, while both remain reused development material. No generated bank contains base EOS151643, so the audit finds no evidence that missing this alternate stopping token affected the round. Both checks are archived separately.
 
 | Audit | Result |
 | --- | --- |
@@ -107,9 +89,9 @@ Fresh LoRA rank16/alpha32，q/k/v/o/gate/up/down七类模块；原生BF16冻结b
 | per_token_batch_difference | 4.656174603656638e-06 |
 | passed | true |
 
-本地和远程均运行Qwen2目标移位/padding、LoRA初始等价与梯度、预算及选模约束检查。 / Local and remote checks cover Qwen2 loss alignment, padding, LoRA initialization/gradients, token budgets and selection guards.
+Local and remote checks cover Qwen2 loss alignment, padding, LoRA initialization/gradients, token budgets and selection guards.
 
-## 3. 实际训练与选模 / Actual training and selection
+## Actual training and selection
 
 | Actual mixture | Target tokens |
 | --- | --- |
@@ -118,7 +100,7 @@ Fresh LoRA rank16/alpha32，q/k/v/o/gate/up/down七类模块；原生BF16冻结b
 | technical_medium | 249975 |
 | technical_long | 299958 |
 
-实际样本暴露次数 / Actual example exposures: 29625
+Actual example exposures: 29625
 
 | Item | Actual |
 | --- | --- |
@@ -143,11 +125,11 @@ Fresh LoRA rank16/alpha32，q/k/v/o/gate/up/down七类模块；原生BF16冻结b
 | t0500000 | 463 | 500149 | 1.79648 | 1.80380 | 32.831 | 32.319 | 2 |
 | t1000000 | 926 | 999931 | 1.58604 | 1.58541 | 36.476 | 35.548 | 0 |
 
-checkpoint选择只用固定64条开发集：权重.4/.05/.25/.3，通用chrF++不得低于该3B初始值1.5分，结构失败≤初始+2，包含初始fallback；近似平局取更低技术NLL再更早checkpoint。该约束相对本轮3B初始值，是否超过旧0.8B另由最终诊断判断。 / Selection uses only fixed dev64 with the registered weights and guards against the 3B initial baseline. Superiority to old 0.8B is separately evaluated; initial fallback is eligible.
+Selection uses only fixed dev64 with the registered weights and guards against the 3B initial baseline. Superiority to old 0.8B is separately evaluated; initial fallback is eligible.
 
-![训练更新与开发选模 / Training updates and development selection](training_and_selection.png)
+![Training updates and development selection](training_and_selection.png)
 
-## 4. 配对质量差异 / Paired quality effects
+## Paired quality effects
 
 | Subset | 3B selected minus comparator | ΔchrF++ [95% CI] | ΔBLEU [95% CI] |
 | --- | --- | --- | --- |
@@ -176,11 +158,11 @@ checkpoint选择只用固定64条开发集：权重.4/.05/.25/.3，通用chrF++�
 | technical_long | old_SFT200 | +0.424 [-2.567, +4.258] | +0.428 [-3.432, +5.628] |
 | technical_long | initial_3B | +13.704 [+10.578, +17.007] | +12.091 [+8.119, +16.387] |
 
-2000次来源内分层配对bootstrap。128为复用诊断开发样本，不是未触碰测试；120为之前预先登记的排除8条低可信参考的敏感性子集，没有据新结果换样本。区间不包括文档聚类、训练种子变化、多重比较和语义审核不确定性。 / Use2000 paired source-stratified resamples. These are reused diagnostic-development data; the 120-row sensitivity excludes8 previously flagged references. No new result-driven replacement. CIs omit document clustering, seed variability, multiple comparisons and review uncertainty.
+Use2000 paired source-stratified resamples. These are reused diagnostic-development data; the 120-row sensitivity excludes8 previously flagged references. No new result-driven replacement. CIs omit document clustering, seed variability, multiple comparisons and review uncertainty.
 
-## 5. G8与逐句语义 / G8 and semantic review
+## G8 and semantic review
 
-![好候选覆盖与固定32条语义复核 / Good-candidate coverage and fixed32-source semantic review](candidate_and_semantic_quality.png)
+![Good-candidate coverage and fixed32-source semantic review](candidate_and_semantic_quality.png)
 
 | Subset | Model | Sources | G-covered | ActiveG-covered | G/P/B/U candidate counts | Active coarse-contrast groups | Truncated |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -203,15 +185,15 @@ checkpoint选择只用固定64条开发集：权重.4/.05/.25/.3，通用chrF++�
 | technical24 | 24 | 1/21/2/0 | 1/16/7/0 |
 | technical_long | 10 | 0/10/0/0 | 0/7/3/0 |
 
-本轮新标注32条greedy与256条G8候选，合计288条，先锁定标签再汇总；复用旧SFT200的已锁定判断并逐条核验文本一致。G保留核心语义与关键关系；P有重大缺损；B中心含义丢失/反转；U不确定。卡片隐藏指标、G8顺序打乱，但单模型身份和已知数值不能完全隐藏，属于同助手AI辅助判断，不是母语独立认证。 / Lock all 288 new judgements before semantic aggregation; reuse old locked labels only after exact-text parity. G/P/B/U definitions and partial blinding are recorded; this is not independent native certification.
+Lock all 288 new judgements before semantic aggregation; reuse old locked labels only after exact-text parity. G/P/B/U definitions and partial blinding are recorded; this is not independent native certification.
 
-G8仅固定32个诊断源句：8通用、4技术短、10中、10长。温度.7/top_p1/top_k0/max320，种子与T6按源句相同；不同模型的随机token轨迹当然不同。‘未观察到G’不等于无限采样都无正确译文；P/B之间仍可能提供相对学习信号。 / Fixed32-source G8 diagnoses candidate availability, not a population rate or impossibility proof. P/B contrasts can still provide relative learning signals.
+Fixed32-source G8 diagnoses candidate availability, not a population rate or impossibility proof. P/B contrasts can still provide relative learning signals.
 
-### 补充：MetricX排序 / Supplement: MetricX ranking
+### Supplement: MetricX ranking
 
-另在选中SFT译文产生前登记低成本CPU参照：原始句级chrF++及chrF++/100配同一文本门控和长度惩罚。全部语义标签锁定后才计算排名，不用其挑选奖励或训练；chrF重合度也可能误奖字面相似错误。 / Before selected outputs, register raw sentence chrF++ and normalized chrF++ with the same gates/length penalty as CPU-only comparators. Compute rankings after locking semantic labels; these do not select a reward or train a policy. Lexical overlap can also reward semantic errors.
+Before selected outputs, register raw sentence chrF++ and normalized chrF++ with the same gates/length penalty as CPU-only comparators. Compute rankings after locking semantic labels; these do not select a reward or train a policy. Lexical overlap can also reward semantic errors.
 
-在初始3B结果已部分查看、选中SFT输出/G8尚未产生时追加登记只读排序核对。仅在训练进程退出且剩余至少20分钟时开始GPU评分，限8分钟，不改变训练、选模、奖励权重或模式；原绝对截止不变。原主程序MetricX计数为0，补充程序调用另列。 / Register this exploratory read-only supplement after initial-output inspection but before selectedSFT/G8 outputs. Run GPU scoring only after policy exit with 20 min remaining, max8 min. It changes no training, selection, weights or reward mode; main-program and supplementary calls are reported separately.
+Register this exploratory read-only supplement after initial-output inspection but before selectedSFT/G8 outputs. Run GPU scoring only after policy exit with 20 min remaining, max8 min. It changes no training, selection, weights or reward mode; main-program and supplementary calls are reported separately.
 
 | Supplement metadata | Value |
 | --- | --- |
@@ -270,9 +252,9 @@ G8仅固定32个诊断源句：8通用、4技术短、10中、10长。温度.7/t
 | technical_long | selected_3B | chrfpp | 0 | 0 | 89/72/17/0 | 0 |
 | technical_long | selected_3B | full_chrfpp_reward | 0 | 0 | 89/76/13/0 | 0 |
 
-同T6的固定FP32 MetricX-24-hybrid-large-v2p6与MT5 tokenizer版本，reference与QE只作比较，不根据这些标签改选模式。排除训练中会被mask的截断候选；G>P>B比较只统计不同已知层级，另列平分。full_reference_reward沿用1−MetricX/25、文本门控与超过256 token的软长度惩罚。原失败语义控制不因新G8排名较好而变为通过；这不是全局奖励校准，也不是T=1实际DAPO采样验证。 / Use the unchanged T6 FP32 scorer/tokenizer. Compare reference/QE without validation-driven mode choice. Exclude truncated candidates from active ranking; count cross-tier G>P>B comparisons and ties separately. Full reference reward retains old gates and length penalty. Improved local G8 ranking cannot erase failed historical controls or establish global calibration/T=1 DAPO readiness.
+Use the same pinned FP32 MetricX-24-hybrid-large-v2p6 and MT5-tokenizer revisions as T6. Compare reference/QE without using these labels to reselect the mode. Exclude truncated candidates masked during training; G>P>Use the unchanged T6 FP32 scorer/tokenizer. Compare reference/QE without validation-driven mode choice. Exclude truncated candidates from active ranking; count cross-tier G>P>B comparisons and ties separately. Full reference reward retains old gates and length penalty. Improved local G8 ranking cannot erase failed historical controls or establish global calibration/T=1 DAPO readiness.
 
-## 6. 是否晋升与下一步 / Promotion decision and next action
+## Promotion decision and next action
 
 | Preregistered planning screen | Passed |
 | --- | --- |
@@ -281,51 +263,31 @@ G8仅固定32个诊断源句：8通用、4技术短、10中、10长。温度.7/t
 | general_retention | False |
 | technical_greedy_gain | False |
 
-项目筛选目标：技术至少12/24组含G、长句至少4/10、通用相对旧SFT200跌幅≤1.5、技术chrF++点估计提升且区间下界≥0，另需语义复核没有新的重大错误模式。这些是本项目的工作目标，不是普遍DAPO硬门槛；不能只用单项通过宣布成功。 / Project screening targets are heuristics, not universal RL admission rules; qualitative semantics remain necessary.
-
-当前决策：保留新3B与全部0.8B；旧SFT200仍是本轮比较中更实用的参考候选，但同样未验证为综合正式DAPO基座。本轮预算在已释放GPU处结束，不自动追加当前配方训练。
+Project screening targets are heuristics, not universal RL admission rules; qualitative semantics remain necessary.
 
 Current decision: preserve new 3B and all 0.8B checkpoints. Old SFT200 remains the more practical comparator here, but is also not validated as a broad formal-DAPO base. This budget ends with the released GPU.
 
-下一步优先做起点筛选，先不训练：对有翻译预训练的约3B模型，使用同一固定32条greedy，再按预先固定的分层ID选8条做G8（2通用、2中、4长）。逐条看关键概念和角色，并与现有缓存配对；通过前不进入百万token SFT。预计单一起点约30–60分钟Colab，取决于下载、运行环境与生成速度，尚未执行。
-
 Prioritize starting-point screening without training: use the fixed 32 greedy sources and 8 preselected stratified G8 sources,2 general / 2 medium / 4 long. Inspect concepts and roles against cached comparators before committing to another million-token SFT. A single candidate is estimated at30–60 Colab minutes depending on downloads/runtime/generation; not executed.
-
-若项目允许encoder–decoder，建议优先筛选[Google Research发布的MADLAD 3B MT](https://github.com/google-research/google-research/blob/master/madlad_400/README.md)，其[转换模型卡](https://huggingface.co/google/madlad400-3b-mt)说明为T5翻译模型。这里只是有任务依据的候选建议，本项目英冰技术长句质量未测，不能承诺更强。它需要重新实现/核对条件decoder logp、目标mask和采样，不能直接替换现有decoder-only目录。
 
 If encoder–decoder is within scope, prioritize screening the [Google Research MADLAD3B MT release](https://github.com/google-research/google-research/blob/master/madlad_400/README.md); its [converted model card](https://huggingface.co/google/madlad400-3b-mt) describes a T5 translation model. This is a task-based candidate, not measured English–Icelandic superiority. Conditional decoder logp, target masks and sampling require adaptation and validation; it is not a directory-only replacement.
 
-筛选后的分岔明确：若候选基础明显更好，先固定该起点、冻结一份未用于选择的新质量留出，做最小必要SFT；若必须保留decoder-only架构，则先筛选满足项目规模条件且实测英冰能力更好的起点，再谈训练规模。不要再仅凭3B标签决定投入。
-
 After screening, freeze a clearly stronger starting point and a new quality holdout unused for selection, then do only the necessary SFT. If decoder-only is mandatory, first screen an allowed-size decoder-only model for actual English–Icelandic ability. Do not commit on the3B label alone.
-
-拿到有实质正确候选的actor后，再用与模型选择分开的语义控制核对奖励，运行固定小预算标准DAPO。只有独立翻译质量有可信收益或保持，才冻结actor/数据/奖励/采样研究选择性token更新与前缀复用的时间和显存收益。
 
 Once an actor supplies meaningful correct candidates, validate reward on semantic controls separate from model selection, then run bounded standard DAPO. Freeze actor/data/reward/sampling for selective-token and prefix-reuse efficiency research only after independent quality benefits or retention are credible.
 
-G/P/B/U为同一助手按预先标准所作AI辅助判断，不是母语专家认证；P/B边界有主观性。所有候选、随机显示顺序、逐组理由和锁定哈希均保留，允许外部复核。
-
 G/P/B/U labels are same-assistant AI-assisted judgements, not native certification; P/B boundaries are subjective. All outputs, randomized display order, reasons and lock hashes remain available for review.
-
-128条及G8源句属于反复使用的开发/诊断材料，不是未触碰测试；旧标签复用不等于独立盲评。单种子、小样本区间也不覆盖文档聚类和模型选择不确定性。
 
 The128 and G8 sources are reused development/diagnostic material, not untouched tests; reused old labels are not independent blind review. Single-seed source CIs omit document clustering and model-selection uncertainty.
 
-在G8下未观察到G，不等于无限采样都没有正确译文；P与B之间仍可能提供RL相对学习信号。因此不把此次筛选失败解释为DAPO在数学上不能学习。
-
 No G observed in G8 does not imply zero probability under unlimited sampling. P/B contrasts may still provide relative RL signals; this failed screen does not prove DAPO cannot learn.
-
-新旧分词器不同，同一256 token长度惩罚不对应同一字符长度；完整奖励跨模型差异不能全部解释为评分器差异。reference/QE/chrF比较不用于选择新的奖励模式，历史失败控制仍如实保留。
 
 Different tokenizers make the 256-token penalty a different character-length constraint; full-reward cross-model differences are not purely scorer differences. Reference/QE/chrF comparisons do not select a new reward mode, and historical failed controls remain recorded.
 
-A运行时消失后B从已核验初始权重重跑，不是两个独立种子。总耗时与计算单元包括A已知/未知的工作、B、评估和传输；全部旧权重保持原位。
-
 After A lost its assignment, B restarted from verified initial weights; these are not independent seeds. Total time/CU includes A work, B, evaluation and transfer; all old weights remain in place.
 
-## 7. 时间、费用、恢复与归档 / Time,cost,recovery and archives
+## Time,cost,recovery and archives
 
-从首次GPU分配到最终释放共 153.73 分钟，包含中断、恢复、评估和传输；下表allocated minutes为A消失时间有界情况下的分配时长上界。实际训练更新耗时 82.07 分钟。 / First allocation to release takes 153.73 wall minutes including interruption, recovery, evaluation and transfers. Allocated minutes below are an upper bound because A removal time is bounded. Actual B training updates take 82.07 minutes.
+First allocation to release takes 153.73 wall minutes including interruption, recovery, evaluation and transfers. Allocated minutes below are an upper bound because A removal time is bounded. Actual B training updates take 82.07 minutes.
 
 | Item | Actual |
 | --- | --- |
@@ -336,11 +298,11 @@ After A lost its assignment, B restarted from verified initial weights; these ar
 | Peak sampled device MiB | 18558.0 |
 | Physical targets incl retries | 999931 |
 
-运行时中断：A的L4分配在约28条已同步更新后消失，具体原因未知，未取回训练后权重。已保存初始完整快照、全部128条基线和64条选模输出；B核验初始权重SHA、重算开发NLL及2条完整token锚点后复用评估，从step0同种子同顺序重新训练，原绝对截止时间不变。这不是独立随机种子重复，也不是从丢失的最后更新精确续跑。A的已知更新记录及费用另存attempt_A；总费用含两次尝试。 / A lost its L4 assignment after28 mirrored updates; the exact cause and unrecovered later work are unknown. B verifies the saved initial adapter, NLL and full-token anchors, reuses baseline outputs and restarts step0 with the same seed/order under the original deadline. This is not an independent seed or an exact resume of the lost final update. Preserve A records separately and include both attempts in cost.
+A lost its L4 assignment after28 mirrored updates; the exact cause and unrecovered later work are unknown. B verifies the saved initial adapter, NLL and full-token anchors, reuses baseline outputs and restarts step0 with the same seed/order under the original deadline. This is not an independent seed or an exact resume of the lost final update. Preserve A records separately and include both attempts in cost.
 
-恢复程序只改变初始adapter/基线缓存的恢复和控制流程，保留原冻结训练更新循环；原34个数值输入文件及恢复补充清单均核验。训练前台握手后保持真实任务输出连接，另有只读输出订阅；所有快照保存D盘后确认，最终ZIP校验后释放拥有的GPU。 / Recovery changes initialization/cache/control handling while retaining the frozen update loop. Verify original 34 files and the supplementary recovery manifest. Keep the real foreground computation/output connection, verify durable snapshots/export and release only the owned runtime.
+Recovery changes initialization/cache/control handling while retaining the frozen update loop. Verify original 34 files and the supplementary recovery manifest. Keep the real foreground computation/output connection, verify durable snapshots/export and release only the owned runtime.
 
-额外保护：只用CPU归档已完整写出的滚动checkpoint，在首个5分钟检查点和随后约10分钟间隔向D盘复制完整状态，不修改训练循环。重跑前28更新的数据顺序和目标token一致、初始CPU/CUDA/Python/NumPy RNG一致；损失最大绝对差约0.01014、梯度范数差约0.11462，具体数值差异来源未隔离，不声称位级重现。A已同步目标token29762仅是已知工作下界。 / Additional CPU-only rolling-checkpoint archives preserve full states without changing training. First 28 replayed updates match order/token counts and initial RNG states, but show loss/gradient differences; their cause is not isolated and bitwise replay is not claimed. The 29762 recorded A targets are only a known-work lower bound.
+Additional CPU-only rolling-checkpoint archives preserve full states without changing training. First 28 replayed updates match order/token counts and initial RNG states, but show loss/gradient differences; their cause is not isolated and bitwise replay is not claimed. The 29762 recorded A targets are only a known-work lower bound.
 
 | Artifact | Path |
 | --- | --- |
@@ -352,7 +314,7 @@ After A lost its assignment, B restarted from verified initial weights; these ar
 | Selected adapter | D:\deep learning project\runs\r0_3b_round1_2026-11-17\selected_candidate_adapter |
 | CPU replay | D:\deep learning project\runs\r0_3b_round1_2026-11-17\analysis_reproduction\README.md |
 
-## 附录A：全部128条greedy对照 / All128 greedy comparisons
+## All128 greedy comparisons
 
 <details><summary>ParIce21:opensubtitles:dev:3611 general</summary>
 
@@ -405,8 +367,6 @@ EN: 14 ml of Perjeta concentrate should be withdrawn from the vial and diluted i
 
 IS reference: Draga á 14 ml af Perjeta þykkni úr hettuglasinu og þynna það í 250 ml innrennslispoka úr PVC eða pólýólefíni án PVC, sem inniheldur 9 mg/ml (0,9%) lausn af natríumklóríði til innrennslis.
 
-保留14/250 ml、盐浓度与稀释步骤，但把输液袋写成不可靠的infusínskáp，聚烯烃等关键容器术语失准，不能作为可靠的完整配制说明。
-
 Volumes, concentration and dilution are retained, but the infusion-bag/container term and polyolefin terminology are materially unreliable.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -453,8 +413,6 @@ IS reference: Fargið ónotuðum lyfjaleifum eftir notkun.
 EN: It either grew by assembling the rocks that form the solid core and then slowly accumulated gas from the environment to form the heavy atmosphere, or started forming from a gaseous clump that arose from gravitational instabilities in the disc.” explains Anne-Marie Lagrange, another team member.
 
 IS reference: Annað hvort óx hún með því að draga til sín berg sem myndaði fastan kjarna sem sópaði síðan að sér gas úr umhverfinu og myndaði þannig þykkan lofthjúp, eða hún hóf að myndast úr gasklumpi sem varð til vegna þyngdaróstöðugleika í skífunni,“ segir Anne-Marie Lagrange, meðlimur í rannsóknarteyminu.
-
-岩石固体核心、逐渐吸积气体与盘中引力不稳定形成气团的两种机制丢失，输出基本不可理解。
 
 Loses both formation mechanisms, including the rocky solid core and gravitational instability in the disc; the output is largely incoherent.
 
@@ -533,8 +491,6 @@ EN: If the number of platelet (a type of blood cell that helps to clot blood) ha
 
 IS reference: Ef blóðflögum (tegund blóðfrumna sem tekur þátt í blóðstorknun) hefur fækkað.
 
-保留血液相关数量下降的条件，但platelet被译成血型/血液分组，细胞及凝血解释错误。
-
 Retains a decreased blood-related count condition, but replaces platelets with blood groups and corrupts the clotting explanation.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -581,8 +537,6 @@ IS reference: tvö sýnishorn með því ljóskeri eða ljóskerum sem mælt er 
 EN: In a randomised, double-blind correction study (n = 358) comparing once every two week and once monthly dosing schedules in patients with CRF not on dialysis, darbepoetin alfa once monthly dosing was non-inferior to once every two week dosing for correcting anaemia.
 
 IS reference: Í slembaðri, tvíblindri leiðréttingarrannsókn (n = 358) þar sem borin var saman gjöf lyfsins einu sinni á tveggja vikna fresti og gjöf lyfsins einu sinni í mánuði hjá sjúklingum með langvarandi nýrnabilun sem ekki voru í skilun, gaf darbepoetin alfa gefið einu sinni í mánuði ekki lakari niðurstöður en þegar það var gefið á tveggja vikna fresti til leiðréttingar á blóðleysi.
-
-保留358、两周/每月和药名，但随机双盲、慢性肾衰/非透析、非劣效性及纠正贫血均不可靠，临床结论不能正确使用。
 
 Keeps n358, the dosing intervals and drug name, but corrupts the design, CRF/non-dialysis population, non-inferiority and anaemia outcome.
 
@@ -646,8 +600,6 @@ EN: For the proper functioning of the internal market and in order to facilitate
 
 IS reference: Til að starfsemi innri markaðarins sé með eðlilegum hætti og til að greiða fyrir viðskiptum yfir landamæri innan Bandalagsins er mikilvægt að gjöld vegna greiðslna yfir landamæri í evrum séu þau sömu og fyrir samsvarandi greiðslur innan aðildarríkis.
 
-保留内市场和跨境/境内相同要求的框架，但费用变成义务，支付变成交易，并遗漏欧元，关键金融规定不完整。
-
 Keeps the market and cross-border/domestic equality frame, but changes charges to obligations and payments to transactions, omitting euro.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -664,8 +616,6 @@ Keeps the market and cross-border/domestic equality frame, but changes charges t
 EN: A new image of the centre of the distinctive galaxy Centaurus A, made with the Atacama Large Millimeter/submillimeter Array (ALMA), shows how the new observatory allows astronomers to see through the opaque dust lanes that obscure the galaxys centre, with unprecedented quality.
 
 IS reference: Ný mynd Atacama Large Millimeter/submillimeter Telescope af miðju vetrarbrautarinnar Centaurus A, sýnir vel hvernig þessi nýi sjónauki gerir stjörnufræðingum kleift að sjá í gegnum ryk, sem alla jafna er ógegnsætt og hylur miðju vetrarbrautarinnar, í meiri smáatriðum en nokkru sinni fyrr.
-
-保留Centaurus A、ALMA及新中心图像，但星系、天文学家、遮挡的尘带和前所未有的观测质量等核心术语严重失准。
 
 Retains Centaurus A, ALMA and a new central image, but corrupts galaxy, astronomers, obscuring dust lanes and unprecedented quality.
 
@@ -728,8 +678,6 @@ IS reference: Það segir gott um þig.
 EN: Why, uttering the very name of Sparta or Leonidas will be punishable by death.
 
 IS reference: Það verður dauðasök að minnast orði á Spörtu eða Leonídas.
-
-核心的说出名字将被处死完全遗漏，仅保留提及Sparta或Leonidas。
 
 Loses the central claim that uttering the names is punishable by death.
 
@@ -807,8 +755,6 @@ IS reference: Hefurðu kíkt á bæklinginn sem ég lét þig fá?
 EN: Inspections for compliance with GLP principles may take place in any test facility generating health or environmental safety data for regulatory purposes.
 
 IS reference: Skoðun til að kanna hvort meginreglum um góðar starfsvenjur við rannsóknir er fylgt getur farið fram í öllum prófunarstöðvum sem afla gagna um öryggi heilbrigðis og umhverfis samkvæmt gildandi reglum.
-
-语法和监管用途用词生硬，但GLP合规检查可在生成健康/环境安全监管数据的各试验场所进行这一主要规定保留。
 
 Awkward grammar and regulatory-purpose wording, but preserves GLP compliance inspection at facilities producing health/environmental safety data for authorities.
 
@@ -947,8 +893,6 @@ EN: We've got all these extra kids running around.
 
 IS reference: Það eru allir þessir aukakrakkar á hlaupum.
 
-保留有这些孩子，但extra错成更年幼，running around遗漏。
-
 Retains having these children but changes extra to younger and omits running around.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -1011,8 +955,6 @@ EN: You want the long or short version?
 
 IS reference: Viltu löngu eða stuttu söguna?
 
-保留询问想要哪种信息，但short version误成缺少信息，长短版本对比不可靠。
-
 Keeps the choice question but renders short as lacking information, corrupting the long/short-version contrast.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -1029,8 +971,6 @@ Keeps the choice question but renders short as lacking information, corrupting t
 EN: I just came from the liquor store.
 
 IS reference: Ég var að koma úr vínbúðinni.
-
-保留从商店回来的框架，但酒铺的词被造为不可靠复合词，just的刚刚含义也弱化。
 
 Keeps coming from a shop, but the liquor-store compound is unreliable and the just/recency meaning is weakened.
 
@@ -1049,8 +989,6 @@ EN: We also need to increase support for the UN and others bodies striving to cr
 
 IS reference: Við verðum líka að auka stuðning við Sameinuðu þjóðirnar og aðrar stofnanir sem vinna að því að bæta lífsskilyrði flóttamanna á grannsvæðum Sýrlands,“ segir Höskuldur Þórhallsson.
 
-保留UN及邻近叙利亚的改善条件主题，但支持错成管理，难民错成转移，并丢失归属引述。
-
 Keeps UN and conditions near Syria, but changes support to administration and refugees to transfers, losing attribution.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -1067,8 +1005,6 @@ Keeps UN and conditions near Syria, but changes support to administration and re
 EN: In order to reinforce the added value of Community action, the Commission, in cooperation with the Member States, should ensure, at all levels, the coherence and complementarity of actions implemented in the framework of this Decision and other relevant Community policies, instruments and actions, in particular those concerning a coordinated employment strategy, social policy, the European Social Fund, education, vocational training and youth.
 
 IS reference: Í því skyni að auka ávinning af aðgerðum bandalagsins ber framkvæmdastjórninni að tryggja, í samstarfi við aðildarríkin, að aðgerðir á öllum stigum innan ramma þessarar ákvörðunar séu í réttu samhengi við og til fyllingar öðrum viðeigandi stefnumálum , gerningum og aðgerðum bandalagsins, einkum þeim sem varða samræmda stefnu í atvinnumálum , félagsmálastefnu, Félagsmálasjóð Evrópu, menntun, starfsnám og æskulýðsmál.
-
-保留委员会与成员国协调行动框架，但互补性及政策/工具用词失准，后半重复并丢失就业、社会基金、教育培训和青年完整清单。
 
 Keeps Commission/Member-State coordination but corrupts complementarity and instruments/policies; repeated text replaces much of the employment/fund/education/youth list.
 
@@ -1147,8 +1083,6 @@ EN: If new testing is necessary, and in the case of experimental problems in the
 
 IS reference: Ef nauðsynlegt reynist að láta nýjar prófanir fara fram, og ef upp kemur vandi í framkvæmd skimunarprófunarinnar (t.d. hömlun vegna eiturhrifa prófunarefnis), skal endurtaka prófunina með minni skammti yfirborðsvirka efnisins og fylgjast með niðurbrotinu með geislakolsmælingu (14C-mælingu) eða efnagreiningu.
 
-保留必要时新测试、低剂量与14C线索，但毒性抑制、表面活性剂、监测降解和化学分析均误译，不能正确执行。
-
 Keeps retesting, a low dose and 14C, but corrupts toxic inhibition, surfactant, degradation monitoring and chemical analysis.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -1226,8 +1160,6 @@ EN: Complex Organic Molecules Discovered in Infant Star System
 
 IS reference: Flókin lífræn efnasambönd finnast í ungu sólkerfi
 
-婴幼恒星系统被译成儿童行政体系，复杂有机分子的天文学发现核心丢失。
-
 Replaces the infant star system with a child/administrative construction, losing the astronomical discovery.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -1275,8 +1207,6 @@ EN: In repeat dose studies in rodents, effects in a variety of tissues (bone, te
 
 IS reference: Í rannsóknum með endurteknum skömmtum hjá nagdýrum virðast áhrif í ýmsum vefjum (beinum, tönnum, naglabeði, æxlunarfærum, blóðvefjum, nýrum og brisi) tengjast lyfjafræðilegum áhrifum VEGFR- hindrunar og/eða rofi VEGF-merkjaferla þar sem flest áhrifin koma fram við útsetningu í plasma sem var lægri en við klínískar aðstæður.
 
-保留VEGFR抑制、VEGF及较低血浆水平的一些联系，但组织器官清单大多错误，重复给药与临床比较表达严重受损。
-
 Keeps some VEGFR/VEGF and lower-plasma-exposure relations, but corrupts most organs and the repeat-dose/clinical comparison.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -1298,7 +1228,7 @@ IS reference: Hvað varð um melluna með gullhjartað?
 | --- | --- | --- | --- | --- |
 | old_R0 | Hvað gerðist við hokkuna með gullhertinu? | 34.387 | not reviewed | False |
 | old_SFT200 | Hvað kom fyrir handhuguna með gullhertinu? | 33.438 | not reviewed | False |
-| initial_3B | Hvað事情發生在那顆金子心的妓女身上？ | 5.002 | not reviewed | False |
+| initial_3B | Hvað[happened to that prostitute with a heart of gold?] | 5.002 | not reviewed | False |
 | selected_3B | Hvað gerðist við hringjarið með glóhjarta? | 25.782 | not reviewed | False |
 
 </details>
@@ -1353,8 +1283,6 @@ IS reference: „Leitin að reikistjörnum í kringum aðrar stjörnur má líkj
 EN: As well as taking images of the object they also split the light up into its component colours to obtain information about the motions as well as the temperature and chemical composition of the central object.
 
 IS reference: Samhliða því að taka myndir af fyrirbærinu, klufu þeir einnig ljós þess í liti sína til að fá upplýsingar um hreyfingu sem og hitastig og efnasamsetningu fyrirbærisins í miðjunni.
-
-成像和将光分成颜色的主要操作丢失/错成股份，运动与中央天体化学组成也不可靠。
 
 Loses imaging and splitting light into colours, using shares instead; motions and central-object chemical composition are also corrupted.
 
@@ -1463,8 +1391,6 @@ EN: What is Memantine LEK used for
 
 IS reference: Við hverju er Memantine LEK notað
 
-药名保留，但句式成为“什么被用于Memantine”，用途询问的论元关系不可靠，不只是词形问题。
-
 Keeps the drug name, but the wording asks what is used for Memantine rather than what Memantine is used for.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -1527,8 +1453,6 @@ EN: An anaerobic degradation study must be reported unless it can be justified t
 
 IS reference: Gera skal grein fyrir rannsókn á loftfirrtu niðurbroti, nema unnt sé að sýna fram á að ólíklegt sé að plöntuvarnarefnin, sem innihalda virka efnið, verði notuð við loftfirrt skilyrði.
 
-保留报告研究、例外论证和含活性成分的植保产品，但厌氧降解被错成不可靠剂量/实施概念，关键条件不可靠。
-
 Keeps study reporting, an exception and active-substance plant products, but corrupts anaerobic degradation and the exposure condition.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -1545,8 +1469,6 @@ Keeps study reporting, an exception and active-substance plant products, but cor
 EN: The extent to which the data subject will have an effective choice will depend on the availability of reliable and recognised systems of mediation.
 
 IS reference: Skráði aðilinn á kost á því að velja að því marki sem áreiðanlegt og viðurkennt kerfi sáttaumleitana er tiltækt.
-
-未表达有效选择取决于可靠认可的调解系统是否可得，关键依赖关系和调解概念丢失。
 
 Loses the dependence of effective choice on available reliable recognised mediation systems.
 
@@ -1579,8 +1501,6 @@ IS reference: Aurora eftir leikstjórann og handritshöfundinn Miia Tervo og fra
 EN: The carrier presented a series of corrective actions which have been proposed to the competent authorities of the above mentioned Member States, as well as a plan of corrective actions designed to address in a systematic way deficiencies which affected various areas within the carrier responsibility.
 
 IS reference: Flugrekandinn setti fram nokkrar aðgerðir til úrbóta, sem hafa verið lagðar til við lögbær yfirvöld framangreindra aðildarríkja, ásamt áætlun um aðgerðir til úrbóta sem er sniðin að því að taka á kerfisbundinn hátt á annmörkum sem hafa áhrif á ýmis svið sem eru á ábyrgð flugrekandans.
-
-保留承运人、成员国主管机关、行动计划与问题，但纠正性/系统性及受影响责任领域的关系失准。
 
 Keeps carrier, competent authorities, an action plan and problems, but corrupts corrective/systematic action and affected responsibility areas.
 
@@ -1673,8 +1593,6 @@ IS reference: Samhliða lyfjagjöf Vitekta og lyfja sem eru öflugir örvar CYP3
 EN: It is further complicated by the fact that the brightest and easiest galaxies to observe - the most massive galaxies in the Universe - are rarer the further astronomers peer into the Universes past, whilst the more numerous less bright galaxies are even more difficult to find.
 
 IS reference: Verkið verður enn erfiðara þegar sú staðreynd er höfð í huga að björtustu og auðfundnustu vetrarbrautirnar - efnismestu vetrarbrautirnar í alheiminum - verða sjaldséðari því lengra sem stjörnufræðingar skyggnast aftur í fortíð alheimsins. Á sama tíma verður jafnvel erfiðara að finna smærri og daufari vetrarbrautir, sem jafnframt eru mun algengari.
-
-亮/大星系随回望过去更罕见、数量多的暗星系更难找到的核心对比和时间关系基本丢失，后半不可理解。
 
 Loses the central bright/massive versus numerous/faint contrast and lookback-time relation; much of the sentence is incoherent.
 
@@ -1797,8 +1715,6 @@ IS reference: Þann 9. mars 1995 samþykkti ráð Efnahags- og framfarastofnunar
 EN: Me, a freshman, going with the most amazing girl at Sky High.
 
 IS reference: Ég, businn, fer með glæsilegustu stúlkunni í Sky High.
-
-保留我与Sky High的女孩，但freshman和most amazing均变成不可靠词，约会/一起去的关系也弱化。
 
 Keeps me and a girl at Sky High, but corrupts freshman and most amazing and weakens going with her.
 
@@ -2027,8 +1943,6 @@ EN: It is an important step towards ensuring that Nordic startups can get the be
 
 IS reference: Um er að ræða mikilvægt skref fyrir norræn sprotafyrirtæki sem fá hér einstakt tækifæri til að hasla sér völl og ná árangri í Bandaríkjunum.
 
-保留初创企业获得美国市场机会与成功，但Nordic错成Nordland这一地名/范围，主语地域不可靠。
-
 Keeps startup access and success in the USA, but changes Nordic to Nordland, corrupting the geographic scope.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -2076,8 +1990,6 @@ EN: Further clarification of many of the points in this part of the Annex may be
 
 IS reference: Frekari útskýringar á ýmsum atriðum í þessum hluta viðaukans er að finna í sammælisskjölum Efnahags- og framfarastofnunarinnar (OECD consensus documents) um góðar starfsvenjur við rannsóknir (t.d. um hlutverk og ábyrgðarsvið rannsóknarstjóra).
 
-保留附件、GLP和研究责任线索，但OECD共识文件及研究主管角色错误，权威来源和说明关系受损。
-
 Keeps Annex, GLP and study responsibilities, but corrupts OECD consensus documents and the study-director role.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -2094,8 +2006,6 @@ Keeps Annex, GLP and study responsibilities, but corrupts OECD consensus documen
 EN: Annual days of vocational training (optional).
 
 IS reference: Árlegur fjöldi daga nýttur til starfsnáms (valkvætt).
-
-保留每年天数与培训，但职业培训被错成加工/工作操作培训，optional用词不可靠。
 
 Keeps annual training days, but misstates vocational training as processing-related training and corrupts optional.
 
@@ -2129,8 +2039,6 @@ EN: “We uncovered 574 new massive galaxies - the largest sample of such hidden
 
 IS reference: „Við fundum 574 áður óséðar efnismiklar vetrarbrautir - stærsta safn slíkra vetrarbrauta sem fundist hefur svo snemma í sögu alheimsins,“ segir Karina Caputi.
 
-保留574、大型新星系和引述者，但最大隐藏样本与早期宇宙被严重误译。
-
 Keeps 574, new large galaxies and attribution, but corrupts the largest hidden sample and early Universe.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -2163,8 +2071,6 @@ EN: I don't know what went wrong!
 
 IS reference: Ég veit ekki hvað fór úrskeiðis.
 
-自然地保留不知道发生什么的核心感叹；出了问题的负面意味仅隐含。
-
 Retains the central exclamation of not knowing what happened; wrongness is implicit rather than explicit.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -2181,8 +2087,6 @@ Retains the central exclamation of not knowing what happened; wrongness is impli
 EN: Cyber attacks and disinformation continue to be major threats.
 
 IS reference: Enn sem fyrr stafar mikil ógn af netárásum og villandi upplýsingum.
-
-网攻和虚假信息两种核心威胁未可靠保留，错成网络问题和不可理解表达。
 
 Fails to retain cyberattacks and disinformation as the two threats, replacing them with network problems and incoherent wording.
 
@@ -2215,8 +2119,6 @@ IS reference: Lögbærum yfirvöldum er frjálst að leyfa stofnunum að nota ne
 EN: Inspection and sampling scheme for the two-year control period which precedes achievement of approved status for VHS and/or IHN in zones and farms in non-approved zones with an officially recognised documented history of freedom from these diseases
 
 IS reference: Skoðun og sýnatökuáætlun, sem fer fram á tveggja ára eftirlitstímabili áður en viðurkennd staða fæst að því er varðar veirublæðingu og/eða iðradrep, á svæðum og eldisstöðvum á svæði sem ekki er viðurkennt en skjalfest er að veirublæðing og/eða iðradrep hafi ekki komið þar upp áður
-
-两年、VHS/IHN及批准线索尚在，但检查/采样、控制期、疾病无发生历史等核心概念错成给药/感染、互惠及生育力，无法表达原方案。
 
 Keeps two years, VHS/IHN and approval fragments, but corrupts inspection/sampling, the control period and documented disease freedom, losing the scheme.
 
@@ -2310,7 +2212,7 @@ EN: can I call you back?
 
 IS reference: Má ég hringja til baka?
 
-准确保留询问能否回电话。
+Accurately retains the question about calling back.
 
 Accurately preserves asking permission to call back.
 
@@ -2359,8 +2261,6 @@ EN: To me, anything over 500 words is a novel.
 
 IS reference: Mér finnst allt sem er lengra en 500 orð vera skáldsaga.
 
-保留500词以上的个人判断，但novel错成新书，作品体裁含义丢失。
-
 Retains the 500-word threshold and personal judgement, but changes novel to new book.
 
 | Model | Hypothesis | Sentence chrF++ | Semantic tier(if reviewed) | Truncated |
@@ -2402,15 +2302,13 @@ IS reference: Samhliða notkun þvagræsilyfja af flokki tíazíða getur leitt 
 
 </details>
 
-## 附录B：全部32组G8候选 / All32 G8 candidate groups
+## All32 G8 candidate groups
 
 <details><summary>ParIce21:opensubtitles:test:1463 G8 general</summary>
 
 EN: We're not going to deliver cookies until we do dance class.
 
 IS reference: Við förum ekki með smákökurnar fyrr en eftir danstímann.
-
-八个输出均未可靠保留送饼干和完成舞蹈课的具体事件；部分保留否定/直到句式，但关键对象与活动变成不可靠词。
 
 None reliably retains delivering cookies after dance class; negation/until fragments remain but objects and activities are corrupted.
 
@@ -2441,8 +2339,6 @@ EN: On the contrary, it was a real stroke of luck.
 
 IS reference: Þvert á móti var þetta óvæntur fengur.
 
-八个输出都未表达相反以及真正走运；多为无关或不连贯描述。
-
 All eight lose on the contrary and a real stroke of luck, producing unrelated or incoherent descriptions.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -2471,8 +2367,6 @@ All eight lose on the contrary and a real stroke of luck, producing unrelated or
 EN: Secret Service changes the security codes today at noon.
 
 IS reference: Leyniþjónustan breytir öryggiskóðunum í dag á hádegi.
-
-0/3/5仍有改变安全/保护代码或设置的部分含义，但机构与中午时间错误；其余连具体安全代码事件也未可靠保留。
 
 0/3/5 partly retain changes to security/protection codes or settings, but corrupt the institution and noon; the others also lose the specific event.
 
@@ -2503,8 +2397,6 @@ EN: The room is hot.
 
 IS reference: Herbergið er heitt.
 
-1/7保留房间热这一核心，词形生硬；0/3/4/6换成房屋，5房间词不可靠，2主体错误。
-
 1/7 retain the room being hot despite inflection problems; 0/3/4/6 change it to a house/housing, 5 has an unreliable room term, and 2 changes the subject.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -2533,8 +2425,6 @@ IS reference: Herbergið er heitt.
 EN: I had no idea what to do.
 
 IS reference: Ég hafði enga hugmynd hvers ég ætti til bragðs að taka.
-
-2/3/5保留不知道该做什么；1语法和疑问内容受损，4改成没有兴趣，6/7改成假设条件式，0基本丢失。
 
 2/3/5 preserve not knowing what to do; 1 corrupts the question, 4 changes idea to interest, 6/7 use counterfactual modality, and 0 largely loses the meaning.
 
@@ -2565,8 +2455,6 @@ EN: He is about your age.
 
 IS reference: Hann er á þínum aldri.
 
-0/3/4虽格和介词错误仍保留与对方年龄相近；7遗漏与你比较，其他输出缺少年龄或关系错误。
-
 0/3/4 retain being around your age despite case/preposition errors; 7 drops the comparison with you, and the others lose age or change the relation.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -2595,8 +2483,6 @@ IS reference: Hann er á þínum aldri.
 EN: Tom was fired.
 
 IS reference: Tom var rekinn.
-
-没有一个可靠表达被解雇。4仅为被拒绝，其他变成介绍、到场、悲伤或不可靠词。
 
 None reliably expresses being fired. 4 says rejected, while others mean introduced, present, sorrowful or use unreliable words.
 
@@ -2627,8 +2513,6 @@ EN: She'll be back when she's hungry.
 
 IS reference: Hún snýr aftur þegar hún verður svöng.
 
-均保留她会在某条件下回来，但饥饿条件全部变成沉重、害怕、疼痛或不可靠词。
-
 All retain her returning under a condition, but replace hungry with heavy, afraid, painful or unreliable words.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -2657,8 +2541,6 @@ All retain her returning under a condition, but replace hungry with heavy, afrai
 EN: It is a solution that is clear to slightly opalescent, and colourless to pale yellow.
 
 IS reference: Lyfið er tær til örlítið skýjuð og litlaus til fölgul lausn.
-
-没有可靠保留清澈至微乳光、无色至淡黄色。6/7保留部分清澈液体/颜色描述，其他多为不相关词。
 
 None preserves clear-to-opalescent and colourless-to-pale-yellow. 6/7 retain partial clear-liquid/colour descriptions; the others are largely incoherent.
 
@@ -2689,8 +2571,6 @@ EN: Imatinib Teva is also a treatment for children and adolescents with CML.
 
 IS reference: Imatinib Teva er einnig ætlað til meðferðar hjá börnum og unglingum með CML.
 
-除1将CML替换为不可靠血液疾病描述外，其余保留药名、儿童青少年和CML，格变化错误不改变核心。
-
 All except1 retain the drug, children/adolescents and CML despite case errors; 1 substitutes an unreliable blood-disease description.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -2719,8 +2599,6 @@ All except1 retain the drug, children/adolescents and CML despite case errors; 1
 EN: Veterinary surgeons may wish to consider two vaccinations.
 
 IS reference: Dýralæknar gætu íhugað tvær bólusetningar.
-
-0保留兽医与两次的框架但疫苗错成生长；6有两个疫苗词形线索但职业/考虑行为不可靠；其余核心事件丢失。
 
 0 retains veterinarians/two but replaces vaccinations with growth; 6 has a vaccine fragment but unreliable profession/action; others lose the event.
 
@@ -2751,8 +2629,6 @@ EN: The results described here use some of these Science Verification data.
 
 IS reference: Gögnin sem notuð voru fyrir þessa rannsókn var að hluta til aflað við þessar prófanir.
 
-没有正确保留Science Verification数据。1/3/4/5/7保留结果使用部分信息或验证的片段；0/2/6主要不连贯或重复。
-
 None correctly retains Science Verification data. 1/3/4/5/7 preserve partial results/data/verification relations; 0/2/6 are largely incoherent or repetitive.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -2781,8 +2657,6 @@ None correctly retains Science Verification data. 1/3/4/5/7 preserve partial res
 EN: Producers from North Atlantic to the Baltic Sea grin with pride as they present their treasures to the public.
 
 IS reference: Framleiðendur allt frá Norður Atlantshafi til Eystrasalts brosa með stolti þegar þeir kynna almenningi fjársjóði sína.
-
-0/7保留生产者或发明者、部分地理与展示线索，但自豪和向公众展示珍品错误；其余核心描述无法可靠恢复。
 
 0/7 retain producer/inventor, partial geography and presentation fragments but lose pride/public treasures; the others are largely unrecoverable.
 
@@ -2813,8 +2687,6 @@ EN: It reduces the number of B cells in your blood by blocking the action of BLy
 
 IS reference: Það dregur úr fjölda B-frumna í líkamanum með því að hindra virkni BLyS, próteins sem lengir líftíma B-frumna og finnst í miklu magni hjá fólki með rauða úlfa.
 
-均保留减少B相关数量和BLyS的一部分机制，但把B细胞译成B物质，蛋白、寿命或高表达等关键机制也有缺损，无完整正确候选。
-
 All partly retain reducing a B-related count and BLyS, but replace B cells with substances and corrupt protein/survival/high-level details; no complete good candidate.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -2843,8 +2715,6 @@ All partly retain reducing a B-related count and BLyS, but replace B cells with 
 EN: The course consists of two modules, which may be taken separately or combined:
 
 IS reference: Námskeiðið samanstendur af tveimur áföngum sem má taka hvorn um sig eða saman:
-
-7用两块组成、可合并或各自参加，保留课程结构。0/1/2/6部分保留两单元但单元/单独与合并关系失准；3/4/5主体和单元都不可靠。
 
 7 preserves a course of two blocks taken together or separately. 0/1/2/6 retain partial two-unit structure but corrupt units or alternatives; 3/4/5 corrupt subject and units.
 
@@ -2875,8 +2745,6 @@ EN: At the same time the socio-economic aspects inherent in the three priority t
 
 IS reference: Samtímis þessu verður tekist á við félagshagfræðilega þáttinn sem er samfara meginefnissviðunum þremur og tengist hinu almenna markmiði um sjálfbæra þróun.
 
-八个候选均未可靠表达三个优先主题内的社会经济因素以及可持续发展的关联。
-
 None reliably expresses socio-economic aspects in the three priority themes linked to sustainable development.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -2885,7 +2753,7 @@ None reliably expresses socio-economic aspects in the three priority themes link
 | old_SFT200 | 1 | Þótt það sé fram að þrátt fyrir þriðja mikilvægu máli og tengd stjórnandi þátt í að reynast heimildarvísindir frá samhliða efnahagslegum og eiginleikum í þriðju mikilvægu máli og tengd við almennu málið um öruggan aðstæður. | P | 20.890 | 91 | False | 22.971874237060547 | 22.572181701660156 |
 | old_SFT200 | 2 | Í sama tíma skal aðgengileg talsverðum þeim áætluðu málinum sem hafa þá eiginleikar sem er að finna og þeim sem tengjast almennu málinu um ráðstafanir til að geta aðstoð í að verða að skölustæðum að því að verða að skilja af erarfæri. | B | 23.067 | 94 | False | 25.0 | 25.0 |
 | old_SFT200 | 3 | Sumum lagi er búinn að rannsaka þessari síðumbindingar, einkum og í stöðu þeirra þrjá mikilvægra máls og sem tengjast stólkunum um þróun sem eru í líf. | B | 22.242 | 61 | False | 22.792322158813477 | 22.549470901489258 |
-| old_SFT200 | 4 | Sams丸t á að nefra áhættulegri áfengi í þremur hlutum og sambreiðslu af þeim með almennu málið um stöðugt þróun. | B | 21.418 | 50 | False | 24.01633071899414 | 20.554101943969727 |
+| old_SFT200 | 4 | Sams[pill]t á að nefra áhættulegri áfengi í þremur hlutum og sambreiðslu af þeim með almennu málið um stöðugt þróun. | B | 21.418 | 50 | False | 24.01633071899414 | 20.554101943969727 |
 | old_SFT200 | 5 | Í sama tíma mun ummatverður og efnahagslegur ástand þessara þriggja vörslu þáttu og tengd við almennum þáttum á vinkonaðætti tengist aðstæður fyrir aðrar vænnar þróun. | P | 27.860 | 68 | False | 21.126129150390625 | 19.0347957611084 |
 | old_SFT200 | 6 | Sá samtími er framkvæmd þessara þriðju hlutaðeigandi þættis og tengjandi almennum þætti um öruggan þróun. | P | 21.622 | 46 | False | 14.76613712310791 | 11.712089538574219 |
 | old_SFT200 | 7 | Þegar þessi þriðju markmiðargrein sem innihalda lífsemilag og fjárfesting ríkis eða ringsla og tengjast almennuhafsthöfu um sjálfstættar þróun verða þær finna að ræðum. | P | 26.752 | 70 | False | 14.985821723937988 | 11.385231018066406 |
@@ -2905,8 +2773,6 @@ None reliably expresses socio-economic aspects in the three priority themes link
 EN: Adverse events at very high doses were all considered to be related to an exaggerated pharmacological effect (decreased tissue perfusion due to increased blood viscosity).
 
 IS reference: Aukaverkanir eftir mjög stóra skammta voru allar taldar vera í tengslum við óhófleg lyfjafræðileg áhrif (minnkað gegnumflæði í vefjum vegna aukinnar seigju blóðs).
-
-1/2/3/4/7保留高剂量不良反应/药理联系的一部分，但组织灌注和黏稠度机制均错误；0/5/6主要核心也严重损坏。
 
 1/2/3/4/7 partly retain high-dose adverse/pharmacological relations but corrupt tissue perfusion and viscosity; 0/5/6 also heavily corrupt the main claim.
 
@@ -2937,8 +2803,6 @@ EN: The special manoeuvres mentioned under points 6.2.3 to 6.2.5 have to be impl
 
 IS reference: Þær sérstöku æfingar, sem um getur í liðum 6.2.3 til 6.2.5, skulu innleiddar eigi síðar en fimm árum eftir að tilskipun þessi öðlast gildi.
 
-均保留条款编号、五年及指令线索，但特殊操作、最迟期限或生效基点不可靠；4/6尤其把期限变为至少/五年之后。
-
 All retain clause numbers, five years and the Directive but corrupt manoeuvres, latest deadline or entry-into-force trigger; 4/6 especially reverse timing to at least/after five years.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -2967,8 +2831,6 @@ All retain clause numbers, five years and the Directive but corrupt manoeuvres, 
 EN: When adequate acute or chronic toxicity data for the mixture as a whole are lacking, “bridging principles” or “summation method” should be applied (see sections 4.1.3.4 and 4.1.3.5).
 
 IS reference: Þegar fullnægjandi gögn skortir um bráð eða langvinn eiturhrif blöndunnar í heild skal nota „brúunarreglur“ eða „samlagningaraðferð“ (sjá lið 4.1.3.4 og 4.1.3.5).
-
-均未可靠保留急慢性毒性数据、完整混合物和两种指定方法。4/5尚有缺数据/混合物和求和方法片段，其余主要条件或方法基本不可恢复。
 
 None reliably retains acute/chronic toxicity data, the whole mixture and both named methods. 4/5 retain partial mixture/data/summation fragments; the others largely lose the condition or methods.
 
@@ -2999,8 +2861,6 @@ EN: Work to enhance this partnership continues, and is based on the ministers fo
 
 IS reference: Það starf mun halda áfram og þróast enn frekar á grundvelli yfirlýsingar samstarfsstarfráðherranna um framtíðarsýn; „Saman erum við öflugri“.
 
-2/3/4/6保留继续改进合作或愿景的一部分，但北欧合作部长和声明内容有缺损；其余核心更严重丢失或反转。
-
 2/3/4/6 partly retain continuing partnership work or a vision, but corrupt Nordic ministers and the statement; the others lose or reverse more of the claim.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -3029,8 +2889,6 @@ IS reference: Það starf mun halda áfram og þróast enn frekar á grundvelli 
 EN: The other ingredients are sodium chloride, succinic acid, polysorbate 80, 2- phenoxyethanol and water for injections.
 
 IS reference: Önnur innihaldsefni eru natríumklóríð, succinic sýra, polysorbat 80, 2-fenoxýetanól og vatn fyrir stungulyf.
-
-0/4大多数化学名无法识别；其余虽保留若干成分及80/2等数字，但至少一种关键化学名或注射用水错误，没有完整正确清单。
 
 0/4 render most chemicals unrecognisably; others keep some ingredients/numbers but corrupt at least one key chemical or water-for-injection, so none gives the full correct list.
 
@@ -3061,8 +2919,6 @@ EN: These issues are high on the governments agendas,” says Høybråten.
 
 IS reference: Þessi málefni eru ofarlega á dagskránni hjá ríkisstjórnunum,“ segir Høybråten.
 
-1/2/3/4保留问题、重要/靠前和引述者的一部分，但政府议程被替换或不明确；其余主张变成武器、杀戮或不连贯重复。
-
 1/2/3/4 retain issues, prominence and attribution in part but corrupt government agendas; the others become weapons, killing or incoherent repetition.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -3091,8 +2947,6 @@ IS reference: Þessi málefni eru ofarlega á dagskránni hjá ríkisstjórnunum
 EN: “The VFTS 352 is the best case yet found for a hot and massive double star that may show this kind of internal mixing,” explains lead author Leonardo A. Almeida of the University of São Paulo, Brazil.
 
 IS reference: „VFTS 352 er besta dæmið sem við höfum fundið til þessa um heitt og massamikið tvístirni þar efnisblöndun af þessu tagi gæti átt sér stað,“ segir Leonardo A. Almeida við São Paulo háskóla í Brasilíu, aðalhöfundur greinarinnar um rannsóknina.
-
-4/5/6保留热/大、双星或内部混合的一部分，6最接近但best case错成柜子且作者身份损坏；其余星体性质与混合主张主要丢失。
 
 4/5/6 retain parts of hot/massive, double-star or internal mixing; 6 is closest but changes case to cabinet and corrupts attribution. Others largely lose the stellar claim.
 
@@ -3123,8 +2977,6 @@ EN: In addition, the entity is not entitled to reinvest such cash flows, except 
 
 IS reference: Auk þess hefur einingin ekki rétt á að endurfjárfesta þess háttar sjóðstreymi ef undan eru skildar fjárfestingar í handbæru fé eða ígildi handbærs fjár (eins og það er skilgreint í IAS-staðli 7, yfirlit um sjóðstreymi) á því stutta greiðslutímabili frá innheimtudegi til þess dags þegar krafist er greiðslu til endanlegra viðtakenda, og vextir sem safnast á slíkar fjárfestingar greiðast endanlegum viðtakendum.
 
-4保留主体不可再投资现金流和例外的一部分，但现金等价物、结算期限及利息转付错误；其余大段不连贯，未可靠表达完整财务规则。
-
 4 partly retains no reinvestment of cash flows and an exception, but corrupts cash equivalents, settlement timing and passing on interest. Others largely fail to express the financial rule.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -3153,8 +3005,6 @@ IS reference: Auk þess hefur einingin ekki rétt á að endurfjárfesta þess h
 EN: A pensioner who is entitled to draw pensions under the legislation of two or more Member States, of which one is that of the Member State in whose territory he resides, and who is entitled to benefits under the legislation of the latter Member State, taking account where appropriate of the provisions of Article 18 and Annex VI, shall, with the members of his family, receive such benefits from the institution of the place of residence and at the expense of that institution as though the person concerned were a pensioner whose pension was payable solely under the legislation of the latter Member State.
 
 IS reference: Lífeyrisþegi sem á rétt á lífeyri samkvæmt löggjöf tveggja eða fleiri aðildarríkja, að meðtalinni löggjöf þess aðildarríkis sem hann er búsettur í, þar sem hann á rétt á bótum samkvæmt löggjöf þess ríkis, með tilliti til ákvæða 18. gr. og VI. viðauka eftir því sem við á, skal, ásamt aðstandendum, fá bætur frá stofnun á búsetustaðnum og á kostnað hennar eins og sá sem í hlut á væri lífeyrisþegi sem ætti eingöngu rétt á lífeyri samkvæmt löggjöf þess ríkis.
-
-0/1/2/4保留成员国、居住地机构、资格或费用框架的一部分，但退休金/受益人、家属及本国单一养老金等价待遇不完整。3/5/6/7核心主体或给付类型严重错乱，3还重复。
 
 0/1/2/4 retain parts of Member-State, residence-institution or entitlement/cost structure but corrupt pensions, family or equal-treatment conditions. 3/5/6/7 heavily corrupt subject/benefit type; 3 also repeats.
 
@@ -3185,8 +3035,6 @@ EN: • Without prejudice to the powers laid down in Article 17, where a compete
 
 IS reference: • Ef lögbært yfirvald samþykkir ekki verklagsreglu eða inntak aðgerðar eða aðgerðaleysis lögbærs yfirvalds í öðru aðildarríki, í tilvikum sem tilgreind eru í gerðunum sem um getur í 2. mgr. 1. gr., skal stofnunin, að beiðni eins eða fleiri hlutaðeigandi lögbærra yfirvalda, aðstoða yfirvöldin við að ná samkomulagi í samræmi við verklagsregluna sem sett er fram í 2.–4. mgr. þessar greinar, með fyrirvara um valdheimildirnar sem mælt er fyrir um í 17. gr.
 
-除1/2主要不连贯或改变请求协助外，其余保留部分跨机关程序、条文和协助达成协议框架；但权力保留、分歧、行动/不行动或跨成员国条件均有重大缺损。
-
 Apart from1/2, which are largely incoherent or change requesting assistance, outputs retain some authority/procedure/agreement structure, but corrupt powers, disagreement, action/inaction or cross-state conditions.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -3215,8 +3063,6 @@ Apart from1/2, which are largely incoherent or change requesting assistance, out
 EN: (b) When the abovementioned products of animal origin, containing material from bovine, ovine or caprine animals are imported into the Community from third countries or regions thereof, the health certificates shall be accompanied by a declaration signed by the competent authority of the country of production, worded as follows:
 
 IS reference: b) Þegar framangreindar afurðir úr dýraríkinu, sem innihalda efni úr nautgripum, sauðfé eða geitum, eru fluttar inn í Bandalagið frá þriðju löndum eða landsvæðum þeirra skal fylgja heilbrigðisvottorðunum yfirlýsing sem er undirrituð af lögbæra yfirvaldinu í framleiðslulandinu og hljóðar svo:
-
-多数保留动物产品进口、第三国、证书或主管机关声明的一部分，但牛羊山羊、生产国签署声明和证书关系不完整；6主要成分更难理解。
 
 Most retain parts of animal-product imports, third countries, certificates or an authority declaration, but corrupt species and the signed production-country declaration/certificate relationship; 6 is mostly incoherent.
 
@@ -3247,8 +3093,6 @@ EN: • Among those claims, the Authority gave a favourable assessment to the he
 
 IS reference: • Matvælaöryggisstofnunin mat eina þessara fullyrðinga jákvætt en það er heilsufullyrðing er varðar áhrif kolvetna á viðhald eðlilegrar heilastarfsemi og lagði til að viðeigandi skilyrði fyrir notkun þessarar fullyrðingar yrðu: „áætlað er að dagleg inntaka á 130 g af blóðsykurshækkandi kolvetnum (e. glycaemic carbohydrates) nægi til að uppfylla glúkósaþörf heilans“(4).
 
-虽保留130g/日等表面数字，但碳水化合物、维持脑功能和满足大脑葡萄糖需求的核心健康声明在八个候选中均丢失。
-
 Despite surface figures such as130g/day, all eight lose carbohydrates, maintenance of brain function and the brain glucose requirement.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -3277,8 +3121,6 @@ Despite surface figures such as130g/day, all eight lose carbohydrates, maintenan
 EN: For longer term treatment once clinical response has been observed (after 4 or more days), the dose of Meloxivet can be adjusted to the lowest effective individual dose reflecting that the degree of pain and inflammation associated with chronic musculo-skeletal disorders may vary over time.
 
 IS reference: Þegar klínísk svörun hefur náðst (eftir ≥ 4 daga) í langvarandi meðferð, má minnka skammt Meloxivet í minnsta virkan skammt fyrir hvert og eitt dýr, í samræmi við það að miklir verkir og bólga í tengslum við langvarandi stoðkerfisraskanir getur verið breytilegt frá einum tíma til annars.
-
-均保留Meloxivet、4天或剂量调整片段，但临床反应的前提、最低有效个体剂量或疼痛炎症/慢性肌骨病随时间变化至少一项严重错误。
 
 All retain Meloxivet, four days or adjustment fragments, but materially corrupt clinical response, lowest effective individual dose or changing pain/inflammation in chronic musculoskeletal disorders.
 
@@ -3309,8 +3151,6 @@ EN: Researchers say that the collision between these galaxies could have lasted 
 
 IS reference: Stjörnufræðingarnir segja að samruni vetrarbrautanna gæti hafa staðið yfir örlítið lengur en þeir árekstrar sem rannsakaðir voru í hinni rannsókninni. Það gerði jafnvel örlitlum núningskröftum kleift að byggjast upp með tímanum og verða að mælanlegri seinkun á hulduefninu.
 
-5/6部分保留星系相遇比前研究更长的比较，但微小摩擦逐渐积累造成可测滞后丢失；其余连碰撞对象/比较也更严重损坏。
-
 5/6 partly retain a longer galaxy encounter than the previous study, but lose tiny friction accumulating to measurable lag; the others also heavily corrupt the event/comparison.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -3339,8 +3179,6 @@ IS reference: Stjörnufræðingarnir segja að samruni vetrarbrautanna gæti haf
 EN: 2. A company whose shares are officially listed on stock exchanges situated or operating in one or more Member States and in one or more non-member countries must make available to the markets of the Member State or States in which its shares are listed information which is at least equivalent to that which it makes available to the markets of the non-member country or countries in question, if such information may be of importance for the evaluation of the shares.
 
 IS reference: 2. Félag, sem hefur fengið hlutabréf sín opinberlega skráð í kauphöllum sem eru staðsettar eða starfa í einu eða fleiri aðildarríkjum og í einu eða fleiri ríkjum utan bandalagsins, verður að birta á mörkuðum í aðildarríkinu eða -ríkjunum, þar sem verðbréf þess eru skráð, upplýsingar sem eru að minnsta kosti jafngildar þeim upplýsingum sem birtar eru í hlutaðeigandi ríki eða ríkjum utan bandalagsins ef þær upplýsingar geta skipt máli við mat á hlutabréfunum.
-
-多数保留公司/市场和向成员国提供相当信息的部分框架，但股份、证券交易所、两类上市条件或估值前提不可靠；2/7重复或核心对象更严重丢失。
 
 Most partly retain company/market and equivalent-information disclosure, but corrupt shares, exchanges, dual listing or valuation conditions. 2/7 repeat or lose more of the core objects.
 
@@ -3371,8 +3209,6 @@ EN: Chemical, physical and microbiological in-use stability has been demonstrate
 
 IS reference: Sýnt hefur verið fram á efnafræðilegan, eðlisfræðilegan og örverufræðilegan stöðugleika við notkun í 28 daga við 2-8°C. Eftir að penninn hefur verið notaður einu sinni, má nota hann í allt að 28 daga ef hann er geymdur við 2° til 8°C. Notkun og geymsla umfram þennan tíma eða við önnur geymsluskilyrði er á ábyrgð notanda.
 
-1/2/4/5/6/7保留28天、2–8℃或开封后存放的一部分，但化学/物理/微生物稳定性、最大期限或用户责任不完整；0/3连储存动作/时序也严重受损。
-
 1/2/4/5/6/7 retain 28days,2–8C or post-opening storage in part, but corrupt stability types, maximum duration or user responsibility; 0/3 also heavily corrupt storage/action timing.
 
 | Model | Index | Hypothesis | Tier | Sentence chrF++ | Tokens | Truncated | MetricXref(lower better) | MetricXQE(lower better) |
@@ -3396,7 +3232,7 @@ IS reference: Sýnt hefur verið fram á efnafræðilegan, eðlisfræðilegan og
 
 </details>
 
-## 附录C：全部训练更新 / Every training update
+## Every training update
 
 | Step | Targets | CE | Pre-clip grad norm | LR | Microbatch | Seconds |
 | --- | --- | --- | --- | --- | --- | --- |

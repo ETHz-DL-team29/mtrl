@@ -132,7 +132,7 @@
       }
     },
     "note": {
-      "zh": "保留14/250 ml、盐浓度与稀释步骤，但把输液袋写成不可靠的infusínskáp，聚烯烃等关键容器术语失准，不能作为可靠的完整配制说明。",
+      "zh": "Volumes, concentration and dilution are retained, but the infusion-bag/container term and polyolefin terminology are materially unreliable.",
       "en": "Volumes, concentration and dilution are retained, but the infusion-bag/container term and polyolefin terminology are materially unreliable."
     }
   },
@@ -236,7 +236,7 @@
       }
     },
     "note": {
-      "zh": "岩石固体核心、逐渐吸积气体与盘中引力不稳定形成气团的两种机制丢失，输出基本不可理解。",
+      "zh": "Loses both formation mechanisms, including the rocky solid core and gravitational instability in the disc; the output is largely incoherent.",
       "en": "Loses both formation mechanisms, including the rocky solid core and gravitational instability in the disc; the output is largely incoherent."
     }
   },
@@ -406,7 +406,7 @@
       }
     },
     "note": {
-      "zh": "保留血液相关数量下降的条件，但platelet被译成血型/血液分组，细胞及凝血解释错误。",
+      "zh": "Retains a decreased blood-related count condition, but replaces platelets with blood groups and corrupts the clotting explanation.",
       "en": "Retains a decreased blood-related count condition, but replaces platelets with blood groups and corrupts the clotting explanation."
     }
   },
@@ -510,7 +510,7 @@
       }
     },
     "note": {
-      "zh": "保留358、两周/每月和药名，但随机双盲、慢性肾衰/非透析、非劣效性及纠正贫血均不可靠，临床结论不能正确使用。",
+      "zh": "Keeps n358, the dosing intervals and drug name, but corrupts the design, CRF/non-dialysis population, non-inferiority and anaemia outcome.",
       "en": "Keeps n358, the dosing intervals and drug name, but corrupts the design, CRF/non-dialysis population, non-inferiority and anaemia outcome."
     }
   },
@@ -647,7 +647,7 @@
       }
     },
     "note": {
-      "zh": "保留内市场和跨境/境内相同要求的框架，但费用变成义务，支付变成交易，并遗漏欧元，关键金融规定不完整。",
+      "zh": "Keeps the market and cross-border/domestic equality frame, but changes charges to obligations and payments to transactions, omitting euro.",
       "en": "Keeps the market and cross-border/domestic equality frame, but changes charges to obligations and payments to transactions, omitting euro."
     }
   },
@@ -685,7 +685,7 @@
       }
     },
     "note": {
-      "zh": "保留Centaurus A、ALMA及新中心图像，但星系、天文学家、遮挡的尘带和前所未有的观测质量等核心术语严重失准。",
+      "zh": "Retains Centaurus A, ALMA and a new central image, but corrupts galaxy, astronomers, obscuring dust lanes and unprecedented quality.",
       "en": "Retains Centaurus A, ALMA and a new central image, but corrupts galaxy, astronomers, obscuring dust lanes and unprecedented quality."
     }
   },
@@ -822,7 +822,7 @@
       }
     },
     "note": {
-      "zh": "核心的说出名字将被处死完全遗漏，仅保留提及Sparta或Leonidas。",
+      "zh": "Loses the central claim that uttering the names is punishable by death.",
       "en": "Loses the central claim that uttering the names is punishable by death."
     }
   },
@@ -992,7 +992,7 @@
       }
     },
     "note": {
-      "zh": "语法和监管用途用词生硬，但GLP合规检查可在生成健康/环境安全监管数据的各试验场所进行这一主要规定保留。",
+      "zh": "Awkward grammar and regulatory-purpose wording, but preserves GLP compliance inspection at facilities producing health/environmental safety data for authorities.",
       "en": "Awkward grammar and regulatory-purpose wording, but preserves GLP compliance inspection at facilities producing health/environmental safety data for authorities."
     }
   },
@@ -1294,7 +1294,7 @@
       }
     },
     "note": {
-      "zh": "保留有这些孩子，但extra错成更年幼，running around遗漏。",
+      "zh": "Retains having these children but changes extra to younger and omits running around.",
       "en": "Retains having these children but changes extra to younger and omits running around."
     }
   },
@@ -1431,7 +1431,7 @@
       }
     },
     "note": {
-      "zh": "保留询问想要哪种信息，但short version误成缺少信息，长短版本对比不可靠。",
+      "zh": "Keeps the choice question but renders short as lacking information, corrupting the long/short-version contrast.",
       "en": "Keeps the choice question but renders short as lacking information, corrupting the long/short-version contrast."
     }
   },
@@ -1469,7 +1469,7 @@
       }
     },
     "note": {
-      "zh": "保留从商店回来的框架，但酒铺的词被造为不可靠复合词，just的刚刚含义也弱化。",
+      "zh": "Keeps coming from a shop, but the liquor-store compound is unreliable and the just/recency meaning is weakened.",
       "en": "Keeps coming from a shop, but the liquor-store compound is unreliable and the just/recency meaning is weakened."
     }
   },
@@ -1507,7 +1507,7 @@
       }
     },
     "note": {
-      "zh": "保留UN及邻近叙利亚的改善条件主题，但支持错成管理，难民错成转移，并丢失归属引述。",
+      "zh": "Keeps UN and conditions near Syria, but changes support to administration and refugees to transfers, losing attribution.",
       "en": "Keeps UN and conditions near Syria, but changes support to administration and refugees to transfers, losing attribution."
     }
   },
@@ -1545,7 +1545,7 @@
       }
     },
     "note": {
-      "zh": "保留委员会与成员国协调行动框架，但互补性及政策/工具用词失准，后半重复并丢失就业、社会基金、教育培训和青年完整清单。",
+      "zh": "Keeps Commission/Member-State coordination but corrupts complementarity and instruments/policies; repeated text replaces much of the employment/fund/education/youth list.",
       "en": "Keeps Commission/Member-State coordination but corrupts complementarity and instruments/policies; repeated text replaces much of the employment/fund/education/youth list."
     }
   },
@@ -1715,7 +1715,7 @@
       }
     },
     "note": {
-      "zh": "保留必要时新测试、低剂量与14C线索，但毒性抑制、表面活性剂、监测降解和化学分析均误译，不能正确执行。",
+      "zh": "Keeps retesting, a low dose and 14C, but corrupts toxic inhibition, surfactant, degradation monitoring and chemical analysis.",
       "en": "Keeps retesting, a low dose and 14C, but corrupts toxic inhibition, surfactant, degradation monitoring and chemical analysis."
     }
   },
@@ -1885,7 +1885,7 @@
       }
     },
     "note": {
-      "zh": "婴幼恒星系统被译成儿童行政体系，复杂有机分子的天文学发现核心丢失。",
+      "zh": "Replaces the infant star system with a child/administrative construction, losing the astronomical discovery.",
       "en": "Replaces the infant star system with a child/administrative construction, losing the astronomical discovery."
     }
   },
@@ -1989,7 +1989,7 @@
       }
     },
     "note": {
-      "zh": "保留VEGFR抑制、VEGF及较低血浆水平的一些联系，但组织器官清单大多错误，重复给药与临床比较表达严重受损。",
+      "zh": "Keeps some VEGFR/VEGF and lower-plasma-exposure relations, but corrupts most organs and the repeat-dose/clinical comparison.",
       "en": "Keeps some VEGFR/VEGF and lower-plasma-exposure relations, but corrupts most organs and the repeat-dose/clinical comparison."
     }
   },
@@ -2012,7 +2012,7 @@
         "sentence_chrfpp": 33.43797704470846
       },
       "initial_3B": {
-        "hypothesis": "Hvað事情發生在那顆金子心的妓女身上？",
+        "hypothesis": "Hvað[happened to that prostitute with a heart of gold?]",
         "truncated": false,
         "completion_tokens": 17,
         "sentence_chrfpp": 5.001516861286704
@@ -2159,7 +2159,7 @@
       }
     },
     "note": {
-      "zh": "成像和将光分成颜色的主要操作丢失/错成股份，运动与中央天体化学组成也不可靠。",
+      "zh": "Loses imaging and splitting light into colours, using shares instead; motions and central-object chemical composition are also corrupted.",
       "en": "Loses imaging and splitting light into colours, using shares instead; motions and central-object chemical composition are also corrupted."
     }
   },
@@ -2395,7 +2395,7 @@
       }
     },
     "note": {
-      "zh": "药名保留，但句式成为“什么被用于Memantine”，用途询问的论元关系不可靠，不只是词形问题。",
+      "zh": "Keeps the drug name, but the wording asks what is used for Memantine rather than what Memantine is used for.",
       "en": "Keeps the drug name, but the wording asks what is used for Memantine rather than what Memantine is used for."
     }
   },
@@ -2532,7 +2532,7 @@
       }
     },
     "note": {
-      "zh": "保留报告研究、例外论证和含活性成分的植保产品，但厌氧降解被错成不可靠剂量/实施概念，关键条件不可靠。",
+      "zh": "Keeps study reporting, an exception and active-substance plant products, but corrupts anaerobic degradation and the exposure condition.",
       "en": "Keeps study reporting, an exception and active-substance plant products, but corrupts anaerobic degradation and the exposure condition."
     }
   },
@@ -2570,7 +2570,7 @@
       }
     },
     "note": {
-      "zh": "未表达有效选择取决于可靠认可的调解系统是否可得，关键依赖关系和调解概念丢失。",
+      "zh": "Loses the dependence of effective choice on available reliable recognised mediation systems.",
       "en": "Loses the dependence of effective choice on available reliable recognised mediation systems."
     }
   },
@@ -2641,7 +2641,7 @@
       }
     },
     "note": {
-      "zh": "保留承运人、成员国主管机关、行动计划与问题，但纠正性/系统性及受影响责任领域的关系失准。",
+      "zh": "Keeps carrier, competent authorities, an action plan and problems, but corrupts corrective/systematic action and affected responsibility areas.",
       "en": "Keeps carrier, competent authorities, an action plan and problems, but corrupts corrective/systematic action and affected responsibility areas."
     }
   },
@@ -2844,7 +2844,7 @@
       }
     },
     "note": {
-      "zh": "亮/大星系随回望过去更罕见、数量多的暗星系更难找到的核心对比和时间关系基本丢失，后半不可理解。",
+      "zh": "Loses the central bright/massive versus numerous/faint contrast and lookback-time relation; much of the sentence is incoherent.",
       "en": "Loses the central bright/massive versus numerous/faint contrast and lookback-time relation; much of the sentence is incoherent."
     }
   },
@@ -3113,7 +3113,7 @@
       }
     },
     "note": {
-      "zh": "保留我与Sky High的女孩，但freshman和most amazing均变成不可靠词，约会/一起去的关系也弱化。",
+      "zh": "Keeps me and a girl at Sky High, but corrupts freshman and most amazing and weakens going with her.",
       "en": "Keeps me and a girl at Sky High, but corrupts freshman and most amazing and weakens going with her."
     }
   },
@@ -3613,7 +3613,7 @@
       }
     },
     "note": {
-      "zh": "保留初创企业获得美国市场机会与成功，但Nordic错成Nordland这一地名/范围，主语地域不可靠。",
+      "zh": "Keeps startup access and success in the USA, but changes Nordic to Nordland, corrupting the geographic scope.",
       "en": "Keeps startup access and success in the USA, but changes Nordic to Nordland, corrupting the geographic scope."
     }
   },
@@ -3717,7 +3717,7 @@
       }
     },
     "note": {
-      "zh": "保留附件、GLP和研究责任线索，但OECD共识文件及研究主管角色错误，权威来源和说明关系受损。",
+      "zh": "Keeps Annex, GLP and study responsibilities, but corrupts OECD consensus documents and the study-director role.",
       "en": "Keeps Annex, GLP and study responsibilities, but corrupts OECD consensus documents and the study-director role."
     }
   },
@@ -3755,7 +3755,7 @@
       }
     },
     "note": {
-      "zh": "保留每年天数与培训，但职业培训被错成加工/工作操作培训，optional用词不可靠。",
+      "zh": "Keeps annual training days, but misstates vocational training as processing-related training and corrupts optional.",
       "en": "Keeps annual training days, but misstates vocational training as processing-related training and corrupts optional."
     }
   },
@@ -3826,7 +3826,7 @@
       }
     },
     "note": {
-      "zh": "保留574、大型新星系和引述者，但最大隐藏样本与早期宇宙被严重误译。",
+      "zh": "Keeps 574, new large galaxies and attribution, but corrupts the largest hidden sample and early Universe.",
       "en": "Keeps 574, new large galaxies and attribution, but corrupts the largest hidden sample and early Universe."
     }
   },
@@ -3897,7 +3897,7 @@
       }
     },
     "note": {
-      "zh": "自然地保留不知道发生什么的核心感叹；出了问题的负面意味仅隐含。",
+      "zh": "Retains the central exclamation of not knowing what happened; wrongness is implicit rather than explicit.",
       "en": "Retains the central exclamation of not knowing what happened; wrongness is implicit rather than explicit."
     }
   },
@@ -3935,7 +3935,7 @@
       }
     },
     "note": {
-      "zh": "网攻和虚假信息两种核心威胁未可靠保留，错成网络问题和不可理解表达。",
+      "zh": "Fails to retain cyberattacks and disinformation as the two threats, replacing them with network problems and incoherent wording.",
       "en": "Fails to retain cyberattacks and disinformation as the two threats, replacing them with network problems and incoherent wording."
     }
   },
@@ -4006,7 +4006,7 @@
       }
     },
     "note": {
-      "zh": "两年、VHS/IHN及批准线索尚在，但检查/采样、控制期、疾病无发生历史等核心概念错成给药/感染、互惠及生育力，无法表达原方案。",
+      "zh": "Keeps two years, VHS/IHN and approval fragments, but corrupts inspection/sampling, the control period and documented disease freedom, losing the scheme.",
       "en": "Keeps two years, VHS/IHN and approval fragments, but corrupts inspection/sampling, the control period and documented disease freedom, losing the scheme."
     }
   },
@@ -4209,7 +4209,7 @@
       }
     },
     "note": {
-      "zh": "准确保留询问能否回电话。",
+      "zh": "Accurately retains the question about calling back.",
       "en": "Accurately preserves asking permission to call back."
     }
   },
@@ -4313,7 +4313,7 @@
       }
     },
     "note": {
-      "zh": "保留500词以上的个人判断，但novel错成新书，作品体裁含义丢失。",
+      "zh": "Retains the 500-word threshold and personal judgement, but changes novel to new book.",
       "en": "Retains the 500-word threshold and personal judgement, but changes novel to new book."
     }
   },

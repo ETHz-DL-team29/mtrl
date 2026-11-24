@@ -1,4 +1,4 @@
-# R0-v3: minimum-NLL candidate / 末期候选适配器
+# R0-v3: minimum-NLL candidate
 
 Date:2026-11-13. Policy scale remains Qwen3.5-0.8B. This is a LoRA adapter, not merged base weights. Read the results report for measured adequacy and DAPO-readiness limits.
 
@@ -33,11 +33,9 @@ print(tokenizer.decode(output[0, inputs.input_ids.shape[1]:], skip_special_token
 
 The matched diagnostic uses T1/G8/top_p1/top_k0 and256 tokens; ordinary greedy use above is a different decoding protocol. Large documents are outside this run's demonstrated scope. Formal DAPO comparisons must freeze the same starting checkpoint, reward and budgets.
 
-复现训练：使用同目录附带的Colab notebook及冻结源包；实际显式传入 `--microbatch 8`，覆盖源包初始默认4。源包默认值、资源预检、实际正式执行配置均保留，不能把丢弃的预检更新计入最终模型曝光。报告含完整源文、参考、贪心及G8候选，便于检查语义而不只看分数。
-
 Checkpoint selection: lowest completed development NLL, expanded after an adaptive16-case diagnostic. This file does not certify DAPO readiness. Read the final results decision; the original greedy-selected adapter remains separately preserved.
 
-## Auxiliary G8 sampling / 辅助采样
+## Auxiliary G8 sampling
 
 The primary comparison used T1; the additional calibration used T0.7. This example uses T0.7/G8. For exact reported-prompt reproduction, use the frozen `compare_helpers.prompt_seed(row["id"],20261112)` rule rather than the constant demonstration seed below.
 

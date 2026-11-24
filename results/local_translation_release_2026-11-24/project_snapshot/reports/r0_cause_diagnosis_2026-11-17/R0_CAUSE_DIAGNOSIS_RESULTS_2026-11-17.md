@@ -1,12 +1,10 @@
-# R0原因定位：完整结果 / R0 Cause Diagnosis: Full Results
+# R0 Cause Diagnosis: Full Results
 
-2026-11-17 · Qwen3.5-0.8B · Colab L4 · 原模型保留，GPU已释放。 / Prior models preserved; owned GPU released.
-
-**本轮没有证明触碰0.8B的SFT上限。直接观察到的是：同一0.8B、rank16模型可以完全记住32条已核查训练文对，但这种小集合强化没有泛化，反而显著损害保留开发样本。已定位到拟合与泛化的落差，尚不能把其唯一根因归为模型容量、数据覆盖或训练量。**
+Prior models preserved; owned GPU released.
 
 **This run does not establish an absolute SFT ceiling for 0.8B. The same 0.8B, rank16 model can memorize all32 checked training pairs, but concentrated fitting fails to generalize and substantially harms held-out development outputs. A fitting–generalization gap is observed; model capacity, data coverage and training exposure are not uniquely separated as its root cause.**
 
-本轮是固定小集合的拟合与泛化诊断，没有DAPO，也没有将诊断adapter自动设为新R0。 / This is a fitting/generalization diagnosis, not a DAPO run or automatic promotion of a probe adapter to R0.
+This is a fitting/generalization diagnosis, not a DAPO run or automatic promotion of a probe adapter to R0.
 
 | Split | Condition | N | Target NLL | chrF++ | BLEU | Reference exact | G/P/B/U | Truncated | Repetition |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -21,39 +19,29 @@
 | heldout | A_lowLR | 32 | 3.14651 | 26.196 | 5.540 | 0 | 2/15/15/0 | 2 | 1 |
 | heldout | B_highLR | 32 | 3.43516 | 24.643 | 6.697 | 0 | 1/17/14/0 | 1 | 1 |
 
-受控拟合的A/B仅学习率不同：1e-5与1e-4，各150次更新、87409目标token，从完全相同的SFT200开始。两者训练32条均与参考逐条精确一致，chrF++均100；最终训练NLL分别0.00710、0.00148。至少对这些样本，既不存在‘rank16根本装不下’，也不存在‘1e-5完全学不动’的现象。高学习率更快降低小集合损失，但没有证据表明它带来更好的开发集翻译。
-
 A/B differ only in LR,1e-5 versus1e-4,with150 updates and87409 target tokens each from identical SFT200 weights. Both exactly reproduce all32 training references,with chrF++100 and final training NLL0.00710/0.00148. These cases do not show an inability of rank16 to store the mapping or of1e-5 to learn it. Higher LR fits faster,but does not demonstrate better development translation.
-
-同一32条保留开发句的chrF++由SFT200的35.41降至A的26.20、B的24.64；相对变化分别−9.21（95%区间−11.91至−6.41）、−10.76（−13.75至−7.99）。BLEU同样下降。A/B之间的质量差异区间跨零，不能宣称某学习率显著更优。这是本轮小集合反复训练的过拟合证据，不是上一轮广覆盖SFT已过拟合的独立证明。
 
 On the same32 held-out development sentences,chrF++ falls from35.41 for SFT200 to26.20 for A and24.64 for B: changes−9.21(CI−11.91 to−6.41) and−10.76(−13.75 to−7.99). BLEU also declines. A/B quality-difference intervals cross zero. This demonstrates overfitting in the repeated tiny-set probe,not independently that the earlier broad continuation was already overfit.
 
-语义复核覆盖64个源句、5个模型、320条greedy译文，先锁定标签再汇总。保留集SFT200为G/P/B=3/26/3，A为2/15/15，B为1/17/14；技术24条中SFT200仅1条G，A/B均0条G。常见问题是术语错误、条件与对象关系损坏和部分重复。G表示核心语义及关键关系保留，P仍有重大缺损；这属于同一助手的AI辅助判断，并非独立冰岛语母语认证，也不是G=8的好候选覆盖率。
-
 The semantic review covers64 sources,5 models and320 greedy translations,with labels locked before aggregation. Held-out G/P/B counts are3/26/3 for SFT200,2/15/15 for A and1/17/14 for B. Among24 technical cases,SFT200 has oneG and A/B have none. Errors include terminology,conditions/object relations and repetition. G retains core meaning and key relations;P has major defects. This is same-assistant AI review,not independent native certification or G=8 candidate coverage.
-
-源句互换的补充核对不支持‘模型完全不看英文’：在保留集，SFT200正确源句NLL为2.048，换成同层、相近长度的错误源句后为3.677，差+1.629，配对block区间[1.435,1.818]；全部模型差值均为正。说明输入源句确实影响参考预测，但不保证生成忠实，也无法把跨语言能力不足与专业知识覆盖不足分开。
 
 The exploratory source-swap audit does not support complete source neglect: held-out SFT200 NLL is2.048 with the correct source and3.677 with a different,approximately length-matched source from the same stratum,delta+1.629,pair-block CI[1.435,1.818]. All models show positive deltas. Source conditioning is present,but this does not certify faithful generation or separate cross-lingual ability from domain-coverage limitations.
 
-目标移位、padding和单条/批量损失的代表性核对通过；三份基线的保留集完整生成token与旧匹配口径输出全部一致。MetricX没有参与本轮SFT损失、拟合或选模，因此本次SFT语义缺损不能归因于MetricX奖励。不过，已有DAPO奖励排序问题仍是另一条未解决的链路。
-
 Representative target-shift,padding and individual/batch loss audits pass;all three baselines reproduce prior matched held-out token sequences exactly. MetricX does not enter this SFT loss,fitting or selection,so it cannot cause these SFT semantic errors. Previously observed DAPO reward-ranking problems remain a separate unresolved issue.
 
-![同一配置下训练样本与保留样本 / Matched training versus held-out outputs](training_vs_heldout.png)
+![Matched training versus held-out outputs](training_vs_heldout.png)
 
-## 1. 问题和固定对照 / Question and controls
+## Question and controls
 
-上一轮不足以检验0.8B上限：它是冻结base、rank16 LoRA、约40万目标token的单配方续训。本轮先问实际见过的文对能否生成，再以受控小集合检查优化强度和适配容量。 / The previous single frozen-base,rank16,400k continuation was not a capacity-ceiling experiment. This run checks generation on seen pairs and controlled fitting sensitivity.
+The previous single frozen-base,rank16,400k continuation was not a capacity-ceiling experiment. This run checks generation on seen pairs and controlled fitting sensitivity.
 
-训练32对已通过上一轮质量复查，本轮模型调用前再次逐条阅读；全部在选中模型的前5280次曝光中出现过一次，但不能推断更早训练或预训练中的曝光次数。分层8通用、4技术短、10中、10长，合计2322目标token。 / All32 passed AI quality checks and were reread before calls;each appeared once in the selected continuation prefix,not necessarily once historically. Strata8/4/10/10,2322 target tokens.
+All32 passed AI quality checks and were reread before calls;each appeared once in the selected continuation prefix,not necessarily once historically. Strata8/4/10/10,2322 target tokens.
 
-另以固定种子随机分层选择32对开发文对，排除旧G8难例，不按模型分数筛选、不参与优化。它们是复用开发数据，不是未触碰的最终测试。 / Another fixed stratified32 exclude knownG8 cases and never enter updates. They are reused development,not untouched test.
+Another fixed stratified32 exclude knownG8 cases and never enter updates. They are reused development,not untouched test.
 
-基线生成开始后、尚未阅读本轮候选或小集合拟合输出时，又逐条核查了32对保留源句/参考，未发现明显主要缺损；与既有8条低可信参考无重合，没有据此改变固定样本。 / All32 held-out references were reread after baseline generation began but before inspecting hypotheses/fitting outputs. No clear major defect or overlap with the prior8 flagged references was found;no sample was changed. AI-assisted,not native certification.
+All32 held-out references were reread after baseline generation began but before inspecting hypotheses/fitting outputs. No clear major defect or overlap with the prior8 flagged references was found;no sample was changed. AI-assisted,not native certification.
 
-原R0、SFT200、SFT400都在本运行时重新生成两批译文；旧输出只作完整token一致性核对。所有最终生成采用同一BF16舍入base再提升FP32、TF32关闭、greedy,max320。 / All baselines regenerate both sets on this runtime. Old outputs serve only parity checks. Final decoding promotes identical BF16-rounded base values toFP32 withTF32 off,greedy,max320.
+All baselines regenerate both sets on this runtime. Old outputs serve only parity checks. Final decoding promotes identical BF16-rounded base values toFP32 withTF32 off,greedy,max320.
 
 | Baseline | Old held-out full token matches | Hypothesis matches |
 | --- | --- | --- |
@@ -61,7 +49,7 @@ Representative target-shift,padding and individual/batch loss audits pass;all th
 | SFT200 | 32 | 32 |
 | SFT400 | 32 | 32 |
 
-## 2. 训练计算核对 / Training-computation audit
+## Training-computation audit
 
 | Audit | Actual |
 | --- | --- |
@@ -71,24 +59,24 @@ Representative target-shift,padding and individual/batch loss audits pass;all th
 | Per-token batch difference | 7.61075594546412e-07 |
 | Passed | True |
 
-这些核对支持被测路径没有明显目标移位或padding损失错误，不能据此声称所有实现因素已被形式化排除。基础模型/分词器11个文件逐一匹配上一轮哈希。 / These representative audits find no material shift/padding loss discrepancy;they are not a proof that every implementation factor is impossible. All11 model/tokenizer input files match prior hashes.
+These representative audits find no material shift/padding loss discrepancy;they are not a proof that every implementation factor is impossible. All11 model/tokenizer input files match prior hashes.
 
-## 3. 条件分支与训练曲线 / Conditional controls and curves
+## Conditional controls and curves
 
-第二阶段触发情况 / Phase2 triggered: True
+Phase2 triggered: True
 
 | Skipped condition | Registered reason |
 | --- | --- |
 | C_r64 | B_highLR_met_registered_memorization_criterion |
 
-近似记忆标准：训练NLL≤0.2、chrF++≥85、规范化参考精确匹配率≥50%。这是预先登记的拟合诊断标准，不是翻译质量或DAPO准入门槛。A/B均从SFT200开始，仅学习率不同；若B未达标准才运行C。 / The registered descriptive fitting criterion isNLL≤0.2,chrF++≥85,reference exact≥50%. It is not a translation/DAPO gate. A/B share SFT200 initialization and differ only in LR;C is conditional onB.
+The registered descriptive fitting criterion isNLL≤0.2,chrF++≥85,reference exact≥50%. It is not a translation/DAPO gate. A/B share SFT200 initialization and differ only in LR;C is conditional onB.
 
 | Condition | Rank | LR | Updates | Target tokens | Trainable params | Stop reason | Order SHA256 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | A_lowLR | 16 | 1e-05 | 150 | 87409 | 10822656 | fixed_update_budget | a8b5ae6afbe4a8cc36054e2097ecce36246788280528e96e763a1e5342e8f4f6 |
 | B_highLR | 16 | 0.0001 | 150 | 87409 | 10822656 | fixed_update_budget | a8b5ae6afbe4a8cc36054e2097ecce36246788280528e96e763a1e5342e8f4f6 |
 
-每组fresh AdamW、同一顺序、有效batch8/micro2、dropout0、weight_decay0、前5步warmup后恒定LR、clip1，每组至多150更新/15万目标token。它改变了原续训的数据重复、dropout、调度和batch；因此A/B能隔离本探针中的学习率效应，探针对旧SFT的解释不能归因于单一因素。 / Fresh AdamW,identical order,batch8/micro2,dropout0,weight_decay0,5-step warmup then constantLR,clip1;cap150 updates/150k targets. The probe differs from the broad continuation in repetition,dropout,schedule and batch. A/B isolate LR within the probe,not every cause of the prior run.
+Fresh AdamW,identical order,batch8/micro2,dropout0,weight_decay0,5-step warmup then constantLR,clip1;cap150 updates/150k targets. The probe differs from the broad continuation in repetition,dropout,schedule and batch. A/B isolate LR within the probe,not every cause of the prior run.
 
 | Condition | Step | Target tokens | Training NLL |
 | --- | --- | --- | --- |
@@ -106,11 +94,11 @@ Representative target-shift,padding and individual/batch loss audits pass;all th
 | B_highLR | 100 | 58050 | 0.002183 |
 | B_highLR | 150 | 87409 | 0.001442 |
 
-学习曲线的NLL在BF16 base+FP32 LoRA的训练前向路径下以eval模式计算；最终比较表在匹配的FP32路径下计算。因此两处末期NLL可能有小的数值差别，不应把这种口径差别当成学习倒退。 / Curve NLL uses the BF16-base/FP32-LoRA training-forward path in eval mode;final tables use matchedFP32. Small precision differences are not learning reversal.
+Curve NLL uses the BF16-base/FP32-LoRA training-forward path in eval mode;final tables use matchedFP32. Small precision differences are not learning reversal.
 
-![小集合拟合曲线与teacher-forced NLL / Fitting curves and NLL](fitting_curves.png)
+![Fitting curves and NLL](fitting_curves.png)
 
-## 4. 各分层结果和受控差异 / Stratified and controlled outcomes
+## Stratified and controlled outcomes
 
 | Split | Subset | N | Condition | chrF++ | BLEU | Target NLL | G/P/B/U |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -220,21 +208,21 @@ Representative target-shift,padding and individual/batch loss audits pass;all th
 | technical_medium | B_highLR minus A_lowLR | -3.978 [-10.697, +1.737] | -0.202 [-7.302, +4.941] |
 | technical_long | B_highLR minus A_lowLR | -0.385 [-4.952, +4.264] | +1.029 [-1.920, +3.834] |
 
-区间为固定来源内分层的2000次配对bootstrap，仅反映这些复用开发样本的抽样波动，未处理隐含文档聚类、多重比较和跨训练种子的差异。训练集只描述实际固定集合，不把记忆分数当总体泛化推断。 / Intervals use2000 paired source-stratified resamples on reused development. Hidden document clusters,multiple comparisons and training-seed variability are not covered. Training-set scores are descriptive.
+Intervals use2000 paired source-stratified resamples on reused development. Hidden document clusters,multiple comparisons and training-seed variability are not covered. Training-set scores are descriptive.
 
-## 5. 语义结果和解释限制 / Semantic outcomes and limits
+## Semantic outcomes and limits
 
-![逐条语义判断 / Per-source semantic judgements](semantic_review.png)
+![Per-source semantic judgements](semantic_review.png)
 
-复查320个greedy候选，源句64条；每个源句每个模型只有1个候选，不是G8覆盖实验。G保留中心含义及关键关系；P部分有效但有重大缺损；B中心含义丢失/反转；U不确定。 / Reviewed320 greedy candidates on64 sources,one candidate/model/source,not G8 coverage.
+Reviewed320 greedy candidates on64 sources,one candidate/model/source,not G8 coverage.
 
-卡片隐藏条件身份与分数，锁定判断后计算语义汇总；自动分支需要数值拟合指标，同一助手可能已知这些指标且能从输出辨认条件，所以不称为完整双盲或独立母语认证。 / Cards hide condition IDs and scores,with a judgement hash lock before semantic aggregates. Numeric fitting metrics drive branches and mayhave beenseen;the same assistant may recognize output patterns. This is not fully blind or native-certified.
+Cards hide condition IDs and scores,with a judgement hash lock before semantic aggregates. Numeric fitting metrics drive branches and mayhave beenseen;the same assistant may recognize output patterns. This is not fully blind or native-certified.
 
-## 6. 可以确认和仍未确认 / Established and unresolved
+## Established and unresolved
 
-### 补充：源句条件性 / Supplement: source conditioning
+### Supplement: source conditioning
 
-在看到A组拟合与保留集落差后，追加并预先写明配对方法的探索性只读核对：分层内按提示token长度和ID排序，相邻源句互换，参考不变。没有训练或选模变化。正的NLL差说明正确源句有助于预测参考，不等于译文正确；残余长度/结构差异与teacher forcing限制解释。 / This exploratory inference-only supplement was specified afterA results. Swap adjacent length-matched sources within each split/stratum,keep targets fixed. PositiveNLL differences indicate conditioning,not faithful translation certification;residual length/structure andteacher forcing are limitations.
+This exploratory inference-only supplement was specified afterA results. Swap adjacent length-matched sources within each split/stratum,keep targets fixed. PositiveNLL differences indicate conditioning,not faithful translation certification;residual length/structure andteacher forcing are limitations.
 
 | Split | Model | Correct NLL | Wrong-source NLL | Wrong−correct [95%CI] | First1 Δ | First≤8 Δ | Mean |prompt Δtokens| |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -249,47 +237,29 @@ Representative target-shift,padding and individual/batch loss audits pass;all th
 | heldout | A_lowLR | 3.14651 | 4.76445 | +1.61794 [+1.39087,+1.83826] | +4.78267 | +3.22718 | 2.94 |
 | heldout | B_highLR | 3.43516 | 5.14742 | +1.71226 [+1.48735,+1.94380] | +4.56697 | +3.51596 | 2.94 |
 
-补充区间以每层的互换源句对为block做2000次重采样，保留两目标之间的配对依赖。全部逐token NLL数组保存在run/source_conditioning.jsonl。它是补充行为诊断，不替代原greedy翻译指标或语义判断。 / Supplementary intervals resample matched source-pair blocks2000 times within strata. Raw per-token arrays are archived;this behavioural contrast does not replace translation/semantic outcomes.
-
-不能由32条可记忆推断广泛翻译任务的容量一定足够。模型可能有足够的存储/局部适配能力，但缺少有效泛化所需的预训练基础或表示能力。要讨论实际容量瓶颈，至少需要在更大、干净且覆盖充分的数据上观察学习曲线与独立评估；本轮没有进行数据规模、预训练或全参数适配的对照。
+Supplementary intervals resample matched source-pair blocks2000 times within strata. Raw per-token arrays are archived;this behavioural contrast does not replace translation/semantic outcomes.
 
 Memorizing32 pairs does not establish sufficient capacity for broad translation. Local storage/adaptation can coexist with weak pretrained representations or generalization ability. A practical-capacity claim requires larger,cleaner and sufficiently covering data with independent learning curves;this run does not control data scale,pretraining or full-parameter adaptation.
 
-旧续训中这些32条每条只出现过一次，而本探针平均约37.5次。原训练未把它们记住，并不能证明训练失败；适度训练本来也不要求逐条复述参考。现在也不能断言‘只需多训几轮就能得到强R0’：增加曝光在本探针中改善记忆却损害泛化。
-
 Each chosen pair appeared once in the selected continuation prefix,versus about37.5 exposures in this probe. Failure to memorize after one exposure is not itself training failure. Nor can we conclude that a few more epochs will produce a strong R0:extra exposure here improves memorization while harming generalization.
-
-rank64分支按照预登记规则未触发，因为rank16的B已达到拟合标准。没有rank64实测结果，不能声称提高rank无效，也不能把它当已验证的补救办法。两学习率只有一个训练种子，当前样本为复用开发集；所有区间及子层结论都应按小样本诊断解释。
 
 The registered rank64 branch is skipped because rank16 B passes the fitting criterion. There is no empirical rank64 outcome:neither ineffectiveness nor a successful remedy is established. Both LRs use one training seed and reused development data;intervals and subgroup findings remain small-sample diagnostic evidence.
 
-本轮只有greedy译文，没有重新运行G=8采样或DAPO。它不能独自裁定DAPO可用信号的覆盖，也不能把此前30步DAPO无提升唯一归因于R0。现有模型仍可作探索性DAPO起点，但不应把本轮的完全记忆模型当综合能力更强的正式基座。
-
 This run evaluates greedy outputs without a new G=8 bank or DAPO. It cannot alone determine useful RL-signal coverage or uniquely attribute the earlier30-step DAPO result to R0. Existing models can still seed exploratory DAPO;perfect tiny-set memorization does not promote these probe adapters to stronger general bases.
 
-## 7. 下一步 / Next action
-
-当前决定：保留原R0与SFT200，不使用A/B替换基座；本轮没有得到可晋升的新R0。停止对这32条反复加训，也不直接把‘更高学习率/更大rank’当答案。工程上的优先项是检验有效数据覆盖与曝光能否转化为泛化改善；这是据现有证据制定的优先顺序，不是已经证明的数据唯一根因。
+## Next action
 
 Decision:retain original R0 and SFT200;do not replace them with A/B. No new R0 is promoted. Stop repeating these32 cases and do not treat higher LR/rank as the answer. The practical priority is to test whether broader effective coverage and controlled exposure improve generalization. This prioritization is an inference,not proof of a uniquely data-driven cause.
 
-若继续补强，建议做一次预算封顶的覆盖对照，而非无目标地继续SFT：两组均从SFT200开始、rank16、LR=1e-5、5% warmup后恒定、同batch/dropout、各200万目标token，按目标token固定25%通用回放、75%技术（技术内部短/中/长约10/40/50）。窄覆盖组从约40万独特目标token的文对池重复取样；广覆盖组从尽量接近200万独特目标token的干净池取样。来源、长度分层和质量规则一致，窄池从广池固定随机嵌套抽取。差别是覆盖/重复策略的联合效果，不应把它进一步拆解为独立的唯一因素。数字是下一轮待预登记的建议，不是本轮已运行内容；不足的合格数据不能靠低质凑数。
-
 A bounded coverage control is preferable to open-ended SFT:both arms start from SFT200,rank16,LR1e-5 with5% warmup then constant LR,identical batch/dropout,and2M target tokens each. Fix target-token mixture at25% general replay and75% technical,with technical short/medium/long about10/40/50. Repeat from an approximately400k-unique-target pool in the narrow arm;sample a clean pool approaching2M unique targets in the broad arm. Match source/length strata and quality rules;the narrow pool is a fixed random nested subset. This estimates the joint coverage/repetition strategy effect,not its unique components. These are proposed preregistration values,not executed work;do not fill data shortages with low-quality pairs.
-
-训练前锁定文档/近重复去重后的训练、选模开发和最终保留集；旧开发集只用于历史诊断。每25万目标token记录固定训练探针与开发NLL/chrF++，按预登记的通用保留约束选checkpoint；对关键术语、否定、数字和条件做逐句语义复核，条件允许时由冰岛语熟练者独立复评。可先在50万token节点做安全检查：若两组都出现开发下降及语义退化，则按预定规则停止，而不是追求训练分数。新数据池和划分尚未建立，不能把它们写成已具备的资产。
 
 Before training,freeze document/near-duplicate-disjoint training,selection-development and final held-out sets;keep old development for historical diagnosis. Every250k target tokens,record fixed training probes and development NLL/chrF++;select checkpoints under a preregistered general-retention constraint. Review terms,negation,numbers and conditions,preferably with an independent proficient Icelandic reviewer. A500k-token safety checkpoint can stop both arms under predefined development/semantic deterioration rules. Do not optimize training scores. These new pools and splits are not yet constructed assets.
 
-判读规则：广覆盖组若在匹配预算下改善独立语义质量，支持当前数据/曝光策略可修复，继续验证G=8及奖励校准；若两组训练改善、开发均不改善，则停止声称‘再加SFT必有效’，把现有配方/基座的泛化瓶颈作为工作结论。若仍要区分rank或冻结base限制，可另立同数据同预算的适配容量对照；即使该对照也失败，结论仍是测试范围内的实际瓶颈，而不是数学意义的0.8B绝对上限。
-
 Interpretation rule:if broader coverage improves independent semantics under matched budget,this supports a repairable data/exposure strategy,followed by G=8 and reward calibration. If training improves in both arms without development gains,stop claiming more SFT must work and treat generalization of this recipe/base as the practical bottleneck. A separate matched-data/budget adaptation-capacity control would be needed to distinguish rank from frozen-base restrictions. Even further failures establish a bottleneck within tested conditions,not an absolute mathematical0.8B ceiling.
-
-本轮到此结束：没有自动启动上述新训练。只有在独立翻译质量和候选信号改善后，再恢复标准DAPO与效率创新对照；若最终项目时间不允许补齐广任务能力，应缩小到候选覆盖已验证的任务范围，并如实限定结论。这样可以继续做efficient ML，而不把基座缺陷与算法效率混在一起。
 
 This run ends here without automatically launching the proposed training. Resume standard DAPO and efficiency comparisons after independent translation quality and candidate signals improve. If project time prevents broad-task repair,narrow the study to tasks with verified candidate coverage and report that scope explicitly,so base-quality limitations are not confused with algorithmic efficiency.
 
-## 8. 实际成本与归档 / Actual compute and archives
+## Actual compute and archives
 
 | Item | Actual |
 | --- | --- |
@@ -302,9 +272,9 @@ This run ends here without automatically launching the proposed training. Resume
 | Sampled peak device MiB | 6732.0 |
 | GPU released | True |
 
-余额差含安装、上传下载、核对、推理和拟合，可能延迟结算。模型、代码、数据、所有输出、逐次更新、完整optimizer/RNG与快照校验都保存到D盘；账号凭据和私有SDK日志不归档。首次控制流断线后在同一运行时重连成功，无重复分配。 / Balance change includes setup,transfer,audits,inference and fitting and may settle late. Archive all public experiment artifacts and full states,excluding credentials/privateSDKlogs. Initial control-stream loss recovered on the same allocation.
+Balance change includes setup,transfer,audits,inference and fitting and may settle late. Archive all public experiment artifacts and full states,excluding credentials/privateSDKlogs. Initial control-stream loss recovered on the same allocation.
 
-归档核对发现打包器沿用了旧initial_adapter目录名，而本轮三份初始adapter在adapters目录。通过独立的纯重新打包步骤修复，并逐文件核验完整源清单；没有修改已冻结的数值代码或重新训练。 / Archive review found an old initial_adapter directory name in the packager. A packaging-only correction includes the actual adapters directory and verifies every frozen-source file;no numerical source or training run changed.
+Archive review found an old initial_adapter directory name in the packager. A packaging-only correction includes the actual adapters directory and verifies every frozen-source file;no numerical source or training run changed.
 
 | Artifact | Path |
 | --- | --- |
@@ -315,15 +285,13 @@ This run ends here without automatically launching the proposed training. Resume
 | Registered protocol | D:\deep learning project\reports\r0_cause_diagnosis_2026-11-17\CAUSE_DIAGNOSIS_PROTOCOL_2026-11-17.html |
 | CPU replay | D:\deep learning project\runs\r0_cause_diagnosis_2026-11-17\analysis_reproduction\README.md |
 
-## 附录A：全部64条源句及每个模型输出 / All64 sources and outputs
+## All64 sources and outputs
 
 <details><summary>00 train OpenSubtitles18:683673 general</summary>
 
 EN: -This is the last I'll see of him.
 
 ReferenceIS: -Ég sé hann aldrei aftur.
-
-均保留最后一次见到他的含义；hans的格错误不改变中心意思。
 
 All retain seeing him for the last time;the hans case error does not change the central meaning.
 
@@ -343,7 +311,7 @@ EN: I'll prove it to you.
 
 ReferenceIS: Ég skal sanna það fyrir þér.
 
-均正确表达将向你证明，skal/mun均可接受。
+Both correctly express will prove it to you; skal/mun are acceptable.
 
 All correctly express proving it to you;skal/mun variants are acceptable.
 
@@ -363,8 +331,6 @@ EN: I know you can do this.
 
 ReferenceIS: Ég veit að þið getið þetta.
 
-均保留我知道你能做到；英文you可单复数，两种冰岛语形式均可。
-
 All preserve knowing you can do this;English you permits singular or plural.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -382,8 +348,6 @@ All preserve knowing you can do this;English you permits singular or plural.
 EN: And I'm not Dutch. I'm Swiss.
 
 ReferenceIS: Og ég er frá Sviss, ekki Hollandi.
-
-0/4完整。1/2把荷兰人变成德国人，3把荷兰身份变成无意义词；瑞士信息部分仍可辨认。
 
 0/4 are complete.1/2 substitute German for Dutch;3 corrupts Dutch into a nonword,while Swiss remains partly recoverable.
 
@@ -403,8 +367,6 @@ EN: No, it was here, this morning.
 
 ReferenceIS: Nei, hér, í morgun.
 
-均保留否定、这里、今天早上；省略与完整句均可。
-
 All retain no,here,this morning;ellipsis and full-sentence variants are acceptable.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -422,8 +384,6 @@ All retain no,here,this morning;ellipsis and full-sentence variants are acceptab
 EN: But I think that is a great quality.
 
 ReferenceIS: En mér finnst það góður eiginleiki.
-
-均表达认为这是很好的品质/特性；gæði词形生硬但未明确改变英文的中心判断。
 
 All express considering it a great quality/characteristic;gæði morphology is awkward without a clear central-meaning change.
 
@@ -443,8 +403,6 @@ EN: Do you want to go grab a drink?
 
 ReferenceIS: Langar þig að fá þér drykk?
 
-均表达想去喝一杯，taka drykk虽不自然但核心意图保留。
-
 All retain wanting to go for a drink;taka drykk is awkward but preserves the request.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -463,7 +421,7 @@ EN: - His name is Django.
 
 ReferenceIS: Hann heitir Django.
 
-所有候选均完整保留姓名Django。
+All candidates fully retain the name Django.
 
 Every candidate fully preserves the name Django.
 
@@ -483,8 +441,6 @@ EN: • The introductory part of Section 6.2 is replaced by the following:
 
 ReferenceIS: • Eftirfarandi komi í stað inngangsins í lið 6.2:
 
-0/3准确；1/2以先前/第一部分表达开头部分，核心替换关系和编号保留；4的forsett不能可靠表达引言。
-
 0/3 are exact;1/2 retain opening/first-part replacement and the section number.4 does not reliably render introductory.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -502,8 +458,6 @@ ReferenceIS: • Eftirfarandi komi í stað inngangsins í lið 6.2:
 EN: For the protection of non-target organisms, in particular honey bees:
 
 ReferenceIS: Til verndar lífvera utan markhóps, einkum býflugna:
-
-0/1/2仍有保护生物框架，但非目标生物和蜜蜂被无意义词破坏；3/4完整。
 
 0/1/2 retain a protection/organism frame but corrupt non-target and honey bees;3/4 are complete.
 
@@ -523,8 +477,6 @@ EN: The fees are commensurate with the services provided.
 
 ReferenceIS: Þóknanirnar eru í réttu hlutfalli við veitta þjónustu.
 
-0/3/4把费用变成Fáran，但服务相称关系部分保留；1/2完整。
-
 0/3/4 replace fees with Fáran while partly retaining proportionality to services;1/2 are complete.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -542,8 +494,6 @@ ReferenceIS: Þóknanirnar eru í réttu hlutfalli við veitta þjónustu.
 EN: Part-time job is taken because:
 
 ReferenceIS: Ástæður þess að hlutastarf er tekið:
-
-1/4准确；0/2变成援助或服务，缺失兼职工作；3保留部分工作相关框架但未完整表达原因。
 
 1/4 are exact.0/2 substitute assistance/services and lose part-time employment.3 retains a partial work-related frame but not the full reason heading.
 
@@ -563,8 +513,6 @@ EN: Each prolonged-release tablet contains 3.15 mg pramipexole (as 4.5 mg pramip
 
 ReferenceIS: Hver forðatafla inniheldur 3,15 mg af pramipexóli (sem 4,5 mg af pramipexól tvíhýdróklóríð einhýdrati).
 
-0/1/4保留药名及3.15/4.5mg，但把缓释片写成填充片；2/3完整。化学词的可辨认音译本身不判错。
-
 0/1/4 preserve the drug and3.15/4.5mg but replace prolonged-release with filled tablet;2/3 are complete.Recognizable chemical transliterations alone are not penalized.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -582,8 +530,6 @@ ReferenceIS: Hver forðatafla inniheldur 3,15 mg af pramipexóli (sem 4,5 mg af 
 EN: (3) the results of those inspections are relevant for the Commission to submit specific reports to the Standing Veterinary Committee based on Article 6(2) of Directive 98/58/EC;
 
 ReferenceIS: 3) Niðurstöður úr þessum skoðunum varða framkvæmdastjórnina, sem leggur sérstakar skýrslur fyrir fastanefndina um dýraheilbrigði, á grundvelli 2. mgr. 6. gr. tilskipunar 98/58/EB.
-
-0/4完整；1/2/3保留委员会报告框架及条款编号，但将常设兽医委员会变成兽医的位置，丢失收件机构。
 
 0/4 are complete.1/2/3 preserve reporting/citations but turn the Standing Veterinary Committee into a place for a veterinarian,losing the recipient institution.
 
@@ -603,8 +549,6 @@ EN: In pregnant rabbits, a maternal dose of 30 mg/kg that produced slight toxici
 
 ReferenceIS: Í ungafullum kanínum sýndu 30 mg/kg skammtar sem höfðu smávægileg skaðleg áhrif á móður marktæka aukningu á vansköpun afkvæma.
 
-0/4完整；1/2/3保留30mg/kg及轻微母体毒性，但把孕兔和胎仔畸形变成无关对象/感染，统计显著性也损坏。
-
 0/4 are complete.1/2/3 retain30mg/kg and slight maternal toxicity but corrupt pregnant rabbits and offspring malformations into unrelated entities/infection,and lose statistical significance.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -622,8 +566,6 @@ ReferenceIS: Í ungafullum kanínum sýndu 30 mg/kg skammtar sem höfðu smávæ
 EN: • There are at present, no alternative methods validated by ECVAM, other than those listed in Annex V to Council Directive 67/548/EEC.
 
 ReferenceIS: • Eins og sakir standa hefur Evrópumiðstöð um fullgildingu nýrra aðferða ekki fullgilt aðrar aðferðir en þær sem eru skráðar í V. viðauka við tilskipun ráðsins 67/548/EBE.
-
-1/2完整；0对验证的否定关系不可靠，3把无其他验证方法改成禁止使用其他方法，4损坏ECVAM及验证关系；附件和指令编号仍保留。
 
 1/2 are complete.0 corrupts the validation/negation relation;3 changes lack of validated alternatives into a prohibition;4 corrupts ECVAM and validation,while references survive.
 
@@ -643,8 +585,6 @@ EN: The haemoglobin response varies between patients and may be impacted by iron
 
 ReferenceIS: Blóðrauðasvörun er mismunandi milli sjúklinga og kann að verða fyrir áhrifum af járnforða og sjúkdóma sem eru fyrir hendi á sama tíma.
 
-1/3完整；其余保留患者间反应不同的片段，但铁储备、并存疾病以及受影响关系被尿液或无意义词替换。
-
 1/3 are complete.The others partly retain between-patient response variation but replace iron stores,concurrent illness and the affected-by relation with urine or nonsense.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -662,8 +602,6 @@ ReferenceIS: Blóðrauðasvörun er mismunandi milli sjúklinga og kann að ver�
 EN: The Member States shall inform the Commission and the other Member States of the approval of such additional regions.
 
 ReferenceIS: Aðildarríkin skulu tilkynna framkvæmdastjórninni og hinum aðildarríkjunum um samþykki fyrir slíkum viðbótarsvæðum.
-
-2/4完整；0把新增地区变成额外部分，1/3变成新增政府，改变通知批准的对象。
 
 2/4 are complete.0 changes additional regions to a part;1/3 change them to administrations,altering the object of approval.
 
@@ -683,8 +621,6 @@ EN: Patients with elevated liver enzymes (ALT/AST > 2 x ULN) or total bilirubin 
 
 ReferenceIS: Sjúklingar með hækkuð lifrarensím (ALT/AST > 2 x eðlileg efri mörk) eða heildarbilirúbín ≥ 1,5 x eðlileg efri mörk, voru útilokaðir frá klínískum rannsóknum.
 
-1/2完整；0/3/4保留ALT/AST和胆红素阈值，但肝酶升高及排除入试验的表述损坏，skráð úr不能可靠表达原排除条件。
-
 1/2 are complete.0/3/4 preserve the ALT/AST andbilirubin thresholds but corrupt elevated enzymes and the trial-exclusion predicate.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -702,8 +638,6 @@ ReferenceIS: Sjúklingar með hækkuð lifrarensím (ALT/AST > 2 x eðlileg efri
 EN: However, these products for which a certificate has been issued, duly completed and signed in accordance with national rules applicable before 31 October 2007 may be imported into the Community until 31 December 2007.
 
 ReferenceIS: Þó er heimilt að flytja þessar afurðir sem vottorð, sem eru útfyllt og undirrituð eins og vera ber í samræmi við landsreglur sem voru í gildi fyrir 31. október 2007, hafa verið gefin út fyrir, inn í Bandalagið til 31. desember 2007.“
-
-1/2完整；其余保留日期和进口框架，但把填妥并签署的证书改成关闭、登记或重复，0还未明确保留进入共同体。
 
 1/2 are complete.The others retain dates/import framing but replace duly completed andsigned certificates with closed,registered orrepeated ones;0 also fails to preserve the Community destination.
 
@@ -723,8 +657,6 @@ EN: Tell your doctor immediately if you experience rash and any of the other sid
 
 ReferenceIS: Segðu lækninum strax frá því ef vart verður við útbrot og einhver önnur einkenni vegna ofnæmis.
 
-0/1完整；2/3/4遗漏立即告知这一关键时效，3还将过敏括注改成不适；其余皮疹和过敏反应框架尚在。
-
 0/1 are complete.2/3/4 omit immediate notification;3 also changes the allergy gloss to discomfort,though rash/allergy framing remains.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -742,8 +674,6 @@ ReferenceIS: Segðu lækninum strax frá því ef vart verður við útbrot og e
 EN: Coverage for the firms referred to in Article 3(1)(b)(iii) shall take one of the following forms:
 
 ReferenceIS: Varnir fyrirtækjanna, sem um getur í iii-lið b-liðar 1. mgr. 3. gr., gegn áhættu skulu vera á einhvern eftirfarandi hátt:
-
-1/2完整；0/3/4把风险保障变成援助单位，0还缺失iii项，未准确保留保障对象与形式。
 
 1/2 are complete.0/3/4 turn coverage into an assistance unit;0 also loses itemiii,corrupting the coverage/form relation.
 
@@ -763,8 +693,6 @@ EN: Whereas that mutual information procedure will not in any case replace the b
 
 ReferenceIS: Þessi gagnkvæmu upplýsingaskipti koma á engan hátt í stað þess tvíhliða samstarfs sem komið var á með 7. gr. tilskipunar 77/780/EBE. Lögbær yfirvöld í gistiríki geta, án þess að rýra valdsvið sitt, annaðhvort að eigin frumkvæði, ef mikið liggur við, eða að frumkvæði lögbærra yfirvalda í heimaríki, haldið áfram að hafa eftirlit með því að starfsemi lánastofnunar sem stofnuð hefur verið á yfirráðasvæði þeirra sé í samræmi við lög þar að lútandi og reglur um trausta stjórnun og bókhald og fullnægjandi innra eftirlit.
 
-0/1完整。2/3/4把任何情况下均不替代弱化为并非所有情况替代，并损坏主客国监管机关、紧急自主权及行政会计要求；银行合规框架部分仍在。
-
 0/1 are complete.2/3/4 weaken never replacing into not in all cases andcorrupt home/host authorities,emergency initiative andadministrative/accounting requirements,while partly retaining bank compliance.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -782,8 +710,6 @@ ReferenceIS: Þessi gagnkvæmu upplýsingaskipti koma á engan hátt í stað þ
 EN: • For the purposes of this Article, ‘by electronic means shall mean that the information is sent initially and received at its destination by means of electronic equipment for the processing (including digital compression) and storage of data, and entirely transmitted, conveyed and received in a manner to be determined by Member States by wire, by radio, by optical means or by other electromagnetic means.
 
 ReferenceIS: • Að því er snertir þessa grein merkir hugtakið „með rafrænum hætti“ að upplýsingarnar eru upphaflega sendar og við þeim tekið á ákvörðunarstað með rafrænum búnaði fyrir vinnslu (þ.m.t. stafræn þjöppun) og geymslu gagna og eingöngu sendar, fluttar og mótteknar á þann hátt sem aðildarríkin ákveða, með rafþræði, þráðlaust, með ljóstæknilegum aðferðum eða með öðrum rafsegulaðferðum.
-
-0/2完整。其余保留电子发送及成员国规定方式的一部分，但定义、数字压缩、存储或有线/无线/光学/电磁传输手段损坏或遗漏。
 
 0/2 are complete.The others retain parts of electronic transmission andMember-State determination but corrupt/omit the definition,digital compression,storage or wire/radio/optical/electromagnetic means.
 
@@ -803,8 +729,6 @@ EN: • In ships of 60 metres in length and above, in addition there shall be pr
 
 ReferenceIS: • Í skipum sem eru 60 metrar að lengd eða lengri skulu, ef heildarlengd allra farþegarýma og þjónusturýma á þilfarinu, sem slík rými eru á, er meira en 80 metrar, eða, ef slík þilför eru fleiri en eitt, þá á því þilfari þar sem þau ná mestri heildarlengd, auk þess vera tveir slökkvibúningar og tvö sett af persónuhlífum fyrir hverja 80 metra, eða hluta af þeim, af slíkri heildarlengd.
 
-1/4完整；0/3保留部分60/80米与数量条件，但船舱、甲板、消防服和个人装备被错误词替换，且≥60被改为>60；2循环并缺失实际装备要求。
-
 1/4 are complete.0/3 retain parts of the60/80m/count conditions but corrupt spaces,decks,firefighters outfits andpersonal equipment,and change≥60 to>60.2 loops andloses the equipment requirement.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -822,8 +746,6 @@ ReferenceIS: • Í skipum sem eru 60 metrar að lengd eða lengri skulu, ef hei
 EN: • If points 2.4 and 2.5 apply and the further audit or check results are deemed not to be satisfactory in the opinion of the approval authority granting whole vehicle type-approval, the manufacturer shall ensure that conformity of production is restored as soon as possible by corrective actions to the satisfaction of the approval authority granting whole vehicle type-approval and to the satisfaction of the approval authority granting type-approval of the system, component or separate technical unit.
 
 ReferenceIS: • Ef ákvæði liða 2.4 og 2.5 eiga við og niðurstöður frekari úttektar eða skoðunar teljast ekki fullnægjandi að áliti viðurkenningaryfirvalds sem veitir heildargerðarviðurkenningu ökutækis skal framleiðandinn tryggja að samræmi framleiðslu sé komið á eins fljótt og auðið er með aðgerðum til úrbóta sem viðurkenningaryfirvaldið sem veitir heildargerðarviðurkenningu ökutækis og viðurkenningaryfirvaldið sem veitir gerðarviðurkenningu fyrir kerfi, íhlut eða aðskilda tæknieiningu telja fullnægjandi.
-
-3/4完整；其余保留2.4/2.5、不满意检查和制造商行动框架，但批准机关、整车型式批准、生产符合性及纠正措施被检验条款、安全证书、耐受或谈话等替换。
 
 3/4 are complete.The others retain2.4/2.5,unsatisfactory checks andmanufacturer action but corrupt approval authorities,type approval,production conformity andcorrective action.
 
@@ -843,8 +765,6 @@ EN: Submission of the final clinical study report on a Post-Authorisation Safety
 
 ReferenceIS: Að leggja fram lokaskýrslu úr klínískri öryggisrannsókn (Post-Authorisation Safety (PAS) Observational Cohort Study to Quantify the Incidence and Comparative Safety of Selected Cardiovascular and Cerebrovascular Events) hjá sjúklingum með langvinna lungnateppu með Anoro samanborið við tíótrópíum (rannsókn 201038), samkvæmt rannsóknaráætlun sem samþykkt er af PRAC.
 
-1/3完整，研究正式英文标题按参考保留可接受。0/4保留部分PAS、药名/编号和PRAC信息，但提交报告、观察队列、心脑血管事件及比较关系损坏；2严重循环。
-
 1/3 are complete;retaining the official English study title as in the reference is acceptable.0/4 retain parts of PAS/drug/ID/PRAC but corrupt report submission,observational cohort,events orcomparison;2 loops severely.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -862,8 +782,6 @@ ReferenceIS: Að leggja fram lokaskýrslu úr klínískri öryggisrannsókn (Pos
 EN: • a description of ordinary share transactions or potential ordinary share transactions, other than those accounted for in accordance with paragraph 64, that occur after the balance sheet date and that would have changed significantly the number of ordinary shares or potential ordinary shares outstanding at the end of the period if those transactions had occurred before the end of the reporting period.
 
 ReferenceIS: • lýsingu á viðskiptum með almenna hluti eða vænta hluti, aðra en þá sem gerð er grein fyrir í samræmi við 64. lið, sem fara fram eftir dagsetningu efnahagsreiknings og sem hefði breytt verulega fjölda almennra hluta eða væntra almennra hluta, sem eru virkir í lok tímabilsins, ef þessi viðskipti hefðu átt sér stað fyrir lok reikningsskilatímabilsins.
-
-0/4完整；1把普通股交易改成登记参与者，中心财务对象丢失；2/3保留部分股份数量及条件框架，但资产负债表日、流通在外及期间关系损坏。
 
 0/4 are complete.1 changes share transactions into registration participants,losing the central financial object.2/3 partly retain share counts/conditions but corrupt balance-sheet date,outstanding status andperiod relations.
 
@@ -883,8 +801,6 @@ EN: The purpose of this document is to give guidance on how the European Eco-man
 
 ReferenceIS: Tilgangurinn með þessu skjali er að veita leiðbeiningar um hvernig evrópska umhverfisstjórnunarkerfið (EMAS) virkar fyrir fyrirtæki/stofnanir sem eru með dótturfyrirtæki og athafnasvæði í mörgum aðildarríkjum ESB og/eða í þriðju löndum, ásamt því að veita aðildarríkjunum, sannprófendum og fyrirtækjum/stofnunum sérstakar leiðbeiningar sem nota má við skráningu.
 
-0/2完整；其余保留跨成员国/第三国组织及注册指导框架，但EMAS生态管理体系变成经济研究或普通活动，子公司等关键范围损坏。
-
 0/2 are complete.The others retain cross-border organizations andregistration guidance but corrupt EMAS eco-management into economic research/ordinary activity andlose subsidiary scope.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -902,8 +818,6 @@ ReferenceIS: Tilgangurinn með þessu skjali er að veita leiðbeiningar um hver
 EN: • Manufacturers shall equip agricultural and forestry vehicles with systems, components and separate technical units affecting their braking performance that are designed, constructed and assembled so as to enable the vehicle in normal use and maintained according to the prescriptions of the manufacturer to comply with the detailed technical requirements and testing procedures laid down in Articles 4 to 17.
 
 ReferenceIS: • Framleiðendur skulu setja í ökutæki fyrir landbúnað og skógrækt kerfi, íhluti og aðskildar tæknieiningar sem hafa áhrif á hemlaafköst þeirra og eru hönnuð, smíðuð og sett saman þannig að ökutæki í eðlilegri notkun, sem viðhaldið er í samræmi við forskriftir framleiðanda, nái að uppfylla þær ítarlegu tæknilegu kröfur og prófunaraðferðir sem mælt er fyrir um í 4. til 17. gr.
-
-1/3完整；0/2保留制造商、技术单元和4至17条框架，但农业林业车辆和制动性能变成地域通信、燃烧等；4严重重复并丢失完整合规要求。
 
 1/3 are complete.0/2 retain manufacturers,units andArticles4–17 but corrupt agricultural/forestry vehicles andbraking into territory/telecommunications orcombustion.4 repeats andloses the compliance requirement.
 
@@ -923,8 +837,6 @@ EN: 5. Before the general meeting referred to in paragraph 6, one or more indepe
 
 ReferenceIS: 5. Fyrir félagsfundinn, sem um getur í 6. mgr., skulu óháðir sérfræðingar, einn eða fleiri, sem hafa verið tilnefndir eða samþykktir af yfirvaldi á sviði dómgæslu eða stjórnsýslu í aðildarríkinu sem samvinnufélag, sem breyta á í evrópskt samvinnufélag, heyrir undir, votta, að breyttu breytanda, að reglurnar í b-lið 1. mgr. 22. gr. hafi verið virtar.
 
-0/2完整；1/3保留独立专家及22条框架，但会员大会、司法/行政任命、转为SCE及证明遵守等关系损坏；4循环，缺失最终证明内容。
-
 0/2 are complete.1/3 retain independent experts/Article22 but corrupt the meeting,judicial/administrative appointment,SCE conversion andcertification.4 loops andloses the certification payload.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -942,8 +854,6 @@ ReferenceIS: 5. Fyrir félagsfundinn, sem um getur í 6. mgr., skulu óháðir s
 EN: That certificate shall contain the name and address of the manufacturer, the conclusions of the examination, the aspects of the essential requirements covered by the examination, the conditions (if any) for its validity and the necessary data for identification of the approved type.
 
 ReferenceIS: Vottorðið skal innihalda nafn og heimilisfang framleiðandans, niðurstöður prófunarinnar, þá þætti í grunnkröfunum sem falla undir prófunina, skilyrði fyrir því að vottorðið sé gilt (ef einhver eru) og nauðsynlegar upplýsingar til að auðkenna samþykkta gerðareintakið.
-
-2/3完整；0/1/4保留名称、地址、试验结论和有效条件，但试验覆盖的基本要求方面及识别批准型式的关系不完整或错误。
 
 2/3 are complete.0/1/4 retain name,address,test conclusions andvalidity conditions but corrupt the examined essential requirements andidentification of the approved type.
 
@@ -963,8 +873,6 @@ EN: I just came from the liquor store.
 
 ReferenceIS: Ég var að koma úr vínbúðinni.
 
-均无完整正确译文。0/1/2/3保留来自某处的部分框架，但酒类商店变成钥匙机器、药品或无意义商店；4连到店来源关系也明显损坏。
-
 None is complete.0/1/2/3 partly retain coming/being from a place but substitute key-machine/pharmacy/nonword stores for the liquor store;4 loses even that relation.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -982,8 +890,6 @@ None is complete.0/1/2/3 partly retain coming/being from a place but substitute 
 EN: Me, a freshman, going with the most amazing girl at Sky High.
 
 ReferenceIS: Ég, businn, fer með glæsilegustu stúlkunni í Sky High.
-
-各候选部分保留与女孩去Sky High的内容，但freshman没有可靠表达；0把惊艳改成好斗，1/3还引入额外you/your关系。
 
 All partly retain going with a girl at Sky High but fail to reliably render freshman;0 changes amazing into combative,and1/3 introduce an extra you/your relation.
 
@@ -1003,8 +909,6 @@ EN: can I call you back?
 
 ReferenceIS: Má ég hringja til baka?
 
-0/4保留回电；1/2/3仅表达打电话，缺失back这一中心关系。4的动词词形错误不妨碍回电含义。
-
 0/4 retain calling back;1/2/3 only express calling,losing back.4 has a tolerable verb-form error.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1022,8 +926,6 @@ ReferenceIS: Má ég hringja til baka?
 EN: Why, uttering the very name of Sparta or Leonidas will be punishable by death.
 
 ReferenceIS: Það verður dauðasök að minnast orði á Spörtu eða Leonídas.
-
-均未完整表达说出名字将被判死刑。0/4尚有说名字及死亡相关片段，但责任/惩罚关系损坏；1/2/3只剩不可容忍、不安全或严重等不同判断。
 
 None fully renders death as the punishment for uttering the names.0/4 retain name/death fragments with corrupted responsibility/punishment;1/2/3 substitute intolerability,unsafety orseriousness.
 
@@ -1043,8 +945,6 @@ EN: We've got all these extra kids running around.
 
 ReferenceIS: Það eru allir þessir aukakrakkar á hlaupum.
 
-0/3以其他/更多孩子表达额外孩子，奔跑框架保留，词形问题可容忍；1把额外改成优秀，4引入无意义修饰，2变成女儿且缺失奔跑。
-
 0/3 retain additional/other children running with tolerable morphology.1 substitutes wonderful,4 has a nonword modifier,and2 changes to daughters andloses running.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1062,8 +962,6 @@ ReferenceIS: Það eru allir þessir aukakrakkar á hlaupum.
 EN: You want the long or short version?
 
 ReferenceIS: Viltu löngu eða stuttu söguna?
-
-均未完整保留长版或短版的二选一；0/1/3成为更长或更长，2/4把短变成卡片/较窄等，版本也不可靠。
 
 None preserves the long-versus-short choice.0/1/3 say longer orlonger;2/4 corrupt short into card/narrower andrender version unreliably.
 
@@ -1083,8 +981,6 @@ EN: To me, anything over 500 words is a novel.
 
 ReferenceIS: Mér finnst allt sem er lengra en 500 orð vera skáldsaga.
 
-均没有正确表达小说。2/3/4把novel当成新颖，1变成阅读等，仍保留500词以上的部分框架；0还把超过改成至多并产生无关谓语。
-
 None correctly expresses a novel.2/3/4 use new,1 substitutes reading-like content while retaining the over500-word frame;0 also reverses over into up to anduses an unrelated predicate.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1102,8 +998,6 @@ None correctly expresses a novel.2/3/4 use new,1 substitutes reading-like conten
 EN: I don't know what went wrong!
 
 ReferenceIS: Ég veit ekki hvað fór úrskeiðis.
-
-0/3/4合理表达不知道哪里出了问题；1变成显示不好而非发生问题，2变成显示特殊事物，失去wrong。
 
 0/3/4 reasonably retain not knowing what went wrong.1 says showed badly rather than went wrong;2 substitutes showing something special andloses wrong.
 
@@ -1123,8 +1017,6 @@ EN: Annual days of vocational training (optional).
 
 ReferenceIS: Árlegur fjöldi daga nýttur til starfsnáms (valkvætt).
 
-全部丢失职业培训天数和可选含义。
-
 All lose vocational training days and the optional condition.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1142,8 +1034,6 @@ All lose vocational training days and the optional condition.
 EN: What is Memantine LEK used for
 
 ReferenceIS: Við hverju er Memantine LEK notað
-
-0/3/4保留药物用途问题；1变成药物属性，2前半句损坏。
 
 0/3/4 retain the medicine-purpose question;1 changes it to properties and2 corrupts the opening.
 
@@ -1163,8 +1053,6 @@ EN: Complex Organic Molecules Discovered in Infant Star System
 
 ReferenceIS: Flókin lífræn efnasambönd finnast í ungu sólkerfi
 
-全部丢失在年轻恒星系统发现复杂有机分子的中心命题。
-
 All lose the central discovery of complex organic molecules in a young star system.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1182,8 +1070,6 @@ All lose the central discovery of complex organic molecules in a young star syst
 EN: Cyber attacks and disinformation continue to be major threats.
 
 ReferenceIS: Enn sem fyrr stafar mikil ógn af netárásum og villandi upplýsingum.
-
-1/2/4保留重大风险框架但网络攻击与虚假信息术语错误；0/3中心威胁含义严重损坏。
 
 1/2/4 retain major-risk framing but mistranslate cyber attacks and disinformation;0/3 severely corrupt the threat claim.
 
@@ -1203,8 +1089,6 @@ EN: “We uncovered 574 new massive galaxies - the largest sample of such hidden
 
 ReferenceIS: „Við fundum 574 áður óséðar efnismiklar vetrarbrautir - stærsta safn slíkra vetrarbrauta sem fundist hefur svo snemma í sögu alheimsins,“ segir Karina Caputi.
 
-1遗漏574及核心对象并重复；其余保留574与最大样本框架，但星系、隐藏和早期宇宙含义损坏。
-
 1 omits574 and the central object and repeats;others preserve574 and largest-sample framing but corrupt galaxies,hidden status or the early Universe.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1222,8 +1106,6 @@ ReferenceIS: „Við fundum 574 áður óséðar efnismiklar vetrarbrautir - st�
 EN: Inspections for compliance with GLP principles may take place in any test facility generating health or environmental safety data for regulatory purposes.
 
 ReferenceIS: Skoðun til að kanna hvort meginreglum um góðar starfsvenjur við rannsóknir er fylgt getur farið fram í öllum prófunarstöðvum sem afla gagna um öryggi heilbrigðis og umhverfis samkvæmt gildandi reglum.
-
-0/1/4保留检查或试验设施及安全数据部分，GLP合规等关键关系错误；2/3大部分命题损坏。
 
 0/1/4 retain inspections or test facilities and safety-data fragments but corrupt GLP compliance and key relations;2/3 lose most of the proposition.
 
@@ -1243,8 +1125,6 @@ EN: For the proper functioning of the internal market and in order to facilitate
 
 ReferenceIS: Til að starfsemi innri markaðarins sé með eðlilegum hætti og til að greiða fyrir viðskiptum yfir landamæri innan Bandalagsins er mikilvægt að gjöld vegna greiðslna yfir landamæri í evrum séu þau sömu og fyrir samsvarandi greiðslur innan aðildarríkis.
 
-1/2/4保留内市场、跨境支付与国内相同的框架，但把费用变为投资或财务措施；0/3核心支付费用关系严重损坏。
-
 1/2/4 retain internal-market and equal cross-border/domestic-payment framing but replace charges with investments or financial measures;0/3 severely corrupt the core payment-charge relation.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1262,8 +1142,6 @@ ReferenceIS: Til að starfsemi innri markaðarins sé með eðlilegum hætti og 
 EN: We also need to increase support for the UN and others bodies striving to create better conditions for refugees in areas bordering Syria,” Þórhallsson explains.
 
 ReferenceIS: Við verðum líka að auka stuðning við Sameinuðu þjóðirnar og aðrar stofnanir sem vinna að því að bæta lífsskilyrði flóttamanna á grannsvæðum Sýrlands,“ segir Höskuldur Þórhallsson.
-
-0/1/2/4保留增加援助及较好条件的部分框架，但难民、联合国或边境地点错误；3核心援助对象与地点均丢失。
 
 0/1/2/4 retain parts of increased support and better conditions but corrupt refugees,the UN or border locations;3 loses the key recipients and location.
 
@@ -1283,8 +1161,6 @@ EN: As well as taking images of the object they also split the light up into its
 
 ReferenceIS: Samhliða því að taka myndir af fyrirbærinu, klufu þeir einnig ljós þess í liti sína til að fá upplýsingar um hreyfingu sem og hitastig og efnasamsetningu fyrirbærisins í miðjunni.
 
-均保留分光获取信息的部分结构，但拍摄对象、温度或化学组成/中心对象存在重大错误。
-
 All retain part of splitting light to obtain information but seriously corrupt imaging,the object,temperature or chemical composition/central object.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1302,8 +1178,6 @@ All retain part of splitting light to obtain information but seriously corrupt i
 EN: The extent to which the data subject will have an effective choice will depend on the availability of reliable and recognised systems of mediation.
 
 ReferenceIS: Skráði aðilinn á kost á því að velja að því marki sem áreiðanlegt og viðurkennt kerfi sáttaumleitana er tiltækt.
-
-0/1/2部分保留选择、可用性或认可系统，但主体与调解关系损坏；3/4中心命题丢失，4严重重复。
 
 0/1/2 retain fragments of choice,availability or recognised systems but corrupt the subject and mediation relation;3/4 lose the central claim,with severe repetition in4.
 
@@ -1323,8 +1197,6 @@ EN: It is an important step towards ensuring that Nordic startups can get the be
 
 ReferenceIS: Um er að ræða mikilvægt skref fyrir norræn sprotafyrirtæki sem fá hér einstakt tækifæri til að hasla sér völl og ná árangri í Bandaríkjunum.
 
-0/2/3/4保留进入美国及成功机会的部分意思，但北欧初创企业缺失或错译；1重复并未完成关键内容。
-
 0/2/3/4 retain parts of US access and success opportunities but lose or mistranslate Nordic startups;1 repeats and fails to complete key content.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1342,8 +1214,6 @@ ReferenceIS: Um er að ræða mikilvægt skref fyrir norræn sprotafyrirtæki se
 EN: An anaerobic degradation study must be reported unless it can be justified that exposure of the plant protection products containing the active substance to anaerobic conditions is unlikely to occur.
 
 ReferenceIS: Gera skal grein fyrir rannsókn á loftfirrtu niðurbroti, nema unnt sé að sýna fram á að ólíklegt sé að plöntuvarnarefnin, sem innihalda virka efnið, verði notuð við loftfirrt skilyrði.
-
-0/1/4保留报告/例外及含活性物质产品的片段，但厌氧降解术语和部分否定关系错误；2/3丢失主要研究命题，3还添加法规编号。
 
 0/1/4 retain reporting/exception and active-substance product fragments but mistranslate anaerobic degradation and some polarity relations;2/3 lose the study claim,and3 invents a legal citation.
 
@@ -1363,8 +1233,6 @@ EN: 14 ml of Perjeta concentrate should be withdrawn from the vial and diluted i
 
 ReferenceIS: Draga á 14 ml af Perjeta þykkni úr hettuglasinu og þynna það í 250 ml innrennslispoka úr PVC eða pólýólefíni án PVC, sem inniheldur 9 mg/ml (0,9%) lausn af natríumklóríði til innrennslis.
 
-数值、药名和材料大体保留，但浓缩液取出与稀释操作被错译，不能视为忠实用药说明。
-
 Values,medicine name and materials largely survive,but withdrawal and dilution actions are mistranslated;these are not faithful preparation instructions.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1382,8 +1250,6 @@ Values,medicine name and materials largely survive,but withdrawal and dilution a
 EN: If the number of platelet (a type of blood cell that helps to clot blood) has decreased.
 
 ReferenceIS: Ef blóðflögum (tegund blóðfrumna sem tekur þátt í blóðstorknun) hefur fækkað.
-
-部分保留血小板减少，但括号内血细胞及凝血解释损坏或遗漏；1/4连核心术语也损坏。
 
 Some retain decreased platelets,but the blood-cell/clotting explanation is corrupted or omitted;1/4 also corrupt the key term.
 
@@ -1403,8 +1269,6 @@ EN: Further clarification of many of the points in this part of the Annex may be
 
 ReferenceIS: Frekari útskýringar á ýmsum atriðum í þessum hluta viðaukans er að finna í sammælisskjölum Efnahags- og framfarastofnunarinnar (OECD consensus documents) um góðar starfsvenjur við rannsóknir (t.d. um hlutverk og ábyrgðarsvið rannsóknarstjóra).
 
-全部添加委员会主体；1至4还保留部分附件和研究职责框架，但OECD/GLP文件关系错误；0主要说明来源丢失。
-
 All invent a commission as subject;1–4 retain parts of the annex and study-responsibility framing but corrupt OECD/GLP document relations;0 loses the main explanation source.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1422,8 +1286,6 @@ All invent a commission as subject;1–4 retain parts of the annex and study-res
 EN: Inspection and sampling scheme for the two-year control period which precedes achievement of approved status for VHS and/or IHN in zones and farms in non-approved zones with an officially recognised documented history of freedom from these diseases
 
 ReferenceIS: Skoðun og sýnatökuáætlun, sem fer fram á tveggja ára eftirlitstímabili áður en viðurkennd staða fæst að því er varðar veirublæðingu og/eða iðradrep, á svæðum og eldisstöðvum á svæði sem ekki er viðurkennt en skjalfest er að veirublæðing og/eða iðradrep hafi ekki komið þar upp áður
-
-0/2/3保留两年、VHS/IHN及部分批准/区域框架，但采样、养殖场和无病史关系错译；1循环，4大部分核心条件丢失。
 
 0/2/3 retain two years,VHS/IHN and parts of approval/zone framing but mistranslate sampling,farms and disease-free history;1 loops and4 loses most key conditions.
 
@@ -1443,8 +1305,6 @@ EN: It either grew by assembling the rocks that form the solid core and then slo
 
 ReferenceIS: Annað hvort óx hún með því að draga til sín berg sem myndaði fastan kjarna sem sópaði síðan að sér gas úr umhverfinu og myndaði þannig þykkan lofthjúp, eða hún hóf að myndast úr gasklumpi sem varð til vegna þyngdaróstöðugleika í skífunni,“ segir Anne-Marie Lagrange, meðlimur í rannsóknarteyminu.
 
-0/2/3/4保留岩石或气体形成和部分署名，但固核、气体积累及引力不稳定机制严重损坏；1两种形成机制基本丢失。
-
 0/2/3/4 retain rock/gas formation or attribution fragments but severely corrupt solid-core,gas-accretion and gravitational-instability mechanisms;1 largely loses both formation routes.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1462,8 +1322,6 @@ ReferenceIS: Annað hvort óx hún með því að draga til sín berg sem mynda�
 EN: A new image of the centre of the distinctive galaxy Centaurus A, made with the Atacama Large Millimeter/submillimeter Array (ALMA), shows how the new observatory allows astronomers to see through the opaque dust lanes that obscure the galaxys centre, with unprecedented quality.
 
 ReferenceIS: Ný mynd Atacama Large Millimeter/submillimeter Telescope af miðju vetrarbrautarinnar Centaurus A, sýnir vel hvernig þessi nýi sjónauki gerir stjörnufræðingum kleift að sjá í gegnum ryk, sem alla jafna er ógegnsætt og hylur miðju vetrarbrautarinnar, í meiri smáatriðum en nokkru sinni fyrr.
-
-0/2/3/4保留Centaurus A与ALMA和部分观测框架，但尘埃遮挡、穿透观测与观测站角色错误；1后半段重复。
 
 0/2/3/4 retain Centaurus A,ALMA and some observation framing but corrupt obscuring dust,seeing through it and the observatory role;1 repeats through the latter part.
 
@@ -1483,8 +1341,6 @@ EN: In repeat dose studies in rodents, effects in a variety of tissues (bone, te
 
 ReferenceIS: Í rannsóknum með endurteknum skömmtum hjá nagdýrum virðast áhrif í ýmsum vefjum (beinum, tönnum, naglabeði, æxlunarfærum, blóðvefjum, nýrum og brisi) tengjast lyfjafræðilegum áhrifum VEGFR- hindrunar og/eða rofi VEGF-merkjaferla þar sem flest áhrifin koma fram við útsetningu í plasma sem var lægri en við klínískar aðstæður.
 
-0/1/3/4保留部分VEGF、组织和暴露比较片段，但动物、组织术语或机制/临床比较有重大错误；2循环并丢失主要药理比较。
-
 0/1/3/4 retain VEGF,tissue or exposure-comparison fragments but seriously mistranslate animals,tissues,mechanism or clinical comparison;2 loops and loses the main pharmacological comparison.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1502,8 +1358,6 @@ ReferenceIS: Í rannsóknum með endurteknum skömmtum hjá nagdýrum virðast �
 EN: In a randomised, double-blind correction study (n = 358) comparing once every two week and once monthly dosing schedules in patients with CRF not on dialysis, darbepoetin alfa once monthly dosing was non-inferior to once every two week dosing for correcting anaemia.
 
 ReferenceIS: Í slembaðri, tvíblindri leiðréttingarrannsókn (n = 358) þar sem borin var saman gjöf lyfsins einu sinni á tveggja vikna fresti og gjöf lyfsins einu sinni í mánuði hjá sjúklingum með langvarandi nýrnabilun sem ekki voru í skilun, gaf darbepoetin alfa gefið einu sinni í mánuði ekki lakari niðurstöður en þegar það var gefið á tveggja vikna fresti til leiðréttingar á blóðleysi.
-
-0/1/2保留358及部分给药比较，但透析、贫血、频次或非劣性含义错误；3循环未完成结论，4关键疾病和给药结论严重丢失。
 
 0/1/2 retain358 and parts of the dosing comparison but corrupt dialysis,anaemia,frequency or non-inferiority;3 loops before the conclusion and4 loses key disease/dosing claims.
 
@@ -1523,8 +1377,6 @@ EN: It is further complicated by the fact that the brightest and easiest galaxie
 
 ReferenceIS: Verkið verður enn erfiðara þegar sú staðreynd er höfð í huga að björtustu og auðfundnustu vetrarbrautirnar - efnismestu vetrarbrautirnar í alheiminum - verða sjaldséðari því lengra sem stjörnufræðingar skyggnast aftur í fortíð alheimsins. Á sama tíma verður jafnvel erfiðara að finna smærri og daufari vetrarbrautir, sem jafnframt eru mun algengari.
 
-2/3/4保留星系大小与难以发现的部分框架，但明暗、稀有程度及回溯宇宙时间的比较损坏；0/1主要天文关系严重丢失。
-
 2/3/4 retain parts of galaxy size and detection difficulty but corrupt brightness,rarity and the look-back-time comparison;0/1 severely lose the main astronomical relations.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1542,8 +1394,6 @@ ReferenceIS: Verkið verður enn erfiðara þegar sú staðreynd er höfð í hu
 EN: In order to reinforce the added value of Community action, the Commission, in cooperation with the Member States, should ensure, at all levels, the coherence and complementarity of actions implemented in the framework of this Decision and other relevant Community policies, instruments and actions, in particular those concerning a coordinated employment strategy, social policy, the European Social Fund, education, vocational training and youth.
 
 ReferenceIS: Í því skyni að auka ávinning af aðgerðum bandalagsins ber framkvæmdastjórninni að tryggja, í samstarfi við aðildarríkin, að aðgerðir á öllum stigum innan ramma þessarar ákvörðunar séu í réttu samhengi við og til fyllingar öðrum viðeigandi stefnumálum , gerningum og aðgerðum bandalagsins, einkum þeim sem varða samræmda stefnu í atvinnumálum , félagsmálastefnu, Félagsmálasjóð Evrópu, menntun, starfsnám og æskulýðsmál.
-
-均保留委员会与成员国及部分政策清单，但附加价值、互补性或社会基金等关键政策含义损坏；2还夹英文并添加建议。
 
 All retain the Commission,Member States and parts of the policy list,but corrupt added value,complementarity or key policies such as the Social Fund;2 also leaves English and adds advice.
 
@@ -1563,8 +1413,6 @@ EN: The carrier presented a series of corrective actions which have been propose
 
 ReferenceIS: Flugrekandinn setti fram nokkrar aðgerðir til úrbóta, sem hafa verið lagðar til við lögbær yfirvöld framangreindra aðildarríkja, ásamt áætlun um aðgerðir til úrbóta sem er sniðin að því að taka á kerfisbundinn hátt á annmörkum sem hafa áhrif á ýmis svið sem eru á ábyrgð flugrekandans.
 
-部分保留提出措施、主管机关和成员国框架，但承运人身份、缺陷、系统性纠正及责任关系损坏。
-
 All retain some measures/competent-authority/Member-State framing but corrupt carrier identity,deficiencies,systematic correction and responsibility relations.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1583,8 +1431,6 @@ EN: If new testing is necessary, and in the case of experimental problems in the
 
 ReferenceIS: Ef nauðsynlegt reynist að láta nýjar prófanir fara fram, og ef upp kemur vandi í framkvæmd skimunarprófunarinnar (t.d. hömlun vegna eiturhrifa prófunarefnis), skal endurtaka prófunina með minni skammti yfirborðsvirka efnisins og fylgjast með niðurbrotinu með geislakolsmælingu (14C-mælingu) eða efnagreiningu.
 
-均保留新测试或重测及14C片段，但筛查问题、表面活性剂低剂量和降解监测至少一项关键操作损坏。
-
 All retain new/repeat-testing or14C fragments but corrupt at least one key instruction on screening problems,low surfactant dosage or degradation monitoring.
 
 | Condition | HypothesisIS | Tier | Sentence chrF++ | Target NLL | Tokens | Truncated | Repetition |
@@ -1597,7 +1443,7 @@ All retain new/repeat-testing or14C fragments but corrupt at least one key instr
 
 </details>
 
-## 附录B：全部拟合更新 / Every fitting update
+## Every fitting update
 
 | Condition | Step | Target tokens | CE | Grad norm before clip | LR | Seconds |
 | --- | --- | --- | --- | --- | --- | --- |

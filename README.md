@@ -1,21 +1,24 @@
-> **Latest result highlight / 最新结果**
-> **P25 · 2026-11-24 · 3B SFT→reference-reward DAPO**
+> English-only documentation and report edition: [scope and original-data recovery](results/local_translation_release_2026-11-24/ENGLISH_EDITION.md).
+
+> **Latest result — P25 · 2026-11-23–24**
 >
-> | WMT26 · 198 documents | chrF++ | BLEU |
+> | WMT26: 198 documents | chrF++ | BLEU |
 > | --- | ---: | ---: |
-> | Original SFT R0 | 39.72 | 19.76 |
+> | Original 3B SFT R0 | 39.72 | 19.76 |
 > | Previous DAPO-120 | 39.91 | 20.87 |
 > | **Latest short/medium DAPO-120** | **40.83** | **21.70** |
 >
-> Positive point estimates; full-test95%intervals still cross zero. The153-document short/medium secondary subset is positive but exploratory; pure-short improvement is not established.
-> 点估计向好，尚未通过全量可靠提升标准；保留原R0与最新候选。
-> **[Latest results and evidence / 最新结果与完整证据](LATEST_RESULTS.md)** · **[Model loading / 模型使用](models/README.md)**
+> Positive point estimates; both full-test 95% intervals include zero. The 153-document short/medium result is exploratory, and pure-short improvement is not established. Preserve original R0 and the latest candidate.
+>
+> **[Latest results and evidence](LATEST_RESULTS.md)** · **[Model loading](models/README.md)** · **[Public Hugging Face downloads](models/HUGGING_FACE.md)**
 
-> **Local checkpoint delivery · 2026-11-24 / 本地模型交付**
-> Ready-to-load 0.8B/3B SFT adapters, 3B DAPO candidates, loading code and results are documented in **[models/README.md](models/README.md)**.
-> Start with `python scripts/models.py list`, then `python scripts/models.py verify`.
-> The original zero-shot pipeline below is preserved. Executed training code is archived under `results/local_translation_release_2026-11-24/project_snapshot/experiments/`; the existing `src/mtrl/train/` placeholders were not replaced.
-> GitHub代码改动仅在本地，未提交或推送；三个核心适配器已公开在[Hugging Face](models/HUGGING_FACE.md)，其余历史适配器在本地ZIP。大权重被Git忽略。
+> **Checkpoint and experiment delivery — 2026-11-24**
+>
+> This branch adds 14 saved 0.8B/3B SFT/DAPO adapters, portable loading/download tools and archived experimental evidence. Large weights are Git-ignored: download the three public core adapters from HF or use the complete local bundle for historical versions.
+>
+> Start with `python scripts/models.py list`. Download hosted adapters with `python scripts/download_models.py --model all-hosted`; the downloader verifies their hashes. `python scripts/models.py verify` checks all 14 adapters and therefore requires the complete local bundle.
+>
+> The collaborator's original training/scoring implementation is preserved. Executed historical training scripts are archived under `results/local_translation_release_2026-11-24/project_snapshot/experiments/`; the existing `src/mtrl/train/` placeholders were not replaced.
 
 # mtrl
 
@@ -257,7 +260,7 @@ Main columns of `summary`:
 
 **FLOPs accounting:**
 
-- Forward pass: 2 * N * tokens; training step: 6 * N * tokens. Parameter counts N come from the config (`models[].n_params`, `scorer_params`), so analysis never loads a model.
+- Forward pass: 2 * N * tokens; training step: 6 * N * tokens. Parameter counts N come from the config (`models [].n_params`, `scorer_params`), so analysis never loads a model.
 - Prompt tokens are counted once per rollout, without credit for vLLM prefix caching; generation FLOPs are therefore an upper bound.
 - Scorer input tokens are counted with the mT5 tokenizer for all neural metrics, which is an approximation for the COMET models.
 

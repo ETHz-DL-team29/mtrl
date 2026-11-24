@@ -1,55 +1,47 @@
-# 3B R0：GPU 数据过滤与训练准备 / GPU data filtering and training preparation
+# GPU data filtering and training preparation
 
 2026-11-19 · Europe/Berlin · FILTERING ONLY · 0 ACTOR UPDATES
 
-本轮完成的是数据过滤，不是新 R0 训练。原 Qwen2.5-3B-Instruct 的 A 检查点保持不变；SFT、DAPO 均未启动。过滤完成后先向用户汇报，等待后续训练指令。
-
 This phase filters data; it does not train a new R0. The existing Qwen2.5-3B-Instruct A checkpoint is unchanged. Neither SFT nor DAPO was launched. Results are reported before any subsequent training instruction.
 
-| 项目 / Item | 结果 / Result |
+| Item | Result |
 | --- | --- |
-| 状态 / Status | 过滤完成，可进入SFT准备 / Ready for SFT preparation |
-| 最终独立句对 / Final unique pairs | 100,642 |
-| 独立目标 token（含EOS） / Unique target tokens incl.EOS | 4,748,344 |
-| 新于A的目标token比例（精确源文） / Tokens with source unseen by A | 95.37% |
-| 新抽检 / Fresh audit | {"A": 146, "C": 42, "R": 6, "U": 6} |
+| Status | Ready for SFT preparation |
+| Final unique pairs | 100,642 |
+| Unique target tokens incl.EOS | 4,748,344 |
+| Tokens with source unseen by A | 95.37% |
+| Fresh audit | {"A": 146, "C": 42, "R": 6, "U": 6} |
 | GPU / Encoder GPU | NVIDIA L4 |
-| GPU租用分钟 / Allocated GPU minutes | 11.26 |
-| 计算单元减少 / Observed CU decrease | 0.2325 |
-| 模型更新 / Actor updates | 0 |
-
-这些数据量足以支持有意义的系统性 SFT，但不能保证训练后的翻译质量或 DAPO 候选覆盖率。是否得到合格 R0，必须由后续固定的独立翻译评估和 G=8 正确候选核查决定。
+| Allocated GPU minutes | 11.26 |
+| Observed CU decrease | 0.2325 |
+| Actor updates | 0 |
 
 Data volume can support a meaningful systematic SFT run; it cannot guarantee translation quality or DAPO candidate coverage. A qualified R0 still requires the subsequent fixed independent translation evaluation and G=8 correct-candidate audit.
 
-## 1. 执行步骤与边界 / Executed steps and scope
+## Executed steps and scope
 
-| 步骤 / Step | 执行内容 / Execution |
+| Step | Execution |
 | --- | --- |
-| 1 | 登记独立过滤协议与两小时GPU上限，禁止主模型训练。 Registered filtering-only scope and a two-hour allocated-GPU ceiling. |
-| 2 | 下载官方ParIce21.10训练包到D盘，校验MD5并记录SHA256。 Downloaded and verified the official training archive. |
-| 3 | 读取TMX来源及文档信息，修正文档归属误删，保留初版。 Read original provenance and repaired overbroad document exclusion before GPU allocation. |
-| 4 | 执行编码、长度、数字、否定、标识符、药名、语言和token检查。 Applied hygiene, number/polarity/entity anchors, language and token limits. |
-| 5 | 隔离真实留出句对及可追溯文档，去重并补足一般句候选。 Protected true heldouts/documents, deduplicated and expanded general candidates. |
-| 6 | 固定LaBSE版本，校验上传包并使用独立Colab GPU。 Pinned the encoder and uploaded hash-verified inputs to an owned Colab GPU. |
-| 7 | GPU编码英/冰岛语，记录完整长度，排除截断并核对FP16精度。 Encoded both languages, flagged truncation and checked FP16 against FP32. |
-| 8 | 计算双向全局精确top4最近邻及margin，导出每条分数。 Computed exact cross-lingual neighbours/margins and exported every pair score. |
-| 9 | 只用旧400条开发样本校准；补筛保持同阈值。 Fit the registered grid on old400 only; expansion retained the frozen thresholds. |
-| 10 | 盲审200条接受、40条拒绝及17条小来源样本，锁定标签。 Blinded and locked all257 new review records. |
-| 11 | 隔离审查样本/文档及明确错误，冻结数据，分别模拟原/修订配比。 Isolated reviewed data/defects and simulated original/revised mixtures. |
-| 12 | 全量重算提示词和目标token，核对原A不变、GPU释放，保存中英报告。 Recounted all prompt/target tokens, verified A unchanged and GPUs released, saved bilingual reports. |
-
-此前 P11 的两轮抽检报告及其停止结论保持原样。本轮是用户新授权的 GPU 数据过滤，使用新的来源组织及评分流程；没有伪造旧数据门槛通过文件，也没有把“抽检错误率≤2%”当成普遍 SFT 定律。
+| 1 | Register a filtering-only protocol and a two-hour allocated-GPU ceiling; no main-model training. |
+| 2 | Download the official ParIce21.10 training archive to D, verify MD5 and record SHA256. |
+| 3 | Read TMX source/document provenance and repair overbroad document exclusion before GPU allocation, preserving the first version. |
+| 4 | Apply encoding, length, number, negation, identifier, drug-name, language and token checks. |
+| 5 | Protect true held-out pairs/traceable documents, deduplicate and expand general candidates. |
+| 6 | Pin LaBSE, verify the upload bundle and use a separate Colab GPU. |
+| 7 | GPU-encode English/Icelandic, record full lengths, reject truncation and compare FP16 with FP32. |
+| 8 | Compute bidirectional global exact top4 neighbors/margins and export every pair score. |
+| 9 | Calibrate only on the old400dev cases; expansion retains frozen thresholds. |
+| 10 | Blind-review200accepted,40rejected and17small-source cases, locking all257labels. |
+| 11 | Isolate reviewed cases/documents and clear errors, freeze data and simulate original/revised mixtures separately. |
+| 12 | Recount every prompt/target token, verify original A is unchanged and GPUs are released, and save MD/HTML reports. |
 
 The previous P11 two-screen reports and stop decision remain intact. This is a newly authorized GPU filtering phase with new source organization and scoring. No old approval file was fabricated, and the former2% project gate was not treated as a universal SFT law.
 
-## 2. 数据来源、过滤量与覆盖 / Sources, filtering volume and coverage
-
-以官方 ParIce21.10 的训练包为主，选择 EEA、EMA、ESO、NORDEN、STATISL、TED2020、Tatoeba；一般短句另补已有 OpenSubtitles18 候选。没有把 WMT/ParIce 官方开发或测试集用于训练。它是多子语料训练集合，不是单一“WMT训练切分”，也没有声称符合某届 WMT constrained 赛道的全部资源规则。
+## Sources, filtering volume and coverage
 
 The main source is official ParIce21.10 train, using EEA, EMA, ESO, NORDEN, STATISL, TED2020 and Tatoeba, supplemented by existing OpenSubtitles18 general candidates. Official WMT/ParIce dev/test data are not used for training. This is a multi-source training collection, not one official WMT split; no blanket claim about a particular constrained-track resource policy is made.
 
-| 原始来源 / Raw source | 实际扫描记录 / Records scanned |
+| Raw source | Records scanned |
 | --- | --- |
 | eea | 3418465 |
 | ema | 405088 |
@@ -59,19 +51,15 @@ The main source is official ParIce21.10 train, using EEA, EMA, ESO, NORDEN, STAT
 | ted2020 | 2392 |
 | tatoeba | 9440 |
 
-Additional OpenSubtitles18 raw scan / 补充字幕原始扫描: {"UTC": "2026-11-19T11:35:21.822814+00:00", "counts": {"raw": 1569189, "length_ratio": 638890, "known_encoding_OCR": 714183, "sentence_punctuation_mismatch": 38638, "negative_anchor": 1543, "protected_copy_or_group": 15856, "initial_lower": 4513, "metadata": 214, "incomplete_boundary": 7588, "numeric_mismatch_conservative": 2612, "duplicate": 11068, "isolated_letters": 140, "script_control": 13, "LID": 27122, "near_protected": 114}, "rows": 52764, "target_tokens": 937346, "seconds": 77.89938831329346, "sha256": "bb5f0a02e7211802b02e926a1506c210c43cefcf2bdcfd5408b4b245adcd62a9"}
-
-准备中曾把共享法律条款的重复误当成整篇文档来源证据，导致过度删除。已在分配GPU之前修正：只有唯一映射到原始文档的受保护句对才触发整篇排除，共享模板仍进行句对层面隔离。初版结果和修正记录均保留。
+Additional OpenSubtitles18 raw scan {"UTC": "2026-11-19T11:35:21.822814+00:00", "counts": {"raw": 1569189, "length_ratio": 638890, "known_encoding_OCR": 714183, "sentence_punctuation_mismatch": 38638, "negative_anchor": 1543, "protected_copy_or_group": 15856, "initial_lower": 4513, "metadata": 214, "incomplete_boundary": 7588, "numeric_mismatch_conservative": 2612, "duplicate": 11068, "isolated_letters": 140, "script_control": 13, "LID": 27122, "near_protected": 114}, "rows": 52764, "target_tokens": 937346, "seconds": 77.89938831329346, "sha256": "bb5f0a02e7211802b02e926a1506c210c43cefcf2bdcfd5408b4b245adcd62a9"}
 
 Preparation initially over-excluded documents by treating shared legal boilerplate as document identity evidence. This was repaired before GPU allocation: only uniquely mapped protected sentences trigger full-document exclusion; shared templates still receive pair-level isolation. The initial results and repair record are preserved.
 
-Historical role repair / 历史来源角色修正: {"UTC": "2026-11-19T11:45:41.639186+00:00", "before_GPU": true, "automatic_pool_sha256": "5a473fbd0adc64c11fbb54a2bd64bdb58dd9a079fbcc7b4e22f4f724da2a12df", "automatic_pool_rows": 17291, "old_holdout_sources": 49367, "new_holdout_sources": 33422, "removed_automatic_only_sources": 17128, "new_extra_review_sources": 1183, "removed_automatic_only_references": 17129, "initial_official_and_legacy_holdout_sources_preserved": 31447, "all_actual_review_cards_preserved": true, "reason": "accepted_pre_review.jsonl is the full automatically filtered candidate pool, not inspected cards or an evaluation set. Confirmed in n8 preparation/post_review scripts; actual32 post_review_cards remain protected. Old P11 reports are preserved, not rewritten."}
-
-另外发现 accepted_pre_review.jsonl 是完整的自动候选池，不是实际审查卡或评估集。按生成代码证据修正了这一历史分类错误；所有原有非自动池保护项、官方留出样本及实际审查卡继续保留。该修正发生在 GPU 评分之前，没有改动旧审查标签或旧报告。
+Historical role repair {"UTC": "2026-11-19T11:45:41.639186+00:00", "before_GPU": true, "automatic_pool_sha256": "5a473fbd0adc64c11fbb54a2bd64bdb58dd9a079fbcc7b4e22f4f724da2a12df", "automatic_pool_rows": 17291, "old_holdout_sources": 49367, "new_holdout_sources": 33422, "removed_automatic_only_sources": 17128, "new_extra_review_sources": 1183, "removed_automatic_only_references": 17129, "initial_official_and_legacy_holdout_sources_preserved": 31447, "all_actual_review_cards_preserved": true, "reason": "accepted_pre_review.jsonl is the full automatically filtered candidate pool, not inspected cards or an evaluation set. Confirmed in n8 preparation/post_review scripts; actual32 post_review_cards remain protected. Old P11 reports are preserved, not rewritten."}
 
 accepted_pre_review.jsonl was also identified as a full automatic candidate pool, not actual review cards or an evaluation set. Its historical role was corrected using the producing-code evidence. All prior non-automatic protection entries, official holdouts and actual reviewed cards remain protected. The correction preceded GPU scoring and did not modify old labels or reports.
 
-| 阶段 / Stage | 句对 / Pairs |
+| Stage | Pairs |
 | --- | --- |
 | Initial source reservoir, before additional expansion | 177829 |
 | Combined candidates, final GPU scoring pass | 220218 |
@@ -79,16 +67,16 @@ accepted_pre_review.jsonl was also identified as a full automatic candidate pool
 | Automatic alignment rejected | 111623 |
 | Final after audit isolation/document cap | 100642 |
 
-Additional fixed-threshold expansion / 固定阈值扩充: {"UTC": "2026-11-19T12:01:29.495466+00:00", "added_rows": 65104, "added_target_tokens": 1887305, "added_by_stratum": {"general": 31651, "technical_medium": 8354, "technical_short": 25099}, "combined_rows": 220218, "combined_target_tokens": 8828958, "counts": {"raw_OpenSubtitles18": 1569189, "duplicate_or_protected": 78941, "known_encoding_OCR": 681733, "length_ratio": 109479, "sentence_punctuation_mismatch": 43391, "negative_anchor": 2432, "initial_lower": 13935, "metadata": 480, "incomplete_boundary": 113255, "numeric_mismatch_conservative": 7702, "identifier_guard": 618, "isolated_letters": 2411, "script_control": 764, "raw_eea": 3418465, "glued_word": 65, "missing_legal_citation": 10, "raw_ema": 405088, "drug_anchor": 27, "LID": 48663, "near_protected": 261}, "seconds": 181.12802290916443}
+Additional fixed-threshold expansion {"UTC": "2026-11-19T12:01:29.495466+00:00", "added_rows": 65104, "added_target_tokens": 1887305, "added_by_stratum": {"general": 31651, "technical_medium": 8354, "technical_short": 25099}, "combined_rows": 220218, "combined_target_tokens": 8828958, "counts": {"raw_OpenSubtitles18": 1569189, "duplicate_or_protected": 78941, "known_encoding_OCR": 681733, "length_ratio": 109479, "sentence_punctuation_mismatch": 43391, "negative_anchor": 2432, "initial_lower": 13935, "metadata": 480, "incomplete_boundary": 113255, "numeric_mismatch_conservative": 7702, "identifier_guard": 618, "isolated_letters": 2411, "script_control": 764, "raw_eea": 3418465, "glued_word": 65, "missing_legal_citation": 10, "raw_ema": 405088, "drug_anchor": 27, "LID": 48663, "near_protected": 261}, "seconds": 181.12802290916443}
 
-| 分层 / Stratum | 最终独立句对 / Pairs | 独立目标token / Target tokens |
+| Stratum | Pairs | Target tokens |
 | --- | --- | --- |
 | general | 30488 | 523290 |
 | technical_short | 23455 | 691395 |
 | technical_medium | 41440 | 2760206 |
 | technical_long | 5259 | 773453 |
 
-| 子语料 / Subcorpus | 最终独立句对 / Pairs | 独立目标token / Target tokens |
+| Subcorpus | Pairs | Target tokens |
 | --- | --- | --- |
 | OpenSubtitles18 | 26278 | 419248 |
 | eea | 9651 | 761600 |
@@ -98,19 +86,15 @@ Additional fixed-threshold expansion / 固定阈值扩充: {"UTC": "2026-11-19T1
 | tatoeba | 3450 | 68969 |
 | ted2020 | 391 | 15800 |
 
-技术短句≤12个英文词，中句13–40词，长句41–120词；general按来源分类，不按同一长度阈值切分。EEA/EMA/ESO 是来源对应的粗领域标签，不能据此声称所有技术领域都覆盖充分。目标 token 使用固定 Qwen tokenizer，包含 EOS，不是 LaBSE token 或总训练 token。
-
 Technical short/mid/long means≤12,13–40,41–120 English words; general is source-classified. EEA/EMA/ESO domain labels are coarse provenance labels and do not prove coverage of every technical field. Target counts use the fixed Qwen tokenizer including EOS, not LaBSE tokens or total input tokens.
 
 Final exclusions: {"reviewed_original_document": 5806, "reviewed_exact_alias": 208, "ambiguous_flattened_scientific_exponent": 43, "explicit_numeric_comparator_disagreement": 15, "explicit_oral_route_unverified": 16, "explicit_intravenous_route_unverified": 3, "clear_target_OCR_token_g\u00f6gning": 1, "clear_target_OCR_token_betta": 6, "document_cap": 0}; source-group types: {"100_adjacent_TMX_records_proxy_NOT_document_ID": 63512, "original_document_ID": 10852, "document_pair": 26278}
 
-## 3. GPU 评分、校准与局限 / GPU scoring, calibration and limitations
+## GPU scoring, calibration and limitations
 
-![过滤、盲审与数据暴露预览 / Filtering, blinded audit and exposure preview](filter_summary.png)
+![Filtering, blinded audit and exposure preview](filter_summary.png)
 
 Encoder: sentence-transformers/LaBSE · revision 836121a0533e5664b21c7aacc5d22951f2b8b25b
-
-LaBSE 是辅助的数据匹配编码器，主模型仍为通用 Qwen。对归一化的英文和冰岛语向量计算余弦相似度；margin 为该相似度除以双向各4个最近邻相似度均值的平均值。最近邻搜索在本轮候选与校准集合中全局精确计算，包含句对自身，不是对所有原始语料的全局搜索。
 
 LaBSE is an auxiliary alignment encoder; the actor remains general-purpose Qwen. Cosine is computed between normalized English/Icelandic embeddings. Ratio margin divides pair similarity by the average of the two directional top4-neighbour means. Search is exact within this scoring candidate/calibration pool, including the paired example; it is not a search over every raw corpus record.
 
@@ -120,11 +104,9 @@ Expanded-pool diagnostic with unchanged phase1 thresholds: {"AC_total": 349, "R_
 
 Development best grid cell: {"cosine": 0.85, "margin": 1.02, "AC_total": 349, "R_total": 34, "AC_retained": 222, "R_retained": 12, "AC_retention": 0.6361031518624641, "R_rejection": 0.6470588235294117, "balanced_accuracy": 0.641580987695938}
 
-旧400条只用于开发校准：A/C视为可用，R视为明显问题，U不用于拟合；按平衡准确率选择，要求至少保留60%的A/C。分数越高不是译文必然正确：数字、否定、术语、完整性和同主题错译仍可能漏检。旧400的拟合指标不是独立验证，也不能证明新来源的过滤准确率。
-
 The old400 are development calibration only: A/C usable, R clear defects, U omitted. Selection maximizes balanced accuracy subject to retaining≥60% of A/C. High scores do not guarantee correct numbers, polarity, terminology or completeness; same-topic mistranslations can survive. Fitted development metrics are not independent validation or new-source filtering accuracy.
 
-| 数值核查 / Numerical check | 结果 / Result |
+| Numerical check | Result |
 | --- | --- |
 | FP16-vs-FP32 max embedding1−cos | 3.5762786865234375e-07 |
 | FP16 matrix max absolute error | 0.00030994415283203125 |
@@ -133,13 +115,11 @@ The old400 are development calibration only: A/C usable, R clear defects, U omit
 | Shuffled mismatch cosine quantiles | [-0.01824025623500347, 0.18752069398760796, 0.3513312041759491, 0.5087137222290038, 0.7481249570846558] |
 | Peak allocated CUDA GB | 4.607678464 |
 
-## 4. 新抽检结果及处理 / Fresh audit and disposition
-
-分数对逐条审查隐藏。接受池按4层各50条，共200条；拒绝池各层10条，共40条，仅作漏删诊断。A=忠实可用，C=轻微表达/风格问题但主要意义保留，R=明确错配/重要语义缺失，U=无法自信判断。由同一助手进行辅助审查，未经过冰岛语母语专家认证。
+## Fresh audit and disposition
 
 Scores were hidden during item review. The accepted pool contributes50 items per stratum,200 total; the rejected pool10 per stratum,40 total, for false-exclusion diagnostics. A=faithful/usable; C=minor wording/style issues with main meaning retained; R=clear mismatch/material omission; U=uncertain. Review is assisted by the same AI assistant, without native-Icelandic expert certification.
 
-| 分层 / Stratum | n | A/C/R/U |
+| Stratum | n | A/C/R/U |
 | --- | --- | --- |
 | general | 50 | {"A": 38, "C": 11, "R": 1} |
 | technical_short | 50 | {"A": 44, "C": 5, "U": 1} |
@@ -150,21 +130,17 @@ Rejected diagnostic40: {"C": 13, "A": 19, "R": 5, "U": 3}
 
 Supplementary small-source coverage audit: {"UTC": "2026-11-19T12:16:26.119997+00:00", "n": 17, "counts": {"C": 7, "A": 7, "R": 3}, "strata": {"general": {"n": 14, "counts": {"C": 4, "A": 7, "R": 3}}, "technical_short": {"n": 0, "counts": {}}, "technical_medium": {"n": 2, "counts": {"C": 2}}, "technical_long": {"n": 1, "counts": {"C": 1}}}, "cards_sha256": "030a50a3ddda23ef4244989c9bdfa85711e81440a0b0e349b9b182c8122eb3c3", "labels_sha256": "6423ca51e4d0f9d7c75283c532d5b259d0e58e0449968a67a13b0f889aabd07a", "scorer_values_hidden_during_review": true, "not_native_certification": true}
 
-分层样本不是全池简单随机样本；200条的未加权错误比例不能直接当作全池错误率。已审查样本及可追溯的同文档样本从最终训练池隔离，原抽检错误仍保留在报告；移除已发现问题并不等于剩余数据已证明零错误。拒绝样本中的好译文也保留，显示过滤会损失部分有效数据。
-
 This stratified sample is not a simple random sample of the full pool; its unweighted error fraction is not a population noise estimate. Reviewed examples and traceable shared documents are isolated from final training, while original audit errors remain reported. Removing observed defects does not prove zero remaining errors. Good rejected translations are also retained in the audit to show lost useful data.
 
-QA decision: {"UTC": "2026-11-19T12:17:32.862656+00:00", "recommended_for_SFT": true, "excluded_subcorpora": ["norden"], "reason_zh": "200条新接受样本中188条A/C、6条明确问题、6条待核；17条小来源补充审查暴露NORDEN截断标题与不同政策主体被合并的问题。NORDEN仅5条样本，不能估计精确噪声率，但不作为主训练监督；其他来源没有发现同类集中性严重问题。移除全部审查样本/可追溯同文档并对明确OCR、显式给药途径、比较符冲突和科学记数法疑点做全局隔离。残留噪声与非母语审查局限照实保留。", "reason_en": "Fresh accepted audit:188A/C,6R,6U. Supplementary small-source audit found NORDEN truncated titles and conflation of distinct policy subjects. Its5reviewed items do not estimate a precise source error rate; conservatively leave NORDEN out of primary SFT. No similar concentration of severe defects was established elsewhere. Isolate all reviewed records/traceable documents and quarantine clear OCR, explicit route omissions, comparator conflicts and ambiguous flattened scientific notation. Residual noise and non-native review limits remain.", "postreview_rules_sha256": "26308faf301d8165df9709a00de53ee383ca8b04e45d72b62bb3e8481e5b79a0", "global_quarantine_counts": {"ambiguous_flattened_scientific_exponent": 43, "explicit_numeric_comparator_disagreement": 15, "explicit_oral_route_unverified": 16, "explicit_intravenous_route_unverified": 3, "clear_target_OCR_token_gögning": 1, "clear_target_OCR_token_betta": 6}, "rules_do_not_repair_text": true, "pre_quarantine_audit_labels_unchanged": true, "recommended_exposure_fractions": {"general": 0.25, "technical_short": 0.2, "technical_medium": 0.3, "technical_long": 0.25}, "original_exposure_fractions": {"general": 0.3, "technical_short": 0.15, "technical_medium": 0.3, "technical_long": 0.25}, "mixture_revision_zh": "剔除NORDEN后将5个百分点的general目标token预算转给高质量技术短句；general+技术短仍为45%，技术中长仍为55%。保留原30/15/30/25预览并如实报告其4M预算的缺口。推荐25/20/30/25是尚未执行的训练建议，未降低数据质量阈值。", "mixture_revision_en": "After excluding NORDEN, shift5percentage points of general target-token exposure to technical short. General+short remains45%, technical mid+long55%. Preserve original30/15/30/25 previews and report their4M gap. Recommended25/20/30/25 is an unexecuted data-availability-driven training proposal, not a relaxed quality threshold.", "evidence_limitations": "Same-assistant AI-assisted review, not native certification. Some R/U technical judgments are contestable. New global rules were motivated by this audit, so this audit is not independent certification of the post-rule pool. Removing known cases cannot establish zero remaining errors."}
+QA decision: {"UTC": "2026-11-19T12:17:32.862656+00:00", "recommended_for_SFT": true, "excluded_subcorpora": ["norden"], "reason_zh": "Of200new accepted cases,188are A/C, six have clear problems and six need review. A17-case small-source supplement reveals truncated NORDEN titles and merged policy actors. Five NORDEN cases cannot estimate its precise noise rate, but NORDEN is excluded from primary supervision; other sources show no comparable concentration of severe defects. Isolate all reviewed cases/traceable documents plus clear OCR, administration-route, comparator and scientific-notation conflicts. Retain residual-noise and non-native-review limitations.", "reason_en": "Fresh accepted audit:188A/C,6R,6U. Supplementary small-source audit found NORDEN truncated titles and conflation of distinct policy subjects. Its5reviewed items do not estimate a precise source error rate; conservatively leave NORDEN out of primary SFT. No similar concentration of severe defects was established elsewhere. Isolate all reviewed records/traceable documents and quarantine clear OCR, explicit route omissions, comparator conflicts and ambiguous flattened scientific notation. Residual noise and non-native review limits remain.", "postreview_rules_sha256": "26308faf301d8165df9709a00de53ee383ca8b04e45d72b62bb3e8481e5b79a0", "global_quarantine_counts": {"ambiguous_flattened_scientific_exponent": 43, "explicit_numeric_comparator_disagreement": 15, "explicit_oral_route_unverified": 16, "explicit_intravenous_route_unverified": 3, "clear_target_OCR_token_gögning": 1, "clear_target_OCR_token_betta": 6}, "rules_do_not_repair_text": true, "pre_quarantine_audit_labels_unchanged": true, "recommended_exposure_fractions": {"general": 0.25, "technical_short": 0.2, "technical_medium": 0.3, "technical_long": 0.25}, "original_exposure_fractions": {"general": 0.3, "technical_short": 0.15, "technical_medium": 0.3, "technical_long": 0.25}, "mixture_revision_zh": "After removing NORDEN, move five percentage points of general target-token budget to high-quality technical short sentences. General+technical-short remains45%; technical medium/long remains55%. Preserve the original30/15/30/25 preview and disclose its4M-budget shortfall. Recommended25/20/30/25 is an unexecuted training proposal, without relaxed quality thresholds.", "mixture_revision_en": "After excluding NORDEN, shift5percentage points of general target-token exposure to technical short. General+short remains45%, technical mid+long55%. Preserve original30/15/30/25 previews and report their4M gap. Recommended25/20/30/25 is an unexecuted data-availability-driven training proposal, not a relaxed quality threshold.", "evidence_limitations": "Same-assistant AI-assisted review, not native certification. Some R/U technical judgments are contestable. New global rules were motivated by this audit, so this audit is not independent certification of the post-rule pool. Removing known cases cannot establish zero remaining errors."}
 
-Post-review global quarantine / 审查后全局隔离: {"ambiguous_flattened_scientific_exponent": 43, "explicit_numeric_comparator_disagreement": 15, "explicit_oral_route_unverified": 16, "explicit_intravenous_route_unverified": 3, "clear_target_OCR_token_gögning": 1, "clear_target_OCR_token_betta": 6}
-
-小来源NORDEN不进入主训练池，清晰的OCR、给药途径遗漏、数字比较符冲突和科学记数法疑点另行隔离；没有猜测修改译文。规则由本次审查触发，因此审查指标不是这些后续规则的独立验证。
+Post-review global quarantine {"ambiguous_flattened_scientific_exponent": 43, "explicit_numeric_comparator_disagreement": 15, "explicit_oral_route_unverified": 16, "explicit_intravenous_route_unverified": 3, "clear_target_OCR_token_gögning": 1, "clear_target_OCR_token_betta": 6}
 
 NORDEN is excluded from primary training; clear OCR, explicit route omissions, comparator conflicts and ambiguous scientific notation are separately quarantined without guessed text repair. These rules were motivated by this audit, so the audit is not independent validation of the post-rule pool.
 
-## 5. 训练数据是否够 / Is there enough usable training data?
+## Is there enough usable training data?
 
-| 配比 / Mix | 预览目标token / Requested | 可实现token / Feasible | 独立源文 / Unique sources | 样本暴露 / Exposures | 重复token / Repeat | 最大来源 / Max source |
+| Mix | Requested | Feasible | Unique sources | Exposures | Repeat | Max source |
 | --- | --- | --- | --- | --- | --- | --- |
 | Original30/15/30/25 | 2500000 | 2499887 | 57194 | 70580 | 11.9% | 45.2% |
 | Original30/15/30/25 | 3000000 | 2999967 | 62280 | 85665 | 17.1% | 45.7% |
@@ -175,35 +151,27 @@ NORDEN is excluded from primary training; clear OCR, explicit route omissions, c
 | Recommended25/20/30/25 | 3500000 | 3499896 | 73030 | 95691 | 16.9% | 50.0% |
 | Recommended25/20/30/25 | 4000000 | 3999856 | 76166 | 109988 | 21.9% | 50.0% |
 
-剔除NORDEN后，原30/15/30/25配比在4M预算下一般句不足，缺口原样保留。建议改为general/技术短/中/长25%/20%/30%/25%，将5个百分点转给技术短句；一般句+技术短仍为45%，技术中长仍为55%。每对最多2次，单一来源约不超过50%。这是训练前的数据可用性修订，没有降低质量阈值，也没有执行训练。
-
 After excluding NORDEN, the original30/15/30/25 mix lacks general data at4M; that deficit is preserved. The proposal is25%/20%/30%/25%, shifting5percentage points to technical short. General+short remains45%, mid+long55%; at most2visits per pair and about50% per source. This is a pre-training availability revision, without a relaxed quality threshold or any training execution.
-
-预览区分池中数据量和实际会访问的独立样本数。它不包含真实训练速度：8小时预算内最终跑多少token，仍要由开训后的实测吞吐决定。分层内重放可能早于全池遍历，正式调度须在开训前锁定。
 
 Previews distinguish pool size from distinct examples visited. They do not measure training throughput: actual token consumption within8hours still needs training-time measurement. Within-stratum replay can precede traversal of the entire pool; freeze the final schedule before training.
 
-后续仍应以 A 为保留基线、从独立副本续训，使用 target-only CE；在固定验证集上选检查点，再用独立 G=8 候选与关键语义核查判断是否适合 DAPO。本轮不修改旧 R0，不启动后续训练，也不能解决 MetricX 奖励排序本身的问题。
-
 Future SFT should retain A, train a separate branch with target-only CE, select a checkpoint on a fixed development set, and assess DAPO suitability using independent G=8 candidates and key-meaning audits. This phase neither alters the old R0 nor starts training, and it does not repair MetricX reward ranking.
 
-## 6. 隔离、身份与资源 / Isolation, identity and resources
+## Isolation, identity and resources
 
 Base: Qwen/Qwen2.5-3B-Instruct · aa8e72537993ba99e69dfaafa59ed015b17504d1; A adapter SHA256: 9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199
-
-历史源文/参考精确哈希和5gram/Jaccard≥0.85候选检索保护已复用；匹配到的原始文档编号进一步隔离。EMA、Tatoeba、TED等缺失真实文档编号的来源只保留相邻记录代理，不冒充完整文档去污染。检索式近似重复保护及历史清单都有局限，不能声称排除了所有历史或预训练污染。
 
 Known exact source/reference hashes and retrieved5gram/Jaccard≥.85 protection were reused; recovered original document IDs provide additional isolation. Sources lacking real document IDs, such as EMA/Tatoeba/TED, retain adjacency proxies, not certified document decontamination. Retrieved near-duplicate checks and historical inventories have limitations; complete historical/pretraining decontamination is not claimed.
 
 Resource ledger: {"UTC": "2026-11-19T12:23:47.904649+00:00", "GPU_minutes": 11.262572526931763, "maximum_GPU_hours": 2, "initial_CU": 251.04827779719415, "final_CU": 250.81580857259004, "observed_CU_decrease": 0.23246922460410246, "assigned_runtimes_after": 0, "current_consumption_rate": 0, "actor_updates": 0, "scope": "Filtering only, separately accounted from any later SFT", "all_scores_verified_on_local_and_D": true, "billing_caveat": "Balance decrease is observed account consumption; billing update timing may differ from exact lease time.", "attempts": [{"UTC": "2026-11-19T11:55:01.900108+00:00", "GPU_minutes": 5.10836607615153, "maximum_GPU_hours": 2, "initial_CU": 251.04827779719415, "final_CU": 250.88594847742715, "observed_CU_decrease": 0.1623293197669966, "assigned_runtimes_after": 0, "current_consumption_rate": 0.0, "actor_updates": 0, "scope": "Filtering only, separately accounted from any later SFT", "all_scores_verified_on_local_and_D": true, "billing_caveat": "Balance decrease is observed account consumption; billing update timing may differ from exact lease time."}, {"UTC": "2026-11-19T12:08:52.483543+00:00", "GPU_minutes": 6.154206450780233, "maximum_GPU_hours": 2, "initial_CU": 250.88594847742715, "final_CU": 250.81580857259004, "observed_CU_decrease": 0.07013990483710586, "assigned_runtimes_after": 0, "current_consumption_rate": 0.0, "actor_updates": 0, "scope": "Filtering only, separately accounted from any later SFT", "all_scores_verified_on_local_and_D": true, "billing_caveat": "Balance decrease is observed account consumption; billing update timing may differ from exact lease time."}], "original_GPU_deadline_unchanged": true, "preparation_elapsed_minutes_to_observation": 69.24252685}
 
-Full data verification / 全量数据复核: {"UTC": "2026-11-19T12:24:16.996964+00:00", "checked_unique_rows": 100642, "recomputed_target_tokens": 4748344, "recomputed_prompt_tokens": 6704622, "recomputed_full_tokens": 11452966, "all_pool_source_reference_hashes_recomputed": true, "all_target_and_prompt_token_lengths_recomputed": true, "metadata_repair_did_not_change_text_or_order_or_targets": true, "preview_ids_valid_max_two_visits": true, "parent_A_unchanged": true, "actor_updates": 0, "tokenizer_files_sha256": {"config.json": "eed00b17e22553979d090fa492e587e92885e328914c8e0b0b78f0a0d3576b3b", "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3", "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539", "tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583", "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"}, "transformers": "5.22.1", "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f"}
+Full data verification {"UTC": "2026-11-19T12:24:16.996964+00:00", "checked_unique_rows": 100642, "recomputed_target_tokens": 4748344, "recomputed_prompt_tokens": 6704622, "recomputed_full_tokens": 11452966, "all_pool_source_reference_hashes_recomputed": true, "all_target_and_prompt_token_lengths_recomputed": true, "metadata_repair_did_not_change_text_or_order_or_targets": true, "preview_ids_valid_max_two_visits": true, "parent_A_unchanged": true, "actor_updates": 0, "tokenizer_files_sha256": {"config.json": "eed00b17e22553979d090fa492e587e92885e328914c8e0b0b78f0a0d3576b3b", "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3", "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539", "tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583", "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"}, "transformers": "5.22.1", "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f"}
 
-Prompt-length metadata repair / 提示词长度元数据修复: {"UTC": "2026-11-19T12:21:49.432510+00:00", "cause": "Local Transformers apply_chat_template(tokenize=True) returns BatchEncoding with2keys, not a flat token-ID list; len() counted dictionary keys.", "transformers": "5.22.1", "fix": "Render chat template to text, then explicitly use tokenizer(...)[input_ids]. Recount every candidate prompt; keep source/reference, target lengths, sample order, semantic scores and thresholds unchanged.", "candidate_prompts_recomputed": 220218, "minimum_prompt_tokens": 47, "maximum_prompt_tokens": 268, "actual_length_limit_violations": 0, "patched_producing_code": ["p12_build.py", "p12_build_v2.py", "p12_expand_candidates.py", "p12_expand_general.py", "p12_rebuild_cached.py"], "old_frozen_metadata_preserved": "D:\\deep learning project\\experiments\\r0_gpu_data_filter_2026-11-19\\data\\before_prompt_metadata_API_fix", "actor_updates": 0}
+Prompt-length metadata repair {"UTC": "2026-11-19T12:21:49.432510+00:00", "cause": "Local Transformers apply_chat_template(tokenize=True) returns BatchEncoding with2keys, not a flat token-ID list; len() counted dictionary keys.", "transformers": "5.22.1", "fix": "Render chat template to text, then explicitly use tokenizer(...)[input_ids]. Recount every candidate prompt; keep source/reference, target lengths, sample order, semantic scores and thresholds unchanged.", "candidate_prompts_recomputed": 220218, "minimum_prompt_tokens": 47, "maximum_prompt_tokens": 268, "actual_length_limit_violations": 0, "patched_producing_code": ["p12_build.py", "p12_build_v2.py", "p12_expand_candidates.py", "p12_expand_general.py", "p12_rebuild_cached.py"], "old_frozen_metadata_preserved": "D:\\deep learning project\\experiments\\r0_gpu_data_filter_2026-11-19\\data\\before_prompt_metadata_API_fix", "actor_updates": 0}
 
-## 7. 文件、复现与主要来源 / Artifacts, reproduction and primary sources
+## Artifacts, reproduction and primary sources
 
-| 内容 / Content | 路径 / Path |
+| Content | Path |
 | --- | --- |
 | Protocol | D:\deep learning project\experiments\r0_gpu_data_filter_2026-11-19\protocol.json |
 | Final input/source bundle | D:\deep learning project\experiments\r0_gpu_data_filter_2026-11-19\source_bundle_final.zip |
@@ -217,13 +185,13 @@ Prompt-length metadata repair / 提示词长度元数据修复: {"UTC": "2026-11
 | Code | D:\deep learning project\experiments\r0_gpu_data_filter_2026-11-19\execution_tools |
 | Original A | D:\deep learning project\runs\r0_3b_overnight_2026-11-18\final_selected_adapter |
 
-下一轮数据交接 / Next SFT data handoff: D:\deep learning project\experiments\r0_gpu_data_filter_2026-11-19\NEXT_SFT_DATA_HANDOFF_2026-11-19.md
+Next SFT data handoff: D:\deep learning project\experiments\r0_gpu_data_filter_2026-11-19\NEXT_SFT_DATA_HANDOFF_2026-11-19.md
 
 [Official ParIce21.10 training release](https://repository.clarin.is/repository/xmlui/handle/20.500.12537/145) · CC BY4.0 · Steinþór Steingrímsson and Starkaður Barkarson. Source archive: 160ace03532e5aa5b96f77d27e09de1852ffa9721b71e7fa7d2885bcea75b9dc
 
 [LaBSE official model card](https://huggingface.co/sentence-transformers/LaBSE) and [LaBSE paper](https://aclanthology.org/2022.acl-long.62/) support the auxiliary bilingual encoder choice; [margin-based corpus mining](https://aclanthology.org/P19-1309/) motivates the neighbourhood ratio. These sources do not validate our specific thresholds or guarantee Icelandic factual fidelity.
 
-## 8. 全部逐条审查 / Complete item-level audit
+## Complete item-level audit
 
 <details><summary>fresh200 #0 · A · general · OpenSubtitles18</summary>
 
@@ -233,7 +201,7 @@ English: Now, then, where's the ruby, Rita?
 
 Icelandic reference: Jæja, hvar er rúbíninn, Ríta?
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -245,7 +213,7 @@ English: You do realize that.
 
 Icelandic reference: Þú áttar þig á því.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -257,7 +225,7 @@ English: You want to give it to me?
 
 Icelandic reference: Viltu láta mig hafa hana?
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -269,7 +237,7 @@ English: Schmidt yelled at me earlier.
 
 Icelandic reference: Schmidt öskraði á mig áðan.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -281,7 +249,7 @@ English: You're still in there, aren't you?
 
 Icelandic reference: Þú ert enn þarna inni, er það ekki?
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -293,7 +261,7 @@ English: Who is she, anyway?
 
 Icelandic reference: Hver er hún eiginlega?
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -305,7 +273,7 @@ English: - What kind of species?
 
 Icelandic reference: - Hvers konar tegund?
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -317,7 +285,7 @@ English: Still you're here in Dodson.
 
 Icelandic reference: Samt ertu hér í Dodson.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -329,7 +297,7 @@ English: Rich girls don't marry poor boys!
 
 Icelandic reference: Ríkar stelpur giftast ekki fátækum strákum!
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -341,7 +309,7 @@ English: Well, I'm rooming with her old roommate, Magenta Hart.
 
 Icelandic reference: Ég er hjá gömlum herbergis- félaga hennar, Magentu Hart.
 
-Review / 审查: Rooming with the former roommate is retained, but herbergis- felaga has a subtitle line-break hyphen artifact.
+Review
 
 </details>
 
@@ -353,7 +321,7 @@ English: Why did you not say before?
 
 Icelandic reference: -Því sagðirðu það ekki fyrr?
 
-Review / 审查: Intended why-not-earlier question is apparent; initial Því appears to be a local Hví/Því spelling or OCR issue.
+Review
 
 </details>
 
@@ -365,7 +333,7 @@ English: It's the only life I know.
 
 Icelandic reference: Það er eina lífið sem ég þekki.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -377,7 +345,7 @@ English: And my dear nephew, Henry Nobley.
 
 Icelandic reference: Og kær frændi minn, Henry Nobley.
 
-Review / 审查: Henry and the kinship relation are retained, but frændi is broader than the explicit nephew relation.
+Review
 
 </details>
 
@@ -389,7 +357,7 @@ English: You have secured a great victory for your cause today.
 
 Icelandic reference: Þú hefur tryggt málstað þínum mikinn sigur í dag.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -401,7 +369,7 @@ English: - Did you see that?
 
 Icelandic reference: - Sástu þetta?
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -413,7 +381,7 @@ English: -What did I do to your feelings?
 
 Icelandic reference: -Hvað gerði ég tilfinningum þínum?
 
-Review / 审查: Literal, awkward wording about what was done to the addressee's feelings; main question remains recognizable.
+Review
 
 </details>
 
@@ -425,7 +393,7 @@ English: Who the hell is Daryl Gates?
 
 Icelandic reference: Hver í fjandanum er Daryl Gates?
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -437,7 +405,7 @@ English: - I don't know what he looks like.
 
 Icelandic reference: Ég veit ekki hvernig hann lítur út.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -449,7 +417,7 @@ English: We're gonna get on the floor.
 
 Icelandic reference: Við ætlum niður á gólf.
 
-Review / 审查: Getting onto the floor is rendered as going down onto the floor; minor contextual phrasing difference.
+Review
 
 </details>
 
@@ -461,7 +429,7 @@ English: - You weren't that sick after all.
 
 Icelandic reference: - Svo veikur varstu nú ekki.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -473,7 +441,7 @@ English: Takeshi hopes to go to London to study English.
 
 Icelandic reference: Takeshi vonast til að fara til London til að læra ensku.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -485,7 +453,7 @@ English: You ain't gonna talk to me?
 
 Icelandic reference: Ætlarðu ekki að tala við mig?
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -497,7 +465,7 @@ English: What about this boyfriend...
 
 Icelandic reference: Hvað um þennan kærasta...
 
-Review / 审查: Both sides are the same unfinished boyfriend question; faithful fragment, less desirable standalone style.
+Review
 
 </details>
 
@@ -509,7 +477,7 @@ English: It is no wonder that she was given the prize.
 
 Icelandic reference: Það er engin furða að hún hafi fengið verðlaunin.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -521,7 +489,7 @@ English: I did not know this.
 
 Icelandic reference: Þetta vissi ég ekki.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -533,7 +501,7 @@ English: We must protect the children.
 
 Icelandic reference: Við verðum að vernda börnin.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -545,7 +513,7 @@ English: She's the other half of me.
 
 Icelandic reference: Hún er helmingurinn af mér.
 
-Review / 审查: Half-of-me metaphor retained; explicit other is omitted, a mild loss of emphasis rather than a different event.
+Review
 
 </details>
 
@@ -557,7 +525,7 @@ English: Why do you believe you must do anything?
 
 Icelandic reference: Því heldurðu að þú þurfir að gera nokkuð?
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -569,7 +537,7 @@ English: -No, it is locked.
 
 Icelandic reference: Nei, hún er læst.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -581,7 +549,7 @@ English: - Maybe we should get you out of here.
 
 Icelandic reference: - Kannski ættum við að koma þér héðan.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -593,7 +561,7 @@ English: - I told you to water the plants.
 
 Icelandic reference: Ég sagði þér að vökva plönturnar.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -605,7 +573,7 @@ English: The deadline for nominations is Wednesday 13 May.
 
 Icelandic reference: Tilnefningarfrestur er til miðvikudagsins 13. maí.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -617,7 +585,7 @@ English: These are Rhosgobel rabbits.
 
 Icelandic reference: Þetta eru kanínur Rhosgobel.
 
-Review / 审查: Rhosgobel and rabbits retained; place-name construction is awkward but not a material entity omission.
+Review
 
 </details>
 
@@ -629,7 +597,7 @@ English: She is with Eywa now.
 
 Icelandic reference: Nú er hún hjá Eywu.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -641,7 +609,7 @@ English: In England, it rains 200 days out of the year.
 
 Icelandic reference: Á Englandi, rignir 200 daga á ári.
 
-Review / 审查: England and 200 rainy days per year retained; extraneous comma after the introductory phrase.
+Review
 
 </details>
 
@@ -653,7 +621,7 @@ English: I'm going away for a while.
 
 Icelandic reference: Ég ætla burtu um hríð.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -665,7 +633,7 @@ English: I don't want to take any chances.
 
 Icelandic reference: Ég vil ekki taka neina áhættu.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -677,7 +645,7 @@ English: Getting to hell is easy.
 
 Icelandic reference: Það er auðvelt að komast til helvítis.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -689,7 +657,7 @@ English: She's not dead at all.
 
 Icelandic reference: Hún er alls ekki dáin.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -701,7 +669,7 @@ English: - Don't listen to Ben.
 
 Icelandic reference: Ekki hlusta á Ben.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -713,7 +681,7 @@ English: I signed up on Dettifoss.
 
 Icelandic reference: Ég er búinn að ráða mig á Dettifoss.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -725,7 +693,7 @@ English: - It's me, Charles.
 
 Icelandic reference: - Betta er ég, Charles.
 
-Review / 审查: Clear target OCR corruption: Betta instead of Þetta in the introductory pronoun. Do not teach the corrupted function word.
+Review
 
 </details>
 
@@ -737,7 +705,7 @@ English: He is guilty of theft.
 
 Icelandic reference: Hann er sekur um þjófnað.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -749,7 +717,7 @@ English: No, you go with them.
 
 Icelandic reference: Nei, þú verð með þeim.
 
-Review / 审查: Intended instruction to accompany/be with them is apparent, but þú verð is malformed Icelandic and the movement is less explicit.
+Review
 
 </details>
 
@@ -761,7 +729,7 @@ English: They don't even want you in the room.
 
 Icelandic reference: Þeir vilja þig ekki inn í salinn.
 
-Review / 审查: Not wanting the person in the room is retained; even emphasis is omitted.
+Review
 
 </details>
 
@@ -773,7 +741,7 @@ English: I need a volunteer.
 
 Icelandic reference: Mig vantar sjálfboðaliða.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -785,7 +753,7 @@ English: I don't know what I was thinking.
 
 Icelandic reference: Ég veit ekki hvað ég var að hugsa.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -797,7 +765,7 @@ English: The sound woke her up.
 
 Icelandic reference: Hljóðið vakti hana.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -809,7 +777,7 @@ English: The merchants are in the north.
 
 Icelandic reference: Kaupmenn eru fyrir norðan.
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -821,7 +789,7 @@ English: What is this, Bernard?
 
 Icelandic reference: Hvað er þetta, Bernard?
 
-Review / 审查: Main event, entities, polarity and participant roles agree; ordinary Icelandic phrasing preserves the source meaning.
+Review
 
 </details>
 
@@ -833,7 +801,7 @@ English: Insert the needle into the skin.
 
 Icelandic reference: Stingdu nálinni í húðina.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -845,7 +813,7 @@ English: This medicine contains 0.5 mmol potassium per vial.
 
 Icelandic reference: Lyfið inniheldur 0,5 mmól af kalíum í hverju hettuglasi.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -857,7 +825,7 @@ English: All patients were followed for 24 weeks post-treatment.
 
 Icelandic reference: Öllum sjúklingum var fylgt eftir í 24 vikur eftir að meðferð lauk.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -869,7 +837,7 @@ English: Unauthorised disclosure can result in disciplinary sanctions, criminal 
 
 Icelandic reference: Óheimil birting upplýsinga getur leitt til viðurlaga, sakamálarannsókna og refsingar.
 
-Review / 审查: Disclosure, investigations and punishment preserved; sanctions loses the explicit disciplinary qualifier.
+Review
 
 </details>
 
@@ -881,7 +849,7 @@ English: Dexamethasone induces CYP3A4 and may decrease saquinavir concentrations
 
 Icelandic reference: Dexametasón virkjar CYP3A4 og getur dregið úr styrk saquinavír.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -893,7 +861,7 @@ English: These symptoms generally respond to treatment with antihistamines and/o
 
 Icelandic reference: Þessi einkenni svara yfirleitt meðferð með andhistamínlyfjum og/eða barksterum.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -905,7 +873,7 @@ English: The heating can always be restarted.
 
 Icelandic reference: Alltaf er hægt a endurræsa hitarann.
 
-Review / 审查: Restarting heating is preserved; a instead of að is a minor target spelling/diacritic defect.
+Review
 
 </details>
 
@@ -917,7 +885,7 @@ English: Insulin administration may cause anti-insulin antibodies to form.
 
 Icelandic reference: Notkun insúlíns getur valdið því að and-insúlín mótefni myndist.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -929,7 +897,7 @@ English: The Commission shall inform the other Member States of such authorizati
 
 Icelandic reference: Framkvæmdastjórnin tilkynnir hinum aðildarríkjunum um slíkar leyfisveitingar.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -941,7 +909,7 @@ English: Each film-coated tablet contains 5 mg vortioxetine (as hydrobromide).
 
 Icelandic reference: Hver filmuhúðuð tafla inniheldur 5 mg af vortioxetíni (sem hýdróbrómið).
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -953,7 +921,7 @@ English: Treatment with imatinib may then be continued at a reduced daily dose.
 
 Icelandic reference: Þá má halda meðferð með imatinib áfram með minni sólarhringsskömmtum.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -965,7 +933,7 @@ English: It shall apply from 19 December 2009.
 
 Icelandic reference: Hún kemur til framkvæmda frá og með 19. desember 2009.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -977,7 +945,7 @@ English: The following dosage regimens are given as a guideline.
 
 Icelandic reference: Eftirfarandi skammtaáætlanir eru settar fram til leiðbeiningar.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -989,7 +957,7 @@ English: Insulin Human Winthrop Rapid is administered subcutaneously.
 
 Icelandic reference: Insulin Human Winthrop Rapid er gefið undir húð.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1001,7 +969,7 @@ English: Close the bottle with the plastic screw cap after every usage.
 
 Icelandic reference: Lokið flöskunni með plastskrúftappanum eftir hverja notkun.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1013,7 +981,7 @@ English: Each dose will last for 10 minutes.
 
 Icelandic reference: Hver skammtur endist í 10 mínútur.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1025,7 +993,7 @@ English: Reslizumab has a long half-life (see section 5.2).
 
 Icelandic reference: Reslizumab hefur langan helmingunartíma (sjá kafla 5.2).
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1037,7 +1005,7 @@ English: Type 2 diabetes is also called non-insulin-dependent diabetes mellitus,
 
 Icelandic reference: Sykursýki af tegund 2 er einnig kölluð insúlínóháð sykursýki eða NIDDM (non-insulin-dependent diabetes mellitus).
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1049,7 +1017,7 @@ English: No dose adjustment is recommended.
 
 Icelandic reference: Ekki er mælt með skammtaaðlögun.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1061,7 +1029,7 @@ English: Each titration step (dose strength) should be evaluated in several epis
 
 Icelandic reference: Hvert skref í stillingu skammts (styrkleika skammts) ætti að meta í nokkrum köstum.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1073,7 +1041,7 @@ English: Weight gain has been seen in patients taking Olanzapine Teva.
 
 Icelandic reference: Þyngdaraukning hefur sést hjá sjúklingum sem taka Olanzapine Teva.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1085,7 +1053,7 @@ English: If the answer to 1.9.6 is ‘No’, please state the reasons why.
 
 Icelandic reference: Ef svarið við lið 1.9.6 er „nei“ ber að greina frá ástæðum þess.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1097,7 +1065,7 @@ English: Hydrochlorothiazide is not metabolised in man.
 
 Icelandic reference: Hýdróklórtíazíð umbrotnar ekki hjá mönnum.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1109,7 +1077,7 @@ English: These medicines are used to treat serious fungal infections.
 
 Icelandic reference: Slík lyf eru notuð til meðferðar við alvarlegum sveppasýkingum.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1121,7 +1089,7 @@ English: Wait and take or give the next dose at its regular time.
 
 Icelandic reference: Bíddu og taktu eða gefðu næsta skammt á réttum tíma.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1133,7 +1101,7 @@ English: Medicines for Parkinson’s disease (such as levodopa).
 
 Icelandic reference: Lyf við Parkinsons sjúkdómnum (eins og levodópa).
 
-Review / 审查: Faithful medicine-list fragment rather than a complete standalone sentence.
+Review
 
 </details>
 
@@ -1145,7 +1113,7 @@ English: Breast-feeding should be discontinued during treatment with Unituxin.
 
 Icelandic reference: Hætta skal brjóstagjöf meðan á meðferð með Unituxin stendur.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1157,7 +1125,7 @@ English: The total plasma clearance after single intravenous administration is a
 
 Icelandic reference: Heildarplasmaúthreinsun eftir staka gjöf í bláæð er um 917 l/mín.
 
-Review / 审查: Source/reference both state917L/min. Alignment is faithful, but the unusually large clearance may reflect shared upstream numeric corruption; original regulatory source would be needed to certify the value.
+Review: Source/reference both state917L/min. Alignment is faithful, but the unusually large clearance may reflect shared upstream numeric corruption; the original regulatory source is needed to certify it.
 
 </details>
 
@@ -1169,7 +1137,7 @@ English: NexGard tablets are chewable and palatable to most dogs.
 
 Icelandic reference: NexGard töflur eru tyggjanlegar og geðjast flestum hundum að bragðinu.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1181,7 +1149,7 @@ English: Each film-coated tablet contains 103.3 mg lactose.
 
 Icelandic reference: Hver filmuhúðuð tafla inniheldur 103,3 mg laktósa.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1193,7 +1161,7 @@ English: There is no clinical experience with use of Toujeo in pregnant women.
 
 Icelandic reference: Klínísk reynsla af notkun á meðgöngu Toujeo er ekki fyrir hendi.
 
-Review / 审查: Absence of pregnancy-use experience is retained; Toujeo placement produces awkward target word order.
+Review
 
 </details>
 
@@ -1205,7 +1173,7 @@ English: Hence it reduces the amount of acid in your stomach.
 
 Icelandic reference: Þannig dregur það úr magni sýru í maganum.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1217,7 +1185,7 @@ English: In such cases doubling of the daily dose may be necessary.
 
 Icelandic reference: Í þeim tilvikum getur verið nauðsynlegt að tvöfalda dagsskammtinn.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1229,7 +1197,7 @@ English: Immediate hypersensitivity reactions have been reported after administr
 
 Icelandic reference: Greint hefur verið frá bráðum ofnæmisviðbrögðum eftir notkun Enurev Breezhaler.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1241,7 +1209,7 @@ English: Implementing Regulation (EU) 2016/329 should therefore be amended accor
 
 Icelandic reference: Því ætti að breyta framkvæmdarreglugerð (ESB) 2016/329 til samræmis við það.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1253,7 +1221,7 @@ English: Each pack contains one vial with 10 ml of concentrate.
 
 Icelandic reference: Hver pakkning inniheldur eitt hettuglas með 10 ml af þykkni.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1265,7 +1233,7 @@ English: Use within 2 months.
 
 Icelandic reference: Notist innan 2 mánaða.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1277,7 +1245,7 @@ English: One mL of emulsion contains 1 mg of ciclosporin.
 
 Icelandic reference: Einn ml af fleyti inniheldur 1 mg af cíklósporíni (ciclosporin).
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1289,7 +1257,7 @@ English: For storage information, please refer to Section 5 ‘How to store VFEN
 
 Icelandic reference: Leiðbeiningar um geymslu, sjá kafla 5 Hvernig geyma á VFEND.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1301,7 +1269,7 @@ English: Contraindicated due to an increased bleeding risk (see section 4.3).
 
 Icelandic reference: Má ekki nota vegna aukinnar blæðingarhættu (sjá kafla 4.3).
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1313,7 +1281,7 @@ English: The corresponding difference at the 1000 mg twice-daily dose was 25%.
 
 Icelandic reference: Samsvarandi mismunur við notkun á 1000 mg tvisvar á dag var 25%.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1325,7 +1293,7 @@ English: Survival of foetuses and offspring was reduced.
 
 Icelandic reference: Lífslíkur fósturs og afkvæma minnkuðu.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1337,7 +1305,7 @@ English: The other side of the tablet is debossed with the number "7459".
 
 Icelandic reference: Í hina hliðina er grafið númerið „7459“.
 
-Review / 审查: Debossed opposite side and number7459 retained; explicit tablet noun is left to context.
+Review
 
 </details>
 
@@ -1349,7 +1317,7 @@ English: Each transdermal patch contains 36 mg of oxybutynin.
 
 Icelandic reference: Hver forðaplástur inniheldur 36 mg oxybutynins.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1361,7 +1329,7 @@ English: Under no circumstances should Humalog Mix25 be given intravenously.
 
 Icelandic reference: Humalog Mix25 má ekki undir neinum kringumstæðum sprauta í æð.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1373,7 +1341,7 @@ English: Deltyba 50 mg film-coated tablets are round, and yellow.
 
 Icelandic reference: Deltyba 50 mg filmuhúðaðar töflur eru kringlóttar og gular.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1385,7 +1353,7 @@ English: The following risk factors are associated with an increased risk of PML
 
 Icelandic reference: Eftirtaldir áhættuþættir tengjast aukinni hættu á PML-heilabólgu.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1397,7 +1365,7 @@ English: This is the most detailed picture of this object ever taken.
 
 Icelandic reference: Þetta er nákvæmasta mynd sem tekin hefur verið af þessu fyrirbæri.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1409,7 +1377,7 @@ English: After taking your tablet, wait at least 30 minutes.
 
 Icelandic reference: Eftir að þú hefur tekið töfluna skaltu bíða í að minnsta kosti 30 mínútur.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1421,7 +1389,7 @@ English: Peel the paper off of the tray.
 
 Icelandic reference: Fjarlægðu pappírinn af bakkanum.
 
-Review / 审查: Dose, timing, named drug/identifier, modality and main action agree in the source/reference pair.
+Review
 
 </details>
 
@@ -1433,7 +1401,7 @@ English: Increases of approximately 10% in the QT interval of the ECG were obser
 
 Icelandic reference: Vart varð við um 10 % aukningu á QT bili á hjartarafriti (ECG) í rannsókn á heilbrigðum hundum af beagle kyni sem fengu 8 mg/kg, en ekki er líklegt að slík aukning hafi klíníska þýðingu.
 
-Review / 审查: The oral administration route is omitted; dose and species match, but route is a material medical qualifier.
+Review
 
 </details>
 
@@ -1445,7 +1413,7 @@ English: Population pharmacokinetic analysis indicated that oral antidiabetics, 
 
 Icelandic reference: Þýðisgreining á lyfjahvörfum bentu til þess að sykursýkilyf til inntöku, þvagræsilyf, insúlín, fenóbarbital, tíagabín og tópíramat hefðu engin klínískt marktæk áhrif á úthreinsun pregabalíns.
 
-Review / 审查: Drug list, absent clinically significant effect and pregabalin clearance match; minor subject/verb agreement issue.
+Review
 
 </details>
 
@@ -1457,7 +1425,7 @@ English: If your dose is 100 mg, you will get two 50 mg pre-filled pens and you 
 
 Icelandic reference: Ef skammturinn sem þú átt að fá er 100 mg, muntu fá tvo 50 mg áfyllta lyfjapenna og þú munt þurfa að gefa þér tvær inndælingar.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1469,7 +1437,7 @@ English: This is to check that you are being given the right amount of this medi
 
 Icelandic reference: Þetta er til þess að tryggja að þú sért að fá réttan skammt af lyfinu.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1481,7 +1449,7 @@ English: There are limited data available about the use of Cyramza in patients w
 
 Icelandic reference: Takmarkaðar upplýsingar liggja fyrir um notkun Cyramza hjá sjúklingum með alvarlega skerta nýrnastarfsemi.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1493,7 +1461,7 @@ English: All main fields and statistical themes of the Community statistical pro
 
 Icelandic reference: Öll meginsvið og hagskýrsluefnissvið í hagskýrsluáætlun bandalagsins 2008 til 2012 teljast skipta máli fyrir hagskýrslusamstarf EES og geta EFTA-ríkin tekið fullan þátt í þeim.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1505,7 +1473,7 @@ English: The first 77 patients were started at 400 mg, the protocol was subseque
 
 Icelandic reference: Fyrstu 77 sjúklingarnir byrjuðu á 400 mg, síðan var rannsóknaráætlun breytt til að leyfa stærri skammta og þeir 158 sjúklingar sem eftir voru byrjuðu á 600 mg.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1517,7 +1485,7 @@ English: It is suggested that the initial administrations of factor IX should, a
 
 Icelandic reference: Ráðlagt er að gefa fyrstu skammta af storkuþætti IX undir eftirliti læknis og við aðstæður þar sem hægt er að beita viðeigandi meðferð við ofnæmisviðbrögðum samkvæmt mati þess læknis sem veitir meðferðina.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1529,7 +1497,7 @@ English: The European Medicines Agency has waived the obligation to conduct stud
 
 Icelandic reference: Lyfjastofnun Evrópu hefur fallið frá kröfum um að lagðar verði fram niðurstöður úr rannsóknum á ZALTRAP hjá öllum undirhópum barna með kirtilkrabbamein í ristli og endaþarmi (sjá upplýsingar í kafla 4.2 um notkun handa börnum).
 
-Review / 审查: The source waives conducting studies; the reference instead waives submitting study results. These are distinct regulatory obligations.
+Review
 
 </details>
 
@@ -1541,7 +1509,7 @@ English: There were no reports of severe (Grade 3 or 4) AST or ALT elevation.
 
 Icelandic reference: Ekki var greint frá neinum verulegum (3. eða 4. stigs) hækkunum á AST eða ALT.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1553,7 +1521,7 @@ English: The safety and efficacy of Bronchitol in children aged less than 6 year
 
 Icelandic reference: Ekki hefur verið sýnt fram á öryggi og verkun Bronchitol hjá börnum yngri en 6 ára.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1565,7 +1533,7 @@ English: The metabolism of valdecoxib may increase when co-administered with enz
 
 Icelandic reference: Vera má að umbrot valdecoxibs aukist við samtímis notkun ensímhvetjandi lyfja, til dæmis rifampicins, phenytoins, carbamazepins og dexamethasons.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1577,7 +1545,7 @@ English: This is unlikely to present a problem with occasional use, but if long-
 
 Icelandic reference: Ólíklegt er að þetta valdi vandræðum við notkun endrum og eins, en þegar langtíma samtímis meðferð með öflugum UGT2B7 hemli er hafin, er ekki hægt að útiloka aukningu á útsetningu fyrir nalmefeni (sjá kafla 4.4).
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1589,7 +1557,7 @@ English: Each pre-filled syringe contains 150 micrograms of corifollitropin alfa
 
 Icelandic reference: Hver áfyllt sprauta inniheldur 150 míkróg corifollitrópín alfa í 0,5 ml stungulyfi, lausn.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1601,7 +1569,7 @@ English: If you have any questions about how Imatinib Accord works or why this m
 
 Icelandic reference: Ef þú hefur einhverjar spurningar um hvernig Imatinib Accord verkar eða hvers vegna þessu lyfi hefur verið ávísað skal leita til læknisins.
 
-Review / 审查: Question and instruction to ask the doctor retained; explicit for-you wording is less direct.
+Review
 
 </details>
 
@@ -1613,7 +1581,7 @@ English: Before August 1996, the identification system for cattle in the United 
 
 Icelandic reference: Fyrir ágúst 1996 var auðkenningarkerfi fyrir nautgripi í Breska konungsríkinu ófullnægjandi til að rekja dýr á áreiðanlegan hátt og auðkenna nákvæmlega aldurshópa dýra sem hafa greinst með riðuveiki.
 
-Review / 审查: Tracing failure is clear, but BSE-specific terminology and the narrower age-cohort rendering require technical confirmation.
+Review
 
 </details>
 
@@ -1625,7 +1593,7 @@ English: Syncope and retinopathy have been reported in some patients taking INCI
 
 Icelandic reference: Greint hefur verið frá yfirliði og sjónukvilla hjá sumum sjúklingum á meðferð með INCIVO og það verður að hafa í huga þegar hæfni sjúklings til aksturs og notkunar véla er metin.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1637,7 +1605,7 @@ English: However it is not clear whether these cases were due to the antiretrovi
 
 Icelandic reference: Hins vegar er ekki ljóst hvort þessi tilfelli stöfuðu af retróveirulyfjameðferðinni eða undirliggjandi HIV-sjúkdómi.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1649,7 +1617,7 @@ English: The use of sevoflurane with nondepolarising muscle relaxants has not be
 
 Icelandic reference: Notkun sevoflurans með vöðvaslakandi lyfjum, sem ekki valda afskautun (nondepolarizing), hefur ekki verið metin hjá hundum.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1661,7 +1629,7 @@ English: If Apidra is mixed with NPH human insulin, Apidra should be drawn into 
 
 Icelandic reference: Ef blanda á Apidra með NPH mannainsúlíni á að draga Apidra fyrst upp í sprautuna.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1673,7 +1641,7 @@ English: Pull back on the pink safety cover toward the syringe and away from the
 
 Icelandic reference: Togið bleiku öryggishlífina aftur á bak í átt að sprautunni og frá nálinni.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1685,7 +1653,7 @@ English: An EFTA State may request the Authority to issue a scientific opinion o
 
 Icelandic reference: EFTA-ríki er heimilt að fara fram á vísindaálit stofnunarinnar á atriðum sem falla undir starfsvið hennar.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1697,7 +1665,7 @@ English: If your doctor considers treatment with methotrexate absolutely necessa
 
 Icelandic reference: Ef læknirinn telur að meðferð með metótrexati sé nauðsynleg meðan á brjóstagjafartímabilinu stendur, þarft þú að hætta brjóstagjöf.
 
-Review / 审查: Need to stop breast-feeding retained; absolutely emphasis on necessity is omitted.
+Review
 
 </details>
 
@@ -1709,7 +1677,7 @@ English: The frequency of the clinical trial adverse reactions reported in exces
 
 Icelandic reference: Tíðni aukaverkana sem oftar var greint frá en fyrir lyfleysu í klínískum rannsóknum og aðrar aukaverkanir sem greint hefur verið frá eftir markaðssetningu eru taldar upp í eftirfarandi töflu.
 
-Review / 审查: Main clinical/regulatory meaning, conditions, entities and numerical details agree.
+Review
 
 </details>
 
@@ -1721,7 +1689,7 @@ English: Development studies in rats and rabbits have shown no evidence of foeta
 
 Icelandic reference: Þroskarannsóknir í rottum og kanínum benda ekki til neinna vanskapandi áhrifa eða breytinga á frjósemi.
 
-Review / 审查: No malformation/fertility effects retained; fetal specificity is implicit in the teratogenic-effect wording.
+Review
 
 </details>
 
@@ -1733,7 +1701,7 @@ English: The text of Regulation (EU) No 195/2013 in the Icelandic and Norwegian 
 
 Icelandic reference: Íslenskur og norskur texti reglugerðar (ESB) 195/2013, sem verður birtur í EES-viðbæti við Stjórnartíðindi Evrópusambandsins, telst fullgiltur.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1745,7 +1713,7 @@ English: Dispose of a used pen after 30 days, even if some medicine remains in t
 
 Icelandic reference: Fargið notuðum lyfjapenna eftir 30 daga, jafnvel þó eitthvert lyf sé eftir í lyfjapennanum.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1757,7 +1725,7 @@ English: A small amount of the ingredients in Triumeq can also pass into your br
 
 Icelandic reference: Lítið magn af innihaldsefnum Triumeq getur einnig borist í brjóstamjólkina.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1769,7 +1737,7 @@ English: If you have Niemann-Pick type C disease, fats such as glycosphingolipid
 
 Icelandic reference: Ef þú ert með Niemann-Pick sjúkdóm af tegund C, safnast fita svo sem glýkóspingólípíð upp í frumum í heilanum.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1781,7 +1749,7 @@ English: The national provisions are general and apply to the uses of SCCPs rega
 
 Icelandic reference: Innlendu ákvæðin eru almenn og gilda um notkun keðjustuttra, klóraðra paraffína hvort sem efnin eru framleidd í Hollandi eða eru innflutt frá öðrum aðildarríkjum.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1793,7 +1761,7 @@ English: The occurrence of these events may be linked to the patients’ disease
 
 Icelandic reference: Hugsanlega má tengja þessi tilvik við þróun sjúkdómsins hjá sjúklingnum.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1805,7 +1773,7 @@ English: The posology is the same in adults and children, however, shorter dose 
 
 Icelandic reference: Skammtarnir eru þeir sömu hjá fullorðnum og börnum en þó getur verið nauðsynlegt að hafa styttra á milli skammta hjá börnum eða gefa þeim stærri skammta.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1817,7 +1785,7 @@ English: It should also allow cooperation between national regulatory authoritie
 
 Icelandic reference: Hann skal einnig stuðla að gagnsæi í samvinnu innlendra stjórnvalda og framkvæmdastjórnarinnar og tryggja þannig samræmda beitingu reglurammans um rafræn fjarskipti og þjónustu í öllum aðildarríkjunum.
 
-Review / 审查: Visible source OCR split appli- cation and slightly broader regulatory-network wording; main cooperation/regulatory purpose is retained.
+Review
 
 </details>
 
@@ -1829,7 +1797,7 @@ English: Please tell your doctor, if you have acute or worsening eye problems su
 
 Icelandic reference: Láttu lækninn vita ef þú ert með bráðan eða versnandi augnkvilla svo sem þokusýn, augnverk, augnroða og/eða mikinn augnþurrk, ef þú hefur áður átt við slík vandamál að stríða eða ef þú notar augnlinsur.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1841,7 +1809,7 @@ English: See Section 2 for important information about the ingredients: sunset y
 
 Icelandic reference: Sjá kafla 2 varðandi mikilvægar upplýsingar um innihaldsefni sem nefnast: sólsetursgult FCF (E110) og allúrarautt AC (E129).
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1853,7 +1821,7 @@ English: It is unknown whether opicapone or its metabolites are excreted in huma
 
 Icelandic reference: Ekki er vitað hvort opicapon eða umbrotsefni þess skiljast út í brjóstamjólk.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1865,7 +1833,7 @@ English: These transitory false-positive results may be due to IgM production in
 
 Icelandic reference: Þessi skammvinnu, röngu jákvæðu niðurstöður geta verið vegna IgM-svörunar af völdum bóluefnisins.
 
-Review / 审查: Transient false-positive IgM response is retained; explicit antibody-production wording is compressed.
+Review
 
 </details>
 
@@ -1877,7 +1845,7 @@ English: Telbivudine monotherapy is not an option for patients with established 
 
 Icelandic reference: Meðferð með telbivudini einu sér er ekki valmöguleiki fyrir sjúklinga með staðfesta lamivudinónæma lifrarbólgu B veirusýkingu.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1889,7 +1857,7 @@ English: The pharmacokinetics of a 20 mg single dose of bazedoxifene were evalua
 
 Icelandic reference: Lyfjahvörf eftir stakan 20 mg skammt af bazedoxífeni voru metin í rannsókn hjá 26 heilbrigðum konum eftir tíðahvörf.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1901,7 +1869,7 @@ English: However a few patients experienced an allergic skin reaction which may 
 
 Icelandic reference: Hins vegar fengu fáeinir sjúklingar ofnæmisviðbrögð í húð, sem geta komið fyrir hjá allt að 1 af hverjum 10 einstaklingum (algeng) á borð við alvarleg útbrot eða kláða.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1913,7 +1881,7 @@ English: During the monotherapy phase, the dose and way you take Temomedac will 
 
 Icelandic reference: Meðan á einlyfjafasa stendur er skammturinn og aðferð við lyfjagjöf Temomedac í þessum fasa frábrugðinn.
 
-Review / 审查: Different dose/administration in monotherapy phase retained; target repeats the phase and has awkward agreement.
+Review
 
 </details>
 
@@ -1925,7 +1893,7 @@ English: A decision must be made whether to discontinue breast-feeding or to dis
 
 Icelandic reference: Ákveða þarf hvort hætta á brjóstagjöf eða meðferð með vemurafenib, að teknu tilliti til ávinnings af brjóstagjöf fyrir barnið og ávinnings af meðferð fyrir móðurina.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1937,7 +1905,7 @@ English: Clinical experience with patients > 80 years of age is limited and caut
 
 Icelandic reference: Klínísk reynsla hjá sjúklingum > 80 ára er takmörkuð og gæta skal varúðar við meðferð þessa hóps.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1949,7 +1917,7 @@ English: For Grade 2 or 3 serum creatinine elevation, nivolumab should be withhe
 
 Icelandic reference: Við 2. eða 3. stigs hækkun á kreatíníni í sermi ætti að fresta gjöf nivolumabs og hefja meðferð með barksterum í skömmtunum 0,5 til 1 mg/kg/sólarhring af jafngildi metýlprednisólons.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1961,7 +1929,7 @@ English: Exelon should not be given at the same time as metoclopramide (a medici
 
 Icelandic reference: Exelon á ekki að nota á sama tíma og metoclopramíð (lyf sem notað er til að draga úr eða koma í veg fyrir ógleði og uppköst).
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1973,7 +1941,7 @@ English: Patients who develop antibodies to exenatide tend to have more injectio
 
 Icelandic reference: Sjúklingar sem mynda mótefni gegn exenatíði eru líklegri til að fá fleiri aukaverkanir á stungustað (til dæmis: roða í húð og kláða), en að öðru leiti með svipað hlutfall og tegundir aukaverkana og þeir sem höfðu engin mótefni gegn exenatíði.
 
-Review / 审查: Comparison and injection-site effects retained; source anti- exenatide split and target leiti spelling are minor artifacts.
+Review
 
 </details>
 
@@ -1985,7 +1953,7 @@ English: This indication is based on safety and efficacy data from two double-bl
 
 Icelandic reference: Ábendingin er byggð á rannsóknarniðurstöðum, varðandi öryggi og verkun, úr tveimur tvíblindum samanburðarrannsóknum með lyfleysu á meðferðarreyndum sjúklingum (sjá kafla 5.1).
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -1997,7 +1965,7 @@ English: Lamivudine is an antiviral agent which is active against hepatitis B vi
 
 Icelandic reference: Lamivúdín er veirulyf sem er virkt gegn lifrarbólgu B veiru í öllum prófuðum frumulínum og í dýrum sem hafa verið sýkt í rannsóknum.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -2009,7 +1977,7 @@ English: As tacrolimus is a substance with low clearance, it may take several da
 
 Icelandic reference: Þar sem takrólímus er efni með litla úthreinsun getur skammtaaðlögun Modigraf tekið nokkra daga áður en jafnvægi er náð (sjá hér fyrir neðan „Eftirlit með læknismeðferð“ og kafla 5.2).
 
-Review / 审查: Main low-clearance/delay-to-steady-state relation retained, but wording attaches the delay to dose adjustment and the monitoring heading is broader.
+Review
 
 </details>
 
@@ -2021,7 +1989,7 @@ English: The texts of Decision 2009/739/EC in the Icelandic and Norwegian langua
 
 Icelandic reference: Íslenskur og norskur texti ákvörðunar 2009/739/EB, sem verður birtur í EES-viðbæti við Stjórnartíðindi Evrópusambandsins, telst fullgiltur.
 
-Review / 审查: Source and reference agree on the main legal/clinical statement, conditions, names and quantities.
+Review
 
 </details>
 
@@ -2033,7 +2001,7 @@ English: Landings at each deck level shall not be less than 2 m2 in area and sha
 
 Icelandic reference: Stigapallar á hverri þilfarshæð skulu ekki vera minni en 2 m2 að flatarmáli og skulu stækkaðir um 1 m2 fyrir hverja 10 menn umfram 20 manns; þeir þurfa þó ekki að vera stærri en 16 m2 nema stigapallar í almennum rýmum þaðan sem gengið er beint að stigaganginum.
 
-Review / 审查: The long source/reference preserve the main clauses, clinical/legal conditions, named entities and quantities.
+Review
 
 </details>
 
@@ -2045,7 +2013,7 @@ English: A statistically significant improvement in OS favouring treatment with 
 
 Icelandic reference: Sýnt var fram á tölfræðilega marktækan árangur á heildarlifun við meðferð með nintedanibi auk docetaxels hjá sjúklingum með kirtilkrabbamein, með 17% lækkun á áhættu á dauða (áhættuhlutfall 0,83, p = 0,0359) og miðgildi árangurs á heildarlifun upp á 2,3 mánuði (10,3 miðað við 12,6 mánuði, mynd 1).
 
-Review / 审查: All survival values and comparisons match; some target wording for median survival improvement is awkward.
+Review
 
 </details>
 
@@ -2057,7 +2025,7 @@ English: They shall not prohibit, restrict or impede the registration, sale, ent
 
 Icelandic reference: Þau skulu ekki banna, takmarka eða hindra að ökutæki, íhlutir eða aðskildar tæknieiningar séu skráðar, seldar, teknar í notkun eða notaðar við akstur á vegum af ástæðum er varða þætti í smíði þeirra og virkni sem þessi tilskipun tekur til ef þau uppfylla kröfur tilskipunarinnar.
 
-Review / 审查: Legal prohibition, conditions and objects match; source compo- nents contains an OCR line-break split.
+Review
 
 </details>
 
@@ -2069,7 +2037,7 @@ English: Occasionally, an infection in the internal portion of the eye, pain or 
 
 Icelandic reference: Einstöku sinnum getur komið fram sýking inni í auganu, verkur eða roði (bólga), los eða rof í einu af lögunum aftast í auganu (sjónulos eða rifur á sjónu og los eða rof á þekjuvef sjónpurpura), eða ský á augasteini (drer) eftir meðferð með Lucentis.
 
-Review / 审查: The long source/reference preserve the main clauses, clinical/legal conditions, named entities and quantities.
+Review
 
 </details>
 
@@ -2081,7 +2049,7 @@ English: For patients currently on a 30 mg dose (for one or more of the followin
 
 Icelandic reference: Sjúklingum sem eru á 30 mg skammti (vegna eins eða fleiri af eftirfarandi klínískum þáttum: miðlungsmikillar eða verulega skertrar nýrnastarfsemi (CrCL 15-50 ml/mín.), lítillar líkamsþyngdar eða notkunar samhliða ákveðnum P-gp hemlum) skal gefa 15 mg skammt af Lixiana einu sinni á sólarhring ásamt viðeigandi skammti af K-vítamínhemli.
 
-Review / 审查: Dose transition and clinical conditions retained; source15 50 has a lost range separator that target restores.
+Review
 
 </details>
 
@@ -2093,7 +2061,7 @@ English: Cultural heritage is central to the European Agenda for Culture (1) and
 
 Icelandic reference: Menningararfleifð er afgerandi þáttur í áætlun Evrópusambandsins í menningarmálum (1) og stuðlar að því að ná markmiðum hennar, sem eru að efla menningarlega fjölbreytni og þvermenningarlega umræðu, að efla menningu sem hvata að skapandi starfi og að efla menningu sem ómissandi þátt í alþjóðasamskiptum Sambandsins.
 
-Review / 审查: The long source/reference preserve the main clauses, clinical/legal conditions, named entities and quantities.
+Review
 
 </details>
 
@@ -2105,7 +2073,7 @@ English: Primary deck coverings, if applied within accommodation and service spa
 
 Icelandic reference: Grunnar á þilförum í vistarverum, þjónusturýmum og stjórnstöðvum skulu vera úr samþykktum efnum, sem hvorki kviknar auðveldlega í, í samræmi við kóðann um brunaprófunaraðferðir sem kveðið er á um í IMO- ályktun A.687 (17) né valda hættu á eiturgasi eða sprengingum við háan hita.
 
-Review / 审查: Marine primary-deck-covering terminology and its Icelandic primer/foundation rendering need a nautical-language check.
+Review
 
 </details>
 
@@ -2117,7 +2085,7 @@ English: Co-administration of Tybost with medicinal products that induce CYP3A i
 
 Icelandic reference: Samhliða notkun lyfja sem örva CYP3A er frábending fyrir notkun Tybost eða er ekki ráðlögð (sjá kafla 4.3 og 4.5) vegna þess að minnkuð blóðvökvaþéttni kóbísistats gæti valdið þéttni í blóðvökva sem nægir ekki til að fram komi nægileg örvun lyfjahvarfa atazanavírs eða darunavírs.
 
-Review / 审查: The long source/reference preserve the main clauses, clinical/legal conditions, named entities and quantities.
+Review
 
 </details>
 
@@ -2129,7 +2097,7 @@ English: In RA study V with early rheumatoid arthritis patients who were methotr
 
 Icelandic reference: Í RA rannsókn V hjá sjúklingum með iktsýki á byrjunarstigi, sem ekki höfðu fengið metotrexat, hafði samsett meðferð með Humira og metotrexati í för með sér hraðari og marktækt meiri ACR svörun en metotrexat eitt sér og Humira eitt sér, eftir 52 vikur, og svörun hélst út viku 104 (sjá töflu 3).
 
-Review / 审查: Trial arms, weeks and outcomes retained; source nave appears to have lost characters from naive.
+Review
 
 </details>
 
@@ -2141,7 +2109,7 @@ English: Plasma concentrations of linagliptin decline in a triphasic manner with
 
 Icelandic reference: Plasmaþéttni linagliptins minnkar í þremur stigum með löngum lokahelmingunartíma (lokahelmingunartími fyrir linagliptin er yfir 100 klst.), sem tengist aðallega mettaðri þéttri tengingu linagliptins við DPP-4 og stuðlar ekki að uppsöfnun á lyfinu.
 
-Review / 审查: The long source/reference preserve the main clauses, clinical/legal conditions, named entities and quantities.
+Review
 
 </details>
 
@@ -2153,7 +2121,7 @@ English: On treatment 2 (22.1 %) patients experienced mild related adverse event
 
 Icelandic reference: Meðan á meðferð stóð fengu 2 (22,1%) vægar meðferðartengdar aukaverkanir (vélindabakflæði / kviðverk; óþægindi í kvið) og 1 (11,1%) sjúklingur fékk alvarlega aukaverkun sem ekki var meðferðartengd (endurtekið bláæðasegarek í fótlegg) eftir að meðferðinni hafði verið hætt > 3 dögum eftir stöðvun meðferðar með dabigatran etexílati.
 
-Review / 审查: Events, relatedness, numbers and timing match; first target count leaves the patient noun implicit.
+Review
 
 </details>
 
@@ -2165,7 +2133,7 @@ English: If renal function declines during maintenance therapy the SIFROL daily 
 
 Icelandic reference: Ef dregur úr nýrnastarfsemi meðan á viðhaldsmeðferð stendur á að minnka sólarhringsskammtinn af SIFROL um sama prósentustig og kreatínínlækkunin er, þ.e. ef kreatínínúthreinsun minnkar um 30% þá á að minnka sólarhringsskammt af SIFROL um 30%.
 
-Review / 审查: The worked30% example correctly names creatinine clearance; the earlier target clause shortens it to a creatinine decrease, an imprecise qualifier.
+Review
 
 </details>
 
@@ -2177,7 +2145,7 @@ English: The programmes shall be reviewed at the end of the second year; this re
 
 Icelandic reference: Áætlanirnar skulu endurskoðaðar við árslok annars árs; slík endurskoðun kann að leiða til þess að áætlanirnar sem taka gildi við upphaf þriðja árs verði endurskoðaðar eftir að viðeigandi ráðstafanir hafa verið gerðar og samráð hefur verið haft við nefndina sem vitnað er til í 3. gr.
 
-Review / 审查: Temporal attachment changes: the source makes the revision effective at the beginning of year3, whereas the target describes programmes that take effect then.
+Review: Temporal attachment changes: the revision takes effect at the beginning of year3 in the source, whereas the target describes programs taking effect then.
 
 </details>
 
@@ -2189,7 +2157,7 @@ English: If you are pregnant or breast-feeding, think you may be pregnant or are
 
 Icelandic reference: Við meðgöngu, brjóstagjöf, grun um þungun eða ef þungun er fyrirhuguð skal leita ráða hjá lækninum, lyfjafræðingi eða hjúkrunarfræðingnum áður en Budesonide/Formoterol Teva Pharma B.V. er notað - EKKI nota lyfið nema eftir fyrirmælum læknis.
 
-Review / 审查: The long source/reference preserve the main clauses, clinical/legal conditions, named entities and quantities.
+Review
 
 </details>
 
@@ -2201,7 +2169,7 @@ English: Concomitant prednisone use (40 mg/day for the first 14 days of nevirapi
 
 Icelandic reference: Samtímis gjöf prednisóns (40 mg/sólarhring í fyrstu 14 dagana sem nevírapín er gefið) hefur ekki reynst draga úr tíðni útbrota sem tengjast gjöf nevírapíns og getur tengst aukinni tíðni og alvarleika útbrota fyrstu 6 vikur nevírapín meðferðar.
 
-Review / 审查: The long source/reference preserve the main clauses, clinical/legal conditions, named entities and quantities.
+Review
 
 </details>
 
@@ -2213,7 +2181,7 @@ English: The organic production method implies that for seeds and vegetative rep
 
 Icelandic reference: Í lífrænu framleiðsluaðferðinni felst að með tilliti til fræja og plöntufjölgunarefna skuli móðurplantan, þegar um er að ræða fræ, og frumplantan eða -plönturnar, þegar um er að ræða plöntufjölgunarefni, hafa verið framleiddar í samræmi við ákvæði a- og b-liðar í málsgreininni hér að framan í að minnsta kosti eina kynslóð eða tvö vaxtartímabil þegar um er að ræða fjölæra uppskeru.
 
-Review / 审查: Organic-production conditions and generation/season requirements match; visible source provi sions split.
+Review
 
 </details>
 
@@ -2225,7 +2193,7 @@ English: Efforts will also be made to increase participation by women researcher
 
 Icelandic reference: Einnig verður lögð áhersla á að auka þátttöku kvenna meðal rannsakenda með því að hvetja til jafnra tækifæra í öllum „Marie Curie- aðgerðum“ með því að skipuleggja aðgerðirnar þannig að tryggt sé að rannsakendur geti náð hæfilegu jafnvægi milli starfs og einkalífs og með því að greiða fyrir því að hægt sé að halda áfram að þróa starfsframa í vísindum eftir hlé.
 
-Review / 审查: Participation, equal opportunity and career-resumption clauses match; minor Marie Curie compound-hyphen spacing.
+Review
 
 </details>
 
@@ -2237,7 +2205,7 @@ English: Commission Implementing Decision (EU) 2016/629 of 20 April 2016 authori
 
 Icelandic reference: Fella ber inn í EES-samninginn framkvæmdarákvörðun framkvæmdastjórnarinnar (ESB) 2016/629 frá 20. apríl 2016 um að leyfa aðildarríkjum að samþykkja tilteknar undanþágur samkvæmt tilskipun Evrópuþingsins og ráðsins 2008/68/EB um flutning á hættulegum farmi á landi og skipgengum vatnaleiðum (1).
 
-Review / 审查: The long source/reference preserve the main clauses, clinical/legal conditions, named entities and quantities.
+Review
 
 </details>
 
@@ -2249,7 +2217,7 @@ English: If you are travelling in a remote region where you are unable to contac
 
 Icelandic reference: Ef þú stundar ferðalög á fáförnum slóðum, þar sem þú hefur ekki tök á að hafa samband við lækninn eða hefur ekki um tíma tök á því að fá læknishjálp, getur læknirinn gert ráðstafanir til að gefa út, sem forvörn, lyfseðil upp á sýklalyf gegn meningókokkum (Neisseria meningitidis) sem þú getur borið á þér.
 
-Review / 审查: The long source/reference preserve the main clauses, clinical/legal conditions, named entities and quantities.
+Review
 
 </details>
 
@@ -2261,7 +2229,7 @@ English: Patients were required to discontinue their existing ACE inhibitor or A
 
 Icelandic reference: Sjúklingar þurftu að hætta meðferð með þeim ACE hemli eða angíótensín II viðtakablokka sem þeir notuðu og taka þátt í raðbundnu einblindu innleiðslutímabili þar sem þeir fengu meðferð með enalaprili 10 mg tvisvar sinnum á sólarhring, sem fylgt var eftir með einblindri meðferð með 100 mg af Neparvis tvisvar á sólarhring, sem aukin var í 200 mg af Neparvis tvisvar á sólarhring (sjá kafla 4.8 varðandi þá sem hættu í rannsókninni á þessu tímabili).
 
-Review / 审查: The long source/reference preserve the main clauses, clinical/legal conditions, named entities and quantities.
+Review
 
 </details>
 
@@ -2273,7 +2241,7 @@ English: All patients, in particular those greater than 60 years of age, patient
 
 Icelandic reference: Fylgjast ætti með öllum sjúklingum með tilliti til þess hvort húðkrabbamein sem er ekki sortuæxli (non-melanoma) komi fram, sérstaklega þeim sem eru eldri en 60 ára, með sögu um langvarandi ónæmisbælandi meðferð eða sögu um PUVA meðferð (sjá kafla 4.8).
 
-Review / 审查: The long source/reference preserve the main clauses, clinical/legal conditions, named entities and quantities.
+Review
 
 </details>
 
@@ -2285,7 +2253,7 @@ English: When partial watertight bulkheads and webs are fitted on the bulkhead d
 
 Icelandic reference: Þegar vatnsþéttum hlutaþiljum og styrkingum er komið fyrir á skilrúmsþilfari, ofan við eða fast við aðalþil til niðurhólfunar, skulu samskeyti við byrðing vera vatnsþétt og tengingar við skilrúmsþilfar til þess að draga úr vatnsflæði eftir þilfarinu þegar slagsíða kemur á skipið vegna leka.
 
-Review / 审查: Detailed marine bulkhead/web and watertight-connection terminology needs specialist confirmation; broad purpose is clear.
+Review
 
 </details>
 
@@ -2297,7 +2265,7 @@ English: Subjects previously vaccinated with a plain polysaccharide meningococca
 
 Icelandic reference: Einstaklingar sem höfðu áður verið bólusettir með venjulegu fjölsykrungabóluefni gegn meningókokkum og voru bólusettir með Nimenrix 30 til 42 mánuðum síðar, höfðu lægri meðaltalsmótefnastyrk (GMT), mældan með prófi á bakteríudrepandi áhrifum með kanínukomplementi úr sermi (rSBA), en einstaklingar sem höfðu ekki verið bólusettir með neinu meningókokkabóluefni síðastliðin 10 ár (sjá kafla 5.1).
 
-Review / 审查: Comparison, assay and times match; explicit geometric adjective is compressed to a general mean while GMT remains.
+Review
 
 </details>
 
@@ -2309,7 +2277,7 @@ English: If you are a HCV/HIV co-infected adult patient receiving anti-HIV treat
 
 Icelandic reference: Ef þú ert fullorðinn sjúklingur, með samhliða HCV og HIV sýkingu og færð meðferð við HIV og færð þetta lyf og peginterferon alfa-2b til viðbótar, getur þú verið í aukinni hættu á að lifrarstarfsemi versni öflug andretróveirumeðferð (HAART: highly active anti retroviral therapy) og aukinni hættu á að fá mjólkursýrublóðsýringu, lifrarbilun og þróun óeðlilegar blóðmyndar (fækkun rauðra blóðkorna, sem flytja súrefni, fækkun ákveðinna hvítra blóðkorna sem ráðast gegn sýkingum og fækkun blóðstorkufrumna, sem kallaðar eru blóðflögur) núkleósíð bakritahemill (NRTI).
 
-Review / 审查: Severe source/reference formatting corruption: expanded HAART/NRTI definitions interrupt the clinical syntax. Alignment alone does not make this a good standalone SFT example.
+Review: Severe formatting corruption: expanded HAART/NRTI definitions interrupt clinical syntax. Alignment alone does not make a good standalone SFT example.
 
 </details>
 
@@ -2321,7 +2289,7 @@ English: The European Council of June 2008 referred again to the sustainability 
 
 Icelandic reference: Á fundi sínum í júní 2008 vísaði leiðtogaráðið aftur til viðmiðananna um sjálfbærni og þróunar annarrar kynslóðar lífeldsneytis og undirstrikaði þörfina á því að meta hugsanleg áhrif lífeldsneytisframleiðslu á matvælaframleiðslu í landbúnaði og að grípa til aðgerða ef nauðsyn krefur til að takast á við annmarka.
 
-Review / 审查: Policy actions and conditions match; source second- generation/short comings contain OCR spacing.
+Review
 
 </details>
 
@@ -2333,7 +2301,7 @@ English: Existing stocks of the additive, premixtures and compound feed containi
 
 Icelandic reference: Fyrirliggjandi birgðir aukefnis, forblandna og fóðurblöndu sem innihalda aukefnið, sem eru í samræmi við ákvæðin sem giltu fyrir gildistökudag þessarar reglugerðar, má áfram setja á markað og nota þar til þær eru uppurnar.
 
-Review / 审查: All main long-form statements, conditions, comparisons, entities and numerical details are retained.
+Review
 
 </details>
 
@@ -2345,7 +2313,7 @@ English: In cases where more than one vial of the medicinal product IG 10% or re
 
 Icelandic reference: Ef þörf er á fleiri en einu hettuglasi af lyfinu, IG 10% eða raðbrigða hýalúrónídasa úr mönnum, til að ná þeim innrennslisskammti sem óskað er, skal undirbúa IG 10% og/eða raðbrigða hýalúrónídasa í sitt hvoru lagi í viðeigandi ílátum fyrir lausnir áður en lyfið er gefið.
 
-Review / 审查: All main long-form statements, conditions, comparisons, entities and numerical details are retained.
+Review
 
 </details>
 
@@ -2357,7 +2325,7 @@ English: The valsartan contained within Neparvis is more bioavailable than the v
 
 Icelandic reference: Valsartan sem er í Neparvis hefur meira aðgengi en valsartan í öðrum töflum á markaði; 26 mg, 51 mg og 103 mg af valsartani í Neparvis eru jafngild 40 mg, 80 mg og 160 mg af valsartan í öðrum töflum á markaði, í sömu röð.
 
-Review / 审查: All main long-form statements, conditions, comparisons, entities and numerical details are retained.
+Review
 
 </details>
 
@@ -2369,7 +2337,7 @@ English: Despite many achievements and a high level of performance in a large nu
 
 Icelandic reference: Þrátt fyrir mikinn árangur og mikið starf á mörgum sviðum nýtir Evrópa rannsóknarmöguleika sína og úrræði ekki til fulls og brýna nauðsyn ber til að auka evrópska getu til að skapa þekkingu og yfirfæra slíka þekkingu yfir í efnahagslegt og félagslegt gildi og vöxt.
 
-Review / 审查: All main long-form statements, conditions, comparisons, entities and numerical details are retained.
+Review
 
 </details>
 
@@ -2381,7 +2349,7 @@ English: The e-Europe Action Plan, agreed by the Feira European Council on 19 an
 
 Icelandic reference: Í aðgerðaáætlun um rafræna Evrópu, sem samþykkt var á fundi Evrópuráðsins í Feira 19. og 20. júní 2000, kemur það fram að til þess að rafræn viðskipti eigi að nýtast til fulls þurfi að styrkja tiltrú neytenda, í samvinnu við neytendahópa, iðnaðinn og aðildarríkin, með því að stuðla að aðgangi að óhefðbundnum kerfum í úrlausnum deilumála.
 
-Review / 审查: European Council is rendered Evroprad terminology, potentially confused with Council of Europe; needs institutional terminology confirmation. Also source partner- ship OCR split.
+Review: European Council is rendered Evroprad, possibly confused with Council of Europe; institutional terminology needs confirmation. The source also has partner- ship OCR splitting.
 
 </details>
 
@@ -2393,7 +2361,7 @@ English: The recommended dose of MabThera used as a maintenance treatment for pa
 
 Icelandic reference: Ráðlagður skammtur af MabThera sem viðhaldsmeðferð hjá sjúklingum með áður ómeðhöndlað hnútótt eitilfrumukrabbamein sem hafa svarað innleiðslumeðferð er: 375 mg/m2 líkamsyfirborðs einu sinni á 2 mánaða fresti (byrjað 2 mánuðum eftir síðasta skammt innleiðslumeðferðar) fram að versnun sjúkdóms eða að hámarki í tvö ár.
 
-Review / 审查: All main long-form statements, conditions, comparisons, entities and numerical details are retained.
+Review
 
 </details>
 
@@ -2405,7 +2373,7 @@ English: When satisfied with the above preparatory work for a candidate product 
 
 Icelandic reference: Þegar umhverfismerkinganefndin er orðin ánægð með áðurnefnt undirbúningsstarf vegna tiltekins vöruflokks og eftir að hafa fengið jákvæð tilmæli frá sérstaka vinnuhópnum skal hún senda lokaskýrsluna ásamt tillögum, er varða drög að umboðinu, til framkvæmdastjórnarinnar og óska eftir því við framkvæmdastjórnina að hún hefji málsmeðferð með það fyrir augum að setja vistfræðilegar viðmiðanir fyrir viðkomandi vöruflokk og feli umhverfismerkinganefndinni umboð þar sem tekið er tillit til áðurnefndra tillagna.
 
-Review / 审查: Complex procedural clauses match; source recommendation word is split by an OCR hyphen.
+Review
 
 </details>
 
@@ -2417,7 +2385,7 @@ English: Results from subgroup analyses in the pivotal clinical study in dialysi
 
 Icelandic reference: Niðurstöður greiningar á undirhópum í klínísku lykilrannsókninni hjá sjúklingum í skilun sýna fram á að samhliða notkun lyfja sem oft er ávísað sjúklingum með langvinnan nýrnasjúkdóm (flúorkínólóns, tetracýklíns, prótónupumpuhemla, skjaldkirtilshormóns, sertralíns, D-vítamíns, warfaríns, asetýlsalisýlsýru) hefur ekki áhrif á verkun Fexeric með tilliti til getu þess til að lækka gildi fosfórs í sermi.
 
-Review / 审查: All main long-form statements, conditions, comparisons, entities and numerical details are retained.
+Review
 
 </details>
 
@@ -2429,7 +2397,7 @@ English: The JRC's independence of special interests, whether private or nationa
 
 Icelandic reference: Óhlutdrægni sameiginlegu rannsóknarmiðstöðvarinnar, hvort sem um er að ræða einkahagsmuni eða landsbundna hagsmuni, ásamt tæknilegri sérþekkingu hennar gera rannsóknarmiðstöðinni kleift að greiða fyrir samskiptum og efla samstöðu milli hagsmunaaðila (iðnaðarsamtaka, aðgerðahópa í umhverfismálum, lögbærra yfirvalda aðildarríkjanna, annarra rannsóknamiðstöðva o.s.frv.) og stefnumótenda, sérstaklega á vettvangi Bandalagsins og einkum við Evrópuþingið.
 
-Review / 审查: All main long-form statements, conditions, comparisons, entities and numerical details are retained.
+Review
 
 </details>
 
@@ -2441,7 +2409,7 @@ English: When compared to administration following a standard normal caloric mea
 
 Icelandic reference: Samanborið við gjöf eftir staðlaða máltíð með venjulegum hitaeiningafjölda minnkaði útsetning (AUC) um 73% þegar telaprevir var tekið inn á tóman maga, um 26% eftir hitaeiningasnauða, próteinríka máltíð (9 g af fitu, 260 kkal), og um 39% eftir hitaeiningasnauða, fitusnauða máltíð (3,6 g af fitu, 249 kkal).
 
-Review / 审查: All main long-form statements, conditions, comparisons, entities and numerical details are retained.
+Review
 
 </details>
 
@@ -2453,7 +2421,7 @@ English: Although these results indicate that no clinically meaningful increases
 
 Icelandic reference: Þótt þessar niðurstöður bendi til að ekki er gert ráð fyrir aukinni útsetningu sem hefur klíníska þýðingu þegar ZYTIGA er gefið ásamt lyfjum sem skiljast aðallega út fyrir tilstilli CYP2C8 á að fylgjast með sjúklingum með tilliti til eiturverkana sem tengjast hvarfefni CYP2C8 sem eru með þröngt verkunarbil, ef þau eru notuð samhliða.
 
-Review / 审查: All main long-form statements, conditions, comparisons, entities and numerical details are retained.
+Review
 
 </details>
 
@@ -2465,7 +2433,7 @@ English: At the closest point this star was at a distance of less than 20 billio
 
 Icelandic reference: Stjarnan var í innan við 20 milljarða km fjarlægð frá svartholinu þegar hún var næst því og ferðaðist þá á 25 milljón km hraða á klukkustund – næstum þrjú prósent af hraða ljóssins.
 
-Review / 审查: Distances and velocity scale match; target drops the in-excess-of qualifier before25million.
+Review
 
 </details>
 
@@ -2477,7 +2445,7 @@ English: The calculation of the required dose of recombinant factor IX Fc is bas
 
 Icelandic reference: Útreikningur á nauðsynlegum skammti af raðbrigða þætti IX Fc byggist á þeirri reynslu að 1 alþjóðleg eining (IU) af þætti IX á kg líkamsþyngdar hækkar virkni þáttar IX í blóðvökva sem nemur 1% af eðlilegri virkni (IU/dl).
 
-Review / 审查: All main long-form statements, conditions, comparisons, entities and numerical details are retained.
+Review
 
 </details>
 
@@ -2489,7 +2457,7 @@ English: The European Medicines Agency has waived the obligation to submit the r
 
 Icelandic reference: Lyfjastofnun Evrópu hefur fallið frá kröfu um að lagðar verði fram niðurstöður úr rannsóknum á viðmiðunarlyfinu sem inniheldur síldenafíl til meðferðar á stinningarvandamálum hjá öllum undirhópum barna (sjá upplýsingar í kafla 4.2 um notkun handa börnum).
 
-Review / 审查: All main long-form statements, conditions, comparisons, entities and numerical details are retained.
+Review
 
 </details>
 
@@ -2501,7 +2469,7 @@ English: Patients treated with Simponi experienced significantly more improvemen
 
 Icelandic reference: Sjúklingar sem fengu meðferð með Simponi fengu marktækt meiri aukningu í heilbrigðistengdum lífsgæðum, metið með ASQoL, EQ-5D og í líkamlegum og huglægum þáttum SF-36 og fengu marktækt meiri bata í afköstum, mælt sem meiri minnkun í heildarskerðingu starfsgetu samkvæmt WPAI spurningalista, en sjúklingar sem fengu lyfleysu.
 
-Review / 审查: The clinical productivity comparison omits the separate activity-impairment outcome, retaining only work impairment.
+Review
 
 </details>
 
@@ -2513,7 +2481,7 @@ English: A positive scan does not independently establish a diagnosis of AD or o
 
 Icelandic reference: Jákvæð niðurstaða sneiðmyndunar styður ekki ein og sér greiningu Alzheimer-sjúkdóms eða annarra vitrænna kvilla, þar sem skellur í gráa efni heilavefs geta verið til staðar hjá einkennalausum öldruðum sjúklingum og við tiltekin vitglöp af völdum taugarýrnunar (neurodegenerative dementias) (Alzheimer-sjúkdóm, en einnig Lewy body vitglöp, vitglöp af völdum Parkinson-sjúkdóms).
 
-Review / 审查: Diagnostic caution and disease examples retained; neuritic specificity and establish/support wording are somewhat compressed.
+Review
 
 </details>
 
@@ -2525,7 +2493,7 @@ English: As with any vaccine, Synflorix may not protect all vaccinated individua
 
 Icelandic reference: Eins og á við um öll bóluefni er ekki víst að Synflorix verndi alla bólusetta einstaklinga gegn ífarandi pneumókokkasýkingum, lungnabólgu eða miðeyrnabólgu af völdum sermisgerðanna í bóluefninu og víxlnæmu sermisgerðarinnar 19A. Auk þess sem miðeyrnabólga og lungnabólga eru af völdum margra annarra örvera, en þeirra sermisgerða Streptococcus pneumoniae sem eru í bóluefninu, er þess að vænta að almenn vernd gegn þessum sjúkdómum sé takmörkuð og talsvert minni en vernd gegn ífarandi sýkingum af völdum sermisgerðanna í bóluefninu og sermisgerðar 19A (sjá kafla 5.1).
 
-Review / 审查: Vaccine limitations and comparative protection clauses retained; source micro- organisms has a line-break split.
+Review
 
 </details>
 
@@ -2537,7 +2505,7 @@ English: The actions undertaken in this area will enable European regions to str
 
 Icelandic reference: Aðgerðir á þessu sviði munu gera það að verkum að evrópsk svæði geta aukið getu sína til fjárfestingar í rannsóknum og tækniþróun og unnið að rannsóknarstarfsemi en um leið hámarka þær möguleika þeirra til farsællar þátttöku aðila svæðanna í evrópskum rannsóknarverkefnum og greiða fyrir tilkomu klasa og þar með stuðla að svæðisbundinni þróun í Evrópu.
 
-Review / 审查: All main long-form statements, conditions, comparisons, entities and numerical details are retained.
+Review
 
 </details>
 
@@ -2549,7 +2517,7 @@ English: Provisions in delegated acts regarding information provided on the labe
 
 Icelandic reference: Ákvæði í framseldum gerðum varðandi upplýsingar, sem settar eru á merkimiða og upplýsingablað, um notkun orku og annarra mikilvægra aðfanga á meðan á notkun stendur, skulu auðvelda endanlegum notendum að taka upplýstari ákvarðanir um kaup og auðvelda markaðseftirlitsyfirvöldum að sannreyna hvort að vörur séu í samræmi við veittar upplýsingar.
 
-Review / 审查: All main long-form statements, conditions, comparisons, entities and numerical details are retained.
+Review
 
 </details>
 
@@ -2561,7 +2529,7 @@ English: In controlled Phase 3 trials of Humira in patients with polyarticular j
 
 Icelandic reference: Í 3. stigs samanburðarrannsóknum á Humira hjá sjúklingum á aldrinum 4 til 17 ára með sjálfvakta fjölliðagigt og hjá sjúklingum á aldrinum 6 til 17 ára með festumeinstengda liðagigt, var aukning ALT ≥ 3 föld eðlileg efri mörk hjá 6,1% sjúklinga sem fengu Humira og 1,3% hjá sjúklingum í viðmiðunarhópnum.
 
-Review / 审查: All main long-form statements, conditions, comparisons, entities and numerical details are retained.
+Review
 
 </details>
 
@@ -2573,7 +2541,7 @@ English: Experience has shown that the criteria set out in Directive 2009/142/EC
 
 Icelandic reference: Reynslan hefur sýnt að þær viðmiðanir sem settar eru fram í tilskipun 2009/142/EB, sem samræmismatsstofur verða að uppfylla áður en þær eru tilkynntir til framkvæmdastjórnarinnar, nægja ekki til að tryggja einsleitan og góðan árangur tilkynntra stofa innan Sambandsins.
 
-Review / 审查: Assessment-body criterion and insufficiency match; target agreement in the notified-body wording is awkward.
+Review
 
 </details>
 
@@ -2585,7 +2553,7 @@ English: Insuman Rapid may also be used for treating hyperglycaemic coma (coma c
 
 Icelandic reference: Insuman Rapid má einnig nota til meðhöndlunar við dái vegna blóðsykurshækkunar (dá sem orsakast af of miklum blóðsykri) og jafnframt ketónblóðsýringu (uppsöfnun sýru í blóðinu vegna þess að líkaminn brýtur niður fitu í stað sykurs) og til að ná stjórn á blóðsykri fyrir skurðaðgerð, meðan á skurðaðgerð stendur og eftir að skurðaðgerð er lokið.
 
-Review / 审查: All main long-form statements, conditions, comparisons, entities and numerical details are retained.
+Review
 
 </details>
 
@@ -2597,7 +2565,7 @@ English: In a retrospective analysis of pooled clinical studies with Viramune im
 
 Icelandic reference: Í afturvirkri rannsókn á heildarniðurstöðum klínískra rannsókna á venjulegum Viramune töflum voru konur í þrefalt meiri hættu en karlar að fá einkenni um aukaverkanir á lifur, oft ásamt útbrotum (5,8% á móti 2,2%), og sjúklingar af báðum kynjum, sem ekki hafa áður verið meðhöndlaðir, með greinanlegt HIV-1 RNA í plasma, með háa CD4 frumutalningu við upphaf nevírapín meðferðar voru í aukinni hættu á að fá einkenni um aukaverkanir á lifur vegna nevírapíns.
 
-Review / 审查: Risk factors, ratios and comparison groups match; source treatment- nave has lost naive characters.
+Review
 
 </details>
 
@@ -2609,7 +2577,7 @@ English: In patients, children or adults with severe congenital, cyclic, or idio
 
 Icelandic reference: Hjá sjúklingum, börnum eða fullorðnum, með alvarlega meðfædda, lotubundna eða sjálfvakna daufkyrningafæð með heildar daufkyrningafjölda (ANC) sem nemur 0,5 x 109/l og sögu um alvarlegar eða endurteknar sýkingar, er langtíma lyfjagjöf með Grastofil ætluð til þess að auka daufkyrningafjölda og draga úr nýgengi og tímalengd atvika sem tengjast sýkingum.
 
-Review / 审查: Both sides contain0.5x109/L with no clear exponent/comparator. Source/reference alignment agrees but the scientific notation may be corrupted; original formatting is needed before using it as trusted technical supervision.
+Review: Both sides have0.5x109/L without a clear exponent/comparator. Alignment agrees, but scientific notation may be corrupted; confirm original formatting before trusting it as technical supervision.
 
 </details>
 
@@ -2621,7 +2589,7 @@ English: Commission Implementing Decision 2014/276/EU of 2 May 2014 on amending 
 
 Icelandic reference: Fella ber inn í EES-samninginn framkvæmdarákvörðun framkvæmdastjórnarinnar 2014/276/ESB frá 2. maí 2014 um breytingu á ákvörðun 2008/411/EB um samræmingu á tíðnisviðinu 3 400 - 3 800 MHz fyrir landstöðvakerfi sem eru fær um að veita rafræna fjarskiptaþjónustu innan Bandalagsins(1).
 
-Review / 审查: Decision identity, frequency band and incorporation retained; missing space before target footnote marker.
+Review
 
 </details>
 
@@ -2633,7 +2601,7 @@ English: So, yeah, today was about as much fun as a sandpaper dildo.
 
 Icelandic reference: Svo það var álíka gaman og titrari úr sandpappír.
 
-Review / 审查: Main vulgar comparison retained; today/filler compressed and vibrator used for dildo.
+Review
 
 </details>
 
@@ -2645,7 +2613,7 @@ English: - Whatever, back off.
 
 Icelandic reference: - Láttu hann samt vera.
 
-Review / 审查: Contextual back-off paraphrase as leave-him-alone; explicit target person is inferred.
+Review
 
 </details>
 
@@ -2657,7 +2625,7 @@ English: I'm a slasher and I must be stopped.
 
 Icelandic reference: Ég er með kutann á lofti og það verður að stöðva mig.
 
-Review / 审查: Slasher identity paraphrased as holding a knife aloft; situational meaning is close but wording is contextual.
+Review
 
 </details>
 
@@ -2669,7 +2637,7 @@ English: Josh, do me a favor, turn off the heater and cover the pool.
 
 Icelandic reference: Josh, slökktu á hitaranum og breiddu yfir sundlaugina.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -2681,7 +2649,7 @@ English: But I will do everything I can to find it and return it to you.
 
 Icelandic reference: En ég geri allt sem ég get til að finna hana og skila henni.
 
-Review / 审查: Finding/returning the object retained, explicit recipient to-you omitted.
+Review
 
 </details>
 
@@ -2693,7 +2661,7 @@ English: - How old are the X-rays?
 
 Icelandic reference: Hve gamlar eru röntgenmyndirnar?
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -2705,7 +2673,7 @@ English: Over the years, this child grew.
 
 Icelandic reference: Árin liðu og drengurinn stækkaði.
 
-Review / 审查: Growth over years retained; generic child becomes a boy.
+Review
 
 </details>
 
@@ -2717,7 +2685,7 @@ English: It's usually a sign of deep distress... a call for help.
 
 Icelandic reference: Hýpókondría er yfirleitt til marks um djúpa óhamingju. Ákall á hjálp.
 
-Review / 审查: Hypochondria is introduced although the source only says it; unsuitable unlicensed context expansion in a standalone pair.
+Review
 
 </details>
 
@@ -2729,7 +2697,7 @@ English: How far along are you?
 
 Icelandic reference: Hvað ertu kominn langt?
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -2741,7 +2709,7 @@ English: I guess I'll kill two birds with one stone.
 
 Icelandic reference: Ég slæ tvær flugur í einu höggi.
 
-Review / 审查: Conventional kill-two-birds idiom is correct; I-guess uncertainty is omitted.
+Review
 
 </details>
 
@@ -2753,7 +2721,7 @@ English: Posaconazole is not removed by haemodialysis.
 
 Icelandic reference: Posakónazól skilst ekki út með blóðskilun.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -2765,7 +2733,7 @@ English: Such conditions should be corrected before the administration of telmis
 
 Icelandic reference: Leiðrétta skal vökva- og/eða natríumskort áður en telmisartan er gefið.
 
-Review / 审查: Target replaces unspecified such conditions with fluid/sodium depletion, information unavailable in this standalone source.
+Review
 
 </details>
 
@@ -2777,7 +2745,7 @@ English: Do not reconstitute BLINCYTO powder for concentrate with the solution (
 
 Icelandic reference: Ekki skal blanda BLINCYTO þykknisstofn með BLINCYTO lausninni (stöðugleikaaukandi).
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -2789,7 +2757,7 @@ English: Pomalidomide was removed by haemodialysis.
 
 Icelandic reference: Pómalídómíð var fjarlægt með blóðskilun.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -2801,7 +2769,7 @@ English: TRAVATAN may get into your milk.
 
 Icelandic reference: TRAVATAN getur borist í brjóstamjólk.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -2813,7 +2781,7 @@ English: If you do become pregnant during treatment with Resolor, tell your doct
 
 Icelandic reference: Látið lækninn vita ef þungun á sér stað meðan á meðferð með Resolor stendur.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -2825,7 +2793,7 @@ English: There is not a specific antidote for extravasation of pemetrexed.
 
 Icelandic reference: Ekki er til sérstakt mótefni ef pemetrexed lekur úr æð.
 
-Review / 审查: Extravasation statement is clear but mote fni antidote/antibody terminology needs clinical-Icelandic confirmation.
+Review
 
 </details>
 
@@ -2837,7 +2805,7 @@ English: To report suspected adverse reactions and pregnancy.
 
 Icelandic reference: Að tilkynna hugsanlegar aukaverkanir og þunganir.
 
-Review / 审查: Faithful reporting-list fragment; suspected is rendered as possible.
+Review
 
 </details>
 
@@ -2849,7 +2817,7 @@ English: The mouthpiece will still ‘click’ even when your inhaler is empty.
 
 Icelandic reference: Það heyrist áfram smellur í munnstykkinu jafnvel þó innöndunartækið sé tómt.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -2861,7 +2829,7 @@ English: FORSTEO has been evaluated in pharmacodynamic interaction studies with 
 
 Icelandic reference: Gerðar hafa verið milliverkunarrannsóknir á FORSTEO við hýdróklórtíazíð.
 
-Review / 审查: Explicit pharmacodynamic nature of interaction studies is omitted.
+Review
 
 </details>
 
@@ -2873,7 +2841,7 @@ English: Caution must be exercised when administering IntronA in combination wit
 
 Icelandic reference: Aðgát skal höfð þegar IntronA er gefið ásamt lyfjum sem geta valdið beinmergsbælingu.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -2885,7 +2853,7 @@ English: Administration of Gonazon at other stages of the cycle may induce heat 
 
 Icelandic reference: Gjöf Gonazon á öðrum stigum hringsins getur leitt til framkallaðs lóðarís sem er frjótt.
 
-Review / 审查: Veterinary heat terminology and may-be-fertile versus is-fertile wording need specialist confirmation.
+Review
 
 </details>
 
@@ -2897,7 +2865,7 @@ English: Additional doses may need to be considered for persons who do not respo
 
 Icelandic reference: Íhuga þarf mögulega aukaskammta fyrir þá einstaklinga sem ekki svara eða veita lélega svörun við bólusetningarmeðferð.
 
-Review / 审查: Nonresponse/suboptimal response meaning retained with awkward target phrasing.
+Review
 
 </details>
 
@@ -2909,7 +2877,7 @@ English: Caution must be exercised during reconstitution and dilution and the no
 
 Icelandic reference: Gæta skal varúðar við blöndun og þynningu lausnarinnar og nota skal hefðbundnar aðferðir við rétta meðferð frumudrepandi lyfja.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -2921,7 +2889,7 @@ English: The consequences of acquiring a cultural object of unlawful origin will
 
 Icelandic reference: Afleiðingar þess að eignast menningarminjar sem fengnar eru ólöglega hafa því aðeins raunverulega letjandi áhrif ef auk bótagreiðslna verði handhafa skylt að sanna að tilhlýðileg aðgát og árvekni hafi verið viðhöfð.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -2933,7 +2901,7 @@ English: Due to the high affinity to a unique epitope on CD38, daratumumab is no
 
 Icelandic reference: Ekki er búist við að daratumumab, sem hefur mikla sækni í einstakan mótefnavísi á CD38, breyti ensímum sem eiga þátt í lyfjaumbroti.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -2945,7 +2913,7 @@ English: For reasons of clarity and accuracy of information, a timetable for the
 
 Icelandic reference: Til glöggvunar og til að gæta nákvæmni skal gefa út tímaáætlun á fimm ára fresti um framkvæmd sumartíma til næstu fimm ára.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -2957,7 +2925,7 @@ English: The crop shall have sufficient varietal identity and varietal purity or
 
 Icelandic reference: Plönturnar skulu vera ósviknar og hreinar með tilliti til yrkis eða, ef um er að ræða nytjaplöntur af skyldleikaræktaðri línu, ósviknar og hreinar að því er varðar eiginleika þeirra.
 
-Review / 审查: Varietal identity/purity condition retained but sufficient qualifier is compressed.
+Review
 
 </details>
 
@@ -2969,7 +2937,7 @@ English: For example prepayments and the distribution of payment to traders base
 
 Icelandic reference: Til dæmis fyrirframgreiðslur og dreifing greiðslna til söluaðila samkvæmt tímaáætlun (afborganir).
 
-Review / 审查: Faithful example fragment with regularity implicit in the schedule.
+Review
 
 </details>
 
@@ -2981,7 +2949,7 @@ English: If severe or persistent hypotension occurs, hypovolaemia should be cons
 
 Icelandic reference: Ef alvarlegur eða viðvarandi lágþrýstingur kemur fram skal íhuga blóðþurrð og meðhöndla ástandið með viðeigandi vökvagjöf í æð eða öðrum nauðsynlegum inngripum, samkvæmt klínísku mati meðferðarlæknis.
 
-Review / 审查: Hypovolaemia rendering as blodthurrd may conflate volume depletion with ischaemia; needs terminology confirmation.
+Review
 
 </details>
 
@@ -2993,7 +2961,7 @@ English: The final total daily dose of levodopa from Numient is about double tha
 
 Icelandic reference: Endanlegur heildardagskammtur af levódópa úr Numient er um það bil tvöfalt hærri en endanlegur heildardagskammtur af levódópa úr töflum án forðaverkunar, jafnframt því að endanlegur heildardagskammtur af levódópa úr Numient er um þrefaldur endanlegur heildardagskammtur af levódópa úr samsetningu af levódópa/DDC-hemli/entakapón.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -3005,7 +2973,7 @@ English: The Member States may entrust the social partners, at their joint reque
 
 Icelandic reference: Aðildarríkin geta falið aðilum vinnumarkaðarins, enda hafi þeir farið sameiginlega fram á það, að koma þessari tilskipun til framkvæmda, svo fremi að þau geri allar nauðsynlegar ráðstafanir til að þau geti ætíð tryggt að þeim árangri, sem þessi tilskipun kveður á um, verði náð.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -3017,7 +2985,7 @@ English: For example, a patient taking one tablet of 200 mg/50 mg of levodopa/ca
 
 Icelandic reference: Dæmi: Sjúklingur sem tekur eina 200 mg/50 mg levodopa/carbidopa töflu ásamt einni 200 mg entacapon töflu fjórum sinnum á sólarhring getur notað eina 200 mg/50 mg/200 mg Levodopa/Carbidopa/Entacapone Orion töflu fjórum sinnum á sólarhring í staðinn fyrir venjulega skammta af levodopa/carbidopa og entacaponi.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -3029,7 +2997,7 @@ English: The manufacturer shall draw up a written EU declaration of conformity f
 
 Icelandic reference: Framleiðandinn skal gera skriflega samræmisyfirlýsingu fyrir hverja gerð tækis eða tengihlutar og varðveita hana þannig að hún sé tiltæk fyrir landsyfirvöld í 10 ár eftir að tækið eða tengihluturinn er settur á markað.
 
-Review / 审查: Written conformity declaration, model and ten-year duty retained; explicit EU designation is omitted.
+Review
 
 </details>
 
@@ -3041,7 +3009,7 @@ English: Adverse reactions not observed in clinical studies, but seen in animals
 
 Icelandic reference: Aukaverkanir sem ekki komu fram í klínískum rannsóknum, en sáust hjá dýrum við skammta sem eru svipaðir meðferðarskömmtum og skipta hugsanlega máli við klíníska notkun voru sem hér segir: frymisbólur á briseyjafrumum, hrörnun í eistapíplum, sáramyndanir í maga og þörmum, beinbrot og beinbris (bone calluses), blóðfrumumyndun í lifur og lungna fosfolipidósa.
 
-Review / 审查: Exposure levels are translated as doses, which are not the same pharmacological quantity.
+Review
 
 </details>
 
@@ -3053,7 +3021,7 @@ English: In rats, oral administration of bosentan for 2 years produced a small, 
 
 Icelandic reference: Í rottum myndaði bósentan sem gefið var til inntöku í 2 ár litla en marktæka aukningu á sameiginlegri tíðni skjaldbúsfrumukirtilæxla og krabbameina í karlkyns en ekki kvenkyns rottum sem meðhöndlaðar voru þannig að blóðvökvaþéttni næmi 9 til 14 sinnum þeirri blóðvökvaþéttni sem meðferðarskammtur í mönnum hefur í för með sér.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -3065,7 +3033,7 @@ English: This is the flat-rate fee paid by the undertaking concerned to the Agen
 
 Icelandic reference: Gjald sem er föst fjárhæð og viðkomandi fyrirtæki greiðir Lyfjamálastofnuninni fyrir gerðardómsúrskurð um ágrein- ing milli aðildarríkja um gagnkvæma viðurkenningu á inn- lendu markaðsleyfi eða breytingu af gerð II á gildandi inn- lendu leyfi.
 
-Review / 审查: Main arbitration and authorisation relation retained; several visible split-word OCR artifacts.
+Review
 
 </details>
 
@@ -3077,7 +3045,7 @@ English: In the mBCC cohort, tumour response was assessed according to the Respo
 
 Icelandic reference: Hjá hópnum sem var með grunnfrumukrabbamein með meinvörpum var svörun æxlis metin samkvæmt RECIST kvarðanum (Response Evaluation Criteria in Solid Tumours), útgáfu 1.0. Hjá hópnum sem var með langt gengið staðbundið grunnfrumukrabbamein var svörun æxlis metin með sjónmati útlægra æxla og sára, sneiðmynd af æxlum (þar sem það átti við) og greiningu á sýnum úr æxlum.
 
-Review / 审查: Source/reference faithfully preserve the main meaning and qualifiers; diagnostic evidence of useful translations excluded by the automatic alignment threshold.
+Review: Source/reference faithfully retain the main meaning and qualifiers, illustrating useful translations excluded by the automatic alignment threshold.
 
 </details>
 
@@ -3089,7 +3057,7 @@ English: Therefore the MAH proposed as part of this PSUR to amend the current wa
 
 Icelandic reference: Markaðsleyfishafi lagði því til sem hluta af þessari PSUR að breyta núverandi varnaðarorðum í kafla 4.4 í samantekt á eiginleikum lyfsins, til að leggja áherslu á að truflandi áhrif á segulómskoðun geti komið fram í allt að 6 mánuði eftir gjöf ferumoxytols, sem var samþykkt af PRAC.
 
-Review / 审查: Regulatory warning change and six-month MRI interference retained; source ferumoxytoll appears misspelled.
+Review
 
 </details>
 
@@ -3101,7 +3069,7 @@ English: The most frequently (seen in ≥ 1 % of patients) reported adverse reac
 
 Icelandic reference: Algengustu aukaverkanir sem hafa verið tilkynntar (hafa sést í > 1% sjúklinga) og tengjast notkun olanzapins í klínískum rannsóknum eru svefnhöfgi, þyngdaraukning, eósínfíklafjöld, hækkað prólaktín, kólesteról, sykur og þríglýseríðar (sjá kafla 4.4), sykur í þvagi, aukin matarlyst, sundl, hvíldaróþol, parkinsonseinkenni hvítfrumnafæð, daufkyrningafæð (sjá kafla 4.4), hreyfitruflun, réttstöðu þrýstingsfall, andkólínvirkni, tímabundin einkennalaus hækkun á lifrar amínótransferösum (sjá kafla 4.4), útbrot, þróttleysi, þreyta hiti, liðverkir, hækkaður alkalískur fosfatasi, hár gammaglútamýltransferasi, há þvagsýra, hár kreatínfosfókínasi og bjúgur.
 
-Review / 审查: Explicit numeric boundary changes from greater-than-or-equal1% to strictly-greater-than1%.
+Review
 
 </details>
 
@@ -3113,7 +3081,7 @@ English: This dazzling region of newly-forming stars in the Large Magellanic Clo
 
 Icelandic reference: Multi Unit Spectroscopic Explorer (MUSE) mælitækið á Very Large Telescope ESO tók þessa mynd af glæsilegu a stjörnumyndunarsvæði í Stóra Magellansskýinu.
 
-Review / 审查: Instrument, telescope and astronomical object retained; target has a stray isolated a artifact.
+Review
 
 </details>
 
@@ -3125,7 +3093,7 @@ English: For the first time in IMAX® 3D you can now explore ESO's flagship faci
 
 Icelandic reference: Í fyrsta sinn í IMAX® 3D getur þú nú skoðað Very Large Telescope (VLT), flaggskip ESO, á hvíta tjaldinu og heimsótt stærstu alþjóðlegu stjörnustöð heims - Atacama Large Millimeter/submillimeter Array (ALMA, alþjóðleg stjörnustöð á vegum Evrópu, Norður Ameríku og austur Asíu í samvinnu við Chile) í myndinni Hidden Universe.
 
-Review / 审查: Main IMAX/VLT/ALMA visit and supporting regions retained; astronomical-project phrasing becomes observatory terminology.
+Review
 
 </details>
 
@@ -3137,7 +3105,7 @@ English: The new contract with Safran Reosc is the second-largest contract for t
 
 Icelandic reference: Samingurinn við Safran Reosc er næst stærsti samningurinn sem tengist smíði ELT og þriðji stærsti samningurinn sem ESO hefur undirritað.
 
-Review / 审查: Contract rankings and names match; target Samingurinn has a spelling defect and explicit new is omitted.
+Review
 
 </details>
 
@@ -3149,7 +3117,7 @@ English: Last spring, the Nordic Council of Ministers published the statistical 
 
 Icelandic reference: Á vordögum gaf Norræna ráðherranefndin út fyrstu tölfræðihandbókina í vasabroti um norrænt jafnrétti, „Nordic Gender Equality in Figures“.
 
-Review / 审查: Publication and first edition retained; last-spring time qualifier becomes a less specific spring reference.
+Review
 
 </details>
 
@@ -3161,7 +3129,7 @@ English: Parliamentarians are encouraged to work closer together across borders 
 
 Icelandic reference: Þingmenn eru hvattir til þess að vinna nánar saman þvert á landamæri og taka pólitískar ákvarðanir sem styðja við þær tækniframfarir sem nauðsynlegar eru vegna umskiptanna.
 
-Review / 审查: Named-source supplementary review: main statement, quantities and qualifiers agree.
+Review
 
 </details>
 
@@ -3173,7 +3141,7 @@ English: Read the report at “Possible elements of a new global agreement to pr
 
 Icelandic reference: Hér má lesa skýrsluna „Possible elements of a new global agreement to prevent p...
 
-Review / 审查: Truncated copied English report title ends midword on both sides; incomplete metadata rather than a complete trusted translation unit.
+Review
 
 </details>
 
@@ -3185,7 +3153,7 @@ English: Investments must be reasonable, and subsidies should fall within sensib
 
 Icelandic reference: Fjarfestingarnar verða að vera skynsamlegar og innan sanngjarnra marka,“ sagði Michael Tetzchner.
 
-Review / 审查: The source separately limits subsidies; the target attaches both requirements to investments and omits the subsidies subject.
+Review
 
 </details>
 
@@ -3197,7 +3165,7 @@ English: Total financial assets and liabilities of non-financial corporations re
 
 Icelandic reference: Fjáreignir og -skuldbindingar fyrirtækja annarra en fjármálafyrirtækja lækkuðu um 7% og 4% á árunum 2014 og 2015.
 
-Review / 审查: Named-source supplementary review: main statement, quantities and qualifiers agree.
+Review
 
 </details>
 
@@ -3209,7 +3177,7 @@ English: The press releases are sent to subscribers and the media.
 
 Icelandic reference: Fréttatilkynningar eru sendar út til áskrifenda og fjölmiðla.
 
-Review / 审查: Named-source supplementary review: main statement, quantities and qualifiers agree.
+Review
 
 </details>
 
@@ -3221,7 +3189,7 @@ English: In addition, employees who only work for a short time during the school
 
 Icelandic reference: Einnig lenda starfsmenn, sem starfa aðeins stuttan tíma á skólaárinu ekki alltaf inni í gagnasöfnuninni.
 
-Review / 审查: Named-source supplementary review: main statement, quantities and qualifiers agree.
+Review
 
 </details>
 
@@ -3233,7 +3201,7 @@ English: Only students with an Icelandic ID number are counted.
 
 Icelandic reference: Aðeins eru teknir með nemendur sem hafa íslenska kennitölu.
 
-Review / 审查: Named-source supplementary review: main statement, quantities and qualifiers agree.
+Review
 
 </details>
 
@@ -3245,7 +3213,7 @@ English: However, comparison of individual goods is not possible in all instance
 
 Icelandic reference: Samanburður á einstökum vörum er samt ekki mögulegur í öllum tilvikum þar sem breytingar eru gerðar á tollskrárnúmerum, yfirleitt árlega.
 
-Review / 审查: Named-source supplementary review: main statement, quantities and qualifiers agree.
+Review
 
 </details>
 
@@ -3257,7 +3225,7 @@ English: Or, if you had to choose between the last two, which one would you choo
 
 Icelandic reference: Eða, ef þú þyrftir að velja á milli þessara tveggja, hvort myndirðu velja?
 
-Review / 审查: Choice question retained, but last-two becomes these-two.
+Review
 
 </details>
 
@@ -3269,7 +3237,7 @@ English: Math is a much broader subject than calculating.
 
 Icelandic reference: Stærðfræði er mun yfirgripsmeira fag en útreikningur.
 
-Review / 审查: Named-source supplementary review: main statement, quantities and qualifiers agree.
+Review
 
 </details>
 
@@ -3281,7 +3249,7 @@ English: But these aren't the data. I made these up!
 
 Icelandic reference: En þetta eru ekki gögning. Ég bjó þessi til!
 
-Review / 审查: Target gogning is an obvious corruption of the data noun; do not teach this malformed word.
+Review
 
 </details>
 
@@ -3293,7 +3261,7 @@ English: But what I'm saying from my very practical experience: If civil society
 
 Icelandic reference: En það sem ég segi af eigin reynslu: ef borgarasamfélagið stendur sig vel og vinnur með öðrum aðilum - sér í lagi ríkisstjórnum, og alþjóðlegum stofnunum þeirra, og einnig stórum alþjóðlegum aðilum, sérstaklega þeim sem hafa sett sér reglur um samfélagslega ábyrgð fyrirtækja - þá er í þessum töfraþríhyrningi milli borgarasamfélagsins, ríkisstjórnar og einkageirans, gífurlegt tækifæri fyrir okkur öll til að skapa betri heim.
 
-Review / 审查: Civil-society/government/private-sector argument retained with minor rhetorical compression.
+Review
 
 </details>
 
@@ -3305,6 +3273,6 @@ English: Human beings have this marvelous adaptation that they can actually have
 
 Icelandic reference: Manneskjur hafa þessa stórkostlegu aðlögun að þeir geta raunverulega upplifað reynslu í hausnum á sér áður en þær reyna þær í alvöru heiminum.
 
-Review / 审查: Mental simulation/adaptation meaning retained; Icelandic gender/pronoun agreement is inconsistent.
+Review
 
 </details>

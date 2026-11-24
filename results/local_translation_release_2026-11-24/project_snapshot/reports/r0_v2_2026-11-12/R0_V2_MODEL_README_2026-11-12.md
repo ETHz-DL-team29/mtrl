@@ -1,7 +1,5 @@
 # R0-v2 / 0.8B continued-SFT adapter · 2026-11-12
 
-得到并保存了当前参考指标最强的 SFT 候选 R0-v2；但现有证据仍不足以认定它已是综合英→冰翻译任务的合格 DAPO 正式基座。
-
 R0-v2 is the strongest tested SFT candidate by matched reference metrics. It is not yet validated as a semantically reliable starting point for full-domain English-to-Icelandic DAPO.
 
 This is a LoRA adapter, not a complete base model. No DAPO updates were run.
@@ -50,9 +48,7 @@ An adapter-only package cannot reproduce optimizer/RNG resume: use private Drive
 
 ## Limits
 
-同一32条开发源文、G=8、T=1下，新模型的随机期望逐句chrF++为28.88，奖励top-1为33.28，参考oracle为39.19；旧SFT分别为20.21/23.59/28.68，原R0为20.68/20.83/26.84。一般、专业及三档长度的参考均分均提高。对旧SFT的奖励top-1增益为+9.69，分层配对95%区间[5.18,14.20]；对原R0为+12.45，[7.86,17.58]。非恒定奖励组24→29，全零组8→3，选优相对随机的参考增益为+4.40，[1.60,7.76]。这些是实质的相对改善，而非证明语义正确率。
-
-词义和词形仍是瓶颈：p04的8个样本未见可确认的“被解雇”表达，贪心输出也将其变为slökkvaður；p00贪心完全正确，但8次T=1采样没有复现该正确句。p24不可靠译文仍获得约0.93的奖励。专业长句64个候选中26个含源文没有的汉字/西里尔/阿拉伯字符插入（40.6%），而形式过滤通过率仍很高。不能用这些代理指标宣称模型已经“综合很强”，也不能据此保证DAPO有效；小规模信号诊断与正式方法实验必须分开。
+On the same32dev sources with G=8,T=1, the new model has expected random sentence-chrF++28.88, reward-top1=33.28 and reference oracle39.19. Older SFT gives20.21/23.59/28.68; original R0 gives20.68/20.83/26.84. Reference means improve for general/technical sources and all three lengths. Reward-top1 gain over older SFT is+9.69, with stratified paired95%interval[5.18,14.20]; versus original R0 it is+12.45,[7.86,17.58]. Nonconstant-reward groups24→29, all-zero groups8→3; reference-score gain from selection over random is+4.40,[1.60,7.76]. These are substantive relative improvements, not proof of semantic correctness rates.
 
 On the same 32 development sources at G=8, T=1, random-expected sentence chrF++, reward top-1 and reference-oracle means are 28.88/33.28/39.19 for R0-v2, versus 20.21/23.59/28.68 for old SFT and 20.68/20.83/26.84 for previous R0. Reference means improve in both domains and all three length bins. Reward-top-1 gains are +9.69[5.18,14.20] against old SFT and +12.45[7.86,17.58] against previous R0, using stratified paired 95% intervals. Variable-reward groups rise 24→29, all-zero groups fall 8→3, and reward selection gains +4.40[1.60,7.76] over uniform sampling. These establish relative reference-metric gains, not semantic accuracy.
 

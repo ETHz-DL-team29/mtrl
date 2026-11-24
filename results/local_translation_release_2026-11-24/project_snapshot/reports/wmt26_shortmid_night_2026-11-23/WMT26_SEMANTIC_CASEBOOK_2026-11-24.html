@@ -1,9 +1,10 @@
-<!doctype html><html lang="zh"><meta charset="utf-8"><style>body{max-width:1050px;margin:30px auto;padding:20px;font:16px/1.7 system-ui,Microsoft YaHei;overflow-wrap:anywhere}pre{white-space:pre-wrap;background:#f1f5f9;padding:15px}blockquote{border-left:4px solid #94a3b8;padding-left:18px}h2{border-top:1px solid #cbd5e1;padding-top:25px}</style><h1>WMT26逐例语义核查 / WMT26 source-fidelity casebook</h1>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WMT26 source-fidelity casebook</title><style>body{max-width:1050px;margin:30px auto;padding:20px;font:16px/1.7 system-ui,Microsoft YaHei;overflow-wrap:anywhere}pre{white-space:pre-wrap;background:#f1f5f9;padding:15px}blockquote{border-left:4px solid #94a3b8;padding-left:18px}h2{border-top:1px solid #cbd5e1;padding-top:25px}
+pre{overflow:auto;background:#f3f6fa;padding:14px;border-radius:6px}img{max-width:100%;height:auto}p,li,td{overflow-wrap:anywhere}aside{padding:12px;border-left:4px solid #126782;background:#eef5fa;margin-bottom:24px}.table{overflow-x:auto}details{margin:12px 0}summary{cursor:pointer;font-weight:600}</style></head><body><main><aside>English edition · 2026-11-24. Historical experiment values and labels are unchanged. Original wording and model-output bytes are retained in source commit f82bd68. See the repository English-localization record before rescoring translated display excerpts.</aside><h1>WMT26 source-fidelity casebook</h1>
 <p>2026-11-24 · Europe/Berlin</p>
-<p>固定源单元24条，三个模型共72对，去重后盲化判断52对。标注先封存再查看模型映射。实际覆盖news/social/speech；软件域没有符合本次短中句条件的源单元，未在看完结果后补选。格式及计数单元单独统计，全部原始抽样仍保留。</p>
 <p>24 frozen source units, 72 model/source pairs and 52 deduplicated blind judgments. Labels were sealed before identities were opened. Coverage is news/social/speech; no software unit met this short-medium audit's eligibility. No post-output replacements were added. Report formatting/counter units separately while retaining the full original selection.</p>
-<p><strong>P</strong>:核心意思保留，允许语法不完美 / core meaning retained; imperfect grammar allowed. <strong>F</strong>:可指出实质语义错误 / identifiable material error. <strong>U</strong>:保留不确定 / uncertainty retained. <strong>同一助手核查，不是独立母语专家认证，不是总体正确率，不用于选checkpoint。 / Same-assistant audit, not independent native certification or a population correctness rate; not used for checkpoint selection.</strong></p>
-<pre><code class="language-json">{
+<p><strong>P</strong>: core meaning retained; imperfect grammar allowed. <strong>F</strong>: identifiable material semantic error. <strong>U</strong>: uncertainty retained. <strong>Same-assistant audit, not independent native-expert certification or a population correctness estimate; not used for checkpoint selection.</strong></p>
+<details><summary>Recorded data or code</summary><pre><code class="language-json">{
   &quot;UTC&quot;: &quot;2026-11-24T02:27:51.989383+00:00&quot;,
   &quot;source_units&quot;: 24,
   &quot;unique_blind_pairs&quot;: 52,
@@ -158,7 +159,7 @@
   &quot;not_used_to_select_checkpoint&quot;: true,
   &quot;software_not_covered_by_shortmedium_audit&quot;: true
 }
-</code></pre>
+</code></pre></details>
 <h2>1. news / 1 words / format only</h2>
 <p>Source ID: <code>8b93b20af87ca2180ccd:0003</code></p>
 <blockquote>
@@ -166,13 +167,13 @@
 </blockquote>
 <h3>R0 · P · B029</h3>
 <p>&lt;/p&gt;</p>
-<p>格式标记原样保留 / Exact formatting-only preservation.</p>
+<p>Exact formatting-only preservation.</p>
 <h3>oldDAPO120 · P · B029</h3>
 <p>&lt;/p&gt;</p>
-<p>格式标记原样保留 / Exact formatting-only preservation.</p>
+<p>Exact formatting-only preservation.</p>
 <h3>shortmidDAPO · P · B029</h3>
 <p>&lt;/p&gt;</p>
-<p>格式标记原样保留 / Exact formatting-only preservation.</p>
+<p>Exact formatting-only preservation.</p>
 <h2>2. news / 1 words / format only</h2>
 <p>Source ID: <code>beb232c57e34326b7ba4:0016</code></p>
 <blockquote>
@@ -180,13 +181,13 @@
 </blockquote>
 <h3>R0 · P · B011</h3>
 <p>&lt;/p&gt;</p>
-<p>格式标记原样保留 / Exact formatting-only preservation.</p>
+<p>Exact formatting-only preservation.</p>
 <h3>oldDAPO120 · P · B011</h3>
 <p>&lt;/p&gt;</p>
-<p>格式标记原样保留 / Exact formatting-only preservation.</p>
+<p>Exact formatting-only preservation.</p>
 <h3>shortmidDAPO · P · B011</h3>
 <p>&lt;/p&gt;</p>
-<p>格式标记原样保留 / Exact formatting-only preservation.</p>
+<p>Exact formatting-only preservation.</p>
 <h2>3. news / 1 words / format only</h2>
 <p>Source ID: <code>24edd9601e2912238379:0021</code></p>
 <blockquote>
@@ -194,13 +195,13 @@
 </blockquote>
 <h3>R0 · P · B031</h3>
 <p>&lt;/p&gt;</p>
-<p>格式标记原样保留 / Exact formatting-only preservation.</p>
+<p>Exact formatting-only preservation.</p>
 <h3>oldDAPO120 · P · B031</h3>
 <p>&lt;/p&gt;</p>
-<p>格式标记原样保留 / Exact formatting-only preservation.</p>
+<p>Exact formatting-only preservation.</p>
 <h3>shortmidDAPO · P · B031</h3>
 <p>&lt;/p&gt;</p>
-<p>格式标记原样保留 / Exact formatting-only preservation.</p>
+<p>Exact formatting-only preservation.</p>
 <h2>4. news / 3 words / substantive text</h2>
 <p>Source ID: <code>88c219e9391e17a463bd:0022</code></p>
 <blockquote>
@@ -208,13 +209,13 @@
 </blockquote>
 <h3>R0 · P · B035</h3>
 <p>Takk fyrir að fylgja.</p>
-<p>感谢关注的含义保留 / Thanks for following is retained.</p>
+<p>Thanks for following is retained.</p>
 <h3>oldDAPO120 · P · B035</h3>
 <p>Takk fyrir að fylgja.</p>
-<p>感谢关注的含义保留 / Thanks for following is retained.</p>
+<p>Thanks for following is retained.</p>
 <h3>shortmidDAPO · P · B035</h3>
 <p>Takk fyrir að fylgja.</p>
-<p>感谢关注的含义保留 / Thanks for following is retained.</p>
+<p>Thanks for following is retained.</p>
 <h2>5. social / 8 words / substantive text</h2>
 <p>Source ID: <code>871d9fbcb62faa3a90e1:0017</code></p>
 <blockquote>
@@ -222,13 +223,13 @@
 </blockquote>
 <h3>R0 · F · B002</h3>
 <p>Crown fullað, klætt með klæði, með töflu á húðinni.</p>
-<p>纽扣和顶部变成皮肤上的其他物体 / The covered button at the peak becomes an unrelated object on skin.</p>
+<p>The covered button at the peak becomes an unrelated object on skin.</p>
 <h3>oldDAPO120 · F · B024</h3>
 <p>Crown fullt samsett, klætt með klóti. Tangur á húðinni.</p>
-<p>顶部覆布纽扣变为皮肤上的物体 / The covered button at the peak becomes an unrelated object on skin.</p>
+<p>The covered button at the peak becomes an unrelated object on skin.</p>
 <h3>shortmidDAPO · F · B043</h3>
 <p>Crown fullt tekið upp, með klæðu umlát. Knapp á húðinni.</p>
-<p>顶部纽扣的位置被译到皮肤上，服装描述错误 / The button location becomes skin; the garment description is wrong.</p>
+<p>The button location becomes skin; the garment description is wrong.</p>
 <h2>6. social / 7 words / substantive text</h2>
 <p>Source ID: <code>bd68cbf019a831f60f05:0013</code></p>
 <blockquote>
@@ -236,13 +237,13 @@
 </blockquote>
 <h3>R0 · P · B050</h3>
 <p>Þó ekki séu hlutirnir líða sömu í dag.</p>
-<p>今天感觉不同的核心含义保留 / The central meaning that things feel different today is retained.</p>
+<p>The central meaning that things feel different today is retained.</p>
 <h3>oldDAPO120 · P · B012</h3>
 <p>Þó ekki séu hlutirnir líða sama í dag.</p>
-<p>虽然语法生硬，今天感觉不同的核心意思保留 / Despite rough grammar, the central meaning that things feel different today is retained.</p>
+<p>Despite rough grammar, the central meaning that things feel different today is retained.</p>
 <h3>shortmidDAPO · P · B050</h3>
 <p>Þó ekki séu hlutirnir líða sömu í dag.</p>
-<p>今天感觉不同的核心含义保留 / The central meaning that things feel different today is retained.</p>
+<p>The central meaning that things feel different today is retained.</p>
 <h2>7. social / 1 words / format only</h2>
 <p>Source ID: <code>8b74f8c50b104cfd74e0:0022</code></p>
 <blockquote>
@@ -250,13 +251,13 @@
 </blockquote>
 <h3>R0 · P · B008</h3>
 <p>&lt;/p&gt;</p>
-<p>格式标记原样保留，非自然语言翻译 / Exact formatting-only preservation, not natural-language translation.</p>
+<p>Exact formatting-only preservation, not natural-language translation.</p>
 <h3>oldDAPO120 · P · B008</h3>
 <p>&lt;/p&gt;</p>
-<p>格式标记原样保留，非自然语言翻译 / Exact formatting-only preservation, not natural-language translation.</p>
+<p>Exact formatting-only preservation, not natural-language translation.</p>
 <h3>shortmidDAPO · P · B008</h3>
 <p>&lt;/p&gt;</p>
-<p>格式标记原样保留，非自然语言翻译 / Exact formatting-only preservation, not natural-language translation.</p>
+<p>Exact formatting-only preservation, not natural-language translation.</p>
 <h2>8. social / 1 words / format only</h2>
 <p>Source ID: <code>5504f5bcf58e8d055226:0022</code></p>
 <blockquote>
@@ -264,13 +265,13 @@
 </blockquote>
 <h3>R0 · P · B019</h3>
 <p>&lt;br&gt;5/n&lt;/p&gt;</p>
-<p>格式与序号原样保留，非自然语言翻译 / Exact markup/counter preservation, not natural-language translation.</p>
+<p>Exact markup/counter preservation, not natural-language translation.</p>
 <h3>oldDAPO120 · P · B019</h3>
 <p>&lt;br&gt;5/n&lt;/p&gt;</p>
-<p>格式与序号原样保留，非自然语言翻译 / Exact markup/counter preservation, not natural-language translation.</p>
+<p>Exact markup/counter preservation, not natural-language translation.</p>
 <h3>shortmidDAPO · P · B019</h3>
 <p>&lt;br&gt;5/n&lt;/p&gt;</p>
-<p>格式与序号原样保留，非自然语言翻译 / Exact markup/counter preservation, not natural-language translation.</p>
+<p>Exact markup/counter preservation, not natural-language translation.</p>
 <h2>9. speech / 2 words / substantive text</h2>
 <p>Source ID: <code>56f0ec42d453e0588959:0004</code></p>
 <blockquote>
@@ -278,13 +279,13 @@
 </blockquote>
 <h3>R0 · P · B015</h3>
 <p>Notendahandbók.</p>
-<p>User manual正确译为Notendahandbók / User manual is faithfully rendered as Notendahandbók.</p>
+<p>User manual is faithfully rendered as Notendahandbók.</p>
 <h3>oldDAPO120 · P · B015</h3>
 <p>Notendahandbók.</p>
-<p>User manual正确译为Notendahandbók / User manual is faithfully rendered as Notendahandbók.</p>
+<p>User manual is faithfully rendered as Notendahandbók.</p>
 <h3>shortmidDAPO · P · B015</h3>
 <p>Notendahandbók.</p>
-<p>User manual正确译为Notendahandbók / User manual is faithfully rendered as Notendahandbók.</p>
+<p>User manual is faithfully rendered as Notendahandbók.</p>
 <h2>10. speech / 6 words / substantive text</h2>
 <p>Source ID: <code>6db03fc6f3a322fd7864:0000</code></p>
 <blockquote>
@@ -292,13 +293,13 @@
 </blockquote>
 <h3>R0 · F · B018</h3>
 <p>Ég er á standi í köklu.</p>
-<p>火山没有被译为火山，位置意义错误 / Volcano is not translated as a volcano; the location is wrong.</p>
+<p>Volcano is not translated as a volcano; the location is wrong.</p>
 <h3>oldDAPO120 · F · B025</h3>
 <p>Ég er á standi í könnu.</p>
-<p>火山被替换为kanna相关的容器词 / Volcano is replaced by a container-related kanna form.</p>
+<p>Volcano is replaced by a container-related kanna form.</p>
 <h3>shortmidDAPO · F · B049</h3>
 <p>Ég er á standi í könnnum.</p>
-<p>火山位置变为容器相关词，关键地点错误 / The volcano location becomes a container-related form.</p>
+<p>The volcano location becomes a container-related form.</p>
 <h2>11. speech / 11 words / substantive text</h2>
 <p>Source ID: <code>068c0dfbae0802f1de29:0003</code></p>
 <blockquote>
@@ -306,13 +307,13 @@
 </blockquote>
 <h3>R0 · P · B041</h3>
 <p>Ég get ekki bíðað að gera þetta við þig núna.</p>
-<p>迫不及待现在做这件事的意思保留，语法不完美 / Cannot wait to do this now is retained despite imperfect grammar.</p>
+<p>Cannot wait to do this now is retained despite imperfect grammar.</p>
 <h3>oldDAPO120 · P · B046</h3>
 <p>Ég get bara ekki bíðað að gera þetta við þig núna.</p>
-<p>迫不及待现在做这件事的大意保留 / Cannot wait to do this now is retained.</p>
+<p>Cannot wait to do this now is retained.</p>
 <h3>shortmidDAPO · P · B046</h3>
 <p>Ég get bara ekki bíðað að gera þetta við þig núna.</p>
-<p>迫不及待现在做这件事的大意保留 / Cannot wait to do this now is retained.</p>
+<p>Cannot wait to do this now is retained.</p>
 <h2>12. speech / 12 words / substantive text</h2>
 <p>Source ID: <code>68c19f62778c8188007d:0006</code></p>
 <blockquote>
@@ -320,13 +321,13 @@
 </blockquote>
 <h3>R0 · U · B017</h3>
 <p>Ég hélt að það væri best ef ég flýti út þannig.</p>
-<p>离开的核心可辨，但悄悄溜出与匆忙离开的差别不确定 / Leaving is recognizable, but slipped out versus hurried out remains uncertain.</p>
+<p>Leaving is recognizable, but slipped out versus hurried out remains uncertain.</p>
 <h3>oldDAPO120 · U · B042</h3>
 <p>Ég hélt að það væri best ef ég slíp út þannig.</p>
-<p>slíp这一表达不能确认保留悄悄溜出的含义 / The form slíp does not allow confident certification of slipped out.</p>
+<p>The form slíp does not allow confident certification of slipped out.</p>
 <h3>shortmidDAPO · U · B017</h3>
 <p>Ég hélt að það væri best ef ég flýti út þannig.</p>
-<p>离开的核心可辨，但悄悄溜出与匆忙离开的差别不确定 / Leaving is recognizable, but slipped out versus hurried out remains uncertain.</p>
+<p>Leaving is recognizable, but slipped out versus hurried out remains uncertain.</p>
 <h2>13. news / 21 words / substantive text</h2>
 <p>Source ID: <code>9dbad5e0894379a5e96c:0019</code></p>
 <blockquote>
@@ -334,13 +335,13 @@
 </blockquote>
 <h3>R0 · F · B001</h3>
 <p>Gary Cooper náði hlutverki sínu að fullu sér sinni, hreintist honum aðeins sá heilbrigði og Gregory Peck í Atticus í To Kill a Mockingbird.</p>
-<p>演员的完整性及与Atticus的比较被破坏 / Integrity and the comparison with Atticus are garbled.</p>
+<p>Integrity and the comparison with Atticus are garbled.</p>
 <h3>oldDAPO120 · F · B044</h3>
 <p>Gary Cooper náði hlutverki sínu að fullu sér sinni, hreint sér aðeins saman við Atticus í Atticus í To Kill a Mockingbird sem Gregory Peck gaf sér.</p>
-<p>integrity比较关系损坏并出现Atticus重复 / The integrity comparison is garbled, with duplicated Atticus.</p>
+<p>The integrity comparison is garbled, with duplicated Atticus.</p>
 <h3>shortmidDAPO · F · B040</h3>
 <p>Gary Cooper náði þáttinn í fullu sér sinn, hreintu hreinni hann aðeins í Gregory Peck hins Atticus í To Kill a Mockingbird.</p>
-<p>integrity及角色比较的核心关系丢失 / Integrity and the role-comparison relationship are lost.</p>
+<p>Integrity and the role-comparison relationship are lost.</p>
 <h2>14. news / 39 words / substantive text</h2>
 <p>Source ID: <code>c1ba3b117b18185801f1:0040</code></p>
 <blockquote>
@@ -348,13 +349,13 @@
 </blockquote>
 <h3>R0 · F · B005</h3>
 <p>Hudson-Odoi tók víxliðið í viðbótartíma á frábæru hátt, tók tapp á brjóstina og hældi fullkomlega hólfu yfir Okonkwo, en Wrexham fengu ekki að hafa fengið fyrsta húð í FA kupsálinum í 26 árum.</p>
-<p>足球动作、比赛结果及26年首次击败顶级球队的意义破坏 / Football actions and the first top-flight scalp in26 years are materially garbled.</p>
+<p>Football actions and the first top-flight scalp in26 years are materially garbled.</p>
 <h3>oldDAPO120 · F · B047</h3>
 <p>Hudson-Odoi tók týpu í viðbótartíma í frábæru hátt, tók tappa á brjóstina sína og hælt nákvæm tilvika hættu yfir Okonkwo, en Wrexham fengu ekki að missa fyrsta húð á FA kupsálinum í 26 árum.</p>
-<p>足球动作、首次战绩与比赛结果表述破坏 / Football actions, the first scalp and result are materially garbled.</p>
+<p>Football actions, the first scalp and result are materially garbled.</p>
 <h3>shortmidDAPO · F · B022</h3>
 <p>Hudson-Odoi tók víxlan í viðbótartíma í frábæru hátt, tók tapp á brjóstina sína og hældi fullkominni hólf yfir Okonkwo, en Wrexham fengu ekki að missa fyrsta húð þeirra í FA-kupanum í 26 árum.</p>
-<p>关键足球动作和首次战绩含义损坏 / Key football actions and the first top-flight scalp are materially garbled.</p>
+<p>Key football actions and the first top-flight scalp are materially garbled.</p>
 <h2>15. news / 31 words / substantive text</h2>
 <p>Source ID: <code>fda9531e50cdd1bb46e7:0005</code></p>
 <blockquote>
@@ -362,13 +363,13 @@
 </blockquote>
 <h3>R0 · F · B010</h3>
 <p>Robin Roefs var hringið Sunderland og endaði hamingja Everton í FA-kupsálinum á ný eftir þrjár skræfðar fyrirbæri í skrárinni þegar Svarta kettillin náðu fjórða kúpu.</p>
-<p>英雄、点球和晋级轮次等关键比赛信息损坏 / Hero, penalties and progression to round four are materially garbled.</p>
+<p>Hero, penalties and progression to round four are materially garbled.</p>
 <h3>oldDAPO120 · F · B014</h3>
 <p>Robin Roefs var hringi Sunderland og FA hóp Erlingarins létst á nýju leið eftir þrjár skræfum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andlegum andleg</p>
-<p>严重无关重复且未完成关键比赛内容 / Severe irrelevant repetition and missing match information.</p>
+<p>Severe irrelevant repetition and missing match information.</p>
 <h3>shortmidDAPO · F · B036</h3>
 <p>Robin Roefs var hringið Sunderland og endurtekið hamingjusöngur Everton á fimmtípu ógildandi hátt á eftir þrjár skræfðar áreikningar í skrárásinni og Black Cats náðu fjórða kringlunni.</p>
-<p>英雄、点球及比赛晋级信息损坏 / Hero, penalties and match progression are materially garbled.</p>
+<p>Hero, penalties and match progression are materially garbled.</p>
 <h2>16. news / 24 words / substantive text</h2>
 <p>Source ID: <code>6c52413a733e6513e96b:0012</code></p>
 <blockquote>
@@ -376,13 +377,13 @@
 </blockquote>
 <h3>R0 · F · B039</h3>
 <p>Eftir tvö kringlunir í FBD-hópnum fá tveir stjörnustöðvar síðasta viku í endaáttunni, að því er Galway í viðræðuna við siglinginn í Roscommon-Mayo-áttunni á morgun.</p>
-<p>下周变成上周，前两名和对阵信息也破坏 / Next week becomes last week, with additional ranking/opponent distortion.</p>
+<p>Next week becomes last week, with additional ranking/opponent distortion.</p>
 <h3>oldDAPO120 · F · B023</h3>
 <p>Eftir tvö lotu í FBD-hópnum fá tveir fyrsta stjörnurnar næsta viku í endaáttunni, að Galway í viðmiðunarmálið við siglinginn í Roscommon-Mayo- samanburðið á morgun.</p>
-<p>晋级规则和胜者对阵关系被破坏 / Progression rules and the winner/opponent relation are garbled.</p>
+<p>Progression rules and the winner/opponent relation are garbled.</p>
 <h3>shortmidDAPO · F · B013</h3>
 <p>Eftir tvö lotur í FBD-hópnum fá tveir fyrsta stjörnurnar næsta viku í endaáttunni, að Galway í viðræðuna með vinum sínum á morgunnar í Roscommon-Mayo.</p>
-<p>前两名进决赛及对阵胜者的关系被改坏 / The top-two progression and opponent/winner relationships are garbled.</p>
+<p>The top-two progression and opponent/winner relationships are garbled.</p>
 <h2>17. social / 18 words / substantive text</h2>
 <p>Source ID: <code>5d4ebce6bd448f4b42f2:0007</code></p>
 <blockquote>
@@ -390,13 +391,13 @@
 </blockquote>
 <h3>R0 · F · B006</h3>
 <p>Ég er FTTP/XGS-PON svo ég held að vera bara stökkvinn með 5x... ekki óhjákvæm vandamál, bara lítil þrálát.</p>
-<p>insurmountable被错译，关键评价改变 / Insurmountable is mistranslated, changing the central assessment.</p>
+<p>Insurmountable is mistranslated, changing the central assessment.</p>
 <h3>oldDAPO120 · F · B003</h3>
 <p>Ég er FTTP/XGS-PON svo ég held að vera bara stökkvinn með 5x... ekki óhjákvæm vandamál, bara lítil skammvæn.</p>
-<p>无法克服的问题与卡在5x的含义未保留 / The stuck/insurmountable-problem meanings are not retained.</p>
+<p>The stuck/insurmountable-problem meanings are not retained.</p>
 <h3>shortmidDAPO · F · B027</h3>
 <p>Ég er FTTP/XGS-PON svo ég held að vera bara stökkvinn með 5x... ekki óhjákvæm ámil, bara lítil óþægindi.</p>
-<p>卡住及并非无法克服的问题未正确表达 / Being stuck and not having an insurmountable problem are mistranslated.</p>
+<p>Being stuck and not having an insurmountable problem are mistranslated.</p>
 <h2>18. social / 22 words / substantive text</h2>
 <p>Source ID: <code>f658cc9d8d816e94c9c1:0005</code></p>
 <blockquote>
@@ -404,13 +405,13 @@
 </blockquote>
 <h3>R0 · F · B051</h3>
 <p>Það er of langt frá öllum myndavélum mínum til að vita nákvæmlega hvað hann var að gera en hreyfingar benda til sníðs.</p>
-<p>sniffing的嗅闻行为变成sníðs相关的其他意义 / The olfactory action sniffing is not retained in sní­ðs.</p>
+<p>The olfactory action sniffing is not retained in sní­ðs.</p>
 <h3>oldDAPO120 · U · B052</h3>
 <p>Það er of langt frá öllum myndavélum mínum til að vita nákvæmlega hvað hann var að gera en hreyfingar benda til sníkka.</p>
-<p>末尾非标准词无法确认是嗅闻，其他观察内容大致保留 / The final nonstandard word cannot be certified as sniffing; the observation context is mostly retained.</p>
+<p>The final nonstandard word cannot be certified as sniffing; the observation context is mostly retained.</p>
 <h3>shortmidDAPO · U · B052</h3>
 <p>Það er of langt frá öllum myndavélum mínum til að vita nákvæmlega hvað hann var að gera en hreyfingar benda til sníkka.</p>
-<p>末尾非标准词无法确认是嗅闻，其他观察内容大致保留 / The final nonstandard word cannot be certified as sniffing; the observation context is mostly retained.</p>
+<p>The final nonstandard word cannot be certified as sniffing; the observation context is mostly retained.</p>
 <h2>19. social / 20 words / substantive text</h2>
 <p>Source ID: <code>98dc59f74f8a2087167f:0011</code></p>
 <blockquote>
@@ -418,13 +419,13 @@
 </blockquote>
 <h3>R0 · U · B038</h3>
 <p>Hefði sérhverju svipaða vandamál þegar ég var að vinna heima mínu þar sem allar upplýsingarnar sem ég hugsaði að nota voru allar rangar.</p>
-<p>施工datum及起始时态表达不确定，不能认证语义完整 / Construction datum and the opening tense are uncertain; complete fidelity cannot be certified.</p>
+<p>Construction datum and the opening tense are uncertain; complete fidelity cannot be certified.</p>
 <h3>oldDAPO120 · U · B020</h3>
 <p>Hafði svipaða vandamál þegar ég var að vinna heima mínu þar sem allar upplýsingarnar sem ég hugsaði að nota voru allar rangar.</p>
-<p>房屋施工中datum是否为测量基准存在歧义，候选只说信息 / Datum may mean a construction reference; the candidate says information, so technical fidelity is uncertain.</p>
+<p>Datum may mean a construction reference; the candidate says information, so technical fidelity is uncertain.</p>
 <h3>shortmidDAPO · U · B020</h3>
 <p>Hafði svipaða vandamál þegar ég var að vinna heima mínu þar sem allar upplýsingarnar sem ég hugsaði að nota voru allar rangar.</p>
-<p>房屋施工中datum是否为测量基准存在歧义，候选只说信息 / Datum may mean a construction reference; the candidate says information, so technical fidelity is uncertain.</p>
+<p>Datum may mean a construction reference; the candidate says information, so technical fidelity is uncertain.</p>
 <h2>20. social / 36 words / substantive text</h2>
 <p>Source ID: <code>1ba5402f736862a1747f:0002</code></p>
 <blockquote>
@@ -432,13 +433,13 @@
 </blockquote>
 <h3>R0 · F · B045</h3>
 <p>Hún tók það úr bláæðum í kringum eldið, þá er líkur á að hún hafi komið of djúp og hafi hett á bakverri bláæðarinnar og þá hefur vefjaþrengið það í gegnum ferðina.</p>
-<p>假设语气丢失，肘部和肌腱受伤信息错误 / The assumption is asserted as fact, with elbow/tendon injury distortion.</p>
+<p>The assumption is asserted as fact, with elbow/tendon injury distortion.</p>
 <h3>oldDAPO120 · F · B037</h3>
 <p>Hafi hún tekið það úr bláæðum í kringum eldið, er möguleiki á að hún hafi komið of djúp og hafi hett á bakverri bláæðarinnar og þá hefur tænur þá sáttstífla það á leiðinni út.</p>
-<p>肘部、血管后壁及肌腱损伤信息破坏 / Elbow, vein-wall and tendon-injury details are materially garbled.</p>
+<p>Elbow, vein-wall and tendon-injury details are materially garbled.</p>
 <h3>shortmidDAPO · F · B034</h3>
 <p>Því að hún tók það úr bláæðinum í kringum eldið, er líkur á að hún hafi komið of djúp og hafi hett í bakverri bláæðarinnar og þá hefur vefið þar í þrengt það á leiðinni út.</p>
-<p>肘部与肌腱受伤的解剖和因果信息破坏 / Elbow, tendon and injury/causation details are materially garbled.</p>
+<p>Elbow, tendon and injury/causation details are materially garbled.</p>
 <h2>21. speech / 14 words / substantive text</h2>
 <p>Source ID: <code>0b6ccedbcf9a7f1e8059:0000</code></p>
 <blockquote>
@@ -446,13 +447,13 @@
 </blockquote>
 <h3>R0 · F · B048</h3>
 <p>Hún talaði um hversu óhjálegt er að vera konu í dagins félags.</p>
-<p>impossible的中心含义未正确表达 / The central meaning of impossible is mistranslated.</p>
+<p>The central meaning of impossible is mistranslated.</p>
 <h3>oldDAPO120 · F · B021</h3>
 <p>Hún talaði um hversu óhjálegt er að vera kona í dagins samfélags.</p>
-<p>impossible的中心含义未正确表达 / The central meaning of impossible is mistranslated.</p>
+<p>The central meaning of impossible is mistranslated.</p>
 <h3>shortmidDAPO · F · B004</h3>
 <p>Hún talaði um hversu óhjálegt er að vera kona í dagins félags.</p>
-<p>中心谓语impossible没有得到正确表达 / The central predicate impossible is mistranslated.</p>
+<p>The central predicate impossible is mistranslated.</p>
 <h2>22. speech / 17 words / substantive text</h2>
 <p>Source ID: <code>f5e3d55fe3de929d6cac:0000</code></p>
 <blockquote>
@@ -460,13 +461,13 @@
 </blockquote>
 <h3>R0 · F · B032</h3>
 <p>Jade, ef þú vilt koma aftur saman með Beck, þá hvers vegna skaltu hann það ekki?</p>
-<p>为什么不告诉他的关键动作谓语缺失 / The key predicate tell him is missing.</p>
+<p>The key predicate tell him is missing.</p>
 <h3>oldDAPO120 · U · B009</h3>
 <p>Jade, ef þú vilt ná aftur saman með Beck, þá hvers vegna skaltu hann þá ekki segja?</p>
-<p>复合与告诉对方的大意可辨，但代词和谓语结构不足以确认 / Reunion is recognizable, but the pronoun/predicate structure prevents confident fidelity certification.</p>
+<p>Reunion is recognizable, but the pronoun/predicate structure prevents confident fidelity certification.</p>
 <h3>shortmidDAPO · P · B026</h3>
 <p>Jade, ef þú vilt fara aftur með Beck, þá hvers vegna skaltu þá ekki bara segja honum það?</p>
-<p>与Beck复合并直接告诉他的核心含义保留 / Getting back together with Beck and telling him are retained.</p>
+<p>Getting back together with Beck and telling him are retained.</p>
 <h2>23. speech / 18 words / substantive text</h2>
 <p>Source ID: <code>1ef44f7d70897cb5c9f2:0005</code></p>
 <blockquote>
@@ -474,13 +475,13 @@
 </blockquote>
 <h3>R0 · F · B016</h3>
 <p>Það er eitt og sama að fylla höfuð hans með óvísu um Norðurhvelið, en hringja S fyrir Santa.</p>
-<p>北极被译为北半球，另有Santa表达错误 / North Pole becomes Northern Hemisphere, with additional Santa-related distortion.</p>
+<p>North Pole becomes Northern Hemisphere, with additional Santa-related distortion.</p>
 <h3>oldDAPO120 · F · B030</h3>
 <p>Það er eitt svið að fylla höfuð hans með óvísu um Norðurhvelið, en síðan hringdu S fyrir Jólafíkn.</p>
-<p>北极与Santa均被误译 / Both North Pole and Santa are mistranslated.</p>
+<p>Both North Pole and Santa are mistranslated.</p>
 <h3>shortmidDAPO · F · B028</h3>
 <p>Það er eitt og sama að fylla höfuð hans með óvísu um Norðurhvelið, en hringja í S fyrir Jólafönginn.</p>
-<p>北极变成北半球，Santa也被破坏 / North Pole becomes Northern Hemisphere, and Santa is also distorted.</p>
+<p>North Pole becomes Northern Hemisphere, and Santa is also distorted.</p>
 <h2>24. speech / 19 words / substantive text</h2>
 <p>Source ID: <code>27f428d50b218fe48c52:0010</code></p>
 <blockquote>
@@ -488,11 +489,11 @@
 </blockquote>
 <h3>R0 · F · B007</h3>
 <p>Heldurðu að þeir myndu láta mig koma inn í eldhúsin ef þeir vissu að ég væri að skipuleggja stríðina, er það?</p>
-<p>罢工被译为战争相关词stríð / Strike is rendered with the war-related word stríð.</p>
+<p>Strike is rendered with the war-related word stríð.</p>
 <h3>oldDAPO120 · F · B007</h3>
 <p>Heldurðu að þeir myndu láta mig koma inn í eldhúsin ef þeir vissu að ég væri að skipuleggja stríðina, er það?</p>
-<p>罢工被译为战争相关词stríð / Strike is rendered with the war-related word stríð.</p>
+<p>Strike is rendered with the war-related word stríð.</p>
 <h3>shortmidDAPO · F · B033</h3>
 <p>Heldur þú að þeir myndu láta mig koma inn í eldhúsin ef þeir vissu að ég væri að skipuleggja stríðina, er það nokkuð?</p>
-<p>罢工被译为战争相关词stríð / Strike is rendered with the war-related word stríð.</p>
-</html>
+<p>Strike is rendered with the war-related word stríð.</p>
+</main></body></html>

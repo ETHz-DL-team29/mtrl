@@ -1,56 +1,42 @@
-# 通用Qwen 3B翻译R0：过滤数据SFT结果 / Filtered-data SFT results
+# Filtered-data SFT results
 
 2026-11-20 · Europe/Berlin · Report UTC: 2026-11-20T13:48:45.976891+00:00
 
-本轮有明确提升，新3B是这三个固定检查点中同集整体指标最好的版本；但还没有达到你要求的综合可靠翻译R0。主要剩余问题是冰岛语技术术语和中长句关键约束的生成。技术长句G8仍是0/24确认正确、3/24不确定。已核实从正确完整状态恢复、参数实际更新；模型容量上限没有被证明。
-
 This continuation delivers clear gains and the best overall matched metrics among the three fixed checkpoints. It does not yet establish the comprehensive reliable translation R0 you requested. Remaining failures concern Icelandic technical vocabulary and key medium/long-sentence constraints. Long-sentence G8 has 0/24 confirmed positives and 3/24 uncertain groups. Full-state restoration and actual parameter updates were verified; a model-capacity ceiling was not established.
 
-| 固定模型 / Fixed model | chrF++ (256) | BLEU (256) | G8确认覆盖 / Confirmed P | Greedy确认正确 / Confirmed P |
+| Fixed model | chrF++ (256) | BLEU (256) | Confirmed P | Confirmed P |
 | --- | --- | --- | --- | --- |
-| 保留0.8B / Historical 0.8B | 33.77 | 11.65 | 4/64 | 8/80 |
-| 旧3B A / Original 3B A | 35.40 | 12.72 | 4/64 | 7/80 |
-| 本轮3B / Selected 3B | 43.67 | 19.66 | 12/64 | 18/80 |
-
-相对旧3B，整体chrF++提升+8.27，配对95%区间[6.76, 9.74]；技术中长句由35.27升至44.42。
+| Historical 0.8B | 33.77 | 11.65 | 4/64 | 8/80 |
+| Original 3B A | 35.40 | 12.72 | 4/64 | 7/80 |
+| Selected 3B | 43.67 | 19.66 | 12/64 | 18/80 |
 
 Relative to original 3B, overall chrF++ improves by +8.27, with paired 95% interval [6.76, 9.74]. Technical medium/long chrF++ changes from 35.27 to 44.42.
 
-<details><summary>权重身份、恢复与项目筛查记录 / Identity, recovery and screening details</summary>
-
-最终交付开发集选中的t2999996，权重SHA256为8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0。本轮保留轨迹累计2,999,996个新增目标token；今天从2,116,552目标token和1753步的完整状态恢复。固定256条最终样本chrF++为35.40→43.67，差值+8.27，配对95%区间[6.7563882858521636, 9.735427514090967]。技术中长句为35.27→44.42。
+<details><summary>Identity, recovery and screening details</summary>
 
 Deliver the development-selected t2999996 adapter, SHA256: 8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0. The retained trajectory consumes 2,999,996 new target tokens, resuming today from 2,116,552 targets and 1753 updates. On 256 fixed final sources, corpus chrF++ changes 35.40→43.67, delta +8.27, paired 95% interval [6.76, 9.74]. Technical medium/long changes 35.27→44.42.
 
-Semantic project screen / 语义项目筛查: SEMANTIC_PROJECT_TARGETS_NOT_DEMONSTRATED
+Semantic project screen
 
-Combined semantic/metric project screen / 语义及指标综合筛查: {"status": "PROJECT_SCREEN_NOT_DEMONSTRATED", "semantic_checks": {"G8_total_P_ge39": false, "G8_short_P_ge8": false, "G8_medium_P_ge12": false, "G8_long_P_ge12": false, "greedy_general_P_ge14": false, "greedy_technical_P_ge30": false}, "metric_checks": {"overall_chrf_delta_nonnegative": true, "technical_chrf_delta_nonnegative": true, "general_chrf_delta_at_least_minus1_5": true}, "not_a_universal_DAPO_gate": true, "not_native_certification": true}
+Combined semantic/metric project screen {"status": "PROJECT_SCREEN_NOT_DEMONSTRATED", "semantic_checks": {"G8_total_P_ge39": false, "G8_short_P_ge8": false, "G8_medium_P_ge12": false, "G8_long_P_ge12": false, "greedy_general_P_ge14": false, "greedy_technical_P_ge30": false}, "metric_checks": {"overall_chrf_delta_nonnegative": true, "technical_chrf_delta_nonnegative": true, "general_chrf_delta_at_least_minus1_5": true}, "not_a_universal_DAPO_gate": true, "not_native_certification": true}
 
 </details>
 
-同一64条技术源文、每条8候选，确认存在正确译文的覆盖为4/64→12/64；所选模型另有12组不确定U。固定80条greedy语义样本的确认正确数为7/80→18/80。U不等于错误，P也不是母语认证。
-
 On the same 64 technical sources with 8 candidates each, confirmed-positive coverage is 4/64→12/64; the selected model has 12 additional uncertain groups. Confirmed correct greedy translations on the fixed 80-source semantic audit are 7/80→18/80. U is not an error label, and P is not native certification.
-
-语义筛查与词面指标分开。只有已确认正确P计为覆盖，不确定U单列，未审查样本不冒充U或错误。即使未证明综合正式基线达标，也不意味着不能开展受限DAPO试验；MetricX奖励排序是否可靠仍需独立校准，本轮没有运行DAPO或MetricX。
 
 Semantic screening is separate from overlap metrics. Credit only confirmed P; keep U separate and do not relabel unreviewed sources as U or incorrect. Failure to demonstrate a comprehensive formal baseline does not establish that a restricted DAPO pilot is impossible. MetricX ranking still needs independent calibration; no DAPO or MetricX is run in this phase.
 
-## 1. 模型、任务和比较对象 / Actors,task and comparators
-
-任务是英→冰岛语句段翻译，覆盖一般、技术短、中、长句；不是整篇文档或跨段一致性测试。主模型始终是通用Qwen/Qwen2.5-3B-Instruct，固定revision aa8e72537993ba99e69dfaafa59ed015b17504d1；原保留3B A为零更新对照。没有使用NLLB或其他专用翻译模型初始化。
+## Actors,task and comparators
 
 The task is English-to-Icelandic segment translation across general and technical short/medium/long sources, not whole-document or cross-paragraph consistency. The actor remains general-purpose Qwen/Qwen2.5-3B-Instruct at revision aa8e72537993ba99e69dfaafa59ed015b17504d1; preserved 3B A is the zero-update comparator. No NLLB/translation-specialist initialization is used.
 
 Original A SHA256: 9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199
 
-0.8B对照在最终输出前固定为历史selected200k技术补强模型：Qwen/Qwen3.5-0.8B，revision2fc06364715b967f1860aea9cf38778875588b17，adapter SHA89c874b1e04b011c6ee3f41f499c373b47826a7f106b9d61eaa83fdce85c77ae。它是明确命名的历史保留版本，不是看到当前测试后重新挑出的“最优”。不同架构、分词器和训练历史意味着这不是纯参数规模消融。
-
 The 0.8B comparator was fixed before final outputs: historical selected200k technical continuation of Qwen/Qwen3.5-0.8B, revision2fc06364715b967f1860aea9cf38778875588b17, adapterSHA89c874b1e04b011c6ee3f41f499c373b47826a7f106b9d61eaa83fdce85c77ae. It is an explicitly named historical retained version, not selected after this test. Different architectures, tokenizers and training histories prevent a pure parameter-count interpretation.
 
-## 2. 数据、混合与保留集 / Data,mixture and holdouts
+## Data,mixture and holdouts
 
-| 项目 / Item | 值 / Value |
+| Item | Value |
 | --- | --- |
 | Frozen training pairs | 100642 |
 | Unique-pool target tokens inclEOS | 4748344 |
@@ -61,17 +47,13 @@ The 0.8B comparator was fixed before final outputs: historical selected200k tech
 | Retained unique exposed examples | 67382 |
 | Retained example exposures | 81348 |
 
-训练来自已GPU过滤的平行语料池，包括ParIce的EMA、EEA、ESO、OpenSubtitles、Tatoeba、TED和统计来源，并非全部WMT。阈值、隔离、抽检和来源处理完整记录在2026-11-19过滤报告；本轮没有降低质量阈值或把评估句加入训练。每对本轮新顺序最多2次，允许分层内重放；累计历史训练次数与被回滚的82次更新另计。
-
 Training uses the GPU-filtered parallel pool including ParIce EMA/EEA/ESO/OpenSubtitles/Tatoeba/TED/statistics, not all-WMT data. Thresholds, isolation, audits and source handling are in the 2026-11-19 filter report. This phase neither relaxes quality thresholds nor trains evaluation sources. Each pair appears at most twice in this new schedule, with within-stratum replay; earlier history and82 rolled-back updates are separate.
-
-开发/最终集合是官方ParIce21.10历史留出集的固定子集，不声称此前从未被评估。当前训练池和已追溯A训练源文的精确重叠为0。0.8B五个已保存候选训练池与当前开发/最终源文也未发现规范化精确重叠，但不能据此声称所有历史调用、文档近重复或预训练污染已排除。官方参考经结构检查，非母语专家逐句认证。
 
 Development/final sources are fixed subsets of historical official ParIce21.10 holdouts, not never-evaluated benchmarks. Exact overlap with the current training pool and traced A training sources is zero. Five saved0.8B candidate training pools also show no normalized exact overlap with current dev/final sources; this does not exclude every historical invocation, document near-duplicate or pretraining contamination. Official references passed structural checks, not item-wise native certification.
 
-## 3. 优化、恢复与预算 / Optimization,recovery and budget
+## Optimization,recovery and budget
 
-| 项目 / Item | 设置 / Setting |
+| Item | Setting |
 | --- | --- |
 | Training objective | Global valid target-token mean causalCE inclEOS;prompt/pad excluded |
 | LoRA | rank16,alpha32,dropout0.05,all7 q/k/v/o/gate/up/down projections |
@@ -82,23 +64,17 @@ Development/final sources are fixed subsets of historical official ParIce21.10 h
 | Recovery origin | step1753,target2,116,552,cursor56096,fullAdam/RNG |
 | First resumed update | {"step": 1754, "target_tokens": 2117740, "lr": 1.8599002056327167e-05, "grad_norm": 4.159056663513184, "mean_loss": 0.8679697039954188, "group_target_tokens": 1188} |
 
-原3M计划的优化器、游标、随机状态、模型和学习率连续恢复，没有重新热身或重新从A开始。代码差异只涉及明确分段预算与一次可选500k尾段；原loss、更新函数、数据、顺序和协议逐项字节校验一致。新预算替代旧单段截止有独立SHA与清单修订证据；原协议和原预算副本保留。
-
 The 3M schedule resumes full optimizer/cursor/RNG/model/LR state without new warmup or restarting from A. Code differences concern explicit segment budgeting and one optional 500k tail; loss/update/data/order/original-protocol files remain byte-verified. The new budget replacing the old continuous deadline has independent SHA/manifest proof; original protocol/budget copies remain preserved.
 
-Extension gate / 追加门槛记录: {"accepted": false, "decision": {"UTC": "2026-11-20T12:49:37.495081+00:00", "checkpoint_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0", "checks": {"technical_chrf_gain_ge_half": true, "coverage_not_down": true, "greedy_not_down": false, "general_preserved": true, "midlong_G8_not_down": true, "midlong_greedy_not_down": true, "some_midlong_semantic_gain": true, "tail_can_finish_and_be_reviewed_before_worker_selection": false}, "previous_checkpoint": "t2000188", "current_checkpoint": "t2999996", "midlong_before": {"greedy": 1, "G8": 4}, "midlong_after": {"greedy": 1, "G8": 6}, "reason": "Require observed medium/long semantic progress,not overlap improvement alone;runtime additionally enforces conservative time gate", "final_test_not_used": true, "tail_review_timing": {"estimated_training_and_dev_seconds": 3630.4331529475294, "review_reserve_seconds": 600, "worker_review_window_end_unix": 1795180877.7181003, "remaining_until_worker_review_end_seconds": 1900.2229936122894, "timing_amendment": "tail_review_feasibility_2026-11-20.json"}, "continue": false}, "estimated_required_seconds": 3627.854039740842, "remaining_training_seconds": 3397.919429540634, "no_LR_reset": true}
-
-追加最多500k仅在已审查开发语义不下降、技术chrF至少+0.5、一般句不回退及保守计时足够时允许；尾段固定1e-5，不重置Adam或伸展已执行退火。今天用户上限4小时包含准备、上传、环境、训练、评估和导出，原两段累计GPU上限8小时保持；不为用满预算强训。
+Extension gate {"accepted": false, "decision": {"UTC": "2026-11-20T12:49:37.495081+00:00", "checkpoint_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0", "checks": {"technical_chrf_gain_ge_half": true, "coverage_not_down": true, "greedy_not_down": false, "general_preserved": true, "midlong_G8_not_down": true, "midlong_greedy_not_down": true, "some_midlong_semantic_gain": true, "tail_can_finish_and_be_reviewed_before_worker_selection": false}, "previous_checkpoint": "t2000188", "current_checkpoint": "t2999996", "midlong_before": {"greedy": 1, "G8": 4}, "midlong_after": {"greedy": 1, "G8": 6}, "reason": "Require observed medium/long semantic progress,not overlap improvement alone;runtime additionally enforces conservative time gate", "final_test_not_used": true, "tail_review_timing": {"estimated_training_and_dev_seconds": 3630.4331529475294, "review_reserve_seconds": 600, "worker_review_window_end_unix": 1795180877.7181003, "remaining_until_worker_review_end_seconds": 1900.2229936122894, "timing_amendment": "tail_review_feasibility_2026-11-20.json"}, "continue": false}, "estimated_required_seconds": 3627.854039740842, "remaining_training_seconds": 3397.919429540634, "no_LR_reset": true}
 
 At most 500k extra targets are allowed only with reviewed non-regressing semantics, technical chrF gain≥0.5, general preservation and conservative timing feasibility. The tail uses1e-5 without resetting Adam or stretching executed decay. Today 4h includes preparation/upload/setup/training/evaluation/export and the original cumulative 8h GPU ceiling remains; no training is forced merely to fill time.
 
-本轮未追加500k：3M的G8确认覆盖比2M多2组，但greedy确认正确数9→8，未通过预设“不下降”条件；此外保守尾段加复核不能赶上正在运行代码的最终开发复核截止。这个预算约束在查看3M语义输出前记录，未修改运行中的训练代码，也不代表已证明继续SFT无效。
-
 The 500k tail was not taken:3M adds 2 confirmed G8 sources over 2M, but greedy P changes 9→8 and fails the prespecified non-regression condition. A conservative tail plus review also cannot fit the running worker’s final development-review cutoff. This timing constraint was recorded before viewing 3M semantic outputs, without changing running training code; it does not prove that further SFT is ineffective.
 
-## 4. 开发轨迹与最终选择 / Development trajectory and final selection
+## Development trajectory and final selection
 
-![固定开发集、语义覆盖与保留轨迹 / Development,semantic coverage and retained trajectory](training_development_and_semantics.png)
+![Development,semantic coverage and retained trajectory](training_development_and_semantics.png)
 
 | Targets | Overall chrF++ | General chrF++ | Technical mid/long chrF++ | G8 P/24 | Greedy P/32 |
 | --- | --- | --- | --- | --- | --- |
@@ -110,19 +86,17 @@ The 500k tail was not taken:3M adds 2 confirmed G8 sources over 2M, but greedy P
 | 2501000 | 46.25 | 39.09 | 46.83 | not reviewed | not reviewed |
 | 2999996 | 46.49 | 38.61 | 47.61 | 8 | 8 |
 
-<details><summary>封存选择完整记录 / Complete sealed selection</summary>
+<details><summary>Complete sealed selection</summary>
 
 {"tag": "t2999996", "step": 2543, "target_tokens": 2999996, "metrics": {"nll": 1.1306406443526344, "technical_nll": 1.113438619060956, "dev_target_tokens": 7762, "by_stratum": {"general": {"n": 32, "chrfpp": 38.614636057116606, "bleu": 15.534062052183817}, "technical_short": {"n": 32, "chrfpp": 43.358207627688806, "bleu": 20.36600694956158}, "technical_medium": {"n": 32, "chrfpp": 44.56981532302277, "bleu": 19.714936961743554}, "technical_long": {"n": 32, "chrfpp": 48.9653759111669, "bleu": 25.666730227525626}}, "overall_chrfpp": 46.48956123692833, "technical_chrfpp": 47.100046286045774, "technical_medium_long_chrfpp": 47.61391705001332, "failures": 0}, "adapter_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0", "semantic": true, "review_summary": {"labels_locked": true, "adapter_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0", "technical_sources": 24, "greedy_sources": 32, "coverage_P": 8, "coverage_U": 5, "greedy_P": 8, "greedy_U": 3, "labels_sha256": "e99c778143a20b252c74f2686985282ad9c2c814dc82efc1545675435042c409"}, "selection_reason": "Reviewed eligible maximum-coverage tie set,then greedy P,technical medium/long CHRF,earlier checkpoint"}
 
 </details>
 
-只有审查锁定且一般句chrF≥A−1.5、结构失败≤A+2的开发候选可选择。先比较G8确认覆盖；在最高覆盖相差≤1组的集合内，按greedy语义正确数、技术中长chrF、较早检查点选择。最终测试在权重封存后生成，未用来重选。相邻检查点单项分数波动不等同于综合退化或新最优。
-
 Select only locked-review candidates with general chrF≥A−1.5 and failure count≤A+2. Use G8 confirmed coverage, then within 1 group of the maximum use greedy semantic P, technical medium/long chrF and earlier checkpoint. Final outputs are generated after sealing, without reselection. A one-metric checkpoint fluctuation is neither comprehensive regression nor a new overall optimum.
 
-## 5. 最终同集翻译指标 / Matched final translation metrics
+## Matched final translation metrics
 
-![同一最终源文的匹配精度评估 / Same-source,matched-precision final evaluation](matched_final_quality.png)
+![Same-source,matched-precision final evaluation](matched_final_quality.png)
 
 | Subset | n | A chrF++ | Selected chrF++ | Delta [95%CI] | A BLEU | Selected BLEU |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -143,13 +117,11 @@ Select only locked-review candidates with general chrF≥A−1.5 and failure cou
 | technical_long | 64 | 33.07 | 35.64 | 44.62 | +11.55 [8.82, 14.28] |
 | technical_medium_long | 128 | 33.31 | 35.27 | 44.42 | +11.11 [8.94, 13.29] |
 
-所有3B最终生成均为nativeBF16 base+FP32LoRA、TF32关闭、greedy batch8，采样G8为T0.7/top_p1/top_k0/max512、固定源文种子。2,000次配对bootstrap重采样源文并重算语料充分统计，不平均单句分数充当corpus指标。区间仅描述当前样本，未覆盖训练种子、文档聚类、反复开发选择或语义审查误差。
-
 Final3B inference uses native BF16 base+FP32LoRA, TF32off, greedy batch8; G8 usesT0.7/top_p1/top_k0/max512 and fixed source seeds. The 2,000 paired bootstrap resamples sources and recomputes corpus sufficient statistics, rather than substituting sentence-score averages. Intervals cover this source sample, not training seeds, document clusters, adaptive development selection or annotation errors.
 
-## 6. 最终源文语义与DAPO起点判断 / Final source semantics and R0 interpretation
+## Final source semantics and R0 interpretation
 
-![相同技术源文八候选的确认覆盖、不确定与全错误组 / Confirmed,uncertain and fully rejected G8 groups on matched technical sources](final_candidate_semantic_coverage.png)
+![Confirmed,uncertain and fully rejected G8 groups on matched technical sources](final_candidate_semantic_coverage.png)
 
 | Model | Role/stratum | Expected | Reviewed | P/F/U | Not reviewed |
 | --- | --- | --- | --- | --- | --- |
@@ -175,29 +147,21 @@ Final3B inference uses native BF16 base+FP32LoRA, TF32off, greedy batch8; G8 use
 | old08 | G8_technical_medium | 24 | 24 | {"P": 2, "F": 21, "U": 1} | 0 |
 | old08 | G8_technical_long | 24 | 24 | {"F": 24} | 0 |
 
-Paired confirmed-coverage analysis / 配对确认覆盖分析: {"before": 4, "after": 12, "net_source_gain": 8, "gain95CI_sources": [2.0, 14.0], "replicates": 2000, "interpretation": "Confirmed-positive audit coverage only;U is not called incorrect. Interval conditions on this AI-assisted annotation and source sample,not native truth/training seeds."}
+Paired confirmed-coverage analysis {"before": 4, "after": 12, "net_source_gain": 8, "gain95CI_sources": [2.0, 14.0], "replicates": 2000, "interpretation": "Confirmed-positive audit coverage only;U is not called incorrect. Interval conditions on this AI-assisted annotation and source sample,not native truth/training seeds."}
 
-Prespecified project screening / 预设项目筛查: {"status": "SEMANTIC_PROJECT_TARGETS_NOT_DEMONSTRATED", "checks": {"G8_total_P_ge39": false, "G8_short_P_ge8": false, "G8_medium_P_ge12": false, "G8_long_P_ge12": false, "greedy_general_P_ge14": false, "greedy_technical_P_ge30": false}, "not_a_universal_DAPO_gate": true, "meaning": "Comprehensive project baseline screen;does not establish that a restricted DAPO pilot is impossible if targets are missed."}
-
-P要求关键含义、角色、数字、否定和子句保留，允许轻微屈折/风格问题；G8至少一个未截断P才计覆盖，F须看完全部不同候选。U不冒充错误，未审查数量单独记录。只评存在性覆盖，不因找到一个P就假设另外7个均正确或均错误，也不据此估计逐候选正确概率。
+Prespecified project screening {"status": "SEMANTIC_PROJECT_TARGETS_NOT_DEMONSTRATED", "checks": {"G8_total_P_ge39": false, "G8_short_P_ge8": false, "G8_medium_P_ge12": false, "G8_long_P_ge12": false, "greedy_general_P_ge14": false, "greedy_technical_P_ge30": false}, "not_a_universal_DAPO_gate": true, "meaning": "Comprehensive project baseline screen;does not establish that a restricted DAPO pilot is impossible if targets are missed."}
 
 P requires key meaning, roles, numbers, negation and clauses with minor inflection/style errors allowed. G8 coverage needs at least one untruncated P; F requires every distinct candidate. U is not represented as error, and unreviewed counts stay separate. This audits existential coverage, not per-candidate accuracy: finding oneP does not label the other seven.
 
-预设39/64及分层/greedy目标只是本项目综合基座筛查，并非DAPO通用硬门槛。若未证明达标，结论是综合可靠性未建立；可以另行在正确候选与奖励对照通过的任务上开展受限试验。没有本轮MetricX数据，不能把SFT进步解释为评分器已修好，也不能根据一次小规模DAPO或这次SFT推断模型容量上限。
-
 The 39/64 and stratum/greedy targets are project screening criteria, not universal DAPO admission rules. Missing them means comprehensive reliability is not established; restricted pilots may still be reasonable on separately calibrated tasks. This phase has no new MetricX evidence: SFT gains do not repair the reward model, and neither one small DAPO pilot nor this SFT proves a capacity ceiling.
-
-语义审查由同一AI助手完成，卡片隐藏检查点名称但上下文无法完美隔离，非母语专家认证。最终80条greedy样本在输出前按源文哈希冻结，G8使用全部固定64条；最终标签仅用于评估，不选择权重或修改训练数据。
 
 Semantic review uses the same AI assistant with checkpoint names hidden but imperfect context blinding, without native-speaker certification. The 80 greedy sources were hash-frozen before outputs and G8 uses all 64 fixed sources. Final labels evaluate the sealed model and never select weights or alter training data.
 
-0.8B补充卡片在两组3B完成后加入，因此其所属阶段可推断，并非严格双盲比较；所有432张最终卡均已完成，标签和卡片哈希另行锁定。相同源文/译文的2059项确定性审查记录未发现P/F矛盾。
-
 Supplementary0.8B cards were added after the two3B banks, so their phase is inferable; this is not a strict double-blind comparison. All 432 final cards are complete and card/label hashes are locked. The 2059 definitively reviewed identical source/hypothesis texts have no P/F contradiction.
 
-## 7. 限制和描述性原因线索 / Limitations and descriptive diagnostic clues
+## Limitations and descriptive diagnostic clues
 
-<details><summary>改善示例 / Improvement example · p13official21:test:ema:1152</summary>
+<details><summary>Improvement example · p13official21:test:ema:1152</summary>
 
 English: Change from baseline in body weight was similar for patients treated with sitagliptin relative to placebo.
 
@@ -211,7 +175,7 @@ Body-weight change from baseline similar for sitagliptin versus placebo retained
 
 </details>
 
-<details><summary>退步示例 / Regression example · p13official21:test:eea:1503</summary>
+<details><summary>Regression example · p13official21:test:eea:1503</summary>
 
 English: If this kind of costs exists, they will be reported separately.
 
@@ -225,7 +189,7 @@ Separately reported becomes reporting under special conditions.
 
 </details>
 
-<details><summary>持续错误示例 / Persistent-error example · p13official21:test:eea:1144</summary>
+<details><summary>Persistent-error example · p13official21:test:eea:1144</summary>
 
 English: Successful participation in interlaboratory studies that assess laboratory proficiency is the best way to prove the competence in specific analyses.
 
@@ -239,37 +203,25 @@ Successful interlaboratory participation becomes experience; laboratory-proficie
 
 </details>
 
-以上示例各取对应标签变化类别中源文ID排序第一条，只作定性说明，不代表错误比例；完整样本和标签在逐条附录中。
-
 Each example is the first source ID in its label-transition category, for qualitative illustration rather than an error-rate estimate. The complete sample and labels appear in the item-level appendix.
 
-Domain/exposure diagnostic / 来源暴露诊断: [{"target_limit": 2116552, "actual_targets": 2116552, "unique_sources": 50908, "source_target_tokens": {"OpenSubtitles18": 326512, "eea": 437621, "statisl": 38546, "ema": 1050577, "tatoeba": 132449, "eso": 99247, "ted2020": 31600}, "source_fractions": {"OpenSubtitles18": 0.15426599488224244, "eea": 0.20676127966617405, "statisl": 0.018211695247742556, "ema": 0.4963624801091587, "tatoeba": 0.06257772074581679, "eso": 0.0468908866874048, "ted2020": 0.014929942661460716}}, {"target_limit": 3000000, "actual_targets": 2999996, "unique_sources": 67382, "source_target_tokens": {"OpenSubtitles18": 541894, "eea": 601784, "statisl": 38546, "ema": 1522187, "tatoeba": 137938, "eso": 126047, "ted2020": 31600}, "source_fractions": {"OpenSubtitles18": 0.18063157417543224, "eea": 0.20059493412657883, "statisl": 0.012848683798245065, "ema": 0.5073963431951243, "tatoeba": 0.04597939463919285, "eso": 0.04201572268763025, "ted2020": 0.010533347377796504}}, {"target_limit": 3500000, "actual_targets": 3499972, "unique_sources": 73302, "source_target_tokens": {"OpenSubtitles18": 666897, "eea": 694781, "statisl": 38546, "ema": 1788953, "tatoeba": 137938, "eso": 141257, "ted2020": 31600}, "source_fractions": {"OpenSubtitles18": 0.1905435243481948, "eea": 0.19851044522641895, "statisl": 0.011013230962990561, "ema": 0.5111335176395697, "tatoeba": 0.0394111724322366, "eso": 0.04035946573286872, "ted2020": 0.00902864365772069}}]
-
-3M保留顺序中EMA约50.7%目标token、ESO约4.2%，而最终源文中ESO66/256；来源和长度混合并不等于所有技术子领域均衡。字面短语出现次数只是描述性覆盖线索，不是因果证明，也不能据此修改受保护测试句。语义错误可能涉及词汇、数值、条件和长依赖；更低NLL或更高重合度不能单独排除这些问题。
+Domain/exposure diagnostic [{"target_limit": 2116552, "actual_targets": 2116552, "unique_sources": 50908, "source_target_tokens": {"OpenSubtitles18": 326512, "eea": 437621, "statisl": 38546, "ema": 1050577, "tatoeba": 132449, "eso": 99247, "ted2020": 31600}, "source_fractions": {"OpenSubtitles18": 0.15426599488224244, "eea": 0.20676127966617405, "statisl": 0.018211695247742556, "ema": 0.4963624801091587, "tatoeba": 0.06257772074581679, "eso": 0.0468908866874048, "ted2020": 0.014929942661460716}}, {"target_limit": 3000000, "actual_targets": 2999996, "unique_sources": 67382, "source_target_tokens": {"OpenSubtitles18": 541894, "eea": 601784, "statisl": 38546, "ema": 1522187, "tatoeba": 137938, "eso": 126047, "ted2020": 31600}, "source_fractions": {"OpenSubtitles18": 0.18063157417543224, "eea": 0.20059493412657883, "statisl": 0.012848683798245065, "ema": 0.5073963431951243, "tatoeba": 0.04597939463919285, "eso": 0.04201572268763025, "ted2020": 0.010533347377796504}}, {"target_limit": 3500000, "actual_targets": 3499972, "unique_sources": 73302, "source_target_tokens": {"OpenSubtitles18": 666897, "eea": 694781, "statisl": 38546, "ema": 1788953, "tatoeba": 137938, "eso": 141257, "ted2020": 31600}, "source_fractions": {"OpenSubtitles18": 0.1905435243481948, "eea": 0.19851044522641895, "statisl": 0.011013230962990561, "ema": 0.5111335176395697, "tatoeba": 0.0394111724322366, "eso": 0.04035946573286872, "ted2020": 0.00902864365772069}}]
 
 At 3M, EMA supplies about 50.7% of target exposure and ESO about 4.2%, while ESO contributes66/256 final sources. Length/source mixing is not balanced coverage of every technical subdomain. Literal phrase counts are descriptive clues, not causal evidence or permission to train protected test cases. Errors can concern terminology, numbers, conditions and long dependencies; lowerNLL/higher overlap alone does not exclude them.
 
-Literal cue counts / 字面短语计数: {"frequency band": {"unique_train_source_occurrences": 3, "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"}, "tilt of the orbit": {"unique_train_source_occurrences": 0, "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"}, "yellow fever": {"unique_train_source_occurrences": 13, "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"}, "pharmacodynamic": {"unique_train_source_occurrences": 119, "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"}, "gamma-ray burst": {"unique_train_source_occurrences": 2, "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"}, "maturity band": {"unique_train_source_occurrences": 0, "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"}}
-
-实际保留更新覆盖67,382/100,642个不重复训练对，涉及2,638,284/4,748,344个不重复目标token；另有33,260对、2,110,060目标token尚未进入本轮保留轨迹，主要是EMA/EEA。这里的未见仅指本轮新顺序，不代表模型历史或预训练从未接触。
+Literal cue counts {"frequency band": {"unique_train_source_occurrences": 3, "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"}, "tilt of the orbit": {"unique_train_source_occurrences": 0, "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"}, "yellow fever": {"unique_train_source_occurrences": 13, "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"}, "pharmacodynamic": {"unique_train_source_occurrences": 119, "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"}, "gamma-ray burst": {"unique_train_source_occurrences": 2, "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"}, "maturity band": {"unique_train_source_occurrences": 0, "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"}}
 
 The retained updates cover67,382/100,642 unique pairs and2,638,284/4,748,344 unique target tokens. Another 33,260 pairs and2,110,060 targets have not entered this retained schedule, primarily EMA/EEA. Unseen here refers to the new schedule, not all previous training or pretraining.
 
-这不足以证明3B容量已达上限。也不能把“补齐剩余训练池”直接等同于修复天文长句：剩余未覆盖样本只有EMA/EEA，而天文ESO在当前池内已被覆盖；需要区分总训练量与薄弱子领域的数据量。
-
 This does not prove a3B capacity ceiling. Completing the remaining pool also cannot be equated with repairing astronomical long sentences: remaining sources are EMA/EEA, while the current ESO pool has already been exposed. Total training volume and weak-domain data volume are distinct.
-
-这是一次单训练种子的有界连续SFT，数据过滤、训练规模和混合共同变化，不能单独把收益归因于某一因素；对0.8B的比较也非同训练量对照。没有验证整篇文档、跨段一致性或其他语向。下一步以已保存最优模型为起点，是否继续SFT或进入DAPO应分别依据候选能力和独立奖励排序证据，避免仅凭某个chrF数值或短句正确率决定。
 
 This is a bounded single-seed continuation with jointly changed filtering, scale and mixture, not an isolated causal ablation. The 0.8B comparison is not matched training exposure. Whole documents, cross-paragraph consistency and other language directions are untested. Future SFT versus DAPO decisions should separately examine candidate capability and independent reward ranking, not one chrF number or short-sentence correctness.
 
-G8覆盖结论只适用于本次固定T=0.7及8候选配置，不是模型可产生正确译文的理论上界。没有在最终集上搜索温度、增加G或重选模型；低温采样是否能改善候选供给仍属未测试方案。
-
 G8 coverage applies to the fixed T=0.7/eight-candidate configuration, not a theoretical capability ceiling. No final-test temperature search, increased G or model reselection was performed. Whether lower-temperature sampling improves candidate supply remains untested.
 
-## 8. 计算、保存与复现 / Compute,persistence and reproduction
+## Compute,persistence and reproduction
 
-| 计算 / Compute | 本轮记录 / Recorded value |
+| Compute | Recorded value |
 | --- | --- |
 | GPU allocated | 150.2 minutes |
 | Observed compute-unit balance drop | 4.82 |
@@ -277,17 +229,15 @@ G8 coverage applies to the fixed T=0.7/eight-candidate configuration, not a theo
 | GPU released / Deadline met | True / True |
 | Today retained target tokens | 883444 |
 
-<details><summary>完整资源账本 / Complete resource ledger</summary>
+<details><summary>Complete resource ledger</summary>
 
 {"UTC": "2026-11-20T13:41:05.130751+00:00", "owned_runtime_released": true, "account_assigned_runtime_count": 0, "current_account_consumption": {"paid_compute_units_balance": 239.41670526926325, "consumption_rate_hourly": 0.0, "assignments_count": 0}, "segment2_allocated_seconds": 9012.361103534698, "segment2_allocated_minutes": 150.20601839224497, "segment1_allocated_seconds": 12395.729388237, "cumulative_filtered_SFT_GPU_hours": 5.946691803269916, "today_hard_deadline_unix": 1795186877.7181003, "released_unix": 1795182000.2210627, "hard_deadline_met": true, "initial_compute_units": 244.23880510341385, "final_compute_units": 239.41670526926325, "observed_account_compute_unit_drop": 4.822099834150606, "account_balance_drop_not_claimed_exact_invoice": true, "segment1_observed_compute_unit_drop": 6.577003469176191, "new_retained_training_seconds": 4179.083923874003, "new_retained_target_tokens": 883444, "new_training_target_tokens_per_second": 211.39656826538413, "retained_total_target_tokens": 2999996, "NVML_peak_total_GPU_used_MiB": 20340.0}
 
 </details>
 
-所有新完整检查点保存adapter、Adam、RNG、游标和绑定哈希，并经分块/整包SHA与文件清单校验同步D盘。最终导出双份校验；所选adapter单独交付，原A和0.8B文件保留。首个新checkpoint已证明adapter权重变化，恢复合同、控制通道重连、预算清单修订及所有源代码均归档。
-
 Every new full state preserves adapter, Adam, RNG, cursor and hashes with per-chunk/archive/file verification on D. Final export has two verified copies, the selected adapter is delivered separately, and original A/0.8B remain preserved. The first new checkpoint demonstrates changed weights. Recovery contracts, channel recovery, budget-manifest amendment and all code are archived.
 
-| 内容 / Content | 文件 / Artifact |
+| Content | Artifact |
 | --- | --- |
 | Selected usable adapter | D:\deep learning project\runs\r0_3b_filtered_sft_resume_2026-11-20\final_selected_adapter |
 | Selected identity manifest | D:\deep learning project\runs\r0_3b_filtered_sft_resume_2026-11-20\final_selected_adapter_manifest.json |
@@ -305,34 +255,26 @@ Every new full state preserves adapter, Adam, RNG, cursor and hashes with per-ch
 | All execution tools | D:\deep learning project\experiments\r0_3b_filtered_sft_resume_2026-11-20\execution_tools |
 | Running record | D:\deep learning project\reports\r0_3b_filtered_sft_resume_2026-11-20\R0_3B_FULL_STATE_CONTINUATION_RECORD_2026-11-20.html |
 
-## 9. 明确下一步 / Concrete next step
-
-保留本轮3M检查点作为当前最强实验R0。若目标仍是综合技术翻译，下一轮SFT应优先补足有可靠冰岛语目标文本的技术术语、法律/科学说明及带条件/否定/数值约束的中长句，并同时保留一般句；训练量按不重复目标token和领域分别核算。只消耗剩余EMA/EEA或沿相同配比追加少量步数，不是有证据保证能修复天文长句的办法。
+## Concrete next step
 
 Preserve the 3M checkpoint as the strongest current experimental R0. For comprehensive technical translation, the next SFT data revision should prioritise reliable Icelandic targets covering technical vocabulary, legal/scientific explanations and medium/long conditional/negative/numeric constraints, while retaining general examples. Account for unique target tokens and domains separately. Consuming remaining EMA/EEA or adding a few steps at the same mixture is not an evidenced guarantee of fixing astronomical long sentences.
 
-新增训练材料必须来自训练侧，不能把本次开发或最终句及其改写加入训练；下一轮确认性评估应另行预留独立样本。先把可用新增领域数据的数量、质量和训练预算写清楚，再启动一次有明确规模的续训，避免多轮碎片试验。当前数据只证明继续学习仍有机会，不能承诺再训固定几小时就达标。
-
 New material must come from training-side sources, excluding these dev/final sentences and their paraphrases. Reserve separate independent sources for the next confirmatory evaluation. Establish available domain-data quantity, quality and an explicit training budget before one substantial continuation, rather than repeated fragmented runs. Current evidence supports remaining learning potential, not a guarantee that another fixed number of hours will qualify the model.
-
-DAPO可以先限定在已有正确候选的任务上做小预算对照：温度/G在开发集确定，独立检查奖励能否把正确候选排在已确认错译之上，然后冻结R0、数据、奖励和采样设置。全任务正式效率比较暂不作为本轮验收结论；这不是“不能跑DAPO”，也不是“已证明MetricX是唯一问题”。本轮GPU已释放，不自动申请下一轮。
 
 A small DAPO comparison remains possible on tasks with established correct candidates: choose temperature/G on development sources, independently verify that reward ranks correct translations above confirmed errors, and freeze R0/data/reward/sampling. This run does not qualify a comprehensive all-task efficiency comparison, nor prove that DAPO is impossible or MetricX is the sole problem. The GPU has been released and no next allocation starts automatically.
 
-## 10. 完整逐条审查与输出 / Complete item-level audit and predictions
-
-下列附录展示全部语义审查卡片与各卡全部候选。256条完整greedy预测、completion token ID和其余未抽入80条语义子集的输出，另完整保存在JSONL原始结果中；未作语义标注不等于生成结果缺失。
+## Complete item-level audit and predictions
 
 The appendix shows every semantic-review card and every candidate on those cards. Complete256-source greedy predictions, completion-token IDs and sources outside the 80-item semantic subset are retained in raw JSONL. Absence of a semantic label does not mean a missing generation.
 
-| Raw results / 原始结果 | File / 文件 |
+| Raw results | File |
 | --- | --- |
 | before_greedy.jsonl | D:\deep learning project\runs\r0_3b_filtered_sft_resume_2026-11-20\exported\run\evaluation\before_greedy.jsonl |
 | after_greedy.jsonl | D:\deep learning project\runs\r0_3b_filtered_sft_resume_2026-11-20\exported\run\evaluation\after_greedy.jsonl |
 | before_g8.jsonl | D:\deep learning project\runs\r0_3b_filtered_sft_resume_2026-11-20\exported\run\evaluation\before_g8.jsonl |
 | after_g8.jsonl | D:\deep learning project\runs\r0_3b_filtered_sft_resume_2026-11-20\exported\run\evaluation\after_g8.jsonl |
 
-| Historical0.8B / 历史0.8B | File / 文件 |
+| Historical0.8B | File |
 | --- | --- |
 | old08_greedy.jsonl | D:\deep learning project\runs\r0_3b_filtered_sft_resume_2026-11-20\comparison08_exported\evaluation\old08_greedy.jsonl |
 | old08_g8.jsonl | D:\deep learning project\runs\r0_3b_filtered_sft_resume_2026-11-20\comparison08_exported\evaluation\old08_g8.jsonl |
@@ -12053,7 +11995,7 @@ Candidate 2: Ef ekki er veitt viðbótarefni skal heita heildarfjarð innihaldse
 
 Candidate 3: Ef ekki er gefið inn nýja uppfærslu skal hægt er að hægt verður að hafa þann háðagni heildarinnar fjölda íbúðarinnar sem er hægt að hafa 3,7 g fyrir hleðslu á töflum og 1,7 g fyrir hleðslu á öllum öðrum afurðum.
 
-Candidate 4: Ef innihaldsskiptun er ekki veitt skal hæð almennum upptökuflokks stöðva ekki áfram en 3,7 g fyrir smák表和 1,7 g fyrir öll annars líftrygginga.
+Candidate 4: Ef innihaldsskiptun er ekki veitt skal hæð almennum upptökuflokks stöðva ekki áfram en 3,7 g fyrir smák[table and] 1,7 g fyrir öll annars líftrygginga.
 
 Candidate 5: Ef ekki er veitt þær endurfarar eru hægt ekki að hafa hærri þyngd heildarprjónarinnar en 3,7 g á hreinsun fyrir töflur og 1,7 g á hreinsun fyrir öll annar vörur.
 
@@ -12109,7 +12051,7 @@ Candidate 0: Í þessum tilvikum er þannig mælt fyrir um að Vissfold hliðarl
 
 Candidate 1: Í þessum tilvikum er til að mæta upp eða neina upp staðlið 100% af tölfræðilegum háttastærðum ampullanna af Zonegran (25 mg, 50 mg og 100 mg) sem eru flestar og fágar sem eru til að nota.
 
-Candidate 2: Í þessum tilvikum má ákveða að hún sé öðruþáttuð út eða inni í næstu aðgengi sem ekki eru fyrir裱aðanhaldar styrk í裱upósum Zonegran (25 mg, 50 mg og 100 mg) sem kröfuð er til.
+Candidate 2: Í þessum tilvikum má ákveða að hún sé öðruþáttuð út eða inni í næstu aðgengi sem ekki eru fyrir[mounting]aðanhaldar styrk í[mounting]upósum Zonegran (25 mg, 50 mg og 100 mg) sem kröfuð er til.
 
 Candidate 3: Þegar um þetta komið er má því kveðið á um að hvarða geislaskammta af Zonegran öllum skammtum sem eru til gömlu, þ.e. 25 mg, 50 mg og 100 mg, eða 12,5 mg, 25 mg og 50 mg, annars af stað.
 
@@ -12225,7 +12167,7 @@ Candidate 4: Þegar framkvæmdastjórnin framkvæmist þessa þróa er sérstakl
 
 Candidate 5: Þegar framkvæmdastjórnin starfar á þessari þjónustu skulu meindra en að stöðugt og samrýmist starfsemi annarra þjónustureiðja af framkvæmdastjórninni eða evrópsku starfsstofnunum, einkum að Guðbúnarstöðin fyrir bregðabreytendum loftstaðar og fjarskipulag ESB og bærum á Evrópu fyrir þróun starfsmótnáms (Cedefop).
 
-Candidate 6: Þegar framkvæmdastjórnin framkvæmdir þessa strandur skal einkum tryggja samræmi og samræmi við hríðir sem其他地区 framkvæmdastjórnar eða Evrópusambandsherja, sérstaklega Evrópuferðina um blöndun á starfshélfum og atvinnulega starfshálfum og ráðstöfun Evrópubandalagarinnar til þróunar starfsmanna (RTD) og Evrópuferðinni fyrir þróun starfsþjónustu (Cedefop).
+Candidate 6: Þegar framkvæmdastjórnin framkvæmdir þessa strandur skal einkum tryggja samræmi og samræmi við hríðir sem[other regions] framkvæmdastjórnar eða Evrópusambandsherja, sérstaklega Evrópuferðina um blöndun á starfshélfum og atvinnulega starfshálfum og ráðstöfun Evrópubandalagarinnar til þróunar starfsmanna (RTD) og Evrópuferðinni fyrir þróun starfsþjónustu (Cedefop).
 
 Candidate 7: Þegar framkvæmdastjórnin útbúa þennan sætur muni hún einkum tryggja samræmi og skyndingu við starfsemi annarra framkvæmdastjórnarþjónustu eða við hóp evrópuflugverkafélaganna, einkum aðgerðir Evrópuþjóðarinnar fyrir að lækka lífshúðræði og starfshúðræði og framkvæmdaráætlun Evrópusambandsins, og Evrópuþjóðahús fyrir þróun rekstrangreindra starfs (evrópuþjónustuhúsið).
 
@@ -13207,7 +13149,7 @@ Candidate 0: Tilgangur: að ákvarða hvort prófunarstöð varðar prófunarsky
 
 Candidate 1: Tilvandareign: að ákvarða hvort prófunarstöðin, ef hún er í starfsemi með rannsóknum á dýrum eða annarri lífleysilegu prófunarsystum, sé með aðstoðarstöðu og skilyrðum fyrir umsókn, búnað og geymslu með fullnægjandi hætti til að koma í veg fyrir vöðv og önnur vanda sem gætu haft áhrif á prófunarsystuna og því hlýti að vera í lagi við gæði upplýsinganna.
 
-Candidate 2: Tilvinnisatriði: að koma ákvörðun um hvort prófunarstöðin, ef hún er áfram í rannsóknir sem nota hafa verið með dýrum eða annarri lífleysilegu prófunarstarfsemi, hefði geymsluþættum og skilyrðanum fyrir viðhald, búnað og öskjandi hlíðun fyrir það, sem auk þess eru nægilegt til að fjarlægja stökkbreytingar og aðra vandamál sem geta haft áhrif á prófunarstarfsemi og hve góð verður grein半.
+Candidate 2: Tilvinnisatriði: að koma ákvörðun um hvort prófunarstöðin, ef hún er áfram í rannsóknir sem nota hafa verið með dýrum eða annarri lífleysilegu prófunarstarfsemi, hefði geymsluþættum og skilyrðanum fyrir viðhald, búnað og öskjandi hlíðun fyrir það, sem auk þess eru nægilegt til að fjarlægja stökkbreytingar og aðra vandamál sem geta haft áhrif á prófunarstarfsemi og hve góð verður grein[half].
 
 Candidate 3: Tilvísun: að ákvarða hvort prófunarfélag, ef það er notuð í rannsóknum með dýrum eða öðrum lífleiðis prófunarfólki, hafi gæðatæki og skilyrði fyrir meðhöndlun, heimsókn og uppfylltu, til þess að forðast þræðingu eða öðrum vandamálið sem gætu haft áhrif á prófunaflokkin og svo hafi áhrif á gildi gögn.
 
@@ -13593,7 +13535,7 @@ Candidate 0: Í fjármagnshraustunum eru þessi hópa í um 30-faldum mikið muf
 
 Candidate 1: Samkvæmt þróun bókurarinnar eru þeir flokka sem eru göngubúin í spjalli að 30-þar af þrýstingum og tyggjum.
 
-Candidate 2: Af geðretningslæðingu eru þessi flokkar um 30 sinnum融入ra en sjáanlegi eitur.
+Candidate 2: Af geðretningslæðingu eru þessi flokkar um 30 sinnum[integrate into]ra en sjáanlegi eitur.
 
 Candidate 3: Í gegnum þarnaskiptaspektinum er þessi flokki til að innihalda um 30 sinnum fleiri vérlegra en skjaldar efnis.
 

@@ -1,1 +1,122 @@
-<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RESEARCH_AND_8H_EXECUTION_2026-11-21</title><style>body{background:#f3f6fa;color:#1c3040;font:16px/1.7 system-ui,Segoe UI,sans-serif;margin:0}main{max-width:1200px;margin:28px auto;padding:32px;background:#fff;border-radius:14px}h1{font-size:30px;color:#126782;line-height:1.3}h2{color:#185c77;border-top:2px solid #dce9f0;padding-top:12px;margin-top:40px}h3{color:#26566c}p,td{overflow-wrap:anywhere}a{color:#086b9f}code{background:#edf3f8;padding:2px 4px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border:1px solid #d8e4ec;padding:9px 12px;vertical-align:top;text-align:left}th{background:#e8f2f7}tr:nth-child(even){background:#f8fafc}.table{overflow-x:auto;margin:18px 0}details{border:1px solid #d9e5ed;border-radius:8px;padding:12px 15px;margin:12px 0}summary{cursor:pointer;font-weight:650;color:#126782}img{max-width:100%;height:auto}figure{margin:24px 0}figcaption{font-size:13px;color:#526878}button,input{font:inherit;padding:8px 12px;margin:5px 8px 5px 0}input{min-width:260px}aside{background:#e9f5f8;padding:14px;border-left:4px solid #126782}.toolbar{position:sticky;top:0;background:#fffef4ee;padding:8px;border-bottom:1px solid #e5e8da;z-index:1}@media print{.toolbar{display:none}body{background:white}main{margin:0;padding:0}table{font-size:10px}}</style><main><aside>2026-11-21 · 3B recovery · 中文 / English</aside><div class="toolbar"><button onclick="document.querySelectorAll('details').forEach(x=>x.open=true)">展开全部 / Expand</button><button onclick="document.querySelectorAll('details').forEach(x=>x.open=false)">收起 / Collapse</button><input type="search" placeholder="搜索逐条结果 / Search cases" oninput="const q=this.value.toLowerCase();document.querySelectorAll('.case-card').forEach(x=>x.hidden=!x.textContent.toLowerCase().includes(q))"><button onclick="window.print()">打印 / Print</button></div><h1>八小时3B R0恢复方案与文献依据 / Eight-hour3B R0 recovery and evidence</h1><p>2026-11-21 · Europe/Berlin · 已授权执行 / Authorized execution; checkpoint quality remains to be measured.</p><p>目标是从通用Qwen2.5-3B继续得到可复用的英→冰岛语checkpoint。原P15权重保持原样。本轮研究覆盖12项直接相关论文或第一方资料，不声称穷尽全部文献；不把7B/13B或100亿token训练的结果套用为八小时保证。 / Produce and evaluate a reusable generic-Qwen-derived English→Icelandic checkpoint while preserving P15. This is a targeted12-source review, not exhaustive literature coverage; large-model or10B-token results do not guarantee this8h run.</p><h2>相对上一版的明确修订 / Revisions to the earlier proposal</h2><div class="table"><table><thead><tr><th>Item</th><th>Frozen execution decision</th></tr></thead><tbody><tr><td>Origin</td><td>Same generic Qwen2.5-3B-Instruct + originalP15 adapter; no translation-specialist weights</td></tr><tr><td>Capacity</td><td>rank16/alpha32→rank64/alpha128; preserve scale2 and old blocks; new B columns zero</td></tr><tr><td>Optimizer</td><td>fresh AdamW; old decayed optimizer state not reused</td></tr><tr><td>Fit probe</td><td>64 source/reference pairs audited;32 free-generation checks;P≥26/32,longP≥12/16;LR1e-4;at most250k targets/45min actual training</td></tr><tr><td>Production</td><td>Discard fit weights;restart expanded original;LR5e-5→5e-6,50k warmup;BF16 base+FP32 LoRA;all-linear;dropout.05</td></tr><tr><td>Data</td><td>17,911pairs,991,863unique target tokens,two exposures1,983,726targets;about10/10/40/40% general/short/medium/long</td></tr><tr><td>QA</td><td>80 reference pairs inspected,16 excluded from fit;103 total production quarantines;not native-certified full-pool audit</td></tr><tr><td>Evaluation</td><td>New selecteddev128/final128,old selected input exclusions;source5gramJaccard≥.85 vs100642pool yielded0hits;not proven document/pretraining independence</td></tr><tr><td>Selection</td><td>Reviewed devG8 coverage→greedyP→technicalCF→earlier;generalCF delta≥−1.5;final test never selects weights</td></tr><tr><td>Budget</td><td>Conservative research-inclusive hard deadline2026-11-22 04:40CET;training must stop≥2h earlier;no reset</td></tr><tr><td>Allocation</td><td>One owned ColabL4;no local neural training/inference;no foreground browser/power changes</td></tr><tr><td>Priority</td><td>This run focuses on SFT and checkpoint acceptance;no DAPO,MetricX retraining or preference-method sweep</td></tr></tbody></table></div><p>目标token预算上限还受首30步吞吐测量限制；主训练最多4小时。微型拟合不通过则不扩成大训练；到1M目标token候选覆盖和greedy语义均无改善则停止。完整恢复状态在1M及末期保存，中间保存adapter；所有记录和哈希同步到D盘，固定截止不会因修复或断线延后。 / Throughput measured in the first30 production updates can reduce the target budget. Main training is capped at4h. Failure of the fit gate stops scale-up;no semantic improvement at1M stops continuation. Save full recovery state at1M/final and intermediate adapters, with D-drive hashes and a deadline that never resets.</p><p>最后交付原R0、开发集选出的新adapter、FP32推理脚本、独立评估和中英MD/HTML。如果未达到预先规定的G8≥39/64、长句≥12/24等项目线，报告必须标为未验收，不能改名字冒称可用。检查点文件可交付与翻译质量已达标是两个不同事实。 / Deliver original R0, the development-selected adapter,FP32 inference,independent evaluation and bilingual reports. If predefined project criteria such asG8≥39/64 andlong≥12/24 fail,the result remains unqualified; a saved checkpoint is not proof of sufficient quality.</p><h2>文献逐项判断 / Source-by-source interpretation</h2><h3>ALMA · ICLR2024</h3><p><a href="https://arxiv.org/abs/2309.11674">ALMA · ICLR2024</a></p><p>两阶段：单语适应后高质量平行SFT，包含冰岛语；原实验有大规模单语训练，不能把其结果许诺给本轮8小时。</p><p>Uses monolingual adaptation followed by high-quality parallel SFT, including Icelandic. Its extensive monolingual stage cannot be reproduced within this8h run.</p><p>采用质量优先平行SFT；不载入ALMA权重，不宣称复现其语言能力。 / Adopt quality-focused parallel SFT; no specialist weights or ALMA performance claim.</p><h3>AMI WMT25 · 3B英→冰岛语</h3><p><a href="https://aclanthology.org/2025.wmt-1.46/">AMI WMT25 · 3B英→冰岛语</a></p><p>最接近的3B冰岛语系统使用100亿英/冰岛语token预训练及后续SFT、偏好与后处理，仍落后最强系统。</p><p>The closely matched3B Icelandic system uses10B English/Icelandic pretraining tokens, SFT and additional stages, and remains behind leading systems.</p><p>证明规模障碍真实；不据此说3B做不到，也不承诺短训练达到论文系统。 / Treat as evidence of substantial language adaptation, not proof of a3B ceiling or a short-run guarantee.</p><h3>LoRA Learns Less and Forgets Less · TMLR2024</h3><p><a href="https://arxiv.org/abs/2405.09673">LoRA Learns Less and Forgets Less · TMLR2024</a></p><p>在代码和数学等设置中，常见低秩配置学习弱于全参，但遗忘较少；不能直接推广为冰岛语rank16必然不够。</p><p>Standard low-rank settings can underperform full tuning while forgetting less in studied programming/math regimes; this does not prove rank16 inadequate for Icelandic.</p><p>停止把rank16停滞叫做3B上限；扩大可训练适配空间。 / Avoid conflating low-rank adaptation with model capacity; increase adaptation space.</p><h3>LoRA Without Regret · 原作者实验2025</h3><p><a href="https://thinkingmachines.ai/blog/lora/">LoRA Without Regret · 原作者实验2025</a></p><p>研究强调全线性层、足够适配容量、批量与学习率；实验中LoRA往往需要比全参更高LR，但主要使用其他模型/任务。</p><p>Finds that layer coverage, adapter capacity, batch size and LR matter; higher LoRA LR is useful in studied settings, not an exact Icelandic hyperparameter prescription.</p><p>沿用全线性层；rank64、新优化器与更高但固定的LR先过拟合检查。 / Keep all-linear coverage; test rank64 and fresh higher-LR optimization through a fit gate.</p><h3>rsLoRA · 2023</h3><p><a href="https://arxiv.org/abs/2312.03732">rsLoRA · 2023</a></p><p>讨论rank增加时缩放对学习的影响。</p><p>Studies the rank-dependent scaling of adapter updates.</p><p>本轮不直接切换缩放；alpha16/32→rank64/alpha128，保持alpha/r=2及原适配块，新增B列为0。 / Preserve scale2 through zero-padded rank expansion rather than mixing a new scaling rule into this run.</p><h3>QLoRA · NeurIPS2023</h3><p><a href="https://arxiv.org/abs/2305.14314">QLoRA · NeurIPS2023</a></p><p>低比特冻结基座可节省微调内存；文中结果不等于任意模型任意任务无损。</p><p>Low-bit frozen bases reduce tuning memory; reported results are not a universal lossless guarantee.</p><p>当前L4可容纳BF16基座，避免量化成为新变量。 / Retain BF16 because it fits, avoiding a new quantization variable.</p><h3>DoRA · ICML2024</h3><p><a href="https://arxiv.org/abs/2402.09353">DoRA · ICML2024</a></p><p>用幅度/方向分解改进适配，是候选方法，不是本任务已验证收益。</p><p>Magnitude/direction decomposition is a candidate alternative, without verified benefit for this task.</p><p>本轮不叠加新方法；先建立可用R0。 / Defer additional methods until a useful R0 exists.</p><h3>LoRA+ · ICML2024</h3><p><a href="https://arxiv.org/abs/2402.12354">LoRA+ · ICML2024</a></p><p>研究A/B不同学习率对适配效率的作用。</p><p>Investigates unequal learning rates for adapter factors.</p><p>不同时搜索A/B倍率；本轮固定新AdamW和统一LR。 / Avoid a new factor-LR search; use one declared optimizer setting.</p><h3>ALMA-R/CPO · ICML2024</h3><p><a href="https://arxiv.org/abs/2401.08417">ALMA-R/CPO · ICML2024</a></p><p>偏好优化可改进已有翻译模型，也指出人工参考仍可能有质量问题。</p><p>Preference optimization improves existing translation models and highlights imperfect human references.</p><p>参考逐条抽查并保留U；本轮不改跑CPO/DAPO。 / Inspect references and keep uncertainty; defer preference training.</p><h3>Qwen2.5官方SFT示例</h3><p><a href="https://qwen.readthedocs.io/en/v2.5/training/SFT/ms_swift.html">Qwen2.5官方SFT示例</a></p><p>官方示例使用全线性LoRA和1e-4学习率；这是另一规模/数据示例，不是3B冰岛语最优值。</p><p>An official example uses all-linear LoRA and1e-4, on a different model/data setting; it is not an optimum for our task.</p><p>微型拟合1e-4；主SFT5e-5，固定日程并检查泛化。 / Use1e-4 for the fit probe and5e-5 for bounded production SFT, with generalization checks.</p><h3>PEFT官方LoRA文档</h3><p><a href="https://huggingface.co/docs/peft/v0.22.0/package_reference/lora">PEFT官方LoRA文档</a></p><p>r、alpha、目标模块等影响适配定义；本轮实际固定peft0.21.2，已验证的训练环境优先。</p><p>Rank, alpha and target modules define the adapter. Execution stays on the already verified peft0.21.2 environment.</p><p>扩容检查原块逐值保留、新增B列0，并做模块输出一致性检查。 / Verify copied old blocks, zero new B columns and module-output parity.</p><h3>Lightning官方训练调试</h3><p><a href="https://api.lightning.ai/docs/pytorch/stable/debug/debugging_intermediate">Lightning官方训练调试</a></p><p>先拟合少量数据是定位训练能否学习的调试方法。</p><p>Deliberately fitting a tiny dataset is a debugging technique for trainability.</p><p>64条已审核句对、32条自由生成审核；通过不等于泛化通过。 /64 audited pairs and32 free-generation checks; fitting is distinct from generalization.</p><h2>当前证据与未证明的事项 / Local evidence and unresolved claims</h2><p>上一轮已见训练样本AI核查7/16、长句0/4；本轮DAPO前G8正确候选6/16，之后仍6/16；同条件chrF++44.007→41.837。它们支持优先修复拟合与候选覆盖，但不能证明3B上限、某个具体学习率最优、或rank扩大必然提高翻译质量。 / Previous known-seen audit7/16,long0/4;DAPO G8 coverage6/16→6/16 andmatchedchrF++44.007→41.837. These motivate fit and coverage work but do not establish a3B ceiling,an optimalLR or guaranteed rank-expansion benefit.</p><p>所有语义审核仍是同一助手、有保留U项的条件性判断。后续正式论文结论需独立人工核查、重复种子和可信奖励；本轮不会把AI审核冒充母语专家盲评。 / Same-assistant semantic review retains uncertainty. Formal conclusions require independent human review,replication and a credible reward; AI review is not native-expert blinded certification.</p><p>资料与实际代码/数据决定保存在experiments/r0_3b_recovery_sft_2026-11-21；原冻结结果不覆盖。 / Evidence and executed inputs are archived separately without overwriting prior results.</p></main></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Eight-hour3B R0 recovery and evidence</title><style>body{background:#f3f6fa;color:#1c3040;font:16px/1.7 system-ui,Segoe UI,sans-serif;margin:0}main{max-width:1200px;margin:28px auto;padding:32px;background:#fff;border-radius:14px}h1{font-size:30px;color:#126782;line-height:1.3}h2{color:#185c77;border-top:2px solid #dce9f0;padding-top:12px;margin-top:40px}h3{color:#26566c}p,td{overflow-wrap:anywhere}a{color:#086b9f}code{background:#edf3f8;padding:2px 4px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border:1px solid #d8e4ec;padding:9px 12px;vertical-align:top;text-align:left}th{background:#e8f2f7}tr:nth-child(even){background:#f8fafc}.table{overflow-x:auto;margin:18px 0}details{border:1px solid #d9e5ed;border-radius:8px;padding:12px 15px;margin:12px 0}summary{cursor:pointer;font-weight:650;color:#126782}img{max-width:100%;height:auto}figure{margin:24px 0}figcaption{font-size:13px;color:#526878}button,input{font:inherit;padding:8px 12px;margin:5px 8px 5px 0}input{min-width:260px}aside{background:#e9f5f8;padding:14px;border-left:4px solid #126782}.toolbar{position:sticky;top:0;background:#fffef4ee;padding:8px;border-bottom:1px solid #e5e8da;z-index:1}@media print{.toolbar{display:none}body{background:white}main{margin:0;padding:0}table{font-size:10px}}
+pre{overflow:auto;background:#f3f6fa;padding:14px;border-radius:6px}img{max-width:100%;height:auto}p,li,td{overflow-wrap:anywhere}aside{padding:12px;border-left:4px solid #126782;background:#eef5fa;margin-bottom:24px}.table{overflow-x:auto}details{margin:12px 0}summary{cursor:pointer;font-weight:600}</style></head><body><main><aside>English edition · 2026-11-24. Historical experiment values and labels are unchanged. Original wording and model-output bytes are retained in source commit f82bd68. See the repository English-localization record before rescoring translated display excerpts.</aside><h1>Eight-hour3B R0 recovery and evidence</h1>
+<p>Authorized execution; checkpoint quality remains to be measured.</p>
+<p>Produce and evaluate a reusable generic-Qwen-derived English→Icelandic checkpoint while preserving P15. This is a targeted12-source review, not exhaustive literature coverage; large-model or10B-token results do not guarantee this8h run.</p>
+<h2>Revisions to the earlier proposal</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Frozen execution decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Origin</td>
+<td>Same generic Qwen2.5-3B-Instruct + originalP15 adapter; no translation-specialist weights</td>
+</tr>
+<tr>
+<td>Capacity</td>
+<td>rank16/alpha32→rank64/alpha128; preserve scale2 and old blocks; new B columns zero</td>
+</tr>
+<tr>
+<td>Optimizer</td>
+<td>fresh AdamW; old decayed optimizer state not reused</td>
+</tr>
+<tr>
+<td>Fit probe</td>
+<td>64 source/reference pairs audited;32 free-generation checks;P≥26/32,longP≥12/16;LR1e-4;at most250k targets/45min actual training</td>
+</tr>
+<tr>
+<td>Production</td>
+<td>Discard fit weights;restart expanded original;LR5e-5→5e-6,50k warmup;BF16 base+FP32 LoRA;all-linear;dropout.05</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>17,911pairs,991,863unique target tokens,two exposures1,983,726targets;about10/10/40/40% general/short/medium/long</td>
+</tr>
+<tr>
+<td>QA</td>
+<td>80 reference pairs inspected,16 excluded from fit;103 total production quarantines;not native-certified full-pool audit</td>
+</tr>
+<tr>
+<td>Evaluation</td>
+<td>New selecteddev128/final128,old selected input exclusions;source5gramJaccard≥.85 vs100642pool yielded0hits;not proven document/pretraining independence</td>
+</tr>
+<tr>
+<td>Selection</td>
+<td>Reviewed devG8 coverage→greedyP→technicalCF→earlier;generalCF delta≥−1.5;final test never selects weights</td>
+</tr>
+<tr>
+<td>Budget</td>
+<td>Conservative research-inclusive hard deadline2026-11-22 04:40CET;training must stop≥2h earlier;no reset</td>
+</tr>
+<tr>
+<td>Allocation</td>
+<td>One owned ColabL4;no local neural training/inference;no foreground browser/power changes</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>This run focuses on SFT and checkpoint acceptance;no DAPO,MetricX retraining or preference-method sweep</td>
+</tr>
+</tbody>
+</table>
+<p>Throughput measured in the first30 production updates can reduce the target budget. Main training is capped at4h. Failure of the fit gate stops scale-up;no semantic improvement at1M stops continuation. Save full recovery state at1M/final and intermediate adapters, with D-drive hashes and a deadline that never resets.</p>
+<p>Deliver original R0, the development-selected adapter,FP32 inference,independent evaluation and bilingual reports. If predefined project criteria such asG8≥39/64 andlong≥12/24 fail,the result remains unqualified; a saved checkpoint is not proof of sufficient quality.</p>
+<h2>Source-by-source interpretation</h2>
+<h3>ALMA · ICLR2024</h3>
+<p><a href="https://arxiv.org/abs/2309.11674">ALMA · ICLR2024</a></p>
+<p>Uses monolingual adaptation followed by high-quality parallel SFT, including Icelandic. Its extensive monolingual stage cannot be reproduced within this8h run.</p>
+<p>Adopt quality-focused parallel SFT; no specialist weights or ALMA performance claim.</p>
+<h3>AMI WMT25 · 3B English-to-Icelandic</h3>
+<p><a href="https://aclanthology.org/2025.wmt-1.46/">AMI WMT25 · 3B English-to-Icelandic</a></p>
+<p>The closely matched3B Icelandic system uses10B English/Icelandic pretraining tokens, SFT and additional stages, and remains behind leading systems.</p>
+<p>Treat as evidence of substantial language adaptation, not proof of a3B ceiling or a short-run guarantee.</p>
+<h3>LoRA Learns Less and Forgets Less · TMLR2024</h3>
+<p><a href="https://arxiv.org/abs/2405.09673">LoRA Learns Less and Forgets Less · TMLR2024</a></p>
+<p>Standard low-rank settings can underperform full tuning while forgetting less in studied programming/math regimes; this does not prove rank16 inadequate for Icelandic.</p>
+<p>Avoid conflating low-rank adaptation with model capacity; increase adaptation space.</p>
+<h3>LoRA Without Regret · Original authors' 2025 experiments</h3>
+<p><a href="https://thinkingmachines.ai/blog/lora/">LoRA Without Regret · Original authors' 2025 experiments</a></p>
+<p>Finds that layer coverage, adapter capacity, batch size and LR matter; higher LoRA LR is useful in studied settings, not an exact Icelandic hyperparameter prescription.</p>
+<p>Keep all-linear coverage; test rank64 and fresh higher-LR optimization through a fit gate.</p>
+<h3>rsLoRA · 2023</h3>
+<p><a href="https://arxiv.org/abs/2312.03732">rsLoRA · 2023</a></p>
+<p>Discusses how scaling affects learning as rank increases.</p>
+<p>Studies the rank-dependent scaling of adapter updates.</p>
+<p>Preserve scale2 through zero-padded rank expansion rather than mixing a new scaling rule into this run.</p>
+<h3>QLoRA · NeurIPS2023</h3>
+<p><a href="https://arxiv.org/abs/2305.14314">QLoRA · NeurIPS2023</a></p>
+<p>Low-bit frozen bases reduce tuning memory; reported results are not a universal lossless guarantee.</p>
+<p>Retain BF16 because it fits, avoiding a new quantization variable.</p>
+<h3>DoRA · ICML2024</h3>
+<p><a href="https://arxiv.org/abs/2402.09353">DoRA · ICML2024</a></p>
+<p>Magnitude/direction decomposition is a candidate alternative, without verified benefit for this task.</p>
+<p>Defer additional methods until a useful R0 exists.</p>
+<h3>LoRA+ · ICML2024</h3>
+<p><a href="https://arxiv.org/abs/2402.12354">LoRA+ · ICML2024</a></p>
+<p>Studies different learning rates for A/B and their effect on adaptation efficiency.</p>
+<p>Investigates unequal learning rates for adapter factors.</p>
+<p>Avoid a new factor-LR search; use one declared optimizer setting.</p>
+<h3>ALMA-R/CPO · ICML2024</h3>
+<p><a href="https://arxiv.org/abs/2401.08417">ALMA-R/CPO · ICML2024</a></p>
+<p>Preference optimization improves existing translation models and highlights imperfect human references.</p>
+<p>Inspect references and keep uncertainty; defer preference training.</p>
+<h3>Official Qwen2.5 SFT example</h3>
+<p><a href="https://qwen.readthedocs.io/en/v2.5/training/SFT/ms_swift.html">Official Qwen2.5 SFT example</a></p>
+<p>An official example uses all-linear LoRA and1e-4, on a different model/data setting; it is not an optimum for our task.</p>
+<p>Use1e-4 for the fit probe and5e-5 for bounded production SFT, with generalization checks.</p>
+<h3>Official PEFT LoRA documentation</h3>
+<p><a href="https://huggingface.co/docs/peft/v0.22.0/package_reference/lora">Official PEFT LoRA documentation</a></p>
+<p>Rank, alpha and target modules define the adapter. Execution stays on the already verified peft0.21.2 environment.</p>
+<p>Verify copied old blocks, zero new B columns and module-output parity.</p>
+<h3>Official Lightning training-debugging guidance</h3>
+<p><a href="https://api.lightning.ai/docs/pytorch/stable/debug/debugging_intermediate">Official Lightning training-debugging guidance</a></p>
+<p>Deliberately fitting a tiny dataset is a debugging technique for trainability.</p>
+<p>64 audited pairs and32 free-generation checks; fitting is distinct from generalization.</p>
+<h2>Local evidence and unresolved claims</h2>
+<p>Previous known-seen audit7/16,long0/4;DAPO G8 coverage6/16→6/16 andmatchedchrF++44.007→41.837. These motivate fit and coverage work but do not establish a3B ceiling,an optimalLR or guaranteed rank-expansion benefit.</p>
+<p>Same-assistant semantic review retains uncertainty. Formal conclusions require independent human review,replication and a credible reward; AI review is not native-expert blinded certification.</p>
+<p>Evidence and executed inputs are archived separately without overwriting prior results.</p>
+</main></body></html>

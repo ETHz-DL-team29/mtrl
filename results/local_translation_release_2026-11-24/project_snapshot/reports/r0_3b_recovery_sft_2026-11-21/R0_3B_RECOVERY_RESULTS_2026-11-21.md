@@ -1,166 +1,140 @@
-# 3B R0恢复训练：结果、验收与完整记录 / 3B R0 recovery SFT: results and complete record
+# 3B R0 recovery SFT: results and complete record
 
-任务日期 / Task dates: 2026-11-21–22 · Generated UTC: 2026-11-22T00:06:42.364415+00:00
+Task dates: 2026-11-21–22 · Generated UTC: 2026-11-22T00:06:42.364415+00:00
 
-未通过本项目预设候选能力门槛；交付最佳已评估候选，但不能称其为合格DAPO基座。 / Did not pass the project capability gate: deliver the evaluated candidate without claiming a qualified DAPO baseline.
-
-本轮没有得到达到目标的可靠新R0。选中t1983726可加载并已实际训练1,121步、1,983,726目标token，但不建议替换原P15作为综合DAPO正式基座。独立128句chrF++47.789→48.797（差值95%CI[-0.999,2.829]），BLEU27.172→28.045（区间亦跨零）；通用chrF++44.431→42.020，超过预设容许下降。G8确认有正确候选16/64→17/64，技术中句6/24→4/24、长句2/24→4/24；greedy确认正确16/64→16/64。新G8还有16组U、31组确认全错：即使把全部U算正确也仅33/64，仍低于原定39/64；长句4P+7U=11/24，也低于12/24。因此不通过不依赖把U误算成错。训练已知困难句5/32→12/32且NLL下降，但仍未充分掌握；专门小集重复拟合30/32证明这批句子可学，不证明全面泛化或全局容量上限。当前有证据的瓶颈是候选能力与正式训练内掌握不足；仅换MetricX不能为31组全错候选补出正确译文。本轮无DAPO和MetricX调用，不能用它定量归因上次DAPO下降。继续SFT是否有效仍须以训练掌握与开发泛化共同决定，不能许诺加轮数必然解决。
+Did not pass the project capability gate: deliver the evaluated candidate without claiming a qualified DAPO baseline.
 
 This run did not produce the requested reliable new R0. The loadable t1983726 adapter received 1,121 updates / 1,983,726 target tokens, but is not recommended to replace P15 as a broad-task DAPO baseline. On the independent 128-source matched panel, chrF++ rises 47.789→48.797 (delta95%CI[-0.999,2.829]) and BLEU27.172→28.045 (CI also crosses zero), while general chrF++ falls44.431→42.020 beyond the predeclared tolerance. Confirmed G8 coverage rises16/64→17/64, medium6/24→4/24 and long2/24→4/24; greedy confirmed P stays16/64. There are16 uncertain and31 confirmed-all-wrong G8 groups. Even accepting every U yields33/64, below39/64; long4P+7U=11/24 remains below12/24. Failure does not depend on treating uncertainty as error. Hard train-known P improves5/32→12/32 and reference NLL falls, but acquisition remains incomplete. The separate tiny-set model reached30/32, establishing learnability of those sources, not broad generalization or a global capacity ceiling. Candidate capability and incomplete acquisition are evidenced bottlenecks; changing MetricX alone cannot create a correct candidate in31 all-wrong groups. This run makes no DAPO or MetricX calls and cannot causally apportion the preceding DAPO regression. Further SFT must be judged on both acquisition and held-out transfer; more epochs are not a guaranteed remedy.
 
-实际正式更新 / Production updates: **1121**; target tokens: **1,983,726**; selected checkpoint: **t1983726**; selected targets: **1,983,726**.
+Production updates: **1121**; target tokens: **1,983,726**; selected checkpoint: **t1983726**; selected targets: **1,983,726**.
 
-原R0保留；全部神经模型运算在Colab。权重在最终测试前封存；拟合诊断权重没有用于正式训练。 / Original R0 is preserved. All model computation ran on Colab. Weights were sealed before final testing; fit-probe weights did not initialize production.
+Original R0 is preserved. All model computation ran on Colab. Weights were sealed before final testing; fit-probe weights did not initialize production.
 
-## 为什么这样安排 / Rationale
+## Rationale
 
-上轮30步DAPO在同条件128条样本上chrF++下降44.007→41.837，BLEU17.943→16.921；技术句正确候选不足与评分器误排都存在。旧SFT的小面板训练已知句表现弱，而历史rank16及末段学习率停滞不能证明3B容量上限。此次先检查更充分的适配优化是否能记住干净训练对，再在严格留出句上验收；没有继续盲目追加相同DAPO。 / The preceding 30-update DAPO pilot regressed on a matched panel (chrF++44.007→41.837; BLEU17.943→16.921). Missing correct candidates and scorer misranking coexist. Weak performance on a small train-known panel does not establish a3B capacity ceiling, especially under low-rank terminal-LR continuation. This run first tests learnability, then checks held-out capability.
+The preceding 30-update DAPO pilot regressed on a matched panel (chrF++44.007→41.837; BLEU17.943→16.921). Missing correct candidates and scorer misranking coexist. Weak performance on a small train-known panel does not establish a3B capacity ceiling, especially under low-rank terminal-LR continuation. This run first tests learnability, then checks held-out capability.
 
-这次同时改变容量、学习率、优化器及数据组合，是实用恢复方案，不能归因于单一因素。小样本拟合成功只否定“这些训练句完全学不进去”，不能证明所有语言知识或泛化瓶颈消失。 / Capacity, LR, optimizer and data mixture change together. This is a recovery intervention, not a causal single-factor ablation. Memorizing the fit panel is not evidence of broad generalization.
+Capacity, LR, optimizer and data mixture change together. This is a recovery intervention, not a causal single-factor ablation. Memorizing the fit panel is not evidence of broad generalization.
 
-## 文献依据与适用边界 / Literature and scope
+## Literature and scope
 
-检索覆盖12项一手论文、作者实验与官方资料，重点为低资源英→冰岛语、LLM翻译SFT和LoRA优化；不是声称读完所有论文的系统综述。完整出处与修订方案见同目录RESEARCH_AND_8H_EXECUTION_2026-11-21.md/html。 / Targeted review of12primary papers, author experiments and official sources; not an exhaustive systematic review. The separate dated research report records the decisions and limitations.
+Targeted review of12primary papers, author experiments and official sources; not an exhaustive systematic review. The separate dated research report records the decisions and limitations.
 
-### 结果后的机制解释阅读 / Post-result mechanism reading
+### Post-result mechanism reading
 
-结果后另查两项序列学习原始论文的摘要；加上初始12项与中途LR分支的2项，共16项定向一手资料。不是16篇全文逐页通读，也不是穷尽全部文献。 / Two original sequence-learning abstracts were additionally checked after results:16targeted primary sources in total including the original12and two LR references. This is neither16full-text systematic readings nor exhaustive coverage.
-
-Bengio等：训练依真实前一个token，推理依模型前一个token，差异可能累积错误。本轮NLL下降而自由生成仍弱，与这种可能机制相容；不是证明其因果贡献。
+Two original sequence-learning abstracts were additionally checked after results:16targeted primary sources in total including the original12and two LR references. This is neither16full-text systematic readings nor exhaustive coverage.
 
 Bengio et al. describe reference-prefix training versus model-prefix inference and possible error accumulation. Our falling NLL with weak free generation is compatible with this possible mechanism, without identifying its causal contribution.
 [Primary source](https://arxiv.org/abs/1506.03099)
 
-Ranzato等：逐词预测训练与从头生成评价不完全一致，提出序列级指标优化。该论文不说明当前错误MetricX已可用，也不保证DAPO能从缺少正确候选的组学习成功。
-
 Ranzato et al. distinguish next-word training from full-sequence evaluation and propose sequence-metric optimization. This neither validates our erroneous MetricX ranking nor guarantees DAPO success on groups lacking correct candidates.
 [Primary source](https://arxiv.org/abs/1511.06732)
 
-这些RNN时代论文说明训练时真实前缀与自由生成自预测前缀存在差别；本项目尚未用因果对照证明这种差别是唯一或主要根因。未实施scheduled sampling、MIXER或新RL训练。 / These RNN-era papers motivate distinguishing reference-prefix likelihood from free generation. Our run does not causally identify this discrepancy as the sole/main cause. No scheduled sampling, MIXER or additional RL was executed.
+These RNN-era papers motivate distinguishing reference-prefix likelihood from free generation. Our run does not causally identify this discrepancy as the sole/main cause. No scheduled sampling, MIXER or additional RL was executed.
 
 ### ALMA · ICLR2024
 
-两阶段：单语适应后高质量平行SFT，包含冰岛语；原实验有大规模单语训练，不能把其结果许诺给本轮8小时。
-
 Uses monolingual adaptation followed by high-quality parallel SFT, including Icelandic. Its extensive monolingual stage cannot be reproduced within this8h run.
 
-采用质量优先平行SFT；不载入ALMA权重，不宣称复现其语言能力。 / Adopt quality-focused parallel SFT; no specialist weights or ALMA performance claim.
- [Primary source / 一手资料](https://arxiv.org/abs/2309.11674)
+Adopt quality-focused parallel SFT; no specialist weights or ALMA performance claim.
+ [Primary source](https://arxiv.org/abs/2309.11674)
 
-### AMI WMT25 · 3B英→冰岛语
-
-最接近的3B冰岛语系统使用100亿英/冰岛语token预训练及后续SFT、偏好与后处理，仍落后最强系统。
+### AMI WMT25 · 3B English-to-Icelandic
 
 The closely matched3B Icelandic system uses10B English/Icelandic pretraining tokens, SFT and additional stages, and remains behind leading systems.
 
-证明规模障碍真实；不据此说3B做不到，也不承诺短训练达到论文系统。 / Treat as evidence of substantial language adaptation, not proof of a3B ceiling or a short-run guarantee.
- [Primary source / 一手资料](https://aclanthology.org/2025.wmt-1.46/)
+Treat as evidence of substantial language adaptation, not proof of a3B ceiling or a short-run guarantee.
+ [Primary source](https://aclanthology.org/2025.wmt-1.46/)
 
 ### LoRA Learns Less and Forgets Less · TMLR2024
 
-在代码和数学等设置中，常见低秩配置学习弱于全参，但遗忘较少；不能直接推广为冰岛语rank16必然不够。
-
 Standard low-rank settings can underperform full tuning while forgetting less in studied programming/math regimes; this does not prove rank16 inadequate for Icelandic.
 
-停止把rank16停滞叫做3B上限；扩大可训练适配空间。 / Avoid conflating low-rank adaptation with model capacity; increase adaptation space.
- [Primary source / 一手资料](https://arxiv.org/abs/2405.09673)
+Avoid conflating low-rank adaptation with model capacity; increase adaptation space.
+ [Primary source](https://arxiv.org/abs/2405.09673)
 
-### LoRA Without Regret · 原作者实验2025
-
-研究强调全线性层、足够适配容量、批量与学习率；实验中LoRA往往需要比全参更高LR，但主要使用其他模型/任务。
+### LoRA Without Regret · Original authors' 2025 experiments
 
 Finds that layer coverage, adapter capacity, batch size and LR matter; higher LoRA LR is useful in studied settings, not an exact Icelandic hyperparameter prescription.
 
-沿用全线性层；rank64、新优化器与更高但固定的LR先过拟合检查。 / Keep all-linear coverage; test rank64 and fresh higher-LR optimization through a fit gate.
- [Primary source / 一手资料](https://thinkingmachines.ai/blog/lora/)
+Keep all-linear coverage; test rank64 and fresh higher-LR optimization through a fit gate.
+ [Primary source](https://thinkingmachines.ai/blog/lora/)
 
 ### rsLoRA · 2023
 
-讨论rank增加时缩放对学习的影响。
+Discusses how scaling affects learning as rank increases.
 
 Studies the rank-dependent scaling of adapter updates.
 
-本轮不直接切换缩放；alpha16/32→rank64/alpha128，保持alpha/r=2及原适配块，新增B列为0。 / Preserve scale2 through zero-padded rank expansion rather than mixing a new scaling rule into this run.
- [Primary source / 一手资料](https://arxiv.org/abs/2312.03732)
+Preserve scale2 through zero-padded rank expansion rather than mixing a new scaling rule into this run.
+ [Primary source](https://arxiv.org/abs/2312.03732)
 
 ### QLoRA · NeurIPS2023
 
-低比特冻结基座可节省微调内存；文中结果不等于任意模型任意任务无损。
-
 Low-bit frozen bases reduce tuning memory; reported results are not a universal lossless guarantee.
 
-当前L4可容纳BF16基座，避免量化成为新变量。 / Retain BF16 because it fits, avoiding a new quantization variable.
- [Primary source / 一手资料](https://arxiv.org/abs/2305.14314)
+Retain BF16 because it fits, avoiding a new quantization variable.
+ [Primary source](https://arxiv.org/abs/2305.14314)
 
 ### DoRA · ICML2024
 
-用幅度/方向分解改进适配，是候选方法，不是本任务已验证收益。
-
 Magnitude/direction decomposition is a candidate alternative, without verified benefit for this task.
 
-本轮不叠加新方法；先建立可用R0。 / Defer additional methods until a useful R0 exists.
- [Primary source / 一手资料](https://arxiv.org/abs/2402.09353)
+Defer additional methods until a useful R0 exists.
+ [Primary source](https://arxiv.org/abs/2402.09353)
 
 ### LoRA+ · ICML2024
 
-研究A/B不同学习率对适配效率的作用。
+Studies different learning rates for A/B and their effect on adaptation efficiency.
 
 Investigates unequal learning rates for adapter factors.
 
-不同时搜索A/B倍率；本轮固定新AdamW和统一LR。 / Avoid a new factor-LR search; use one declared optimizer setting.
- [Primary source / 一手资料](https://arxiv.org/abs/2402.12354)
+Avoid a new factor-LR search; use one declared optimizer setting.
+ [Primary source](https://arxiv.org/abs/2402.12354)
 
 ### ALMA-R/CPO · ICML2024
 
-偏好优化可改进已有翻译模型，也指出人工参考仍可能有质量问题。
-
 Preference optimization improves existing translation models and highlights imperfect human references.
 
-参考逐条抽查并保留U；本轮不改跑CPO/DAPO。 / Inspect references and keep uncertainty; defer preference training.
- [Primary source / 一手资料](https://arxiv.org/abs/2401.08417)
+Inspect references and keep uncertainty; defer preference training.
+ [Primary source](https://arxiv.org/abs/2401.08417)
 
-### Qwen2.5官方SFT示例
-
-官方示例使用全线性LoRA和1e-4学习率；这是另一规模/数据示例，不是3B冰岛语最优值。
+### Official Qwen2.5 SFT example
 
 An official example uses all-linear LoRA and1e-4, on a different model/data setting; it is not an optimum for our task.
 
-微型拟合1e-4；主SFT5e-5，固定日程并检查泛化。 / Use1e-4 for the fit probe and5e-5 for bounded production SFT, with generalization checks.
- [Primary source / 一手资料](https://qwen.readthedocs.io/en/v2.5/training/SFT/ms_swift.html)
+Use1e-4 for the fit probe and5e-5 for bounded production SFT, with generalization checks.
+ [Primary source](https://qwen.readthedocs.io/en/v2.5/training/SFT/ms_swift.html)
 
-### PEFT官方LoRA文档
-
-r、alpha、目标模块等影响适配定义；本轮实际固定peft0.21.2，已验证的训练环境优先。
+### Official PEFT LoRA documentation
 
 Rank, alpha and target modules define the adapter. Execution stays on the already verified peft0.21.2 environment.
 
-扩容检查原块逐值保留、新增B列0，并做模块输出一致性检查。 / Verify copied old blocks, zero new B columns and module-output parity.
- [Primary source / 一手资料](https://huggingface.co/docs/peft/v0.22.0/package_reference/lora)
+Verify copied old blocks, zero new B columns and module-output parity.
+ [Primary source](https://huggingface.co/docs/peft/v0.22.0/package_reference/lora)
 
-### Lightning官方训练调试
-
-先拟合少量数据是定位训练能否学习的调试方法。
+### Official Lightning training-debugging guidance
 
 Deliberately fitting a tiny dataset is a debugging technique for trainability.
 
-64条已审核句对、32条自由生成审核；通过不等于泛化通过。 /64 audited pairs and32 free-generation checks; fitting is distinct from generalization.
- [Primary source / 一手资料](https://api.lightning.ai/docs/pytorch/stable/debug/debugging_intermediate)
+64 audited pairs and32 free-generation checks; fitting is distinct from generalization.
+ [Primary source](https://api.lightning.ai/docs/pytorch/stable/debug/debugging_intermediate)
 
-不载入NLLB/ALMA等翻译专用权重；起点仍为通用Qwen2.5-3B-Instruct及已有SFT适配器。文献中的数十亿token适应不能在8小时内复现，没有把其性能承诺给本轮。 / No translation-specialist weights were loaded. The origin remains general Qwen2.5-3B-Instruct plus the existing adapter. Billion-token adaptation regimes are not reproduced or promised within8h.
+No translation-specialist weights were loaded. The origin remains general Qwen2.5-3B-Instruct plus the existing adapter. Billion-token adaptation regimes are not reproduced or promised within8h.
 
-## 数据、清洗与留出 / Data and isolation
+## Data and isolation
 
-正式训练17,911对，991,863个去重目标token，最多两遍1,983,726目标token。以目标token计约10%一般句、10%技术短句、40%技术中句、40%技术长句。按来源和长度分层，真实文档每文档最多8句，相邻100条TMX代理块最多32句；代理块不等于真实文档。EMA/EEA/ESO比例依实际可用数据调整，没有把请求比例当作实际比例。 / Production contains17,911pairs and991,863unique target tokens, at most two passes/1,983,726target tokens. Approximate target-token mixture:10%general,10%technical short,40%medium,40%long. True-document cap8 and adjacent100-TMX-row proxy cap32 are distinct. Source ratios reflect availability.
+Production contains17,911pairs and991,863unique target tokens, at most two passes/1,983,726target tokens. Approximate target-token mixture:10%general,10%technical short,40%medium,40%long. True-document cap8 and adjacent100-TMX-row proxy cap32 are distinct. Source ratios reflect availability.
 
-人工逐项读取80对训练参考：保留64对作拟合检查，排除16对明显错配/遗漏/OCR或无法确认的术语；这不是母语专家认证。生产池共隔离103对（包括这些排除对、明显缺失冰岛语字母、过多重复法规模板）。没有根据测试输出反填训练参考或生成合成译文。 / All80fit reference pairs were inspected;64retained and16excluded. This is not native-expert certification.103production pairs were quarantined for the recorded reasons. No test-driven reference repairs or synthetic translations were inserted.
+All80fit reference pairs were inspected;64retained and16excluded. This is not native-expert certification.103production pairs were quarantined for the recorded reasons. No test-driven reference repairs or synthetic translations were inserted.
 
-开发128条与最终测试128条来自官方ParIce21，按四层各32条；最终G8另选64条技术句，短16/中24/长24。对完整100,642训练池和此前选定评估输入做精确source/reference排除；source5gram Jaccard≥.85近重复审计为0命中。句子隔离不等于文档或预训练隔离；历史输出枚举不保证穷尽。 / Dev128and final128are four-way stratified official ParIce21 panels. FinalG8has64technical sources (16/24/24). Exact exclusions cover the100,642training pool and identified prior selected evaluation inputs;5gram source-Jaccard≥.85audit found0hits. Sentence isolation is not document/pretraining independence or an exhaustive historical-output audit.
+Dev128and final128are four-way stratified official ParIce21 panels. FinalG8has64technical sources (16/24/24). Exact exclusions cover the100,642training pool and identified prior selected evaluation inputs;5gram source-Jaccard≥.85audit found0hits. Sentence isolation is not document/pretraining independence or an exhaustive historical-output audit.
 
-### 有条件恢复准备记录 / Conditional recovery preparation
+### Conditional recovery preparation
 
-0.5M退化后准备过一次LR×0.2的受控恢复代码，唯一触发条件是1M仍无开发语义改善。实际1M greedyP和G8P均超过A，未触发该分支；没有运行第二套GPU训练。 / A single LR×0.2 fallback was prepared after the0.5Mregression. Its trigger was no semantic gain by1M. Both audited counts exceededA at1M, so this branch did not run.
+A single LR×0.2 fallback was prepared after the0.5Mregression. Its trigger was no semantic gain by1M. Both audited counts exceededA at1M, so this branch did not run.
 
-补充阅读 / Additional primary reading: [Learning Rate Matters](https://arxiv.org/abs/2602.04998), [author optimizer guidance](https://tinker-docs.thinkingmachines.ai/tinker/optimizers/). 两项资料支持重视学习率验证，不给出本任务最优值；准备记录不能算已执行实验。 / These motivate validation of LR, not an Icelandic optimum; preparation is not an executed experiment.
+Additional primary reading: [Learning Rate Matters](https://arxiv.org/abs/2602.04998), [author optimizer guidance]These motivate validation of LR, not an Icelandic optimum; preparation is not an executed experiment.
 
 ```json
 {
@@ -291,9 +265,9 @@ Near duplicates
 }
 ```
 
-## 拟合门槛及实测 / Fit gate and measured learning
+## Fit gate and measured learning
 
-先将rank16/alpha32扩成rank64/alpha128，缩放均为2；保留原A/B块，新B列为0，随机模块输出探针最大差异0。初始函数探针不等于任意输入上的浮点逐位等价。独立新AdamW、LR1e-4、dropout0、每更新8例、目标token全局均值、梯度裁剪1；只训练64对，检查固定32对自由greedy输出。上限250k目标token/45分钟；通过标准为P≥26/32且长句P≥12/16。 / Function-preserving rank expansion keeps scale2and old blocks, with zero newBcolumns; module probe maximumdelta0. This is not a claim of bitwise equivalence for all model inputs. FreshAdamW LR1e-4, dropout0,8examples/update, global target-token mean, clip1. Fit64pairs, audit32free-greedy outputs. Bound250ktargets/45minutes; pass≥26/32P and≥12/16longP.
+Function-preserving rank expansion keeps scale2and old blocks, with zero newBcolumns; module probe maximumdelta0. This is not a claim of bitwise equivalence for all model inputs. FreshAdamW LR1e-4, dropout0,8examples/update, global target-token mean, clip1. Fit64pairs, audit32free-greedy outputs. Bound250ktargets/45minutes; pass≥26/32P and≥12/16longP.
 
 | Case | Targets | Confirmed P/32 | Long P/16 | U | Passed |
 |---|---:|---:|---:|---:|---|
@@ -301,9 +275,9 @@ Near duplicates
 | fit_0100154 | 100154 | 30 | 15 | 1 | True |
 | fit_before | 0 | 5 | 2 | 3 | False |
 
-### 正式选中模型在训练句上的表现 / Train-known performance of the actual selected model
+### Train-known performance of the actual selected model
 
-此前小集合过拟合证明的是训练通路能学习；这里检查实际正式选中权重学会了多少固定困难训练句。它不是独立泛化结果，不用于选模，也不改变最终质量门槛。 / The earlier tiny-fit probe establishes learnability. This separate read-only audit measures the actual selected weights on fixed hard training sources; it is not independent generalization evidence, does not select checkpoints and does not change qualification thresholds.
+The earlier tiny-fit probe establishes learnability. This separate read-only audit measures the actual selected weights on fixed hard training sources; it is not independent generalization evidence, does not select checkpoints and does not change qualification thresholds.
 
 ```json
 {
@@ -504,13 +478,11 @@ Near duplicates
 }
 ```
 
-正式选中模型在固定32条困难训练句上P从5到12、长句从2/16到5/16；同精度64条参考token NLL从0.74637降至0.47464。32条本轮各曝光2次（原父模型的历史曝光未重建）。说明本轮确实学习了，但正式训练对这些句子仍未充分掌握，不是纯粹“训练句都学会、只差泛化”。另一个重复小集拟合副本曾30/32、长15/16，证明当前模型/训练通路能学进这批句子，但不能承诺增加曝光必然泛化，也不能排除语言表征与数据质量因素。此32条只是困难小面板，不能外推全训练集、识别唯一主因或证明3B容量上限。
-
 On 32 fixed hard train-known sources, confirmed P rises from 5 to 12 and long P from 2/16 to 5/16. Matched-precision reference-token NLL on 64 sources falls from 0.74637 to 0.47464. Each audited source has two exposures in this phase; parent-history exposures were not reconstructed. Learning occurred, but these hard training meanings remain incompletely acquired, so a purely held-out-transfer explanation is insufficient. The separate repeated-tiny-set model reached 30/32 and 15/16 long: this establishes learnability of this panel, not guaranteed generalization from more repetitions. Language representation and reference quality remain possible factors. This hard panel is not the whole pool, a unique-cause identification or a 3B-capacity-ceiling test.
 
-拟合通过后丢弃诊断权重，重新从扩容后的原R0开始正式训练。训练句结果不计作最终模型的泛化收益。 / Fit weights are discarded; production restarts from expanded original R0. Train-known fit gains are not final generalization gains.
+Fit weights are discarded; production restarts from expanded original R0. Train-known fit gains are not final generalization gains.
 
-## 正式SFT配置与停止 / Production configuration and stopping
+## Production configuration and stopping
 
 | Parameter | Executed value |
 |---|---|
@@ -531,7 +503,7 @@ On 32 fixed hard train-known sources, confirmed P rises from 5 to 12 and long P 
 | Final | Both endpoints regeneratedFP32;greedybatch8;G8 T.7 topP1 topK0 max512;fixed source seed |
 | Excluded | NoDAPO, noMetricXcalls, no test-based checkpoint selection |
 
-实际停止原因 / Actual stop: `planned_stream_completed`.
+Actual stop: `planned_stream_completed`.
 
 ```json
 {
@@ -543,7 +515,7 @@ On 32 fixed hard train-known sources, confirmed P rises from 5 to 12 and long P 
 }
 ```
 
-## 开发检查与选模 / Development trajectory
+## Development trajectory
 
 | Tag | Targets | Overall chrF++ | General chrF++ | Technical medium/long chrF++ | Greedy P/32 | G8 P/24 | Selected |
 |---|---:|---:|---:|---:|---:|---:|---|
@@ -553,9 +525,9 @@ On 32 fixed hard train-known sources, confirmed P rises from 5 to 12 and long P 
 | t1501693 | 1501693 | 48.581 | 47.873 | 48.492 | 10 | 12 | False |
 | t1983726 | 1983726 | 48.288 | 50.395 | 48.000 | 12 | 13 | True |
 
-开发集用于停止和选择，不是最终独立证据。所有候选和未选中检查点保留；较晚不自动意味着更好。 / Development panels drive stopping and selection, not final independent evidence. Later checkpoints are not automatically better.
+Development panels drive stopping and selection, not final independent evidence. Later checkpoints are not automatically better.
 
-## 同条件最终评估 / Matched final evaluation
+## Matched final evaluation
 
 | Subset | N | Before chrF++ | After chrF++ | Delta [95% CI] | Before BLEU | After BLEU | Delta [95% CI] |
 |---|---:|---:|---:|---|---:|---:|---|
@@ -567,11 +539,11 @@ On 32 fixed hard train-known sources, confirmed P rises from 5 to 12 and long P 
 | technical | 96 | 47.999 | 49.275 | +1.276 [-0.8826812852836545, 3.234172394001763] | 27.358 | 28.638 | +1.280 [-2.0044111075194047, 3.8868815606914033] |
 | technical_medium_long | 64 | 47.496 | 48.905 | +1.409 [-1.0809593332348475, 3.540042318760272] | 26.841 | 28.301 | +1.460 [-2.06078916288744, 4.120858553044608] |
 
-2000次同源配对corpus统计量bootstrap，区间条件于本次样本、单训练种子；未计文档聚类和标注不确定性。不可直接把历史不同句集或BF16分数当作此次FP32对照。 / 2,000paired-source corpus-statistic bootstrap replicates, conditional on this panel and one training seed; document clustering and annotation uncertainty are omitted. Historical panels/precisions are not matched comparators.
+2,000paired-source corpus-statistic bootstrap replicates, conditional on this panel and one training seed; document clustering and annotation uncertainty are omitted. Historical panels/precisions are not matched comparators.
 
-## 语义审核、候选能力和验收 / Semantics, candidate coverage and qualification
+## Semantics, candidate coverage and qualification
 
-P确认关键含义、角色、数字和否定保留，允许轻微语法瑕疵；F确认关键错误；U真实不确定，不能叫作错误。G8P需至少一个已查验未截断正确候选；G8F需检查全部不同候选。相同source+hypothesis可复用已查验记录，保留来源hash；不使用chrF或奖励自动生成语义标签。同一AI助手审核、部分标签遮蔽，不是母语专家外部盲评。 / Pconfirms key meaning/roles/numbers/negation with minor grammatical tolerance. Fconfirms error; Uis uncertainty. GroupPneeds an inspected untruncated correct candidate; groupFneeds every distinct candidate inspected. Strict identical evidence reuse is logged; metric scores never label semantics. This is partly masked same-assistant AI review, not external native-expert certification.
+Pconfirms key meaning/roles/numbers/negation with minor grammatical tolerance. Fconfirms error; Uis uncertainty. GroupPneeds an inspected untruncated correct candidate; groupFneeds every distinct candidate inspected. Strict identical evidence reuse is logged; metric scores never label semantics. This is partly masked same-assistant AI review, not external native-expert certification.
 
 | Model | Role | Stratum | P | U | F |
 |---|---|---|---:|---:|---:|
@@ -806,17 +778,17 @@ Symmetric final-case review
       "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
     }
   ],
-  "judgment_zh": "存在真实局部退步：地下水被译成基础、港口计划制定变继续；长句委员会提交义务变不明确。另有3组G8由P到U。各自保留退步，不改标签以制造收益；未观察到跨多数任务统一出现的新型关键语义崩溃，不能以此声称模型无退步。总P计数持平或微增仍不构成可靠改善。",
+  "judgment_zh": "There are genuine local regressions: groundwater becomes a foundation, preparing a port plan becomes continuing it, and a long-source Commission submission obligation becomes unclear. Three G8 groups also change from P to U. Retain each regression rather than relabeling it to manufacture gains. No new critical semantic collapse is observed across most tasks, but this does not establish absence of regression. Flat or slightly higher total P counts do not establish reliable improvement.",
   "judgment_en": "Local regressions remain: groundwater becomes foundation; developing port plans becomes continuing them; the Commission submission obligation becomes unclear. Three G8 groups shift P to U. These regressions are retained. No new systematic critical collapse across most tasks was observed; this does not mean no regression, nor do flat/slightly positive P counts establish improvement.",
   "labels_modified_in_paired_review": false
 }
 ```
 
-上述候选覆盖门槛是本项目预先设定的工程验收，不是DAPO理论阈值；G8八条不是八个独立来源。通过也不证明MetricX奖励已校准，不能直接宣称下一次DAPO必然提升。 / These are preregistered project engineering thresholds, not DAPOtheorems. Eight candidates are not eight independent sources. Passing does not calibrate MetricX or guarantee RL improvement.
+These are preregistered project engineering thresholds, not DAPOtheorems. Eight candidates are not eight independent sources. Passing does not calibrate MetricX or guarantee RL improvement.
 
-## 实现完整性与真实更新 / Implementation integrity
+## Implementation integrity
 
-4项云端冻结输入/实现测试通过；显式shift损失与批量/单句损失对齐检查通过；首个拟合更新参数L2变化非零，正式目标token与曝光顺序逐项核对，loss/梯度有限。没有缓存全部SFT logits，因此不称作CPU目标函数重放。 / Four cloud input/implementation tests passed, as did shifted-loss and batch/single alignment. The first fit update changed parameters; production exposure and finite updates are checked. No complete-logit CPU objective replay is claimed.
+Four cloud input/implementation tests passed, as did shifted-loss and batch/single alignment. The first fit update changed parameters; production exposure and finite updates are checked. No complete-logit CPU objective replay is claimed.
 
 ```json
 {
@@ -864,11 +836,11 @@ Symmetric final-case review
 }
 ```
 
-## 启动、失败尝试与资源 / Startup, attempts and resources
+## Startup, attempts and resources
 
-数据准备先修正了来源可用量约束、慢速索引及误把整官方语料元数据当“历史已评估句”的排除条件；这些发生在GPU模型更新前。第一次控制kernel冷启动POST超时后，连接已有starting状态kernel成功，未重启或重新分配GPU、未重置8小时截止。文件上传与数据hash均在worker启动前校验。 / Preparation corrected availability constraints, slow indexing and an overly broad metadata exclusion before model updates. A cold first-kernel POST timeout was recovered by connecting to the existing starting kernel. No GPU reallocation or deadline reset occurred. Upload and data hashes verified before worker start.
+Preparation corrected availability constraints, slow indexing and an overly broad metadata exclusion before model updates. A cold first-kernel POST timeout was recovered by connecting to the existing starting kernel. No GPU reallocation or deadline reset occurred. Upload and data hashes verified before worker start.
 
-本地仅隐藏低优先级控制、文本审核、轻量CPU统计和单线程512KiB/s持久化；不加载神经模型、不操作前台浏览器或改电源设置。账户CU差值为余额观测，含下载、等待、评估与保存，不是精确账单。 / Local work is hidden low-priority control, text review, small CPU statistics and one-worker capped persistence. No local neural model, foreground browser or power changes. CUdrop includes setup/waits/evaluation/persistence and is an account observation, not an invoice.
+Local work is hidden low-priority control, text review, small CPU statistics and one-worker capped persistence. No local neural model, foreground browser or power changes. CUdrop includes setup/waits/evaluation/persistence and is an account observation, not an invoice.
 
 ```json
 {
@@ -912,11 +884,9 @@ Symmetric final-case review
 }
 ```
 
-## 权重使用与后续 / Checkpoint use and next action
+## Checkpoint use and next action
 
-未通过本项目预设候选能力门槛；交付最佳已评估候选，但不能称其为合格DAPO基座。 / Did not pass the project capability gate: deliver the evaluated candidate without claiming a qualified DAPO baseline.
-
-若通过，先在已有候选上核验奖励是否选对，并检查优势方向，然后从此冻结checkpoint做一个小预算DAPO对照；不按训练奖励均值选优。若未通过，依据最终长句错误与训练拟合/开发泛化差异提出受限下一步，不再把指标停滞直接解释为3B容量上限。 / If qualified, validate reward ranking and advantage direction on saved candidates before a bounded DAPOcomparison from this frozen checkpoint. Never choose by unpaired mean training reward. If unqualified, use the recorded train-fit/dev-generalization gap and final long-sentence errors; stagnation alone is not a3B ceiling.
+Did not pass the project capability gate: deliver the evaluated candidate without claiming a qualified DAPO baseline.
 
 - Selected adapter: D:\deep learning project\runs\r0_3b_recovery_sft_2026-11-21\final_selected_adapter
 - Checkpoint manifest: D:\deep learning project\runs\r0_3b_recovery_sft_2026-11-21\final_selected_adapter_manifest.json
@@ -928,7 +898,7 @@ Symmetric final-case review
 - Raw evaluation and updates: D:\deep learning project\runs\r0_3b_recovery_sft_2026-11-21\exported\run
 - Archive/completion verification: D:\deep learning project\runs\r0_3b_recovery_sft_2026-11-21\verified_export.json, D:\deep learning project\runs\r0_3b_recovery_sft_2026-11-21\completion_manifest.json
 
-## 每次正式更新 / Every production update
+## Every production update
 
 | Step | Targets | LR | Loss | Grad norm | Micro | OOM retries | Seconds |
 |---:|---:|---:|---:|---:|---:|---:|---:|
@@ -2054,7 +2024,7 @@ Symmetric final-case review
 | 1120 | 1982807 | 5.00024e-06 | 0.5063172 | 3.18732 | 4 | 0 | 5.687 |
 | 1121 | 1983726 | 5.0000251e-06 | 0.4986172 | 4.43374 | 4 | 0 | 3.495 |
 
-## 完整案例 / Complete cases
+## Complete cases
 
 ![Matched quality](<D:/deep learning project/reports/r0_3b_recovery_sft_2026-11-21/matched_quality.png>)
 
@@ -3342,7 +3312,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:opensubtitles:1900 · F</summary>
 
 **Source:** I was trying to get the place shipshape before you arrived.
-**Decision:** F — shipshape（整理妥当）变为取得屋中位置。
+**Decision:** F — shipshape, meaning tidy and in good order, becomes obtaining a position in the house.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ég var að reyna að ná stöðu í húsinu áður en þú komst.
 
@@ -3351,7 +3321,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:eea:1201 · P</summary>
 
 **Source:** In the light of the highly technical and scientific mission and tasks of the Agency, it is appropriate for the Administrative Board to consist of one representative of each Member State and four representatives of the Commission, being members with a high level of expertise.
-**Decision:** P — 候选0保留技术/科学任务、董事会成员来自每国1人及委员会4人和高专长；组成动词严重不自然但清单角色关系可辨认。
+**Decision:** P — Candidate0 retains technical/scientific tasks, one board member per country, four Commission members and high expertise. The composition verb is highly unnatural, but the listed roles remain identifiable.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[0]
 **Candidate0:** Í ljósi þess að störf og verkefni stofnunarinnar er mjög tæknilegra og vísindalegra er rétt að stjórn stjórnsýsluins uppi einn fulltrúi frá hvert aðildarríki og fjórir fulltrúar framkvæmdastjórnarinnar sem eiga mikil sérþekkingu.
 **Candidate1:** Í ljósi þess hversu tæknilega og vísindalega skipulagi og verkefnum stofnunarinnar er rétta að stjórnvald stofnunarinnar innihaldi einn fulltrúi frá hverju aðildarríki og fjórir fulltrúar framkvæmdastjórnarinnar, sem eru með háttar sérfræðilegan menntun.
@@ -3367,7 +3337,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:eso:853 · F</summary>
 
 **Source:** “This is the most comprehensive case yet of a binary central star for which simulations have correctly predicted how it shaped the surrounding nebula - and in a truly spectacular fashion,” explains co-author Brent Miszalski, from SAAO and SALT (South Africa).
-**Decision:** F — 全部8条均未完整表达中心双星、模拟正确预测周围星云形态及南非机构关系，出现无关词和地点。
+**Decision:** F — All8 omit or distort the central binary, simulations correctly predicting the surrounding nebula's shape and the South African institution relationship, introducing unrelated words/places.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** „Þetta er það fullkomnastu fylgiskerli líka fyrir helstu miðstar sem hafa verið í tali til að kanna hvernig hann höndliði umhverfið í - og allt í virkilegu svolíti,“ sagði Brent Miszalski, meðhöfundur rannsóknarinnar í SAAO og SALT (Sársætisráðuneyti Sársætis).
 **Candidate1:** „Við erum fyrir þessari tilvik að túlkuð er meira í gildi um tvíhliða, miðjarstjörnu sem gera hefur rannsóknirnar á síðari annað hvort hvernig hún myndi vega umhverfið - og í alveg skemmtilegri hátt,“ segir Brent Miszalski, meðhöfundur greinarinnar og starfsstjóri SAAO og SALT (Svissina).
@@ -3383,7 +3353,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:ema:2373 · F</summary>
 
 **Source:** Exploratory analysis showed clinically meaningful improvements were observed for the vedolizumab every four weeks and every eight weeks groups in GEMINI II and the improvements were significantly greater as compared with the placebo group from baseline to Week 52 on EQ-5D and EQ-5D VAS scores, total IBDQ score, and IBDQ subscales of bowel symptoms and systemic function.
-**Decision:** F — GEMINI II遗漏，肠道症状/全身功能变为世代/器官等不相关概念。
+**Decision:** F — GEMINI II is omitted; bowel symptoms and systemic function become unrelated generations/organs.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Greining á rannsóknarháttu sýndi klínískt mikilvægum bata í þeim hópum sem fengu vedólízúmab á fjögurra vikna fresti og á átta vikna fresta, þar sem bata var marktækt meiri samanborið við lyfleysuhópinn frá upphafsgildum til viku 52 á EQ-5D og EQ-5D VAS gildum, heildar gildi IBDQ og IBDQ undirrúmmál fyrir einkenni um kynslóð og líffæri.
 
@@ -3392,7 +3362,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:ema:2137 · P</summary>
 
 **Source:** Patients receiving Pelzont, nicotinic acid (prolonged-released formulation), or placebo were also taking statins (29 % atorvastatin [5-80 mg], 54 % simvastatin [10-80 mg], 17 % other statins [2.5-180 mg] (pravastatin, fluvastatin, rosuvastatin, lovastatin)), of which 9 % were also taking ezetimibe [10 mg].
-**Decision:** P — 候选3保留烟酸缓释、各他汀比例/剂量/药名和9%合用依折麦布；有词形错误。
+**Decision:** P — Candidate3 retains extended-release niacin, statin proportions/doses/names and9% concomitant ezetimibe; inflection errors remain.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[3]
 **Candidate0:** Sjúklingar sem fengu Pelzont, nicótínsýra (þróaða útskilnaður lyfjaform) eða lyfleysu tóku einnig statínlyf (29% atorvastatín [5-80 mg], 54% simvastatín [10-80 mg], 17% annað statín [2,5-180 mg] (pravastatín, fluvastatín, rosuvastatín, lovastatín)), en 9% þeirra tóku áfram ezetimib [10 mg].
 **Candidate1:** Sjúklingar sem fengu Pelzont, niktínsýru (lausn með lengdútöku) eða lyfleysu tóku einnig statíner (29% atorvastatin [5-80 mg], 54% simvastatin [10-80 mg], 17% annarir statíner [2,5-180 mg] (pravastatin, fluvastatin, rosuvastatin, lovastatin)], þar af sviði 9% tóku einnig ezetimib [10 mg].
@@ -3408,7 +3378,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eea:1468 · F</summary>
 
 **Source:** In either case, Member States will ensure that a representative share of the national market is covered by the survey.
-**Decision:** F — 代表性份额这一调查覆盖条件未保留。
+**Decision:** F — The representative-share requirement for survey coverage is lost.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í báðum tilvikum verða aðildarríkin að tryggja að hlutfall innlendrar markaðar sé undir skoðunina.
 
@@ -3417,7 +3387,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eso:84 · U</summary>
 
 **Source:** “And although it may be possible, it is harder to understand how these brilliant beacons could form on their own.
-**Decision:** U — 独立形成关系大致存在，但 brennir 对明亮信标的表达不可靠。
+**Decision:** U — Independent formation is roughly retained, but brennir is unreliable for a bright beacon.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Og þótt það sé mögulegt er það erfitt að skilja hvernig slík glæsilegar brennir geta myndast af sér.
 
@@ -3426,7 +3396,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:opensubtitles:3356 · F</summary>
 
 **Source:** Now, you in with him or he&#x27;s screwing you too?
-**Decision:** F — 串通/欺骗的口语含义未表达，末尾动词不明确。
+**Decision:** F — The colloquial collusion/deception meaning is absent and the final verb is unclear.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Núna, þú inn með hann eða hann er að klæra þig líka?
 
@@ -3435,7 +3405,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eea:896 · U</summary>
 
 **Source:** Live fish can be shipped as well.
-**Decision:** U — 运输关系正确，Lífra fiskur 是否可靠表达活鱼无法确认。
+**Decision:** U — Transport is retained, but whether Lífra fiskur reliably means live fish is unconfirmed.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Lífra fiskur getur einnig verið fluttur.
 
@@ -3444,7 +3414,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:opensubtitles:1376 · U</summary>
 
 **Source:** I don&#x27;t feel like dancing.
-**Decision:** U — 否定和跳舞保留，但意愿表达 finn ekki fyrir að dansa 不自然，是否保持不想跳舞而非感觉不能跳舞不确定。
+**Decision:** U — Negation and dancing remain, but finn ekki fyrir að dansa is unnatural; unwillingness versus feeling unable to dance is uncertain.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ég finn ekki fyrir að dansa.
 
@@ -3453,7 +3423,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eso:605 · P</summary>
 
 **Source:** “Our study provides a solid estimate of how much water Mars once had, by determining how much water was lost to space,” said Geronimo Villanueva, a scientist working at NASAs Goddard Space Flight Center in Greenbelt, Maryland, USA, and lead author of the new paper.
-**Decision:** P — 估计火星过去水量、以流失到太空的水量确定、发言人/机构地点与主作者关系保留；语法生硬。
+**Decision:** P — The estimate of past Martian water from water lost to space, speaker/institution/location and lead-author relationship remain; grammar is awkward.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** „Við rannsóknin sýndi okkur ábyrgðlega mat á hve mikið vatn Mars átti fyrir sig, með því að ákvarða hversu mikill vatn var misst í geimnum,“ sagði Geronimo Villanueva, vísindamaður við Goddard Space Flight Center við NASA í Greenbelt í Maryland í Bandaríkjunum og aðalhöfundur greinar um nýja greinina.
 
@@ -3462,7 +3432,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eso:971 · P</summary>
 
 **Source:** As further evidence, the astronomers also determined the motion and velocity of these stars.
-**Decision:** P — 补充证据、天文学家、这些恒星的运动与速度均保留；确定表为研究，结果性较弱但未引入相反命题。
+**Decision:** P — Further evidence, astronomers and these stars' motions/speeds remain. Determination becomes investigation, weakening resultiveness without reversing the claim.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Sem frekari sönnunartilvik voru stjörnufræðingarnir einnig að rannsaka hreyfingu og hraða þessara stjarna.
 
@@ -3471,7 +3441,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:ema:1151 · F</summary>
 
 **Source:** As with any implantable product, foreign body reactions may occur.
-**Decision:** F — 全部候选均将植入物或异物反应变成无关词、输注或过敏等，关键医学对象未正确表达。
+**Decision:** F — All candidates replace implants or foreign-body reactions with unrelated terms, infusions or allergies; critical medical objects are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Eins og við á um önnur plöntu er hugsanlegt að þarfnast sé aðeins víxli vegna forverkja.
 **Candidate1:** Eins og við á um nein braut í forðaplána geta fyrirbæri vegna útlendsþekkingar komið fram.
@@ -3487,7 +3457,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:ema:581 · P</summary>
 
 **Source:** Repeated daily doses up to 8 mg/kg (maximum total dose 896 mg) in adult patients have been administered in clinical trials with no reported dose-limiting toxicity.
-**Decision:** P — 候选3/4保留重复每日、成人、临床试验、8mg/kg、896mg及未报告剂量限制性毒性。
+**Decision:** P — Candidates3/4 retain repeated daily dosing, adults, clinical trials,8mg/kg,896mg and no reported dose-limiting toxicity.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[3, 4]
 **Candidate0:** Endurtakið skammtur á sólarhring allt að 8 mg/kg (hámarksskammtur 896 mg) hefur verið gefinn hjá fullorðnum sjúklingum í klínískum rannsóknum, án tilkynntar eiturverkunar vegna skammtararbæra.
 **Candidate1:** Hjá fullorðnum sjúklingum hefði gefið endurtekna daglegar skammta sem voru allt að 8 mg/kg (mesta heildarskammtur 896 mg) og ekki hefur fengið tilkynnt um eiturverkanir sem takmarka skammta.
@@ -3503,7 +3473,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:opensubtitles:104 · F</summary>
 
 **Source:** He wore a black mask.
-**Decision:** F — 黑色面具变为不相关的 skíma，佩戴动词也错。
+**Decision:** F — A black mask becomes unrelated skíma, and the wearing verb is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hann varði í svörtu skíma.
 
@@ -3512,7 +3482,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:eea:1468 · U</summary>
 
 **Source:** In either case, Member States will ensure that a representative share of the national market is covered by the survey.
-**Decision:** U — 均已检查；多条漏代表性，3/7出现代表一词但调查覆盖表达损坏，无法确认完整正确。
+**Decision:** U — All checked. Many omit representativeness;3/7 include a representation term but damage survey coverage, preventing confirmation.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í báðum tilvikum verða þátttakendur aðildarríkjanna að tryggja að umrædd hlut af markaði í hverju ríki sé rannsóknin undir sviði.
 **Candidate1:** Í báðum tilvikum sjáu aðildarríki að því að tilhögun um fulltrúa erinnarmarkaðar aðildarríkis sé nægð að tilgreiningu þeirrar.
@@ -3528,7 +3498,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:ema:1665 · P</summary>
 
 **Source:** MACI will be sent back to the surgeon.
-**Decision:** P — 候选3和4明确MACI送回外科医生/外科操作者。
+**Decision:** P — Candidates3/4 explicitly return MACI to the surgeon/surgical operator.
 **Inspected/correct:** [0, 1, 2, 3, 4]/[3, 4]
 **Candidate0:** MACI verður sent til skurðlæknisins.
 **Candidate1:** MACI verður sent til læknsins.
@@ -3541,7 +3511,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:eso:1030 · U</summary>
 
 **Source:** But when did this earlier star formation occur?
-**Decision:** U — 均已检查；星形成、何时和早先在若干候选中可见，但句法/动词是否完整表达发生时间不可靠。
+**Decision:** U — All checked. Some retain star formation, when and earlier, but syntax/verbs do not reliably express occurrence time.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** En hvenær okkurinn stjörnumyndun komst fram?
 **Candidate1:** En hvenær tókst að þessu stjörnumyndun áður?
@@ -3557,7 +3527,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:ema:1665 · P</summary>
 
 **Source:** MACI will be sent back to the surgeon.
-**Decision:** P — MACI送回外科操作者的动作和对象保留。
+**Decision:** P — The action and recipient in returning MACI to the surgical operator are retained.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** MACI verður send aftur til skurðaðila.
 
@@ -3566,7 +3536,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:ema:1444 · F</summary>
 
 **Source:** Leave Aldara cream on the skin for about 8 hours.
-**Decision:** F — 留置药膏的指令变成给予黄油，动作与剂型错误。
+**Decision:** F — The instruction to leave ointment in place becomes giving butter; action and formulation are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Gefið Aldara smjör á húð í um 8 klukkustundir.
 
@@ -3575,7 +3545,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:opensubtitles:2802 · P</summary>
 
 **Source:** I mean change it now.
-**Decision:** P — 我的意思、现在、更改它均保留。
+**Decision:** P — I mean, now and changing it are retained.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ég meina breyta því núna.
 
@@ -3584,7 +3554,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eso:377 · P</summary>
 
 **Source:** ALMA is giving us new insight into what&#x27;s happening in these stars and what might happen to the Sun in a few billion years from now,&quot; says Shazrene Mohamed (Argelander Institute for Astronomy, Bonn, Germany and South African Astronomical Observatory), a co-author of the study.
-**Decision:** P — ALMA对恒星过程和太阳数十亿年后未来的认识及作者/机构保留。
+**Decision:** P — ALMA's insight into stellar processes and the Sun's future billions of years later, plus author/institution, remains.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** &quot;ALMA gefur okkur nýja skoðun um hvað er að gerast við þessi stjörnur og hvað gæti gerst á sólinni eftir nokkrar milljarða ára&quot; segir Shazrene Mohamed (Argelander Institute for Astronomy í Bonn í Þýskalandi og South African Astronomical Observatory) sem var meðhöfundur rannsóknarinnar.
 
@@ -3593,7 +3563,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eea:1960 · F</summary>
 
 **Source:** If the entitys own equity instruments to be received, or delivered, by the entity upon settlement of a contract are puttable financial instruments with all the features and meeting the conditions described in paragraphs 16A and 16B, or instruments that impose on the entity an obligation to deliver to another party a pro rata share of the net assets of the entity only on liquidation with all of the features and meeting the conditions described in paragraphs 16C and 16D, the contract is a financial asset or a financial liability.
-**Decision:** F — 权益工具、可回售、净资产按比例份额、仅清算等财务概念损坏。
+**Decision:** F — Equity instruments, puttability, proportional net assets and liquidation-only conditions are corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ef eiginhliðaafurðir sem einingin tekur eða veitir sig til við uppgjörs samningar eru útsettar fjárhagslegar afurðir með öllum eiginleikum og uppfylla skilyrðin sem lýst er í liðum 16A og 16B, eða ef þær eru afurðir sem kveða á um skuldbindingu fyrir eininginn að veita annarri aðilinn hluta af nýtingarheildar einingarinnar aðeins við endurgreiningu með öllum eiginleikum og uppfylla skilyrðin sem lýst er í liðum 16C og 16D, er samningur fjárhagslegur eigni eða fjárhagslegur skuldbindingur.
 
@@ -3602,7 +3572,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:eea:1321 · F</summary>
 
 **Source:** The product shall not be classified as R43 (may cause sensitisation by skin contact) according to Directive 1999/45/ EC of the European Parliament and of the Council of 31 May 1999 concerning the approximation of the laws, regulations and administrative provisions of the Member States relating to the classification, packaging and labelling of dangerous preparations.
-**Decision:** F — 全部候选存在关键错误：药物替代泛指产品、刺激替代致敏、危险制剂对象或肤触限定损坏，没有完整正确条目。
+**Decision:** F — All candidates have critical errors: products narrowed to drugs, sensitization replaced by irritation, or hazardous-preparation/skin-contact scope corrupted. No fully correct candidate.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Lyfi skal ekki telta sem R43 (getur valdið næmi vegna snertis með húð) samkvæmt tilskipun Evrópuþingsins og ráðsins 1999/45/EB frá 31. maí 1999 um samræmingu á lögum, reglugerðum og stjórnsuiltákvæðum aðildarríkjanna um flokkaða, pakkningu og merkingu hættulegra efnis.
 **Candidate1:** Lyfið skal ekki skilgreint sem R43 (getur valdið ertingu vegna snertingu við húð) samkvæmt tilskipun Evrópuþingsins og ráðsins 1999/45/EB frá 31. maí 1999 varðandi samræmingu laga, reglugerða og stjórnsýslufyringa aðildarríkjanna varðandi flokkun, umbúskun og merking hættulegra efnahverfanna.
@@ -3618,7 +3588,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eea:2124 · F</summary>
 
 **Source:** The report on the implementation of Decisions on standard contractual clauses for the transfers of personal data to third countries recommended the establishment of appropriate standard contractual clauses on subsequent onwards transfers from a data processor established in a third country to another data processor (sub-processing), in order to take account of business trends and practices for more and more globalised processing activity.
-**Decision:** F — 标准合同条款、数据处理者、再处理及商业趋势等概念错译。
+**Decision:** F — Standard contractual clauses, data processors, onward processing and business trends are mistranslated.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í skýrslunni um framkvæmd ákvarðana um staðlaðar samningseinkenni fyrir sendingu persónuupplýsinga til þriðju landa var ráðlagt að setja viðeigandi staðlaðar samningseinkenni fyrir framsendingu frá gagnagjafaraðila, sem hefur staðfest í þriðja landi, til annars gagnagjafaraðila (inn- og afturgagnagjafaraðila) til að taka tillit til fyrirsögnar fyrirtækja og starfsvenjur vegna meiri og meiri alþjóðlegra gagnagjafar.
 
@@ -3627,7 +3597,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:ema:2828 · F</summary>
 
 **Source:** Chemical and physical in-use stability of the reconstituted solution has been demonstrated for one month at 2°C - 8°C. From a microbiological point of view, once opened, the reconstituted solution may be stored for maximum of one month at 2°C - 8°C. Other in-use storage times and conditions are the responsibility of the user.
-**Decision:** F — 化学/物理稳定性及微生物学视角等变成无关词，用户责任关系也损坏。
+**Decision:** F — Chemical/physical stability and microbiological perspective become unrelated terms; user responsibility is also corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Einn mánuði í 2°C-8°C hafa verið sýnt fram á efnahæfi og efnahæfi lausnarinnar sem er blandað saman í notkun. Frá mikluþekkingu má geyma lausnina eftir opnaða til hámarksmaðurinnar einni mánuði við 2°C-8°C. Á önnur tíma og skilyrðum fyrir geymslu í notkun ber aðalstjóri notanda.
 
@@ -3636,7 +3606,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eso:953 · F</summary>
 
 **Source:** The secondary mirror will be largest ever employed on a telescope and the largest convex mirror ever produced.
-**Decision:** F — 次镜与凸面镜变为不明词和硬镜。
+**Decision:** F — Secondary and convex mirrors become unclear terms and a hard mirror.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Forkerlilegur speglurinn verður stærsti sem hefur verið notaður í sjónauki og stærsti hörður speglur sem hefur verið framleiddur.
 
@@ -3645,7 +3615,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eea:1321 · F</summary>
 
 **Source:** The product shall not be classified as R43 (may cause sensitisation by skin contact) according to Directive 1999/45/ EC of the European Parliament and of the Council of 31 May 1999 concerning the approximation of the laws, regulations and administrative provisions of the Member States relating to the classification, packaging and labelling of dangerous preparations.
-**Decision:** F — 危险制剂变为过度化合物，法规适用对象错误。
+**Decision:** F — Hazardous preparations become excessive compounds, changing regulatory scope.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Vörunni skal ekki flokkað sem R43 (getur valdið ofnæmi vegna húðsnertis) samkvæmt tilskipun Evrópuþingsins og ráðsins 1999/45/EB frá 31. maí 1999 um samræmingu á lögum, reglum og stjórnsýslufyrirmælum aðildarríkjanna varðandi flokkun, pakkningu og merkingu óhóflegra efnasambanda.
 
@@ -3654,7 +3624,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:eso:252 · U</summary>
 
 **Source:** Normally many shorter exposures are taken and later digitally combined.
-**Decision:** U — 均已检查；部分保留短/多次及计算机合并，但曝光术语útsetningar和动作表达是否适用于此语境不确定。
+**Decision:** U — All checked. Some retain multiple short exposures and computer combination, but útsetningar and the action may not fit the photographic context.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Eðlilega er mótið margar lítiltar útsetningar og síðar samanbundið í tíðneti.
 **Candidate1:** Yfirleitt tekur marga lítila útsetningar og síðar samanbundið af tölvum.
@@ -3670,7 +3640,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:ema:3033 · P</summary>
 
 **Source:** EMEND increased the AUC of midazolam, a sensitive CYP3A4 substrate, 2.3-fold on Day 1 and 3.3-fold on Day 5, when a single oral dose of 2 mg midazolam was co-administered on Days 1 and 5 of a regimen of EMEND 125 mg on Day 1 and 80 mg/day on Days 2 to 5.
-**Decision:** P — 候选7保留CYP3A4敏感底物、2.3/3.3倍、1/5日、单次口服2mg与EMEND125/80mg各日期。
+**Decision:** P — Candidate7 retains sensitive CYP3A4 substrates,2.3/3.3-fold effects, days1/5, single oral2mg and dated EMEND125/80mg dosing.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[3, 5, 7]
 **Candidate0:** EMEND hækkaði AUC fyrir midazolam, CYP3A4 hvarfefni sem er næm, um 2,3-föld á degi 1 og 3,3-föld á degi 5 þegar stakan 2 mg skammtur af midazolami var gefinn meðferðaleiðisferðinni á degi 1 og 5 samhliða EMEND 125 mg á degi 1 og 80 mg/dag á degi 2 til 5.
 **Candidate1:** EMEND eykði AUC gildum fyrir midazólómi, sem er næm CYP3A4 hvarfefni, um 2,3-föld á degi 1 og 3,3-föld á degi 5, þegar stakan 2 mg skammtur af midazólómi, inntakur eftir 125 mg skammt af EMEND, var gefin samhliða á degi 1 og 5 á viðferðarferlinu með 125 mg af EMEND á degi 1 og 80 mg/dag á degi 2 til 5.
@@ -3686,7 +3656,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:eea:2094 · P</summary>
 
 **Source:** For those purposes, Member States shall designate existing bodies, where appropriate, or establish new bodies.
-**Decision:** P — 目的、成员国指定现存机构或建立新机构和适当条件均可辨认；条件位置稍变未改变核心选项。
+**Decision:** P — Purpose, member-state designation of existing bodies or creation of new bodies and the appropriate-condition qualifier remain identifiable; qualifier placement does not change the core alternatives.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Að þessum tilgangi skulu aðildarríkin tilnefna þær stofnanir sem eru til staðar eða setja upp önnur stofnanir, ef við á.
 **Candidate1:** Í þessum tilgangi skal aðildarríkin tilnefna núverandi stofnanir eða koma á nýjar stofnana ef við á.
@@ -3702,7 +3672,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:ema:2012 · F</summary>
 
 **Source:** The safety and efficacy of OBIZUR for the treatment of serious bleeding episodes in subjects with acquired haemophilia with autoimmune inhibitory antibodies to human Factor VIII was investigated in a prospective, non-randomised, open-label trial of 28 subjects (18 Caucasian, 6 Black, and 4 Asian).
-**Decision:** F — 获得性血友病、自身抑制抗体和前瞻性试验类型损坏。
+**Decision:** F — Acquired hemophilia, auto-inhibitory antibodies and prospective trial design are corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Öryggi og verkun OBIZUR við meðferð á alvarlegum blæðingaruppkomu hjá einstaklingum með afleiðingu blóðalegra heilblóðsýkingu með ónæmisbundnar mótefnavökvum gegn manna storkuþátt VIII var rannsökuð í framtíðarskýrslu, ó slembaðri, opinni rannsókn hjá 28 einstaklingum (18 hvítmenntir, 6 svartmenn og 4 Asíöskur).
 
@@ -3711,7 +3681,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eso:1154 · P</summary>
 
 **Source:** The results appear this week in the journal Nature.
-**Decision:** P — 本周在Nature发表结果完整保留。
+**Decision:** P — Publication of the results in Nature this week is fully retained.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Niðurstöðurnar verða birtar í tímaritinu Nature í þessari viku.
 
@@ -3720,7 +3690,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:opensubtitles:1520 · F</summary>
 
 **Source:** Nurse, here is the key to fetch more spices.
-**Decision:** F — 护士称呼丢失，香料变为酱汁。
+**Decision:** F — The nurse address is lost and spices become sauce.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Nú, þessi er lykillinn til að fá fleiri sausar.
 
@@ -3729,7 +3699,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eea:2112 · F</summary>
 
 **Source:** Standard contractual clauses should relate only to data protection.
-**Decision:** F — 标准合同条款变为亲属等无关修饰。
+**Decision:** F — Standard contractual clauses become unrelated modifiers involving relatives.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Aðstandandi samningssamkvæði skulu einungis taka til gagnaverndar.
 
@@ -3738,7 +3708,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:eea:752 · P</summary>
 
 **Source:** There are however, many barriers for the transformation of this potential into usable products and services.
-**Decision:** P — 候选6保留将潜力转为可用产品/服务的众多障碍。
+**Decision:** P — Candidate6 retains numerous obstacles to turning the potential into usable products/services.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[6]
 **Candidate0:** Hjá öðru leiðandi eru margar hindrunir gegn því að komast að notkun af vöru og þjónusta af þessu möguleika.
 **Candidate1:** Hins vegar eru mikið af hindrunum fyrir að hreinsun þessu hugsanlegra getu í notgjafandi afurðir og þjónustu.
@@ -3754,7 +3724,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:eso:46 · P</summary>
 
 **Source:** Furthermore, the team also found evidence that the distances of the planets from their star follow a regular pattern, as also seen in our Solar System.
-**Decision:** P — 候选6保留团队发现行星到恒星距离呈规律及太阳系类比；连接语和词形生硬。
+**Decision:** P — Candidate6 retains the team's finding of regular planetary distances and the Solar-System analogy; conjunctions and morphology are awkward.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[6]
 **Candidate0:** Ennfremur komst aðstandið einnig fram víddarmið og varðandi það að fjarlægð sérstaklega fylgir reglulegu snertingu, eins og við sjálfsvegri sólkerfiður er.
 **Candidate1:** Meguna þeirra leiddi einnig til sannpróf á því að fjarlægð heimsjóðanna frá stjörnuna sé regluleg, eins og hér á forgangssjóðinni.
@@ -3770,7 +3740,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:ema:2612 · F</summary>
 
 **Source:** Based on between-study comparisons, the absolute bioavailability of cinacalcet in fasted subjects has been estimated to be about 20-25%.
-**Decision:** F — 绝对生物利用度不准确并无依据增加抑郁条件。
+**Decision:** F — Absolute bioavailability is inaccurate and an unsupported depression condition is added.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Samanburðar á rannsóknirinnar hafa leitt til matar á alvegri frásogi cínakalcets hjá fastandi einstaklingum sem eru í fastandi þunglyndi, sem er um 20-25%.
 
@@ -3779,7 +3749,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:ema:934 · P</summary>
 
 **Source:** Hypoglycaemia may occur in combination with sulphonylureas or insulin.
-**Decision:** P — 与磺脲类或胰岛素合用可低血糖，药物和作用关系完整。
+**Decision:** P — Hypoglycemia with concomitant sulfonylurea or insulin is retained, including drugs and causal relationship.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Blóðsykurslækkun getur komið fram samtímis súlfónýlúrealyfjum eða insúlíni.
 **Candidate1:** Blóðsykursfall getur komið fyrir samhliða súlfónýlúresum eða insúlíni.
@@ -3795,7 +3765,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:eea:1960 · F</summary>
 
 **Source:** If the entitys own equity instruments to be received, or delivered, by the entity upon settlement of a contract are puttable financial instruments with all the features and meeting the conditions described in paragraphs 16A and 16B, or instruments that impose on the entity an obligation to deliver to another party a pro rata share of the net assets of the entity only on liquidation with all of the features and meeting the conditions described in paragraphs 16C and 16D, the contract is a financial asset or a financial liability.
-**Decision:** F — 全部8条均严重损坏权益/可回售工具、按比例净资产、清算限定和金融资产/负债分类。
+**Decision:** F — All8 severely corrupt puttable equity instruments, proportional net assets, liquidation-only scope and financial asset/liability classification.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Ef fjárhættuhlutunum, sem eining hefur á að fá eða fá, að skuli af asketkun samningar, sem eining hefur á að fá eða fá, er skráð túlkun og með allar eiginleika og uppfylla skilyrðin sem lýst er í 16A-tilvísunum og 16B-tilvísunum eða tæknimála sem skipuleggja af stofnun einhverju þarf að greiða til annars aðila aðra hluta af nýtingu alveg af allar fjárhættuhlutunum stofnunarins að sér stað, að eftir útbrotin, að allar eiginleikar og uppfylla skilyrðin sem lýst er í 16C-tilvísunum og 16D-tilvísunum, er samningurinn fjármáli eða fjármála.
 **Candidate1:** Ef sjálfum eignasamningum, sem aðildarríkin færir eða sendir til aðildarríkis við útreikning samanaðar, er fotlaust geðsjóðar sem eru komið á undir alla eiginleika og uppfylla skilyrðin, sem eru tilgreind í liðum 16A og 16B, eða eignir sem kveða á að aðildarríkin skuli senda annarri aðil samanaðar aðalheild af endurgreinanum eignum aðildarríkis aðeins við endurgreiningu, eigi hvorn sem er óaðgerð, með alla eiginleika og uppfylla skilyrðin, sem eru tilgreind í liðum 16C og 16D, er samningurin geðsjóður eða geðsjóðalíður.
@@ -3811,7 +3781,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:ema:297 · P</summary>
 
 **Source:** If any of the above apply to you or you are not sure, talk to your doctor or pharmacist before taking Odomzo.
-**Decision:** P — 适用或不确定时，在服Odomzo前咨询医生/药师保留。
+**Decision:** P — If applicable or uncertain, consult a doctor/pharmacist before taking Odomzo is retained.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ef einhver þessara á við um þig eða þú ert ekki viss, skaltu ræða við lækninn eða lyfjafræðing áður en þú tekur Odomzo.
 
@@ -3820,7 +3790,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:ema:297 · P</summary>
 
 **Source:** If any of the above apply to you or you are not sure, talk to your doctor or pharmacist before taking Odomzo.
-**Decision:** P — 候选5/6/7保留上述适用或不确定条件，以及服用前咨询医生/药师。
+**Decision:** P — Candidates5/6/7 retain the applicable-or-uncertain condition and consulting a doctor/pharmacist before taking the drug.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[5, 6, 7]
 **Candidate0:** Ef einhver örlögir á við um þig eða ef þú ert ekki viss, skaltu ráðfæra þig við lækninn eða lyfjafræðing áður en þú tekur Odomzo.
 **Candidate1:** Ef einhver þessar ákvæði stend fram við þig eða þú ert ekki viss, skaltu hafa samband við lækninn eða lyfjafræðing áður en þú tekur Odomzo.
@@ -3836,7 +3806,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eso:1034 · F</summary>
 
 **Source:** Now, the two teams combined their efforts and achieved this new record, which corresponds to a redshift of 9.1.
-**Decision:** F — 合作创纪录和红移术语损坏。
+**Decision:** F — Collaborative record-breaking and redshift terminology are corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Nú samþættu þeir tveir hóparnar sérstakir og náðu þessum nýju skammti sem samsvarar rauðaflæði 9,1.
 
@@ -3845,7 +3815,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:ema:2828 · U</summary>
 
 **Source:** Chemical and physical in-use stability of the reconstituted solution has been demonstrated for one month at 2°C - 8°C. From a microbiological point of view, once opened, the reconstituted solution may be stored for maximum of one month at 2°C - 8°C. Other in-use storage times and conditions are the responsibility of the user.
-**Decision:** U — 全部已检查；无明显完整准确条目，但1/6对理化与微生物稳定性的异常词是否可辨认不确定，保守U。
+**Decision:** U — All checked. No clearly complete accurate item;1/6 use anomalous terms for physicochemical/microbiological stability whose recognizability is uncertain, so conservatively U.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Grunur hefur verið veitt um efnis- og eðlileg stöðugleika ábeininn á efnasambandið í notkun eftir blöndun í einum mánuði við 2°C - 8°C. Frá mikluðu mikla sýnilegu, er ekki ómun hægt að geyma þykkstu, einmitti efnasambandið, eftir opnaðu í mjög lengri tíma en einn mánuð við 2°C - 8°C. Það er ábyrgð notanda að setja í geymslu við aðra tíma og skilyrði.
 **Candidate1:** Einn mánaði á 2°C-8°C hafa verið sýnt fram á stöðugleika efnis- og eðlilegra lyfjaefna í innannotuðu lausn. Frá sýlfræðilegum sjóni, einu sinni eftir að lausn hafi verið opnað, er hún heimilt að geyma í allt að einn mánað á 2°C-8°C. Annar geymslutíma og skilyrði fyrir innannotuðu lyfja er ábyrgð notanda.
@@ -3861,7 +3831,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eea:1996 · F</summary>
 
 **Source:** One example is a net cash-settled share option.
-**Decision:** F — 现金净额结算股票期权的金融对象未表达。
+**Decision:** F — Net-cash-settled share options are not expressed as the financial object.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Eitt dæmi er netaður gjaldsettri hætti.
 
@@ -3870,7 +3840,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:eea:1901 · F</summary>
 
 **Source:** Hot formic acid is very corrosive and must be handled with care.
-**Decision:** F — 均已检查；热甲酸/强腐蚀性被变成高/红、氧或致红等词，未有同时保留正确化学对象和腐蚀危险的条目。
+**Decision:** F — All checked. Hot formic acid/high corrosiveness becomes high/red, oxygen or reddening. None retains both the chemical object and corrosive hazard.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Heitur formíkaskál er mjög roskalyfjandi og þetta verður að handhafa með varúð.
 **Candidate1:** Hár formíkasýra er mjög sárar og verður að handhafa með varmi.
@@ -3886,7 +3856,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:opensubtitles:721 · P</summary>
 
 **Source:** I have absolutely no idea how you are able to do some of the things you do.
-**Decision:** P — 完全不知道对方如何做到某些事情，含义保留。
+**Decision:** P — Having no idea how the other person does certain things is retained.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ég hef alveg ekkert hugmynd um hvernig þú getur gert sumar af þeim hlutum sem þú gerir.
 
@@ -3895,7 +3865,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:ema:1081 · P</summary>
 
 **Source:** Tell your doctor straight away if you get new or worsening signs of heart failure during treatment with Remsima.
-**Decision:** P — 候选5/6保留Remsima治疗中新发或加重心衰迹象应立刻告诉医生。
+**Decision:** P — Candidates5/6 retain immediately telling a doctor about new/worsening heart-failure signs during Remsima treatment.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[1, 5, 6]
 **Candidate0:** Láttu lækninn vita strax ef nýjar eða verkari einkenni fyrir hjartabilun koma fram meðan á meðferð með Remsima stendur.
 **Candidate1:** Láttu lækninn bara tafarlaust vita ef nýjar eða versnandi einkenni hjartabilunar koma fram meðan á meðferð með Remsima stendur.
@@ -3911,7 +3881,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:eea:2112 · F</summary>
 
 **Source:** Standard contractual clauses should relate only to data protection.
-**Decision:** F — 全部条目均未正确表达标准合同条款，虽多条保留仅涉及数据保护。
+**Decision:** F — No candidate correctly expresses standard contractual clauses, although several retain data-protection-only scope.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Aðgerðir skal einungis taka til skilmálana sem eru í staðlarni um varnir gagnanna.
 **Candidate1:** Heimildar- og samningskröfur ættu að einungis taka til verndar gagna.
@@ -3927,7 +3897,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:opensubtitles:3630 · F</summary>
 
 **Source:** Those I kill died from misusing the trust that Richard left them.
-**Decision:** F — 滥用Richard留下的信任变为使用干扰，原因错误。
+**Decision:** F — Abusing the trust Richard left becomes using interference, changing the reason.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þeir sem ég drepi drepust af því að nota truflunni sem Richard skildi þeim.
 
@@ -3936,7 +3906,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:eso:1154 · P</summary>
 
 **Source:** The results appear this week in the journal Nature.
-**Decision:** P — 候选2明确本周在Nature期刊发表结果。
+**Decision:** P — Candidate2 explicitly states publication in Nature this week.
 **Inspected/correct:** [0, 1, 2, 4, 5, 6, 7]/[2]
 **Candidate0:** Niðurstöðurnar verða birtar í tímabilið á nýju himnusvíganum.
 **Candidate1:** Niðurstöðurnar verða birtar í viku í tímaritinu Nature.
@@ -3951,7 +3921,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:eso:716 · F</summary>
 
 **Source:** Most galaxies live in groups - including our own Milky Way, which is part of the Local Group - and understanding how much dark matter they contain is a key test of the whole theory of how galaxies form in the cosmic web.
-**Decision:** F — 全部条目均丢失/损坏本星系群、暗物质或宇宙网成星系理论等关键含义。
+**Decision:** F — All candidates lose or corrupt the Local Group, dark matter or testing cosmic-web galaxy-formation theory.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Flestir vetrarbrauta eru í hópum - þar á meðal Vetrarbrautinu okkar, sem er hluti af Al þjálfabólinum - og það er góð leið til að kanna hversu mikið grátt efni henni inniheldur.
 **Candidate1:** Flest gögnum eru í hópum - þar með talið heimili, sem er hluti af Sjaldnastjörnumerkinu - og skilning um hvernig mikið búið er að ræða gögnum er að vera lykilprófun á heilkenni fyrir allan kenninguna um hvernig gögnum orðst upp í himinn.
@@ -3967,7 +3937,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · g8 · p18official21:dev:ema:1724 · U</summary>
 
 **Source:** If a loading dose is indicated, an initial dose of 100 mg followed by a 50 mg twice daily regimen for the first week should be used.
-**Decision:** U — 均已检查；多条数字正确，但负荷剂量术语与随后给药顺序不稳定，候选2将先后表为合并，无法确认完整正确。
+**Decision:** U — All checked. Several retain numbers, but loading-dose terminology and subsequent dosing order are unstable; candidate2 presents sequential dosing as combined.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Ef til aðstoðar er kynnt að nota ábendingartöflu skal nota 100 mg áhrifaskammt, í kjölfar 50 mg tvisvar sinnum á sólarhring í fyrstu viku.
 **Candidate1:** Ef beitingarskammtur er tilgreint skal nota 100 mg á upphafsskammt og 50 mg tvisvar á dag í fyrsta viku.
@@ -3983,7 +3953,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eso:46 · P</summary>
 
 **Source:** Furthermore, the team also found evidence that the distances of the planets from their star follow a regular pattern, as also seen in our Solar System.
-**Decision:** P — 行星与恒星距离呈规律以及太阳系类比保留。
+**Decision:** P — Regular planet-to-star distances and the Solar-System analogy are retained.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Að auki komst einnig fram vísbendingar um að fjarlægð þeirra reikistjarna frá stjörnunni sé regluleg, eins og við sjáum í sólkerfinu okkar.
 
@@ -3992,7 +3962,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:ema:1796 · P</summary>
 
 **Source:** The clinical relevance of these findings is unknown (see section 5.3).
-**Decision:** P — 临床相关性未知及章节引用保留。
+**Decision:** P — Unknown clinical relevance and the section reference are retained.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Klínískt mikilvægi þessara niðurstaðna er ekki þekkt (sjá kafla 5.3).
 
@@ -4001,7 +3971,7 @@ Symmetric final-case review
 <details><summary>dev_A · candidate · greedy · p18official21:dev:eso:646 · F</summary>
 
 **Source:** First Signs of Self-interacting Dark Matter?
-**Decision:** F — 自相互作用暗物质变为自动/黑色物质，核心机制错误。
+**Decision:** F — Self-interacting dark matter becomes automatic/black material, changing the central mechanism.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Fyrstu einkenni um sjálfsvirkan svartu efni?
 
@@ -4010,7 +3980,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:ema:297 · P</summary>
 
 **Source:** If any of the above apply to you or you are not sure, talk to your doctor or pharmacist before taking Odomzo.
-**Decision:** P — 适用或不确定条件、服药前咨询医生/药师完整保留。
+**Decision:** P — The applicable-or-uncertain condition and doctor/pharmacist consultation before taking the drug are complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ef eitthvað af ofangreindu á við um þig eða þú ert ekki viss, skaltu ræða við lækninn eða lyfjafræðing áður en þú tekur Odomzo.
 
@@ -4019,7 +3989,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:opensubtitles:104 · F</summary>
 
 **Source:** He wore a black mask.
-**Decision:** F — 黑面具仍变为skíma，未正确表达佩戴。
+**Decision:** F — The black mask remains skíma and wearing it is not correctly expressed.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hann varði með svarta skíma.
 
@@ -4028,7 +3998,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eso:1034 · F</summary>
 
 **Source:** Now, the two teams combined their efforts and achieved this new record, which corresponds to a redshift of 9.1.
-**Decision:** F — 合作创纪录、红移被改为特性、经营值和不明术语。
+**Decision:** F — Collaborative record-breaking and redshift become properties, operating values and unclear terminology.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Nú hafa þeirra tveir hóparin samanhaldið sérstakleika sína og náðu því nýju rekstrargildi sem samsvarar rauðþreifingi 9,1.
 
@@ -4037,7 +4007,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eea:896 · F</summary>
 
 **Source:** Live fish can be shipped as well.
-**Decision:** F — 活鱼变为相似的鱼，关键限定错误。
+**Decision:** F — Live fish become similar fish, losing the critical qualifier.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Líkt fisk má senda einnig.
 
@@ -4046,7 +4016,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:eea:1321 · F</summary>
 
 **Source:** The product shall not be classified as R43 (may cause sensitisation by skin contact) according to Directive 1999/45/ EC of the European Parliament and of the Council of 31 May 1999 concerning the approximation of the laws, regulations and administrative provisions of the Member States relating to the classification, packaging and labelling of dangerous preparations.
-**Decision:** F — 全部8条均将致敏/皮肤接触变为营养、类比等，且产品范围或危险制剂损坏。
+**Decision:** F — All8 replace sensitization/skin contact with nutrition, analogy or unrelated concepts and corrupt product scope or hazardous preparations.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Lyfi skal ekki taka til R43 (getur valdið næmi að hliðstæðu) samkvæmt tilskipun Evrópuþingsins og ráðsins 1999/45/EB frá 31. maí 1999 um samræmingu laga og stjórnsýslufyrSliða aðildarríkjanna um flokkun, pakkaing og merkingar á hættulegum eiturefnum.
 **Candidate1:** Lyfið skal ekki talist á R43 (getur valdið næringarstjórnun við snertingu við húð) samkvæmt tilskipun Evrópuþingsins og ráðsins 1999/45/EB frá 31. maí 1999 um samræmingu laga og stjórnsýsla í aðildarríkjunum sem varða flokkun, umbúskörfu og merkingu hættulegra blöndna.
@@ -4062,7 +4032,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:ema:2828 · F</summary>
 
 **Source:** Chemical and physical in-use stability of the reconstituted solution has been demonstrated for one month at 2°C - 8°C. From a microbiological point of view, once opened, the reconstituted solution may be stored for maximum of one month at 2°C - 8°C. Other in-use storage times and conditions are the responsibility of the user.
-**Decision:** F — 理化稳定性变为内部和液体稳定性，技术类型不保留。
+**Decision:** F — Physicochemical stability becomes internal/liquid stability, losing the technical categories.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Stöðugleiki á innan- og vökvastöðugleika lyfsins í notkun hefur verið sýnt fram á eitt mánuður við 2°C - 8°C. Frá mikrobiólægri sjónu er hægt að geyma blandaða lausnina í hámarks tímann, eitt mánuður við 2°C - 8°C, eftir að hún hefur verið opnað. Önnur geymslutíma og skilyrði er ábyrgð notanda.
 
@@ -4071,7 +4041,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:eea:1201 · P</summary>
 
 **Source:** In the light of the highly technical and scientific mission and tasks of the Agency, it is appropriate for the Administrative Board to consist of one representative of each Member State and four representatives of the Commission, being members with a high level of expertise.
-**Decision:** P — 候选6保留技术科学工作、行政委员会每国1人/委员会4人及高专长要求，任务类型词法生硬但核心组成关系完整。
+**Decision:** P — Candidate6 retains technical/scientific work, one administrative-board member per country, four Commission members and high expertise. Task wording is awkward, but composition is intact.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[6]
 **Candidate0:** Á grundvelli þess að stofnunin hafi verið í miklu tæknilegum og vísindum í skýrslum og verkefnum þar sem hún er skipulag, er rétt að stjórnmanjun ákveði sér einn fulltrúi frá hverju aðildarríki og fjórir fulltrúar framkvæmdastjórnarinnar, sem eru með háum færni.
 **Candidate1:** Í ljósi þess hversu tæknilega og vísindalega skipulag og tilaskipti stofnunarinnar er rétt að stjórnvaldi stofnunarinnar skuli koma fyrir einum fulltrúi hverrs aðildarríkis og fjórum fulltrúum framkvæmdastjórnarinnar sem hafa mikla sérprófunarhæfni.
@@ -4087,7 +4057,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eso:953 · F</summary>
 
 **Source:** The secondary mirror will be largest ever employed on a telescope and the largest convex mirror ever produced.
-**Decision:** F — 次镜和凸面镜变为模型和云。
+**Decision:** F — Secondary and convex mirrors become models and clouds.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Líkönin er stærsti sem hefur verið notuð í sjónauka og stærsti skýja sem hafa verið framleidd.
 
@@ -4096,7 +4066,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:eso:46 · U</summary>
 
 **Source:** Furthermore, the team also found evidence that the distances of the planets from their star follow a regular pattern, as also seen in our Solar System.
-**Decision:** U — 全8条检查；4接近行星距恒星的规律及太阳系类比，但sólkanum/undirreglulegt等词不可靠，未确认正确。
+**Decision:** U — All8 checked. Candidate4 approaches regular planet-star distances and the Solar-System analogy, but sólkanum/undirreglulegt are unreliable; correctness is unconfirmed.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Ennfremur komst jafnframt í ljós á að helmingurinn hefur hægt að finna vísbendingar um að fjölda fjarlægðra fyrir stjörnurnar sé um leið og helmingurarnir eru í Jörðaheimsins.
 **Candidate1:** Megistofnin fundu einnig vísbendingar um að fjarlægð fyrir reikistjörnunum er með reglubundnum röð og sjáðu hafa við einhverja sólkerfið.
@@ -4112,7 +4082,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:eea:1901 · F</summary>
 
 **Source:** Hot formic acid is very corrosive and must be handled with care.
-**Decision:** F — 全部条目未正确表达强腐蚀性，多条还把热/甲酸改为高、氧或无关词。
+**Decision:** F — None correctly expresses strong corrosiveness, and many also replace hot/formic acid with high, oxygen or unrelated terms.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Hettur formic sýru er mjög rofi-vaðandi og verður að varða vandlega.
 **Candidate1:** Hár formísaas í slagverki er mjög örveruörfur og skal hana handhafa með varúð.
@@ -4128,7 +4098,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:ema:1444 · F</summary>
 
 **Source:** Leave Aldara cream on the skin for about 8 hours.
-**Decision:** F — 药膏仍称黄油，剂型错误。
+**Decision:** F — Ointment is still called butter, giving the wrong formulation.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Láttu Aldara smjör á húð í um það bil 8 klukkustundir.
 
@@ -4137,7 +4107,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eso:377 · F</summary>
 
 **Source:** ALMA is giving us new insight into what&#x27;s happening in these stars and what might happen to the Sun in a few billion years from now,&quot; says Shazrene Mohamed (Argelander Institute for Astronomy, Bonn, Germany and South African Astronomical Observatory), a co-author of the study.
-**Decision:** F — 几亿/数十亿年的模糊数量被固定为四十亿年，合著者关系损坏。
+**Decision:** F — A vague hundreds-of-millions/billions time span becomes exactly four billion years; the coauthor relationship is corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „ALMA er gafur okkur nýja skýringar um hvað er að gerast við stjörnurnar og hvað getur orðið við sólina eftir fjórum milljarða ára“ segir Shazrene Mohamed (Argelander Institute for Astronomy í Bonn í Þýskalandi og South African Astronomical Observatory) sem samstarfsáritanum var.
 
@@ -4161,7 +4131,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:ema:1796 · P</summary>
 
 **Source:** The clinical relevance of these findings is unknown (see section 5.3).
-**Decision:** P — 临床相关性未知与章节保留，词形错误不改变含义。
+**Decision:** P — Unknown clinical relevance and the section remain; inflection errors do not change meaning.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Klínískt mikilvægi þessara niðurstöðu er ekki þekkt (sjá kafla 5.3).
 
@@ -4170,7 +4140,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:ema:2828 · F</summary>
 
 **Source:** Chemical and physical in-use stability of the reconstituted solution has been demonstrated for one month at 2°C - 8°C. From a microbiological point of view, once opened, the reconstituted solution may be stored for maximum of one month at 2°C - 8°C. Other in-use storage times and conditions are the responsibility of the user.
-**Decision:** F — 全部条目均漏/错理化稳定性，或微生物学、时间责任条件，未有完整正确译文。
+**Decision:** F — All items omit or distort physicochemical/microbiological stability or time/responsibility conditions. No fully correct translation.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Grun á stöðugleika vefjasambands í notkun hjá tilbúnum lausnunum hefur verið sýnt fram á í eitt mánuð við 2°C-8°C. Frá vöxtarfræðilegum áttum má geyma tilbúna lausn, einu mánuði eftir að hún hefur verið opnað, við hámarksgildi 2°C-8°C. Önnur geymslutíma og skilgreiningar eigi notkunar eru ábyrgð notanda.
 **Candidate1:** Stöðugleiki á innannotuðu lausn er sýnt fram á við eitt mánuð við 2°C - 8°C. Frá næringarhæstaðstæðu er hún geymjað eftir opiningu í að hámarki eitt mánuð við 2°C - 8°C. Höfundur notanda á að velja önnur viðskiptatíma og skilyrði við geymun.
@@ -4186,7 +4156,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:eea:1960 · F</summary>
 
 **Source:** If the entitys own equity instruments to be received, or delivered, by the entity upon settlement of a contract are puttable financial instruments with all the features and meeting the conditions described in paragraphs 16A and 16B, or instruments that impose on the entity an obligation to deliver to another party a pro rata share of the net assets of the entity only on liquidation with all of the features and meeting the conditions described in paragraphs 16C and 16D, the contract is a financial asset or a financial liability.
-**Decision:** F — 全8条金融句的可回售权益、净资产按比例份额、清算及资产/负债概念均有严重错误。
+**Decision:** F — All8 financial candidates severely corrupt puttable equity, proportional net assets, liquidation and asset/liability concepts.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Ef sjálfbættur eignarþegar fyrir sigu eða eru afhent af fyrirtækinu við skilning eftir samningi eru helgargersunarefni með öllum mælingum og uppfylla skilyrðin sem lýst er í 16A- og 16B- greinum eða efni sem leggi fyrirtækinu á skuldbindingu að draga til annars konu hlutfallslega hlutar af hannaðum eigni fyrirtækisins að lokun einungis með öllum mælingum og uppfylla skilyrðin sem lýst er í 16C- og 16D- greinum er samningur fjármálagjöf eða fjármála gildi.
 **Candidate1:** Ef sjálfum eignirna, sem einingin á að sleppt eða fá, í kjöringu samningar eru gjaldverðir eignir með öllum einkennum og fullnægjandi skilyrðum, eða eignir sem gera einingnum skyldu að sleppt hins fyrirtaksins hlutfallslega af fjárfærslum á eignum einingarnar að aðskilningarfæðu, með öllum einkennum og fullnægjandi skilyrðum, er samningur fjárvægilegur eða fjárvægilegur skuldar.
@@ -4202,7 +4172,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:opensubtitles:1520 · F</summary>
 
 **Source:** Nurse, here is the key to fetch more spices.
-**Decision:** F — 护士丢失，香料变为安全套。
+**Decision:** F — The nurse address is lost and spices become condoms.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Nú, hér er lykilinn til að fá fleiri smokka.
 
@@ -4211,7 +4181,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:eso:853 · F</summary>
 
 **Source:** “This is the most comprehensive case yet of a binary central star for which simulations have correctly predicted how it shaped the surrounding nebula - and in a truly spectacular fashion,” explains co-author Brent Miszalski, from SAAO and SALT (South Africa).
-**Decision:** F — 全部条目损坏中心双星模拟塑造星云关系和机构/地点，多条新增瑞士/冰岛等错误地点。
+**Decision:** F — All candidates damage the central-binary simulation shaping the nebula and institution/location relations; many add wrong Swiss/Icelandic locations.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** „Þetta er það fullkomnastu fylgiskerli líffæra sem varðar tvíhliða stjörnu í tilfelli sem reikningar hafa fyrst og síðast búið að kanna hvernig myndhækkunin höfði á húð í kringum svæðinu, og á mikilvæga hátt,“ sagði Brent Miszalski, meðhöfundur áritunar hjá SAAO og SALT (Súðþýði).
 **Candidate1:** „Við erum fyrir kynna að þetta sé helstu fjölskyldugt tilvikin í sér um helstu orkustjörnu í stjörnumyndunarsjálfinu, sem selt var samkvæmt slembiröðunum,“ segir Brent Miszalski, meðhöfundur rannsóknarinnar og starfsmannur með SAAO og SALT (Sáland).
@@ -4227,7 +4197,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:eea:2094 · P</summary>
 
 **Source:** For those purposes, Member States shall designate existing bodies, where appropriate, or establish new bodies.
-**Decision:** P — 候选2明确成员国为此指定现有机构（适当时）或建立新机构。
+**Decision:** P — Candidate2 explicitly states that member states designate existing bodies where appropriate or create new ones.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[2]
 **Candidate0:** Að þeim tilgangi skulu aðildarríkin tilnefna þá til staða sem eru eða setja nýjar stofnanir.
 **Candidate1:** Í þessum skilyrðum skulu aðildarríkin tilnefna til staðlaðar stofnanir, eftir því sem við á, eða koma á nýjar stofnanir.
@@ -4243,7 +4213,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:opensubtitles:721 · P</summary>
 
 **Source:** I have absolutely no idea how you are able to do some of the things you do.
-**Decision:** P — 不知道对方如何做到其所做的一些事情，核心意思保留。
+**Decision:** P — Not knowing how the other person does some of their actions retains the central meaning.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ég hef ekki hugmynd um hvernig þú getur gert sumar af þeim hlutum sem þú gerir.
 
@@ -4252,7 +4222,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eso:971 · P</summary>
 
 **Source:** As further evidence, the astronomers also determined the motion and velocity of these stars.
-**Decision:** P — 进一步证据、天文学家确定这些恒星的运动和速度保留。
+**Decision:** P — Further evidence and astronomers determining these stars' motions/speeds are retained.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Sem frekari sönnunartali greindu stjörnufræðingar líka hreyfingu og hraðleika þessara stjarna.
 
@@ -4261,7 +4231,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eso:646 · F</summary>
 
 **Source:** First Signs of Self-interacting Dark Matter?
-**Decision:** F — 暗物质变为暗红液体，自相互作用也不正确。
+**Decision:** F — Dark matter becomes dark-red liquid and self-interaction is also wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Fyrstu einkenni um sjálfbundna dökkum rauðumvökva?
 
@@ -4270,7 +4240,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eso:84 · F</summary>
 
 **Source:** “And although it may be possible, it is harder to understand how these brilliant beacons could form on their own.
-**Decision:** F — 信标变为燃烧，独立形成的对象错误。
+**Decision:** F — A beacon becomes burning, changing the independently formed object.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Og þótt það sé mögulegt er það erfitt að skilja hvernig slíkt glæsilega brennslu getur orðið sérstaklega á eigin hálfu.
 
@@ -4288,7 +4258,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eso:1154 · U</summary>
 
 **Source:** The results appear this week in the journal Nature.
-**Decision:** U — 结果在Nature发表保留，但í viku对this week的时间限定是否成立不确定。
+**Decision:** U — Publication in Nature is retained, but whether í viku means this week is uncertain.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Niðurstöðurnar verða birtar í viku í tímaritinu Nature.
 
@@ -4297,7 +4267,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:ema:3033 · P</summary>
 
 **Source:** EMEND increased the AUC of midazolam, a sensitive CYP3A4 substrate, 2.3-fold on Day 1 and 3.3-fold on Day 5, when a single oral dose of 2 mg midazolam was co-administered on Days 1 and 5 of a regimen of EMEND 125 mg on Day 1 and 80 mg/day on Days 2 to 5.
-**Decision:** P — 敏感CYP3A4底物、各日AUC倍率、口服单次2mg和EMEND各日期剂量保留。
+**Decision:** P — Sensitive CYP3A4 substrates, dated AUC multiples, single oral2mg and dated EMEND doses are retained.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** EMEND hækkaði AUC fyrir midazolam, CYP3A4 hvarfefni sem er næm, um 2,3-fald á degi 1 og 3,3-fald á degi 5 þegar stakur 2 mg skammtur af midazolami var gefinn til inntöku á degi 1 og 5 á EMEND 125 mg á degi 1 og 80 mg/sólarhring á degi 2 till 5.
 **Candidate1:** EMEND eyklaði AUC fyrir mídazólám, sem er næmur CYP3A4 hvarfefni, 2,3-föld á degi 1 og 3,3-föld á degi 5 eftir að stakur 2 mg skammtur af mídazólami var gefinn til inntöku á degi 1 og 5 samhliða EMEND 125 mg á degi 1 og 80 mg/sólarhring á deilidagum 2-5.
@@ -4313,7 +4283,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eea:1960 · F</summary>
 
 **Source:** If the entitys own equity instruments to be received, or delivered, by the entity upon settlement of a contract are puttable financial instruments with all the features and meeting the conditions described in paragraphs 16A and 16B, or instruments that impose on the entity an obligation to deliver to another party a pro rata share of the net assets of the entity only on liquidation with all of the features and meeting the conditions described in paragraphs 16C and 16D, the contract is a financial asset or a financial liability.
-**Decision:** F — 可回售权益工具、按比例净资产、清算和资产/负债分类仍损坏。
+**Decision:** F — Puttable equity instruments, proportional net assets, liquidation and asset/liability classification remain corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ef eignarvörur sem einingin á að fá eða senda, við uppgjöringu samningsins, eru tilstilli fjármálaefna með öllum einkennum og uppfylla skilyrði sem lýst er í liðum 16A og 16B, eða ef vörurnar skulu einingin til að senda til annars konunga hluta af hreinanlegum eignum einingarinnar aðeins við endurgang, með öllum einkennum og uppfylla skilyrði sem lýst er í liðum 16C og 16D, er samningur fjármála- eða fjármála-afurð.
 
@@ -4322,7 +4292,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:opensubtitles:3630 · F</summary>
 
 **Source:** Those I kill died from misusing the trust that Richard left them.
-**Decision:** F — 滥用信任关系仍被无关干扰等词替代。
+**Decision:** F — Abusing trust is again replaced by unrelated interference terminology.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þeir sem ég drepa drepust af óræðum við þá truflun sem Richard skildi þeim.
 
@@ -4331,7 +4301,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:eea:2112 · P</summary>
 
 **Source:** Standard contractual clauses should relate only to data protection.
-**Decision:** P — 候选1以标准条款/条件表达合同条款，且明确仅涉及数据保护；词形不自然但法律条款核心可辨认。
+**Decision:** P — Candidate1 expresses contractual clauses as standard terms/conditions and explicitly limits them to data protection; legal meaning is identifiable despite unnatural morphology.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[1]
 **Candidate0:** Aðstæðurnar í samningsreglunum skulu aðeins tengjast verndun gagna.
 **Candidate1:** Staðla skilmálum skal einungis varða gagnavernd.
@@ -4347,7 +4317,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:ema:934 · P</summary>
 
 **Source:** Hypoglycaemia may occur in combination with sulphonylureas or insulin.
-**Decision:** P — 低血糖与磺脲类/胰岛素合用关系完整，语法生硬。
+**Decision:** P — Hypoglycemia with concomitant sulfonylurea/insulin is complete, despite awkward grammar.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Blóðsykursfall getur verið í samsettri tilfelli við súlfónýlúrealyf eða insúlíni.
 **Candidate1:** Blóðsykursfall getur orðið ásamt súlfónýlúrealyfjum eða insúlíni.
@@ -4372,7 +4342,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:opensubtitles:1900 · F</summary>
 
 **Source:** I was trying to get the place shipshape before you arrived.
-**Decision:** F — 整理妥当这一shipshape核心状态没有清楚表达。
+**Decision:** F — The central shipshape state of being tidy/in good order is not clearly expressed.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ég var að reyna að fá stöðunum ásamtlega áður en þú komst.
 
@@ -4381,7 +4351,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eea:1468 · U</summary>
 
 **Source:** In either case, Member States will ensure that a representative share of the national market is covered by the survey.
-**Decision:** U — 代表、国内市场份额和调查均出现，但代表性覆盖关系的句法不可靠。
+**Decision:** U — Representation, domestic market share and the survey appear, but representative-coverage syntax is unreliable.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í báðum tilvikum verða aðildarríkin að sjá til þess að hlutfall innlends markaðsins sem fulltrúi er fyrir hendi sé undangenginn í skoðuninni.
 
@@ -4390,7 +4360,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:eso:716 · F</summary>
 
 **Source:** Most galaxies live in groups - including our own Milky Way, which is part of the Local Group - and understanding how much dark matter they contain is a key test of the whole theory of how galaxies form in the cosmic web.
-**Decision:** F — 全8条均损坏暗物质、本星系群或宇宙网/星系形成理论检验关系。
+**Decision:** F — All8 corrupt dark matter, the Local Group or the cosmic-web/galaxy-formation theory test.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Flestir vetrarbrauta eru aðrar í hópum - þar á meðal Vetrarbrautinni sem er hluti af Lokahópnum - og skilja hve miklar göglunum þau inntaka er lykilprófun á heilablaðinu um hvernig vetrarbrautir eru myndaðar í geimhvolfinu.
 **Candidate1:** Flestir vetrarbrautir geyma sig í hópum - þar á meðal Vetrarbrautinu okkar sem er hluti af Lokahópnum - og það að finna hve mikil drottinn ristur í þeim er lykilprófun á heildarfræðingaráætlununni um hvernig vetrarbrautir mynda sig í geimfræðilegu vetrarbrautum.
@@ -4406,7 +4376,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eea:2112 · F</summary>
 
 **Source:** Standard contractual clauses should relate only to data protection.
-**Decision:** F — 标准合同条款变为具有合同性质的标准，法律主体概念没有准确表达。
+**Decision:** F — Standard contractual clauses become standards of a contractual nature, misidentifying the legal concept.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Staðla sem eru samningarlegu skulu einungis varða gagnavernd.
 
@@ -4424,7 +4394,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:ema:297 · P</summary>
 
 **Source:** If any of the above apply to you or you are not sure, talk to your doctor or pharmacist before taking Odomzo.
-**Decision:** P — 候选2/3/4/7保留上述适用或不确定时，服Odomzo前咨询医生/药师。
+**Decision:** P — Candidates2/3/4/7 retain consulting a doctor/pharmacist before Odomzo when applicable or uncertain.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[2, 3, 4, 7]
 **Candidate0:** Ef eitthvert eftirfarandi varðar þig eða þú ert ekki viss, skaltu ráðfæra þig við lækninn eða lyfjafræðing áður en þú tekur Odomzo.
 **Candidate1:** Ef eitthver af ofangengnu álitum gildir um þig eða þú ert óvissur, skaltu ræða við lækni eða lyfjafræðing áður en þú tekur Odomzo.
@@ -4440,7 +4410,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:eea:1468 · F</summary>
 
 **Source:** In either case, Member States will ensure that a representative share of the national market is covered by the survey.
-**Decision:** F — 所有候选均遗漏代表性份额或把市场覆盖变为无关概念；候选4仅相关份额而非代表性。
+**Decision:** F — All omit representative share or replace market coverage with unrelated concepts; candidate4 says relevant rather than representative share.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í báðum tilvikum verða þátttakendur aðildarríkjanna að sjá til þess að skoðunin nái aðlagaða hagskorts markaðsins.
 **Candidate1:** Í öllum tilvikum verða aðildarríkin að sjá til þess að hluti af markaðsskaldum í hverju ríki sé tilhlýturí skoðunarinnar.
@@ -4456,7 +4426,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:ema:581 · F</summary>
 
 **Source:** Repeated daily doses up to 8 mg/kg (maximum total dose 896 mg) in adult patients have been administered in clinical trials with no reported dose-limiting toxicity.
-**Decision:** F — 全8条均未同时保留重复每日、最大总剂量与剂量限制性毒性；5将其换为剂量依赖毒性，6成人变儿童。
+**Decision:** F — None of8 jointly retains repeated daily dosing, maximum total dose and dose-limiting toxicity. Candidate5 substitutes dose-dependent toxicity;6 changes adults to children.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Endurtekinn skammtur á sólarhring allt að 8 mg/kg (hámarksskammtur 896 mg) hjá fullorðnum sjúklingum hafa verið gefin í klínískum rannsóknum, án tilkynntar eiturverkunar á skammtastærðum.
 **Candidate1:** Hefðbundnar dagsskammtar allt að 8 mg/kg (himinn líkur ásamtaleiðis í allri skammtum 896 mg) hafa verið gefnar hjá fullorðnum sjúklingum í klínískum rannsóknum sem hafa ekki reynst leiða til skammta takmörkuðar eiturverkana.
@@ -4472,7 +4442,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:eea:752 · U</summary>
 
 **Source:** There are however, many barriers for the transformation of this potential into usable products and services.
-**Decision:** U — 全8条检查；若干保留潜力/可用产品服务/障碍词，但转化关系和产品对象的异常词法不确定，未确认正确。
+**Decision:** U — All8 checked. Some retain potential, usable products/services and obstacles, but conversion relationships and product terms are uncertain; correctness is unconfirmed.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Hjá öðru hátt eru margar hindra á þríðjunum í þessu mögulegan til aðgerð til að nota og stuðla að því að hafa venjuleg afurðir og þjónustu.
 **Candidate1:** Hins vegar eru mikið hindruni fyrir það að dreifast mögulegum til notkun aðgerða og þjónustu.
@@ -4488,7 +4458,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:ema:1724 · U</summary>
 
 **Source:** If a loading dose is indicated, an initial dose of 100 mg followed by a 50 mg twice daily regimen for the first week should be used.
-**Decision:** U — 全部已检查；4保留给药顺序和数值但负荷剂量术语无法确认，其他多条混淆首周与随后给药。
+**Decision:** U — All checked. Candidate4 retains sequence/numbers but loading-dose terminology is unconfirmed; many others confuse first-week and subsequent dosing.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Ef tilætlanum er til að gefa hleðsluskammta skal nota upphafsskammt 100 mg í stað, eftir gefnu 50 mg tvisvar á sólarhring í fyrstu vikuna.
 **Candidate1:** Ef tilkynnt er um að nota hlutaðeigandi skammt skal nota 100 mg í upphafi, fyrir fyrsta viku, og 50 mg tvisvar á dag eftir það.
@@ -4504,7 +4474,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eea:1996 · F</summary>
 
 **Source:** One example is a net cash-settled share option.
-**Decision:** F — 现金净额结算股票期权变为网络服务等不相关对象。
+**Decision:** F — Net-cash-settled share options become unrelated network services.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Einn dæmi er netþjónustuður hlutleyfisútboð.
 
@@ -4513,7 +4483,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eso:605 · F</summary>
 
 **Source:** “Our study provides a solid estimate of how much water Mars once had, by determining how much water was lost to space,” said Geronimo Villanueva, a scientist working at NASAs Goddard Space Flight Center in Greenbelt, Maryland, USA, and lead author of the new paper.
-**Decision:** F — 可靠估计变为年票，流失水变成困在太空的水。
+**Decision:** F — A reliable estimate becomes an annual ticket; lost water becomes water trapped in space.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Við rannsóknin sýndi okkur árskortið um hve mikið vatn Mars átt aðeins aðeins, með því að ákvarða hversu mikil vatn var föst út í geim,“ sagði Geronimo Villanueva, vísindamaður við Goddard Space Flight Center við NASA í Greenbelt í Maryland í Bandaríkjunum og aðalhöfundur greinar um rannsóknina.
 
@@ -4522,7 +4492,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eso:46 · F</summary>
 
 **Source:** Furthermore, the team also found evidence that the distances of the planets from their star follow a regular pattern, as also seen in our Solar System.
-**Decision:** F — 研究团队变为条约，发现证据的主体错误；结尾规律表述损坏。
+**Decision:** F — The research team becomes a treaty, changing who found the evidence; the final regularity claim is corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Að auki sáttmálin fundu einnig vísbendingar um að fjarlægður reikistjarna frá stjörnunum er á viðkomandi reglulegu leið og sjá leggust í sólkerfinu.
 
@@ -4531,7 +4501,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:eso:1154 · P</summary>
 
 **Source:** The results appear this week in the journal Nature.
-**Decision:** P — 候选4/7保留本周在Nature发表结果；部分其他候选漏时间或期刊。
+**Decision:** P — Candidates4/7 retain publication in Nature this week; some other candidates omit the time or journal.
 **Inspected/correct:** [0, 1, 2, 4, 5, 6, 7]/[4, 7]
 **Candidate0:** Niðurstöðurnar koma í ljós í viku í tímaritinu Nature.
 **Candidate1:** Niðurstöðurnar verða birtar í viku í tímaritinu Nature.
@@ -4546,7 +4516,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:ema:1151 · F</summary>
 
 **Source:** As with any implantable product, foreign body reactions may occur.
-**Decision:** F — 全部条目未完整表达植入物和异物反应，出现无关的生长、肿瘤和身体词。
+**Decision:** F — None fully expresses implants and foreign-body reactions, introducing unrelated growth, tumor and body terms.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Eins og við á um önnur leggðu inn vöru geta fyrirbærsvöxt er komið fram.
 **Candidate1:** Eins og við á um neinn stofnunarefni geta fyrirbæra viðbrögð komin.
@@ -4562,7 +4532,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:opensubtitles:3356 · F</summary>
 
 **Source:** Now, you in with him or he&#x27;s screwing you too?
-**Decision:** F — 串通/欺骗变为互相在一起，关键口语含义丢失。
+**Decision:** F — Collusion/deception becomes being together, losing the colloquial meaning.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Núna, þú hjá hann eða er hann ásamt þér?
 
@@ -4571,7 +4541,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:ema:1081 · P</summary>
 
 **Source:** Tell your doctor straight away if you get new or worsening signs of heart failure during treatment with Remsima.
-**Decision:** P — 候选3/5/6保留Remsima治疗期间新发或加重心衰迹象应立刻通知医生。
+**Decision:** P — Candidates3/5/6 retain immediately notifying a doctor of new/worsening heart-failure signs during Remsima treatment.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[3, 5, 6]
 **Candidate0:** Láttu lækninn vita strax ef nýjum eða versnandi einkennum á hjartabilunum tekur til úr skyni meðan á meðferð með Remsima stendur.
 **Candidate1:** Láttu lækninn sjá sjálfan hæsta gagnvart ef nýjar eða versnandi einkenni hjartabilunar koma fram meðan á meðferð með Remsima stendur.
@@ -4587,7 +4557,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eea:2124 · F</summary>
 
 **Source:** The report on the implementation of Decisions on standard contractual clauses for the transfers of personal data to third countries recommended the establishment of appropriate standard contractual clauses on subsequent onwards transfers from a data processor established in a third country to another data processor (sub-processing), in order to take account of business trends and practices for more and more globalised processing activity.
-**Decision:** F — 数据处理者变为驾驶者，后续转交与全球处理活动概念损坏。
+**Decision:** F — A data processor becomes a driver; onward transfer and worldwide processing activity are corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í skýrslunni um framkvæmd ákvarðana um staðlað samningsreglur fyrir sendingu persónuupplýsinga til þriðja löndanna var ráðlagt að koma á fót viðeigandi staðlaðum samningsreglum fyrir aftursendi frá gagnaökumann í þriðja landi til annars gagnaökumanns (endurgagnaökumanns) til að taka tillit til fyrirkomulags og starfsvenjum fyrir meiri og meiri alþjóðlega gagnauniverslaða gagnaunraða.
 
@@ -4596,7 +4566,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:eso:252 · U</summary>
 
 **Source:** Normally many shorter exposures are taken and later digitally combined.
-**Decision:** U — 全8条检查；5的多次短曝光/电子合并关系接近，但útsetningar在摄影曝光语境的准确性仍不确定，沿用基线相同口径。
+**Decision:** U — All8 checked. Candidate5 approaches multiple short exposures/electronic combination, but photographic útsetningar remains uncertain under the same baseline standard.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Einstakurlega eru nokkur lítiltar leggur til og síðan samsettir með tölvulegum hætti.
 **Candidate1:** Yfirleitt tekst mörg lítiltar skammingar og síðan samanbúast í tímar.
@@ -4612,7 +4582,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:ema:2373 · F</summary>
 
 **Source:** Exploratory analysis showed clinically meaningful improvements were observed for the vedolizumab every four weeks and every eight weeks groups in GEMINI II and the improvements were significantly greater as compared with the placebo group from baseline to Week 52 on EQ-5D and EQ-5D VAS scores, total IBDQ score, and IBDQ subscales of bowel symptoms and systemic function.
-**Decision:** F — 肠道症状和全身功能变为裂缝和一般技术。
+**Decision:** F — Bowel symptoms and systemic function become cracks and general technology.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Greining á rannsóknum sýndi klínískt mikilvæg breytingar í þeim hópum sem fengu vedólízúmab á fjögurra vikna fresti og á átta vikna fresta í GEMINI II, og þær voru marktækt meiri en hjá lyfleysuhópnum frá upphafi til viku 52 á EQ-5D og EQ-5D VAS gildum, heildar IBDQ gildum og IBDQ undirhópum við einkenni um klofum og almenn tækni.
 
@@ -4621,7 +4591,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:ema:2612 · F</summary>
 
 **Source:** Based on between-study comparisons, the absolute bioavailability of cinacalcet in fasted subjects has been estimated to be about 20-25%.
-**Decision:** F — 绝对生物利用度变为不明的总通行表达。
+**Decision:** F — Absolute bioavailability becomes an unclear expression about general passage.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Samkvæmt samanburðum milli rannsókna hefur heildargengd gengni cínakalcets hjá fastandi einstaklingum verið metið sem um 20-25%.
 
@@ -4630,7 +4600,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:eea:1321 · F</summary>
 
 **Source:** The product shall not be classified as R43 (may cause sensitisation by skin contact) according to Directive 1999/45/ EC of the European Parliament and of the Council of 31 May 1999 concerning the approximation of the laws, regulations and administrative provisions of the Member States relating to the classification, packaging and labelling of dangerous preparations.
-**Decision:** F — 泛指产品被缩为药物，行政规定及致敏表述不完整。
+**Decision:** F — Products are narrowed to drugs; administrative provisions and sensitization are incomplete.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Lyfið skal ekki flokka sem R43 (getur valdið næmi vegna snertingar með húð) samkvæmt tilskipun Evrópuþingsins og ráðsins 1999/45/EB frá 31. maí 1999 um samræmingu laga, reglugerða og stjórnsýslufyrsluaðferða í aðildarríkjum varðandi flokkun, umbúsköðun og merkingu hættulegra efnanna.
 
@@ -4639,7 +4609,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · greedy · p18official21:dev:ema:2012 · F</summary>
 
 **Source:** The safety and efficacy of OBIZUR for the treatment of serious bleeding episodes in subjects with acquired haemophilia with autoimmune inhibitory antibodies to human Factor VIII was investigated in a prospective, non-randomised, open-label trial of 28 subjects (18 Caucasian, 6 Black, and 4 Asian).
-**Decision:** F — 获得性血友病与自身抑制抗体被改为不明疾病和免疫形成抗体，非随机也误译。
+**Decision:** F — Acquired hemophilia and auto-inhibitory antibodies become an unclear disease and immune-forming antibodies; non-randomized is also wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Öryggi og verkun OBIZUR við meðferð á alvarlegum blæðingaskiptum hjá einstaklingum með sjúkdómshnattruðu blóðþynningu með ónæmismyndandi mótefnum gegn manna storkuþætti VIII var rannsökuð í framsýnilegu, ósjálfkælilegu, opinni rannsókn hjá 28 einstaklingum (18 hvítar, 6 svarta og 4 asir).
 
@@ -4648,7 +4618,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:ema:2137 · F</summary>
 
 **Source:** Patients receiving Pelzont, nicotinic acid (prolonged-released formulation), or placebo were also taking statins (29 % atorvastatin [5-80 mg], 54 % simvastatin [10-80 mg], 17 % other statins [2.5-180 mg] (pravastatin, fluvastatin, rosuvastatin, lovastatin)), of which 9 % were also taking ezetimibe [10 mg].
-**Decision:** F — 全8条均错/漏烟酸缓释、他汀服用关系或9%合用依折麦布；7把依折麦布当成他汀关系。
+**Decision:** F — All8 omit or corrupt extended-release niacin, statin use or9% concomitant ezetimibe; candidate7 misrelates ezetimibe to statins.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Sjúklingar sem fengu Pelzont, nitókínasker og lyfleysu tóku einnig statína (29% atorvastatín [5-80 mg], 54% simvastatín [10-80 mg], 17% önnur statína [2,5-180 mg] (pravastatín, fluvastatín, rosuvastatín, lovastatín)] sem 9% tóku ezetimób [10 mg].
 **Candidate1:** Sjúklingar sem fengu Pelzont, nikótínsýru (útloðandi lyf) eða lyfleysu fengu einnig statíns (29 % atorvastatin [5-80 mg], 54 % simvastatin [10-80 mg], 17 % annarra statína [2,5-180 mg] (pravastatin, fluvastatin, rosuvastatin, lovastatin]), þar af mátt 9 % fengu einnig ezetimib [10 mg].
@@ -4664,7 +4634,7 @@ Symmetric final-case review
 <details><summary>dev_t0500632 · candidate · g8 · p18official21:dev:eso:1030 · P</summary>
 
 **Source:** But when did this earlier star formation occur?
-**Decision:** P — 候选2明确询问这次较早的恒星形成发生时间；词形有错但关键含义完整。
+**Decision:** P — Candidate2 explicitly asks when the earlier star formation occurred; morphology is imperfect but the key meaning is complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[2]
 **Candidate0:** En hvenær okkurinn stjörnumyndun orðið?
 **Candidate1:** Hvenær varð það áður að stjörnur mynduðu myndast?
@@ -4680,7 +4650,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:ema:1724 · P</summary>
 
 **Source:** If a loading dose is indicated, an initial dose of 100 mg followed by a 50 mg twice daily regimen for the first week should be used.
-**Decision:** P — 候选1明确负荷剂量、100mg起始随后50mg每日两次首周，数值顺序完整。
+**Decision:** P — Candidate1 explicitly gives a100mg loading dose followed by50mg twice daily for the first week, retaining numbers and order.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[1]
 **Candidate0:** Ef ávísaður er afgreiðsluskammtur skal gefa upphafsskammt og 50 mg á hverjum tvisvar dags í fyrsta viku.
 **Candidate1:** Ef á að ávísa hleðsluskammt, skal gefa upphafsskammt 100 mg og síðan 50 mg tvisvar á dag í fyrsta viku.
@@ -4696,7 +4666,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:eea:2124 · F</summary>
 
 **Source:** The report on the implementation of Decisions on standard contractual clauses for the transfers of personal data to third countries recommended the establishment of appropriate standard contractual clauses on subsequent onwards transfers from a data processor established in a third country to another data processor (sub-processing), in order to take account of business trends and practices for more and more globalised processing activity.
-**Decision:** F — 数据处理者变为数据提供者，分包处理及商业趋势等关系不准确。
+**Decision:** F — A data processor becomes a data provider; subcontracted processing and business trends are inaccurate.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í skýrslunni um framkvæmd á ákvarðanatöflum um staðlað samningssamsetningarreglur fyrir sendingu persónuupplýsinga til þriðju löndanna var ráðlagt að koma á fót viðeigandi staðlaðar samningssamsetningarreglur fyrir síðari sendingu frá gagnagjafaraðilum, sem eru stofnun í þriðja landi, til annars gagnagjafaraðila (innn- og afturgagnagjafaraðil) til að taka tillit til fyrirkomulags fyrirtækis og starfsvenjur við meira og meira alþjóðlega gagnagjafarverkefni.
 
@@ -4705,7 +4675,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:eso:46 · P</summary>
 
 **Source:** Furthermore, the team also found evidence that the distances of the planets from their star follow a regular pattern, as also seen in our Solar System.
-**Decision:** P — 团队观察发现行星距恒星呈规律及太阳系类比保留；句法生硬但关键命题完整。
+**Decision:** P — The team finds regular planet-to-star distances, with the Solar-System analogy. Syntax is awkward but key propositions are complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ennfremur komst hópurinn einnig í ljós athuganir um að fjarlægð reikistjarnanna frá stjörnunni sé regluleg, eins og sjón var með í sólkerfinu.
 **Candidate1:** Meguna og meðal þess fundu hópurin einnig vísbendingar um að fjarlægð reikistjarnanna frá stjörnunum sé ávísuð og sé einnig sjást sama í sólkerfinu okkar.
@@ -4721,7 +4691,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:eea:2094 · P</summary>
 
 **Source:** For those purposes, Member States shall designate existing bodies, where appropriate, or establish new bodies.
-**Decision:** P — 候选5保留成员国为此指定现有机构（适当时）或建立新机构。
+**Decision:** P — Candidate5 retains member-state designation of existing bodies where appropriate or creation of new bodies.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[5]
 **Candidate0:** Aðildarríkin skulu tilnefna fyrir þessum tilgangi fyrirtæki sem eru til þar sem við á eða eru uppfærð sem nýjar.
 **Candidate1:** Í þessum tilgangi skal aðildarríkin tilnefnja núverandi aðilum eða koma á fyrir nýrum aðilum í samræmi við þau krafir.
@@ -4737,7 +4707,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:eso:84 · F</summary>
 
 **Source:** “And although it may be possible, it is harder to understand how these brilliant beacons could form on their own.
-**Decision:** F — 明亮信标变为糟糕的燃烧设施，关键对象/修饰相反。
+**Decision:** F — A bright beacon becomes a bad burning facility, reversing the key object/modifier.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „En þótt það sé hugsanlegt er það erfitt að skilja hvernig slæmur brennsluverir geta myndast eiginlega.
 
@@ -4746,7 +4716,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:eea:1901 · F</summary>
 
 **Source:** Hot formic acid is very corrosive and must be handled with care.
-**Decision:** F — 全部候选强腐蚀性仍错为致红、疼痛或不明术语，部分热/甲酸对象也损坏。
+**Decision:** F — All candidates still replace strong corrosiveness with reddening, pain or unclear terms; some also corrupt hot/formic acid.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Hettur formic sýra er mjög roðandi og verður að handhafa varlega.
 **Candidate1:** Hár formíkasýra er mjög sárarvæg og það verður að fá hálft á með varúð.
@@ -4762,7 +4732,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:eea:1960 · F</summary>
 
 **Source:** If the entitys own equity instruments to be received, or delivered, by the entity upon settlement of a contract are puttable financial instruments with all the features and meeting the conditions described in paragraphs 16A and 16B, or instruments that impose on the entity an obligation to deliver to another party a pro rata share of the net assets of the entity only on liquidation with all of the features and meeting the conditions described in paragraphs 16C and 16D, the contract is a financial asset or a financial liability.
-**Decision:** F — 权益工具/可回售/按比例净资产/清算和资产负债分类仍错误。
+**Decision:** F — Equity instruments, puttability, proportional net assets, liquidation and asset/liability classification remain wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ef eigniríkin sem einingur á að fá eða senda eftir uppgjöri samningsins eru tilbúin fjármálavísa með öllum eiginleikum og uppfylla skilyrði sem lýst er í liðum 16A og 16B, eða eignir sem kveða á um skyldu einingarinnar að senda til annars aðila hluta af hagframtengda eignir einingarinnar aðeins við endurnýjun, með öllum eiginleikum og uppfylla skilyrði sem lýst er í liðum 16C og 16D, er samningur fjármála eða fjárlagi.
 
@@ -4771,7 +4741,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:eso:971 · P</summary>
 
 **Source:** As further evidence, the astronomers also determined the motion and velocity of these stars.
-**Decision:** P — 进一步证据、天文学家测定恒星运动与速度完整保留，词形稍错。
+**Decision:** P — Further evidence and astronomers determining stellar motion/speed are complete, with minor morphology errors.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Sem frekari sönnunartilvísunur greindu stjörnufræðingar einnig hreyfingu og hraða þessara stjarna.
 
@@ -4780,7 +4750,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:ema:2373 · F</summary>
 
 **Source:** Exploratory analysis showed clinically meaningful improvements were observed for the vedolizumab every four weeks and every eight weeks groups in GEMINI II and the improvements were significantly greater as compared with the placebo group from baseline to Week 52 on EQ-5D and EQ-5D VAS scores, total IBDQ score, and IBDQ subscales of bowel symptoms and systemic function.
-**Decision:** F — vedolizumab药物遗漏，肠道症状分量表变为IBD症状且剂量分组表达损坏。
+**Decision:** F — Vedolizumab is omitted; the bowel-symptom subscale becomes IBD symptoms and dose-group wording is corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Greining á upplýsingum sýndi klínískt mikilvægum bata í þveimur fjórum vikna og á átta vikna hópum í GEMINI II og bata var marktækt meiri samanborið við lyfleysuhópinn frá upphafsgildinu til viku 52 á EQ-5D og EQ-5D VAS gildum, heildar IBDQ gildum og IBDQ undirhópum fyrir einkenni IBD og altæk starfsemi.
 
@@ -4789,7 +4759,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:opensubtitles:2802 · P</summary>
 
 **Source:** I mean change it now.
-**Decision:** P — 我的意思是现在更改它，含义完整；英文无先行词，冰岛语代词阴性可接受。
+**Decision:** P — I mean change it now is complete. English supplies no antecedent, so a feminine Icelandic pronoun is acceptable.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ég meina breyta henni núna.
 
@@ -4798,7 +4768,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:ema:2012 · F</summary>
 
 **Source:** The safety and efficacy of OBIZUR for the treatment of serious bleeding episodes in subjects with acquired haemophilia with autoimmune inhibitory antibodies to human Factor VIII was investigated in a prospective, non-randomised, open-label trial of 28 subjects (18 Caucasian, 6 Black, and 4 Asian).
-**Decision:** F — 获得性血友病及自身免疫抑制抗体人群仍被无关疾病/酒精等词污染。
+**Decision:** F — The acquired-hemophilia/autoimmune-inhibitory-antibody population remains contaminated by unrelated disease/alcohol terminology.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Öryggi og verkun OBIZUR við alvarlegum blæðingaruppkomu hjá einstaklingum með áfengið blóðaleif í samræmi við sjúkrahvörf með sjálfsmættu hemlunandi mótefnamyndandi mótefnum gegn manna storkuþætti VIII var rannsökuð í opnu, ekki slembaðri, framsýnilegu rannsókn á 28 einstaklingum (18 hvítir, 6 svarta og 4 asir).
 
@@ -4807,7 +4777,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:opensubtitles:3356 · F</summary>
 
 **Source:** Now, you in with him or he&#x27;s screwing you too?
-**Decision:** F — 欺骗/串通被换为统治，关键口语意义不保留。
+**Decision:** F — Deception/collusion becomes ruling, losing the key colloquial meaning.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Núna, þú með hann eða hann er að ríkja þig líka?
 
@@ -4816,7 +4786,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:opensubtitles:1376 · U</summary>
 
 **Source:** I don&#x27;t feel like dancing.
-**Decision:** U — 不想跳舞的意愿结构仍是不自然的finn ekki fyrir dansa，不能可靠确认其与感觉不跳舞的区别。
+**Decision:** U — The unwillingness structure finn ekki fyrir dansa remains unnatural; unwillingness versus a feeling of not dancing cannot be reliably distinguished.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ég finn ekki fyrir dansa.
 
@@ -4825,7 +4795,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:ema:1081 · P</summary>
 
 **Source:** Tell your doctor straight away if you get new or worsening signs of heart failure during treatment with Remsima.
-**Decision:** P — Remsima治疗期间新发或加重心衰迹象应立刻告诉医生，完整保留。
+**Decision:** P — Immediately telling a doctor about new/worsening heart-failure signs during Remsima treatment is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Láttu lækninn vita strax ef nýtt eða versnandi einkenni hjartabilunar koma fram meðan á meðferð með Remsima stendur.
 **Candidate1:** Láttu lækninn vita tafarlaust ef þú færð nýjar eða versnandi einkenni hjartabilunar á meðan þú tekur Remsima.
@@ -4841,7 +4811,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:ema:2828 · F</summary>
 
 **Source:** Chemical and physical in-use stability of the reconstituted solution has been demonstrated for one month at 2°C - 8°C. From a microbiological point of view, once opened, the reconstituted solution may be stored for maximum of one month at 2°C - 8°C. Other in-use storage times and conditions are the responsibility of the user.
-**Decision:** F — 复溶液变为经历过的溶液，开封贮存温度遗漏，用户责任变选择，条件不完整。
+**Decision:** F — Reconstituted solution becomes experienced solution, open-storage temperature is omitted and user responsibility becomes choice, leaving incomplete conditions.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Einn mánuði í 2°C-8°C hafa verið sýnt fram á efnafræðilega og eðlisfræðilega stöðugleika upplifðu lausnar. Frá örverufaglegu lífi er gert þess að geyma upplausnina í hámarks tíma (eins mánaða) eftir að hún hefur verið opnað. Önnur geymslutíma og skilyrði fyrir notkun eiga notandann að velja.
 
@@ -4850,7 +4820,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:eso:1154 · P</summary>
 
 **Source:** The results appear this week in the journal Nature.
-**Decision:** P — 候选3明确结果在本周Nature期刊发表。
+**Decision:** P — Candidate3 explicitly states publication in Nature this week.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[3]
 **Candidate0:** Niðurstöðurnar koma í fram á næsta viku í tímablaðið Nature.
 **Candidate1:** Niðurstöðurnar verða birtar í viku í tímaritinu Nature.
@@ -4866,7 +4836,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:opensubtitles:104 · F</summary>
 
 **Source:** He wore a black mask.
-**Decision:** F — 面具仍错误为skíma，佩戴未准确表达。
+**Decision:** F — The mask remains incorrect skíma and wearing it is inaccurate.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hann varði með svört skíma.
 
@@ -4884,7 +4854,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:ema:2612 · U</summary>
 
 **Source:** Based on between-study comparisons, the absolute bioavailability of cinacalcet in fasted subjects has been estimated to be about 20-25%.
-**Decision:** U — 空腹、药名、20-25%及研究间比较保留，但heildaraflaða aðgengi是否能可靠表达绝对生物利用度不确定。
+**Decision:** U — Fasting, drug name,20-25% and between-study comparison remain, but heildaraflaða aðgengi is not reliably confirmed as absolute bioavailability.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Samkvæmt samanburði milli rannsókna hefur heildaraflaða aðgengi cínakalcets hjá fastandi einstaklingum verið um 20-25%.
 
@@ -4893,7 +4863,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:eso:646 · F</summary>
 
 **Source:** First Signs of Self-interacting Dark Matter?
-**Decision:** F — 自相互作用暗物质未正确表达，出现不明词。
+**Decision:** F — Self-interacting dark matter is not correctly expressed; unclear terms appear.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Fyrstu einkenni um sjálfsbundna dökkuæði?
 
@@ -4902,7 +4872,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:eso:853 · F</summary>
 
 **Source:** “This is the most comprehensive case yet of a binary central star for which simulations have correctly predicted how it shaped the surrounding nebula - and in a truly spectacular fashion,” explains co-author Brent Miszalski, from SAAO and SALT (South Africa).
-**Decision:** F — 全部候选损坏模拟预测中心双星塑造星云关系，机构地点多处无关或遗漏。
+**Decision:** F — All candidates corrupt simulations predicting the central binary's shaping of the nebula; institution/place details are unrelated or omitted.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** „Þetta er það fullkomnastu fylgiskerli sem er fyrir hendi af tveggja stjarna í mittunni sem rannsóknir hafa raunverðlega ákveðið ef hana myndu myndast umhverfið – og í nákvæmlega dýrumhættulega hætti,“ segir Brent Miszalski, meðhöfundur fyrir að það, hjá SAAO og SALT (Sáland).
 **Candidate1:** „Þetta er þessari mynd sjónarmikilli fyrir tilvik tveggja miðjarstjarna sem sjónaukar hafa ákvörðuð rétt að hvernig þau höfðu myndast umhverfið í kringumstæðum,“ segir samtaksagjöfarið Brent Miszalski, hjá SAAO og SALT (Sátrapalandi).
@@ -4918,7 +4888,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:eso:605 · U</summary>
 
 **Source:** “Our study provides a solid estimate of how much water Mars once had, by determining how much water was lost to space,” said Geronimo Villanueva, a scientist working at NASAs Goddard Space Flight Center in Greenbelt, Maryland, USA, and lead author of the new paper.
-**Decision:** U — 火星水量及流失太空的方法关系保留，但átti að hafa加入预期/应有的模态，solid estimate表达弱，无法确认完全同义。
+**Decision:** U — Martian water quantity and estimation from loss to space remain, but átti að hafa adds expected/ought modality and solid estimate is weakened; full equivalence is unconfirmed.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Rannsóknin sýnir í grundvallri mæli hve mikill vatn Mars átti að hafa, með því að ákvarða hversu mikill vatn var misst til geimanna,“ sagði Geronimo Villanueva, vísindamaður við Goddard Space Flight Center við NASA í Greenbelt í Maryland í Bandaríkjum, aðalhöfundur greinar um nýja rannsóknina.
 
@@ -4936,7 +4906,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:eso:1034 · F</summary>
 
 **Source:** Now, the two teams combined their efforts and achieved this new record, which corresponds to a redshift of 9.1.
-**Decision:** F — 共同努力、纪录和红移变为经营剂量等不相关概念。
+**Decision:** F — Combined effort, the record and redshift become unrelated operating-dose concepts.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Nú samþykktu tveir hópunarhópurnar sitt og náðu því nýju rekstrarskammti sem samsvarar 9,1 roðaþrengi.
 
@@ -4945,7 +4915,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:eso:252 · U</summary>
 
 **Source:** Normally many shorter exposures are taken and later digitally combined.
-**Decision:** U — 全8条检查；2可辨短曝光与计算机合并，但útsetningar摄影术语准确性仍不确定，沿用前两次口径。
+**Decision:** U — All8 checked. Candidate2 has identifiable short exposures/computer combination, but photographic útsetningar remains uncertain under the previous two audits' standard.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Til abirðis eru nokkra styttra útsetningu tekin og síðar samanstoðaðar.
 **Candidate1:** Venjulega tekur mikið af styttri útsetningu og síðar er það samanborið með talhliða hætti.
@@ -4961,7 +4931,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:ema:2828 · F</summary>
 
 **Source:** Chemical and physical in-use stability of the reconstituted solution has been demonstrated for one month at 2°C - 8°C. From a microbiological point of view, once opened, the reconstituted solution may be stored for maximum of one month at 2°C - 8°C. Other in-use storage times and conditions are the responsibility of the user.
-**Decision:** F — 全部候选存在复溶/未混合、物化稳定性、开封条件、最长时间或责任对象关键错误。
+**Decision:** F — All candidates contain critical errors in reconstituted/unmixed solution, physicochemical stability, opening conditions, maximum duration or the responsible party.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Grunningar liggja fyrir um efna- og eðlisfræðilega stöðugleika óblanduðu lausnar í einni mánuði við 2°C-8°C. Frá örverufengilegum lífi má geyma óblandaðu lausn í hámarksfjórðu mánuði við 2°C-8°C eftir að hún hefur verið opnað. Önnur geymslutíma og aðstæður fyrir notanda.
 **Candidate1:** Einn mánuði á 2°C-8°C hafi verið sýnt úr bilu til að sætist í reynsluðu lausnina. Frá örveruheilkenni að finnast þarf að geyma hún í hámarks- einni mánuði á 2°C-8°C eftir að hún er opnað. Önnur geymslutíma og samhæfðar að geyma í reynslu er ábyrgð notanda.
@@ -4977,7 +4947,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:eea:1960 · F</summary>
 
 **Source:** If the entitys own equity instruments to be received, or delivered, by the entity upon settlement of a contract are puttable financial instruments with all the features and meeting the conditions described in paragraphs 16A and 16B, or instruments that impose on the entity an obligation to deliver to another party a pro rata share of the net assets of the entity only on liquidation with all of the features and meeting the conditions described in paragraphs 16C and 16D, the contract is a financial asset or a financial liability.
-**Decision:** F — 全部8条仍未准确表达可回售权益工具、按比例净资产、仅清算和金融资产/负债。
+**Decision:** F — All8 still fail to accurately express puttable equity instruments, proportional net assets, liquidation-only scope and financial assets/liabilities.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Ef eignasviðs efnablöndur sem eining kemur á eiginhaldsáritun að fá eða fær eftir stöðluðu samningi, með því að færa síður efnablöndu sem eru tímaráðgjafar- efnablöndur með öllum eiginleikum og uppfylla skilyrði, sem lýst er í 16A- og 16B-lið, eða efnablöndum sem skulu einingu í þeirri tilgangi að vera að fellt efnablöndu sem annarur aðilar skuli fá af hlutabreytur netþjónustu einingarinnar að undirbúningsráðningu með öllum eiginleikum og uppfylla skilyrði, sem lýst er í 16C- og 16D-lið, er samningur fjármálagreiðsla eða fjármálastöðrugreiðsla.
 **Candidate1:** Ef eignatökin sem einingin á að fá eða senda eigi til uppboðar, eigi að afhenda eigi í tengslum við uppgjöri samnings, eru útkomulegar fjármálategundir með öllum eiginleikunum og uppfylla ákvæðin sem lýst er í 16A-og 16B-liðum eða eignarverkanir sem kalla einingin til ábyrgðar undir þátttöku útdreifingu á eiginvöldum þess aðeins að því er varðar uppgjöri og hafa öll eiginleika og uppfylla ákvæðin sem lýst er í 16C-og 16D-liðum, er samningur fjármála- eða fjármálaráðningur.
@@ -4993,7 +4963,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:ema:1665 · P</summary>
 
 **Source:** MACI will be sent back to the surgeon.
-**Decision:** P — 候选2明确MACI送回外科医生；医生格尾非标准但对象可辨认。
+**Decision:** P — Candidate2 explicitly returns MACI to the surgeon; the doctor's case ending is nonstandard but the recipient is identifiable.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[2]
 **Candidate0:** MACI verður sent til skurðlækningsinn.
 **Candidate1:** MACI verður sent til skurðlækna.
@@ -5009,7 +4979,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:eea:896 · P</summary>
 
 **Source:** Live fish can be shipped as well.
-**Decision:** P — Lifandi fisk明确活鱼，运输的可能性与也可保留；被动助词/语法省略，但鱼作为被运对象的意图可辨认。
+**Decision:** P — Lifandi fisk explicitly denotes live fish and preserves possible transport plus also. Passive auxiliaries/grammar are omitted, but fish remain the transported object.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Lifandi fisk getur einnig flutt.
 
@@ -5018,7 +4988,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:ema:297 · P</summary>
 
 **Source:** If any of the above apply to you or you are not sure, talk to your doctor or pharmacist before taking Odomzo.
-**Decision:** P — 上述适用或不确定时服Odomzo前咨询医生/药师，完整保留。
+**Decision:** P — Consulting a doctor/pharmacist before Odomzo under the applicable-or-uncertain condition is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ef eitthvað af ofangreindu á við um þig eða þú ert ekki viss, skaltu ráðfæra þig við lækninn eða lyfjafræðing áður en þú tekur Odomzo.
 **Candidate1:** Ef eitthvað af ofangreindu á við um þig eða þú ert ekki viss, ráðfærið þig við lækninn eða lyfjafræðing áður en Odomzo er notað.
@@ -5034,7 +5004,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:eso:46 · P</summary>
 
 **Source:** Furthermore, the team also found evidence that the distances of the planets from their star follow a regular pattern, as also seen in our Solar System.
-**Decision:** P — 团队发现行星距恒星有规律，且太阳系也有此模式，关键命题保留。
+**Decision:** P — The team's finding of regular planet-to-star distances and the same pattern in the Solar System retains key propositions.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Enn fremur fundu hópurinn einnig vísbendingar um að fjarlægð reikistjarnanna frá stjörnunum sé regluleg eins og við sjást í sólkerfinu okkar.
 
@@ -5043,7 +5013,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:ema:3033 · P</summary>
 
 **Source:** EMEND increased the AUC of midazolam, a sensitive CYP3A4 substrate, 2.3-fold on Day 1 and 3.3-fold on Day 5, when a single oral dose of 2 mg midazolam was co-administered on Days 1 and 5 of a regimen of EMEND 125 mg on Day 1 and 80 mg/day on Days 2 to 5.
-**Decision:** P — 候选1/5/7保留敏感CYP3A4底物及全部倍率、给药剂量与日期/口服关系。
+**Decision:** P — Candidates1/5/7 retain sensitive CYP3A4 substrates, all multiples, doses, dates and oral administration.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[1, 5, 7]
 **Candidate0:** EMEND eyðilaust AUC fyrir midazolam, sem er næm CYP3A4 hvarfefni, um 2,3-fald á degi 1 og 3,3-fald á degi 5 þegar stök 2 míðazólám skammtur gefinn var til inntöku á degi 1 og 5, ásamt EMEND 125 mg skammti á degi 1 og 80 mg/sólarhring á degi 2 til 5.
 **Candidate1:** EMEND eykði AUC fyrir midazolam, viðkvæma CYP3A4 hvarfefni, um 2,3-falt á degi 1 og 3,3-falt á degi 5 þegar stakan 2 mg skammtur af midazolami tókst með inntöku á degi 1 og 5 samhliða EMEND 125 mg á degi 1 og 80 mg/sólarhring á degi 2 til 5.
@@ -5059,7 +5029,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:eso:953 · F</summary>
 
 **Source:** The secondary mirror will be largest ever employed on a telescope and the largest convex mirror ever produced.
-**Decision:** F — 凸面镜变为云层覆盖，次镜的技术性质错误。
+**Decision:** F — A convex mirror becomes cloud cover, corrupting the secondary mirror's technical nature.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Líkamlega er seinni speglinu stærsti sem hafa verið notað í sjónauki og stærsti skýjaþekju sem hefur verið framleidd.
 
@@ -5068,7 +5038,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:ema:581 · U</summary>
 
 **Source:** Repeated daily doses up to 8 mg/kg (maximum total dose 896 mg) in adult patients have been administered in clinical trials with no reported dose-limiting toxicity.
-**Decision:** U — 全部已检查；4保留重复每日与限制剂量毒性，但áhæft heildarskammt是否可靠表达最大总剂量不确定，未确认正确。
+**Decision:** U — All checked. Candidate4 retains repeated daily dosing and dose-limiting toxicity, but áhæft heildarskammt is not reliably confirmed as maximum total dose.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Endurtekin skammtar í hverjum degi allt að 8 mg/kg (afmarkandi heildarskammtur 896 mg) hafa verið gefnir í klínískum rannsóknum hjá fullorðnum, án tilkynntu forsendu af skammtaflæði.
 **Candidate1:** Hefðbundin daglega skammtur allt að 8 mg/kg (að hámarki 896 mg) hafa verið gefin í klínískum rannsóknum hjá fullorðnum sjúklingum án tilkynntar eituráhrifa við skammtamörkun.
@@ -5084,7 +5054,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:ema:934 · P</summary>
 
 **Source:** Hypoglycaemia may occur in combination with sulphonylureas or insulin.
-**Decision:** P — 候选1/3/4/7保留低血糖与磺脲类或胰岛素合用，药名正确。
+**Decision:** P — Candidates1/3/4/7 retain hypoglycemia with sulfonylurea or insulin and correct drug names.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[1, 3, 4, 7]
 **Candidate0:** Blóðsykursfall getur komið fram í samsettri meðferð með suflýfnsýru- leysi eða insúlíni.
 **Candidate1:** Blóðsykursfall getur komið fyrir ásamt súlfónýlúrealyfjum eða insúlíni.
@@ -5100,7 +5070,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:eso:377 · P</summary>
 
 **Source:** ALMA is giving us new insight into what&#x27;s happening in these stars and what might happen to the Sun in a few billion years from now,&quot; says Shazrene Mohamed (Argelander Institute for Astronomy, Bonn, Germany and South African Astronomical Observatory), a co-author of the study.
-**Decision:** P — ALMA带来恒星过程与数十亿年后太阳变化认识，发言人/机构/合著者完整保留。
+**Decision:** P — ALMA's insight into stellar processes and the Sun billions of years later retains speaker, institution and coauthor relationships.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** „ALMA gefur okkur nýja skýningu á hvað gerast í þessum stjörnum og hvað gæti gerst á sólina eftir nokkra milljarða ára,“ segir Shazrene Mohamed (Argelander Institute for Astronomy í Bonn í Þýskalandi og South African Astronomical Observatory) sem er meðhöfundur greinar um rannsóknina.
 
@@ -5109,7 +5079,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:eea:1321 · F</summary>
 
 **Source:** The product shall not be classified as R43 (may cause sensitisation by skin contact) according to Directive 1999/45/ EC of the European Parliament and of the Council of 31 May 1999 concerning the approximation of the laws, regulations and administrative provisions of the Member States relating to the classification, packaging and labelling of dangerous preparations.
-**Decision:** F — 致敏与危险制剂变为治疗等不明词和化学文件，法律适用对象错误。
+**Decision:** F — Sensitization and hazardous preparations become unclear treatment terms and chemical documents, changing legal scope.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Lyfið skal ekki felld undir fyrirkomulagi R43 (getur valdið meðferðarofnun vegna snertingu við húð) samkvæmt tilskipun Evrópuþingsins og ráðsins 1999/45/EB frá 31. maí 1999 um samræmingu laga, reglugerða og stjórnsýsluforskrifta aðildarríkjanna varðandi flokkun, pakkun og merkingu hættulegra efnaskjala.
 
@@ -5118,7 +5088,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:opensubtitles:1900 · F</summary>
 
 **Source:** I was trying to get the place shipshape before you arrived.
-**Decision:** F — 整理妥当变为使地方处于天花/疾病等状态，词义错误。
+**Decision:** F — Being shipshape becomes putting a place into a smallpox/disease state, changing lexical meaning.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ég var að reyna að fá staðinn í sársótt áður en þú komst.
 
@@ -5127,7 +5097,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:opensubtitles:1520 · F</summary>
 
 **Source:** Nurse, here is the key to fetch more spices.
-**Decision:** F — 护士称呼丢失，取更多香料变为减少更多果汁。
+**Decision:** F — The nurse address is lost; getting more spices becomes reducing more juice.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Nú, hér er lykill til að fækka fleiri safti.
 
@@ -5136,7 +5106,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:ema:1151 · F</summary>
 
 **Source:** As with any implantable product, foreign body reactions may occur.
-**Decision:** F — 全部候选均未正确保留植入物和异物反应，出现无关/不明术语。
+**Decision:** F — None correctly retains implants and foreign-body reactions; unrelated/unclear terminology appears.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Eins og við á um önnur plástætt vörur geta fyrirburættatilvik komið fram.
 **Candidate1:** Eins og við á um öll tækt efni geta fylgikvillaaukningar komið fram.
@@ -5152,7 +5122,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:eea:752 · P</summary>
 
 **Source:** There are however, many barriers for the transformation of this potential into usable products and services.
-**Decision:** P — 候选6保留许多障碍以及将此潜力转为使用产品/服务，skiptingu用词不佳但转化关系可辨认。
+**Decision:** P — Candidate6 retains many obstacles and converting this potential into usable products/services. Skiptingu is poor wording but the conversion relationship is identifiable.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[6]
 **Candidate0:** Hjá því er þó margir hindrunir við að breyta þessu möguleika í notkun.
 **Candidate1:** Hins vegar er mikið í vegi á því að fylgjast með myndun áhættuskipana í notkunartæki og þjónustu.
@@ -5168,7 +5138,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:eea:1321 · P</summary>
 
 **Source:** The product shall not be classified as R43 (may cause sensitisation by skin contact) according to Directive 1999/45/ EC of the European Parliament and of the Council of 31 May 1999 concerning the approximation of the laws, regulations and administrative provisions of the Member States relating to the classification, packaging and labelling of dangerous preparations.
-**Decision:** P — 候选5保留产品不归R43、皮肤接触致敏、法规日期/机构/法律协调与危险化学材料分类包装标识；材料为制剂的泛称，主旨关系完整。
+**Decision:** P — Candidate5 retains exclusion from R43, skin-contact sensitization, regulatory date/body, harmonization and hazardous chemical material classification/packaging/labeling. Material is a generic rendering of preparation; core relationships remain.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[5]
 **Candidate0:** Lyfið skal ekki keppa undir R43 (getur valdið viðbrögð með snertingu við húð) samkvæmt tilskipun Evrópuþingsins og ráðsins 1999/45/EB frá 31. maí 1999 um samræmingu á löggjöf, reglur og stjórnsýslufyrirmæli aðildarríkjanna varðandi flokkun, umbúðir og merkimiðlun hættulegra efnis.
 **Candidate1:** Lyfið skal ekki talast á svið R43 (getur valdið með fylgiseinkennum vegna húð) samkvæmt tilskipun Evrópuþingsins og ráðsins 1999/45/EB frá 31. maí 1999 um samræmingu laga, reglugerða og stjórnsýslufyrIngana aðildarríkjanna varðandi flokkun, umbúskun og merkingu hættulegra efnabökja.
@@ -5184,7 +5154,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:eso:716 · F</summary>
 
 **Source:** Most galaxies live in groups - including our own Milky Way, which is part of the Local Group - and understanding how much dark matter they contain is a key test of the whole theory of how galaxies form in the cosmic web.
-**Decision:** F — 全部8条均严重损坏暗物质、本星系群或宇宙网星系形成理论检验，未有完整正确候选。
+**Decision:** F — All8 severely damage dark matter, the Local Group or the cosmic-web galaxy-formation theory test; no fully correct candidate.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Flestir vetrarbrauta eru að lífi í hópum - þar með talið Vetrarbrautarinnar sem er hluti þess umhverfisvettvangs - og skilja hvernig mikið rúmmörk er í þeim er einn af mestu prófanum á heimtakvöðum þess reikningar um hvernig vetrarbrautir snúa saman í himnunómsvörunni.
 **Candidate1:** Flest vetrarbrautir búa í hópum - þar með talið Vetrarbrautinu okkar, sem er hluti af Lokahópnum - og unnt er að skilja hve mikið illuskynið hún inniheldur og það er einn af lyktum prófum á heildarfræðilegan greiningu á hvernig vetrarbrautir myndast í gögnum Hrísum.
@@ -5200,7 +5170,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:eso:1030 · U</summary>
 
 **Source:** But when did this earlier star formation occur?
-**Decision:** U — 全8条检查；4接近何时发生较早星形成，但fyrir位置可能改为在星形成之前，不能确认完整同义。
+**Decision:** U — All8 checked. Candidate4 approaches when earlier star formation occurred, but fyrir may shift it to before star formation, so full equivalence is unconfirmed.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** En hvenær okkur stóð í fyrri myndun stjörnumyndunar?
 **Candidate1:** Hvenær sást þetta áfengna stjörnumyndun?
@@ -5216,7 +5186,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:eea:1468 · F</summary>
 
 **Source:** In either case, Member States will ensure that a representative share of the national market is covered by the survey.
-**Decision:** F — 代表性份额仅变为相关份额，抽样代表性条件丢失。
+**Decision:** F — Representative share becomes merely relevant share, losing the representative-sampling condition.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í báðum tilvikum verða aðildarríkin að tryggja að hlutaðeigandi hluta markaðar í hverju ríki sé fylgt með með skoðuninni.
 
@@ -5225,7 +5195,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:eea:1201 · P</summary>
 
 **Source:** In the light of the highly technical and scientific mission and tasks of the Agency, it is appropriate for the Administrative Board to consist of one representative of each Member State and four representatives of the Commission, being members with a high level of expertise.
-**Decision:** P — 候选5保留机构技术/科学工作、执行委员会由每国一人与委员会四人组成及高专长；句法和任务用词生硬。
+**Decision:** P — Candidate5 retains technical/scientific institutional work, one executive-board member per country, four Commission members and high expertise; syntax/task wording are awkward.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[5]
 **Candidate0:** Í ljósi þess að störf og verkefni stjórnsýslufyrirtækisins er nægileg að framkvæmdaráðið hafi einn fulltrúi frá hverju aðildarríki og fjóra fulltrúa framkvæmdastjórnarinnar sem hafa nákvæmt sérþekkingu.
 **Candidate1:** Í ljósi þess hversu tæknilega og vísindalega skipulag og verkefni stofnunarinnar er rétta að stjórnvaldið fari fram í fulltur fjöldi einstaklinga í hverju aðildarríki og fjórum fulltrúum framkvæmdastjórnarinnar sem eru með gófu lærðis.
@@ -5241,7 +5211,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:ema:2137 · P</summary>
 
 **Source:** Patients receiving Pelzont, nicotinic acid (prolonged-released formulation), or placebo were also taking statins (29 % atorvastatin [5-80 mg], 54 % simvastatin [10-80 mg], 17 % other statins [2.5-180 mg] (pravastatin, fluvastatin, rosuvastatin, lovastatin)), of which 9 % were also taking ezetimibe [10 mg].
-**Decision:** P — 候选3/7保留烟酸缓释/药物分组、各他汀比例剂量名单和9%合用依折麦布；药名词形允许轻微拼写差异。
+**Decision:** P — Candidates3/7 retain extended-release niacin/grouping, statin proportions/doses/names and9% concomitant ezetimibe. Minor drug-name inflection/spelling variation is accepted.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[3, 7]
 **Candidate0:** Sjúklingar sem fengu Pelzont, nitókínaskjóða (langvarandi losunarform) eða lyfleysu tóku ánheimar statína (29% atorvastatín [5-80 mg], 54% simvastatín [10-80 mg], 17% annarra statína [2,5-180 mg] (pravastatín, fluvastatín, rosuvastatín, lovastatín)), og 9% af þeim tóku einnig ezetimib [10 mg].
 **Candidate1:** Sjúklingar sem fengu Pelzont, nikótínensíða (forðalyfi) eða lyfleysu náið einnig statín (29% atorvastatín [5-80 mg], 54% simvastatín [10-80 mg], 17% annað statín [2,5-180 mg] (pravastatín, fluvastatín, rosuvastatín, lovastatín)), þar af voru 9% einnig í meðferð með ezetimibi [10 mg].
@@ -5257,7 +5227,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:ema:297 · P</summary>
 
 **Source:** If any of the above apply to you or you are not sure, talk to your doctor or pharmacist before taking Odomzo.
-**Decision:** P — 上述适用或不确定时，在使用Odomzo前咨询医生/药师完整保留。
+**Decision:** P — Consulting a doctor/pharmacist before Odomzo under the applicable-or-uncertain condition is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ef eitthvað af ofangreindu á við um þig eða ef þú ert ekki viss, skaltu ræða við lækninn eða lyfjafræðing áður en Odomzo er notað.
 
@@ -5266,7 +5236,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:eea:2112 · U</summary>
 
 **Source:** Standard contractual clauses should relate only to data protection.
-**Decision:** U — 全8条检查；1为标准合同要求，是否等同此处合同条款不确定，其余多条改变标准/合同对象，保守不确认。
+**Decision:** U — All8 checked. Candidate1 says standard contractual requirements, whose equivalence to these contractual clauses is uncertain; others change the standard/contract object. Conservatively unconfirmed.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Aðgerðarskrifstofnanir ættu einungis að fela í sér reglur um gagnavernd.
 **Candidate1:** Stöðluði samningskröfur ættu að einungis fela um gagnavernd.
@@ -5291,7 +5261,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:opensubtitles:721 · P</summary>
 
 **Source:** I have absolutely no idea how you are able to do some of the things you do.
-**Decision:** P — 完全不知道对方如何做到其所做事情，含义完整。
+**Decision:** P — Having no idea how the other person does what they do is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ég hef algerlega ekkert hugmynd um hvernig þú getur gert sumar af þeim hlutum sem þú gerir.
 
@@ -5300,7 +5270,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:opensubtitles:3630 · P</summary>
 
 **Source:** Those I kill died from misusing the trust that Richard left them.
-**Decision:** P — 被杀者因滥用Richard留下的信任而死亡，关键因果/人物保留；把原文不协调的现在/过去时统一为过去时。
+**Decision:** P — The victim dies because he abused the trust Richard left; causality and people remain. Inconsistent source present/past tenses are harmonized to past.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Þeir sem ég drap drepust af misnotkun á traustinu sem Richard skildi þeim.
 
@@ -5309,7 +5279,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:eea:1996 · F</summary>
 
 **Source:** One example is a net cash-settled share option.
-**Decision:** F — 现金净额结算股票期权仍被不明金融词替代。
+**Decision:** F — Net-cash-settled share options remain replaced by unclear financial terms.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Einn dæmi er netaða hagsettri hlutafjárhagsmöguleiki.
 
@@ -5318,7 +5288,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:eea:2112 · U</summary>
 
 **Source:** Standard contractual clauses should relate only to data protection.
-**Decision:** U — 标准化合同模板与只涉及数据保护可辨认，但模板是否等同此处具体合同条款不确定。
+**Decision:** U — Standardized contract templates and data-protection-only scope are identifiable, but whether templates equal these specific clauses is uncertain.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Stöðlunarsamningssnið skulu einungis varða gagnavernd.
 
@@ -5327,7 +5297,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · g8 · p18official21:dev:eea:1468 · F</summary>
 
 **Source:** In either case, Member States will ensure that a representative share of the national market is covered by the survey.
-**Decision:** F — 全部候选均遗漏代表性份额，或将市场和调查覆盖换为无关概念。
+**Decision:** F — All candidates omit representative share or replace market/survey coverage with unrelated concepts.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í báðum tilvikum verða aðildarríkin að tryggja að hlutverkaltækt heildarfjárnaðarheimild í landsvæðinu verði nær námstækkuninni.
 **Candidate1:** Í öllum tilvikum verða aðildarríkin að tryggja að hlutfall innlenda markaðs er nær við úttektina.
@@ -5343,7 +5313,7 @@ Symmetric final-case review
 <details><summary>dev_t1000811 · candidate · greedy · p18official21:dev:ema:1444 · P</summary>
 
 **Source:** Leave Aldara cream on the skin for about 8 hours.
-**Decision:** P — Aldara外用膏放在皮肤约8小时的动作/部位/持续时间可辨认；give作施用且smyrsli为膏剂泛称，未改变核心使用要求。
+**Decision:** P — Keeping Aldara topical cream on the skin for about8hours is identifiable. Give serves as apply and smyrsli as a generic ointment term, without changing the central use requirement.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Gefið Aldara smyrsli á húð í um 8 klukkustundir.
 
@@ -5352,7 +5322,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:eso:1034 · F</summary>
 
 **Source:** Now, the two teams combined their efforts and achieved this new record, which corresponds to a redshift of 9.1.
-**Decision:** F — 共同努力、创纪录和红移术语错误，变为交通等无关概念。
+**Decision:** F — Combined effort, record-breaking and redshift become unrelated traffic concepts.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Nú samþykktaðu tveir hópunarinnar sérhverja og náðu því nýju umferðarmarki sem samsvarar 9,1 roðaþrengsi.
 
@@ -5361,7 +5331,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:eso:1030 · P</summary>
 
 **Source:** But when did this earlier star formation occur?
-**Decision:** P — 候选2明确这次较早的恒星形成何时发生，词形有错但含义完整。
+**Decision:** P — Candidate2 explicitly asks when this earlier star formation occurred; morphology is imperfect but meaning is complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[2]
 **Candidate0:** En hvenær okkurinn stunduð stjörnumyndun?
 **Candidate1:** Hvenær sást þetta áfengna stjörnumyndun?
@@ -5377,7 +5347,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:ema:2828 · U</summary>
 
 **Source:** Chemical and physical in-use stability of the reconstituted solution has been demonstrated for one month at 2°C - 8°C. From a microbiological point of view, once opened, the reconstituted solution may be stored for maximum of one month at 2°C - 8°C. Other in-use storage times and conditions are the responsibility of the user.
-**Decision:** U — 全8条检查；3的物化稳定性和开封温度时长接近完整，但末句-setningar是否准确保留贮存条件不确定，保守未确认。
+**Decision:** U — All8 checked. Candidate3 nearly retains physicochemical stability and opening temperature/duration, but final -setningar may not accurately preserve storage conditions.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Eftir blöndun hafa stöðugleika í notkun og efnafræðilega varðar stöðugleika í notkun hafa sést sýnt fyrir hundrað síðar í einum mánuði við 2°C-8°C. Frá örverufyrendum átt ekki að geyma blönduðu lausnina í hámarksmaður eins mánaðar við 2°C-8°C. Fyrir önnur geymslutíma og skilyrði í notkun ber ábyrgð þess sem notandinn hefur með sér.
 **Candidate1:** Einfaldlega hefur verið sýnt fram á efnahæfi og eðlisfræðilega stöðugleika in- vunu blönduðra lausnar í einum mánuði við 2°C-8°C. Frá örverufræðilegum sjónarmiði er hægt að geyma blönduðu lausnina í að hámarki einum mánuði við 2°C-8°C eftir að henni hefur verið opnað. Önnur geymslu- og áverkunutímabil og skilyrði er á för með sér notandinn.
@@ -5393,7 +5363,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:eso:853 · F</summary>
 
 **Source:** “This is the most comprehensive case yet of a binary central star for which simulations have correctly predicted how it shaped the surrounding nebula - and in a truly spectacular fashion,” explains co-author Brent Miszalski, from SAAO and SALT (South Africa).
-**Decision:** F — 所有候选中心双星、模拟预测塑造星云及南非机构地点仍有关键错误。
+**Decision:** F — All candidates still have critical errors in central-binary simulations predicting nebular shaping and the South African institution/location.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** „Þetta er það fullkomnastu fylgiskerðinginn sem áður hefur verið sett fyrir um tveggja stjarna í kringum morgunastjörnuna og sem leiddi til sýnilegra myndarins í umhverfinu“ segir Brent Miszalski, meðhöfundur greinarinnar og rannsakendur í SAAO og SALT (Sátrapáll).
 **Candidate1:** „Þetta er það algerlegt tilvik þessari túrkis, sem varðar tvístorra miðestjörnunni sem sannir niðurstöður hafa árið verið að spá fyrir um hvernig hún höfði myndast umhverfis þyrpingunni, og í virkum nákvæmri lagi,“ segir Brenn Miszalski, meðhöfundur greinar um rannsóknina við SAAO og SALT (Sáfrandar).
@@ -5434,7 +5404,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:eso:1154 · P</summary>
 
 **Source:** The results appear this week in the journal Nature.
-**Decision:** P — 本周Nature期刊呈现/发表结果，含义完整。
+**Decision:** P — Presenting/publishing the results in Nature this week is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Niðurstöðurnar koma fram í tímaritinu Nature í þessari viku.
 **Candidate1:** Niðurstöðurnar eru birtar í tímaritinu Nature í þessari viku.
@@ -5474,7 +5444,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:opensubtitles:1376 · P</summary>
 
 **Source:** I don&#x27;t feel like dancing.
-**Decision:** P — 不在跳舞的心情/不想跳舞，意愿表达正确。
+**Decision:** P — Not being in the mood to dance correctly expresses unwillingness.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ég er ekki í skapi til að dansa.
 
@@ -5483,7 +5453,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:ema:581 · U</summary>
 
 **Source:** Repeated daily doses up to 8 mg/kg (maximum total dose 896 mg) in adult patients have been administered in clinical trials with no reported dose-limiting toxicity.
-**Decision:** U — 全部已检查；3的数字/成人/重复每日保留，但skammtabrest af eiturverkunum是否准确表达剂量限制性毒性不确定。
+**Decision:** U — All checked. Candidate3 retains numbers, adults and repeated daily dosing, but skammtabrest af eiturverkunum is not confirmed as dose-limiting toxicity.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Endurtakið skammt í hverjum degi allt að 8 mg/kg (að hámarki 896 mg) hefur gefið fullorðnum sjúklingum í klínískum rannsóknum og ekki hefur verið tilkynnt um skammtabrestu af völdum lyfsins.
 **Candidate1:** Hefðbundnar daglegar skammtar allt að 8 mg/kg (að hámarki 896 mg) hafa verið gefnir sjúklingum í klínískum rannsóknum án tilkynningar um eiturverkun sem takmarkaði skammta.
@@ -5499,7 +5469,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:ema:1081 · P</summary>
 
 **Source:** Tell your doctor straight away if you get new or worsening signs of heart failure during treatment with Remsima.
-**Decision:** P — Remsima治疗中新发/加重心衰迹象应立即告诉医生，含义完整。
+**Decision:** P — Immediately telling a doctor about new/worsening heart-failure signs during Remsima treatment is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Segðu lækninum tafarlaust frá því ef nýjar eða versnandi einkenni um hjartabilun koma í ljós meðan á meðferð með Remsima stendur.
 **Candidate1:** Láttu lækninn vita tafarlaust ef þú færð nýjar eða versnandi einkenni um hjartabilun meðan þú tekur Remsima.
@@ -5524,7 +5494,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:eso:605 · F</summary>
 
 **Source:** “Our study provides a solid estimate of how much water Mars once had, by determining how much water was lost to space,” said Geronimo Villanueva, a scientist working at NASAs Goddard Space Flight Center in Greenbelt, Maryland, USA, and lead author of the new paper.
-**Decision:** F — 流失到太空变为宇宙飞船，NASA/Goddard机构也被无关词替代。
+**Decision:** F — Loss to space becomes a spacecraft; NASA/Goddard is also replaced by unrelated terms.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Rannsóknin sýnir í ljós hve mikill vatn Mars átti fyrir sig, með því að ákvarða hversu mikill vatn var misst til geimfars,“ sagði Geronimo Villanueva, vísindamannur við Goddard-flugmæligjöf Nauðsins í Greenbelt í Maryland í Bandaríkjum og aðalhöfundur greinar um rannsóknina.
 
@@ -5533,7 +5503,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:eea:1901 · F</summary>
 
 **Source:** Hot formic acid is very corrosive and must be handled with care.
-**Decision:** F — 全部强腐蚀性仍错译，部分热甲酸对象也错误。
+**Decision:** F — Strong corrosiveness remains wrong in all candidates; some also corrupt hot formic acid.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Hettur formic sýra er mjög roðandi og verður að meðhöndla hana varlega.
 **Candidate1:** Hott formíkasýra er mjög sira og verður að snýra varlega með henni.
@@ -5549,7 +5519,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:opensubtitles:1900 · F</summary>
 
 **Source:** I was trying to get the place shipshape before you arrived.
-**Decision:** F — 整理妥当未正确表达，出现不明的á báni。
+**Decision:** F — Shipshape is not correctly expressed; unclear á báni appears.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ég var að reyna að fá staðnum á báni áður en þú komst.
 
@@ -5558,7 +5528,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:eea:2124 · F</summary>
 
 **Source:** The report on the implementation of Decisions on standard contractual clauses for the transfers of personal data to third countries recommended the establishment of appropriate standard contractual clauses on subsequent onwards transfers from a data processor established in a third country to another data processor (sub-processing), in order to take account of business trends and practices for more and more globalised processing activity.
-**Decision:** F — 数据处理者、再处理及商业趋势概念仍错误。
+**Decision:** F — Data processors, onward processing and business trends remain wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í skýrslunni um framkvæmd ákvarðana um staðlað samningssamsetningarlög fyrir sendingu persónuupplýsinga til þriðju landa var ráðlagt að koma á fót viðeigandi staðlaðum samningssamsetningarlögum fyrir framsendingu frá gagnagjafarými sem er stofnaður í þriðja landi til annars gagnagjafarýmis (innnám), til að taka tillit til fyrirsögnar fyrirtækis og starfsvenjur til að ná frekar og frekar alþjóðlegri gagnvísindalegri starfsemi.
 
@@ -5567,7 +5537,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:eso:971 · P</summary>
 
 **Source:** As further evidence, the astronomers also determined the motion and velocity of these stars.
-**Decision:** P — 进一步证据、天文学家测定恒星运动和速度完整保留。
+**Decision:** P — Further evidence and astronomers determining stellar motion/speed are complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Sem frekari sannanir greindu stjörnufræðingarinnir einnig hreyfingu og hraða þessara stjarna.
 
@@ -5576,7 +5546,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:eea:896 · P</summary>
 
 **Source:** Live fish can be shipped as well.
-**Decision:** P — 可携运活鱼的能力可辨认，fara með为携带/运送；未明确也，轻微连接词遗漏。
+**Decision:** P — Ability to carry live fish is identifiable via fara með. Also is not explicit, a minor connective omission.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Farið má með lifandi fisk.
 
@@ -5585,7 +5555,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:opensubtitles:3630 · U</summary>
 
 **Source:** Those I kill died from misusing the trust that Richard left them.
-**Decision:** U — Richard、死亡和信任保留，但missu notkunar是misuse的拼写分裂还是失去使用的不同含义无法确认。
+**Decision:** U — Richard, death and trust remain, but missu notkunar may be either a split misspelling of misuse or the different meaning loss of use.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þeir sem ég drepi dó vegna missu notkunar þeirra á traustinn sem Richard skildi þeim.
 
@@ -5594,7 +5564,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:ema:2012 · F</summary>
 
 **Source:** The safety and efficacy of OBIZUR for the treatment of serious bleeding episodes in subjects with acquired haemophilia with autoimmune inhibitory antibodies to human Factor VIII was investigated in a prospective, non-randomised, open-label trial of 28 subjects (18 Caucasian, 6 Black, and 4 Asian).
-**Decision:** F — 获得性血友病、自身抑制抗体及非随机试验类型仍损坏。
+**Decision:** F — Acquired hemophilia, auto-inhibitory antibodies and non-randomized trial design remain corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Öryggi og verkun OBIZUR við meðferð á alvarlegum blæðingarupphafi hjá einstaklingum með áðurnýttan blóðþynningarafleiðu með sjálfsnæmissvörunar mótefnum gegn manna storkuþætti VIII var rannsökuð í framsýnsetri, óslegri, opinni rannsókn sem tók til 28 einstaklinga (18 hvítar, 6 svartir og 4 asir).
 
@@ -5603,7 +5573,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:ema:1444 · U</summary>
 
 **Source:** Leave Aldara cream on the skin for about 8 hours.
-**Decision:** U — Aldara、皮肤、约8小时保留，但smyrska是否仅为膏剂词形错误不确定；未确认完整正确。
+**Decision:** U — Aldara, skin and about8hours remain, but whether smyrska is only an inflection error for ointment is uncertain.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Gefið Aldara smyrska á húðina í um það bil 8 klukkustundir.
 
@@ -5612,7 +5582,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:opensubtitles:1520 · F</summary>
 
 **Source:** Nurse, here is the key to fetch more spices.
-**Decision:** F — 护士丢失，香料变不明物品。
+**Decision:** F — The nurse address is lost and spices become unclear items.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Nú er hér lykillinn til að fá meira smakbælu.
 
@@ -5621,7 +5591,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:eea:752 · P</summary>
 
 **Source:** There are however, many barriers for the transformation of this potential into usable products and services.
-**Decision:** P — 候选5保留诸多障碍及将潜力转成可用产品/服务；类别用或表达未改变实际类别主旨。
+**Decision:** P — Candidate5 retains numerous obstacles and conversion of potential into usable products/services. Using or between categories does not change the core categories.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[5]
 **Candidate0:** Hins vegar eru margar hindra á að umbreyta þessa möguleika í notkunarfæri og þjónustufæri.
 **Candidate1:** Hins vegar eru mikið af hindrunum fyrir að hreinsun þess sem hugsanlegt er í notkun og notkun.
@@ -5637,7 +5607,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:eea:1960 · F</summary>
 
 **Source:** If the entitys own equity instruments to be received, or delivered, by the entity upon settlement of a contract are puttable financial instruments with all the features and meeting the conditions described in paragraphs 16A and 16B, or instruments that impose on the entity an obligation to deliver to another party a pro rata share of the net assets of the entity only on liquidation with all of the features and meeting the conditions described in paragraphs 16C and 16D, the contract is a financial asset or a financial liability.
-**Decision:** F — 可回售权益、按比例净资产、仅清算及资产/负债等金融概念仍错。
+**Decision:** F — Puttable equity, proportional net assets, liquidation-only scope and assets/liabilities remain wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ef eignavörum sem einingin á að fá eða afhenda í kjölfar samningar er tilstilli hæfisvörum með öllum einkennum og uppfylltar skilyrðunum sem lýst er í 16A- og 16B- grein eða vörum sem gerir eininginn skyldu að afhenda annarrum aðilum hlutabréfskammtur af efnahagsreikningssjóðum einingarinnar aðeins við endurgreiðslu með öllum einkennum og uppfylltur skilyrðunum sem lýst er í 16C- og 16D- grein, er samningurinn fjármálalegt eign eða fjárhagsleg logu.
 
@@ -5660,7 +5630,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:eso:377 · F</summary>
 
 **Source:** ALMA is giving us new insight into what&#x27;s happening in these stars and what might happen to the Sun in a few billion years from now,&quot; says Shazrene Mohamed (Argelander Institute for Astronomy, Bonn, Germany and South African Astronomical Observatory), a co-author of the study.
-**Decision:** F — 新认识变为新云（skýi），核心认识对象关系不准确。
+**Decision:** F — New insight becomes a new cloud, skýi, distorting the core insight relationship.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „ALMA gefur okkur nýja skýi á hvað er að gerast í þessum stjörnum og hvað gæti gerst á sólina eftir nokkra milljarða ára,“ sagði Shazrene Mohamed (Argelander Institute for Astronomy í Bonn í Þýskalandi og South African Astronomical Observatory) sem var meðhöfundur greinarinnar.
 
@@ -5669,7 +5639,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:eea:1960 · F</summary>
 
 **Source:** If the entitys own equity instruments to be received, or delivered, by the entity upon settlement of a contract are puttable financial instruments with all the features and meeting the conditions described in paragraphs 16A and 16B, or instruments that impose on the entity an obligation to deliver to another party a pro rata share of the net assets of the entity only on liquidation with all of the features and meeting the conditions described in paragraphs 16C and 16D, the contract is a financial asset or a financial liability.
-**Decision:** F — 全8条金融长句仍损坏可回售权益、净资产按比例、仅清算及资产/负债分类。
+**Decision:** F — All8 long financial candidates still corrupt puttable equity, proportional net assets, liquidation-only scope and asset/liability classification.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Ef eignasjálfboðalegar reikningsskilir sem einingin á að fá eða senda eftir samningi eftir að samningurinn er lögður saman eru hlutabundið eignavísir með öllum eiginleikum og uppfylla skilyrðið sem lýst er í 16A- og 16B-liðum eða eignavísir sem draga við þann gagn sem einingarinni ber að senda til annars aðila hlutabundið hlutfalli eignaðra sem er að lógast aðeins þannig með allum eiginleikum og uppfylla skilyrðið sem lýst er í 16C- og 16D-liðum, er samningurinn fjármálagjaldveri eða fjármálagjald.
 **Candidate1:** Ef sjóntegundum aðildarríkisins, sem það á að fá eða gefa upp eftir samningi, eru eftirgengir fjárhagslegir þjónustu efnablöndur með öllum einkennum og uppfylla skilyrðið sem lýst er í 16A- og 16B- greinum eða efnablöndur sem óska aðildarríkinu um skuldbindingu að gefa tiltekinum aðilum að þeirri hluta af hagnýtni sjóntegundarinnar eins efnis og samkvæmt skilyrðunum sem lýst er í 16C- og 16D- græðli, er samningurinn fjármálaerill eða fjárhagsleg skuldbindingur.
@@ -5685,7 +5655,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:opensubtitles:104 · F</summary>
 
 **Source:** He wore a black mask.
-**Decision:** F — 面具仍误为skíma，佩戴也不准确。
+**Decision:** F — The mask remains wrong skíma and wearing is inaccurate.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hann varð í svört skíma.
 
@@ -5694,7 +5664,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:ema:3033 · P</summary>
 
 **Source:** EMEND increased the AUC of midazolam, a sensitive CYP3A4 substrate, 2.3-fold on Day 1 and 3.3-fold on Day 5, when a single oral dose of 2 mg midazolam was co-administered on Days 1 and 5 of a regimen of EMEND 125 mg on Day 1 and 80 mg/day on Days 2 to 5.
-**Decision:** P — 候选3/7保留CYP3A4敏感底物、倍率、口服单次2mg和EMEND各日剂量；7最完整。
+**Decision:** P — Candidates3/7 retain sensitive CYP3A4 substrates, multiples, single oral2mg and daily EMEND doses;7 is most complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[3, 7]
 **Candidate0:** EMEND eyðandi áhrif á AUC fyrir midazolami, sem er næmur hvarfefni CYP3A4, 2,3-föld á degi 1 og 3,3-föld á degi 5 þegar stakur 2 mg skammtur af midazolami gefinn var til inntöku á degi 1 og 5 samhliða EMEND 125 mg á degi 1 og 80 mg/sólarhring 2 til 5.
 **Candidate1:** EMEND eykkuði AUC fyrir mídazólami, sem er tilætluð CYP3A4, um 2,3-föld á degi 1 og 3,3-föld á degi 5 þegar einn 2 mg skammtur af mídazólami er gefinn inn til inntöku á 1. og 5. degi samhliða EMEND 125 mg á 1. degi og 80 mg/sólarhring 2. til 5. degi.
@@ -5710,7 +5680,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:eea:1468 · F</summary>
 
 **Source:** In either case, Member States will ensure that a representative share of the national market is covered by the survey.
-**Decision:** F — 代表性市场份额变为相关代表人，调查抽样对象错误。
+**Decision:** F — Representative market share becomes relevant representatives, changing the survey-sampling object.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í báðum tilvikum verða aðildarríkin að tryggja að hlutaðeigandi fulltrúi í landsmarkaðinu sé nær við matinn.
 
@@ -5719,7 +5689,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:eso:252 · U</summary>
 
 **Source:** Normally many shorter exposures are taken and later digitally combined.
-**Decision:** U — 全部检查；多条漏数字合并，或normally/曝光术语不可靠，保守不确认完整正确。
+**Decision:** U — All checked. Many omit digital combination or use unreliable normally/exposure terminology; full correctness is unconfirmed.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Til abirtilskurnar eru oft nokkrar styttri útsetningar tekin og síðar samanlagðar.
 **Candidate1:** Venjulega tekur marga styttri skammta og síðar samanlagt með tölfræðilegum hætti.
@@ -5735,7 +5705,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:eea:2112 · F</summary>
 
 **Source:** Standard contractual clauses should relate only to data protection.
-**Decision:** F — 标准合同条款变为其他合同一致性，主体错误。
+**Decision:** F — Standard contractual clauses become other contractual consistency, changing the object.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Aðrar samningssamræmi skulu einungis varða gagnavernd.
 
@@ -5744,7 +5714,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:eea:1996 · F</summary>
 
 **Source:** One example is a net cash-settled share option.
-**Decision:** F — 现金净额结算股票期权被无关的自然、放弃等词替代。
+**Decision:** F — Net-cash-settled share options become unrelated nature/abandonment terms.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Eitt dæmi er náttúrulegur lausnsettri hlutaféahöfnun.
 
@@ -5753,7 +5723,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:ema:2373 · F</summary>
 
 **Source:** Exploratory analysis showed clinically meaningful improvements were observed for the vedolizumab every four weeks and every eight weeks groups in GEMINI II and the improvements were significantly greater as compared with the placebo group from baseline to Week 52 on EQ-5D and EQ-5D VAS scores, total IBDQ score, and IBDQ subscales of bowel symptoms and systemic function.
-**Decision:** F — 肠道症状变成栓塞症状，重要医学对象错误。
+**Decision:** F — Bowel symptoms become embolism symptoms, changing a critical medical object.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Greining á upplýsingum sýndi klínískt mikilvæg breyting á meðferðinni sem fram kom á því að gefa vedólízúmab á fjögurra vikna fresti og á átta vikna fresti í hópunum í GEMINI II rannsókninni og breytingarnar voru marktækt meiri samanborið við lyfleysuhópinn frá grunngildum í viku 52 á EQ-5D og EQ-5D VAS gildum, heildar IBDQ gildum og IBDQ undirþætti fyrir einkenni um segareki og altæk starfsemi.
 
@@ -5762,7 +5732,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:ema:1151 · F</summary>
 
 **Source:** As with any implantable product, foreign body reactions may occur.
-**Decision:** F — 全部候选未准确表达植入物和异物反应，出现酒精、暂时药物等无关对象。
+**Decision:** F — None accurately expresses implants and foreign-body reactions; unrelated alcohol/temporary-drug objects appear.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Eins og við á um öll áfengifæribreytingar geta komið fram.
 **Candidate1:** Eins og á við um öll tækt efni geta fyrir breytingum í kjölfar tækninnar farið með því.
@@ -5787,7 +5757,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:eso:46 · P</summary>
 
 **Source:** Furthermore, the team also found evidence that the distances of the planets from their star follow a regular pattern, as also seen in our Solar System.
-**Decision:** P — 团队发现行星距恒星呈规律，以及太阳系类比保留。
+**Decision:** P — The team finding regular planet-star distances and the Solar-System analogy is retained.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Enn fremur fundu hópurinn einnig vísbendingar um að fjarlægð reikistjarna frá stjörnunni séið reglulegur eins og sjá má í sólkerfinu okkar.
 
@@ -5796,7 +5766,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:opensubtitles:721 · P</summary>
 
 **Source:** I have absolutely no idea how you are able to do some of the things you do.
-**Decision:** P — 不知道对方如何做出某些事情，核心含义保留；绝对程度略弱。
+**Decision:** P — Not knowing how the other person does some things retains the core meaning, with slightly weaker absolute emphasis.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ég hef ekki neinn hugmynd um hvernig þú getur gert sumar af þeim hlutum sem þú gerir.
 
@@ -5805,7 +5775,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:opensubtitles:3356 · F</summary>
 
 **Source:** Now, you in with him or he&#x27;s screwing you too?
-**Decision:** F — 欺骗/串通变成击打，口语意义错误。
+**Decision:** F — Deception/collusion becomes hitting, changing the colloquial meaning.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Núna, þú hjápaður hann eða hann slær þig líka?
 
@@ -5814,7 +5784,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:ema:2137 · P</summary>
 
 **Source:** Patients receiving Pelzont, nicotinic acid (prolonged-released formulation), or placebo were also taking statins (29 % atorvastatin [5-80 mg], 54 % simvastatin [10-80 mg], 17 % other statins [2.5-180 mg] (pravastatin, fluvastatin, rosuvastatin, lovastatin)), of which 9 % were also taking ezetimibe [10 mg].
-**Decision:** P — 候选7保留烟酸缓释、三组他汀比例剂量药名和9%合用依折麦布，关系完整。
+**Decision:** P — Candidate7 retains extended-release niacin, three statin groups' proportions/doses/names and9% concomitant ezetimibe.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[7]
 **Candidate0:** Sjúklingar sem fengu Pelzont, nitókínaskerja (forðalyf) eða lyfleysu tóku einnig statínlyf (29% atorvastatín [5-80 mg], 54% simvastatín [10-80 mg], 17% annað statín [2,5-180 mg] (pravastatín, fluvastatín, rosuvastatín, lovastatín)), þar af meðal 9% tóku áfram ezetimib [10 mg].
 **Candidate1:** Sjúklingar sem fengu Pelzont, nikótínsýru (lausn með forðaverkandi losun) eða lyfleysu tóku einnig statín (29% atorvastatín [5-80 mg], 54% simvastatín [10-80 mg], 17% annað statín [2,5-180 mg] (pravastatín, fluvastatín, rosuvastatín, lovastatín)), sem hvorum öðru var 9% einnig ázetimíb [10 mg].
@@ -5830,7 +5800,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:eea:2112 · U</summary>
 
 **Source:** Standard contractual clauses should relate only to data protection.
-**Decision:** U — 全8条检查；7用英文括注补标准合同条款但冰岛语主体有无关修饰，无法确认完整冰岛语译文；其他多数对象错误。
+**Decision:** U — All8 checked. Candidate7 adds an English gloss for standard contractual clauses, but its Icelandic head phrase has unrelated modifiers; a complete Icelandic translation is unconfirmed. Most others have wrong objects.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Aðgerðarreglur sem eru staðlaðar eiga aðeins við um gagnavernd.
 **Candidate1:** Aðeins skulu staðlaðar samningsskori varða getnað.
@@ -5846,7 +5816,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:eso:46 · U</summary>
 
 **Source:** Furthermore, the team also found evidence that the distances of the planets from their star follow a regular pattern, as also seen in our Solar System.
-**Decision:** U — 全部已检查；5/6/7接近距离规律与太阳系类比，但团队被换成方法，或evidence/发现动词损坏，角色/认识关系准确性不确定。
+**Decision:** U — All checked. Candidates5/6/7 approach distance regularity and the Solar-System analogy, but replace the team with a method or corrupt evidence/discovery verbs; roles/epistemic relations are uncertain.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Ennfremur komst jafnvægið einnig fram vísbendingar um að fjarlægð fylgir af mænu frá stjörnunni fyrir reikistjörnurnar eins og er líka við í sólkerfinu okkar.
 **Candidate1:** Meguna og meðal annars komst hópurinn að nokkrum vísbendingum sem sýna að fjarlægð fólksjóða frá stjörnur sínar er reglulega og jafnvel sést í sólkerfinu okkar.
@@ -5862,7 +5832,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:eea:1201 · P</summary>
 
 **Source:** In the light of the highly technical and scientific mission and tasks of the Agency, it is appropriate for the Administrative Board to consist of one representative of each Member State and four representatives of the Commission, being members with a high level of expertise.
-**Decision:** P — 候选4/5/7保留技术科学任务、每国1人/委员会4人组成及高专长；候选4最清楚。
+**Decision:** P — Candidates4/5/7 retain technical/scientific tasks, one member per country/four Commission members and high expertise;4 is clearest.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[4, 5, 7]
 **Candidate0:** Í ljósi þess að störf og verkefni stofnunarinnar er mjög tæknilegt og vísindalegt er rétt að framkvæmdaráðið innihaldi eina fulltrúa frá öllum aðildarríkjunum og fjóra fulltrúa framkvæmdastjórnarinnar sem eru með hæfilegri sérþekkingu.
 **Candidate1:** Í ljósi þess hversu tæknilega og vísindalega skipan og verkefni Matfars- stofnunarinnar er viðbært að framkvæmdaráðið hafi einn fulltrúi frá hverju aðildarríki og fjórir fulltrúar framkvæmdastjórnarinnar sem eru með hæfileg grein.
@@ -5878,7 +5848,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:ema:2612 · F</summary>
 
 **Source:** Based on between-study comparisons, the absolute bioavailability of cinacalcet in fasted subjects has been estimated to be about 20-25%.
-**Decision:** F — 空腹变为出生的受试者，生物利用度也未正确表达。
+**Decision:** F — Fasting becomes newly born subjects, and bioavailability is also wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Samkvæmt samanburði milli rannsókna hefur verið áætlað að heildarafgöngu cínakalcets hjá fæddum einstaklingum sé um 20-25%.
 
@@ -5887,7 +5857,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:eso:84 · F</summary>
 
 **Source:** “And although it may be possible, it is harder to understand how these brilliant beacons could form on their own.
-**Decision:** F — 信标变成燃烧能力，关键对象错误。
+**Decision:** F — A beacon becomes burning capability, changing the key object.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Þó þótt það sé mögulegt er það erfitt að skilja hvernig þessi glæsilega brennslugetur gætu myndast af sér.
 
@@ -5896,7 +5866,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:eea:1321 · F</summary>
 
 **Source:** The product shall not be classified as R43 (may cause sensitisation by skin contact) according to Directive 1999/45/ EC of the European Parliament and of the Council of 31 May 1999 concerning the approximation of the laws, regulations and administrative provisions of the Member States relating to the classification, packaging and labelling of dangerous preparations.
-**Decision:** F — 全部候选不是无依据把产品缩为药物，就是致敏/肤触/危险制剂关系损坏或R43遗漏；未有完整正确译文。
+**Decision:** F — Every candidate either narrows products to drugs without support, corrupts sensitization/skin-contact/hazardous-preparation relations, or omits R43. No fully correct translation.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Lyfið skal ekki flokka undir R43 (getur valdið ofnæmi vegna snertings við húð) samkvæmt tilskipun Evrópuþingsins og ráðsins 1999/45/EB frá 31. maí 1999 um samræmingu laga, reglugerða og stjórnsýsluforsenda aðildarríkjanna varðandi flokkun, pakkun og merkingu hættulegra efnablandna.
 **Candidate1:** Lyfið skal ekki talin til að fela sér undir R43 (getur valdið meðferðaröryggi við snertingu við húð) samkvæmt tilskipun Evrópuþingsins og ráðsins 1999/45/EB frá 31. maí 1999 um samræmingu laga og stjórnsýsluforskrifta aðildarríkjanna um flokkun, pakkun og merkingu hálfu þeirra lyfja sem má liða fyrir.
@@ -5912,7 +5882,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:eso:953 · F</summary>
 
 **Source:** The secondary mirror will be largest ever employed on a telescope and the largest convex mirror ever produced.
-**Decision:** F — 凸面变成广为人知，镜面性质错误。
+**Decision:** F — Convex becomes well-known, changing the mirror's property.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Líkamlega er seinni speglin stærsti sem hefur verið notað í sjónauki og stærsti breiðþekktur spegill sem hefur verið framleiddur.
 
@@ -5921,7 +5891,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:eso:716 · F</summary>
 
 **Source:** Most galaxies live in groups - including our own Milky Way, which is part of the Local Group - and understanding how much dark matter they contain is a key test of the whole theory of how galaxies form in the cosmic web.
-**Decision:** F — 全部8条未完整保留本星系群、暗物质量以及宇宙网形成理论检验，多个关键对象错漏。
+**Decision:** F — None of8 fully retains the Local Group, dark-matter quantity and cosmic-web formation-theory test; multiple critical objects are wrong/omitted.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Flestar vetrarbrautir lyfja sér í hópum - þar á meðal Vetrarbrautarinnar sem er hluti þess umdæmigerðar - og að skilja hvernig mikið rúmfrumur eru með stundum í þeim er ein ástæða til að greina með reynslunni er allar kenningarnar um myndun vetrarbrauta í geimfaraþokunni.
 **Candidate1:** Flest vetrarbrautir búa í hópum - þar á meðal Vetrarbrautinni okkar, sem er hluti af Hinn búðinu í Geimnum, og það er helstu prófunin á þeirri kenningu um hvernig vetrarbrautir myndast í geimnum.
@@ -5937,7 +5907,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:eea:1321 · F</summary>
 
 **Source:** The product shall not be classified as R43 (may cause sensitisation by skin contact) according to Directive 1999/45/ EC of the European Parliament and of the Council of 31 May 1999 concerning the approximation of the laws, regulations and administrative provisions of the Member States relating to the classification, packaging and labelling of dangerous preparations.
-**Decision:** F — 其余法规内容明显恢复，但泛指产品仍被缩为药物；保持前次对无依据缩窄法律主体的同一口径。
+**Decision:** F — Other regulatory content recovers substantially, but general products remain narrowed to drugs. Apply the same previous standard for unsupported legal-scope narrowing.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Lyfið skal ekki flokka sem R43 (getur valdið ofnæmi vegna snertingar með húð) samkvæmt tilskipun Evrópuþingsins og ráðsins 1999/45/EB frá 31. maí 1999 um samræmingu laga, reglugerða og stjórnsýsluforskrifta aðildarríkjanna varðandi flokkun, pakkun og merkingu hættulegra efnablandna.
 
@@ -5955,7 +5925,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:ema:297 · P</summary>
 
 **Source:** If any of the above apply to you or you are not sure, talk to your doctor or pharmacist before taking Odomzo.
-**Decision:** P — 上述适用或不确定时，服Odomzo前咨询医生/药师完整保留。
+**Decision:** P — Consulting a doctor/pharmacist before Odomzo under the applicable-or-uncertain condition is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ef eitthvað af ofangreindu á við um þig eða ef þú ert ekki viss skaltu ræða við lækninn eða lyfjafræðing áður en þú tekur Odomzo.
 
@@ -5964,7 +5934,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:ema:1724 · P</summary>
 
 **Source:** If a loading dose is indicated, an initial dose of 100 mg followed by a 50 mg twice daily regimen for the first week should be used.
-**Decision:** P — 候选3/4明确有负荷剂量指征时，起始100mg随后首周50mg每日两次。
+**Decision:** P — Candidates3/4 explicitly give an indicated100mg loading dose followed by50mg twice daily during the first week.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[3, 4]
 **Candidate0:** Ef til aðstoðar er á að nota hleðsluskammt skal nota 100 mg í upphafsskammt í kjölfar 50 mg tvisvar sinnum á sólarhring í fyrstu viku.
 **Candidate1:** Ef beitingarskammtur er ráðlagður, skal gefa upphafsskammtinn 100 mg og síðan 50 mg tvisvar á sólarhring innan fyrstu vikunnar.
@@ -5980,7 +5950,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · greedy · p18official21:dev:ema:2828 · F</summary>
 
 **Source:** Chemical and physical in-use stability of the reconstituted solution has been demonstrated for one month at 2°C - 8°C. From a microbiological point of view, once opened, the reconstituted solution may be stored for maximum of one month at 2°C - 8°C. Other in-use storage times and conditions are the responsibility of the user.
-**Decision:** F — 未完整区分化学与物理稳定性，重复在用稳定性替代其中一类；其余贮存条件改善不足以判整句正确。
+**Decision:** F — Chemical and physical stability are not fully distinguished; repeated in-use stability substitutes for one category. Better storage conditions do not make the whole sentence correct.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Eftir blöndun hafa stöðugleika í notkun og efnisfræðilega stöðugleika í notkun verið sýnt fram á í einum mánuði við 2°C-8°C. Frá örverufaglegu sjónarmiði er hægt að geyma blönduðu lausnina í hámarks tímann, eitt mánuði við 2°C-8°C, eftir að hún hefur verið opnað. Önnur geymslutíma og skilyrði fyrir notkun eru á ábyrgð notanda.
 
@@ -5989,7 +5959,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:eea:1468 · F</summary>
 
 **Source:** In either case, Member States will ensure that a representative share of the national market is covered by the survey.
-**Decision:** F — 全部候选未表达有代表性的市场份额，多条改为代表人或不明市场事项。
+**Decision:** F — None expresses representative market share; many substitute representatives or unclear market matters.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í báðum tilvikum verða aðildarríkin að tryggja að hlutverkaltæki heimamarkaðarins sé nær skoðuninni.
 **Candidate1:** Í báðum tilvikum sjáu aðildarríki aðlögu að því að umsprotin nái yfir hluta markaðarinnar í hverju ríki.
@@ -6005,7 +5975,7 @@ Symmetric final-case review
 <details><summary>dev_t1501693 · candidate · g8 · p18official21:dev:eea:2094 · P</summary>
 
 **Source:** For those purposes, Member States shall designate existing bodies, where appropriate, or establish new bodies.
-**Decision:** P — 候选6/7保留为此指定现有机构（适当时）或建立新机构。
+**Decision:** P — Candidates6/7 retain designation of existing bodies where appropriate or creation of new bodies for that purpose.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[6, 7]
 **Candidate0:** Aðildarríkin skulu tilnefna fyrirtæki sem eru til þannig og kveða á um tilnefning nýrra fyrirtækja í þeim tilgangi sem við á.
 **Candidate1:** Í þeim tilgangi skulu aðildarríkin tilnefna til staðar fyrirtæki, eftir því sem við á, eða koma á fyrir nýju fyrirtæki.
@@ -6021,7 +5991,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:opensubtitles:1900 · F</summary>
 
 **Source:** I was trying to get the place shipshape before you arrived.
-**Decision:** F — shipshape误为疾病。
+**Decision:** F — Shipshape is mistranslated as disease.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ég var að reyna að fá stöðina í sársótt áður en þú komst.
 
@@ -6030,7 +6000,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:eso:46 · P</summary>
 
 **Source:** Furthermore, the team also found evidence that the distances of the planets from their star follow a regular pattern, as also seen in our Solar System.
-**Decision:** P — 行星距离规律及太阳系类比保留。
+**Decision:** P — Regular planetary distances and the Solar-System analogy are retained.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[6, 7]
 **Candidate0:** Ennfremur komst jafnframt í ljós vísbendingar um að fjarlægður reikistjörnur frá stjörnunni séið á rösum efnismáli eins og við sjáum í sólkerfinu okkar.
 **Candidate1:** Megi og verður einnig sýnt hafa reikistækinn einnig fundið sönnunargögn um að fjarlægð reikistjarnanna frá stjörnunni sé á reglulegan bend, eins og sjáð er í sólkerfinu okkar.
@@ -6046,7 +6016,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:ema:297 · P</summary>
 
 **Source:** If any of the above apply to you or you are not sure, talk to your doctor or pharmacist before taking Odomzo.
-**Decision:** P — 用药前如适用或不确定咨询医生药师完整。
+**Decision:** P — Doctor/pharmacist consultation before medication when applicable or uncertain is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ef eitthvað af ofangreindu á við um þig eða ef þú ert ekki viss skaltu ræða við lækninn eða lyfjafræðing áður en Odomzo er notað.
 
@@ -6055,7 +6025,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:eea:1201 · P</summary>
 
 **Source:** In the light of the highly technical and scientific mission and tasks of the Agency, it is appropriate for the Administrative Board to consist of one representative of each Member State and four representatives of the Commission, being members with a high level of expertise.
-**Decision:** P — 各国一名及委员会四名且高专业水平保留。
+**Decision:** P — One member per country, four Commission members and high expertise are retained.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[1, 7]
 **Candidate0:** Í ljósi þess að störf og verkefni stofnunarinnar eru mjög tæknilegra og vísindalegra er rétt að stjórn stofnunarinnar samanstíð einum fulltrúi frá öllum aðildarríkjum og fjórum fulltrúum framkvæmdastjórnarinnar sem gefa til umfangs, aðildarríki og stóra sérþekkingu.
 **Candidate1:** Í ljósi þess hversu tæknilega og vísindalega skipan og verkefni stofnunarinnar er viðeigandi að stjórn stofnunarinnar setta einn fulltrúi frá hverju aðildarríki og fjóra fulltrúa frá framkvæmdastjórninni sem eru þekkt með mikil sérþekkingu.
@@ -6071,7 +6041,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:ema:297 · P</summary>
 
 **Source:** If any of the above apply to you or you are not sure, talk to your doctor or pharmacist before taking Odomzo.
-**Decision:** P — 适用或不确定时用药前咨询医生药师。
+**Decision:** P — Consult a doctor/pharmacist before medication when applicable or uncertain.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ef eitthvað af ofangreindu á við um þig eða ef þú ert ekki viss, skaltu ráðfæra þig við lækninn eða lyfjafræðing áður en Odomzo er notað.
 **Candidate2:** Ef eitthvað af fyrrnefnt á við um þig eða ef þú ert ekki viss, skaltu ræða við lækninn eða lyfjafræðing áður en þú tekur Odomzo.
@@ -6086,16 +6056,16 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:eea:2124 · F</summary>
 
 **Source:** The report on the implementation of Decisions on standard contractual clauses for the transfers of personal data to third countries recommended the establishment of appropriate standard contractual clauses on subsequent onwards transfers from a data processor established in a third country to another data processor (sub-processing), in order to take account of business trends and practices for more and more globalised processing activity.
-**Decision:** F — 数据处理者角色及合同条款错误且中文污染。
+**Decision:** F — The data-processor role and contractual clauses are wrong, with Chinese contamination in the original output.
 **Inspected/correct:** [0]/[]
-**Candidate0:** Í skýrslunni um framkvæmd ákvarðana um staðlað samningseinkenni fyrir sendingu persónuupplýsinga til þriðju landa var ráðlagt að koma á fót viðeigandi staðlaðum samningseinkennum fyrir síðari sendingar frá gagnaö运转settu sem hefur staðfest í þriðja landi til annars gagnaö运转setta (inn- og afturgagnaö运转setta), til að taka tillit til fyrirtækisstjórnar og starfsvenjur til að hafa hliðsjón af meira og meira alþjóðlegri gagnaö运转verki.
+**Candidate0:** Í skýrslunni um framkvæmd ákvarðana um staðlað samningseinkenni fyrir sendingu persónuupplýsinga til þriðju landa var ráðlagt að koma á fót viðeigandi staðlaðum samningseinkennum fyrir síðari sendingar frá gagnaö[operate]settu sem hefur staðfest í þriðja landi til annars gagnaö[operate]setta (inn- og afturgagnaö[operate]setta), til að taka tillit til fyrirtækisstjórnar og starfsvenjur til að hafa hliðsjón af meira og meira alþjóðlegri gagnaö[operate]verki.
 
 </details>
 
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:eso:953 · F</summary>
 
 **Source:** The secondary mirror will be largest ever employed on a telescope and the largest convex mirror ever produced.
-**Decision:** F — 次镜与凸面镜关键概念丢失。
+**Decision:** F — The key secondary-mirror and convex-mirror concepts are lost.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Endurbilinn verður stærsti myndi sem komið hefur verið í notkun í sjónauki og stærsti myndi sem hefur verið framleidd.
 
@@ -6104,7 +6074,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:eea:1468 · U</summary>
 
 **Source:** In either case, Member States will ensure that a representative share of the national market is covered by the survey.
-**Decision:** U — 代表性市场份额与调查覆盖关系表达不明确。
+**Decision:** U — Representative market share and survey coverage are not clearly related.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í báðum tilvikum verða aðildarríkin að tryggja að hlutfall innlenda markaðarins sem er fulltrúið hafi verið tekið til með skoðunina.
 
@@ -6147,7 +6117,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:ema:2612 · U</summary>
 
 **Source:** Based on between-study comparisons, the absolute bioavailability of cinacalcet in fasted subjects has been estimated to be about 20-25%.
-**Decision:** U — 数字与禁食保留，但heildaraðgengi是否准确对应绝对生物利用度不能可靠确认。
+**Decision:** U — Numbers and fasting remain, but heildaraðgengi is not reliably confirmed as absolute bioavailability.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Samkvæmt samanburðum milli rannsókna hefur heildaraðgengi cínakalcets hjá fastandi einstaklingum verið metið sem um 20-25%.
 
@@ -6156,7 +6126,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:eso:1154 · P</summary>
 
 **Source:** The results appear this week in the journal Nature.
-**Decision:** P — 本周Nature发表结果准确。
+**Decision:** P — Publication in Nature this week is accurate.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[4, 5]
 **Candidate0:** Niðurstöðurnar koma í ljós í tímaritinu Nature.
 **Candidate1:** Niðurstöðurnar verða birtar í tímaritinu Nature.
@@ -6172,7 +6142,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:opensubtitles:3356 · F</summary>
 
 **Source:** Now, you in with him or he&#x27;s screwing you too?
-**Decision:** F — 欺骗/串通关键含义错误。
+**Decision:** F — The key deception/collusion meaning is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Núna, þú með hann eða hann er að rísa þig líka?
 
@@ -6181,7 +6151,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:ema:1444 · P</summary>
 
 **Source:** Leave Aldara cream on the skin for about 8 hours.
-**Decision:** P — Aldara于皮肤保持约八小时含义保留。
+**Decision:** P — Keeping Aldara on the skin for about eight hours is retained.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Gefið Aldara smyrslinu á húðina í um það bil 8 klukkustundir.
 
@@ -6199,7 +6169,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:ema:2828 · U</summary>
 
 **Source:** Chemical and physical in-use stability of the reconstituted solution has been demonstrated for one month at 2°C - 8°C. From a microbiological point of view, once opened, the reconstituted solution may be stored for maximum of one month at 2°C - 8°C. Other in-use storage times and conditions are the responsibility of the user.
-**Decision:** U — 温度时间责任保留，化学稳定性及微生物学条件表达不明确。
+**Decision:** U — Temperature, time and responsibility remain, but chemical stability and microbiological conditions are unclear.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Eftir blöndun hafa efnahæfni og eðlisfræðileg stöðugleiki lausnarinnar verið sýnt fram á einum mánuði við 2°C-8°C. Frá örverufaglegu lífi er gert því að geyma hafi verið hægt í hámarks tímann (eitt mánuð) við 2°C-8°C eftir að lausnin hefur verið opnað. Önnur geymslutíma og skilyrði fyrir notkun eru á ábyrgð notanda.
 
@@ -6208,7 +6178,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:eso:716 · F</summary>
 
 **Source:** Most galaxies live in groups - including our own Milky Way, which is part of the Local Group - and understanding how much dark matter they contain is a key test of the whole theory of how galaxies form in the cosmic web.
-**Decision:** F — 所有候选均丢失或错译暗物质与宇宙网。
+**Decision:** F — All candidates omit or mistranslate dark matter and the cosmic web.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Flestir vetrarbrauta eru aðalsteina í hópum - þar á meðal Vetrarbrautarinnar sem er hluti þess umdæmigerðar - og að skilja hvernig mikið rúmfrumur eru með þeim er lykilpróf á heildarfræðingarþætti vetrarbrautarmyndunar í geimnum.
 **Candidate1:** Flest vetrarbrautir búa í hópum - þar með á milli Vetrarbrautinni okkar, sem er hluti af viðkomandi hópi, og skilja hversu mikil mjúkra fyrirbæri þeir innihalda er mikið prófun á heildarfræðingarhætti um hvernig vetrarbrautir myndast í geimvermurinni.
@@ -6224,7 +6194,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:eso:971 · P</summary>
 
 **Source:** As further evidence, the astronomers also determined the motion and velocity of these stars.
-**Decision:** P — 天文学家测定运动速度及进一步证据保留。
+**Decision:** P — Further evidence and astronomers determining motion/speed remain.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Sem frekari sönnunartilvik voru stjörnufræðingarnir einnig að mæla hreyfingu og hraða þessara stjarna.
 
@@ -6233,7 +6203,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:eso:605 · F</summary>
 
 **Source:** “Our study provides a solid estimate of how much water Mars once had, by determining how much water was lost to space,” said Geronimo Villanueva, a scientist working at NASAs Goddard Space Flight Center in Greenbelt, Maryland, USA, and lead author of the new paper.
-**Decision:** F — 丢失到太空误为空间飞行器。
+**Decision:** F — Lost to space becomes a spacecraft.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Rannsóknin sýnir í ljós hversu mikill vatn Mars átti að fyrir sig, með því að ákvarða hversu mikill vatn var misst til geimfars,“ sagði Geronimo Villanueva, vísindamaður við Goddard Space Flight Center við NASA í Greenbelt í Maryland í Bandaríkjunum og aðalhöfundur greinar um rannsóknina.
 
@@ -6255,7 +6225,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:eea:2112 · F</summary>
 
 **Source:** Standard contractual clauses should relate only to data protection.
-**Decision:** F — 标准合同条款误为合同特征。
+**Decision:** F — Standard contractual clauses become contract characteristics.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Stöðluð samningseinkenni skulu einungis varpa að gagnavernd.
 
@@ -6287,7 +6257,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:eea:1960 · F</summary>
 
 **Source:** If the entitys own equity instruments to be received, or delivered, by the entity upon settlement of a contract are puttable financial instruments with all the features and meeting the conditions described in paragraphs 16A and 16B, or instruments that impose on the entity an obligation to deliver to another party a pro rata share of the net assets of the entity only on liquidation with all of the features and meeting the conditions described in paragraphs 16C and 16D, the contract is a financial asset or a financial liability.
-**Decision:** F — 金融工具与清算净资产分类等关键概念错误。
+**Decision:** F — Financial instruments, liquidation/net assets and classifications are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ef eignasjóðir sem einingin á að fá eða afhenda í kjölfar samningar eru tilstilli fjármálavörum með öllum eiginleikum þeirra og uppfylla skilyrðin sem lýst er í 16A- og 16B- liðum eða vörur sem gera eininginn skyldu að afhenda annarrum aðilum hlutfallslega hluta af hreinanlegri eign einingarinnar aðeins við endurnýtingu með öllum eiginleikum þeirra og uppfylla skilyrðin sem lýst er í 16C- og 16D- liðum, er samningurinn fjármálavirk eign eða eignaþáttur.
 
@@ -6296,7 +6266,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:opensubtitles:3630 · F</summary>
 
 **Source:** Those I kill died from misusing the trust that Richard left them.
-**Decision:** F — 滥用Richard信任错误。
+**Decision:** F — Abusing Richard's trust is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þeir sem ég drepi drepust af mistökum á truflunni sem Richard skildi þeim.
 
@@ -6305,7 +6275,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:ema:2137 · U</summary>
 
 **Source:** Patients receiving Pelzont, nicotinic acid (prolonged-released formulation), or placebo were also taking statins (29 % atorvastatin [5-80 mg], 54 % simvastatin [10-80 mg], 17 % other statins [2.5-180 mg] (pravastatin, fluvastatin, rosuvastatin, lovastatin)), of which 9 % were also taking ezetimibe [10 mg].
-**Decision:** U — 数值药名大致保留，但缓释制剂术语均不稳定，不能确认无关键错误。
+**Decision:** U — Numbers/drug names mostly remain, but extended-release formulation terminology is unstable throughout; absence of critical errors is unconfirmed.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Sjúklingar sem fengu Pelzont, nitókínaskerja (forðalyf) eða lyfleysu tóku einnig statínlyf (29% atorvastatín [5-80 mg], 54% simvastatín [10-80 mg], 17% önnur statín [2,5-180 mg] (pravastatín, fluvastatín, rosuvastatín, lovastatín)), þar af voru 9% einnig aðeins að taka ezetimíb [10 mg].
 **Candidate1:** Sjúklingar sem fengu Pelzont, nikótínsýru (lausn með lengingarlögun) eða lyfleysu tóku einnig statínlyf (29% atorvastatín [5-80 mg], 54% simvastatín [10-80 mg], 17% aðrir statínlyf [2,5-180 mg] (pravastatín, fluvastatín, rosuvastatín, lovastatín)), þar af voru 9% einnig ázetimíb [10 mg].
@@ -6321,7 +6291,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:eea:1321 · F</summary>
 
 **Source:** The product shall not be classified as R43 (may cause sensitisation by skin contact) according to Directive 1999/45/ EC of the European Parliament and of the Council of 31 May 1999 concerning the approximation of the laws, regulations and administrative provisions of the Member States relating to the classification, packaging and labelling of dangerous preparations.
-**Decision:** F — 一般产品被无依据缩窄为药品。
+**Decision:** F — General products are narrowed to medicines without support.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Lyfið skal ekki flokka sem R43 (getur valdið ofnæmi við snertingu með húð) samkvæmt tilskipun Evrópuþingsins og ráðsins 1999/45/EB frá 31. maí 1999 um samræmingu á lögum, reglugerðum og stjórnsýslufyrirmælum aðildarríkjanna varðandi flokkun, pakkning og merking hættulegra efnis.
 
@@ -6330,7 +6300,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:ema:1151 · F</summary>
 
 **Source:** As with any implantable product, foreign body reactions may occur.
-**Decision:** F — 全部候选植入物或异物反应关键概念错误。
+**Decision:** F — Every candidate corrupts implants or foreign-body reactions.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Eins og við á um allar áfengifærum lyf eru hætt á að aukaverkanir af umferðarsýni kemjust.
 **Candidate1:** Eins og við á um hvað veruleg lyf er, geta fyrirbæri af lífsvaldum komið fram.
@@ -6346,7 +6316,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:ema:3033 · P</summary>
 
 **Source:** EMEND increased the AUC of midazolam, a sensitive CYP3A4 substrate, 2.3-fold on Day 1 and 3.3-fold on Day 5, when a single oral dose of 2 mg midazolam was co-administered on Days 1 and 5 of a regimen of EMEND 125 mg on Day 1 and 80 mg/day on Days 2 to 5.
-**Decision:** P — 底物AUC倍数口服剂量及日期完整。
+**Decision:** P — Substrate AUC multiples, oral dose and dates are complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[3, 6]
 **Candidate0:** EMEND eyðuðu á AUC fyrir mídazólám, sem er næmur hvarfefni CYP3A4, um 2,3-föld á degi 1 og 3,3-föld á degi 5 þegar stakan skammtur, 2 mg af mídazólami, var tekið inn á degi 1 og 5 samhliða EMEND 125 mg á degi 1 og 80 mg/dag á degi 2 til 5.
 **Candidate1:** EMEND eykkuði AUC fyrir mídazólám, sem er tilætluð fyrir CYP3A4, 2,3-föld á degi 1 og 3,3-föld á degi 5 þegar stakur 2 mg skammtur af mídazólami var gefinn til inntöku á degi 1 og 5 og EMEND 125 mg á degi 1 og 80 mg/sólarhring á degi 2 til 5.
@@ -6371,7 +6341,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:ema:581 · P</summary>
 
 **Source:** Repeated daily doses up to 8 mg/kg (maximum total dose 896 mg) in adult patients have been administered in clinical trials with no reported dose-limiting toxicity.
-**Decision:** P — 重复每日剂量、成人及未见剂量限制毒性完整。
+**Decision:** P — Repeated daily doses, adults and absence of dose-limiting toxicity are complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[4]
 **Candidate0:** Endurtekin skammtar, allt að 8 mg/kg (að hámarki 896 mg) á sólarhring, hafa verið gefnir í klínískum rannsóknum hjá fullorðnum sjúklingum, án tilkynningar um eiturverkanir sem valda skömmtum.
 **Candidate1:** Hefðbundnar dagsskammtar allt að 8 mg/kg (himinn hátt skammtur 896 mg) hafa verið gefnir í klínískum rannsóknum hjá fullorðnum sjúklingum og ekki hefur verið tilkynnt um neinn skammtainnaðri eiturverkun.
@@ -6387,7 +6357,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:eso:84 · F</summary>
 
 **Source:** “And although it may be possible, it is harder to understand how these brilliant beacons could form on their own.
-**Decision:** F — 明亮信标误为燃烧生物。
+**Decision:** F — A bright beacon becomes a burning organism.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Þó þótt það sé hugsanlegt er það erfitt að skilja hvernig þessi glæsilegir brennsluverur gætu myndast af sér.
 
@@ -6396,7 +6366,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:eea:2094 · P</summary>
 
 **Source:** For those purposes, Member States shall designate existing bodies, where appropriate, or establish new bodies.
-**Decision:** P — 成员国在适当时指定现有或设立新机构完整。
+**Decision:** P — Member-state designation of existing bodies where appropriate or creation of new bodies is complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[5]
 **Candidate0:** Aðildarríkin skulu tilnefna fyrirtæki sem eru til staðar eða koma á fyrir nýju fyrirtækjum í þessum tilgangi.
 **Candidate1:** Í þeim tilgangi skulu aðildarríkin tilnefna fyrirtæki, sem þessum tilgangi einangra, eða koma í saman nýja fyrirtæki.
@@ -6412,7 +6382,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:eso:1034 · F</summary>
 
 **Source:** Now, the two teams combined their efforts and achieved this new record, which corresponds to a redshift of 9.1.
-**Decision:** F — 红移及记录概念错误。
+**Decision:** F — Redshift and record concepts are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Nú samþykktu tveir hópunarinnar sitt og náðu því nýju rekstrargildi sem samsvarar 9,1 rauðaþrengsi.
 
@@ -6421,7 +6391,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:eea:1321 · F</summary>
 
 **Source:** The product shall not be classified as R43 (may cause sensitisation by skin contact) according to Directive 1999/45/ EC of the European Parliament and of the Council of 31 May 1999 concerning the approximation of the laws, regulations and administrative provisions of the Member States relating to the classification, packaging and labelling of dangerous preparations.
-**Decision:** F — 药品范围错误，唯一产品候选皮肤接触术语亦错误。
+**Decision:** F — Drug scope is wrong; the sole products candidate also corrupts skin-contact terminology.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Lyfið skal ekki flokka sem R43 (getur valdið ofnæmi við húðskipti) samkvæmt tilskipun Evrópuþingsins og ráðsins 1999/45/EB frá 31. maí 1999 um samningu á lögum, reglugerðum og stjórnsýslufyrirmælum aðildarríkjanna varðandi flokkun, pakkun og merkingu hættulegra efnablandna.
 **Candidate1:** Lyfið skal ekki talist til að vera í R43 (getur valdið munnbótum vegna húðsnertingar) samkvæmt tilskipun Evrópuþingsins og ráðsins 1999/45/EB frá 31. maí 1999 um samræmingu á lögum, reglugerðum og stjórnsýslufyrirmælum aðildarríkja varðandi flokkun, pakkun og merkingu hættulegra efnablandna.
@@ -6437,7 +6407,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:eso:853 · F</summary>
 
 **Source:** “This is the most comprehensive case yet of a binary central star for which simulations have correctly predicted how it shaped the surrounding nebula - and in a truly spectacular fashion,” explains co-author Brent Miszalski, from SAAO and SALT (South Africa).
-**Decision:** F — 双星模拟预测塑造星云的核心关系均错误。
+**Decision:** F — All corrupt the central binary/simulation/predicted nebular-shaping relationship.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** „Þetta er það fullkomnastu fylgiskerli sem áður hefur verið til, sem er með einum centrali stjörnunni í tvíborga, sem hafa rannsóknir gert rétt mælingar á hvernig það hefur myndast umhverfinu – og í raunverulega mikilvæga hátt,“ segir Brent Miszalski, meðhöfundur þess, sem leggur að SAAO og SALT (Sáland í Afrika).
 **Candidate1:** „Þetta er það algerlegt tilvik þessari túrkis, sem varð áhvíðustu stjörnu sem varðar aðalstjörnuna í bilsbundnu sjónausninni,“ segir Brent Miszalski, meðhöfundur sem er einnig frá SAAO og SALT (Svissland), sem tók þátt í rannsókninni.
@@ -6453,7 +6423,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:ema:2012 · F</summary>
 
 **Source:** The safety and efficacy of OBIZUR for the treatment of serious bleeding episodes in subjects with acquired haemophilia with autoimmune inhibitory antibodies to human Factor VIII was investigated in a prospective, non-randomised, open-label trial of 28 subjects (18 Caucasian, 6 Black, and 4 Asian).
-**Decision:** F — 获得性血友病及研究设计关键术语错误。
+**Decision:** F — Acquired hemophilia and key study-design terminology are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Öryggi og verkun OBIZUR við meðferð á alvarlegum blæðingarupphafi hjá einstaklingum með áðurnýttan blóðþynningarafleiðu með sjálfsnæmissvörunar mótefnum gegn manna storkuþætti VIII var rannsökuð í framsýnsetri, óslegri, opinni rannsókn sem tók til 28 einstaklinga (18 hvítar, 6 svarta og 4 asir).
 
@@ -6462,7 +6432,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:eso:377 · P</summary>
 
 **Source:** ALMA is giving us new insight into what&#x27;s happening in these stars and what might happen to the Sun in a few billion years from now,&quot; says Shazrene Mohamed (Argelander Institute for Astronomy, Bonn, Germany and South African Astronomical Observatory), a co-author of the study.
-**Decision:** P — ALMA恒星与太阳数十亿年后及作者机构完整。
+**Decision:** P — ALMA, stars, the Sun billions of years later and author/institution are complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** „ALMA gefur okkur nýja skýringar um hvað er að gerast við þessi stjörnur og hvað gæti gerst á sólina eftir nokkra milljarða ára“ segir Shazrene Mohamed (Argelander Institute for Astronomy í Bonn í Þýskalandi og South African Astronomical Observatory) sem var meðhöfundur greinarinnar.
 
@@ -6471,7 +6441,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:ema:2828 · U</summary>
 
 **Source:** Chemical and physical in-use stability of the reconstituted solution has been demonstrated for one month at 2°C - 8°C. From a microbiological point of view, once opened, the reconstituted solution may be stored for maximum of one month at 2°C - 8°C. Other in-use storage times and conditions are the responsibility of the user.
-**Decision:** U — 候选5接近，但微生物学限定词不明确；其余化学物理稳定性或复溶内容错误。
+**Decision:** U — Candidate5 is close but its microbiological qualifier is unclear; others corrupt physicochemical stability or reconstitution.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Grun hafa verið af varðeigandi stöðugleika lyfjahvarfaefnisins í notkun á eitt mánuði við 2°C-8°C. Frá örverukennsluþætti er því að geyma haldið endurupptökuðu lausnina í að hámarki eitt mánuði við 2°C-8°C eftir að það hefur verið opnað. Fyrir önnur geymslutíma og -setningu við notkun ber ábyrgð þess að notandinn skal annast.
 **Candidate1:** Einfaldlega hefur verið sýnt fram á efnahæfi og efnaleiðróaðferð notkunar efnislyfsins í einum mánuði við 2°C-8°C. Frá örverufaglegu sjónarmiði, eftir að lyfið er opnað, er hægt að geyma það í hámarki við 2°C-8°C í einn mánuði. Aðrir geymslutíma og aðstæður fyrir notendum efnislyfið í notkun eru á ábyrgð notanda.
@@ -6496,7 +6466,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:eso:252 · U</summary>
 
 **Source:** Normally many shorter exposures are taken and later digitally combined.
-**Decision:** U — 较短曝光útsetningar术语不能确认摄影含义；数字合成部分近似。
+**Decision:** U — Photographic meaning of short-exposure útsetningar is unconfirmed; digital combination is approximate.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Einstaklega eru nokkrar styttri yfirburðar tíðnum sem síðan eru síðan samanstöðuð kljúfráðlega.
 **Candidate1:** Yfirleitt tekur mikið af styttri útsetningu og síðan styrkurinn saman.
@@ -6512,7 +6482,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:ema:1081 · P</summary>
 
 **Source:** Tell your doctor straight away if you get new or worsening signs of heart failure during treatment with Remsima.
-**Decision:** P — 治疗期间新发或加重心衰立即告知医生完整。
+**Decision:** P — Immediately telling a doctor about new/worsening heart failure during treatment is complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[1, 3, 5, 6]
 **Candidate0:** Segðu lækninum strax frá því ef neinar eða versnandi einkenni um hjartabilun koma fram meðan á meðferð með Remsima stendur.
 **Candidate1:** Láttu lækninn vita tafarlaust ef þú færð nýjar eða versnandi einkenni um hjartabilun meðan þú tekur Remsima.
@@ -6546,7 +6516,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:ema:1724 · P</summary>
 
 **Source:** If a loading dose is indicated, an initial dose of 100 mg followed by a 50 mg twice daily regimen for the first week should be used.
-**Decision:** P — 负荷剂量100mg随后首周50mg每日两次准确。
+**Decision:** P — A100mg loading dose followed by50mg twice daily during the first week is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ef ávísaður er hleðsluskammtur skal nota upphafsskammtinn 100 mg sem fylgst er eftir með 50 mg tvisvar sinnum á sólarhring í fyrsta viku.
 **Candidate1:** Ef ákvarðað er að gefa hleðsluskammt skal nota 100 mg í upphafi og 50 mg tvisvar sinnum á sólarhring í fyrstu viku.
@@ -6562,7 +6532,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:eea:1468 · F</summary>
 
 **Source:** In either case, Member States will ensure that a representative share of the national market is covered by the survey.
-**Decision:** F — 均未保留调查覆盖有代表性的国内市场份额。
+**Decision:** F — None retains survey coverage of a representative domestic-market share.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í báðum tilvikum verða aðildarríkin að tryggja að hlutverkaltæki heimamarkaðarinnar sé tækt af myndunarhópnum.
 **Candidate1:** Í báðum tilvikum sjáu aðildarríki aðlögu að því að umsóknin nær yfir hlutaðeigandi hluta landsmæla.
@@ -6578,7 +6548,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:eea:2112 · U</summary>
 
 **Source:** Standard contractual clauses should relate only to data protection.
-**Decision:** U — 候选1近似标准合同条款但samningseðillar术语不可靠；其余明显错。
+**Decision:** U — Candidate1 approaches standard contractual clauses, but samningseðillar is unreliable; others are clearly wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Aðgerðarreglur sem eru upp hvarfa í samningum skulu einungis varða gagnavernd.
 **Candidate1:** Stöðluð samningseðillar ættu aðeins að tengjast verndun gagna.
@@ -6594,7 +6564,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:eso:46 · P</summary>
 
 **Source:** Furthermore, the team also found evidence that the distances of the planets from their star follow a regular pattern, as also seen in our Solar System.
-**Decision:** P — 行星与恒星距离规律类似太阳系含义保留。
+**Decision:** P — Regular planet-star distances analogous to the Solar System are retained.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Enn fremur fundu hópurinn einnig vísbendingar um að fjarlægð reikistjarna frá stjörnunni sé á reglulegu leið og sjá leggust í sólkerfinu okkar.
 
@@ -6603,7 +6573,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:ema:2373 · F</summary>
 
 **Source:** Exploratory analysis showed clinically meaningful improvements were observed for the vedolizumab every four weeks and every eight weeks groups in GEMINI II and the improvements were significantly greater as compared with the placebo group from baseline to Week 52 on EQ-5D and EQ-5D VAS scores, total IBDQ score, and IBDQ subscales of bowel symptoms and systemic function.
-**Decision:** F — 四周剂量组损坏及临床改善关系不准确。
+**Decision:** F — The four-week dosing group and clinical-improvement relationship are corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Greining á upplýsingum sýndi klínískt mikilvæg breytingar í þvegeinstökum og átta vikna hópum í GEMINI II rannsókninni og bætti var á meðferð við vedólízúmabi en í lyfleysuhópnum frá grunngildum í viku 52 á EQ-5D og EQ-5D VAS gildum, heildar IBDQ gildum og IBDQ undirþætti fyrir einkenni um ristil og altæk starfsemi.
 
@@ -6612,7 +6582,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:eea:1960 · F</summary>
 
 **Source:** If the entitys own equity instruments to be received, or delivered, by the entity upon settlement of a contract are puttable financial instruments with all the features and meeting the conditions described in paragraphs 16A and 16B, or instruments that impose on the entity an obligation to deliver to another party a pro rata share of the net assets of the entity only on liquidation with all of the features and meeting the conditions described in paragraphs 16C and 16D, the contract is a financial asset or a financial liability.
-**Decision:** F — 金融条款、清算、可回售及资产负债核心错误。
+**Decision:** F — Financial clauses, liquidation, puttability and asset/liability concepts are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Ef eignasjálfstætt hlutverk sem aðildarríkið á að fá að ljúka eða gefa eftir samningi er hægt að altað eignasjálfstætt hlutverk með öllum eiginleikum og uppfylla skilyrði, sem lýst er í 16A- og 16B- þáttum, eða eignasjálfstætt hlutverk sem kveða á um að aðildarríkið beri til að gefa annarráðbendi rétt á hluta af hreinanlegum eignum efnahagafélagsins aðeins ef efnahagafélagsinu er afleitt að hlutabreytingum með öllum eiginleikum og uppfylla skilyrði, sem lýst er í 16C- og 16D- þáttum, er samningur aðili efnahagsafurð eða efnahagsaldi.
 **Candidate1:** Ef eignatökin sem reynslustofnunin á að fá eða gefa upp eigi til að gjöf verði í tengdri sambandi við uppgjöri samningsins, eignar- fjárlög og eignar- fjárlög, sem eru tilgreind í 16A-16B, eða eignar- fjárlög sem gera efnahagsmanninu óska um að gefa hinum aðilinn að hlutfalli netþjónustu reynslustofnunarinnar, aðeins í endurnýjun, og eru tilgreind í 16C-16D, eru eignar- fjárlög eða reynslutökin sem eru fyrir hendi reynslumenn og sem eru tilgreind í 16C-16D, er samningurinn reynslutökin eða reynslutökin.
@@ -6628,7 +6598,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:opensubtitles:1520 · F</summary>
 
 **Source:** Nurse, here is the key to fetch more spices.
-**Decision:** F — 香料错误为避孕套且护士遗漏。
+**Decision:** F — Spices become condoms and the nurse address is omitted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Nú er hér lykill til að fá meira smokka.
 
@@ -6637,7 +6607,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · g8 · p18official21:dev:eea:1901 · F</summary>
 
 **Source:** Hot formic acid is very corrosive and must be handled with care.
-**Decision:** F — 热甲酸和强腐蚀性的术语均损坏。
+**Decision:** F — Both hot formic acid and strong-corrosiveness terminology are corrupted.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Hettur formic sýra er mjög roðandi og verður að meðhöndla hana varlega.
 **Candidate1:** Hár formic sýra er mjög roðaþarmandi og verður að handleika hana með varúð.
@@ -6653,7 +6623,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:opensubtitles:104 · F</summary>
 
 **Source:** He wore a black mask.
-**Decision:** F — 面具错误为微光。
+**Decision:** F — A mask becomes a glimmer.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hann varð í svörtu skíma.
 
@@ -6678,7 +6648,7 @@ Symmetric final-case review
 <details><summary>dev_t1983726 · candidate · greedy · p18official21:dev:eea:1996 · F</summary>
 
 **Source:** One example is a net cash-settled share option.
-**Decision:** F — 现金净额结算股份期权关键金融含义错误。
+**Decision:** F — Net-cash-settled share options lose their key financial meaning.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Eitt dæmi er netaða hlutafjárlagningur með peningaskiptum.
 
@@ -9863,7 +9833,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:917 · F</summary>
 
 **Source:** If bacterial contamination occurs despite treatment with antibiotics, subcultivation must be preceded by centrifugation at 2 000 to 4 000 g for 15 to 30 min at 2 to 5 °C, and/or filtration of the supernatant through a 0,45 μm filter (low protein-binding membrane).
-**Decision:** F — 离心、继代培养及上清过滤关键步骤均损坏。
+**Decision:** F — Centrifugation, subculture and supernatant filtration are all corrupted.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Ef bakteríulokun kemur fram þrátt fyrir meðferð með sýklalyfjum skal fyrir framblöndun og uppvarmyndun stafa þrotun við 2 000 til 4 000 g í 15 til 30 mínútur við 2 til 5 °C og/eða þrýstinginn með supernatantum gegnum 0,45 μm þrýstingsbrot (lágþarma próteinsnúðarþrýstingsbrot).
 **Candidate1:** Ef bakteríuhvata kemur fram þrátt fyrir lyfjameðferð verður að fylgja með sér svipbreytingu með rafþýðingu við 2 000 til 4 000 g á 15 til 30 mínútur við 2 til 5 °C og/eða gegnumþurrkað eimnu sem fer um 0,45 μm gegnumfylgni (lágþætta þrengingarbundið hálfdýra).
@@ -9879,7 +9849,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:875 · P</summary>
 
 **Source:** The clinical inspections must be carried out during the period October to June or whenever the water temperature is below 14 °C.
-**Decision:** P — 十月至六月或水温低于14度检查完整。
+**Decision:** P — Inspection from October to June or below14degrees water temperature is complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[6]
 **Candidate0:** Klínískar athuganir verða að fara fram á tímabilinu október til júnar eða hvenær sem vatnsfjöldaður hefur verið undir 14°C.
 **Candidate1:** Klínískar athuganir verða að fara fram á tímabilið október til júní eða hvenær sem vatnsrauðin er undir 14°C.
@@ -9895,7 +9865,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:2017 · F</summary>
 
 **Source:** In the References section, the footnote is amended.
-**Decision:** F — 参考文献与脚注均错误。
+**Decision:** F — Both references and footnotes are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í staðalnefndinni er undirgreiningin breytt.
 **Candidate1:** Í staðalnefndanum er breytt átt við miðla í staðilum.
@@ -9911,7 +9881,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:778 · U</summary>
 
 **Source:** This remarkably precise relationship, which was discovered in 1908 by American astronomer Henrietta Swan Leavitt, makes the study of Cepheids one of the most effective ways to measure the distances to, and map the positions of, distant objects in the Milky Way and beyond.
-**Decision:** U — 候选0较近，但精确关系术语损坏；其他项关键测距对象错误/遗漏。
+**Decision:** U — Candidate0 is relatively close, but precise relational terminology is corrupted; others omit/misidentify key distance-measurement objects.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þessi mælavist, sem amerínska stjarnvísindamérklingurinn Henrietta Swan Leavitt komst að kunnast af staðinn árið 1908, gerir mælingar á Cepheidum eins af skilvirkustu leiðum til að mæla fjarlægðina og mynda punktum fjarlæga fyrirbæra í Vetrarbrautinni og yfir henni.
 **Candidate1:** Þessi mikilvægastu sambandi, sem rannsakað var af anneðraðri stjörnufræðingi, Bandaríkjunum Henrietta Swan Leavitt, var stuðlað við mælingar stjörnum á stjörnuæðum með hjálp cepsar, sem einn af öflugustu aðferðum til að mæla fjarlægðir til og koma fyrir stjörnum í vetrarbrautinni og yfir henni.
@@ -9927,7 +9897,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:378 · P</summary>
 
 **Source:** These are stars with initial masses between 0.8 and 8 solar masses in the late stages of their lives.
-**Decision:** P — 晚期恒星初始0.8至8太阳质量完整。
+**Decision:** P — Late-stage stars' initial0.8to8solar masses are complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Þetta eru stjörnur með upphafsmassu á bilinu 0,8 til 8 sólarmassa í síðustu áfanga lífsgreina þeirra.
 **Candidate1:** Þær eru stjörnur með upphafsmassu á bilinu 0,8 til 8 sólarmassa á lokastöfunum þeirra lífs.
@@ -9943,7 +9913,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:1170 · U</summary>
 
 **Source:** GC/MS methods of analysis and bioassays may be used for screening.
-**Decision:** U — GC/MS生物测量较近，但筛查译成skimmings，不能确认正确技术意义。
+**Decision:** U — GC/MS and biometrics are close, but screening becomes skimmings, leaving technical correctness unconfirmed.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Notar ráðstafanir niðurstöður á grind- og massatæknisviðmiðum (GC/MS) geta verið notaðar til skimmis.
 **Candidate1:** Með greiflegri greiningu (GC/MS) geta verið notað til scannings.
@@ -9959,7 +9929,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:1729 · U</summary>
 
 **Source:** Following the invitation of the carrier and of the competent authorities of the Islamic Republic of Iran, a team of European experts conducted a fact-finding mission from 16 to 20 June 2008 to verify the implementation by the carrier of the various corrective actions.
-**Decision:** U — 候选7国名日期纠正较近，但承运人与邀请/调查措辞不可靠。
+**Decision:** U — Candidate7 nearly corrects countries/dates, but carrier and invitation/investigation wording are unreliable.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Framkvæmdastjórn flutningsráðgjafandi flugrekanda og lögbærríkis- stjórnir í Írlandi tilkynntu hóp evrópskra sérfræðinga til að fara í kunnastiltunar- herferð frá 16 til 20. júní 2008 til að sannprófa framkvæmd flugrekanda með ferðavirkinu.
 **Candidate1:** Eftir tilkynningu flutningsfélaga og lögbærra aðila Islambóls- ríkisins, fór þaða sártur hópur evrópskra sérfræðinga í fara yfir ástandið 16-20. júní 2008 til að sannprófa framkvæmd flutningsfélagsins á þeim mismunandi leiðræðum sem það er um að ráðfærast.
@@ -9990,7 +9960,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:1980 · F</summary>
 
 **Source:** The Kaplan-Meier curves of the time from randomisation to impending relapse during the 38-week, Double-blind, Active-controlled Phase for Abilify Maintena, oral aripiprazole 10-30 mg, and aripiprazole Long-Acting Injectable 50 mg/25 mg are shown in Figure 1.
-**Decision:** F — 复发、活性对照或长效注射等关键内容均有错误。
+**Decision:** F — Relapse, active control or long-acting injection contains critical errors throughout.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Kaplan-Meier línuröður frá slembiröðun til bráðrar bakslags á 38 vikna, tvíblindri, lyfleysuhópnum með virkum lyfjum gegn Abilify Maintena, aripíprazól 10-30 mg til inntöku og aripíprazól 50 mg/25 mg lyfleyfi, eru sýndar í mynd 1.
 **Candidate1:** Kaplan-Meier-loburnar um tíma frá slembiröðun til bata verka á fyrir tilstilli endurvinnslu í 38 vikna tvíblindri lyfleysuprófi með virkum lyfjum með Abilify Maintena, aripíprazól 10-30 mg til inntöku og aripíprazól 50 mg/25 mg í sprautu eru sýndar í mynd 1.
@@ -10006,7 +9976,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:968 · U</summary>
 
 **Source:** “Astronomers have thought for a while that conditions within these outflows could be right for star formation, but no one has seen it actually happening as its a very difficult observation,” comments team leader Roberto Maiolino from the University of Cambridge.
-**Decision:** U — 候选5较近，但外流与观测难度措辞不可靠。
+**Decision:** U — Candidate5 is close, but outflow and observational-difficulty wording are unreliable.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** „Stjörnufræðingar höfðu hugsað í nokkrum daga að aðstæður í umfermum fyrir þynningu stjarna væru rétt, en enginn hefur séð það gerast og það er mjög flókinn að mæla,“ sagði Roberto Maiolino úr Cambrigdeháskóla sem hafði umsjón með verkefninu.
 **Candidate1:** „Stjörnufræðingar hafa hugsanlegt til að fyrirrétta að ástandin í þessum útfærslum væri hentugt fyrir myndun stjarna en enginn hefur litið á það að það gerist og það er mjög flókilegt að fækja,“ sagði Roberto Maiolino við University of Cambridge sem hafði umsjón með hópnum.
@@ -10022,7 +9992,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:2321 · P</summary>
 
 **Source:** In Study 1 (see section 5.1), decrease in absolute neutrophil count levels below 500 cells/mm3 was observed in 4 % (8/194) of patients and decrease in platelets below 50,000/mm3 was observed in 4 % (8/194) of patients receiving ViraferonPeg in combination with ribavirin.
-**Decision:** P — 中性粒细胞绝对计数及血小板阈值比例药物完整。
+**Decision:** P — Absolute neutrophil count, platelet thresholds/proportions and the drug are complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[5]
 **Candidate0:** Í rannsókn 1 (sjá kafla 5.1) komri fram að þíðni heildar hvítkorna minni en 500 frumur/mmm3 hjá 4% (8/194) sjúklinga og minnkaði blóðflagnafjöldi minni en 50.000/mmm3 hjá 4% (8/194) sjúklinga sem fengu ViraferonPeg ásamt ribavirini.
 **Candidate1:** Í rannsókn 1 (sjá kafla 5.1), kom fram lækkun á heildarhlutfalli daufkyrninga undir 500 frumur/mm3 hjá 4 % (8/194) sjúklinga og lækkun blóðflagna undir 50.000/mm3 hjá 4 % (8/194) sjúklinga sem fengu ViraferonPeg ásamt ribavirini.
@@ -10038,7 +10008,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:2380 · F</summary>
 
 **Source:** In a proportion of these the glycaemic response to prolonged-release exenatide was absent at the end of the controlled period of studies; 2.6 % of patients showed no glucose improvement with higher titre antibodies whereas 1.6 % showed no improvement while antibody negative.
-**Decision:** F — 抗体滴度与阴性或血糖反应、缓释关键关系均错误。
+**Decision:** F — Antibody titers, negative status or glycemic response and extended-release relationships are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Hjá hluta þessara var blóðsykursvörun við lyfjagjöf útútlosaðs exenatíðs ekki við lok samanburðarstigs rannsóknarinnar; 2,6% sjúklinga sýndu engin bata á magangrót með hærra mótefnum en 1,6% sýndu engin bata með mótefnum neikvæðum.
 **Candidate1:** Í hluta þessara mynduðu bólusetningu við langvarandi exenatíði frá svipuðum að því er varðar glúkósa við lok samanburðarrannsóknarinnar, 2,6% sjúklinga sýndu ekki bata á glúkósa með hærrar styrkur mótefni en 1,6% sýndu ekki bata með mótefnavanlega neikvæðum mótefnum.
@@ -10054,7 +10024,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:274 · P</summary>
 
 **Source:** More than 200 new variable stars in Centaurus A were discovered.
-**Decision:** P — Centaurus A发现200多颗新变星完整。
+**Decision:** P — Discovery of over200new variable stars in Centaurus A is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Meira en 200 nýjar breytistjörnur fundust í Centaurus A.
 **Candidate1:** Fyrir senni komu fram merki en 200 endurtekar stjörnur í Centaurus A.
@@ -10070,7 +10040,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:561 · F</summary>
 
 **Source:** The requirements below apply to power-operated windows/roof-panel systems/partition systems to minimise the possibility of injuries caused by accidental or improper operation.
-**Decision:** F — 电动车窗车顶隔断对象均错误，部分重复退化。
+**Decision:** F — Electric-window, roof and partition objects are wrong, with repetitive degeneration in some candidates.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Kröfurnar hér á eftir eiga við um tæki/rúmmálseitulegan kerfis/starfsemin sem eru stýrðir af öryggisskilla, til að lágmarka hugsanlega hættu á slysa vegna svima til aðlögunar og misnota.
 **Candidate1:** Kröfurnar hér á eftir gilda um byrði/kortlokkakerfi/daugaferira kerfi fyrir vélum/kafla, sem eru notuð með tæki, til að lágmarka möguleika á áverkum vegna slysna eða óvenjulegrar notkunar.
@@ -10086,7 +10056,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:665 · U</summary>
 
 **Source:** The combination of Ribavirin Mylan with interferon alfa-2b is used to treat adult patients with chronic hepatitis C, who have previously responded to treatment with an alpha interferon alone, but whose condition has recurred.
-**Decision:** U — 单用alpha应答大致保留，但复发表达多为不明或不等价措辞。
+**Decision:** U — Response to alpha alone is mostly retained, but relapse is unclear or inequivalent in most candidates.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Samsvarandi notkun ribavirin Mylan með interferon alfa-2b er notuð til meðferðar hjá fullorðnum sjúklingum með langvinnt lifrarbólgu C, sem hafa svarað fyrri meðferð með einum alfa interferonum en skerðing hefur endurverkað.
 **Candidate1:** Samsetning Ribavirin Mylan og interferon alfa-2b er notað til meðferðar hjá fullorðnum sjúklingum með langvarandi lifrarbólgu C sem höfðu áður svarað meðferð með einum alfa interferon en sjúkdómurinn hefur sérstaka sjúkdómusýkingu.
@@ -10102,7 +10072,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:934 · F</summary>
 
 **Source:** Takashi Shimonishi, an astronomer at Tohoku University, Japan, and the paper&#x27;s lead author enthused: &quot;This is the first detection of an extragalactic hot molecular core, and it demonstrates the great capability of new generation telescopes to study astrochemical phenomena beyond the Milky Way.&quot;
-**Decision:** F — 热分子核及天体化学核心术语全部错误。
+**Decision:** F — Hot molecular cores and central astrochemical terminology are wrong throughout.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Takashi Shimonishi, stjörnufræðingur við Tohoku háskóla í Japan og aðalhöfundur greinarinnar, sagði: „Þetta er fyrsta tilgreiningin á hita sameindabúm við utan vetrarbrautar og sýnir á mestan hæfni nýrrar sjónauka til að rannsaka loftþyrpingar utan Vetrarbrautarinnar.“
 **Candidate1:** Takashi Shimonishi, stjörnufræðingur við Tohoku háskóla í Japan og aðalhöfundur greinar um greininguna, sagði eftir þessari álit: „Þetta er fyrsta greining á heitu, sameindarhóp í gegnumvörslu vetrarbrautar, og sýnir fram á mikil getnað nýskams sjónauka til að rannsaka áhrif astroefna á utan Vetrarbrautarinnar.“
@@ -10118,7 +10088,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:1711 · P</summary>
 
 **Source:** On the basis of the common criteria, it is assessed that Mahan Air has implemented all necessary measures to conform to relevant safety standards and therefore may be withdrawn from Annex A. The Commission will continue to monitor closely the performance of the carrier.
-**Decision:** P — MahanAir满足安全标准可从附件A移除并持续密切监督完整。
+**Decision:** P — MahanAir meets safety standards, can be removed from Annex A and remains closely monitored; all retained.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[7]
 **Candidate0:** Á grundvelli sameiginlegra viðmiðana er talið að Mahan Air hafi gert allar nauðsynlegar ráðstafanir til að fara að viðeigandi öryggisstöðlum og því er hægt að fella hana frá viðauka A. Framkvæmdastjórnin mun halda nái innan við skilvirki á framkvæmdarhætti flugrekanda.
 **Candidate1:** Á grundvelli sameiginlegra viðmiðana telst Mahan Air hafa gert allar nauðsynlegar ráðstafanir til að fara að viðeigandi öryggiskröfunum og því má tví á upphafi viðauka A. Framkvæmdastjórnin mun þróa eftirlit þess að flugrekendurinn fari fram upp á þær skilyrði sem einnig eru mælt fyrir um.
@@ -10134,7 +10104,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:256 · P</summary>
 
 **Source:** This is much smaller than astronomers had previously thought.
-**Decision:** P — 远小于天文学家先前所想完整。
+**Decision:** P — Much smaller than astronomers previously thought is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Þetta er mikið minni en stjörnufræðingar höfðu áður taldir.
 **Candidate1:** Þetta er mun lítiltar en stjörnufræðingar höfðu áður talda.
@@ -10149,7 +10119,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:401 · F</summary>
 
 **Source:** Lost in Space: Rogue Planet Spotted?
-**Decision:** F — 流浪行星错误。
+**Decision:** F — Rogue planets are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Starfandi í geimnum: Strotur stjarna finnist?
 **Candidate1:** Götvun í geimnum: Úrskulduplanet leggta að sést?
@@ -10177,7 +10147,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:369 · F</summary>
 
 **Source:** Because they blow out large amounts of material, red giants like R Sculptoris are major contributors to the dust and gas that provide the bulk of the raw materials for the formation of future generations of stars, planetary systems and subsequently for life.
-**Decision:** F — 原材料主体贡献与未来世代恒星行星系统含义均不完整。
+**Decision:** F — Contribution of most raw material and future generations of stars/planetary systems are incomplete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þar sem þeir blást á miklum magni af efnum eru rauðir risar, svo sem R Sculptoris, mikil aðstoðarþekja við að það ar með þorni af ryki og gasi sem talin eru fjölda af grunnefnum fyrir myndun köstum í framtíðinni.
 **Candidate1:** Vegna þess að þær blást út stórum mæli af efni eru rauðir risar eins og R Sculptoris mikill af gruna á ryki og gasi sem veita fyrir grunn efna til myndunar framtíðaraldra stjarna, heiminnum og lífs.
@@ -10193,7 +10163,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:271 · U</summary>
 
 **Source:** Both sets of filaments are stellar nurseries, containing hot young stars.
-**Decision:** U — 候选0/5星形成区和年轻热恒星较近，但filaments对应词不可靠。
+**Decision:** U — Candidates0/5 approach star-forming regions and young hot stars, but the rendering of filaments is unreliable.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Bæði seti af fila eru stjörnumyndarþokur, sem innihalda heitra, ungra stjarna.
 **Candidate1:** Bæði lagiða þýðingarinnir eru stjörnumerbergar, sem innihalda hita og ung stjörnur.
@@ -10209,7 +10179,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:809 · U</summary>
 
 **Source:** The Programme is one of the instruments necessary for the implementation of the overall Community strategy on gender equality, which embraces all Community policies and action aimed at achieving gender equality, including gender mainstreaming policies and specific actions targeted at women.
-**Decision:** U — 总体平等政策保留，性别主流化整合术语无法确认。
+**Decision:** U — Overall equality policy remains, but integration/gender-mainstreaming terminology is unconfirmed.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Áætlunin er ein af nauðsynlegum búnaði innan ramma framkvæmda- eru- kerfis Bandalagsins sem gengur að öllu stefnumálum sambandsins um jafnréttni kynjanna, þar sem stunda allir stefnumálum Bandalagsins og aðgerðum sem miða að jafnréttni kynjanna, þar með talið stefnumálum sem tengjast jafnréttistengingu kynjanna og sérstöku aðgerðum sem miðast hjá konum.
 **Candidate1:** Áætlunin er einu af nauðsynlegu íðunum til að framfylgja almennri stefnu Bandalagsins er um jöfnun kynjanna, sem nær yfir allar stefnumál Bandalagsins og aðgerðir til að ná sjónarmiði kynjanna, þar með talið kynjaskiptasjóða- stefnu og sérstaka aðgerða, sem beinast til konum.
@@ -10225,7 +10195,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:2540 · F</summary>
 
 **Source:** Very rare (may affect up to 1 in 10,000 people): sore throat, runny nose, fever; signs of a high level of lactic acid in the blood (known as lactic acidosis) such as drowsiness or dizziness, severe nausea or vomiting, abdominal pain, irregular heart beat or deep, rapid breathing; redness of the skin, itching; decreased vitamin B12 levels (paleness, tiredness, mental symptoms such as confusion or memory disturbances).
-**Decision:** F — 咽痛流涕乳酸及症状/苍白等均有关键错误。
+**Decision:** F — Sore throat, runny nose, lactate and symptoms/pallor contain critical errors.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Mjög sjaldgæfar (geta komið fyrir hjá allt að 1 af hverjum 10.000 einstaklingum): hægðir í hálsi, nefskorpuláti, hiti; merki um mikla magn laktasa í blóði (þekkt sem mjólkursýrublóðsýring) eins og svimi eða sundli, veruleg ógleði eða uppköst, kviðverkir, óreglulegur hjartsláttur eða djúp, hröð öndun; roði á húð, kláði, minnkað magn B12 vítamíns (vilja, þreyta, einkennum sem víðtaka eða minnkun á minnið).
 **Candidate1:** Mjög sjaldgæfar (geta komið fyrir hjá allt að 1 af hverjum 10.000 einstaklingum): Örhogur í hálsi, nefðisgall, hiti; merki um mikla magn laktóssýru í blóði (kallaður mjólkursýrugildistökk) svo sem syfja eða sundl, alvarleg ógleði eða uppköst, kviðverkir, óreglulegur hjartsláttur eða djúp og hröð öndun; roði í húð, kláði; minnkað magn af B12-vítamíni (bleðri lit, þreyta, geðvöxtarvísbendingar svo sem rugl eða minnkun á menntunar).
@@ -10241,7 +10211,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:1062 · U</summary>
 
 **Source:** However, the research team could not detect any visual evidence of outgassing.
-**Decision:** U — 候选2含出口气体意思，但视觉证据及逸气专门术语表达不明确。
+**Decision:** U — Candidate2 suggests escaping gas, but visual evidence and specialized outgassing terminology are unclear.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þó gat rannsóknarhópurinn ekki greint neinu augljósa vísbendinga um útlosa.
 **Candidate1:** Aðildarráðinu gat þó ekki fundið neinar augnlegar vísbendingar um útlegg.
@@ -10257,7 +10227,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:949 · F</summary>
 
 **Source:** The Meningococcal Antigen Typing System (MATS) was developed to relate antigen profiles of different strains of meningococcal group B bacteria to killing of the strains in the serum bactericidal assay with human complement (hSBA).
-**Decision:** F — 抗原、菌株杀灭、人补体及血清杀菌试验关键含义错误。
+**Decision:** F — Antigens, strain killing, human complement and serum bactericidal assays are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Meningókokkarefnahvörf (MATS) var ætlað að bera saman efnahvarfaþáttir mismunandi gerða meningókokkafíknar B til kyrninga þeirra í sermis bakteríusvifasýni fyrir manna (human complement SBA, hSBA) sem dragir úr bakteríum.
 **Candidate1:** Meningokokus-amminýsdreifingarkerfið (MATS) var ætlað til að tengja ókýrsluhlutföllum óeðlisfrumna af mismunandi tegundum meningokokus bakteríanna við töku þeirra í bakteríulyfjusprófi með fyrirhuguðu fullkomna (hSBA).
@@ -10273,7 +10243,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:1551 · F</summary>
 
 **Source:** Treatment with Pedea can only be carried out in a neonatal intensive care unit under the supervision of an experienced neonatologist.
-**Decision:** F — 新生儿重症监护及经验医生限制均不完整。
+**Decision:** F — Neonatal intensive care and experienced-physician restrictions are incomplete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Það er aðeins hægt að fá meðferð með Pedea í jörðunargæslukvarða undir eftirliti nýburumennsérfa.
 **Candidate1:** Notkun Pedea er aðeins möguleg í hjáveitri meðferðarstofu fyrir nýbura undir eftirliti sérþekktra nýbúnaðarlæknis.
@@ -10289,7 +10259,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:2594 · F</summary>
 
 **Source:** Take the pre-filled syringe with solvent and attach (by screwing on) the plunger to the bottom part of it.
-**Decision:** F — 全部旋拧误为切开、粘或敲钟等动作。
+**Decision:** F — All replace twisting with cutting, sticking, ringing or other actions.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Takið áfyllta sprautuna með leysi og festi (með því að kljúfa á) stimpilinn á neðan hluta hennar.
 **Candidate1:** Takið áfyllta sprautuna með leysi og festa (með því að kljúfa á hana) stimpilinn á neðan hluta hennar.
@@ -10305,7 +10275,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:1118 · U</summary>
 
 **Source:** The aggregate sample is made up by uniting all incremental samples.
-**Decision:** U — 候选1较近，但增量样本术语aukingarsýni不能可靠确认。
+**Decision:** U — Candidate1 is close, but aukingarsýni is not reliably confirmed as incremental sample.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Heildarplötuð er með því að tengja allar aukaþéttninum saman.
 **Candidate1:** Heildarsýnið er samsett með því að tengja allar aukningarsýnið.
@@ -10321,7 +10291,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:155 · U</summary>
 
 **Source:** The quality of images from an interferometric telescope like ALMA depends on both the separations and the number of the antennas.
-**Decision:** U — 候选3干涉术语与间距近似，但rúmmála millibili是否准确不确定。
+**Decision:** U — Candidate3 approaches interference and spacing, but rúmmála millibili is uncertain.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Gæði myndasins af ALMA sjónauka sem kemur fram er háð bæði þeirri að undantekningu og fjölda loftneta.
 **Candidate1:** Gæði myndar frá fjörmagnslinu ALMA skilvirkt er bæði á fjölskyldunum og fjölda loftneta.
@@ -10337,7 +10307,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:857 · F</summary>
 
 **Source:** With initial administration of Aldurazyme or upon re-administration following interruption of treatment, it is recommended that patients be administered pre-treatment medicines (antihistamines and/or antipyretics) approximately 60 minutes prior to the start of the infusion, to minimise the potential occurrence of IARs.
-**Decision:** F — 退热药或输注相关反应含义均错误。
+**Decision:** F — Antipyretics or infusion-related reactions are wrong throughout.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Við að Aldurazyme sé gefið í fyrstu skammt, eða við endurtekin gjöf eftir að meðferð er hætt, er mælt með því að sjúklingar fái lyf fyrir meðferð (andhistamín og/eða hitatryggingalyf) um 60 mínútum fyrir innrennsli til að lágmarka hugsanlega auðveld innrennslishraða.
 **Candidate1:** Við frumupplýsingar um Aldurazyme eða við endurtekið eftir að meðferð er hætt skal ráðlagt að gefa sjúklingum lyf við meðferð (andhistamín og/eða vökvalyf) um 60 mínútum fyrir inndælinguna til að lágmarka hugsanlega tilfelli millivefseggju sjúkdómsins.
@@ -10353,7 +10323,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:36 · F</summary>
 
 **Source:** “Together with the planets found around the young, massive stars Fomalhaut and HR8799, the existence of Beta Pictoris b suggests that super-Jupiters could be frequent byproducts of planet formation around more massive stars,” explains Gael Chauvin, a member of the team.
-**Decision:** F — 超级木星、BetaPictoris存在与常见副产品等核心内容均损坏。
+**Decision:** F — Super-Jupiters, existence around BetaPictoris and common-byproduct concepts are corrupted.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** „Samband við reikistjörnurnar sem fundust við yngri og massamikla stjörnurnar Fomalhaut og HR8799 býr til að útfjöldinn Beta Pictoris b gefi til kynna að meiraanlegir Júpíterar gætu verið þrálát af myndun reikistjörna um meira massamikla stjörnur“ segir Gael Chauvin, aðma í hópnum.
 **Candidate1:** „Koma á sér stað ásamt reikistjörnunum sem fundust í kringum yngri og massamikla stjörnurnar Fomalhaut og HR8799, gefur til kynna að þau séu erfðabreytur súper-Júpíterar umorðir umorða meira massaðar stjörnur“ segir Gael Chauvin, aðalmeðlimur í hópnum.
@@ -10369,7 +10339,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:2851 · P</summary>
 
 **Source:** Overhydration should be avoided in patients at risk of cardiac failure.
-**Decision:** P — 心衰风险患者避免过量液体潴留/水化含义保留。
+**Decision:** P — Avoiding excessive fluid retention/hydration in patients at risk of heart failure is retained.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[4]
 **Candidate0:** Forðast skal ofvatnirhækkun hjá sjúklingum í hættu á hjartabilun.
 **Candidate1:** Forðast skal of vatnsburð hjá sjúklingum sem eru í áhættu á hjartabilun.
@@ -10385,7 +10355,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:2032 · U</summary>
 
 **Source:** Directive 2007/64/EC of the European Parliament and of the Council of 13 November 2007 on payment services in the internal market (5) provides a modern legal foundation for the creation of a Community-wide internal market for payments.
-**Decision:** U — 部分法律基础接近，但现代法律基础术语不明确。
+**Decision:** U — Some legal-basis wording is close, but a modern legal basis is unclear.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í tilskipun Evrópuþingsins og ráðsins 2007/64/EB frá 13. nóvember 2007 um greiðsluþjónustu á innri markaði (5) er sett á fót nýlegu lagasambandi sem gerir sér í gildi fyrir að mynda aðildarríkja um sameiginlegan innri markað fyrir greiðslu.
 **Candidate1:** Í tilskipun Evrópuþingsins og ráðsins 2007/64/EB frá 13. nóvember 2007 um greiðsluþjónustu á innri markaði (5) er sett á grundvöllum núverandi laga til að koma á í gegnum innri markað í allri löndum bandalagsins fyrir greiðslu.
@@ -10401,7 +10371,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:74 · U</summary>
 
 **Source:** In the light of the chemical composition of residues occurring in soil, water or air, resulting from use, or proposed use, of a plant protection product containing the active substance a proposal for the definition of the residue must be submitted, taking account of both the levels found and their toxicological and environmental significance.
-**Decision:** U — 候选6较近但毒理及环境意义的结尾表达不能确认。
+**Decision:** U — Candidate6 is close, but the concluding toxicological/environmental significance is unconfirmed.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í ljósi efnafræðilegrar samsetningar leifa sem fram koma úr jarðvegi, vatni eða lofti eftir notkun, eða tillandi notkun, planta verndarlyfs, sem inniheldur virka efninu, verður að leggja fram tillögu um skilgreiningu leifa, að teknu tilliti til bæði þeirra efnalíkana sem fundust og þeirra efnahættuleika.
 **Candidate1:** Í ljósi efnafræðilegrar samsetningar leifanna sem koma fram í jarðvegi, vatni eða lofti vegna notkunar, eða trúnaðarnotkunar plöntuvarnarefna sem inniheldur virka efni, verður til að lagðar verður fram tillögu um skilgreiningu leifanna, þar sem tekið verður tillit til bæði þeirra styrks sem fundist og þeirra efnahvörf og umhverfismikilla áhrifa.
@@ -10417,7 +10387,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:1202 · F</summary>
 
 **Source:** To this end, the Executive Director should prepare and take all necessary steps to ensure the proper accomplishment of the working programme of the Agency, should prepare each year a draft general report to be submitted to the Administrative Board, should draw up estimates of the revenues and expenditure of the Agency and should implement the budget.
-**Decision:** F — 执行主任、收支估计及管理委员会报告职责均有关键错误。
+**Decision:** F — The executive director, revenue/expenditure estimates and reporting to the management board contain critical errors.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í þessu tillit skal framkvæmdaráðherraðið, að því er varðar, láta útbreiðna og gera allar nauðsynlegar ráðstafanir til að tryggja að starfsáætlun stofnunarinnar sé framkvæmd á réttan hátt, láta árlega leggja til grunnskýrslu um almenna skýrslu sem lagðar eru fram fyrir stjórnsýslunúnin, útbúa ásamtalana um rekstrarskuld og útgjöld stofnunarinnar og framfylda fjárhagsáætlunina.
 **Candidate1:** Hefðbúnaður stjórnarinnar skal til þess gera og gera allar nauðsynlegar ráðstafanir til að tryggja að starfsáætlun stjórnahafnarinnar verði framkvæmd á réttan hátt og skal hún, á hverju ári, leggja fram kúfa sameiginlega skýrslu til handhafa stjórnarinnar, skal hún leggja fram áætla um útbreiðslu og útgjöld stjórnhagsfyrirtækisins og skal hún framfylgja fjárhagsáætluninni.
@@ -10433,7 +10403,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:2535 · P</summary>
 
 **Source:** There is limited clinical data in patients aged 75 or over.
-**Decision:** P — 75岁及以上临床数据有限完整。
+**Decision:** P — Limited clinical data for patients75and older is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Takmarkaðar klínískar upplýsingar liggja fyrir um sjúklinga 75 ára og eldri.
 **Candidate1:** Takmarkaðar klínískar upplýsingar eru fyrirliggjandi hjá sjúklingum 75 ára eða eldri.
@@ -10445,7 +10415,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:570 · F</summary>
 
 **Source:** Further observations are planned with ALMA, which is still ramping up to its full capabilities, to shed more light on this intriguing planetary system, and so help us to understand what conditions were like during the formation of the Solar System.
-**Decision:** F — 完整能力、行星系统或太阳系形成条件均有关键错误。
+**Decision:** F — Full capability, planetary systems or Solar-System formation conditions contain critical errors throughout.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Staðfest eru frekari mælingar með ALMA sem er enn að leggja sér á fulla getu sína til að kanna betri þessa snertingu reikistjörnu og þannig að stuðla að þér að skilja hvernig ákvarðanir voru á vetrarbrautinni.
 **Candidate1:** Við áætlaðum frekari mælingar með ALMA sem er enn að hægja upp í öllum hæfni sínum, svo að leysa í ljós meira á þennan íðabítarsjálfboðalag og þannig geta við skilin hvort aðstæður þótti þegar sólkerfið myndist.
@@ -10461,7 +10431,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:2774 · F</summary>
 
 **Source:** In case of accidental ingestion, especially in the case of children, seek medical advice immediately and show the package leaflet or the label to the physician.
-**Decision:** F — 全部漏译意外吞服，仅保留一般事故。
+**Decision:** F — Every candidate omits accidental swallowing and retains only general accidents.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Hjá börnum, sérstaklega ef um slysni er að ræða skaltu leita læknishjálpar á staðnum og sýna lækninum fylgiseðilinn eða merki.
 **Candidate1:** Ef um slysi er að ræða, einkum hjá börnum, skal leita læknisins tafarlaust og sýna honum fylgiseðilinn eða merki.
@@ -10477,7 +10447,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:2018 · F</summary>
 
 **Source:** In February 2008 the IASB amended IAS 32 by requiring instruments to be classified as equity if those instruments have all the features and meet the conditions in paragraphs 16A and 16B or paragraphs 16C and 16D of IAS 32.
-**Decision:** F — IASB机构、权益分类或IAS32名称均有关键错误。
+**Decision:** F — IASB, equity classification or the IAS32name contains critical errors.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í febrúar 2008 breytti Alþjóðaauðeigandi verðbréfamunarnefndin IAS-sta li IAS-sta lana 32 me sem sk rningi a a merki fyrir a hla eru gegnum li fa efnissa og uppfylla skilyr urina í 16A-og 16B- eða 16C- eða 16D-li fa IAS-sta lana 32.
 **Candidate1:** Í febbóði 2008 breytti Alþjóða starfsreglurnar (IASB) IAS-staðli 32 með því að krefjast að hluti sem er komið saman sem jafnframtæki ef hlutið hefur allar einkenni og uppfyllir skilyrðin í 16A- og 16B-tilgreinum eða 16C- og 16D-tilgreinum IAS-staðils 32.
@@ -10493,7 +10463,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:376 · F</summary>
 
 **Source:** &quot;Its a real challenge to describe theoretically all the observed details coming from ALMA, but our computer models show that we really are on the right track.
-**Decision:** F — 理论描述细节的挑战及计算机模型均不完整。
+**Decision:** F — The challenge of describing theoretical details and computer models is incomplete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Það er líka áhugassmagt að lýsa framkvæma lýsingu á allri fyrirhuguðri tilvikum sem fengin eru úr ALMA, en tímarhætti okkar sýna að við erum á réttu leið.
 **Candidate1:** „Það er veruleg afgreiðslu að lýsa frá ALMA rannsóknarhæfið með rýrniríki, en tölvulíkanir okkar sýna að við séum á réttum leiðum.
@@ -10509,7 +10479,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:505 · F</summary>
 
 **Source:** New observations using the Atacama Large Millimeter/submillimeter array (ALMA) have given astronomers the best view yet of a monster star in the process of forming within a dark cloud.
-**Decision:** F — 巨大恒星在暗云中形成的关键条件/对象均不准确。
+**Decision:** F — Critical conditions/objects in massive-star formation inside dark clouds are inaccurate.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Nýjar mælingar með Atacama Large Millimeter/submillimeter array (ALMA) hafa gefið stjörnufræðingum besta sjónarmiðina á þokustu stjörnustöku, sem styrkur er í myndun.
 **Candidate1:** Nýjar mælingar með Atacama Large Millimeter/submillimeter array (ALMA) hafa gefið stjörnufræðingum besta sjónar á þokuhrollu í myndun.
@@ -10525,7 +10495,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:1949 · F</summary>
 
 **Source:** The European Medicines Agency has deferred the obligation to submit the results of studies with Votrient in one or more subsets of the paediatric population in the treatment of rhabdomyosarcoma, non- rhabdomyosarcoma soft tissue sarcoma and Ewing sarcoma family of tumours (see section 4.2 for information on paediatric use).
-**Decision:** F — 非横纹肌软组织肉瘤等关键分类仍错误。
+**Decision:** F — Non-rhabdomyosarcoma soft-tissue sarcoma and other critical classifications remain wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Lyfjastofnun Evrópu hefur frestað kröfu um að lagðar séu fram niðurstöður úr rannsóknum á Votrient hjá einum eða fleiri undirhópum barna við meðferð á beisarkvegjalyfjafrumukrabbameini, slímhúðarsarkvegjalyfjafjölli sem ekki eru beisarkvegjalyfjafjölli og Ewing-sarkvegjafjöllum (sjá upplýsingar í kafla 4.2 um notkun handa börnum).
 **Candidate1:** Lyfjastofnun Evrópu hefur frestað kröfu um að lagðar séu fram niðurstöður úr rannsóknum á Votrient hjá einum eða fleiri undirhópum barna við meðferð á rákvöðvasarkmeini, sarkmeini í vægæðum án rákvöðvasarkmeina og Ewing-arkmeinum (sjá upplýsingar í kafla 4.2 um notkun handa börnum).
@@ -10541,7 +10511,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:2757 · P</summary>
 
 **Source:** Approximately 74 % of patients also received single dose oral or intravenous dexamethasone 30 minutes before chemotherapy.
-**Decision:** P — 74%患者化疗前30分钟单剂口服或静脉地塞米松完整。
+**Decision:** P — For74%of patients, a single oral/intravenous dexamethasone dose30minutes before chemotherapy is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Um það bil 74% sjúklinga fengu einn skammt af dexametasóni til inntöku eða í bláæð 30 mínútur áður en krabbameinslyfjum var gefið.
 **Candidate1:** Um það bil 74 % sjúklinganna áttu einnig að fá dexametasón 30 mínútum fyrir meðferð og með inntöku eða í bláæð.
@@ -10556,7 +10526,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:1383 · P</summary>
 
 **Source:** Subject to the findings of port security assessments, Member States shall ensure that port security plans are developed, maintained and updated.
-**Decision:** P — 依港口安全评估制定维护更新港口安全计划完整。
+**Decision:** P — Developing, maintaining and updating the port security plan based on the port security assessment is complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[3]
 **Candidate0:** Að því gerðar ráðstafanir varðandi öryggi bágaar uppfylla aðildarríkin að því er varðar niðurstöður úr mati á öryggisbókunum á bágaum og skal þau sjá til þess að þær verði þróaðar, viðhaldið og uppfærðar.
 **Candidate1:** Aðildarríkin skulu, að fylgni við niðurstöður úr mats á verndarhæfni hafnanna, tryggja því að verði sé lagður saman, viðhalds- og uppfærslustarfsemi hafnarverndaáætlana.
@@ -10572,7 +10542,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:2419 · U</summary>
 
 **Source:** For longer term treatment once clinical response has been observed (after 4 or more days), the dose of Meloxivet can be adjusted to the lowest effective individual dose reflecting that the degree of pain and inflammation associated with chronic musculo-skeletal disorders may vary over time.
-**Decision:** U — 最低剂量及肌肉关节内容近似，部分慢性/个体有效与变化关系不明确。
+**Decision:** U — Lowest dose and muscle/joint content are approximate, but some chronic/individual-effective-dose and variation relationships are unclear.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Við langtíma meðferð eftir að klínísk svörun hefur komið fram (eftir 4 daga eða fleiri) má aðlaga skammt Meloxivet til þess minnsta skammts, sem gefa þyngra áhrif, sem virkast fyrir hvert einstaklingi og endurskoða það að þróun sársauka og bólgu sem tengist þrálátum liðnirænnum sjúkdómi getur verið breytileg.
 **Candidate1:** Við langtíma meðferð, ef klínísk svörun hefur komið fram (eftir 4 daga eða meira), má aðlaga skammt Meloxivet í minnsta verkandi skammtinn þess efnis og samkvæmt því að það getur verið að verkið og bólga í tengslum við langvinnan mótuganæmaróf geti verið annaðhvort í sömu stigi.
@@ -10604,7 +10574,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:552 · F</summary>
 
 **Source:** This new image shows how these clouds of gas and dust have been sculpted into whimsical bubbles, arcs and the odd features known as elephant trunks by the stellar winds flowing from this gathering of hot young stars.
-**Decision:** F — 象鼻泡弧结构与恒星风塑造关键概念均不准确。
+**Decision:** F — Trunk, bubble and arc structures and stellar-wind shaping are inaccurate.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þessa nýju mynd sjá verður hvernig þessi geims og ryki hafðu skulptað í rösku, segur og örveruafbrigði sem kallast elfskökurúm af þeim himninum sem flæða frá þessum hópi daufa og unga stjarna.
 **Candidate1:** Þessi nýja mynd sýnir hvernig þessi gas- og rykský eru einbeitir í frífræðilegum hylkjum, hringum og undanteknum einkennum sem kunnar eru „elfskúr“ af völdum stjörnuvíða sem flæðast frá þessum hópi af heitu og ungu stjörnum.
@@ -10620,7 +10590,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:191 · F</summary>
 
 **Source:** The explosion would also have led to the ejection of the star and could explain the third anomaly - the difference between its speed and that of other stars in the region.
-**Decision:** F — 爆炸、抛出或异常速度比较关系均有关键错误。
+**Decision:** F — Explosion, ejection or unusual-speed comparison contains critical errors.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Blandanlega hefði sprengingin leitt til þess að stjarnan hafi farið út og getur skýrt þriðja ofnæmi - minnkun á hraða hennar og annarra stjarna í svæðinu.
 **Candidate1:** Enn fremur hefði sprengingin hafa leitt til þess að stjarnan sé fjarverd í og getur útskýpt um þriðja undantekninguna - muninn milli hraða síðar- og hvers stjarna á svæðinu.
@@ -10636,7 +10606,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:643 · P</summary>
 
 **Source:** By comparison the Sun is more than four billion years old.
-**Decision:** P — 太阳超过四十亿岁完整，使用lengra修饰年龄属语法瑕疵。
+**Decision:** P — The Sun being over four billion years old is complete; lengra modifying age is a grammatical flaw.
 **Inspected/correct:** [0, 2, 3, 4, 5, 6, 7]/[0]
 **Candidate0:** Í samanburði er sólin lengra en fjögurra milljörðum ára gömul.
 **Candidate2:** Sólin er yfir fjórum milljörðum árum eldri en samanburður.
@@ -10651,7 +10621,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:773 · F</summary>
 
 **Source:** These include infection and Graft-versus host disease (GVHD) which although not directly related, were the major causes of morbidity and mortality, especially in allogeneic HPCT.
-**Decision:** F — GVHD及异基因HPCT均不准确。
+**Decision:** F — Both GVHD and allogeneic HPCT are inaccurate.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Það til hið meðferð við því að gefa meðferð blóðmyndandi græðlum er að gefa meðferð blóðmyndandi græðlum með örvi útbreiðslu (graft-versus host disease (GVHD)) sem jafnframt ekki sýnt er að vera beint að og eru þó einkenni sem stafa þeirri sjúkdómsauknum og dánartíðni, sérstaklega í HPCT (alnefnskornamyndun) með blóðmyndandi græðlum.
 **Candidate1:** Þau taka til sýkingar og græðslu móður og barna (Graft-versus host disease, GVHD) sem þó ekki eru beinlínis að tengslum við, eru helstu orsakir veikinda og dauðsföllum, sérstaklega í alnefnda HPCT.
@@ -10667,7 +10637,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:1909 · F</summary>
 
 **Source:** The amendments require certain instruments issued by companies that are currently classified as liabilities despite having characteristics similar to ordinary shares, to be classified as equity.
-**Decision:** F — 金融工具权益负债等关键分类均错误。
+**Decision:** F — Critical financial-instrument equity/liability classifications are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þær breytingar krefjast þess að tiltekin vörur sem yrðu gefin út af félögum sem eru nú þegar flokkaðir sem skuldbindingar þrátt fyrir að þær hafi svipað einku á almennum hlutum, verði flokkaðar sem hlutabréf.
 **Candidate1:** Breytingarnar koma fyrir um að tilteknar hönnur, sem fyrirtæki eru komið fram sem í gegnumferð liðnaðar þrátt fyrir hafa sömu eiginleika og hvers sinni hlutar, séu flokkaðar sem hlutabúnaður.
@@ -10683,7 +10653,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:339 · P</summary>
 
 **Source:** “In the disc of gas and dust surrounding this newly formed star, we found glycolaldehyde, which is a simple form of sugar, not much different to the sugar we put in coffee,” explains Jes Jørgensen (Niels Bohr Institute, Denmark), the lead author of the paper.
-**Decision:** P — 气尘盘新生恒星中乙醇醛简单糖与咖啡糖比较及作者完整。
+**Decision:** P — Glycolaldehyde as a simple sugar around a newborn star in a gas/dust disk, the coffee-sugar analogy and author are complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[2]
 **Candidate0:** „Í gasgökstrið og ryki í kringum þessa nýlega myndaða stjörnu, fannum við glykólaldhýði sem er einfaldar myndi sykursins, sem er frekar annars vegar munu munu en sykurinn sem við settum í kaffi,“ segir Jes Jørgensen (Niels Bohr Institute í Danmörku), aðalhöfundur greinar um rannsóknina.
 **Candidate1:** „Við fundum okkur glýkólaldhýdríð í gas- og rykskífunni umhverfis þessa nýkomið stjörnunnar, sem er einfalt glær meðal sykurs, sem er ekki mjög mismunandi og sykurinn sem við settum í kaffi,“ sagði Jes Jørgensen (Niels Bohr Institute í Danmörku), aðalhöfundur greinar um rannsóknina.
@@ -10699,7 +10669,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:723 · F</summary>
 
 **Source:** When the first galaxies started to form a few hundred million years after the Big Bang, the Universe was full of a fog of hydrogen gas.
-**Decision:** F — 氢气雾或大爆炸/首批星系关键内容均错误或遗漏。
+**Decision:** F — Hydrogen fog or Big-Bang/first-galaxy content is wrong or omitted.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þegar fyrsta vetrarbrautarnar byrjaðu að myndast nokkurra hundruð milljóna ára eftir Big Bang var alheimurinn fullur af hýdrógeni í reyminu.
 **Candidate1:** Þegar fyrstu vetrarbrautum byrjar að koma upp nokkurra hundruð milljónum ára eftir Stóra blásíðann var alheimurinn fullt af filt af vetnisgas.
@@ -10715,7 +10685,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:567 · F</summary>
 
 **Source:** But the rate of destruction must be very high: “To get the amount of carbon monoxide we observe, the rate of collisions would be truly startling - one large comet collision every five minutes,” noted Aki Roberge, an astronomer at NASAs Goddard Research Center in Greenbelt, USA, and coauthor of the paper.
-**Decision:** F — 一氧化碳、彗星碰撞、每五分钟及机构等均有关键错误。
+**Decision:** F — Carbon monoxide, comet collisions, every five minutes and institutional details contain critical errors.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Hlutfall brottsins þurfa að vera mjög mikil: „Til þess að ná stað á mældu magni kolmunóxíðs mætti bráða túrkasta við - eitt stór fjarverandi brot á hverri fimmta mínútu,“ sagði Aki Roberge, stjörnufræðingur við Goddard-annsvarvarðvangi Stjörnustofnunar Bandaríkjanna í Bandaríkjunum og meðhöfundur greinar um það.
 **Candidate1:** Hlutfall brottfalls þurfa þó að vera veruleg: „Vegna þess að við viðmælum oss storkusýru væri bunja skerðingin á villtum - einn stórr frumkomna skerðingur á minnustund fyrir fimm mínútur,“ sagði Aki Roberge, stjarnvísindamaður við Goddard Research Center við NASAs í Greenbelt í Bandaríkjunum og meðhöfundur greinarinnar.
@@ -10731,7 +10701,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:987 · F</summary>
 
 **Source:** The common understanding of the term ‘production index as an ‘evolution of value added contradicts the definition of ‘production in the framework of national accounts or structural business statistics, but nonetheless is the correct term traditionally used in this area of business statistics.
-**Decision:** F — 生产指数、增加值、矛盾关系或国民账户等均有关键错误。
+**Decision:** F — Production index, value added, contradiction or national accounts contains critical errors.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Almennt skilning á orðinu „framleiðsluþáttur,“ samræmist skilgreiningu „framleiðslu“ í tengslum við landsreikninga eða staðlakerfi fyrirtækja, en er hins vegar rétt orðin sem hefur verið notuð dælilega þegar um er að ræða þetta svið í rekstrareiningum fyrirtækja.
 **Candidate1:** Almennt skilning á orðinu „venjuræktarmælikvarði sem „verðbóta a ætlunin „venjuræktar“ ósamræmist skilgreiningu „venjuræktar“ í röð varðandi landsbúskjöl eða stökkbreytingar í rekstrarfræði, en er hins vegar rétt orðin og hefur verið þrávænt notað í þessari sviði rekstrarfræðis.
@@ -10759,7 +10729,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:1655 · F</summary>
 
 **Source:** This Directive establishes a procedure for the identification and designation of European critical infrastructures (‘ECIs), and a common approach to the assessment of the need to improve the protection of such infrastructures in order to contribute to the protection of people.
-**Decision:** F — 关键基础设施均变基础站点/机关/攻击者等对象。
+**Decision:** F — Critical infrastructure becomes sites, agencies, attackers or other objects throughout.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Með þessari tilskipun er sett réttskrif á að skilgreina og tilgreina evrópsk stórflokkar innraða (ECI, European critical infrastructures) og miðlæga aðferð við mat á þörfum fyrir að bæta vernd þessara innraða til að gjöf skilyrði til að vernda manna.
 **Candidate1:** Með þessari tilskipun er komið á fyrirkomulagi fyrir auðkenningu og tilnefningu evrópska mikilvægra grundvallarstöðvar (ECIs) og sameiginlegra aðferða við mat á þörfum á að bæta verndun slíkra grundvallarstöðva til að stuðla að verndun manna.
@@ -10775,7 +10745,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:292 · F</summary>
 
 **Source:** As no starlight shines through Tau Boötis bs atmosphere towards us, this means the planets atmosphere could not be studied before.
-**Decision:** F — 星光/穿透方向或行星大气等关键内容错误。
+**Decision:** F — Starlight, penetration direction or planetary-atmosphere content is wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þar sem enginn stjörnuljós glener gegn lofthinum af Tau Boötis bs á okkur, þýðir þetta að geimhvarfin í reikistjörnunum hafi ekki verið rannsökuð áður.
 **Candidate1:** Þar sem engin stjarnljós skífar á umferðarskyni um lofthjúpur Tau Boötis bs á okkur í átt þýðir að geimhvarfinu í reikistjörnunum hefur ekki verið rannsökuð áður.
@@ -10791,7 +10761,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:575 · F</summary>
 
 **Source:** It is called CXOU J164710.2-455216 and it has greatly puzzled astronomers.
-**Decision:** F — 困惑误成未知或其他动词，未保留极大困惑。
+**Decision:** F — Bafflement becomes unknown or other verbs, losing extreme bewilderment.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Hún heitir CXOU J164710,2-455216 og hefur óþekkt verið stjörnufræðingum.
 **Candidate1:** Það heitir CXOU J164710.2-455216 og það hefur orðið óþekktu stjörnufræðingum.
@@ -10807,7 +10777,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:2116 · P</summary>
 
 **Source:** This Decision should not apply to the transfer of personal data by controllers established in the European Union to controllers established outside the European Union which fall within the scope of Commission Decision 2001/497/EC of 15 June 2001 on standard contractual clauses for the transfer of personal data to third countries, under Directive 95/46/EC (1).
-**Decision:** P — EU内外控制者个人数据传送、排除适用、法规日期及标准合同规则完整。
+**Decision:** P — Personal-data transfers by controllers inside/outside the EU, exclusion, regulation dates and standard-contract rules are complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[2]
 **Candidate0:** Ákvörðun þessi skal ekki gilda um sendingu persónuupplýsinga af stjórnendum, sem eru stofnaðir í Evrópusambandinu, til stjórnenda, sem eru stofnaðir utan Evrópusambandsins, sem falla undir gildissvið ákvörðunar framkvæmdastjórnarinnar 2001/497/EB frá 15. júní 2001 um staðlaðar samningsgála til að flytja persónuupplýsingar til þriðju löndna, samkvæmt tilskipun 95/46/EB (1).
 **Candidate1:** Ákvörðun þessari á ekki við skipti sem fylgir reglum í ákvörðun framkvæmdastjórnarinnar 2001/497/EB frá 15. júní 2001 um staðlaðar samningsreglur handa skiptun persónuupplýsinga til skipulags utan Evrópusambandsins sem falla undir gildissvið ákvörðunar framkvæmdastjórnarinnar 1995/46/EB (1).
@@ -10823,7 +10793,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:ema:1188 · U</summary>
 
 **Source:** If you need to remain immobile for an extended period of time or are scheduled to have surgery, it is important for you to talk to your doctor about ways you can reduce the risk of blood clots. if you are pre-menopausal.
-**Decision:** U — 候选3绝经前条件保留，但长时间不能活动与手术措辞不明确。
+**Decision:** U — Candidate3 retains the premenopausal condition, but prolonged immobility and surgery wording are unclear.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Ef þú þarft að vera óhreyfanlegur í langan tíma eða þú árstæðir fyrir skurðaðgerð er mikilvægt að tala við lækninn um hvernig þú getur fækkað hættuna á blóðsegamyndun. ef þú ert fyrir tíma blóðþegu.
 **Candidate1:** Ef þú þarft að vera áfram hvíldlegum í langan tíma eða þú átt þungun og þarf þá að taka þig til læknisins um að finna hvernig þú gætir dregið úr hættu á blóðtappa þá er mikilvægt að taka meðan við lækninn. ef þú ert á forstígjalds á forstígjalds.
@@ -10839,7 +10809,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eea:19 · U</summary>
 
 **Source:** It is recommended to use as much as possible the same soils throughout all laboratory soil studies.
-**Decision:** U — 使用相同土壤意图较近，但尽可能与实验室贯穿限定表达不明确。
+**Decision:** U — Intent to use the same soil is close, but whenever possible and throughout-laboratories restrictions are unclear.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Mælt er með því að nota eins jarðvef í öllum jarðraunum í rannsóknunum í stofnanum.
 **Candidate1:** Ráðlagt er að nota eins jarðvefu sem mögulegt var í öllum jarðfræðingarannsóknum í rannsóknamarinum.
@@ -10855,7 +10825,7 @@ Symmetric final-case review
 <details><summary>final_g8_after_component · candidate · g8 · p18official21:test:eso:1056 · U</summary>
 
 **Source:** In that case anomalies in the motion of the planet Uranus were traced to the gravitational effect of an unknown body, which was subsequently discovered visually in 1846 and found to be the eighth planet in the Solar System.
-**Decision:** U — 候选4运动异常、未知天体及日期近似，但引力效应关键术语不可靠。
+**Decision:** U — Candidate4 approaches anomalous motion, an unknown body and dates, but gravitational-effect terminology is unreliable.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í þeim tilvikum var sannreynslu umlyndinga á geislni ríkis- uraníu sett í beinan sérhæfi þar sem óþekkta kynja voru þægindi sem leitti til þess í 1846 og uranísriður var kölluð áttastuðull sólkerfisins.
 **Candidate1:** Efni, sem það var að finna, gerðu hættu á því að hreyfingur á ríkinu Uríunni var óeðlilegur, var rekað til þeirrar vöru sem var óþekktur og kom í ljós árið 1846 og var klár að vera áttum sólarkerfinu.
@@ -10871,7 +10841,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:376 · F</summary>
 
 **Source:** &quot;Its a real challenge to describe theoretically all the observed details coming from ALMA, but our computer models show that we really are on the right track.
-**Decision:** F — 理论描述挑战及计算机模型均未准确保留。
+**Decision:** F — The challenge of theoretical description and computer models is not accurately retained.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Það er raunveruleg rist að lýsa, með skoðunaráætlun, allar upphanns salar sem koma frá ALMA, en tölvutölum okkar sýnir að við erum í réttri leið.
 **Candidate1:** „Það er veruleg afgreiðslu að lýsa frá lýsingu ALMA altæklega allar upplýsirnar en tímarla sem við tölulega búa til sýna að við séum á réttum leiðinni.
@@ -10887,7 +10857,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:987 · F</summary>
 
 **Source:** The common understanding of the term ‘production index as an ‘evolution of value added contradicts the definition of ‘production in the framework of national accounts or structural business statistics, but nonetheless is the correct term traditionally used in this area of business statistics.
-**Decision:** F — 增加值生产指数和国民账户关键概念均错误。
+**Decision:** F — Value-added production index and national-account concepts are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Almennt skilning á orðinu „framleiðsluþáttur sem „frambúgur gagnaafvörunnar“ er óhöfðu í samræmi við skilgreiningu „framleiðslu“ í röð landbúnaðar eða fjárhagslega reikningsskilrafa, en hann er samt rétta orðið sem er oft notað í þessu hagsviði reikningsskilrafa.
 **Candidate1:** Almennt skilning á orðinu „venjuræði“ „verðaukning“ er að borða frá skilgreiningunni „venjuræði“ í sjálfustum rekstrur eða samkeppni rekstra fyrir fyrirtæki en í þessu samræmi er rétt orðið, sem er ávallt notað í þessum hagskýrslur um fyrirtæki.
@@ -10903,7 +10873,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:271 · F</summary>
 
 **Source:** Both sets of filaments are stellar nurseries, containing hot young stars.
-**Decision:** F — 丝状结构及恒星诞生地术语均错误。
+**Decision:** F — Filamentary structures and stellar-birthplace terminology are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Bæði seti af filíum eru ævindrykktir sem innihalda hita, ungir stjörnur.
 **Candidate1:** Bæði lagi fleygirnir eru kveikubúnað stjarna og innihalda hita og ungbura stjörnur.
@@ -10919,7 +10889,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:1383 · P</summary>
 
 **Source:** Subject to the findings of port security assessments, Member States shall ensure that port security plans are developed, maintained and updated.
-**Decision:** P — 依据港口安全评估制定维护更新港口计划完整，语法瑕疵。
+**Decision:** P — Developing, maintaining and updating a port plan from the port security assessment is complete, despite grammatical flaws.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[7]
 **Candidate0:** Að því og fram kemur úr mati um varnir við hafnir, skulu aðildarríkin tryggja að höfuðaðgerðir um varnir við hafnir verði þróaðar, viðhaldið og uppfærðar.
 **Candidate1:** Að því varðar niðurstöður matar á veðraræktum skal aðildarríki tryggja að portvegslögreglur verði þróaðar, viðhaldið og uppfærðar.
@@ -10935,7 +10905,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:968 · F</summary>
 
 **Source:** “Astronomers have thought for a while that conditions within these outflows could be right for star formation, but no one has seen it actually happening as its a very difficult observation,” comments team leader Roberto Maiolino from the University of Cambridge.
-**Decision:** F — 外流内部条件及观测或发言角色均有关键错误。
+**Decision:** F — Conditions inside outflows, observations or speaker roles contain critical errors.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** „Stjörnufræðingar höfðu hugsað fyrir sig að þessir útflugur gætu hafið verið í gæðum til að myndast stjörnur en enginn hefur séð neitt að það gerist, því það er mjög erfitt að fækka úr og það er mjög fljótandi“, sagði Roberto Maiolino í Cambridge við kerfisverkinu.
 **Candidate1:** „Stjörnufræðingar hafa hugsað í mörgum dögum að aðstæður í þessum útkomnum gætu verið rétt fyrir stjörnumyndunar en enginn hefur gruninn að það sé gerð, því það er mjög flýtilegt að mæta,“ segir Roberto Maiolino í Cambridge University.
@@ -10951,7 +10921,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:567 · F</summary>
 
 **Source:** But the rate of destruction must be very high: “To get the amount of carbon monoxide we observe, the rate of collisions would be truly startling - one large comet collision every five minutes,” noted Aki Roberge, an astronomer at NASAs Goddard Research Center in Greenbelt, USA, and coauthor of the paper.
-**Decision:** F — 一氧化碳彗星碰撞破坏率等核心术语全部损坏。
+**Decision:** F — Carbon monoxide, comet collisions and destruction-rate terminology are corrupted.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** En þá verður erfiður tíðni yfirferð: „Til að ná því magni af kólóxitóxíði sem við sýnum við verður velti við hár útskaut - eitt stór áskopti útskaut á hverju fimm mínútur,“ sagði Aki Roberge, stjörnufræðingur við Goddard-center NAA í Greenbelt í Bandaríkjunum og meðhöfundur greinarinnar.
 **Candidate1:** En brottfangið verður áhættulægt: „Til að ná efri magnu af kóranóxíði sem við sjáum myndi breytnið sjálfur óskert - eitt stórt komerbreyting í fimm mínútur“ sagði Aki Roberge, stjörnufræðingur á Forsvæðum Nauðsafnvaldi í Nýjalandi og meðhöfundur greinarinnar.
@@ -10967,7 +10937,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:1729 · F</summary>
 
 **Source:** Following the invitation of the carrier and of the competent authorities of the Islamic Republic of Iran, a team of European experts conducted a fact-finding mission from 16 to 20 June 2008 to verify the implementation by the carrier of the various corrective actions.
-**Decision:** F — 伊朗、邀请方或纠正措施实施关系均错误。
+**Decision:** F — Iran, the inviting party or implementation of corrective measures is wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Framkvæmdastjórnin og lögbæra yfirvald Islamsríkisins, Iran, gáfu frá sér tilkynningu til aðeins til að leiðræðan hópur sérfræðinga í Evrópu farið í skoðunarfar í Iran frá 16. til 20. júní 2008 til að sannprófa framkvæmd feril sjálfboða af völdum flutningsaðila.
 **Candidate1:** Eftir tilkynnslu flutningsfélags og lögbærra aðila Islamískra ríkisins, fór takmörk evrópskra sérfræðinga í skoðunshópa frá 16 til 20. júní 2008 til að sýna fram á að flutningafélaga hafi framkvæmt mörgri tilvik ráðstafana til að koma aftur á ræði.
@@ -10983,7 +10953,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:561 · F</summary>
 
 **Source:** The requirements below apply to power-operated windows/roof-panel systems/partition systems to minimise the possibility of injuries caused by accidental or improper operation.
-**Decision:** F — 电动窗车顶隔断系统均错误。
+**Decision:** F — Electric-window, roof and partition systems are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Kröfurnar hér á eftir skulu fylgja stjörnustillu/húsnétstjórnun/tilbúnustjórnun í andlitið að minnka möguleika á slysimi vegna fjartæka eða óréttar stjórnunar.
 **Candidate1:** Þessar kröfur gilda um öndunarhópu geymahúsnafna/þekjuhúsnafna/sjáðahúsnafna til að lágmarka möguleika á slysi vegna sláttunar eða órængra rekstri.
@@ -10999,7 +10969,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:191 · F</summary>
 
 **Source:** The explosion would also have led to the ejection of the star and could explain the third anomaly - the difference between its speed and that of other stars in the region.
-**Decision:** F — 爆炸抛出恒星及异常速率关系错误。
+**Decision:** F — The explosion/ejected-star/unusual-speed relationship is wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Blandanleikinn hefði einnig leitt til þess að stjarnan hafi felst út og getur útskýrt þriðja aukatiltökuna - munurinn á hraða og sýnatverðu annarra stjarna í svæðinu.
 **Candidate1:** Enn sá meðferðinni hefði hreyfirstökkin líka leyst út stjarnann og geta útskýrt þriðja ofningunni - munurinn á hraða á við og á hraða annarra stjarna á svæðinu.
@@ -11015,7 +10985,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:292 · F</summary>
 
 **Source:** As no starlight shines through Tau Boötis bs atmosphere towards us, this means the planets atmosphere could not be studied before.
-**Decision:** F — 星光穿过大气朝向我们的关系及行星大气研究均不准确。
+**Decision:** F — Starlight passing through the atmosphere toward us and planetary-atmosphere research are inaccurate.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þar sem stjörnuljós rindir ekki yfir í bilið um Tekurisbs til okkar, það þýðir að geira um geymi reikistjarna hafi ekki verið hægt áður.
 **Candidate1:** Þar sem stjörnuljós stuttir ekki út með atmosferu Tau Boötis bs í á las okkur, þýðir það að sérstaklega hefði ekki verið hægt að rannsaka lofthjúp þeirra áður.
@@ -11031,7 +11001,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:857 · F</summary>
 
 **Source:** With initial administration of Aldurazyme or upon re-administration following interruption of treatment, it is recommended that patients be administered pre-treatment medicines (antihistamines and/or antipyretics) approximately 60 minutes prior to the start of the infusion, to minimise the potential occurrence of IARs.
-**Decision:** F — 退热药与预处理或IAR含义均错误。
+**Decision:** F — Antipyretics, pretreatment or IAR meaning is wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Við upphaf meðferðar með Aldurazyme eða við endurtekna meðferð eftir að meðferð hefur verið hætt er mælt með því að sjúklingum verði gefið meðferðarskammtar (andhistamíni og/eða kviðlyf) um það bil 60 mínútum fyrir upphaf innrennsli til að lágmarka hugsanlega líkur á aukaverkunum á vefjafrumugerðum.
 **Candidate1:** Með upphafsskammti Aldurazyme eða við endurtekna gjöf eftir að meðferðin var hætt er ráðlagt að gefa sjúklingum meðferðarskammta (himinnæxli og/eða hitaæxli) um það bil 60 mínútur fyrir innrennslisupphaf til að lágmarka hætti ábanga IAR.
@@ -11047,7 +11017,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:505 · F</summary>
 
 **Source:** New observations using the Atacama Large Millimeter/submillimeter array (ALMA) have given astronomers the best view yet of a monster star in the process of forming within a dark cloud.
-**Decision:** F — 大质量恒星在暗云中形成等关键含义不完整。
+**Decision:** F — Massive-star formation inside dark clouds is incomplete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Nýjar mælingar með Atacama Large Millimeter/submillimeter array (ALMA) hafa leitt stjörnufræðingum besta sjónar af þokulega stjörnu sem er í vetrarbrautinni í gegnummyndun í dökku þokunni.
 **Candidate1:** Nýjar athygli með Atacama Large Millimeter/Submillimeter array (ALMA) gefa stjörnufræðingum bestan sjónar á þokanu í vetrarbrautinni sem er meðan í mænningu og er á vegum líffæra.
@@ -11063,7 +11033,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:1118 · U</summary>
 
 **Source:** The aggregate sample is made up by uniting all incremental samples.
-**Decision:** U — 汇总样本与增量样本术语多处不稳定，不能确认。
+**Decision:** U — Aggregate/incremental-sample terminology is unstable and unconfirmed.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Heildarprófunin er samanlegt með því að sækja allar aukningaprófanir.
 **Candidate1:** Samkvæmt heildarprófun er allar aukninga prófanir tengd ásamt.
@@ -11079,7 +11049,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:570 · F</summary>
 
 **Source:** Further observations are planned with ALMA, which is still ramping up to its full capabilities, to shed more light on this intriguing planetary system, and so help us to understand what conditions were like during the formation of the Solar System.
-**Decision:** F — 完整能力、行星系统或太阳系形成条件关键内容均错误/遗漏。
+**Decision:** F — Full capability, planetary systems or Solar-System formation conditions are wrong/omitted.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Staðfest er að fara fram frekari mælingar með ALMA, sem er enn að auka sér að meginhæfni sínu, til að gögnast skugga á þessu truflandi reikistjörnum og þannig hjálpa okkur að skilja megi hvaða ástand voru eftir framleiðslu sólarferðalandsins.
 **Candidate1:** Íframsetningar verða að fara fram með ALMA, sem er enn í opnum stigi til síns fullri getu, til að láta ofnemaðan út í ljós með þessari reikistjörnukerfi og þannig hjálpa okkur að skilja hvaða skilyrði voru þau á þá tíma þegar reikistjörnin mynduðust.
@@ -11095,7 +11065,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:1170 · P</summary>
 
 **Source:** GC/MS methods of analysis and bioassays may be used for screening.
-**Decision:** P — GC/MS分析与生物测量用于筛查含义完整。
+**Decision:** P — GC/MS analysis and biometrics used for screening are complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[5]
 **Candidate0:** Metningar að því er varðar GC/MS-ferli og líffræðilegar prófanir má nota til skoðunar.
 **Candidate1:** Með metningarígróflögnasöfnun og líffræðilegri viðrindun geta notað fyrir skoðun.
@@ -11111,7 +11081,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:2018 · F</summary>
 
 **Source:** In February 2008 the IASB amended IAS 32 by requiring instruments to be classified as equity if those instruments have all the features and meet the conditions in paragraphs 16A and 16B or paragraphs 16C and 16D of IAS 32.
-**Decision:** F — 金融工具权益及IASB等核心概念错误。
+**Decision:** F — Financial-instrument equity and IASB concepts are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í febrúar 2008 breytti IASB IAS-staðli 32 um það að reikningsskírteini sé skilgreind sem reikningsskírteini ef þau hafa allar eiginleikanir og uppfylla skilyrði í 16A- og 16B-liðum eða 16C- og 16D-liðum IAS-staðils 32.
 **Candidate1:** Í febrúar 2008 bætist IAS-stofnunin við viðbrögð á IAS-staðli 32 með því að krefjast að vörurnar víkjaðust sem hlutabréf ef þær hafa allt þær eðlis og uppfylla skilyrði í liðum 16A og 16B eða 16C og 16D í IAS-staðli 32.
@@ -11127,7 +11097,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:3005 · P</summary>
 
 **Source:** After reconstitution, 1 ml of solution for infusion contains 2.5 mg.
-**Decision:** P — 复溶输注液每毫升2.5mg准确。
+**Decision:** P — Reconstituted infusion solution at2.5mg per milliliter is accurate.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[1, 2, 3, 6, 7]
 **Candidate0:** Eftir blöndun inniheldur 1 ml af lausn, lyfjagjöf til inndælingar, 2,5 mg af lyfinu.
 **Candidate1:** Eftir blöndun inniheldur 1 ml af lausn fyrir innrennsli 2,5 mg af efninu.
@@ -11143,7 +11113,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:875 · P</summary>
 
 **Source:** The clinical inspections must be carried out during the period October to June or whenever the water temperature is below 14 °C.
-**Decision:** P — 十月至六月或水温低于14度检查准确。
+**Decision:** P — Inspection from October to June or below14degrees water temperature is accurate.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[1]
 **Candidate0:** Klínískar athuganir skulu gerðar á tímabilinu október til júní eða þegar vatnsstirðið er undir 14 °C.
 **Candidate1:** Klínískar athuganir verða að fara fram á tímabilið október til júní eða þegar vatnsvarmið er undir 14 °C.
@@ -11159,7 +11129,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:1056 · F</summary>
 
 **Source:** In that case anomalies in the motion of the planet Uranus were traced to the gravitational effect of an unknown body, which was subsequently discovered visually in 1846 and found to be the eighth planet in the Solar System.
-**Decision:** F — 天王星运动异常引力未知天体等关键关系均错误。
+**Decision:** F — Anomalous Uranus motion, gravity and an unknown body are incorrectly related.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í þeim tilvikum var sýnt fram á að vart var á móti hringinu á rigningunni Uransu við það sem ekki var þekkt og kom í ljós áður en það var greint fram 1846 og var áttu að vera áður hinn átt rigningur í sólkerfinu.
 **Candidate1:** Ef sú komst fram voru framkomur vikki á færibreytingum á hreyfanum á reikistjörnunni Uryaníu til þess að það var vikið af þyrpingu óþekktra einingar sem leitist í sjón 1846 og kom fram að það væri auglýsandi sjóndómur í sólkerfinu.
@@ -11175,7 +11145,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:869 · P</summary>
 
 **Source:** One such stellar pair is called V471 Tauri.
-**Decision:** P — 这样两颗恒星名为V471 Tauri完整，词形有误。
+**Decision:** P — The pair of stars being named V471 Tauri is complete, despite morphology errors.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[4]
 **Candidate0:** Ein slík stjörnumyndir eru kallaðir V471 Tauri.
 **Candidate1:** Ein slík stjörnu duft varðarstæðið V471 Tauri.
@@ -11191,7 +11161,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:809 · U</summary>
 
 **Source:** The Programme is one of the instruments necessary for the implementation of the overall Community strategy on gender equality, which embraces all Community policies and action aimed at achieving gender equality, including gender mainstreaming policies and specific actions targeted at women.
-**Decision:** U — 平等总体意图保留，性别主流化政策术语无法确认。
+**Decision:** U — General equality intent remains, but gender-mainstreaming policy terminology is unconfirmed.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Áætlunin er ein af þeim búnaði sem fara að því að framfylgja heildaráætlun bandalagsins um jöfnun kynferða sem nær til allra stefnumála bandalagsins og aðgerða að því er varðar jöfnun kynferða, þar með talið meðferðlega jöfnun kynferða og sérstöku aðgerðum sem markaðar eru hjá konum.
 **Candidate1:** Áætlunin er einu af nauðsynlegu þáttum sem notuð er til að framfylgja almennri áætlun Bandalagsins um jöfnunigildi konur og karlsmanna sem nær yfir allar stefnumál Bandalagsins og aðgerðir sem gera að fá jöfnuþættingu, þar á meðal aðgerðir sem uppgefa jöfnuþættun og sértækir aðgerðir sem koma að kona.
@@ -11207,7 +11177,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:2535 · P</summary>
 
 **Source:** There is limited clinical data in patients aged 75 or over.
-**Decision:** P — 75岁及以上临床数据有限完整。
+**Decision:** P — Limited clinical data for patients75and older is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Takmarkaðar klínískar upplýsingar liggja fyrir um sjúklinga 75 ára eða eldri.
 **Candidate1:** Lítil gertæk gögn eru fyrirliggjandi um klínísk samhæfingu í sjúklingum 75 ára og eldri.
@@ -11222,7 +11192,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:778 · F</summary>
 
 **Source:** This remarkably precise relationship, which was discovered in 1908 by American astronomer Henrietta Swan Leavitt, makes the study of Cepheids one of the most effective ways to measure the distances to, and map the positions of, distant objects in the Milky Way and beyond.
-**Decision:** F — 造父变星或有效测距定位关键内容均损坏/遗漏。
+**Decision:** F — Cepheids or effective distance measurement/mapping is corrupted or omitted.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þessi upptalaðar samhæfðar sambandi, sem rennslan var fannst árið 1908 af amerikandi stjörnufræðingi Henrietta Swan Leavitt, gera grunninn fyrir þeirri nákvæmar aðferða að mæla fjarlægðir og leggja út kort á staðsetningu fjarlæga efnanna í vetrarbrautinni og burtastu.
 **Candidate1:** Þessi meginnákvæmri tengsl, sem rannsakaði amerískur stjarnvísindamann Hérenta Swan Leavitt 1908, gerir það rannsókn á Cepheid styrk einn af næstum skilverðu aðferðunum til að mæla fjarlægðir eða sýna staðsetningu í fjarlæganum fjarlægð á vetrarbrautinni og yfir henni.
@@ -11238,7 +11208,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:1655 · U</summary>
 
 **Source:** This Directive establishes a procedure for the identification and designation of European critical infrastructures (‘ECIs), and a common approach to the assessment of the need to improve the protection of such infrastructures in order to contribute to the protection of people.
-**Decision:** U — 候选4基础设施及保护人关系近似，但European identification/designation措辞不明确。
+**Decision:** U — Candidate4 approaches infrastructure/protector relations, but European identification/designation wording is unclear.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Með þessari tilskipun er sett áfram málsmeðferð til að þekkja og tilnefna stórufjármálagreiningar í Evrópu (ECI, European Critical Infrastructures) og hvers konar meðferð að metast nálgun til að bæta vernd stórufjármálagreininga, til þess að stuðla að verndun þeirra manna.
 **Candidate1:** Með þessari tilskipun er kveðið á um reglur um að auðkenna og tilnefna evrópska mikilvægir landaþjónustu (ECI) og sameiginlega aðferð við mat á þörfum á að bæta vernd á slíkum landaþjónustu til að stuðla að verndun sjávar.
@@ -11254,7 +11224,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:369 · F</summary>
 
 **Source:** Because they blow out large amounts of material, red giants like R Sculptoris are major contributors to the dust and gas that provide the bulk of the raw materials for the formation of future generations of stars, planetary systems and subsequently for life.
-**Decision:** F — 原材料未来世代恒星系统及红巨星供给关系均不完整。
+**Decision:** F — Raw materials for future stellar-system generations and red-giant supply relationships are incomplete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þar sem þeir blá að leggja af mikið efni er R Sculptoris, sá stórbænur, aðalfyrirbyggja þurrkara og gassins sem gefur rýmið af fyrirbærum efni til að mynda nýjar generendum stjarna, reikistjörnum og svo lífi.
 **Candidate1:** Þar sem þeim er laus að blást úr miklum magni efna, ná til roða risabiti, eins og R Sculptoris, sem eru miklar þátttakendur fyrir ryk og gas sem gefur fullan af nákvæmum efnum til þess að mynda framtíðarfrumur, reikistjörnur og líknamenn.
@@ -11270,7 +11240,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:2380 · F</summary>
 
 **Source:** In a proportion of these the glycaemic response to prolonged-release exenatide was absent at the end of the controlled period of studies; 2.6 % of patients showed no glucose improvement with higher titre antibodies whereas 1.6 % showed no improvement while antibody negative.
-**Decision:** F — 缓释、控制期或抗体阴性血糖改善关系均损坏。
+**Decision:** F — Extended release, the control period or antibody-negative glycemic improvement is corrupted.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Hjá sumum þessara var blóðsykursvökkun við löngunartengt útseminagjöf exenatíðs ekki við lok stuttrar rannsóknarstundar; 2,6 % sjúklinga sýndu ekki nýtt áhrif á blóðsykur en þeir voru með stærri mótefnabólurnar en 1,6 % sýndu ekki nýtt áhrif þegar mótefnabólurnar voru neikvæðar.
 **Candidate1:** Í hluta þess var blóðsykursviðbrögðin við langvarandi forðatöku exenatíðs að því er varðar lok skurðlausna rannsóknar öryggislegu tímabils; 2,6 % sjúklinga sýndu ekki göngutillvaranir við hækkun á blóðsykur auk hærra tíri mótefna en 1,6 % sýndu ekki gleiðsluminn á meðan mótefni voru jákvæð.
@@ -11286,7 +11256,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:1909 · F</summary>
 
 **Source:** The amendments require certain instruments issued by companies that are currently classified as liabilities despite having characteristics similar to ordinary shares, to be classified as equity.
-**Decision:** F — 工具负债改分类为权益关键含义未准确保留。
+**Decision:** F — Reclassification of liability instruments as equity is inaccurate.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þær breytingar krefjast þess að tiltekin vörur sem fyrirtæki gefa út, sem skuldbindingum, þrátt fyrir að þær hafa hliðsjónarhæfi svipaða hversu hefur verið samkvæmt umfjöllum, teljist hlutabréfsmeðferð.
 **Candidate1:** Breytingarnar koma fyrir það að tiltekin búnaður, sem fyrirtæki sem eru í nýju undirfyrirbyggjandi skuldbindingar og eru með sambærileg einkenna og almennt hlutabréf, skal undirfylgja fyrir hendi reikendur.
@@ -11302,7 +11272,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:643 · F</summary>
 
 **Source:** By comparison the Sun is more than four billion years old.
-**Decision:** F — 全部把十亿改百万或超过改低于。
+**Decision:** F — All change billion to million or above to below.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í samanburði er sólin lengri en fjögur milljón ára.
 **Candidate1:** Í samanburði er sólin lengra en fjögur milljón ára gamall.
@@ -11318,7 +11288,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:934 · F</summary>
 
 **Source:** Takashi Shimonishi, an astronomer at Tohoku University, Japan, and the paper&#x27;s lead author enthused: &quot;This is the first detection of an extragalactic hot molecular core, and it demonstrates the great capability of new generation telescopes to study astrochemical phenomena beyond the Milky Way.&quot;
-**Decision:** F — 热分子核及银河系外天体化学均错误。
+**Decision:** F — Hot molecular cores and extragalactic astrochemistry are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Takashi Shimonishi, stjörnufræðingur við Tohoku University í Japandi og aðalhöfundur greinarinnar, sagði: „Þetta er fyrsta mæling á hitri, stórskífaþokum fjarreikna og sýnir út á blandaþekkingni nýja síma sjónaukanna.
 **Candidate1:** Takashi Shimonishi, stjörnufræðingur á Tohoku universitíi í Japan og aðalhöfundur greinarinnar greinir „Þetta er í fyrsta sinn álit af hitu límgjöfnu fyrir utan vetrarbrauta, og það sýnir fram á fulkomin hæfni nýrrar sjónaukefnanna til að rannsaka stofnunfræðilegt efni úr vetrarbrautum yfir milli Mjólkurhvarfasins.
@@ -11334,7 +11304,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:155 · F</summary>
 
 **Source:** The quality of images from an interferometric telescope like ALMA depends on both the separations and the number of the antennas.
-**Decision:** F — 干涉望远镜天线间距/数量关键术语均有错误。
+**Decision:** F — Interferometric-telescope antenna spacing/count terminology is wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Gæði myndanna úr vetrarbrautalausn líka ALMA unni að bæði frá því hversu fjarlægð sé og hversu margar vetrarbrautirnar eru.
 **Candidate1:** Gæði myndir frá fjörmagnslinu sjónauka eins og ALMA fer að skiptast bæði af fjarlægð og fjölda loftneta.
@@ -11350,7 +11320,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:665 · P</summary>
 
 **Source:** The combination of Ribavirin Mylan with interferon alfa-2b is used to treat adult patients with chronic hepatitis C, who have previously responded to treatment with an alpha interferon alone, but whose condition has recurred.
-**Decision:** P — 组合治疗成人慢性丙肝、此前单用alpha干扰素应答后复发完整。
+**Decision:** P — Combination treatment for adult chronic hepatitis C after response/relapse on alpha-interferon monotherapy is complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[6]
 **Candidate0:** Samsetningin með Ribavirin Mylan og interferon alfa-2b er notað til meðferðar hjá fullorðnum sjúklingum með langvinna lifrarbólgu C þegar þeir hafa orðið svörun við viðhöndlun með interferoni alfa-2b eins og meðferð hafa áður hent að þeirri tilvikum en sjúklunin hefur komið upp aftur.
 **Candidate1:** Samsetning meðferðar með Ribavirin Mylan og interferón alfa-2b er notað til þess að meðhöndla fullorðna sjúklinga með langvinna lifrarbólgu C sem hafa svar til meðferðar með alfa interferóni einu sér áður en sjúklingurinn hefur svörun líkamsbóta, en sjúkdómurinn hefur aftur koma upp.
@@ -11366,7 +11336,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:2017 · F</summary>
 
 **Source:** In the References section, the footnote is amended.
-**Decision:** F — 参考文献部分及脚注均错误。
+**Decision:** F — Both the references section and footnotes are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í viðmiðunargreinarina er breytt skýrslugjafin.
 **Candidate1:** Í viðurkenningu er skrefin breytt í viðaukanum.
@@ -11382,7 +11352,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:575 · U</summary>
 
 **Source:** It is called CXOU J164710.2-455216 and it has greatly puzzled astronomers.
-**Decision:** U — 候选3表达极大惊讶，但是否保留困惑不能可靠确认。
+**Decision:** U — Candidate3 expresses great surprise, but retention of bafflement is uncertain.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Hún heitir CXOU J164710,2-455216 og hefur lönd meinen stjörnufræðingum.
 **Candidate1:** Mínst stjörnufræðingarnir þýða CXOU J164710.2-455216 þannig að þeir hafa grunnefnt.
@@ -11398,7 +11368,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:2594 · F</summary>
 
 **Source:** Take the pre-filled syringe with solvent and attach (by screwing on) the plunger to the bottom part of it.
-**Decision:** F — 旋拧连接活塞步骤均损坏或省略。
+**Decision:** F — Twisting to connect the plunger is corrupted or omitted throughout.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Takið áfyllt sprautuna með leysi og settið (með því að klúðra á) stimpílina á lágustu hluta hennar.
 **Candidate1:** Takið áfyllt sprautuna með leysi og settu (með því að kljúfa á henni) stimpilinu á botninn deilinu.
@@ -11414,7 +11384,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:339 · F</summary>
 
 **Source:** “In the disc of gas and dust surrounding this newly formed star, we found glycolaldehyde, which is a simple form of sugar, not much different to the sugar we put in coffee,” explains Jes Jørgensen (Niels Bohr Institute, Denmark), the lead author of the paper.
-**Decision:** F — 气尘盘或乙醇醛名称等关键概念均不准确。
+**Decision:** F — Gas/dust disks or glycolaldehyde terminology is inaccurate.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** „Í gasgöknum og ryk sem snúist um þennan nýmynduð stjörnu fannum við glýkólalsíð, sem er einfalt tilvísun af sykri, ekki mjög ólíkur en sykri sem við settum í kaffi,“ segir Jes Jørgensen (Niels Bohr Institute, Danmörk), aðalhöfundur greinar um það.
 **Candidate1:** „Við fundum glykóláldíalásýra í gasnammanum og dyrunum sem snúast um nýttu mynduð stjörnuna, sem er einföldið eiturform súrans, sem er ekki mikilli mun sniður frá syrurinn sem við settum inn í kaffi,“ segir Jes Jørgensen (Niels Bohr Institute, Danmörk), aðalhöfundur greinar um þetta.
@@ -11430,7 +11400,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:1980 · F</summary>
 
 **Source:** The Kaplan-Meier curves of the time from randomisation to impending relapse during the 38-week, Double-blind, Active-controlled Phase for Abilify Maintena, oral aripiprazole 10-30 mg, and aripiprazole Long-Acting Injectable 50 mg/25 mg are shown in Figure 1.
-**Decision:** F — 濒临复发、长效注射或对照设计均有关键错误。
+**Decision:** F — Imminent relapse, long-acting injection or control design contains critical errors.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Kaplan-Meier linur um tíma frá slembiröðun til fyrirbærs afturvaxtar á 38 vikna skjalla blindri, virkri samanburðarsjúkdómsstykkinu fyrir Abilify Maintena, aripiprazól 10-30 mg til inntöku og aripiprazól storkuþol 50 mg/25 mg lyfleysa er sýndur í mynd 1.
 **Candidate1:** Kaplan-Meier-kröftur til að bera út tíma frá slembiröðuunni til að það greinkomi áfram á 38 vikna, tvíblindri, samanburðarrannsókn í frásogi með Abilify Maintena, aripíprazól 10-30 mg til inntöku og aripíprazól förlokkandi 50 mg/ 25 mg lyfja, er sýndur í mynd 1.
@@ -11446,7 +11416,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:2540 · F</summary>
 
 **Source:** Very rare (may affect up to 1 in 10,000 people): sore throat, runny nose, fever; signs of a high level of lactic acid in the blood (known as lactic acidosis) such as drowsiness or dizziness, severe nausea or vomiting, abdominal pain, irregular heart beat or deep, rapid breathing; redness of the skin, itching; decreased vitamin B12 levels (paleness, tiredness, mental symptoms such as confusion or memory disturbances).
-**Decision:** F — 咽痛流涕乳酸酸中毒及症状列表均有关键错误。
+**Decision:** F — Sore throat, runny nose, lactic acidosis and the symptom list contain critical errors.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Mjög sjaldgæfar (geta komið fyrir hjá allt að 1 af hverjum 10.000 einstaklingum): hægðtunga, háðnængi, hiti; einkenni sykursýki í blóði (nefnt sem laktósaassósi) eins og syfja eða sundl, alvarlegi ógleði eða uppköst, magavökva, óregluleg hjartslátt eða djúpa, hröð öndun; roði á húð, kláða; minnkuð magn B12-vítamíns (whitish (pale), þreyta, hugsansjöldauði eins og sundl eða truflingu á minnihætti).
 **Candidate1:** Mjög sjaldgæfar (geta komið fyrir hjá allt að 1 af hverjum 1.000 einstaklingum) þroti í hálsi, nokkurna snúi, hiti, merki um hægt sykursýru í blóði (kallaður sykursýrueitur) eins og syfja eða sundl, alvarlega ógleði eða uppköst, magaverkur, óreglulegt hjartsláttur eða djúpur og hraður öndun, roða í húð, kláða, minnkun á magni vitamínu B12 (flogi, þreyta, tauna einkenna eins og sundli eða truflun á orðvöldum).
@@ -11462,7 +11432,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:949 · F</summary>
 
 **Source:** The Meningococcal Antigen Typing System (MATS) was developed to relate antigen profiles of different strains of meningococcal group B bacteria to killing of the strains in the serum bactericidal assay with human complement (hSBA).
-**Decision:** F — 抗原谱、血清杀菌及人补体关键概念均错误。
+**Decision:** F — Antigen repertoire, serum bactericidal activity and human complement are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Meningókokkumótefnifjöllunarskipti (MATS) var þróuð til að tengja mótefnikvöðum mismunandi arfgerða meningókokkafóta B til mælingar á mikilla áhrifum óvirkja á bardagafóta í sermisbólusetningu með eftirlitsfírar (hSBA) hjá mönnum.
 **Candidate1:** Meningokokus-amnesýnunarskoðunarstörfin (MATS) fannst í ljós til að tengja amnesýnunarskýrslu mismunandi stofna meningokokus B bakteríu ávatnaskipti á lífefni í sýklusýnunargreiningu á stofn meningokokus B bakteríu með völdum fullbúna (hSBA).
@@ -11478,7 +11448,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:723 · F</summary>
 
 **Source:** When the first galaxies started to form a few hundred million years after the Big Bang, the Universe was full of a fog of hydrogen gas.
-**Decision:** F — 大爆炸、氢雾或首批星系等关键概念错误/遗漏。
+**Decision:** F — Big-Bang, hydrogen-fog or first-galaxy concepts are wrong/omitted.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þegar fyrsta æðarnar byrjaðu að myndaði í nokkrum hundruð milljónum ára eftir stórhringann var alheimurinn fyllið af þvagröðu af hýdrógeni.
 **Candidate1:** Þegar fyrstu vetrarbrautir byrjar að koma upp í nokkrum hundruð milljónum ára eftir stóru losunina var alheimurin fullur af hidrogengas.
@@ -11494,7 +11464,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:1188 · F</summary>
 
 **Source:** If you need to remain immobile for an extended period of time or are scheduled to have surgery, it is important for you to talk to your doctor about ways you can reduce the risk of blood clots. if you are pre-menopausal.
-**Decision:** F — 绝经前条件全部错误且部分手术不动关系损坏。
+**Decision:** F — Premenopausal status is wrong throughout; some also damage the surgery/immobility relationship.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Ef þú þarft að vera óhreyfanlegur í langan tíma eða þú hefur áætlað að fá aðgerð er mikilvægt að tala við lækninn um hvernig þú getur lækkað hættuna á blóðseggingum ef þú ert fyrir rennsli.
 **Candidate1:** Ef þú þarft að vera óhreyfanleg í langan tíma eða þú þarft að ganga í skurðaðgerð er mikilvægt að tala við lækninn um að gera þig lætan að draga úr hættu á blóðtappa. ef þú ert á áfæddum kvenkyns eða er þú ætlar að ganga í skurðaðgerð.
@@ -11510,7 +11480,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:2851 · U</summary>
 
 **Source:** Overhydration should be avoided in patients at risk of cardiac failure.
-**Decision:** U — 候选0过量水分升高接近，但ofvatnshækkun是否过度水化不能可靠确认。
+**Decision:** U — Candidate0 approaches excessive hydration, but ofvatnshækkun is not reliably confirmed as overhydration.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Forðast skal ofvatnshækkun hjá sjúklingum sem eru í hættu á hjartabilun.
 **Candidate1:** Forðast skal of vatnsburtingu hjá sjúklingum sem eru á hættu á hjartabilun.
@@ -11526,7 +11496,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:917 · F</summary>
 
 **Source:** If bacterial contamination occurs despite treatment with antibiotics, subcultivation must be preceded by centrifugation at 2 000 to 4 000 g for 15 to 30 min at 2 to 5 °C, and/or filtration of the supernatant through a 0,45 μm filter (low protein-binding membrane).
-**Decision:** F — 继代培养前离心及上清液过滤步骤关键术语顺序错误。
+**Decision:** F — Centrifugation before subculture and supernatant filtration have wrong key terminology/order.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Ef smitandi mengun á stofi baktería kemur fyrir úr meðferð með sýklalyfjum, skal fylgja uppvarmaðri vélun 2.000 til 4.000 g í 15 til 30 mínútur við 2 til 5 °C og/eða með því að dreifja eiturefnið gegnum 0,45 μm öndunarlyfi (lægri próteinsnúðarbalkan).
 **Candidate1:** Ef mikla mengun af bakteríum kemur fram þrátt fyrir meðferð með sýklalyfjum skal fylgja undirvöxt með rafskilun á 2 000 til 4 000 g undir 15 til 30 mínútur á 2 til 5 °C og/eða seyting á eitrunupíppunni með 0,45 μm (lægri próteinbinderandi húð).
@@ -11542,7 +11512,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:1583 · P</summary>
 
 **Source:** The Commission shall monitor the implementation of projects under the Programme.
-**Decision:** P — 委员会监督项目实施准确。
+**Decision:** P — Commission monitoring of project implementation is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Framkvæmdastjórnin skal fylgjast með framkvæmd verkefna samkvæmt áætluninni.
 **Candidate1:** Framkvæmdastjórnin skal fylgjast með framkvæmd verkefna samkvæmt áætlunina.
@@ -11556,7 +11526,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:1949 · F</summary>
 
 **Source:** The European Medicines Agency has deferred the obligation to submit the results of studies with Votrient in one or more subsets of the paediatric population in the treatment of rhabdomyosarcoma, non- rhabdomyosarcoma soft tissue sarcoma and Ewing sarcoma family of tumours (see section 4.2 for information on paediatric use).
-**Decision:** F — 三种肉瘤分类均有关键术语错误。
+**Decision:** F — All three sarcoma categories contain critical terminology errors.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Lyfjastofnun Evrópu hefur frestað kröfu um að lagðar verði fram niðurstöður úr rannsóknum á Votrient hjá einum eða fleiri undirhópum barna við meðferð gegn hrygglæmisæðasögu, hryggloðsaæðasögu sem ekki er hrygglæmisæðasögu og Ewing-hálsþokusögu (sjá upplýsingar í kafla 4.2 um notkun handa börnum).
 **Candidate1:** Lyfjastofnun Evrópu hefur frestað kröfu um að lagðar séu fram niðurstöður úr rannsóknum á Votrient hjá einum eða fleiri undirhópum barna við meðferð á rófílsæðifjölgvöllu, kúufrumusæðifjölgvöllu og Ewingæxli með fæðingum (sjá upplýsingar í kafla 4.2 um notkun handa börnum).
@@ -11572,7 +11542,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:2757 · P</summary>
 
 **Source:** Approximately 74 % of patients also received single dose oral or intravenous dexamethasone 30 minutes before chemotherapy.
-**Decision:** P — 74%化疗前30分钟单剂口服或静脉地塞米松完整。
+**Decision:** P — For74%, a single oral/intravenous dexamethasone dose30minutes before chemotherapy is complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[1]
 **Candidate0:** Um það bil 74% sjúklinga fengu einnig dexametasón til inntöku eða í bláæð ásamt 30 mínútum fekk.
 **Candidate1:** Um það bil 74 % sjúklinganna fengu einn skammt af dexametasóni til inntöku eða í æð 30 mínútum fyrir krabbameinslyfjameðferð.
@@ -11588,7 +11558,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:274 · P</summary>
 
 **Source:** More than 200 new variable stars in Centaurus A were discovered.
-**Decision:** P — Centaurus A发现200多颗新变星完整。
+**Decision:** P — Discovery of over200new variable stars in Centaurus A is complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[2, 5, 6, 7]
 **Candidate0:** Mangir 200 nýjar breytistjörnur komu í ljós í Centaurus A.
 **Candidate1:** Fjöldi stjarna í Centaurus A sem gagnast frá var meira en 200.
@@ -11604,7 +11574,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:401 · F</summary>
 
 **Source:** Lost in Space: Rogue Planet Spotted?
-**Decision:** F — 流浪行星及迷失太空关键含义均错。
+**Decision:** F — Rogue planets and being lost in space are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Starfandi í geimnum: Strotur stjarna finnst?
 **Candidate1:** Gömul í geimnum: Sigurt leiðangurplaneti?
@@ -11620,7 +11590,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:1202 · F</summary>
 
 **Source:** To this end, the Executive Director should prepare and take all necessary steps to ensure the proper accomplishment of the working programme of the Agency, should prepare each year a draft general report to be submitted to the Administrative Board, should draw up estimates of the revenues and expenditure of the Agency and should implement the budget.
-**Decision:** F — 执行主任年度报告提交管理委员会及收支估计角色均错误。
+**Decision:** F — The executive director's annual report to the management board and revenue/expenditure-estimate roles are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í þessu tilliti skal framkvæmdaráxin útvega og taka allar nauðsynlegar ákvæði til þess að tryggja að vinnunáætlun stofnunarinnar sé framkvæmdur á réttan hátt, skal hún útvega árlegan grein á sameiginlega skýrslu til tilkynningar til stjórnarstofunnar, skal hún útvega könnunargreinar um rekstraraðgengi stofnunarinnar og skal hún framkvæma fjárhagsáætlunina.
 **Candidate1:** Hann skal undirbúa og gera allar nauðsynlegar ráðstafanir til að tryggja að starfseminaráætlun stofnunarinnar sé framkvæmd á réttan hátt og undirbúa árlegan drög upplýsingafræðilegri skýrslu til framkvæmdastjórnarinnar, koma frá áhættumóteftum um skoðanir á úrskurð og útgjöld stofnunarinnar og framkvæma fjárhagsáætlunina.
@@ -11636,7 +11606,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:2774 · F</summary>
 
 **Source:** In case of accidental ingestion, especially in the case of children, seek medical advice immediately and show the package leaflet or the label to the physician.
-**Decision:** F — 全部漏译/错译意外吞服条件。
+**Decision:** F — All omit or mistranslate the accidental-swallowing condition.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Hafa skal strax samband við lækni ef um slysi er að ræða, einkum handa barn. Sýna skal lækninum fylgiseðilinn eða merkið.
 **Candidate1:** Ef rýrast er í nefndum, sérstaklega handa börnum, skal grípa tafarlaust til læknisins og sýna honum þekkingu eða merkingu í pakkningunni.
@@ -11652,7 +11622,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:36 · F</summary>
 
 **Source:** “Together with the planets found around the young, massive stars Fomalhaut and HR8799, the existence of Beta Pictoris b suggests that super-Jupiters could be frequent byproducts of planet formation around more massive stars,” explains Gael Chauvin, a member of the team.
-**Decision:** F — Beta Pictoris存在性、年轻大质量或超级木星形成关系均错误/遗漏。
+**Decision:** F — Beta Pictoris existence, young massive stars or super-Jupiter formation is wrong/omitted.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** „Samband við reikistjörnurnar sem fundust um kynna Fomalhaut og HR8799, sýnir hann til þess að ofur Jóhannar gætu verið algengar afleiður af mænslögunni reikistjörnu í kringum oftar massahárrar stjörnur,“ segir Gael Chauvin, aðalmeðlimur í hópnum.
 **Candidate1:** „Eins og fyrirhostur Fomalhaut og HR8799 benda fyrir kynningu að siglingar sem koma fram í kringum massamikla stjörnur, sem voru yngri en Júpítor, geta verið mjög algengar afleiður úr myndun reikistjarna í kringum þær stjörnur,“ sagði Gael Chauvin, einn af hópnum.
@@ -11668,7 +11638,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:1551 · F</summary>
 
 **Source:** Treatment with Pedea can only be carried out in a neonatal intensive care unit under the supervision of an experienced neonatologist.
-**Decision:** F — 新生儿重症监护病房及经验医生条件均不完整。
+**Decision:** F — Neonatal intensive-care units and experienced-physician conditions are incomplete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Meðferð með Pedea getur eingöngu verið framkvæmdur á sjúkrahúsi við umsjón hæfilegra nýburafræðinga.
 **Candidate1:** Notkun Pedea má einungis stunda í kröftunarstofu við neinu gengi undir eftirliti ságfrægs áeinlendar.
@@ -11684,7 +11654,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:378 · P</summary>
 
 **Source:** These are stars with initial masses between 0.8 and 8 solar masses in the late stages of their lives.
-**Decision:** P — 初始0.8至8太阳质量晚期恒星完整。
+**Decision:** P — Late-stage stars initially having0.8to8solar masses is complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[3, 4, 5, 6, 7]
 **Candidate0:** Þetta eru stjörnur með upphafsgildi massa á bilinu 0,8 ótta sólmagns til 8 sólarmassa á síðasta stigi lífshlutar þeirra.
 **Candidate1:** Þær eru stjörnur með upphafsgildi massa á milli 0,8 og 8 jörðmassa í lokamörkum lífs sín.
@@ -11700,7 +11670,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:1062 · F</summary>
 
 **Source:** However, the research team could not detect any visual evidence of outgassing.
-**Decision:** F — 视觉证据或逸气术语均错误。
+**Decision:** F — Visual-evidence or outgassing terminology is wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þó komu rannsóknarfélögin ekki fram nein auglýsandi einkenni á útútslæn.
 **Candidate1:** Aðildarráðuneytisfélögin komst þó ekki fram nein auglýsingu um útfyrirskilun.
@@ -11716,7 +11686,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:19 · P</summary>
 
 **Source:** It is recommended to use as much as possible the same soils throughout all laboratory soil studies.
-**Decision:** P — 尽可能所有实验室土壤研究使用相同土壤含义保留。
+**Decision:** P — Using the same soil throughout laboratory soil studies whenever possible is retained.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[2]
 **Candidate0:** Mælt er með því að nota samtímis skerðingu í öllum rannsóknum á jarðfæðum í rannsóknir í rannsóknarstofum.
 **Candidate1:** Ráðlagt er að nota yfirleitt sama jarðefni í öllum jarðrannsóknum á jarðefni í rannsóknarstofum.
@@ -11732,7 +11702,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:1711 · P</summary>
 
 **Source:** On the basis of the common criteria, it is assessed that Mahan Air has implemented all necessary measures to conform to relevant safety standards and therefore may be withdrawn from Annex A. The Commission will continue to monitor closely the performance of the carrier.
-**Decision:** P — 共同标准必要安全措施移出附件A及继续密切监督完整。
+**Decision:** P — Common standards, necessary safety measures, removal from Annex A and continued close monitoring are complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Á grundvelli sameiginlegra viðmiðana er metað að Mahan Air hafi farið fram allar nauðsynlegar ráðstafanir til að vera í samræmi við viðeigandi öryggisstöðlum og því má fella hana frá viðauka A. Framkvæmdastjórnin mun halda náið eftirliti með framkvæmdum flugrekanda.
 **Candidate1:** Á grundvelli sameiginlegra viðmiðana telst nánu að Mahan Air hafi framkvæmt allar nauðsynlegar ráðstafanir til að fara að viðeigandi öryggisstaðlum og er því hægt að fella hana úr A. Framkvæmdastjórnin mun halda náið eftirliti með þeim framkvæmdakvarðum og framfylgni flutningsfélagsins.
@@ -11748,7 +11718,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:2321 · P</summary>
 
 **Source:** In Study 1 (see section 5.1), decrease in absolute neutrophil count levels below 500 cells/mm3 was observed in 4 % (8/194) of patients and decrease in platelets below 50,000/mm3 was observed in 4 % (8/194) of patients receiving ViraferonPeg in combination with ribavirin.
-**Decision:** P — 中性粒细胞及血小板阈值人数百分比与组合药物完整。
+**Decision:** P — Neutrophil/platelet thresholds, patient counts/percentages and combination drugs are complete.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[1]
 **Candidate0:** Í rannsókn 1 (sjá kafla 5.1) komri niður í heildarhópum (absolute neutrophil count) lausn en lágari en 500 frumum/mm3 hjá 4% (8/194) sjúklinga og minni nýrna en 50.000/mm3 hjá 4% (8/194) sjúklinga sem fengu ViraferonPeg ásamt ribavirini.
 **Candidate1:** Í rannsókn 1 (sjá kafla 5.1) kom fram minnkuð þéttni heildarneútrophíla sem var undir 500 frumum/mm3 hjá 4 % (8/194) sjúklinga og minnkuð þéttni blóðflagna sem var undir 50.000/mm3 hjá 4 % (8/194) sjúklinga sem fengu ViraferonPeg samhliða ríbavírini.
@@ -11764,7 +11734,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:2419 · U</summary>
 
 **Source:** For longer term treatment once clinical response has been observed (after 4 or more days), the dose of Meloxivet can be adjusted to the lowest effective individual dose reflecting that the degree of pain and inflammation associated with chronic musculo-skeletal disorders may vary over time.
-**Decision:** U — 部分最低有效剂量和时间保留，但疼痛及慢性肌骨病限定不明确。
+**Decision:** U — Some minimum-effective-dose/time content remains, but pain and chronic musculoskeletal restrictions are unclear.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Ef á fullnægjandi meðferð er lagt á lengri tíma (eftir 4 daga eða lengra) skal breytta skammtinn af Meloxivet samkvæmt því hvað þess knúinna einstaklingskunnugri skammtur er virkur, að því er varðar það að svar hjá sem er á við einkenni sársaukna á músu- og líkamagreiningu getur breytast með tímann.
 **Candidate1:** Ef lyfjagjöf varir lengi og nýttigur hefur komið fram (eftir 4 daga eða meira), má auka skammt Meloxivet í lægri skammt við þá litlanlegustu skammt sem gerir það á hópunni öryggi, þar sem sýnilegt er að veru og bólgu tengd sjúkdómum í vöðva- og beinfrumna geta breytist tókum á tímanum.
@@ -11780,7 +11750,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:2032 · U</summary>
 
 **Source:** Directive 2007/64/EC of the European Parliament and of the Council of 13 November 2007 on payment services in the internal market (5) provides a modern legal foundation for the creation of a Community-wide internal market for payments.
-**Decision:** U — 部分现代法律基础接近，但共同体范围及法律术语表达不明确。
+**Decision:** U — Some modern-legal-basis wording is close, but Community scope and legal terminology are unclear.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í tilskipun Evrópuþingsins og ráðsins 2007/64/EB frá 13. nóvember 2007 um greiðsluþjónustu á innri markaði (5) er sett á fót nýleg lögboð til að koma á nýlega innri markað fyrir greiðslur í öllu Evrópunum.
 **Candidate1:** Í tilskipun Evrópuþingsins og ráðsins 2007/64/EB frá 13. nóvember 2007 um greiðsluþjónustu á innri Markaðinu (5) er setti nýleg lögboð til að skapa almenn innri Markað á gegnum greiðslu (gjaldan).
@@ -11796,7 +11766,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:552 · F</summary>
 
 **Source:** This new image shows how these clouds of gas and dust have been sculpted into whimsical bubbles, arcs and the odd features known as elephant trunks by the stellar winds flowing from this gathering of hot young stars.
-**Decision:** F — 泡弧象鼻及雕塑形成关系均错误。
+**Decision:** F — Bubble, arc and trunk structures and sculpting relationships are wrong.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þessa nýja mynd sýnir hvernig þessir gas- og rykský hafa verið rúslinn af til þess að verri tilborðum, arvarum og óbundinum fyrirbærum sem kallast elfskorpur með stjörnuvindunum sem flæða frá þessari samið af hitum og njólgengum stjörnum.
 **Candidate1:** Þessi nýja mynd sýnir hvernig þessi gas- og rykskýnir hafa verið útfærðir í skíthringum, sem brjóta og þreyta sem kallaðar eru efniskýnir í lærðum formi af þeim stjörnuveindum sem flæða út frá þessum kúlum morða og heilu stjarna.
@@ -11812,7 +11782,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eso:256 · P</summary>
 
 **Source:** This is much smaller than astronomers had previously thought.
-**Decision:** P — 远小于天文学家先前所想准确。
+**Decision:** P — Much smaller than astronomers previously thought is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Þetta er mikið minni en stjörnufræðingar hafa áður hugtakað.
 **Candidate1:** Þetta er meira lítill en stjörnufræðingar hafðu áður talinn.
@@ -11828,7 +11798,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:773 · F</summary>
 
 **Source:** These include infection and Graft-versus host disease (GVHD) which although not directly related, were the major causes of morbidity and mortality, especially in allogeneic HPCT.
-**Decision:** F — GVHD疾病及异基因HPCT或发病死亡关系均不准确。
+**Decision:** F — GVHD, allogeneic HPCT or morbidity/mortality relationships are inaccurate.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þetta er til hið þar sem sýkingar og sjúkdómur í heilbrigðisversnun (GVHD) verða þó ekki beint að gagni frá sjúkdóminn og dauðsföll, sem verða aðeins mikilvægir í alvörufræðilegu HPCT.
 **Candidate1:** Þau taka til sýkingar og sjúkdóma sem nemur gjarta á móður (graft-versus-host disease (GVHD)), en þó ekki beint tengdum, eiga að pað eru almennt orsakar einkenna líðs og dauðsföllum, einkum í sýki með alvegukanum millibili (allogeneic HPCT).
@@ -11844,7 +11814,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:74 · U</summary>
 
 **Source:** In the light of the chemical composition of residues occurring in soil, water or air, resulting from use, or proposed use, of a plant protection product containing the active substance a proposal for the definition of the residue must be submitted, taking account of both the levels found and their toxicological and environmental significance.
-**Decision:** U — 候选4接近但化学组成、毒理学意义措辞不能可靠确认。
+**Decision:** U — Candidate4 is close, but chemical-composition/toxicological-significance wording is unconfirmed.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Í ljósi efnafræðilegrar samsetningar leifa sem fram koma í jarðvökju, vatn eða loftrar eru af völdum notkunar eða tilgreindar notkunar, af völdum plöntuverndarvörunni sem inniheldur virka efnið, skulu lagt fram tillögur um skilgreiningu á leifum, að teknu tilliti til bæði stigs sem fundist var á og eðlismikilvænleika leifanna.
 **Candidate1:** Í ljósi efnafræðilegrar efnasams vi á efnablöndu í jarðverri, vatni eða loftrar, sem er valdið af notkun eða tilgreind vi e notkun á plöntuvarnarefni sem inniheldur virka efni, skal leggja fram tillögu til skilgreiningar á efnablöndunum, þar sem tek eftir bæði þeim styrkleika sem fundist hafa og efnahættuleika og umhverfisfræðilega mikilvægi þeirra.
@@ -11860,7 +11830,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:eea:2116 · F</summary>
 
 **Source:** This Decision should not apply to the transfer of personal data by controllers established in the European Union to controllers established outside the European Union which fall within the scope of Commission Decision 2001/497/EC of 15 June 2001 on standard contractual clauses for the transfer of personal data to third countries, under Directive 95/46/EC (1).
-**Decision:** F — 控制者角色、EU范围或标准合同条款均有关键错误。
+**Decision:** F — Controller roles, EU scope or standard contractual clauses contain critical errors.
 **Inspected/correct:** [0, 1, 2, 3, 4, 5, 6, 7]/[]
 **Candidate0:** Þessi ákvörðun skal ekki gilda um flutning persónuupplýsinga frá skipulegum búsetum í Evrópusambandinu til skipulegra búseta utan evrópskra ríkjanna, sem falla undir gildissvið ákvörðunar framkvæmdastjórnarinnar 2001/497/EB frá 15. júní 2001 um staðlað samningssamkvæði um flutning persónuupplýsinga til þriðju landa, samkvæmt tilskipun 95/46/EB (1).
 **Candidate1:** Þessi ákvörðun skal ekki beitt þeim sendi persónuupplýsinga sem stjórnendur yfirsetnar innan Evrópusambandsins senda til stjórnenda yfirsetra utan evrópubandalagsins, sem falla undir gildissvið ákvörðunar framkvæmdastjórnarinnar 2001/497/EB frá 15. júní 2001 um staðlaðar samningsskilnaðarreglur vegna senda persónuupplýsinga til þriðju löndna, samkvæmt tilskipun 95/46/EB (1).
@@ -11876,7 +11846,7 @@ Symmetric final-case review
 <details><summary>final_g8_before_component · candidate · g8 · p18official21:test:ema:3091 · P</summary>
 
 **Source:** Do not open the capsules.
-**Decision:** P — 不得打开胶囊准确。
+**Decision:** P — Do not open the capsule is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ekki opna hylkin.
 **Candidate2:** Opnaðu ekki hylkin.
@@ -11887,7 +11857,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:ema:1816 · F</summary>
 
 **Source:** In a pharmacokinetic study evaluating Omidria, systemic exposure to each of phenylephrine and ketorolac was minimal and transient.
-**Decision:** F — 极低短暂暴露保留，但全身性暴露限定遗漏。
+**Decision:** F — Very low transient exposure remains, but systemic-exposure scope is omitted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í lyfjahvarfarannsókn á Omidria var útsetning fyrir fenýlefríni og ketorolaci óveruleg og skammvinn.
 
@@ -11896,7 +11866,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:ema:665 · P</summary>
 
 **Source:** The combination of Ribavirin Mylan with interferon alfa-2b is used to treat adult patients with chronic hepatitis C, who have previously responded to treatment with an alpha interferon alone, but whose condition has recurred.
-**Decision:** P — 组合药成人慢性丙肝此前单用alpha干扰素应答后复发完整。
+**Decision:** P — Combination treatment for adult chronic hepatitis C after response/relapse on alpha-interferon alone is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Samsetning meðferðar með Ribavirin Mylan og interferon alfa-2b er notað til meðferðar hjá fullorðnum sjúklingum með langvinna lifrarbólgu C sem hafa áður svarað meðferð með einu alfa interferoni en sjúkdómurinn hefur endurtekið.
 
@@ -11905,7 +11875,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:617 · F</summary>
 
 **Source:** The lead author of the new study, Tomasz Kamiński (ESO and the Max Planck Institute for Radio Astronomy, Bonn, Germany) explains: “For many years this object was thought to be a nova, but the more it was studied the less it looked like an ordinary nova - or indeed any other kind of exploding star.”
-**Decision:** F — 新星术语及比较否定仍错误。
+**Decision:** F — Nova terminology and the negated comparison remain wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Tomasz Kamiński (ESO og Max Planck Institute for Radio Astronomy í Bonn í Þýskalandi), sem er aðalhöfundur rannsóknarinnar, segir: „Fyrir mörg ár var gert ráð fyrir að þetta séið verði nóbúnað en meira rannsakaði hann leiddi til þess að það virðist minni líka nóbúnað en eiginlega önnur stjörnu sem sprengist.“
 
@@ -11914,7 +11884,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eea:1729 · U</summary>
 
 **Source:** Following the invitation of the carrier and of the competent authorities of the Islamic Republic of Iran, a team of European experts conducted a fact-finding mission from 16 to 20 June 2008 to verify the implementation by the carrier of the various corrective actions.
-**Decision:** U — 日期核实纠正措施大致保留，但伊朗国名/共和国表达损坏，不能确认完整。
+**Decision:** U — Dates, verification and corrective action mostly remain, but Iran/republic wording is corrupted, preventing full confirmation.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í samráði við boð hóps flutningsfélagsins og lögbærra yfirvalda Islambóls- ríkisins, Írands, fór hópur sérfræðinga frá Evrópu í ferð til staðar frá 16. til 20. júní 2008 til að ganga úr skugga um framkvæmd flutningsfélagsins á mismunandi leiðréttingum.
 
@@ -11923,7 +11893,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eea:1367 · U</summary>
 
 **Source:** By 30 June 2006, the Commission should submit to the European Parliament and the Council the findings of a study on the costs involved in measures taken under this Directive, addressing in particular the way financing is shared between the public authorities, port authorities and operators.
-**Decision:** U — 成本分担角色日期保留，但提交义务首句结构不明确。
+**Decision:** U — Cost-sharing roles and dates remain, but the first submission-obligation clause is unclear.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Eigi tilkynnt Evrópuþingið og ráðið þessari leiðbeiningu eigi síðar en 30. júní 2006 er framkvæmdastjórnin lagðar niðurstöður úr rannsókn á kostnaði vegna þeirra ráðstafana sem gerðar eru samkvæmt þessari tilskipun, sérstaklega um hvernig fjármögnun er deilt milli opinberra yfirvalda, hafnaryfirvalda og rekstraraðila.
 
@@ -11932,7 +11902,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:opensubtitles:1150 · U</summary>
 
 **Source:** Sometimes, accidents need a little help.
-**Decision:** U — 处理事故需帮助与事故被促成习语是否一致不能确认。
+**Decision:** U — Whether needing help with an accident preserves the idiom about helping cause the accident is uncertain.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Stundum þarf lítið hjálp við slysni.
 
@@ -11941,7 +11911,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:opensubtitles:3129 · F</summary>
 
 **Source:** They play every Thanksgiving because they&#x27;re the most ferocious.
-**Decision:** F — 感恩节错误。
+**Decision:** F — Thanksgiving is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þau spila á hverjum Týræskudafæð vegna þeirra að vera færstu hættulegustu.
 
@@ -11950,7 +11920,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eea:1613 · F</summary>
 
 **Source:** Stimulating the involvement of children in creating a safer online environment.
-**Decision:** F — 更安全误为适合的网络平台。
+**Decision:** F — Safer becomes a suitable online platform.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Virkjað að því að börn taki þátt í myndun hæfur netvettvangs.
 
@@ -11959,7 +11929,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:opensubtitles:573 · P</summary>
 
 **Source:** I was a little worried, but I did it.
-**Decision:** P — 稍担心但做到了准确。
+**Decision:** P — Slightly worried but succeeded is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ég var lítillega áhyggjufull en gerði það.
 
@@ -11968,7 +11938,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eea:1760 · F</summary>
 
 **Source:** The Commission considers that a decision regarding the possible inclusion of all carriers certified in the Republic of Philippines in the Community list should be deferred until the ICAO audit results are known.
-**Decision:** F — 获认证误为设立，与旧模型同标准。
+**Decision:** F — Accredited becomes established, under the same standard as the previous model.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Framkvæmdastjórnin telur að fresta ákvörðun um hugsanlega að allir flutningsfélög sem hafa staðfestu í Filipínslandi farið yfir á skrá Bandalagsins þar til niðurstöður úr endurskoðun ICAO eru þekktar.
 
@@ -11977,7 +11947,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:295 · U</summary>
 
 **Source:** The new technique pioneered here is much more powerful.
-**Decision:** U — 更强新技术保留，开创的修饰词不明确。
+**Decision:** U — More powerful new technology remains, but the pioneered modifier is unclear.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Nýja tæknið sem hér er fyrirframhaldin er miklu öflugri.
 
@@ -11986,7 +11956,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:370 · F</summary>
 
 **Source:** Earlier observations had clearly shown a spherical shell around R Sculptoris, but neither the spiral structure nor a companion was found.
-**Decision:** F — 球壳与螺旋结构关键对象错误。
+**Decision:** F — Spherical-shell and spiral-structure objects are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Fyrri mælingar hafa greinilega sýnt þyrilshlutar í kringum R Sculptoris en hvorki varð vörslu né fylgjandi fundist.
 
@@ -11995,7 +11965,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eea:1383 · F</summary>
 
 **Source:** Subject to the findings of port security assessments, Member States shall ensure that port security plans are developed, maintained and updated.
-**Decision:** F — 计划制定被改为继续，评估措辞亦损坏。
+**Decision:** F — Developing a plan becomes continuing it; assessment wording is also corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Aðildarríkin skulu, að því tilskildu niðurstöðum úr mati á öryggisvið- umum fyrir hafnir, tryggja það að áætlunum um öryggi hafnar sé framhaldin og uppfærð, og viðhaldi þeim.
 
@@ -12004,7 +11974,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:76 · P</summary>
 
 **Source:** VISIR was built by CEA/DAPNIA/SAP and NFRA/ASTRON.
-**Decision:** P — VISIR由两机构建造准确。
+**Decision:** P — VISIR being built by two institutions is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** VISIR var smíðað af CEA/DAPNIA/SAP og NFRA/ASTRON.
 
@@ -12022,7 +11992,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:1062 · F</summary>
 
 **Source:** However, the research team could not detect any visual evidence of outgassing.
-**Decision:** F — 逸气误为沉淀。
+**Decision:** F — Outgassing becomes precipitation.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Rannsóknarhópurinn kom þó ekki fram neinar augljósmerki um útfellingu.
 
@@ -12031,7 +12001,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:opensubtitles:155 · F</summary>
 
 **Source:** Well, I&#x27;m the Great Ned Kelly, and this here is the Fabulous Joe Byrne.
-**Decision:** F — Great遗漏Fabulous错误。
+**Decision:** F — Great is omitted and Fabulous is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ég er Ned Kelly og þetta er Fjárleikur Joe Byrne.
 
@@ -12040,7 +12010,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:ema:2774 · F</summary>
 
 **Source:** In case of accidental ingestion, especially in the case of children, seek medical advice immediately and show the package leaflet or the label to the physician.
-**Decision:** F — 误服遗漏且包装说明书错误。
+**Decision:** F — Accidental ingestion is omitted and the package leaflet is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ef um slysi er að ræða, einkum hjá börnum, skal leita læknisráða tafarlaust og senda lækninum framleiðslukvarpan eða merki.
 
@@ -12049,7 +12019,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:292 · F</summary>
 
 **Source:** As no starlight shines through Tau Boötis bs atmosphere towards us, this means the planets atmosphere could not be studied before.
-**Decision:** F — 第二处行星大气误为geimhvarfin。
+**Decision:** F — The second planetary-atmosphere mention becomes geimhvarfin.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þar sem enginn stjörnuljósi glítur í gegnum lofthjúp Tau Boötis bs í átt við okkur, þýðir þetta að geimhvarfin plánetunnar hafi ekki verið rannsökuð áður.
 
@@ -12058,7 +12028,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:opensubtitles:2747 · P</summary>
 
 **Source:** We were all out at the zoo one day.
-**Decision:** P — 有一天大家去了动物园准确。
+**Decision:** P — One day everyone went to the zoo is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Við vorum öll úti í dýragarðinni einhverja daginn.
 
@@ -12067,7 +12037,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:ema:1949 · U</summary>
 
 **Source:** The European Medicines Agency has deferred the obligation to submit the results of studies with Votrient in one or more subsets of the paediatric population in the treatment of rhabdomyosarcoma, non- rhabdomyosarcoma soft tissue sarcoma and Ewing sarcoma family of tumours (see section 4.2 for information on paediatric use).
-**Decision:** U — 肉瘤分类较接近，但横纹肌肉瘤术语不稳定不能确认。
+**Decision:** U — Sarcoma categories are close, but rhabdomyosarcoma terminology is unstable and unconfirmed.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Lyfjastofnun Evrópu hefur frestað kröfu um að lagðar séu fram niðurstöður úr rannsóknum á Votrient hjá einum eða fleiri undirhópum barna við meðferð á rákvöðvalofssarki, sarka í mjúkvefjum sem ekki eru rákvöðvalofssarki og Ewing hópi æxlis (sjá upplýsingar í kafla 4.2 um notkun handa börnum).
 
@@ -12076,7 +12046,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eea:875 · F</summary>
 
 **Source:** The clinical inspections must be carried out during the period October to June or whenever the water temperature is below 14 °C.
-**Decision:** F — 水温变为水位。
+**Decision:** F — Water temperature becomes water level.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Klínískar athuganir verða að fara fram á tímabilinu október til júnar eða hvenær sem vatnsstigurinn er undir 14°C.
 
@@ -12085,7 +12055,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:155 · F</summary>
 
 **Source:** The quality of images from an interferometric telescope like ALMA depends on both the separations and the number of the antennas.
-**Decision:** F — 干涉望远镜及天线错误。
+**Decision:** F — The interferometric telescope and antennas are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Gæði myndanna úr rannsóknarstjörnu eins og ALMA tekur til bæði af fjölda og fjarlægð stjörnustöfunnar.
 
@@ -12094,7 +12064,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:opensubtitles:638 · F</summary>
 
 **Source:** What&#x27;s a guy got to do to get laid?
-**Decision:** F — 未表达发生性关系。
+**Decision:** F — Sexual intercourse is not expressed.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hvað þarf strákur að gera til að fá sér áskað?
 
@@ -12103,7 +12073,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eea:83 · F</summary>
 
 **Source:** The level of residues in groundwater.
-**Decision:** F — 地下水误为基础。
+**Decision:** F — Groundwater becomes a foundation.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Styrk leifa í grundvöldi.
 
@@ -12112,7 +12082,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:ema:1288 · F</summary>
 
 **Source:** In patients ≥ 75 years the observed incidence of the primary efficacy composite end point for the pharmaco-invasive strategy and primary PCI were as follows: before dose reduction 11/37 (29.7%) (95% CI: 15.9- 47.0) versus 10/32 (31.3%) (95% CI: 16.1-50.0), after dose reduction: 25/97 (25.8%) (95% CI: 17.4-35.7) versus 25/88 (24.8%) (95% CI: 19.3-39.0).
-**Decision:** F — 主要疗效复合终点及药物侵入策略错误。
+**Decision:** F — The primary efficacy composite endpoint and pharmacoinvasive strategy are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hjá sjúklingum ≥ 75 ára var samantekt á einkennum fyrir verkun í upphafi meðferðar og fyrstu kransæðavíkkun sem kom fram eins og eftirfarandi: fyrir skammtalækkun 11/37 (29,7%) (95% CI: 15,9-47,0) á móti 10/32 (31,3%) (95% CI: 16,1-50,0), eftir skammtalækkun: 25/97 (25,8%) (95% CI: 17,4-35,7) á móti 25/88 (24,8%) (95% CI: 19,3-39,0).
 
@@ -12121,7 +12091,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eea:506 · U</summary>
 
 **Source:** Photographs, if any, must show sufficient detail.
-**Decision:** U — 有照片时展示充足内容接近，但足够细节未明确。
+**Decision:** U — Showing ample content when photographs exist is close, but sufficient detail is not explicit.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ef einhverjar ljósmyndir eru til þarf að sýna nægilega mikið í ljós.
 
@@ -12130,7 +12100,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eea:1170 · F</summary>
 
 **Source:** GC/MS methods of analysis and bioassays may be used for screening.
-**Decision:** F — 生物测定遗漏GC/MS分析错误。
+**Decision:** F — Biometrics is omitted and GC/MS analysis is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Gaukpróf/magnpróf (GC/MS) er hægt að nota til skimmis.
 
@@ -12139,7 +12109,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:opensubtitles:675 · P</summary>
 
 **Source:** I have a bad feeling about this.
-**Decision:** P — 对此不好的预感准确。
+**Decision:** P — Having a bad feeling about this is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ég er með slæmu tilfinningu um þetta.
 
@@ -12148,7 +12118,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:869 · P</summary>
 
 **Source:** One such stellar pair is called V471 Tauri.
-**Decision:** P — 这样一对恒星V471 Tauri准确，语法瑕疵。
+**Decision:** P — The pair of stars V471 Tauri is accurate, with grammatical flaws.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Eitt slíkt stjörnu tvíbur er kallað V471 Tauri.
 
@@ -12157,7 +12127,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:opensubtitles:1183 · F</summary>
 
 **Source:** I thought Alvin was messy.
-**Decision:** F — messy错误。
+**Decision:** F — Messy is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ég hélt Alvin væri skóflegur.
 
@@ -12166,7 +12136,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eea:929 · F</summary>
 
 **Source:** Other IF techniques (with regard to cell cultures, fixation and antibodies of reference quality) of proven efficiency may be used alternatively.
-**Decision:** F — IF技术细胞培养固定关键概念错误。
+**Decision:** F — IF techniques, cell culture and fixation are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Notið önnur áætlaða meðferðaráætlun (með tilliti til frumudreifinga, fastgengunar og mótefna viðmiðunargildi) sem hafa staðfestan verkun, sem annars vegar.
 
@@ -12175,7 +12145,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:ema:773 · F</summary>
 
 **Source:** These include infection and Graft-versus host disease (GVHD) which although not directly related, were the major causes of morbidity and mortality, especially in allogeneic HPCT.
-**Decision:** F — GVHD及异基因HPCT错误。
+**Decision:** F — GVHD and allogeneic HPCT are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þar á meðal er sýking og græðslu hversu án beinan tengingar, var aukin orsakur veikinda og dauðsföllum, einkum í alnæma HPCT.
 
@@ -12193,7 +12163,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:ema:1980 · F</summary>
 
 **Source:** The Kaplan-Meier curves of the time from randomisation to impending relapse during the 38-week, Double-blind, Active-controlled Phase for Abilify Maintena, oral aripiprazole 10-30 mg, and aripiprazole Long-Acting Injectable 50 mg/25 mg are shown in Figure 1.
-**Decision:** F — 活性对照误安慰剂且长效注射遗漏。
+**Decision:** F — Active control becomes placebo and long-acting injection is omitted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Kaplan-Meier línuröðin frá slembiröðun til þess að versnun kom fyrir meðan á 38 vikna, tvíblindri, lyfleysuhópnum með virkum lyfjum við Abilify Maintena, aripíprazól 10-30 mg til inntöku og aripíprazól 50 mg/25 mg lyfi sem gefið er með inndælingu varðar eru sýndar í mynd 1.
 
@@ -12202,7 +12172,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eea:987 · F</summary>
 
 **Source:** The common understanding of the term ‘production index as an ‘evolution of value added contradicts the definition of ‘production in the framework of national accounts or structural business statistics, but nonetheless is the correct term traditionally used in this area of business statistics.
-**Decision:** F — 生产指数增加值国民账户等关键术语错误。
+**Decision:** F — Production-index, value-added and national-account terminology is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Sameiginleg skilning á þeim hugtökunum „framleiðsluþýði“ sem „uppsöfnun gagnsæis“ er ósamræmist skilgreiningu „framleiðslu“ í rannsóknaratriðum eða stofnunargreinar um stjórnskipulag, en er hins vegar rétt hugtakið sem hefur verið notað til staðar í þessum sviði greina stofnunarhagsfræði.
 
@@ -12211,7 +12181,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eea:1464 · F</summary>
 
 **Source:** Prices must be expressed in national currency per gigajoule.
-**Decision:** F — 价格本币千兆焦耳术语损坏。
+**Decision:** F — Price, national-currency and gigajoule terminology is corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Verður verða skilgreind í landsmöguleika á hvert gígajóleli.
 
@@ -12220,7 +12190,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:934 · F</summary>
 
 **Source:** Takashi Shimonishi, an astronomer at Tohoku University, Japan, and the paper&#x27;s lead author enthused: &quot;This is the first detection of an extragalactic hot molecular core, and it demonstrates the great capability of new generation telescopes to study astrochemical phenomena beyond the Milky Way.&quot;
-**Decision:** F — 分子核变分子柜且银河系外及天体化学错。
+**Decision:** F — Molecular core becomes a molecular cabinet; extragalactic scope and astrochemistry are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Takashi Shimonishi, stjörnufræðingur við Tohoku háskóla í Japan og aðalhöfundur greinar um það, sagði: „Þetta er fyrsta mæling á heitu sameindaskáp í gegnumvetrarbrautina, sem sýnir fram á mikil hæfni nýrra sjónauka til að rannsaka stofnfræðilegar fyrirkomulag í gegnumvetrarbrautina.“
 
@@ -12238,7 +12208,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:570 · F</summary>
 
 **Source:** Further observations are planned with ALMA, which is still ramping up to its full capabilities, to shed more light on this intriguing planetary system, and so help us to understand what conditions were like during the formation of the Solar System.
-**Decision:** F — 幻加ALMA执行委员会且行星系统错误。
+**Decision:** F — An ALMA executive board is hallucinated and planetary systems are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Framkvæmdastjórn ALMA hefur áætlað frekari mælingar með því að hraða áfram í fullu getu síns og þannig að leysa meira ljós á þessa óvinna reikistjörnufyrirbyggjuna og þannig að stuðla að okkur við það hvaða skilyrði voru til staðar við myndun sólkerfisins.
 
@@ -12247,7 +12217,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:567 · F</summary>
 
 **Source:** But the rate of destruction must be very high: “To get the amount of carbon monoxide we observe, the rate of collisions would be truly startling - one large comet collision every five minutes,” noted Aki Roberge, an astronomer at NASAs Goddard Research Center in Greenbelt, USA, and coauthor of the paper.
-**Decision:** F — 一氧化碳彗星碰撞及速率错误/遗漏。
+**Decision:** F — Carbon monoxide, comet collisions and rates are wrong/omitted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hlutfall brottsliðs verður þó vera mjög hátt: „Til að fá upp fjarlægðina sem við sjáum væri ótrúlegt - eitt stór kometshrolli á fyrir hverfing um fimm mínútur“ sagði Aki Roberge, stjörnufræðingur við Goddard Research Center við NASA í Greenbelt í Bandaríkjunum og meðhöfundur greinarinnar.
 
@@ -12256,7 +12226,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:643 · P</summary>
 
 **Source:** By comparison the Sun is more than four billion years old.
-**Decision:** P — 太阳超过四十亿岁准确，比较连接词省略属轻微。
+**Decision:** P — The Sun being over four billion years old is accurate; an omitted comparative connective is minor.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Sólin er meira en fjögurra milljörðum ára gömul.
 
@@ -12265,7 +12235,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:778 · F</summary>
 
 **Source:** This remarkably precise relationship, which was discovered in 1908 by American astronomer Henrietta Swan Leavitt, makes the study of Cepheids one of the most effective ways to measure the distances to, and map the positions of, distant objects in the Milky Way and beyond.
-**Decision:** F — 造父变星遗漏且美国天文学家角色损坏。
+**Decision:** F — Cepheids are omitted and the American astronomer's role is corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þessi mikilvæga tengslin, sem Henryetta Swan Leavitt ástæður í Bandaríkjunum fundu 1908, gerir það einn af mest skilvirkustu leiðum til að mæla fjarlægðir og koma út á staðsetningu fjarlæga fyrirbæra í Vetrarbrautinni og yfir henni.
 
@@ -12274,7 +12244,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eea:2032 · F</summary>
 
 **Source:** Directive 2007/64/EC of the European Parliament and of the Council of 13 November 2007 on payment services in the internal market (5) provides a modern legal foundation for the creation of a Community-wide internal market for payments.
-**Decision:** F — 现代法律基础术语错误。
+**Decision:** F — Modern-legal-basis terminology is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í tilskipun Evrópuþingsins og ráðsins 2007/64/EB frá 13. nóvember 2007 um greiðsluþjónustu á innri markaðinum (5) er sett á nýmenni réttaraðilafund fyrir myndun innri markaðar í Bandalaginu fyrir greiðslur.
 
@@ -12301,7 +12271,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eea:2017 · F</summary>
 
 **Source:** In the References section, the footnote is amended.
-**Decision:** F — 参考文献及脚注错误。
+**Decision:** F — References and footnotes are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í staðalteknum er breytt átt við umupplýsingarnar.
 
@@ -12310,7 +12280,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:opensubtitles:2753 · F</summary>
 
 **Source:** Man, I&#x27;m really throwing her to the wolves.
-**Decision:** F — 把她扔给狼误译并幻加我感觉好。
+**Decision:** F — Throwing her to the wolves is mistranslated and I feel good is hallucinated.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Mér líður vel að sköfna hana fyrir volvurnar.
 
@@ -12328,7 +12298,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:36 · F</summary>
 
 **Source:** “Together with the planets found around the young, massive stars Fomalhaut and HR8799, the existence of Beta Pictoris b suggests that super-Jupiters could be frequent byproducts of planet formation around more massive stars,” explains Gael Chauvin, a member of the team.
-**Decision:** F — Beta Pictoris b遗漏且超级木星常见副产品含义错误。
+**Decision:** F — Beta Pictoris b is omitted and super-Jupiters as a common byproduct is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Fjallaðar um fyrir sér í kringum ung og massamikla stjörnurnar Fomalhaut og HR8799 gefur til kynna að öflugir afburðir af júpíturstærði gætu verið alvarlegar afmyndun á reikistjörnum í kringum meira massamikla stjörnur“ segir Gael Chauvin, aðalmeðlimur í hópnum.
 
@@ -12337,7 +12307,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:opensubtitles:2066 · P</summary>
 
 **Source:** Not everyone wants to kill their daddy and marry their mommy.
-**Decision:** P — 并非人人想杀父娶母完整。
+**Decision:** P — Not everyone wanting to kill their father and marry their mother is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ekki allir vilja drepa pabba sinn og giftast mömmu sinni.
 
@@ -12346,7 +12316,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:ema:857 · F</summary>
 
 **Source:** With initial administration of Aldurazyme or upon re-administration following interruption of treatment, it is recommended that patients be administered pre-treatment medicines (antihistamines and/or antipyretics) approximately 60 minutes prior to the start of the infusion, to minimise the potential occurrence of IARs.
-**Decision:** F — 退热药及IAR错误。
+**Decision:** F — Antipyretics and IAR are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Við upphaf meðferðar með Aldurazyme eða við endurtekna meðferð eftir að meðferð er hætt skal ráðlagt að gefa sjúklingum lyf fyrir meðferð (andhistamín og/eða forðaverkja) um það bil 60 mínútum fyrir innrennsli til að lágmarka hugsanlega tilviki á aukaverkunum á öndunarvefjum.
 
@@ -12355,7 +12325,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eea:1655 · F</summary>
 
 **Source:** This Directive establishes a procedure for the identification and designation of European critical infrastructures (‘ECIs), and a common approach to the assessment of the need to improve the protection of such infrastructures in order to contribute to the protection of people.
-**Decision:** F — 关键基础设施误为innráða。
+**Decision:** F — Critical infrastructure becomes innráða.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Með þessari tilskipun er komið á fót reglur um auðkenningu og tilnefningu evrópskra mikilvægra innráða(„ECI“) og sameiginlega aðferð við mat á nauðsynlegt að bæta vernd slíkra innráða til að stuðla að verndun manna.
 
@@ -12364,7 +12334,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:369 · F</summary>
 
 **Source:** Because they blow out large amounts of material, red giants like R Sculptoris are major contributors to the dust and gas that provide the bulk of the raw materials for the formation of future generations of stars, planetary systems and subsequently for life.
-**Decision:** F — 多数原材料及未来世代行星系统等关键含义不完整。
+**Decision:** F — Most raw materials, future generations and planetary systems are incomplete.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Vegna þess að þeir blást út miklu magni af efni eru rauðar risar eins og R Sculptoris verulegir afgreiðslu á ryki og gass sem veita meira en hluta af fríefni fyrir myndun framtíðaraldra stjarna, reikistjörnum og síðkomin lífi.
 
@@ -12373,7 +12343,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:opensubtitles:621 · F</summary>
 
 **Source:** So do you want me to say no?
-**Decision:** F — 说不译为nein而非nei，表达不准确。
+**Decision:** F — Saying no uses nein rather than nei, making the expression inaccurate.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Viltu að ég segi nein?
 
@@ -12391,7 +12361,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:opensubtitles:70 · F</summary>
 
 **Source:** I listened to the wind when you went by.
-**Decision:** F — 听风过去时及你经过变为你离开。
+**Decision:** F — Heard the wind loses past tense and you passed becomes you left.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ég hlusti á vindinn þegar þú fórst.
 
@@ -12400,7 +12370,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:339 · F</summary>
 
 **Source:** “In the disc of gas and dust surrounding this newly formed star, we found glycolaldehyde, which is a simple form of sugar, not much different to the sugar we put in coffee,” explains Jes Jørgensen (Niels Bohr Institute, Denmark), the lead author of the paper.
-**Decision:** F — 乙醇醛错误。
+**Decision:** F — Glycolaldehyde is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Í gas- og rykskífunni í kringum þessa nýbyggða stjörnu fannust vefjaskertilalaldhýlát sem er einfalt formi sykurs, ekki mjög munurinn mismunur við sykurinn sem við settum inn í kaffi,“ segir Jes Jørgensen (Niels Bohr Institute í Danmörku), aðalhöfundur greinar um rannsóknina.
 
@@ -12409,7 +12379,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:ema:2419 · F</summary>
 
 **Source:** For longer term treatment once clinical response has been observed (after 4 or more days), the dose of Meloxivet can be adjusted to the lowest effective individual dose reflecting that the degree of pain and inflammation associated with chronic musculo-skeletal disorders may vary over time.
-**Decision:** F — 慢性肌骨疾病缩窄为肌肉疾病，骨骼范围遗漏。
+**Decision:** F — Chronic musculoskeletal disease is narrowed to muscle disease, omitting skeletal scope.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Við langtíma meðferð eftir að klínísk svörun hefur komið fram (eftir 4 daga eða fleiri) má aðlaga skammtinn af Meloxivet í minnsta virkum einstökum skammti og taka tillit til þess að verkur og bólga í tengslum við langvinnt vöðvasjúkdómur getur verið breytileg á tímanum.
 
@@ -12418,7 +12388,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:1034 · F</summary>
 
 **Source:** This corresponds to a redshift of about 15.
-**Decision:** F — 红移变阶梯增量。
+**Decision:** F — Redshift becomes a step increment.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þetta samsvarar um það bil 15 stigafjölgun.
 
@@ -12427,7 +12397,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:opensubtitles:1081 · P</summary>
 
 **Source:** I was trying to stop you from releasing the Hound.
-**Decision:** P — 阻止你放出猎犬完整，代词格小错。
+**Decision:** P — Preventing you from releasing the hounds is complete, with a minor pronoun-case error.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ég var að reyna að stöðva þér að losa hundinn.
 
@@ -12436,7 +12406,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:376 · F</summary>
 
 **Source:** &quot;Its a real challenge to describe theoretically all the observed details coming from ALMA, but our computer models show that we really are on the right track.
-**Decision:** F — 理论描述挑战及计算机模型错误。
+**Decision:** F — The theoretical-description challenge and computer models are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Það er alvarlega tilhögun að lýsa frægilega allar athuganir sem komu fram úr ALMA, en tölvuprófarnir okkar sýna að við séum í réttri leið.
 
@@ -12445,7 +12415,7 @@ Symmetric final-case review
 <details><summary>final_greedy_after_component · candidate · greedy · p18official21:test:eso:552 · F</summary>
 
 **Source:** This new image shows how these clouds of gas and dust have been sculpted into whimsical bubbles, arcs and the odd features known as elephant trunks by the stellar winds flowing from this gathering of hot young stars.
-**Decision:** F — 雕塑塑造变扫描且象鼻结构错误。
+**Decision:** F — Sculpting becomes scanning and trunk structures are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þessi nýja mynd sýnir hvernig þessi gas- og rykský eru skönnuð í tilfinningalega bólur, kringlum og óvæntar einkenni sem kallast elfskúr af stjörnuveindunum sem flæða frá þessari samsetningu af hitum og ungu stjörnum.
 
@@ -12463,7 +12433,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:ema:857 · F</summary>
 
 **Source:** With initial administration of Aldurazyme or upon re-administration following interruption of treatment, it is recommended that patients be administered pre-treatment medicines (antihistamines and/or antipyretics) approximately 60 minutes prior to the start of the infusion, to minimise the potential occurrence of IARs.
-**Decision:** F — 退热药误为hitagreina。
+**Decision:** F — Antipyretics becomes hitagreina.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þegar Aldurazyme er gefið í upphafi meðferðar eða þegar hún er gefið aftur eftir að meðferð hefur verið hætt skal ráðlagt að gefa sjúklingum lyf sem eru notaðir fyrir meðferð (andhistamín og/eða hitagreina) um það bil 60 mínútum fyrir upphaf innrennslisins til að lágmarka hugsanlega möguleika á IAR.
 
@@ -12472,7 +12442,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:1081 · P</summary>
 
 **Source:** I was trying to stop you from releasing the Hound.
-**Decision:** P — 阻止你放出猎犬含义完整。
+**Decision:** P — Preventing you from releasing the hounds is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ég var að reyna að stöðva þig að losa hundinn.
 
@@ -12481,7 +12451,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:292 · F</summary>
 
 **Source:** As no starlight shines through Tau Boötis bs atmosphere towards us, this means the planets atmosphere could not be studied before.
-**Decision:** F — 大气及星光穿透错误。
+**Decision:** F — Atmosphere and starlight penetration are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þar sem stjörnuljós skýsir ekki út í útvegi Tau Boötis bs til okkar, það þýðir að geimhvarfin plánetunnar hafi ekki verið rannsökuð áður.
 
@@ -12490,7 +12460,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:70 · U</summary>
 
 **Source:** I listened to the wind when you went by.
-**Decision:** U — fór eftir未清楚表达经过，不能确认。
+**Decision:** U — Fór eftir does not clearly express passed; unconfirmed.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ég hlustaði á vindinn þegar þú fór eftir.
 
@@ -12499,7 +12469,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:675 · P</summary>
 
 **Source:** I have a bad feeling about this.
-**Decision:** P — 对此有不好预感准确。
+**Decision:** P — Having a bad feeling about this is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ég er með slæm tilfinningu um þetta.
 
@@ -12508,7 +12478,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eea:1170 · F</summary>
 
 **Source:** GC/MS methods of analysis and bioassays may be used for screening.
-**Decision:** F — GC/MS与生物测定丢失。
+**Decision:** F — GC/MS and biometrics are lost.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Gísmiðlun og MS greiningar geta verið notaðar til skoðunar.
 
@@ -12517,7 +12487,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eea:1383 · P</summary>
 
 **Source:** Subject to the findings of port security assessments, Member States shall ensure that port security plans are developed, maintained and updated.
-**Decision:** P — 依港口安全评估制定维护更新计划关系完整，语法生硬。
+**Decision:** P — Developing, maintaining and updating a plan from the port security assessment is complete, despite awkward grammar.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Að því og fram kemur úr mati um öryggi hafnanna skulu aðildarríkin tryggja það að áætlunum um öryggi hafnar verði þróuð, viðhaldið og uppfærð.
 
@@ -12526,7 +12496,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:ema:1980 · F</summary>
 
 **Source:** The Kaplan-Meier curves of the time from randomisation to impending relapse during the 38-week, Double-blind, Active-controlled Phase for Abilify Maintena, oral aripiprazole 10-30 mg, and aripiprazole Long-Acting Injectable 50 mg/25 mg are shown in Figure 1.
-**Decision:** F — 活性对照误为安慰剂且长效注射遗漏。
+**Decision:** F — Active control becomes placebo and long-acting injection is omitted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Kaplan-Meier línur fyrir tíma frá slembiröðun til þess að endurkomist verði í 38 vikna, tvíblindri, lyfleysuþátttakandi Phasinn með Abilify Maintena, aripíprazól 10-30 mg til inntöku og aripíprazól 50 mg/25 mg lyfi sem gefið er með inndælingu, eru sýndar í mynd 1.
 
@@ -12535,7 +12505,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eea:1464 · F</summary>
 
 **Source:** Prices must be expressed in national currency per gigajoule.
-**Decision:** F — 本币误为landsmæli。
+**Decision:** F — National currency becomes landsmæli.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Verð skal gefin upp í landsmæli á gegn gigajóle.
 
@@ -12544,7 +12514,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:617 · F</summary>
 
 **Source:** The lead author of the new study, Tomasz Kamiński (ESO and the Max Planck Institute for Radio Astronomy, Bonn, Germany) explains: “For many years this object was thought to be a nova, but the more it was studied the less it looked like an ordinary nova - or indeed any other kind of exploding star.”
-**Decision:** F — 新星及否定比较关系严重错译。
+**Decision:** F — Nova and the negated comparison are severely mistranslated.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Leiðritur greinar um nýja rannsóknina, Tomasz Kamiński (ESO og Max Planck Institute for Radio Astronomy í Bonn í Þýskalandi), útskýrir: „Fyrir mörg ár var þetta fyrir málið nöfnunarnauði en meira rannsóknar hafa leitt til þess að það virðist lítillega nöfnunarnauði eða í raun önnur stjörnu sem sprengist.“
 
@@ -12553,7 +12523,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eea:1613 · F</summary>
 
 **Source:** Stimulating the involvement of children in creating a safer online environment.
-**Decision:** F — 更安全在线环境误为治疗组安全。
+**Decision:** F — A safer online environment becomes treatment-group safety.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Virkjað að því að börnir taka þátt í að framkvæma öryggi meðferðarhópsins á netinu.
 
@@ -12562,7 +12532,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eea:2032 · F</summary>
 
 **Source:** Directive 2007/64/EC of the European Parliament and of the Council of 13 November 2007 on payment services in the internal market (5) provides a modern legal foundation for the creation of a Community-wide internal market for payments.
-**Decision:** F — 现代法律基础错译且添加行动计划。
+**Decision:** F — A modern legal basis is wrong and an action plan is added.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í tilskipun Evrópuþingsins og ráðsins 2007/64/EB frá 13. nóvember 2007 um greiðsluþjónustu á innri markaðinum (5) er sett á nýlega lögboð til að koma á fót að aðgerðaáætlun um að setja innri markað í öllu Bandalaginu fyrir greiðslur.
 
@@ -12571,7 +12541,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:370 · F</summary>
 
 **Source:** Earlier observations had clearly shown a spherical shell around R Sculptoris, but neither the spiral structure nor a companion was found.
-**Decision:** F — 球形壳及螺旋结构术语错误。
+**Decision:** F — Spherical-shell and spiral-structure terminology is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Fyrri mælingar hafa sýnt greinilega um rúmmálshellu um R Sculptoris en enginn var fundið á snúrslu né fylgjandi.
 
@@ -12580,7 +12550,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:ema:2680 · P</summary>
 
 **Source:** Dolutegravir, abacavir and lamivudine are rapidly absorbed following oral administration.
-**Decision:** P — 三药口服后快速吸收准确。
+**Decision:** P — Rapid absorption after oral administration of three drugs is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Dolutegravír, abacavír og lamivúdín frásogast hratt eftir inntöku.
 
@@ -12589,7 +12559,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:155 · F</summary>
 
 **Source:** Well, I&#x27;m the Great Ned Kelly, and this here is the Fabulous Joe Byrne.
-**Decision:** F — Great遗漏且Fabulous误为愚蠢。
+**Decision:** F — Great is omitted and Fabulous becomes stupid.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ég er Ned Kelly og þetta er Fíflaður Joe Byrne.
 
@@ -12598,7 +12568,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:3129 · F</summary>
 
 **Source:** They play every Thanksgiving because they&#x27;re the most ferocious.
-**Decision:** F — 感恩节及最凶猛错误。
+**Decision:** F — Thanksgiving and fiercest are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þeir spila á hverju Tilkæmikvörunum því þeir eru fyrsta og fjörugasta.
 
@@ -12607,7 +12577,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eea:2017 · F</summary>
 
 **Source:** In the References section, the footnote is amended.
-**Decision:** F — 参考文献与脚注均错误。
+**Decision:** F — Both references and footnotes are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í viðbótarliðinni er birtur breytingar á fylgiseðlinum.
 
@@ -12616,7 +12586,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:621 · F</summary>
 
 **Source:** So do you want me to say no?
-**Decision:** F — 说不误为说任何东西。
+**Decision:** F — Saying no becomes saying anything.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Viltu að ég segi neinu?
 
@@ -12625,7 +12595,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eea:987 · F</summary>
 
 **Source:** The common understanding of the term ‘production index as an ‘evolution of value added contradicts the definition of ‘production in the framework of national accounts or structural business statistics, but nonetheless is the correct term traditionally used in this area of business statistics.
-**Decision:** F — contradicts反为相符且增加值错误。
+**Decision:** F — Contradicts is reversed to agrees and value added is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Almennt skilning á orðinu „framleiðsluefnismæli“ er „uppsöfnun gagnsæi“ og samrýmist skilgreiningu „framleiðslu“ í ramma landsbundinnar reikninga eða störfaskrár fyrir rekstrarvísindum en þó er rétt orðið sem hefur verið notað til staðfesta skilningu á þessu sviði.
 
@@ -12634,7 +12604,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:ema:665 · F</summary>
 
 **Source:** The combination of Ribavirin Mylan with interferon alfa-2b is used to treat adult patients with chronic hepatitis C, who have previously responded to treatment with an alpha interferon alone, but whose condition has recurred.
-**Decision:** F — 原文单独alpha interferon被无依据缩窄为alfa2b。
+**Decision:** F — Alpha interferon alone is narrowed to alfa2b without support.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Samsetninga meðferðar með Ribavirin Mylan og interferon alfa-2b er notað til meðferðar hjá fullorðnum sjúklingum með langvinna lifrarbólgu C sem hafa svarað áhrifum við meðferð með einu sér interferon alfa-2b en sjúkdómurinn hefur endurkomist.
 
@@ -12643,7 +12613,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eea:1655 · F</summary>
 
 **Source:** This Directive establishes a procedure for the identification and designation of European critical infrastructures (‘ECIs), and a common approach to the assessment of the need to improve the protection of such infrastructures in order to contribute to the protection of people.
-**Decision:** F — 识别误为声明且关键基础设施词错误。
+**Decision:** F — Identification becomes a declaration and critical-infrastructure wording is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í þessari tilskipun er mælt fyrir um málsmeðferð við yfirlýsingu og tilnefningu evrópskra mikilvægra innraunakerfa („ECI“) og sameiginlega aðferð við mat á þörfum til að bæta verndinni slíkrar innraunakerfa til að stuðla að verndun manna.
 
@@ -12652,7 +12622,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:ema:2774 · F</summary>
 
 **Source:** In case of accidental ingestion, especially in the case of children, seek medical advice immediately and show the package leaflet or the label to the physician.
-**Decision:** F — 意外吞服变为一般事故。
+**Decision:** F — Accidental swallowing becomes a general accident.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ef um slysi er að ræða, einkum hjá börnum, skaltu leita læknisfræðilegra ráðgjafar tafarlaust og senda lækninum fram á fylgiseðilinn eða merkinguna.
 
@@ -12661,7 +12631,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:1553 · P</summary>
 
 **Source:** You&#x27;re the dumbest guy in the world.
-**Decision:** P — 世界最笨的人准确，词形小错。
+**Decision:** P — The world's stupidest person is accurate, with a minor inflection error.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Þú ert heimskasta strákur í heimi.
 
@@ -12670,7 +12640,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:155 · F</summary>
 
 **Source:** The quality of images from an interferometric telescope like ALMA depends on both the separations and the number of the antennas.
-**Decision:** F — 干涉望远镜与天线关键概念错误。
+**Decision:** F — Interferometric-telescope and antenna concepts are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Gæði myndir frá rannsóknarstjörnu eins og ALMA tekur til bæði af fjarlægðinu og fjölda útvarps.
 
@@ -12679,7 +12649,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:638 · F</summary>
 
 **Source:** What&#x27;s a guy got to do to get laid?
-**Decision:** F — 未准确表达发生性关系。
+**Decision:** F — Sexual intercourse is not accurately expressed.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hvað þarf strákur að gera til að fá áskað?
 
@@ -12688,7 +12658,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eea:1729 · F</summary>
 
 **Source:** Following the invitation of the carrier and of the competent authorities of the Islamic Republic of Iran, a team of European experts conducted a fact-finding mission from 16 to 20 June 2008 to verify the implementation by the carrier of the various corrective actions.
-**Decision:** F — 伊朗国名及2008六月16至20日遗漏。
+**Decision:** F — Iran and June16–20,2008 are omitted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í kjölfar tilboðs flutningsfélagsins og lögbærra yfirvalda Islambólsríkisins hafði evrópskur sérfræðingarhópur framkvæmdastjórnunarhópsins umferms í rannsókn á staðfestingu um að flutningafélöginn hefði framkvæmt mismunandi leiðréttingargerðir.
 
@@ -12697,7 +12667,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eea:1760 · F</summary>
 
 **Source:** The Commission considers that a decision regarding the possible inclusion of all carriers certified in the Republic of Philippines in the Community list should be deferred until the ICAO audit results are known.
-**Decision:** F — 在菲律宾获认证误为设立，认证范围变化。
+**Decision:** F — Accredited in the Philippines becomes established there, changing accreditation scope.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Framkvæmdastjórnin telur að fresta ákvörðun um mögulega að allir flutningafélög, sem hafa staðfestu í Filipína, séu skráðir í skrá Bandalagsins þar til niðurstöður úr endurskoðun ICAO eru þekktar.
 
@@ -12706,7 +12676,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eea:929 · F</summary>
 
 **Source:** Other IF techniques (with regard to cell cultures, fixation and antibodies of reference quality) of proven efficiency may be used alternatively.
-**Decision:** F — IF技术细胞培养固定关键概念错误。
+**Decision:** F — IF techniques, cell culture and fixation are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hægt er að nota önnur áætlaðar meðferðaráætlunir (með tilliti til frumudýra, fastgengunar og mótefna við viðmiðunargildi) sem hafa staðfestan verkun, annars vegar.
 
@@ -12715,7 +12685,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:36 · F</summary>
 
 **Source:** “Together with the planets found around the young, massive stars Fomalhaut and HR8799, the existence of Beta Pictoris b suggests that super-Jupiters could be frequent byproducts of planet formation around more massive stars,” explains Gael Chauvin, a member of the team.
-**Decision:** F — 年轻大质量恒星遗漏且superJupiter术语损坏。
+**Decision:** F — Young massive stars are omitted and superJupiter terminology is corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Sérstaklega samanborið við reikistjörnurnar sem fundust um hliðsjónarmyndum Fomalhaut og HR8799, gefur Beta Pictoris b til kynna að öflugir Jóveirur gætu verið algengar afleiður af myndun reikistjarna í kringum meira massamikla stjörnur,“ segir Gael Chauvin, aðilinn í hópnum.
 
@@ -12724,7 +12694,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eea:875 · U</summary>
 
 **Source:** The clinical inspections must be carried out during the period October to June or whenever the water temperature is below 14 °C.
-**Decision:** U — 数值时段及低于条件正确，vatnsitsun是否水温不可靠。
+**Decision:** U — Numbers, time period and below condition are correct, but vatnsitsun is unreliable as water temperature.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Klínískar athuganir skulu gerðar á tímabilinu október til júní eða þegar vatnsitsun er undir 14 °C.
 
@@ -12733,7 +12703,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:570 · F</summary>
 
 **Source:** Further observations are planned with ALMA, which is still ramping up to its full capabilities, to shed more light on this intriguing planetary system, and so help us to understand what conditions were like during the formation of the Solar System.
-**Decision:** F — 行星系统误为行星项目且解释关系损坏。
+**Decision:** F — Planetary systems become planetary projects and the explanatory relationship is corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Fram á að fara fram með frekari mælingar með ALMA sem er enn að hreyfja upp í fullu færni sína til að leysa meira á þessi spennandi reikistjörnuverkefni og þannig hjálpa okkur að skilja hvaða aðstæður voru við myndun sólarkerfisins.
 
@@ -12742,7 +12712,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eea:1367 · P</summary>
 
 **Source:** By 30 June 2006, the Commission should submit to the European Parliament and the Council the findings of a study on the costs involved in measures taken under this Directive, addressing in particular the way financing is shared between the public authorities, port authorities and operators.
-**Decision:** P — 截止日提交研究成本及三方融资分担完整。
+**Decision:** P — Submission by the deadline, study costs and three-party financing shares are complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Eigi síðar en 30. júní 2006 skal framkvæmdastjórnin leggja fyrir Evrópuþingið og ráðið niðurstöður úr rannsókn á kostnaði sem er í þeim ráðstöfunum sem gerðar eru samkvæmt þessari tilskipun, einkum um hvernig fjármögnun er deilt milli opinberra yfirvalda, hafnaryfirvalda og rekstraraðila.
 
@@ -12751,7 +12721,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:ema:2171 · F</summary>
 
 **Source:** Adults: The initial dose of Cyanokit is 5 g (200 mL, complete volume of reconstituted solution).
-**Decision:** F — 复溶溶液完整体积错误为排序溶液。
+**Decision:** F — The full reconstituted-solution volume becomes sorted solution.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Fullorðnir: Upphafsskammtur af Cyanokit er 5 g (200 ml, fullt röðuð lausn).
 
@@ -12760,7 +12730,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:2753 · F</summary>
 
 **Source:** Man, I&#x27;m really throwing her to the wolves.
-**Decision:** F — 狼及扔给狼习语损坏。
+**Decision:** F — Wolves and the throw-to-the-wolves idiom are corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Man, ég er alvöru að skjóta hana fyrir volnunum.
 
@@ -12769,7 +12739,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:ema:773 · F</summary>
 
 **Source:** These include infection and Graft-versus host disease (GVHD) which although not directly related, were the major causes of morbidity and mortality, especially in allogeneic HPCT.
-**Decision:** F — 异基因HPCT误为无关疾病。
+**Decision:** F — Allogeneic HPCT becomes an unrelated disease.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þetta felur í sér sýkingu og grúnuporhóðs sjúkdóm (graft-versus-host disease, GVHD), þótt það tengist ekki beint að því, sem var meiri orsakir veikinda og dauðsföllum, einkum í alnæmisfrumuhvítblæði.
 
@@ -12778,7 +12748,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:1183 · F</summary>
 
 **Source:** I thought Alvin was messy.
-**Decision:** F — messy未准确表达。
+**Decision:** F — Messy is not accurately expressed.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ég hélt Alvin væri skammstirn.
 
@@ -12787,7 +12757,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:376 · F</summary>
 
 **Source:** &quot;Its a real challenge to describe theoretically all the observed details coming from ALMA, but our computer models show that we really are on the right track.
-**Decision:** F — 理论描述变技术描述且计算机模型变测试。
+**Decision:** F — Theoretical description becomes technical description and computer models become tests.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Það er alvarlega þáttur að lýsa tæknilega allar upplýsingar sem við sjáum frá ALMA en tölvuprófarnir okkar sýna að við erum í réttu leið.
 
@@ -12796,7 +12766,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:274 · P</summary>
 
 **Source:** More than 200 new variable stars in Centaurus A were discovered.
-**Decision:** P — 发现200多颗Centaurus A变星完整。
+**Decision:** P — Discovery of over200variable stars in Centaurus A is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Meira en 200 nýjar breytistjörnur í Centaurus A voru fundar.
 
@@ -12805,7 +12775,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eea:83 · P</summary>
 
 **Source:** The level of residues in groundwater.
-**Decision:** P — 地下水残留量准确。
+**Decision:** P — Residue quantity in groundwater is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Magn af leifa í grunnvatni.
 
@@ -12814,7 +12784,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:1783 · P</summary>
 
 **Source:** I read it in a book.
-**Decision:** P — 在书中读过准确。
+**Decision:** P — Having read it in a book is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ég las það í bók.
 
@@ -12823,7 +12793,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:1034 · F</summary>
 
 **Source:** This corresponds to a redshift of about 15.
-**Decision:** F — 红移误为红连接。
+**Decision:** F — Redshift becomes a red connection.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þetta samsvarar um það bil 15 rauðtengingu.
 
@@ -12832,7 +12802,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:778 · F</summary>
 
 **Source:** This remarkably precise relationship, which was discovered in 1908 by American astronomer Henrietta Swan Leavitt, makes the study of Cepheids one of the most effective ways to measure the distances to, and map the positions of, distant objects in the Milky Way and beyond.
-**Decision:** F — 最有效测距制图方法被损坏且关系修饰错误。
+**Decision:** F — The most effective distance-measuring/mapping method is corrupted and relational modifiers are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þessi skarpsæða sambandi, sem frá henngjafar stjörnufræðings Bandaríkjanna Henrietta Swan Leavitt var uppgötvað árið 1908, gerir rannsóknir á Cepheidum einn af næstugustu hæfilegum leiðum til að mæla fjarlægðir og mynda staðsetningu fjarlæga fyrirbæra í Vetrarbrautinni og yfir henni.
 
@@ -12841,7 +12811,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:2066 · P</summary>
 
 **Source:** Not everyone wants to kill their daddy and marry their mommy.
-**Decision:** P — 并非人人想杀父娶母准确。
+**Decision:** P — Not everyone wanting to kill their father and marry their mother is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ekki allir vilja drepa pabba og giftast mömmu.
 
@@ -12850,7 +12820,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:552 · F</summary>
 
 **Source:** This new image shows how these clouds of gas and dust have been sculpted into whimsical bubbles, arcs and the odd features known as elephant trunks by the stellar winds flowing from this gathering of hot young stars.
-**Decision:** F — 气体尘埃泡弧象鼻等天文结构错误。
+**Decision:** F — Gas/dust bubbles, arcs, trunks and related astronomical structures are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þessi nýja mynd sýnir hvernig þessi gas- og rykskýnir hafa verið skilteppaðar í tilfinningu bólur, kringlóttar svæði og óvenju einkenni sem kallast elfskorpur af stjörnuveindum sem flæða út frá þessari samsetningu heittra og ungra stjarna.
 
@@ -12859,7 +12829,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:ema:3005 · P</summary>
 
 **Source:** After reconstitution, 1 ml of solution for infusion contains 2.5 mg.
-**Decision:** P — 复溶后输注液每毫升2.5mg完整。
+**Decision:** P — Reconstituted infusion solution containing2.5mg per milliliter is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Eftir blöndun inniheldur 1 ml af lausn fyrir innrennsli 2,5 mg af lyfinu.
 
@@ -12868,7 +12838,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:ema:1949 · F</summary>
 
 **Source:** The European Medicines Agency has deferred the obligation to submit the results of studies with Votrient in one or more subsets of the paediatric population in the treatment of rhabdomyosarcoma, non- rhabdomyosarcoma soft tissue sarcoma and Ewing sarcoma family of tumours (see section 4.2 for information on paediatric use).
-**Decision:** F — 非横纹肌软组织肉瘤误为黏膜癌。
+**Decision:** F — Non-rhabdomyosarcoma soft-tissue sarcoma becomes mucosal cancer.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Lyfjastofnun Evrópu hefur frestað kröfu um að lagðar séu fram niðurstöður úr rannsóknum á Votrient hjá einum eða fleiri undirhópum barna við meðferð gegn rhabdómyósarkóm, slímhúðfrumukrabbamein sem ekki er af völdum rhabdómyósarkóm og Ewing-krabbamein í fjölskyldunni (sjá upplýsingar í kafla 4.2 um notkun handa börnum).
 
@@ -12877,7 +12847,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:1150 · U</summary>
 
 **Source:** Sometimes, accidents need a little help.
-**Decision:** U — 处理事故需帮助与事故本身需促成的习语是否一致不能确认。
+**Decision:** U — Whether needing help handling an accident preserves the idiom about helping cause it is uncertain.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Stundum þarf aðstoð við slysir.
 
@@ -12886,7 +12856,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:1062 · F</summary>
 
 **Source:** However, the research team could not detect any visual evidence of outgassing.
-**Decision:** F — 未保留视觉证据及逸气。
+**Decision:** F — Visual evidence and outgassing are not retained.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hins vegar komur rannsóknarflokkið ekki fram neinu auglýsandi einkenni um útfæringu.
 
@@ -12895,7 +12865,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:369 · F</summary>
 
 **Source:** Because they blow out large amounts of material, red giants like R Sculptoris are major contributors to the dust and gas that provide the bulk of the raw materials for the formation of future generations of stars, planetary systems and subsequently for life.
-**Decision:** F — 原材料误为细胞且未来世代与行星系统丢失。
+**Decision:** F — Raw materials become cells, and future generations/planetary systems are lost.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þar sem þeir blást út stóra magn af efni, eru rauðir risir eins og R Sculptoris mikilvægar þátttakendur á ryk og gass sem veita meiri hluta frumna fyrir myndun framtíðarfjölda stjarna, reikistjörnum og síðan lífi.
 
@@ -12904,7 +12874,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:ema:1816 · F</summary>
 
 **Source:** In a pharmacokinetic study evaluating Omidria, systemic exposure to each of phenylephrine and ketorolac was minimal and transient.
-**Decision:** F — minimal变为比较级更少，未表达极少暴露。
+**Decision:** F — Minimal becomes comparative less, failing to express very low exposure.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í rannsókn á lyfjahvörfum Omidria var útsetning fyrir hverju af fenýlefríni og ketorólaci í líkamanum minna og tímabundin.
 
@@ -12913,7 +12883,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:643 · F</summary>
 
 **Source:** By comparison the Sun is more than four billion years old.
-**Decision:** F — 太阳超过四十亿岁比较表述损坏。
+**Decision:** F — The comparison that the Sun is over four billion years old is corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Samanburðið er sólin fyrrandi en fjórum milljörðum ára gömul.
 
@@ -12922,7 +12892,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:934 · F</summary>
 
 **Source:** Takashi Shimonishi, an astronomer at Tohoku University, Japan, and the paper&#x27;s lead author enthused: &quot;This is the first detection of an extragalactic hot molecular core, and it demonstrates the great capability of new generation telescopes to study astrochemical phenomena beyond the Milky Way.&quot;
-**Decision:** F — 热分子核及天体化学关键术语错误。
+**Decision:** F — Hot-molecular-core and astrochemical terminology is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Takashi Shimonishi, stjörnufræðingur við Tohoku háskóla í Japandi og aðalhöfundur greinarinnar, sagði: „Þetta er fyrsta mæling á heitu límgjarni í utan vetrarbrautar og sýnir fram á mikil hæfni nýja sjónauka til að rannsaka stofnfræðilegar efni í utan vetrarbrautar.“
 
@@ -12931,7 +12901,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:339 · F</summary>
 
 **Source:** “In the disc of gas and dust surrounding this newly formed star, we found glycolaldehyde, which is a simple form of sugar, not much different to the sugar we put in coffee,” explains Jes Jørgensen (Niels Bohr Institute, Denmark), the lead author of the paper.
-**Decision:** F — 乙醇醛名称损坏。
+**Decision:** F — The glycolaldehyde name is corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Í gas- og rykskífunni í kringum þennan nýbyggð stjörnu fannust við glýkólaldhýlát sem er einfalt formi sykur, ekki mjög munurinn mismunur við sykurinn sem við settum í kaffi,“ segir Jes Jørgensen (Niels Bohr Institute, Danmörk), aðalhöfundur greinar um greinina.
 
@@ -12940,7 +12910,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:295 · U</summary>
 
 **Source:** The new technique pioneered here is much more powerful.
-**Decision:** U — 更强新技术明确，pioneered对应词不明确。
+**Decision:** U — More powerful new technology is clear, but pioneered is not.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Nýja aðferðin sem hér er fyrirframhaldandi er mjög öflugari.
 
@@ -12949,7 +12919,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:869 · P</summary>
 
 **Source:** One such stellar pair is called V471 Tauri.
-**Decision:** P — 这样一对恒星名为V471 Tauri含义保留，语法错。
+**Decision:** P — The pair of stars being named V471 Tauri is retained, despite grammar errors.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Eitt slíkt stjörnu tveggja er kallt V471 Tauri.
 
@@ -12958,7 +12928,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:ema:1288 · F</summary>
 
 **Source:** In patients ≥ 75 years the observed incidence of the primary efficacy composite end point for the pharmaco-invasive strategy and primary PCI were as follows: before dose reduction 11/37 (29.7%) (95% CI: 15.9- 47.0) versus 10/32 (31.3%) (95% CI: 16.1-50.0), after dose reduction: 25/97 (25.8%) (95% CI: 17.4-35.7) versus 25/88 (24.8%) (95% CI: 19.3-39.0).
-**Decision:** F — 主要疗效复合终点及减量措辞错误。
+**Decision:** F — The primary efficacy composite endpoint and dose-reduction wording are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hjá sjúklingum ≥ 75 ára var tilgreint tíðni fyrstu endapunktsaðferðar við verkun við lyfjafræðilega inngrein meðferð og fyrsta PCI: Fyrir skammtabætingu voru 11/37 (29,7%) (95% CI: 15,9-47,0) samanborið við 10/32 (31,3%) (95% CI: 16,1-50,0), eftir skammtabætingu: 25/97 (25,8%) (95% CI: 17,4-35,7) samanborið við 25/88 (24,8%) (95% CI: 19,3-39,0).
 
@@ -12967,7 +12937,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:573 · P</summary>
 
 **Source:** I was a little worried, but I did it.
-**Decision:** P — 稍担心但做到了准确。
+**Decision:** P — Slightly worried but succeeded is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Ég var lítillega áhyggjufull, en ég gerði það.
 
@@ -12976,7 +12946,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:1914 · P</summary>
 
 **Source:** This woman, Beth Ann Gardener, arrived in Hong Kong.
-**Decision:** P — Beth Ann Gardener到香港准确。
+**Decision:** P — Beth Ann Gardener arriving in Hong Kong is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Þessi konu, Beth Ann Gardener, kom til Hông Kong.
 
@@ -12985,7 +12955,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:opensubtitles:2747 · F</summary>
 
 **Source:** We were all out at the zoo one day.
-**Decision:** F — 动物园误为动物界。
+**Decision:** F — A zoo becomes the animal kingdom.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Við vorum öll í dýraríki einhverja daginn.
 
@@ -12994,7 +12964,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:ema:1315 · P</summary>
 
 **Source:** Excipient with known effect: Each tablet contains 160 mg lactose.
-**Decision:** P — 已知作用辅料每片160mg乳糖准确。
+**Decision:** P — An excipient with known effect,160mg lactose per tablet, is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Hjálparefni með þekkta verkun: Hver tafla inniheldur 160 mg af laktósa.
 
@@ -13003,7 +12973,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:76 · P</summary>
 
 **Source:** VISIR was built by CEA/DAPNIA/SAP and NFRA/ASTRON.
-**Decision:** P — VISIR由两机构建造准确。
+**Decision:** P — VISIR being built by two institutions is accurate.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** VISIR var búið af CEA/DAPNIA/SAP og NFRA/ASTRON.
 
@@ -13012,7 +12982,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eea:506 · F</summary>
 
 **Source:** Photographs, if any, must show sufficient detail.
-**Decision:** F — 照片误为视觉设备。
+**Decision:** F — Photographs become visual equipment.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Sjónavélar, ef einhverjar eru, skulu sýna nægilega nákvæmni.
 
@@ -13021,7 +12991,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:ema:2419 · F</summary>
 
 **Source:** For longer term treatment once clinical response has been observed (after 4 or more days), the dose of Meloxivet can be adjusted to the lowest effective individual dose reflecting that the degree of pain and inflammation associated with chronic musculo-skeletal disorders may vary over time.
-**Decision:** F — 调整剂量误为增加且疾病疼痛随时间变化关系损坏。
+**Decision:** F — Dose adjustment becomes an increase and the disease/pain-over-time relationship is corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ef lyfjagjöf á lengri tíma hefst og klínísk svörun hefur komið fram (eftir 4 daga eða fleiri) má auka skammtinn af Meloxivet í þá lægsta skammt sem virkar hjá einstaklingum, sem endurspeglar það að meðferðartíminn getur verið að breytast magn sársauka og bólgu tengd sjúkdómum í vöðva- og leggja-þætti.
 
@@ -13030,7 +13000,7 @@ Symmetric final-case review
 <details><summary>final_greedy_before_component · candidate · greedy · p18official21:test:eso:567 · F</summary>
 
 **Source:** But the rate of destruction must be very high: “To get the amount of carbon monoxide we observe, the rate of collisions would be truly startling - one large comet collision every five minutes,” noted Aki Roberge, an astronomer at NASAs Goddard Research Center in Greenbelt, USA, and coauthor of the paper.
-**Decision:** F — 碰撞彗星一氧化碳及速率等关键概念错误。
+**Decision:** F — Colliding comets, carbon monoxide and rate concepts are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** En hægt verður að drifast það örlítið: „Til að fá stærri magn kólóxínsins sem við sjáum myndi hægðatryggingin vera virkilega skrítið - eitt stór reikistjörnureyking í fimm mínútur“ sagði Aki Roberge, stjörnufræðingur við Goddard Research Center við NASA í Greenbelt í Bandaríkjum og meðhöfundur greinarinnar.
 
@@ -13039,7 +13009,7 @@ Symmetric final-case review
 <details><summary>fit_0025667 · candidate · greedy · ParIce21:eso:513 · F</summary>
 
 **Source:** It is a triumph for the theorists, a confirmation that the LIGO–VIRGO events are absolutely real, and an achievement for ESO to have gathered such an astonishing data set on the kilonova,” adds Stefano Covino, lead author of one of the Nature Astronomy papers.
-**Decision:** F — 理论胜利和事件真实保留，但 ESO achievement 被不明确的 líkað er 替代，成果关系未保留。
+**Decision:** F — The theoretical triumph and event reality remain, but ESO's achievement becomes unclear líkað er, losing the achievement relationship.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Það er sigur fyrir kenningasmiði og staðfestir á að LIGO-Virgo þyngdarbylgjumælingarnar eru raunverulegar en líkað er fyrir ESO að hafa afla svona mikilla gagna um kílónóvu,“ sagði Stefano Covino, aðalhöfundur einnar greinarinnar í Nature-Astronomy.
 
@@ -13057,7 +13027,7 @@ Symmetric final-case review
 <details><summary>fit_0025667 · candidate · greedy · ParIce21:eso:8981 · F</summary>
 
 **Source:** To solve this mystery, Farina and his colleagues used the MUSE instrument on ESO’s Very Large Telescope (VLT) in the Chilean Atacama Desert to study quasars — extremely bright objects powered by supermassive black holes which lie at the centre of massive galaxies.
-**Decision:** F — 超大质量黑洞变为 massafíknum bæklingum（不相关的小册子表述）。
+**Decision:** F — Supermassive black holes become unrelated massafíknum bæklingum, a booklet expression.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Til að leysa gátuna notaði Farina og hópur hans MUSE mælitækið á Very Large Telescope (VLT) ESO í Atacamaeyðimörkinni í Chile til að rannsaka dulstirni – gríðarbjört fyrirbæri sem drifin af stórum massafíknum bæklingum í miðju massamikilla vetrarbrauta.
 
@@ -13075,7 +13045,7 @@ Symmetric final-case review
 <details><summary>fit_0025667 · candidate · greedy · ParIce21:eso:1426 · P</summary>
 
 **Source:** An international team of astronomers using the VIMOS instrument of ESO’s Very Large Telescope have uncovered a titanic structure in the early Universe.
-**Decision:** P — 国际天文学家、VIMOS/VLT、早期宇宙巨大结构均保留。
+**Decision:** P — International astronomers, VIMOS/VLT and enormous early-Universe structures are retained.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Alþjóðlegur hópur stjörnufræðinga sem notaði VIMOS mælitækið á Very Large Telescope ESO hafa fundið fram feykistóra myndun frá árdögum alheimsins.
 
@@ -13102,7 +13072,7 @@ Symmetric final-case review
 <details><summary>fit_0025667 · candidate · greedy · ParIce21:ema:328130 · P</summary>
 
 **Source:** The decline in distance walked during a 6MWT from Baseline to Week 52 was significantly reduced in patients receiving Esbriet compared with patients receiving placebo in PIPF-016 (p=0.036, rank ANCOVA); 26% of patients receiving Esbriet showed a decline of ≥50 m in 6MWT distance compared to 36% of patients receiving placebo.
-**Decision:** P — 6MWT、52周、显著减小、p值、26%与36%及至少50米变化保留；有语法错误。
+**Decision:** P — 6MWT,52weeks, significant reduction, p-value,26%/36% and at least50meters of change remain, despite grammar errors.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Skerðingin á 6MWT vegalengd frá grunngildi að viku 52 var marktækt minni hjá sjúklingum sem fengu Esbriet samanborið við sjúklinga sem fengu lyfleysu í rannsókn PIPF-016 (p=0,036, rank ANCOVA) og reyndist fá 26% sjúklinga sem fengu Esbriet að 6MWT vegalengd hafi skerði um ≥50 m samanborið við 36% sjúklinga sem fengu lyfleysu.
 
@@ -13111,7 +13081,7 @@ Symmetric final-case review
 <details><summary>fit_0025667 · candidate · greedy · ParIce21:eea:1770320 · F</summary>
 
 **Source:** The Court of Justice of the European Union ruled in its judgment of 21 December 2011 (3) that the inclusion of aviation activities in the EU ETS pursuant to Directive 2008/101/EC of the European Parliament and of the Council (4) does not violate international law.
-**Decision:** F — 不违反国际法被写成不不违反且国际法对象缺失，关键否定关系不可靠。
+**Decision:** F — Does not violate international law becomes a double negative and omits international law; the critical negation is unreliable.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Evrópudómstóllinn kvað upp þann dóm 21. desember 2011 (3) að það brjóti ekki ekki að fella flugstarfsemi undir viðskiptakerfi ESB fyrir losunarheimildir samkvæmt tilskipun Evrópuþingsins og ráðsins 2008/101/EB (4).
 
@@ -13147,7 +13117,7 @@ Symmetric final-case review
 <details><summary>fit_0025667 · candidate · greedy · ParIce21:ema:146778 · F</summary>
 
 **Source:** However, photodynamic therapy (PDT) induces the formation of reactive oxygen species and has been reported to result in DNA damage including DNA strand breaks, alkali-labile sites, DNA degradation, and DNA-protein cross links which may result in chromosomal aberrations, sister chromatid exchanges (SCE) and mutations.
-**Decision:** F — 活性氧形成与DNA断裂等技术概念出现无关或不明确词语，未完整保留因果链。
+**Decision:** F — Reactive-oxygen formation and DNA breaks use unrelated/unclear terms, failing to retain the causal chain.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hins vegar veldur ljóshrifameðferð myndun sem aðra setur í formi hvolpuþætti (oxygen species) og greint hefur verið frá því að hún hafi valdið breytingum á erfðaefni, þar með talið niðurbrekki erfðaþætti (DNA strand breaks), setum sem eru viðkvæm fyrir basa (alkali-labile sites), niðurbroti erfðaþætti (DNA degradation) og DNA-prótein krosstengjum sem geta valdið litningafrávika, víxlun samstæðu erfðaþætti (sister chromatid exchanges, SCE) og stökkbreytingum.
 
@@ -13183,7 +13153,7 @@ Symmetric final-case review
 <details><summary>fit_0025667 · candidate · greedy · ParIce21:ema:366696 · U</summary>
 
 **Source:** The tablets are white to off white, round, biconvex, uncoated tablets debossed with ‘P’ on one side and ‘15’ on other side.
-**Decision:** U — 颜色形状无包衣和P/15明确，但 mýsokktar 的凹刻含义无法可靠确认。
+**Decision:** U — Color, shape, uncoated status and P/15 are clear, but mýsokktar is not reliably confirmed as debossing.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Töflurnar eru hvítar til beinhvítar, kringlóttar, tvíkúptar, óhúðaðar töflur mýsokktar með „P“ á annarri hliðinni og „15“ á hinni hliðinni.
 
@@ -13192,7 +13162,7 @@ Symmetric final-case review
 <details><summary>fit_0025667 · candidate · greedy · ParIce21:eea:1430125 · P</summary>
 
 **Source:** The text of Implementing Regulation (EU) 2019/1606 in the Icelandic and Norwegian languages, to be published in the EEA Supplement to the Official Journal of the European Union, shall be authentic.
-**Decision:** P — 法规号、两种语言、公布位置、效力保留；增加必要一词，未改变主要命题。
+**Decision:** P — Regulation number, two languages, publication location and legal effect remain. Adding necessary does not change the main proposition.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Nauðsynleg texti framkvæmdarreglugerðar framkvæmdastjórnarinnar (ESB) 2019/1606 á íslensku og norsku, sem verður birtur í EES- viðbæti við Stjórnartíðindi Evrópusambandsins, telst fullgiltur.
 
@@ -13201,7 +13171,7 @@ Symmetric final-case review
 <details><summary>fit_0025667 · candidate · greedy · ParIce21:eea:2324913 · P</summary>
 
 **Source:** The text of Regulation (EU) 2019/831 in the Icelandic and Norwegian languages, to be published in the EEA Supplement to the Official Journal of the European Union, shall be authentic.
-**Decision:** P — 法规号、两种语言、公布位置、效力保留；增加必要一词，未改变主要命题。
+**Decision:** P — Regulation number, two languages, publication location and legal effect remain. Adding necessary does not change the main proposition.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Nauðsynleg texti reglugerðar (ESB) 2019/831 á íslensku og norsku, sem verður birtur í EES- viðbæti við Stjórnartíðindi Evrópusambandsins, telst fullgiltur.
 
@@ -13228,7 +13198,7 @@ Symmetric final-case review
 <details><summary>fit_0025667 · candidate · greedy · ParIce21:eea:1736856 · F</summary>
 
 **Source:** Two belts or restraint systems are required for the buckle inspection, the low-temperature buckle test, the low-temperature test described in Item 2.7.6.4 where necessary, the buckle durability test, the belt corrosion test, the retractor operating tests and the buckle-opening test after the dynamic test.
-**Decision:** F — 安全带腐蚀试验变为锁样腐蚀，试验对象错误。
+**Decision:** F — The safety-belt corrosion test becomes lock-sample corrosion, changing the tested object.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Tvær samstæður belta eða aðhaldsbúnaðar þarf fyrir lássýnið, kuldaprófun á lássýni, kuldaprófunina sem lýst er í lið 2.7.6.4 ef þörf krefur, þolprófun á lássýni, tæringu lássýnisins, virkniprófun á inndráttarbúnaði og opnunarprófun á lássýni á eftir hreyfiprófuninni.
 
@@ -13264,7 +13234,7 @@ Symmetric final-case review
 <details><summary>fit_0025667 · candidate · greedy · ParIce21:ema:257323 · U</summary>
 
 **Source:** Patients included in this study had taken CHAMPIX for a smoking-cessation attempt in the past (for a total treatment duration of a minimum of two weeks), at least three months prior to study entry, and had been smoking for at least four weeks.
-**Decision:** U — 数值及时间条件保留，但 heildaraðferðartíma 对总治疗时长的表达不确定。
+**Decision:** U — Numbers/time conditions remain, but heildaraðferðartíma may not express total treatment duration.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Sjúklingarnir sem voru teknir með í þessa rannsókn höfðu áður tekið CHAMPIX til að reyna að hætta að reykja (með að lágmarki tveggja vikna heildaraðferðartíma) að minnsta kosti þremur mánuðum fyrir inngöngu í rannsóknina og höfðu reykt í að minnsta kosti fjórar vikur.
 
@@ -13300,7 +13270,7 @@ Symmetric final-case review
 <details><summary>fit_0025667 · candidate · greedy · ParIce21:ema:261494 · P</summary>
 
 **Source:** Patients with moderate or severe hepatic impairment should be started on VELCADE at a reduced dose of 0.7 mg/m2 per injection during the first treatment cycle, and a subsequent dose escalation to 1.0 mg/m2 or further dose reduction to 0.5 mg/m2 may be considered based on patient tolerability (see Table 6 and sections 4.4 and 5.2).
-**Decision:** P — 肝损伤程度、首周期剂量、后续加减剂量、耐受条件和引用完整保留。
+**Decision:** P — Hepatic-impairment severity, first-cycle dose, subsequent adjustment, tolerability and references are complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Hefja skal meðferð hjá sjúklingum með í meðallagi mikið eða verulega skerta lifrarstarfsemi með minni skammt af VELCADE, 0,7 mg/m2 í hverri inndælingu í fyrstu meðferðarlotunni, og í kjölfarið má íhuga að auka skammtinn í 1,0 mg/m2 eða minnka skammtinn í 0,5 mg/m2 eftir því hversu vel sjúklingurinn þolir meðferðina (sjá töflu 6 og kafla 4.4 og 5.2).
 
@@ -13318,7 +13288,7 @@ Symmetric final-case review
 <details><summary>fit_0025667 · candidate · greedy · ParIce21:ema:177531 · F</summary>
 
 **Source:** In a population pharmacokinetic analysis in patients with hepatic oedema, AUC of tolvaptan in severely (Child-Pugh class C) and mildly or moderately (Child-Pugh classes A and B) hepatic impaired patients were 3.1 and 2.3 times higher than that in healthy subjects.
-**Decision:** F — 健康受试者变为没有感染的患者，肝损伤表达也损坏。
+**Decision:** F — Healthy subjects become uninfected patients; hepatic-impairment wording is also corrupted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í greiningu á lyfjahvörfum sjúklinga með lifrarbjúg var AUC tolvaptans hjá sjúklingum með alvarlega (Child-Pugh flokkur C), væga eða miðlungs (Child-Pugh flokkar A og B) skerta lifrar líffæra 3,1 og 2,3 sinnum hærra en hjá sjúklingum sem standa ekki fram á sýkingu.
 
@@ -13327,7 +13297,7 @@ Symmetric final-case review
 <details><summary>fit_0100154 · candidate · greedy · ParIce21:ema:177531 · F</summary>
 
 **Source:** In a population pharmacokinetic analysis in patients with hepatic oedema, AUC of tolvaptan in severely (Child-Pugh class C) and mildly or moderately (Child-Pugh classes A and B) hepatic impaired patients were 3.1 and 2.3 times higher than that in healthy subjects.
-**Decision:** F — AUC数值和对照恢复，但 population pharmacokinetic analysis 被泛化为患者分析，分析类型这一技术限定缺失。
+**Decision:** F — AUC numbers and comparator recover, but population pharmacokinetic analysis becomes generic patient analysis, losing the technical analysis type.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í greiningu á sjúklingum með lifrarbjúg var AUC tolvaptans hjá sjúklingum með alvarlega (Child-Pugh flokkur C), væga eða miðlungs (Child-Pugh flokkar A og B) skerta lifrarstarfsemi 3,1 og 2,3 sinnum hærra en hjá hraustum einstaklingum.
 
@@ -13381,7 +13351,7 @@ Symmetric final-case review
 <details><summary>fit_0100154 · candidate · greedy · ParIce21:eea:1770320 · P</summary>
 
 **Source:** The Court of Justice of the European Union ruled in its judgment of 21 December 2011 (3) that the inclusion of aviation activities in the EU ETS pursuant to Directive 2008/101/EC of the European Parliament and of the Council (4) does not violate international law.
-**Decision:** P — 法院、日期、纳入航空活动、ETS、指令以及不违反国际法均保留；议会词形有拼写错误。
+**Decision:** P — Court, date, inclusion of aviation, ETS, directive and no international-law violation remain; Parliament has a spelling/inflection error.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Evrópudómstóllinn kvað upp þann dóm 21. desember 2011 (3) að það brjóti ekki í bága við alþjóðalög að fella flugstarfsemi undir viðskiptakerfi ESB fyrir losunarheimildir samkvæmt tilskipun Evrópuþingiðs og ráðsins 2008/101/EB (4).
 
@@ -13480,7 +13450,7 @@ Symmetric final-case review
 <details><summary>fit_0100154 · candidate · greedy · ParIce21:eea:2265762 · U</summary>
 
 **Source:** Directive 2009/138/EC of the European Parliament and of the Council of 25 November 2009 on the taking-up and pursuit of the business of Insurance and Reinsurance (Solvency II) (recast)2 is to be incorporated into the Agreement.
-**Decision:** U — 开办/经营保险、日期和纳入协定恢复；recast 未显式表达且已审核参考也未包含，保守不确认完全正确。
+**Decision:** U — Taking up/pursuing insurance, dates and inclusion in the agreement recover. Recast is not explicit and is also absent from the reviewed reference; conservatively unconfirmed.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Fella ber inn í samninginn tilskipun Evrópuþingisins og ráðsins 2009/138/EB frá 25. nóvember 2009 um stofnun og rekstur fyrirtækja á sviði vátrygg inga og endurtrygginga (Gjaldþolsáætlun II) (2).
 
@@ -13561,7 +13531,7 @@ Symmetric final-case review
 <details><summary>fit_0100154 · candidate · greedy · ParIce21:ema:257323 · P</summary>
 
 **Source:** Patients included in this study had taken CHAMPIX for a smoking-cessation attempt in the past (for a total treatment duration of a minimum of two weeks), at least three months prior to study entry, and had been smoking for at least four weeks.
-**Decision:** P — 戒烟用药史、至少两周总疗程、入组前三个月及至少四周吸烟条件完整保留；句法生硬。
+**Decision:** P — Smoking-cessation medication history, at least two weeks' total treatment, three months before enrollment and at least four weeks' smoking are complete, despite awkward syntax.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Sjúklingarnir sem voru teknir með í þessari rannsókn höfðu áður tekið CHAMPIX til að reyna að hætta að reykja (með tímabilinu að vera að minnsta kosti tveggja vikna heildarmeðferðartíma) að minnsta kosti þremur mánuðum fyrir inngöngu í rannsóknina og höfðu reykt í að minnsta kosti fjórar vikur.
 
@@ -13615,7 +13585,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:72820 · F</summary>
 
 **Source:** Co-administration of strong inhibitors of CYP3A4 (such as itraconazol, voriconazole, clarithromycin, telithromycin, nefazodone, conivaptan and many of the HIV protease inhibitors) and inhibitors of CYP2C9 (such as fluconazole and amiodarone) to CYP2D6 poor metabolisers (see section 5.2) has not been investigated specifically, but it is anticipated that it will lead to a more marked increased exposure of vortioxetine in these patients as compared to the moderate effect described above.
-**Decision:** F — 部分药名改变，poor metabolisers 变为少量代谢物，医学对象关系错误。
+**Decision:** F — Some drug names change; poor metabolizers become small quantities of metabolites, changing medical roles.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Samhliða gjöf öflugra CYP3A4 hemla (eins og ítrakónazól, voríkónasín, klárítrómýsín, telítrómýsín, nefazódon, konívaptan og margri HIV próteasahemla) og CYP2C9 hemla (eins og flúkónasól og amíódarón) hjá sjúklingum sem eru litlu CYP2D6 umbrotsefni hefur ekki verið rannsakað sérstakt en gert er ráð fyrir að það leiddi til meiri marktækri útsetningar fyrir vortoxetini hjá þessum sjúklingum samanborið við miðlungs áhrifin sem lýst er hér að framan.
 
@@ -13624,7 +13594,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:134103 · F</summary>
 
 **Source:** From a 250 ml infusion bag or bottle of sodium chloride 9 mg/ml (0.9%), sodium chloride 4.5 mg/ml (0.45%), or Lactated Ringer’s solution for injection, withdraw and discard a volume equal to the volume of the reconstituted Benlysta solution required for the patient’s dose.
-**Decision:** F — withdraw 动作未表达，配制后 Benlysta 等量置换指令不完整。
+**Decision:** F — Withdraw is not expressed, leaving the equal-volume replacement instruction for prepared Benlysta incomplete.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Framfæra skal innrennslisbafa eða hettuglös með 250 ml af natríumklóríði 9 mg/ml (0,9%), natríumklóríði 4,5 mg/ml (0,45%) eða Lactated Ringer’s inndælingsskammtar lausn, og fargað þann magn sem er jöfn við þurftan magn af Benlysta lausn sem gefið er sjúklinum.
 
@@ -13633,7 +13603,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:eea:1430125 · P</summary>
 
 **Source:** The text of Implementing Regulation (EU) 2019/1606 in the Icelandic and Norwegian languages, to be published in the EEA Supplement to the Official Journal of the European Union, shall be authentic.
-**Decision:** P — 两种语言、法规号、公布位置及法律效力保留。
+**Decision:** P — Two languages, regulation number, publication location and legal effect remain.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Íslenskur og norskur texti framkvæmdarreglugerðar (ESB) 2019/1606, sem verður birtur í EES-viðbæti við Stjórnartíðindi Evrópusambandsins, telst fullgiltur.
 
@@ -13642,7 +13612,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:eso:2484 · F</summary>
 
 **Source:** “We have exploited the unique capabilities of MUSE in this study, which will pave the way for future surveys.
-**Decision:** F — unique capabilities 被改为专业能力，独特性这一限定未保留。
+**Decision:** F — Unique capabilities become professional capabilities, losing uniqueness.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Við höfum nýtt faglega hæfileika MUSE í þessari rannsókn, sem gerir veita möguleika á framhaldandi rannsóknum.
 
@@ -13651,7 +13621,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:eea:2265762 · F</summary>
 
 **Source:** Directive 2009/138/EC of the European Parliament and of the Council of 25 November 2009 on the taking-up and pursuit of the business of Insurance and Reinsurance (Solvency II) (recast)2 is to be incorporated into the Agreement.
-**Decision:** F — 保险业务的开办/经营与重铸含义错误，出现接收、跟进和反映等替代。
+**Decision:** F — Taking up/pursuing insurance and recast are wrong, replaced by receiving, following up and reflecting.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Fella ber inn í samninginn tilskipun Evrópuþingsins og ráðsins 2009/138/EB frá 25. nóvember 2009 um viðtöku og eftirfylgni rekstrarhæfi á vátryggingum og endurtryggingum (Solvency II) (endurspegling)2.
 
@@ -13660,7 +13630,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:eea:2324913 · P</summary>
 
 **Source:** The text of Regulation (EU) 2019/831 in the Icelandic and Norwegian languages, to be published in the EEA Supplement to the Official Journal of the European Union, shall be authentic.
-**Decision:** P — 法规号、两种语言、公布位置和效力完整保留。
+**Decision:** P — Regulation number, two languages, publication location and legal effect are complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Íslenskur og norskur texti reglugerðar (ESB) 2019/831, sem verður birtur í EES-viðbæti við Stjórnartíðindi Evrópusambandsins, telst fullgiltur.
 
@@ -13669,7 +13639,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:eso:9893 · F</summary>
 
 **Source:** Each telescope of the EHT produced enormous amounts of data – roughly 350 terabytes per day – which was stored on high-performance helium-filled hard drives.
-**Decision:** F — 硬盘变为 hörðum skjölum（硬文件），硬件对象与性能修饰错误。
+**Decision:** F — Hard disks become hörðum skjölum, hard documents; hardware object and performance modifier are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hver sjónauki EHT framleiður mjög miklum gögnum - um það bil 350 títrabytur á dag - sem var geymd á hæfilegum gagnvart helíumfylltum hörðum skjölum.
 
@@ -13678,7 +13648,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:eea:167933 · F</summary>
 
 **Source:** Member States shall ensure that the use of financial collateral by the collateral taker according to this Article does not render invalid or unenforceable the rights of the collateral taker under the security financial collateral arrangement in relation to the financial collateral transferred by the collateral taker in discharge of an obligation as described in paragraph 2, first subparagraph.
-**Decision:** F — 担保安排下的权利、不可执行与无效的区别及履行义务关系未完整保留。
+**Decision:** F — Rights under collateral arrangements, unenforceability versus invalidity and fulfillment of obligations are incomplete.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Aðildarríkin skulu tryggja að notkun fjárhagslega tryggingar af tryggingafara samkvæmt þessari grein skuli ekki gera réttir tryggingafara sem tekur trygginguna ógild eða ógildandi við fjárhagslega trygginga sem tryggingafarið hefur sendið út í uppgjörsrekstri eins og lýst er í fyrstu undirgrein 2. mgr.
 
@@ -13687,7 +13657,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:207326 · F</summary>
 
 **Source:** It will explain that although this guide is very important it does not provide full information on mycophenolate mofetil and that the SmPC (healthcare professionals) and package leaflet (patients) supplied with the medicine must also be read carefully.
-**Decision:** F — SmPC 变为药物强调，医疗人员/患者的文件对应角色遗漏。
+**Decision:** F — SmPC becomes drug emphasis; healthcare-professional/patient document roles are omitted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hún mun útskýra það þótt þessi leiðbeiningar séu mjög mikilvægar, veiti þeim ekki fullar upplýsingar um mycophenolat mofetil og að þarf einnig að lesa vandlega áhersla lyfsins og fylgiseðilinn sem fylgir lyfinu.
 
@@ -13696,7 +13666,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:146778 · F</summary>
 
 **Source:** However, photodynamic therapy (PDT) induces the formation of reactive oxygen species and has been reported to result in DNA damage including DNA strand breaks, alkali-labile sites, DNA degradation, and DNA-protein cross links which may result in chromosomal aberrations, sister chromatid exchanges (SCE) and mutations.
-**Decision:** F — 活性氧、DNA链断裂及姐妹染色单体交换等多个核心术语错误。
+**Decision:** F — Reactive oxygen, DNA-strand breaks and sister-chromatid exchange are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hins vegar hefur ljósnæmismeðferð (PDT) valdið myndun virkra oxasjúna og hefur verið greint frá því að það veldur DNA-skemmdir, þar með talið brún á DNA-ströngum, alkalískræf staðir, deytingu DNA og DNA-prótein gegnbrautum sem geta valdið stökkbreytingum á kromaföllum, samanburði yfir röðhliða (sister chromatid exchanges, SCE) og stökkbreytingum.
 
@@ -13705,7 +13675,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:366696 · U</summary>
 
 **Source:** The tablets are white to off white, round, biconvex, uncoated tablets debossed with ‘P’ on one side and ‘15’ on other side.
-**Decision:** U — 颜色、双凸、P/15 位置大致可辨，但无包衣及压印描述不规范，不能确认完整准确。
+**Decision:** U — Color, biconvex shape and P/15 positions are identifiable, but uncoated/imprint wording is nonstandard and not fully confirmed.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Töflurnar eru hvítar til beinhvítar, kringlóttar, tvíkúptar, óúðuðar töflur með áhrif í hliðinni og „P“ og á hinni hliðinni „15“.
 
@@ -13714,7 +13684,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:285471 · U</summary>
 
 **Source:** Renagel has been given to normal healthy volunteers in doses up to 14 grams, the equivalent of seventeen 800 mg tablets per day for eight days with no undesirable effects.
-**Decision:** U — 剂量、片数、天数和健康志愿者保留；末尾 án óæskja 是否清楚表达无不良反应不确定。
+**Decision:** U — Dose, tablet count, days and healthy volunteers remain; whether án óæskja clearly means no adverse effects is uncertain.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Renagel hefur verið gefið heilbrigðum og eðlilegum sjálfboðaliðum í skömmtum allt að 14 gr., sem jafngildir síðstænda 17 800 mg töflum á dag í átta daga án óæskja.
 
@@ -13723,7 +13693,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:328130 · P</summary>
 
 **Source:** The decline in distance walked during a 6MWT from Baseline to Week 52 was significantly reduced in patients receiving Esbriet compared with patients receiving placebo in PIPF-016 (p=0.036, rank ANCOVA); 26% of patients receiving Esbriet showed a decline of ≥50 m in 6MWT distance compared to 36% of patients receiving placebo.
-**Decision:** P — 6MWT、52周、显著差异、p值、26%/36%和≥50m均保留，允许步行距离从句的语法瑕疵。
+**Decision:** P — 6MWT,52weeks, significant difference, p-value,26%/36% and≥50m remain; grammatical flaws in the walking-distance clause are accepted.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Minnkun á fjarlægði sem stóð var meðan það var í 6MWT frá grunnlínu til viku 52 var marktækt minnkað hjá sjúklingum sem fengu Esbriet samanborið við sjúklinga sem fengu lyfleysu í PIPF-016 (p=0,036, rank ANCOVA); 26% sjúklinga sem fengu Esbriet sýndu minnkun á fjarlægði sem stóð var ≥50 m í 6MWT samanborið við 36% sjúklinga sem fengu lyfleysu.
 
@@ -13732,7 +13702,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:257323 · F</summary>
 
 **Source:** Patients included in this study had taken CHAMPIX for a smoking-cessation attempt in the past (for a total treatment duration of a minimum of two weeks), at least three months prior to study entry, and had been smoking for at least four weeks.
-**Decision:** F — 最低两周治疗条件没有准确保留，入组标准关键时间限定不完整。
+**Decision:** F — The minimum two-week treatment condition is inaccurate, leaving a critical enrollment time restriction incomplete.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Sjúklingar sem tóku þátt í rannsókninni höfðu tekið CHAMPIX til að reyna að hætta að reykja áður (að því að meiri heildartími meðferð var tveggja vikna) fyrir að skrá, minnsta kosti þremur mánuðum fyrir skráningu og hafði reykt í að minnsta kosti fjögurra vikna.
 
@@ -13741,7 +13711,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:eea:3060597 · F</summary>
 
 **Source:** The category of micro, small and medium-sized enterprises (SMEs) is made up of enterprises which employ fewer than 250 persons and which have an annual turnover not exceeding EUR 50 million, and/or an annual balance sheet total not exceeding EUR 43 million.
-**Decision:** F — 微型企业、营业额和资产负债表总额的统计对象错误。
+**Decision:** F — Microenterprise, turnover and balance-sheet-total statistical objects are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Flokki stytta fyrirtækja, lítilla og meðalstóra fyrirtækja (SME) samanstendur af fyrirtækjum sem hafa fengið færri en 250 starfsmenn og efnahagsverðleikastig á ári er ekki meiri en 50 milljónir evra og/eða heildarrekstrargreiningur á ári er ekki meiri en 43 milljónir evra.
 
@@ -13750,7 +13720,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:220234 · F</summary>
 
 **Source:** May be stored outside a refrigerator but below 25°C for up to 28 days.
-**Decision:** F — below25°C 被改为 at25°C，温度界限错误。
+**Decision:** F — Below25°C becomes at25°C, changing the temperature boundary.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Geymið má í öðrum stofum en í kæli en við 25°C í allt að 28 daga.
 
@@ -13759,7 +13729,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:eea:1736856 · F</summary>
 
 **Source:** Two belts or restraint systems are required for the buckle inspection, the low-temperature buckle test, the low-temperature test described in Item 2.7.6.4 where necessary, the buckle durability test, the belt corrosion test, the retractor operating tests and the buckle-opening test after the dynamic test.
-**Decision:** F — 安全带、锁扣、卷收器等均改成穿线/收紧及无关词，操作内容错误。
+**Decision:** F — Safety belts, buckles and retractors become threading/tightening or unrelated terms, changing procedures.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Til að kanna þræðingu skulu vera tveir þrengingar eða þrengingaraðferðir við rannsóknina á þræðingu, rannsóknina á þræðingu við lágur hitastig, rannsóknina á þræðingu sem lýst er í lið 2.7.6.4 ef nauðsynlegt er, rannsóknina á þræðingu til þess að standa, rannsóknina á rof í þræðunum, rannsóknina á notkun stjórnliðs og rannsóknina á opnun þræðunnar eftir hreyfanleika rannsóknina.
 
@@ -13768,7 +13738,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:366706 · F</summary>
 
 **Source:** The tablets are white to off-white, round, flat faced, bevel edged, with inscription ‘I1’ on one side and plain on the other side.
-**Decision:** F — 斜边变为直边，另一面空白未保留，铭文描述也错误。
+**Decision:** F — Beveled edges become straight edges, the blank reverse is lost and the inscription description is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Töflurnar eru hvítar eða beinhvítar, kringlóttar, flötir, með beinu á hliðinni og skrifstofnunina „I1“ á annarri hliðinni.
 
@@ -13777,7 +13747,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:261494 · P</summary>
 
 **Source:** Patients with moderate or severe hepatic impairment should be started on VELCADE at a reduced dose of 0.7 mg/m2 per injection during the first treatment cycle, and a subsequent dose escalation to 1.0 mg/m2 or further dose reduction to 0.5 mg/m2 may be considered based on patient tolerability (see Table 6 and sections 4.4 and 5.2).
-**Decision:** P — 肝损伤分级、首周期0.7与后续1.0/0.5mg/m2、耐受性及章节号保留。
+**Decision:** P — Hepatic-impairment grades, first-cycle0.7 and subsequent1.0/0.5mg/m2, tolerability and section numbers remain.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Sjúklingar með miðlungs eða alvarlega skerta lifrarstarfsemi skulu hefja meðferð með VELCADE með minnkaðri skammti sem er 0,7 mg/m2 í hverja inndælingu í fyrsta meðferðarlotu og í kjölfarið skal hafa í huga aukningu á skammtinum í 1,0 mg/m2 eða minnkað skammtinn í 0,5 mg/m2, samkvæmt þol sjúklings (sjá töflu 6 og kafla 4.4 og 5.2).
 
@@ -13786,7 +13756,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:61299 · F</summary>
 
 **Source:** Cardboard box with 1 or 12 high density polyethylene bottles of 10 ml, 50 ml, 100 ml or 250 ml with a chlorobutyl stopper and lacquered aluminium seal.
-**Decision:** F — 涂漆铝封被改为铝样盖，高密度等包装属性不准确。
+**Decision:** F — Lacquered aluminum seals become aluminum-like caps; high density and other packaging properties are inaccurate.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Pappaaskja með 1 eða 12 glösum af 10 ml, 50 ml, 100 ml eða 250 ml af hægri þéttni pólýetýlen (high density polyethylene) með klóróbútýl loki og álslíkum loki.
 
@@ -13795,7 +13765,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:277486 · F</summary>
 
 **Source:** Published studies have shown that genetically modified mice, lacking expression of EGFR, exhibit developmental defects, related to epithelial immaturity in a variety of organs including the skin, gastrointestinal tract and lung.
-**Decision:** F — EGFR表达缺失变为未分配EGFR，上皮不成熟关系缺失。
+**Decision:** F — Absent EGFR expression becomes unassigned EGFR, and epithelial immaturity is lost.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í fram- lagðum rannsóknum hefur verið sýnt fram á að erfðabreytt músum, sem ekki hafa úthlutað EGFR, eru með þróunarbilun, tengd ófullkomu líffæra í mörgum líffærum, þar á meðal húð, meltingarvegi og lungum.
 
@@ -13804,7 +13774,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:eso:8981 · F</summary>
 
 **Source:** To solve this mystery, Farina and his colleagues used the MUSE instrument on ESO’s Very Large Telescope (VLT) in the Chilean Atacama Desert to study quasars — extremely bright objects powered by supermassive black holes which lie at the centre of massive galaxies.
-**Decision:** F — 类星体变为磨坊等无关词，超大质量黑洞的驱动关系不准确。
+**Decision:** F — Quasars become mills or unrelated terms; supermassive-black-hole powering is inaccurate.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Til að leysa þessu grunnlega rökrannsókn var Farina og starfsmenn hans notaðir MUSE mælitækið á Very Large Telescope (VLT) ESO í Atacamaeyðimörkinni í Chile til að rannsaka kvarnir – mjög björtar fyrirbæri sem eru beitt með öflugum svartholum sem eru í miðju massamiklra vetrarbrauta.
 
@@ -13813,7 +13783,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:eso:9861 · F</summary>
 
 **Source:** &quot;If immersed in a bright region, like a disc of glowing gas, we expect a black hole to create a dark region similar to a shadow — something predicted by Einstein’s general relativity that we’ve never seen before,&quot; explained chair of the EHT Science Council Heino Falcke of Radboud University, the Netherlands.
-**Decision:** F — 黑洞对象及广义相对论等限定缺失，未表达完整引述。
+**Decision:** F — Black holes, general relativity and other qualifiers are omitted, leaving the quotation incomplete.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Ef það er í ljósgrein, eins og glóandi gas, búum við að það myndi skapa dökk svæði sem líkist skugga – einhverju sem Einstein gert var ráð fyrir og við hafa aldrei séð áður,“ sagði Heino Falcke, stjórnandur vísindanefndar EHT við Radboud University í Hollandi.
 
@@ -13822,7 +13792,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:eea:3278787 · U</summary>
 
 **Source:** In 2011 France and Slovakia informed the Commission and the Member States of the favourable classical swine fever situation in their territory.
-**Decision:** U — 法国、斯洛伐克、年份与通报关系保留，但 classical swine fever 仅表为泛称 svínaveiki，疾病专名准确性不确定。
+**Decision:** U — France, Slovakia, year and notification remain, but classical swine fever is generic svínaveiki, leaving disease-name accuracy uncertain.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Frakka og Slóvakía upplýsðu framkvæmdastjórnina og aðildarríkin um hagstöðugt ástand svínaveiki á yfirráðasvæði sínu árið 2011.
 
@@ -13831,7 +13801,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:177531 · F</summary>
 
 **Source:** In a population pharmacokinetic analysis in patients with hepatic oedema, AUC of tolvaptan in severely (Child-Pugh class C) and mildly or moderately (Child-Pugh classes A and B) hepatic impaired patients were 3.1 and 2.3 times higher than that in healthy subjects.
-**Decision:** F — 肝水肿变为肝炎，2.3倍丢失并变为3.1。
+**Decision:** F — Hepatic edema becomes hepatitis and2.3-fold is lost/replaced by3.1.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Í lyfjahvarfarannsókn á þátttakendum með lifrarbólgu var AUC fyrir tolvaptan hjá sjúklingum með alvarlega skerta lifrarstarfsemi (Child-Pugh flokkur C) og minnkuð eða miðlungs skerta lifrarstarfsemi (Child-Pugh flokkur A og B) 3,1-til 3,1 tíma hærri en hjá heilbrigðum einstaklingum.
 
@@ -13840,7 +13810,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:eso:513 · F</summary>
 
 **Source:** It is a triumph for the theorists, a confirmation that the LIGO–VIRGO events are absolutely real, and an achievement for ESO to have gathered such an astonishing data set on the kilonova,” adds Stefano Covino, lead author of one of the Nature Astronomy papers.
-**Decision:** F — 理论学家胜利与ESO成就被无关词替代。
+**Decision:** F — The theorists' triumph and ESO achievement become unrelated words.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Það er sástur fyrir hugrænendum, staðfesting á að LIGO-VIRGO-efnið sé alveg raunverulegt og verkefni ESO til að safna slíkum ótrúlegum gögn um kílónóva,“ bætir Stefano Covino, aðalhöfundur greinar í Nature Astronomy, við.
 
@@ -13849,7 +13819,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:34789 · F</summary>
 
 **Source:** An increased risk of DVT and PE is associated with the use of lenalidomide with dexamethasone in patients with multiple myeloma, and to a lesser extent in patients treated with melphalan and prednisone or as monotherapy in patients with myelodysplastic syndromes and mantle cell lymphoma treated with lenalidomide monotherapy (see section 4.5).
-**Decision:** F — DVT/PE含义损坏，骨髓增生异常和套细胞淋巴瘤人群遗漏。
+**Decision:** F — DVT/PE is corrupted and myelodysplastic/mantle-cell-lymphoma populations are omitted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Aukin hætta á segamyndun í æðum og segamiðla er tengd notkun lenalídómíðs með dexametasóni hjá sjúklingum með mergæxli og minna hættu hjá sjúklingum sem fá meðferð með melfalan og prednisóni eða einlyfjameðferð með lenalídómíði (sjá kafla 4.5).
 
@@ -13858,7 +13828,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:eea:2027145 · F</summary>
 
 **Source:** Various elements of the electronic identification schemes are managed by different authorities or bodies in the Member States.
-**Decision:** F — Various变为Sjaldgæfar（罕见的），范围限定改变。
+**Decision:** F — Various becomes Sjaldgæfar, rare, changing scope.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Sjaldgæfar þættir rafrænna auðkenningarskipana eru stjórnar af mismunandi yfirvöldum eða stofnunum í aðildarríkjunum.
 
@@ -13867,7 +13837,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:52885 · P</summary>
 
 **Source:** Benzodiazepine and benzodiazepine-like agents should be used with extreme caution in patients with a history of alcohol or medicinal product abuse.
-**Decision:** P — 药物两类、极谨慎使用及酒精/药物滥用史保留。
+**Decision:** P — Both drug categories, extreme caution and alcohol/drug-abuse history remain.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Benzódíazepín og lyf sem líkjast benzódíazepín lyfi skulu notaðir með mjög varúðar hætti hjá sjúklingum með sögu um misnotkun á áfengi eða lyfjum.
 
@@ -13876,7 +13846,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:eso:1426 · F</summary>
 
 **Source:** An international team of astronomers using the VIMOS instrument of ESO’s Very Large Telescope have uncovered a titanic structure in the early Universe.
-**Decision:** F — 早期宇宙巨大结构被无意义词替代。
+**Decision:** F — Enormous early-Universe structures become meaningless words.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Alþjóðlegur hópur stjörnufræðinga sem notaði VIMOS mælitæki Very Large Telescope ESO, gerði sér grein fyrir þann títrarströng í sykulegu alheiminu.
 
@@ -13885,7 +13855,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:ema:331981 · F</summary>
 
 **Source:** The European Medicines Agency has waived the obligation to submit the results of studies with Javlor in all subsets of the paediatric population in the treatment of ureter and bladder carcinoma and the treatment of breast carcinoma (see section 4.2 for information on paediatric use).
-**Decision:** F — 输尿管和膀胱癌部位均错误且互相重复。
+**Decision:** F — Ureter/bladder cancer sites are wrong and repeated.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Lyfjastofnun Evrópu hefur fallið frá kröfu um að lagðar verði fram niðurstöður úr rannsóknum á Javlor hjá öllum undirhópum barna við meðferð á krabbameini í þvaglif og þvaglíf og meðferð á krabbameini í brjóst (sjá upplýsingar í kafla 4.2 um notkun handa börnum).
 
@@ -13894,7 +13864,7 @@ Symmetric final-case review
 <details><summary>fit_before · candidate · greedy · ParIce21:eea:1770320 · F</summary>
 
 **Source:** The Court of Justice of the European Union ruled in its judgment of 21 December 2011 (3) that the inclusion of aviation activities in the EU ETS pursuant to Directive 2008/101/EC of the European Parliament and of the Council (4) does not violate international law.
-**Decision:** F — EU ETS术语和纳入机制损坏，未准确表达判决内容。
+**Decision:** F — EU ETS terminology and the inclusion mechanism are corrupted, misrepresenting the judgment.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Dómstóll Evrópusambandsins gerði ákvörðun sína frá 21. desember 2011 (3) að það sé ekki bregðast við alþjóðalög með því að flytja flugstarfsemi í evrópska losunarverkun um losun á lofthreinskilapenna samkvæmt tilskipun Evrópuþingsins og ráðsins 2008/101/EB (4).
 
@@ -13903,7 +13873,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:285471 · F</summary>
 
 **Source:** Renagel has been given to normal healthy volunteers in doses up to 14 grams, the equivalent of seventeen 800 mg tablets per day for eight days with no undesirable effects.
-**Decision:** F — 十七片800mg数量错误。
+**Decision:** F — The quantity of seventeen800mg tablets is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Renagel hefur verið gefið heilbrigðum sjálfboðaliðum í skömmtum allt að 14 gr., sem jafngildir síðan þúsundseini 800 mg töflum á dag í átta daga án aukaverkana.
 
@@ -13912,7 +13882,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:261494 · P</summary>
 
 **Source:** Patients with moderate or severe hepatic impairment should be started on VELCADE at a reduced dose of 0.7 mg/m2 per injection during the first treatment cycle, and a subsequent dose escalation to 1.0 mg/m2 or further dose reduction to 0.5 mg/m2 may be considered based on patient tolerability (see Table 6 and sections 4.4 and 5.2).
-**Decision:** P — 肝损程度首疗程0.7mg/m2后耐受调整1或0.5完整。
+**Decision:** P — Hepatic-impairment severity, first-cycle0.7mg/m2 and tolerability-based1or0.5 adjustment are complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Sjúklingar með miðlungs- eða verulega skerta lifrarstarfsemi skulu byrjaðir á VELCADE í minnkaðri skammti sem er 0,7 mg/m2 í hverri inndælingu í fyrsta meðferðarlotunni og í kjölfarið má íhuga að auka skammtinn í 1,0 mg/m2 eða minnka hann frekar í 0,5 mg/m2 miðað við þol sjúklings (sjá töflu 6 og kafla 4.4 og 5.2).
 
@@ -13921,7 +13891,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:207326 · P</summary>
 
 **Source:** It will explain that although this guide is very important it does not provide full information on mycophenolate mofetil and that the SmPC (healthcare professionals) and package leaflet (patients) supplied with the medicine must also be read carefully.
-**Decision:** P — 指南不完整须读SmPC及患者说明书完整。
+**Decision:** P — The guide being incomplete and requiring the SmPC/patient leaflet is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Hún lýsir því þótt þessi leiðbeiningar séu mjög mikilvæg eru ekki tilgreindar fullar upplýsingar um mýcófenólat mófetíl og að einnig verði að lesa vandlega samantekt á eiginleikum lyfs (heilbrigðisstarfsfólki) og fylgiseðilinn (sjúklingum) sem fylgir lyfinu.
 
@@ -13930,7 +13900,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:eea:2265762 · U</summary>
 
 **Source:** Directive 2009/138/EC of the European Parliament and of the Council of 25 November 2009 on the taking-up and pursuit of the business of Insurance and Reinsurance (Solvency II) (recast)2 is to be incorporated into the Agreement.
-**Decision:** U — recast未明确，保持此前拟合检查相同不确定标准。
+**Decision:** U — Recast is not explicit; retain the same uncertainty standard as the previous fit audit.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Fella ber inn í samninginn tilskipun Evrópuþingsins og ráðsins 2009/138/EB frá 25. nóvember 2009 um að taka á og háða rekstur vátrygginga og endurtrygginga (Solvency II) (2).
 
@@ -13939,7 +13909,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:257323 · P</summary>
 
 **Source:** Patients included in this study had taken CHAMPIX for a smoking-cessation attempt in the past (for a total treatment duration of a minimum of two weeks), at least three months prior to study entry, and had been smoking for at least four weeks.
-**Decision:** P — CHAMPIX先前两周、入组前至少三月及吸烟四周完整。
+**Decision:** P — Prior two-week CHAMPIX use, at least three months before enrollment and four weeks' smoking are complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Sjúklingar sem tóku þátt í þessari rannsókn höfðu áður tekið CHAMPIX við að hætta að reykja (með að lágmarki tvö vikna meðferðartíma) að minnsta kosti þremur mánuðum fyrir inngang í rannsóknina og höfðu reykt í að minnsta kosti fjögurra vikur.
 
@@ -13948,7 +13918,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:eso:2484 · U</summary>
 
 **Source:** “We have exploited the unique capabilities of MUSE in this study, which will pave the way for future surveys.
-**Decision:** U — MUSE能力与后续研究保留，但surveys泛化为研究，不确定是否关键观测调查完整。
+**Decision:** U — MUSE capabilities and follow-up research remain, but surveys become generic research; full observational-survey meaning is uncertain.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Við höfum nýttu einstaklega getu MUSE í þessari rannsókn, sem gerir mögulegt að framkvæma frekari rannsóknir.
 
@@ -13957,7 +13927,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:366706 · F</summary>
 
 **Source:** The tablets are white to off-white, round, flat faced, bevel edged, with inscription ‘I1’ on one side and plain on the other side.
-**Decision:** F — 斜边与另一面空白遗漏。
+**Decision:** F — Beveled edges and the blank reverse are omitted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Töflurnar eru hvítar til beinhvítar, kringlóttar, flatar, með beinu á hliðinni og áletruninni „I1“ á annarri hliðinni.
 
@@ -13966,7 +13936,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:eea:167933 · F</summary>
 
 **Source:** Member States shall ensure that the use of financial collateral by the collateral taker according to this Article does not render invalid or unenforceable the rights of the collateral taker under the security financial collateral arrangement in relation to the financial collateral transferred by the collateral taker in discharge of an obligation as described in paragraph 2, first subparagraph.
-**Decision:** F — 担保受让者、安全担保安排与履行义务法律关系不准确。
+**Decision:** F — The collateral taker, financial collateral arrangements and obligation-fulfillment relationships are inaccurate.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Aðildarríkin skulu tryggja að notkun fjárhagslegs tryggingar af tryggingaraðilinni samkvæmt þessari grein skapi ekki ógildi eða ógildunarheimtun réttinda tryggingaraðilsins samkvæmt kerfi fyrir fjárhagslega trygginga í tengslum við fjárhagslega trygginga sem tryggingaraðilið hefur send til skuldbindingar eins og lýst er í fyrstu undirgrein 2. mgr.
 
@@ -13984,7 +13954,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:366696 · P</summary>
 
 **Source:** The tablets are white to off white, round, biconvex, uncoated tablets debossed with ‘P’ on one side and ‘15’ on other side.
-**Decision:** P — 白至类白圆双凸无包衣两面P及15保留，凹印仅泛称标记。
+**Decision:** P — White/off-white round biconvex uncoated tablets marked P and15 on opposite sides remain; debossing is only generic marking.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Töflurnar eru hvítar til beinhvítar, kringlóttar, tvíkúptar, óhúðaðar töflur með „P“ á annarri hliðinni og „15“ á hinni hliðinni.
 
@@ -13993,7 +13963,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:eea:2027145 · F</summary>
 
 **Source:** Various elements of the electronic identification schemes are managed by different authorities or bodies in the Member States.
-**Decision:** F — various变为rare。
+**Decision:** F — Various becomes rare.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Sjaldgæfar þættir rafrænna auðkenningarskipana eru stjórnaðar af mismunandi yfirvöldum eða stofnunum í aðildarríkjunum.
 
@@ -14002,7 +13972,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:eea:1736856 · F</summary>
 
 **Source:** Two belts or restraint systems are required for the buckle inspection, the low-temperature buckle test, the low-temperature test described in Item 2.7.6.4 where necessary, the buckle durability test, the belt corrosion test, the retractor operating tests and the buckle-opening test after the dynamic test.
-**Decision:** F — 安全带扣、低温耐久腐蚀及卷收器试验列表错误重复。
+**Decision:** F — The buckle, low-temperature durability, corrosion and retractor test list is wrong/repetitive.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Til að kanna þræðingu á blettu eða viðtakakerfi er þörf á tveimur blettur eða viðtakakerfi, þar sem þörf er, til þess að kanna þræðingu á bletti við lágþerm, þar sem þörf er, til þess að kanna þræðingu á bletti við þróun, þar sem þörf er, til þess að kanna þræðingu á bletti við örvaðri þrýsting, þar sem þörf er, til þess að kanna þræðingu á bletti við rof, þar sem þörf er, til þess að kanna þræðingu á bletti við notkun örvunar, þar sem þörf er, til þess að kanna þræðingu á bletti við opnun, eftir hreyfingatrykjunum.
 
@@ -14011,7 +13981,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:52885 · P</summary>
 
 **Source:** Benzodiazepine and benzodiazepine-like agents should be used with extreme caution in patients with a history of alcohol or medicinal product abuse.
-**Decision:** P — 苯二氮卓及类似药对酒精药滥用史极谨慎完整。
+**Decision:** P — Extreme caution with benzodiazepines/similar drugs in alcohol/drug-abuse history is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Benzódíazepín og lyf sem eru svipuð benzódíazepín á að nota með miklum varúð hjá sjúklingum með sögu um misnotkun áfengis eða lyfja.
 
@@ -14020,7 +13990,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:331981 · F</summary>
 
 **Source:** The European Medicines Agency has waived the obligation to submit the results of studies with Javlor in all subsets of the paediatric population in the treatment of ureter and bladder carcinoma and the treatment of breast carcinoma (see section 4.2 for information on paediatric use).
-**Decision:** F — 输尿管关键器官术语错误。
+**Decision:** F — The critical ureter organ term is wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Lyfjastofnun Evrópu hefur fallið frá kröfu um að lagðar verði fram niðurstöður úr rannsóknum á Javlor hjá öllum undirhópum barna við krabbameini í þvaglærum og þvagblöðru og meðferð brjóstakrabbameins (sjá upplýsingar í kafla 4.2 um notkun handa börnum).
 
@@ -14029,7 +13999,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:134103 · F</summary>
 
 **Source:** From a 250 ml infusion bag or bottle of sodium chloride 9 mg/ml (0.9%), sodium chloride 4.5 mg/ml (0.45%), or Lactated Ringer’s solution for injection, withdraw and discard a volume equal to the volume of the reconstituted Benlysta solution required for the patient’s dose.
-**Decision:** F — 乳酸林格与复溶表达不准确。
+**Decision:** F — Lactated Ringer's solution and reconstitution are inaccurate.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Þegar þú tekur úr 250 ml innrennslispoka eða flösku með natríumklóríði 9 mg/ml (0,9%), natríumklóríði 4,5 mg/ml (0,45%) eða Ringers lausn leyslaðri til inndælingar skaltu taka og farga rúmmáli sem samsvarar rúmmáli af upplausninni af Benlysta sem þarf fyrir skammt sjúklingsins.
 
@@ -14038,7 +14008,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:eea:3278787 · P</summary>
 
 **Source:** In 2011 France and Slovakia informed the Commission and the Member States of the favourable classical swine fever situation in their territory.
-**Decision:** P — 2011法国斯洛伐克向委员会各国通报有利经典猪瘟状况完整。
+**Decision:** P — France/Slovakia notifying the Commission/member states of favorable classical-swine-fever status in2011 is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Frakka og Slóvakía tilkynntu framkvæmdastjórnina og aðildarríkin um hagstöðu ástandi svínapestar í yfirráðasvæðum sínum árið 2011.
 
@@ -14047,7 +14017,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:eso:9893 · F</summary>
 
 **Source:** Each telescope of the EHT produced enormous amounts of data – roughly 350 terabytes per day – which was stored on high-performance helium-filled hard drives.
-**Decision:** F — 350TB及高性能硬盘关键术语错误。
+**Decision:** F — 350TB and high-performance-hard-disk terminology are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Hver sjónauki EHT myndi miklu mikið gögn – um það bil 350 tíðablöndur á dag – sem var geymt í helíumfyllt hörðarhlaupi.
 
@@ -14056,7 +14026,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:277486 · F</summary>
 
 **Source:** Published studies have shown that genetically modified mice, lacking expression of EGFR, exhibit developmental defects, related to epithelial immaturity in a variety of organs including the skin, gastrointestinal tract and lung.
-**Decision:** F — EGFR缺表达变缺活性且上皮变黏膜。
+**Decision:** F — Absent EGFR expression becomes absent activity and epithelium becomes mucosa.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Rannsóknir sem birtar voru hafa sýnt fram á að erfðabreytt músa, sem ekki eru með virkum EGFR, hafa þroskafræðileg vandamál í tengslum við óþroskaða slímhúð í ýmsum líffærum, þar á meðal húðinni, meltingarfærum og lungum.
 
@@ -14065,7 +14035,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:eea:1770320 · F</summary>
 
 **Source:** The Court of Justice of the European Union ruled in its judgment of 21 December 2011 (3) that the inclusion of aviation activities in the EU ETS pursuant to Directive 2008/101/EC of the European Parliament and of the Council (4) does not violate international law.
-**Decision:** F — 欧洲法院及航空活动对象错误，虽否定保留。
+**Decision:** F — The European Court and aviation activities are wrong, although negation remains.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Dómur stjórnar Evrópusambandsins frá 21. desember 2011 (3) er um það að ræða að því að flytjabúnaður sé felld inn í viðskiptakerfi ESB fyrir losunarheimildir samkvæmt tilskipun Evrópuþingsins og ráðsins 2008/101/EB (4) sé ekki brot á alþjóðalög.
 
@@ -14074,7 +14044,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:eso:9861 · F</summary>
 
 **Source:** &quot;If immersed in a bright region, like a disc of glowing gas, we expect a black hole to create a dark region similar to a shadow — something predicted by Einstein’s general relativity that we’ve never seen before,&quot; explained chair of the EHT Science Council Heino Falcke of Radboud University, the Netherlands.
-**Decision:** F — 黑洞与广义相对论遗漏。
+**Decision:** F — Black holes and general relativity are omitted.
 **Inspected/correct:** [0]/[]
 **Candidate0:** „Ef það er í ljósi, eins og glóandi gaslag, búum við að það myndi myndast dökkur svipaður skugga – einhverju sem Einstein gát að fyrirhugaði og sem við hefum aldrei séð fyrr“ sagði Heino Falcke, yfirmaður EHT-vísindanefndarinnar við Radboud háskóla í Hollandi.
 
@@ -14083,7 +14053,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:72820 · F</summary>
 
 **Source:** Co-administration of strong inhibitors of CYP3A4 (such as itraconazol, voriconazole, clarithromycin, telithromycin, nefazodone, conivaptan and many of the HIV protease inhibitors) and inhibitors of CYP2C9 (such as fluconazole and amiodarone) to CYP2D6 poor metabolisers (see section 5.2) has not been investigated specifically, but it is anticipated that it will lead to a more marked increased exposure of vortioxetine in these patients as compared to the moderate effect described above.
-**Decision:** F — 伏立康唑药名及CYP2D6弱代谢者表达不可靠。
+**Decision:** F — Voriconazole and CYP2D6 poor-metabolizer wording are unreliable.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Samhliða gjöf öflugra CYP3A4 hemla (eins og ítrakónazól, voríkónasíl, klárítrómýcín, telítrómýcín, nefazódón, konívaptan og margir HIV próteasa hemlar) og CYP2C9 hemla (eins og flúkónasól og amíódarón) hjá sjúklingum sem eru CYP2D6 skerta (sjá kafla 5.2) hefur ekki verið rannsakað sérstaklega en gert er ráð fyrir að það leiði til meiri útsetningar fyrir vortioxetini hjá þessum sjúklingum samanborið við miðlungsmikla áhrifin sem lýst er hér að ofan.
 
@@ -14092,7 +14062,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:146778 · F</summary>
 
 **Source:** However, photodynamic therapy (PDT) induces the formation of reactive oxygen species and has been reported to result in DNA damage including DNA strand breaks, alkali-labile sites, DNA degradation, and DNA-protein cross links which may result in chromosomal aberrations, sister chromatid exchanges (SCE) and mutations.
-**Decision:** F — 光动力活性氧DNA损伤及姐妹染色单体等关键概念错误。
+**Decision:** F — Photodynamic reactive oxygen, DNA damage and sister chromatids are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Ljóshreyfistengda meðferð (PDT) veldur myndun virkra sýna og hefur verið greint frá því að það leiðir til DNA skemmda, þar með talið brúnina á DNA strandum, alkalískræfa, DNA leysis og DNA-prótín breytileika sem geta leitt til misbresta, rúmsbreytinga (sister chromatid exchanges, SCE) og stökkbreytinga.
 
@@ -14101,7 +14071,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:328130 · P</summary>
 
 **Source:** The decline in distance walked during a 6MWT from Baseline to Week 52 was significantly reduced in patients receiving Esbriet compared with patients receiving placebo in PIPF-016 (p=0.036, rank ANCOVA); 26% of patients receiving Esbriet showed a decline of ≥50 m in 6MWT distance compared to 36% of patients receiving placebo.
-**Decision:** P — 6MWT距离从基线到52周的下降减少与两组比例阈值完整，词形/走路动词生硬。
+**Decision:** P — Reduced decline in6MWT distance from baseline to52weeks and both groups' proportions/thresholds are complete; morphology/walking verbs are awkward.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Lækkun á fjarlægði sem stóð fram meðan á 6MWT stóð frá upphafi rannsóknarinnar í viku 52 var marktækt minnkað hjá sjúklingum sem fengu Esbriet samanborið við sjúklinga sem fengu lyfleysu í PIPF-016 (p=0,036, rank ANCOVA); 26% sjúklinga sem fengu Esbriet sýndu lækkað fjarlægð ≥50 m í 6MWT samanborið við 36% sjúklinga sem fengu lyfleysu.
 
@@ -14110,7 +14080,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:eso:1426 · F</summary>
 
 **Source:** An international team of astronomers using the VIMOS instrument of ESO’s Very Large Telescope have uncovered a titanic structure in the early Universe.
-**Decision:** F — 巨大结构变为巨黑半体，含义错误。
+**Decision:** F — Enormous structures become giant black half-bodies.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Alþjóðlegur hópur stjörnufræðinga sem notuðu VIMOS mælitæki Very Large Telescope ESO, hefur uppgötvað risasvarthálf í fyrstu alheimi.
 
@@ -14119,7 +14089,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:61299 · F</summary>
 
 **Source:** Cardboard box with 1 or 12 high density polyethylene bottles of 10 ml, 50 ml, 100 ml or 250 ml with a chlorobutyl stopper and lacquered aluminium seal.
-**Decision:** F — 瓶塞变活塞且涂漆铝封口不完整。
+**Decision:** F — A stopper becomes a plunger and the lacquered aluminum seal is incomplete.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Pappaaskja með 1 eða 12 glösum úr pólýetýleni með hár þéttni og 10 ml, 50 ml, 100 ml eða 250 ml, með klóróbútýl stimpil og hlífðuð áli.
 
@@ -14128,7 +14098,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:eso:513 · F</summary>
 
 **Source:** It is a triumph for the theorists, a confirmation that the LIGO–VIRGO events are absolutely real, and an achievement for ESO to have gathered such an astonishing data set on the kilonova,” adds Stefano Covino, lead author of one of the Nature Astronomy papers.
-**Decision:** F — 理论家胜利与kilonova及事件等关键术语错误。
+**Decision:** F — The theorists' triumph, kilonova and event terminology are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Það er hæfileik fyrir kenningarfræðinga, staðfestingu á að LIGO-VIRGO-efnið sé alveg raunverulegt og frá ESO að það hafi safnað svo miklum gögnum um kílkornablásmyndunina,“ segir Stefano Covino, aðalhöfundur greinarinnar í Nature Astrononomy.
 
@@ -14137,7 +14107,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:eea:3060597 · F</summary>
 
 **Source:** The category of micro, small and medium-sized enterprises (SMEs) is made up of enterprises which employ fewer than 250 persons and which have an annual turnover not exceeding EUR 50 million, and/or an annual balance sheet total not exceeding EUR 43 million.
-**Decision:** F — 微型企业与年营业额资产负债表总额错误。
+**Decision:** F — Microenterprise, annual turnover and balance-sheet total are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Flokkur stytta fyrirtækja, lítilla og meðalstóra fyrirtækja (SME) samanstendur af fyrirtæki sem hafa innan 250 starfsmenn og efnahagsverðleikasamtök árlega eru ekki meiri en 50 milljónir evra og/eða heildarafmagn reikningsskila árlega er ekki meiri en 43 milljónir evra.
 
@@ -14155,7 +14125,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:177531 · P</summary>
 
 **Source:** In a population pharmacokinetic analysis in patients with hepatic oedema, AUC of tolvaptan in severely (Child-Pugh class C) and mildly or moderately (Child-Pugh classes A and B) hepatic impaired patients were 3.1 and 2.3 times higher than that in healthy subjects.
-**Decision:** P — 群体药代肝水肿及ChildPugh分级AUC3.1与2.3倍完整。
+**Decision:** P — Population pharmacokinetics, hepatic edema, ChildPugh grades and3.1/2.3-fold AUC are complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Í þýðisgreiningu á lyfjahvörfum hjá sjúklingum með lifrarbjúg var AUC tolvaptans hjá sjúklingum með alvarlega (Child-Pugh flokkur C), væga eða miðlungs (Child-Pugh flokkar A og B) skerta lifrarstarfsemi 3,1 og 2,3 sinnum hærri en hjá heilbrigðum einstaklingum.
 
@@ -14164,7 +14134,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:34789 · P</summary>
 
 **Source:** An increased risk of DVT and PE is associated with the use of lenalidomide with dexamethasone in patients with multiple myeloma, and to a lesser extent in patients treated with melphalan and prednisone or as monotherapy in patients with myelodysplastic syndromes and mantle cell lymphoma treated with lenalidomide monotherapy (see section 4.5).
-**Decision:** P — 两类血栓风险、药物、人群及单药关系完整。
+**Decision:** P — Both thrombotic risks, drugs, populations and monotherapy relationships are complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Aukin hætta á segamyndun í djúplægum bláæðum og lungnasegareki tengist notkun lenalídómíðs ásamt dexametasóni hjá sjúklingum með mergæxli og í minna mæli hjá sjúklingum sem fá meðferð með melfalan og prednisóni eða einlyfjameðferð hjá sjúklingum með mergmisþroskaheilkenni og mantelfrumu eitlaæxli sem fá meðferð með lenalídómíði einu sér (sjá kafla 4.5).
 
@@ -14173,7 +14143,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:eso:8981 · F</summary>
 
 **Source:** To solve this mystery, Farina and his colleagues used the MUSE instrument on ESO’s Very Large Telescope (VLT) in the Chilean Atacama Desert to study quasars — extremely bright objects powered by supermassive black holes which lie at the centre of massive galaxies.
-**Decision:** F — 类星体与超大质量黑洞错误。
+**Decision:** F — Quasars and supermassive black holes are wrong.
 **Inspected/correct:** [0]/[]
 **Candidate0:** Til að leysa þennan grunna notuðu Farina og samstarfsfólk hans MUSE mælitækið á Very Large Telescope (VLT) ESO í Atacamaeyðimörkinni í Chile til að rannsaka kvarsluvirki – mjög bjart fyrirbæri sem eru beitingar af risasveigum, risasvegar sem eru í miðju massamikilla vetrarbrauta.
 
@@ -14182,7 +14152,7 @@ Symmetric final-case review
 <details><summary>train_selected_main · candidate · greedy · ParIce21:ema:220234 · P</summary>
 
 **Source:** May be stored outside a refrigerator but below 25°C for up to 28 days.
-**Decision:** P — 冰箱外低于25度最多28天完整。
+**Decision:** P — Outside refrigeration, below25degrees for at most28days is complete.
 **Inspected/correct:** [0]/[0]
 **Candidate0:** Má geyma utan kælis en við lægri hita en 25°C í allt að 28 daga.
 

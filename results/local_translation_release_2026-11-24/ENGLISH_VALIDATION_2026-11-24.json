@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-24",
+  "source_commit": "f82bd685352c5f64b69ce1c6b080592ede059c97",
+  "Git_managed_and_new_files": 767,
+  "Chinese_character_findings": 0,
+  "ZIP_members_scanned": 2039,
+  "JSON_JSONL_notebook_files_parsed": 2517,
+  "Python_files_parsed": 112,
+  "changed_numeric_structured_files_verified": 32,
+  "CSV_files_verified": 3,
+  "nonChinese_structured_strings_unchanged": true,
+  "Python_executable_AST_unchanged_except_text_literals": true,
+  "new_broken_Markdown_links": 0,
+  "third_party_translation_results_used": false,
+  "pushed": false,
+  "intended_commit_message": "update md file and code",
+  "CPU_tests": {
+    "passed": 41,
+    "failed": 0,
+    "seconds": 1.39
+  },
+  "git_diff_check_passed": true
+}

@@ -1,12 +1,10 @@
-# 技术中长句SFT补强：完整结果与后续 / Technical SFT Full Results
+# Technical SFT Full Results
 
-日期 / Date:2026-11-17. Qwen3.5-0.8B,original R0 preserved,Colab L4. 本轮只做SFT、配对评估和归档，没有DAPO更新。 / SFT,paired evaluation and archiving only;no DAPO updates.
-
-**完成330次优化更新、399,895有效目标token；原R0哈希未变，GPU已释放。技术chrF++：方向未确立 / direction not established；通用chrF++：方向未确立 / direction not established。**
+Date:2026-11-17. Qwen3.5-0.8B; original R0 preserved; Colab L4. SFT, paired evaluation and archiving only; no DAPO updates.
 
 **Completed 330 updates and 399,895 effective target tokens. Original R0 is preserved and GPU released. Technical chrF++ shows direction not established; general chrF++ shows direction not established.**
 
-| 子集 / Subset | N | R0 chrF++ | SFT chrF++ | ΔchrF++[95%CI] | R0 BLEU | SFT BLEU | ΔBLEU[95%CI] |
+| Subset | N | R0 chrF++ | SFT chrF++ | ΔchrF++[95%CI] | R0 BLEU | SFT BLEU | ΔBLEU[95%CI] |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | all128 | 128 | 34.567 | 36.037 | +1.470 [-0.140,+3.153] | 15.701 | 16.031 | +0.331 [-2.101,+2.226] |
 | technical64 | 64 | 34.327 | 35.861 | +1.535 [-0.418,+3.637] | 15.957 | 16.096 | +0.139 [-2.749,+2.542] |
@@ -17,31 +15,21 @@
 | technical_medium | 24 | 36.468 | 37.603 | +1.135 [-1.653,+4.447] | 16.554 | 17.282 | +0.728 [-1.400,+2.638] |
 | technical_short | 16 | 28.035 | 28.148 | +0.113 [-1.076,+1.273] | 8.141 | 8.108 | -0.033 [-0.807,+0.131] |
 
-技术24组G8中，有基本正确候选的组数为3→3；净变化+0。明确无G→有G为0组，明确有G→无G为0组，其余涉及U的转移单独保留。
-
 Technical G8 coverage is3→3 out of 24,net+0. Confirmed no-G→G transitions:0;G→no-G:0. Uncertain transitions remain separate.
-
-本轮没有同时满足全部主要工程目标。各指标的方向和限制已逐项给出；不凭训练loss下降或单一分数宣布新R0全面合格，也不把混合结果包装成成功。原R0继续保留。
 
 Not all principal engineering targets were met simultaneously. Direction and limits are reported separately;lower loss or one improved metric does not establish broad qualification. Original R0 remains preserved.
 
-这些工程目标不是DAPO硬门槛，未全部达到不自动意味着必须再SFT。最终建议需结合技术/通用质量、已知与不确定的语义转移、P/B相对差异和奖励排序。
-
 These targets are not universal DAPO gates. Missing one does not automatically require more SFT;interpret quality,uncertain transitions,partial/bad contrasts and reward ranking together.
-
-**针对本次实际结果：选中的新模型有小幅重合度分数收益，但没有扩大这批技术诊断句的正确候选覆盖，不能宣布已完成“更强技术中长句DAPO起点”的目标。保留t200000为可复查候选，原R0及t400000分开保存。**
 
 **For this actual run: the selected model gains modest overlap scores without expanding correct-candidate coverage on these technical diagnostics. The intended stronger technical medium/long DAPO starting point is not established. Preserve t200000 as a reviewable candidate, with original R0 and t400000 separate.**
 
-总chrF++变化+1.470的95%配对区间为[−0.140,+3.153]；技术64条为+1.535[−0.418,+3.637]，均跨零。应称为点估计上升、可靠提升证据不足。未选中末期相比选中模型总chrF++下降1.385[−2.753,−0.183]；这是本开发样本内的条件性结果，不是跨种子独立确认。
-
 The all128 chrF++ change is+1.470 with95% paired interval[−0.140,+3.153]; technical64 is+1.535[−0.418,+3.637]. Both cross zero: point estimates rise without reliable improvement evidence. The nonselected final is−1.385[−2.753,−0.183] versus selected on all128, conditional on this reused development sample.
 
-![相同FP32配置下的翻译变化 / Matched FP32 translation changes](quality_changes.png)
+![Matched FP32 translation changes](quality_changes.png)
 
-## 1. 方案、身份和实际执行 / Design and provenance
+## Design and provenance
 
-| 项 / Item | 值 / Value |
+| Item | Value |
 | --- | --- |
 | Initial R0 SHA256 | ebb4575fda36002c76ddb7e999a4e12c44a0be9ddb20b1e4e092d708e6a050e9 |
 | Base revision | 2fc06364715b967f1860aea9cf38778875588b17 |
@@ -52,24 +40,20 @@ The all128 chrF++ change is+1.470 with95% paired interval[−0.140,+3.153]; tech
 | Selected checkpoint | t200000;step165;tokens200770 |
 | Selected adapter SHA256 | 89c874b1e04b011c6ee3f41f499c373b47826a7f106b9d61eaa83fdce85c77ae |
 
-训练源包在分配GPU前已冻结并保存D盘；执行脚本和源码哈希可核对。载入每份adapter时逐tensor检查与文件值一致。两条完整FP32解码锚点用于核对旧R0基线；是否复用、完整文件哈希和任何重生成都保留在baseline_cache.json。
-
 The source bundle was frozen on D before allocation. Each loaded adapter was checked tensor-by-tensor against its file. Two full FP32 decoding anchors checked the old baseline;reuse,file hashes and any regeneration are recorded in baseline_cache.json.
-
-本轮SFT不使用采样概率比，因此沿用BF16训练。最终两模型都将同一份BF16舍入base数值提升为FP32执行，关闭TF32，不重新加载另一份高精度base。G8两侧均T0.7、top_p1、top_k0、max320、相同source与每源seed。
 
 SFT has no sampler probability ratio. Final evaluation promotes the same BF16-rounded base values to FP32,with TF32 disabled. Both G8 conditions useT0.7,top_p1,top_k0,max320,the same sources and per-source seeds.
 
-## 2. 数据清理与实际曝光 / Data cleaning and exposure
+## Data cleaning and exposure
 
-| 类别 / Type | 目标token / Target tokens |
+| Type | Target tokens |
 | --- | --- |
 | general | 99998 |
 | technical_short | 19999 |
 | technical_medium | 139985 |
 | technical_long | 139913 |
 
-| 统计 / Statistic | 实际值 / Actual |
+| Statistic | Actual |
 | --- | --- |
 | Original pool | 38799 |
 | First structural/exclusion screen | {"near_protected_5gram_Jaccard085": 86, "suspected_ASCII_substitution_quarantine": 42} |
@@ -81,15 +65,11 @@ SFT has no sampler probability ratio. Final evaluation promotes the same BF16-ro
 | Maximum exposures per exact pair | 2 |
 | Long pairs absent from executed oldR2 prefix | 867 |
 
-发现并隔离了OCR断词、句间缺空格、上一句残片、多余目标分句和部分字幕意义压缩；规则命中还含保守可疑项，不应称为已人工确认的总体错误率。没有猜测修复或把失败开发句改写进训练。
-
 Quarantines include OCR splits,missing sentence whitespace,preceding fragments,extra target clauses and subtitle compression. Some are conservatively suspicious rather than certified errors. No guessed repairs or rewritten development answers entered training.
-
-所有已知历史开发、官方保留集、当前128条和32组G8均排除；近重复采用规范化词5-gram候选检索及Jaccard≥0.85的启发式检查。缺少文档ID时不保证文档级独立，也不宣称这些文对从未进入更早训练或base预训练。
 
 Known historical/official held-outs,current128 and32 G8 prompts were excluded. Near-duplicate screening uses normalized word5gram candidates withJaccard≥0.85. It is heuristic,not guaranteed document independence or proof of no earlier/pretraining exposure.
 
-## 3. 每个检查点及选择规则 / Checkpoints and selection
+## Checkpoints and selection
 
 | Tag | Step | Target tokens | Weighted chrF++ | General chrF++ | Short | Medium | Long | Technical NLL | Failures |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -98,11 +78,7 @@ Known historical/official held-outs,current128 and32 G8 prompts were excluded. N
 | t200000 | 165 | 200770 | 37.811 | 46.780 | 54.463 | 34.166 | 32.669 | 1.71147 | 2 |
 | t400000 | 330 | 399895 | 38.364 | 43.573 | 52.464 | 35.553 | 35.439 | 1.70585 | 2 |
 
-选择集为原64条，权重0.25/0.05/0.35/0.35作用于各类语料级chrF++。通用下降≤1.5点、结构失败≤起点+2/64才合格；分差≤0.1时优先低技术NLL，再优先更早检查点。原R0作为零步候选。最终128/G8不参与反复重选。
-
 Selection-dev64 uses stratum corpus chrF weights 0.25/0.05/0.35/0.35. Eligibility requires general decline≤1.5 and failures≤baseline+2/64;ties within0.1 favor lower technical NLL,then earlier checkpoint. Original R0 is the zero-step fallback. Final128/G8 do not drive repeated reselection.
-
-本轮t400000的加权分数最高，但旧选择集通用32句的chrF++由45.992降至43.573，下降2.419点，超过保留阈值，所以选中t200000。技术NLL持续下降；单凭这个选择结果不能称为技术过拟合。补充128条结果与所选模型分开报告。
 
 t400000 has the highest weighted selection score but its general32 chrF++ falls45.992→43.573 (−2.419), breaching the retention guard, so t200000 is selected. Technical NLL continues decreasing; selection alone does not prove technical overfitting. Auxiliary128 results remain separate.
 
@@ -112,8 +88,6 @@ t400000 has the highest weighted selection score but its general32 chrF++ falls4
 | t100000 | 372 | 0.274245 | 1d13157c3ea63fc6bf62085369bb9fc20d741f30f9d038fb946ee2a303d995a8 |
 | t200000 | 372 | 0.356336 | 89c874b1e04b011c6ee3f41f499c373b47826a7f106b9d61eaa83fdce85c77ae |
 | t400000 | 372 | 0.388715 | 32dd7931c828d3c5ae069391cb7a4411acb70d8a93c670a1864276b375a2df52 |
-
-补充评估是结果出来前已登记的纯推理诊断，不增加训练、不重新选择模型。以下主结果仍指选择集选中的模型；未选中的末期检查点单独列出。
 
 The pre-outcome registered extra evaluation is inference only, with no new training or reselection. Primary results use the selected checkpoint; the nonselected final checkpoint is shown separately.
 
@@ -128,9 +102,9 @@ The pre-outcome registered extra evaluation is inference only, with no new train
 | technical_medium | 34.337 | -2.131 [-4.662,+0.212] | -3.266 [-7.018,-0.078] | 13.787 | -3.495 [-7.083,+0.197] |
 | technical_short | 28.495 | +0.460 [-0.969,+2.145] | +0.347 [-0.210,+1.006] | 8.436 | +0.328 [-0.015,+1.969] |
 
-![训练与开发选择轨迹 / Training and selection trajectory](training_and_selection.png)
+![Training and selection trajectory](training_and_selection.png)
 
-## 4. G8语义复查与奖励排序 / G8 semantic and reward audit
+## G8 semantic and reward audit
 
 | Subset | R0 good/no-G/U | SFT good/no-G/U | Net covered | Confirmed gains/losses |
 | --- | --- | --- | --- | --- |
@@ -141,7 +115,7 @@ The pre-outcome registered extra evaluation is inference only, with no new train
 | technical_medium | 1/9/0 | 1/9/0 | 0 | 0/0 |
 | technical_short | 2/2/0 | 2/2/0 | 0 | 0/0 |
 
-![相同采样配置的候选覆盖 / Candidate coverage under matched sampling](paired_G8_coverage.png)
+![Candidate coverage under matched sampling](paired_G8_coverage.png)
 
 | Subset | Condition | G/P/B/U candidates | Reference selectsG / covered | QE selectsG / covered | Mean MetricX↓ | Mean candidate sentence chrF | Reference top1 sentence chrF | Overlap oracle sentence chrF |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -158,15 +132,9 @@ The pre-outcome registered extra evaluation is inference only, with no new train
 | technical_short | R0 | 9/18/5/0 | 1/2 | 1/2 | 10.439 | 31.160 | 36.159 | 41.646 |
 | technical_short | SFT | 9/14/9/0 | 2/2 | 1/2 | 11.953 | 32.135 | 33.994 | 42.824 |
 
-先冻结32源句和G/P/B/U标准，候选卡片隐藏条件身份和分数，逐条判断全部512个候选，锁定SHA256后才揭盲与计算终点质量。原R0也重新采样重新判断，没有套用旧BF16/max256标签。相同AI助手、既有源句知识与可辨认模式限制了盲法；这不是独立母语认证。
-
 The 32 sources and rubric were fixed. Cards hid condition IDs and scores;all 512 candidates were judged and hashed before unblinding/final aggregates. Original R0 was resampled and rejudged. Familiar sources and the same assistant limit blinding;this is not independent native certification.
 
-这32句是分层固定诊断子集，含已知难例，不是随机抽取的总体成功率调查。3/24或0/10只描述本批样本；不外推成所有技术文本的正确率。
-
 These32 prompts form a frozen stratified diagnostic subset containing known difficult cases. The3/24 or0/10 counts describe this subset, not population success rates for all technical translation.
-
-G=中心含义与关键关系基本保留，允许轻微形态错误；P=有实质内容但有重大缺损；B=中心含义丢失/反转/难懂；U=不能可靠判断。没有完整G不等于没有学习信号，P/B间仍可能存在相对差异。句级chrF与语料级chrF口径不同；MetricX仍是辅助，旧语义校准失败没有被本轮自动清除。
 
 G retains core meaning with minor morphology allowed;P is substantive partial meaning with a major defect;B loses/reverses core meaning;U is uncertain. No-G is not necessarily no learning signal. Sentence/corpus chrF differ;MetricX remains auxiliary and prior calibration failure is not automatically cleared.
 
@@ -185,19 +153,13 @@ G retains core meaning with minor morphology allowed;P is substantive partial me
 | technical_short | R0 | 3 | 4 | 1/2 | 31/35 | 4/0 |
 | technical_short | SFT | 3 | 4 | 2/2 | 41/49 | 8/0 |
 
-完整训练奖励按原参考MetricX、文本门控及320/64软长度项离线重构，截断候选从活跃比较排除；没有执行任何RL更新。非零奖励方差不等于语义质量可靠。同组不同已知等级的候选对可检查方向，但这些对不独立，且P/B划分是辅助判断，不是评分器总体准确率。
-
 The original reference reward,text gate and320/64 length term are reconstructed offline,with truncated candidates excluded from active comparisons. No RL update occurs. Nonzero reward variance is not semantic reliability. Within-group tier pairs are dependent AI-assisted comparisons,not population scorer accuracy.
-
-本批选中SFT的有G组，reference MetricX选中G为7/7（技术3/3），高于原R0的3/7；这是一小批候选分布上的改善，不代表评分器已经全局校准。新模型有23/32组存在有效G/P/B层级对比，技术为17/24；已知层级不同的有效候选对中257/341与完整训练奖励同向。候选对互不独立，这些计数不能作为总体准确率置信区间。
 
 For this selected SFT candidate bank, reference MetricX picks G in7/7 covered groups (technical3/3), versus3/7 for R0. This small candidate-bank improvement is not global calibration. Active known-tier contrasts exist in23/32 groups (technical17/24);257/341 differing-tier active pairs agree with the full reward. Dependent pairs do not define a population accuracy interval.
 
-因此，主问题是未扩大完整正确候选的覆盖，而不是本轮已经证明每一组奖励都反向。无G的组仍可能有P/B学习信号；历史奖励反例和当前有限覆盖也不支持直接开展正式效率结论。
-
 Thus the main observed shortfall is unchanged complete-candidate coverage, not proof that every reward group points the wrong way. No-G groups can still offer partial/bad signal; historical reward counterexamples and limited current coverage still preclude a formal efficiency claim.
 
-## 5. 成本、恢复和完整性 / Cost,recovery and integrity
+## Cost,recovery and integrity
 
 | Item | Actual |
 | --- | --- |
@@ -211,8 +173,6 @@ Thus the main observed shortfall is unchanged complete-candidate coverage, not p
 | Allocated GPU minutes | 83.58 |
 | Observed account CU decrease | 2.5418 |
 | Owned GPU released | True |
-
-Torch峰值取每次更新日志中的累计值，含此前初始化/基线阶段，不保证是最终评估后的全进程最高值；设备峰值按5秒采样，不能当精细kernel profiler。账户余额下降包含上传/下载、安装、检查、训练和评估，并可能异步结算。
 
 Logged cumulative Torch peaks include earlier initialization/baseline work,not necessarily the final-process peak. Device memory is sampled every5s. Account balance changes include setup/transfers/checks/training/evaluation and can settle asynchronously.
 
@@ -235,48 +195,32 @@ Logged cumulative Torch peaks include earlier initialization/baseline work,not n
 | unobserved_gap | 80.52 |
 | greedy_final_trained_fp32_128 | 467.57 |
 
-前台监督真实任务，日志持续镜像D盘，完整不可变检查点在训练期间下载并校验。恢复状态包括adapter、AdamW、RNG、数据顺序/游标、token数及配置/源码哈希。OOM只允许在optimizer.step之前清梯度恢复RNG并减少物理microbatch；optimizer.step的OOM不重试可能部分更新的权重。
-
 A foreground supervisor tracked actual work,with continuous D mirroring and checksum-verified immutable snapshots. States include adapter,optimizer,RNG,stream/cursor,tokens and hashes. Only pre-step backward OOM can retry with reduced microbatch;potentially partial optimizer-step OOM is fatal.
-
-本轮没有声称任意中断都能一键无缝恢复。显式resume需匹配哈希、归档回滚尾日志；部分终点评估需要另行保留和修复。所有实际中断、失败、补救或未完成项目都必须按原日志报告。
 
 No universal one-click seamless-resume claim is made. Explicit resume validates hashes and preserves rolled-back journal tails;partial final decoding requires recorded repair. Any actual failures/remedies/incomplete items must be disclosed.
 
-## 6. 结论边界与下一步 / Interpretation and next action
-
-明确结论：本轮补强没有达到核心语义覆盖目标。选中检查点可以继续作为小规模诊断候选，但还不足以冻结为综合技术任务的正式效率对比基座。这不是禁止DAPO：P/B候选间仍可能有相对学习信号，是否有用必须由匹配的小预算RL试验验证。
+## Interpretation and next action
 
 Verdict: this strengthening run misses the central semantic-coverage objective. The selected checkpoint remains usable for small diagnostics, but is not established as the broad technical efficiency-comparison base. DAPO remains possible: partial/bad contrasts can still carry relative signal, which needs a matched pilot.
 
-| 证据 / Evidence | 可得结论 / Supported inference | 仍不能得出 / Not established |
+| Evidence | Supported inference | Not established |
 | --- | --- | --- |
-| 330 finite updates;checkpoint parameter changes;technical NLL1.73553→1.70585 | SFT executed and learned supervised token prediction / 训练确有执行和学习 | Lower NLL does not certify free generation / 不能由NLL宣布翻译正确 |
-| Technical G8 coverage3→3/24;long0→0/10 | The selected model did not repair complete-candidate availability on these diagnostics / 选中模型未解决完整候选覆盖 | Not proof of no partial/bad RL signal,or a population rate / 不等于无RL信号或总体正确率 |
-| Nonselected400k greedy128 versus selected200k,reported above | More of this exact training recipe did not produce a better recorded endpoint / 本配方继续至末期未产生更好的记录终点 | Not proof that all larger SFT runs fail,or a universal overfitting boundary / 不证明所有更大SFT无效 |
-| Historical reward-calibration failure plus current auxiliary ranking audit | SFT and reward quality are separate problems / 能力与奖励须分开处理 | Not proof that previous DAPO failure was solely insufficient SFT / 不能归因于SFT唯一不足 |
-
-本轮无法因果区分的原因包括：新增有效覆盖有限、剩余数据质量、学习率/训练强度、teacher-forcing与自由生成差距，以及0.8B对冰岛语的容量/预训练限制。它们是待检验解释，不能写成已经证明的原因；尤其不能据此直接许诺再加一轮就会综合很强。
+| 330 finite updates;checkpoint parameter changes;technical NLL1.73553→1.70585 | SFT executed and learned supervised token prediction | Lower NLL does not certify free generation |
+| Technical G8 coverage3→3/24;long0→0/10 | The selected model did not repair complete-candidate availability on these diagnostics | Not proof of no partial/bad RL signal,or a population rate |
+| Nonselected400k greedy128 versus selected200k,reported above | More of this exact training recipe did not produce a better recorded endpoint | Not proof that all larger SFT runs fail,or a universal overfitting boundary |
+| Historical reward-calibration failure plus current auxiliary ranking audit | SFT and reward quality are separate problems | Not proof that previous DAPO failure was solely insufficient SFT |
 
 Untested explanations include limited new coverage, remaining data quality, learning rate/training intensity, the teacher-forcing/free-generation gap and the0.8B Icelandic capacity/pretraining limit. These are hypotheses, not established causes or a promise that another run will suffice.
 
-下一步建议先做低成本的“训练样本能否自由生成”检查：从选中检查点实际见过且通过质量复查的文对中，固定分层样本，对比原R0与新模型的teacher-forced NLL和greedy译文，并与独立保留样本分开。训练样本也不会译，先查优化强度、参数覆盖、格式和语言能力；训练样本能译但保留样本失败，再优先补新数据覆盖与泛化。该检查是后续建议，本轮未执行。
-
 Recommended next: a cheap fixed training-fit probe on quality-reviewed pairs actually seen by the selected checkpoint. Compare original/new teacher-forced NLL and greedy translations, separately from held-out cases. Failure even on training examples prioritizes optimization/parameter coverage/format/language checks; training success with held-out failure prioritizes coverage and generalization. This probe is proposed, not executed here.
-
-只有定位后才设计下一轮SFT：优先增加经过验证的新文对、术语与关键关系覆盖，并预设学习率/训练规模曲线、通用保留和语义覆盖停止规则。不要直接复制本轮40万token配方扩大预算。奖励另行校准；当前不自动追加SFT、DAPO或GPU预算。
 
 Only then design another SFT run with validated new pairs, terminology/relation coverage and a prespecified learning-rate/budget curve, retention and semantic stopping rules. Do not simply enlarge this400k recipe. Calibrate rewards separately; no further SFT,DAPO or GPU budget is automatically added.
 
-本轮能回答的是：相同0.8B原R0经过技术中长句定向曝光后，配对开发译文和G8候选是否更好，以及是否保留通用能力。它不能证明SFT不足是之前DAPO一般的唯一原因，也不能由单种子开发集证明跨所有领域泛化。
-
 This tests whether targeted exposure improves paired development translations and G8 coverage while retaining general ability. It cannot uniquely explain previous DAPO behavior or establish all-domain generalization from one seed and reused development data.
-
-若技术收益、语义覆盖和通用保留一致，下一步只做一个使用该候选的固定小预算DAPO验证；不直接跳到正式效率创新比较。若结果混合，先按具体错误与保留情况决定修订；本轮不自动追加SFT或DAPO预算。
 
 Consistent technical,semantic and retention gains justify one matched small-budget DAPO pilot before efficiency comparisons. Mixed results require specific diagnosis;no automatic SFT/DAPO extension occurs here.
 
-## 7. 文件与复现 / Files and replay
+## Files and replay
 
 | Artifact | Path |
 | --- | --- |
@@ -290,11 +234,9 @@ Consistent technical,semantic and retention gains justify one matched small-budg
 | Checkpoints and optimizer/RNG | D:\deep learning project\runs\r0_technical_sft_2026-11-17\snapshots |
 | CPU analysis replay | D:\deep learning project\runs\r0_technical_sft_2026-11-17\analysis_reproduction\README.md |
 
-代码、数据清单、全部训练流、100对数据审阅、逐步更新、检查点、完整译文、奖励、锁定标签、资源与实际额度记录保留。账号令牌/OAuth和私有SDK日志不打包。分析复算重用已锁定标签，不是新的独立评审；重新训练的新输出必须重新判断。
-
 Preserve code,training stream,100-pair QA,updates,checkpoints,all outputs/scores,locked labels,resources and costs. Exclude credentials/private SDK logs. CPU replay reuses locked judgements and is not a new independent review.
 
-## 附录A：全部128条配对译文 / All128 paired translations
+## All128 paired translations
 
 <details><summary>ParIce21:opensubtitles:dev:3611 · general</summary>
 
@@ -1960,15 +1902,13 @@ Reference IS: Samhliða notkun þvagræsilyfja af flokki tíazíða getur leitt 
 
 </details>
 
-## 附录B：全部32组G8候选 / All32 paired G8 groups
+## All32 paired G8 groups
 
 <details><summary>00 · ParIce21:opensubtitles:test:1463 · general</summary>
 
 EN: We're not going to deliver cookies until we do dance class.
 
 Reference IS: Við förum ekki með smákökurnar fyrr en eftir danstímann.
-
-A2/B2用词和词形生硬，但保留不送饼干、直到舞蹈课结束的核心顺序；其余多把送变成得到、舞蹈变成玩耍，或产生无关词。
 
 A2/B2 retain not bringing cookies until leaving dance class despite poor morphology. Other variants change delivery to receiving, dance to playing, or introduce unrelated words.
 
@@ -2006,8 +1946,6 @@ EN: On the contrary, it was a real stroke of luck.
 
 Reference IS: Þvert á móti var þetta óvæntur fengur.
 
-A没有可靠表达好运。B1/B2/B6保留好运相关内容，但转折或句法有重大缺损，不能视为完整正确。
-
 A has no reliable rendering of luck. B1/B2/B6 retain luck-related content but the contrast or syntax is substantially defective.
 
 R0: BBBBBBBB · no_good_observed
@@ -2043,8 +1981,6 @@ SFT: BPPBBBPB · no_good_observed
 EN: Secret Service changes the security codes today at noon.
 
 Reference IS: Leyniþjónustan breytir öryggiskóðunum í dag á hádegi.
-
-两侧均无完整保留特勤局、安保代码、当天中午的候选；部分保留更改与安保/时间，另一些改成部队、证书或错误时刻。
 
 Neither side preserves the Secret Service, security codes and today at noon together. Partial candidates retain changing/security/time; others substitute forces, certificates or wrong times.
 
@@ -2082,8 +2018,6 @@ EN: The room is hot.
 
 Reference IS: Herbergið er heitt.
 
-heitt保留热，但húsið是房屋、rúmið是床，均不是房间；A3丢掉热的含义。B3也不能可靠表达房间。
-
 Heat is retained, but húsið means house and rúmið means bed rather than room. A3 loses heat; B3 does not reliably name the room either.
 
 R0: PPPPPPPP · no_good_observed
@@ -2119,8 +2053,6 @@ SFT: PPPBPPPP · no_good_observed
 EN: I had no idea what to do.
 
 Reference IS: Ég hafði enga hugmynd hvers ég ætti til bragðs að taka.
-
-均保留不知道该做什么；存在条件式、格或拼写问题，但中心含义可恢复。
 
 All retain having no idea what to do. Mood, case and spelling defects do not obscure the central meaning.
 
@@ -2158,8 +2090,6 @@ EN: He is about your age.
 
 Reference IS: Hann er á þínum aldri.
 
-A6/B6以错误格保留你的年龄，B7正确；多数其余候选把年龄变成时间，或残缺表达年岁。
-
 A6/B6 retain your age with faulty case, and B7 is correct. Most others substitute time for age or render years incompletely.
 
 R0: PPBPBBGB · good_present
@@ -2195,8 +2125,6 @@ SFT: PPBPBBGG · good_present
 EN: Tom was fired.
 
 Reference IS: Tom var rekinn.
-
-两侧完全相同；跌落、推迟、家庭和分离等都没有表达被解雇。
 
 Both sides are identical. Falling, postponement, family and separation do not express dismissal from employment.
 
@@ -2234,8 +2162,6 @@ EN: She'll be back when she's hungry.
 
 Reference IS: Hún snýr aftur þegar hún verður svöng.
 
-A保留饥饿时返回，性别变化属轻微词形问题。B2/B4/B5漏掉返回，B3也丢掉饥饿。
-
 A retains returning when hungry despite gender morphology. B2/B4/B5 omit returning; B3 also loses hunger.
 
 R0: GGGGGGGG · good_present
@@ -2271,8 +2197,6 @@ SFT: GGPBPPGG · good_present
 EN: It is a solution that is clear to slightly opalescent, and colourless to pale yellow.
 
 Reference IS: Lyfið er tær til örlítið skýjuð og litlaus til fölgul lausn.
-
-两侧无候选完整表达清澈至轻微乳光、无色至浅黄；部分保留溶液和无色，但颜色、程度或乳光被破坏。
 
 Neither side fully expresses clear to slightly opalescent and colourless to pale yellow. Partial versions retain solution/colourlessness but corrupt colour, degree or opalescence.
 
@@ -2310,8 +2234,6 @@ EN: Imatinib Teva is also a treatment for children and adolescents with CML.
 
 Reference IS: Imatinib Teva er einnig ætlað til meðferðar hjá börnum og unglingum með CML.
 
-均完整保留药名、也用于治疗、儿童和青少年、CML。
-
 All retain the medicine, additional treatment indication, children/adolescents and CML.
 
 R0: GGGGGGGG · good_present
@@ -2347,8 +2269,6 @@ SFT: GGGGGGGG · good_present
 EN: Veterinary surgeons may wish to consider two vaccinations.
 
 Reference IS: Dýralæknar gætu íhugað tvær bólusetningar.
-
-A7/B7保留兽医可考虑两次接种，词形错误可容忍。其余混淆疫苗与接种、兽医与研究设备，或损坏考虑这一谓语。
 
 A7/B7 retain veterinarians considering two vaccinations with tolerable morphology. Others confuse vaccines with vaccination events, veterinarians with research equipment, or corrupt consideration.
 
@@ -2386,8 +2306,6 @@ EN: The results described here use some of these Science Verification data.
 
 Reference IS: Gögnin sem notuð voru fyrir þessa rannsókn var að hluta til aflað við þessar prófanir.
 
-参考是意译。按英文判断，多数保留结果使用某些数据的框架，但科学验证数据这一来源丢失或变成无关词；无可靠完整候选。
-
 The reference is paraphrastic. Against the English, many keep the results-using-data frame but lose or corrupt the Science Verification provenance. No reliable complete candidate.
 
 R0: PPBPPPPP · no_good_observed
@@ -2423,8 +2341,6 @@ SFT: PPBPPBBP · no_good_observed
 EN: Producers from North Atlantic to the Baltic Sea grin with pride as they present their treasures to the public.
 
 Reference IS: Framleiðendur allt frá Norður Atlantshafi til Eystrasalts brosa með stolti þegar þeir kynna almenningi fjársjóði sína.
-
-大多数候选严重损坏生产者、地名、自豪和珍品。A6保留北大西洋至波罗的海及公开展示框架，但把珍品变成动物，仍不完整。
 
 Most corrupt producers, geography, pride and treasures. A6 keeps the North Atlantic/Baltic and public-display frame but substitutes animals for treasures.
 
@@ -2462,8 +2378,6 @@ EN: It reduces the number of B cells in your blood by blocking the action of BLy
 
 Reference IS: Það dregur úr fjölda B-frumna í líkamanum með því að hindra virkni BLyS, próteins sem lengir líftíma B-frumna og finnst í miklu magni hjá fólki með rauða úlfa.
 
-没有完整正确候选。B细胞被写成病菌、衣服、血小板等；部分保留BLyS、蛋白和延长存活，但阻断、数量或狼疮分句仍有关键错误/遗漏。A5漏掉狼疮高水平分句。
-
 No complete candidate. B cells become germs, clothes or platelet-like terms. Some retain BLyS/protein/longer survival but corrupt blocking, cell counts or the lupus/high-level clause. A5 omits that last clause.
 
 R0: BPPPPPBB · no_good_observed
@@ -2499,8 +2413,6 @@ SFT: BPPPPPBB · no_good_observed
 EN: The course consists of two modules, which may be taken separately or combined:
 
 Reference IS: Námskeiðið samanstendur af tveimur áföngum sem má taka hvorn um sig eða saman:
-
-没有完整正确候选。两模块和单独/合并选课的部分框架尚在，但课程被变成施工、贷款、王国等；B6接近教育语境，却没有可靠表达单独选修。
 
 No complete candidate. Some retain two parts and combining, but the course becomes construction, a loan or kingdoms. B6 is closer to education yet does not reliably express separate enrolment.
 
@@ -2538,8 +2450,6 @@ EN: At the same time the socio-economic aspects inherent in the three priority t
 
 Reference IS: Samtímis þessu verður tekist á við félagshagfræðilega þáttinn sem er samfara meginefnissviðunum þremur og tengist hinu almenna markmiði um sjálfbæra þróun.
 
-均无完整社会经济、三个优先主题、可持续发展及将处理这些方面的关系。部分保留三主题与经济/发展框架，多个候选出现安全发展、压力或无关名词。
-
 None fully preserves socioeconomic aspects, three priority themes, sustainable development and the commitment to tackle them. Partial versions retain economic/development framing; others substitute safety, pressure or unrelated nouns.
 
 R0: PBBPPPBB · no_good_observed
@@ -2563,7 +2473,7 @@ SFT: PPBBBPPP · no_good_observed
 | 1 | Þótt það sé fram að þrátt fyrir þriðja mikilvægu máli og tengd stjórnandi þátt í að reynast heimildarvísindir frá samhliða efnahagslegum og eiginleikum í þriðju mikilvægu máli og tengd við almennu málið um öruggan aðstæður. | P | 22.9719 | 22.5722 | 20.890 | 91 | False |
 | 2 | Í sama tíma skal aðgengileg talsverðum þeim áætluðu málinum sem hafa þá eiginleikar sem er að finna og þeim sem tengjast almennu málinu um ráðstafanir til að geta aðstoð í að verða að skölustæðum að því að verða að skilja af erarfæri. | B | 25.0000 | 25.0000 | 23.067 | 94 | False |
 | 3 | Sumum lagi er búinn að rannsaka þessari síðumbindingar, einkum og í stöðu þeirra þrjá mikilvægra máls og sem tengjast stólkunum um þróun sem eru í líf. | B | 22.7923 | 22.5495 | 22.242 | 61 | False |
-| 4 | Sams丸t á að nefra áhættulegri áfengi í þremur hlutum og sambreiðslu af þeim með almennu málið um stöðugt þróun. | B | 24.0163 | 20.5541 | 21.418 | 50 | False |
+| 4 | Sams[pill]t á að nefra áhættulegri áfengi í þremur hlutum og sambreiðslu af þeim með almennu málið um stöðugt þróun. | B | 24.0163 | 20.5541 | 21.418 | 50 | False |
 | 5 | Í sama tíma mun ummatverður og efnahagslegur ástand þessara þriggja vörslu þáttu og tengd við almennum þáttum á vinkonaðætti tengist aðstæður fyrir aðrar vænnar þróun. | P | 21.1261 | 19.0348 | 27.860 | 68 | False |
 | 6 | Sá samtími er framkvæmd þessara þriðju hlutaðeigandi þættis og tengjandi almennum þætti um öruggan þróun. | P | 14.7661 | 11.7121 | 21.622 | 46 | False |
 | 7 | Þegar þessi þriðju markmiðargrein sem innihalda lífsemilag og fjárfesting ríkis eða ringsla og tengjast almennuhafsthöfu um sjálfstættar þróun verða þær finna að ræðum. | P | 14.9858 | 11.3852 | 26.752 | 70 | False |
@@ -2575,8 +2485,6 @@ SFT: PPBBBPPP · no_good_observed
 EN: Adverse events at very high doses were all considered to be related to an exaggerated pharmacological effect (decreased tissue perfusion due to increased blood viscosity).
 
 Reference IS: Aukaverkanir eftir mjög stóra skammta voru allar taldar vera í tengslum við óhófleg lyfjafræðileg áhrif (minnkað gegnumflæði í vefjum vegna aukinnar seigju blóðs).
-
-无候选完整保留高剂量不良事件、过强药理作用和血液黏度增加导致组织灌注减少这一因果链；多处变成血压、血液稀释或无关词。
 
 None preserves the chain from very high doses to exaggerated pharmacology and decreased tissue perfusion caused by increased blood viscosity. Pressure, blood thinning and nonsense frequently replace it.
 
@@ -2614,8 +2522,6 @@ EN: The special manoeuvres mentioned under points 6.2.3 to 6.2.5 have to be impl
 
 Reference IS: Þær sérstöku æfingar, sem um getur í liðum 6.2.3 til 6.2.5, skulu innleiddar eigi síðar en fimm árum eftir að tilskipun þessi öðlast gildi.
 
-条款数字常保留，但特殊操作主体和最迟五年期限损坏；出现四年、五年以后才实施等错误。B3/B6较近，仍不能完整可靠表达原法律关系。
-
 Section numbers often survive, but the manoeuvres and no-later-than-five-years deadline are corrupted. Errors include four years or implementation later than five. B3/B6 are closer but do not reliably preserve the full legal relation.
 
 R0: PBBPPPPP · no_good_observed
@@ -2651,8 +2557,6 @@ SFT: PPPPPBBP · no_good_observed
 EN: When adequate acute or chronic toxicity data for the mixture as a whole are lacking, “bridging principles” or “summation method” should be applied (see sections 4.1.3.4 and 4.1.3.5).
 
 Reference IS: Þegar fullnægjandi gögn skortir um bráð eða langvinn eiturhrif blöndunnar í heild skal nota „brúunarreglur“ eða „samlagningaraðferð“ (sjá lið 4.1.3.4 og 4.1.3.5).
-
-慢性毒性或数据缺乏框架在部分候选中存在，但整体混合物、急性毒性以及桥接/加和两种方法没有被完整正确表达；条款编号正确不弥补术语错误。
 
 Some preserve chronic toxicity or missing-data framing, but no candidate correctly retains the whole-mixture scope, acute toxicity and both bridging/summation methods. Correct section numbers do not repair terminology.
 
@@ -2690,8 +2594,6 @@ EN: Work to enhance this partnership continues, and is based on the ministers fo
 
 Reference IS: Það starf mun halda áfram og þróast enn frekar á grundvelli yfirlýsingar samstarfsstarfráðherranna um framtíðarsýn; „Saman erum við öflugri“.
 
-部分保留继续加强合作的框架，但北欧合作部长的愿景声明和共同更强的引语反复丢失或改成更大、别国或无关机构。
-
 Some retain continuing to strengthen cooperation, but Nordic ministers, the vision statement and together-stronger quotation are repeatedly lost or changed to bigger, another country or unrelated institutions.
 
 R0: BPPPPPPP · no_good_observed
@@ -2727,8 +2629,6 @@ SFT: PPPBPBBP · no_good_observed
 EN: The other ingredients are sodium chloride, succinic acid, polysorbate 80, 2- phenoxyethanol and water for injections.
 
 Reference IS: Önnur innihaldsefni eru natríumklóríð, succinic sýra, polysorbat 80, 2-fenoxýetanól og vatn fyrir stungulyf.
-
-按可辨认音译接受完整成分表。A0/A5/A6/A7及B0/B7保留全部化学身份和注射用水；A1/B1的畸形化学词无法可靠判定，记U。其余至少一种成分被破坏，B4明确把氯化物变成亚氯酸盐。
 
 Recognizable transliterations are accepted. A0/A5/A6/A7 and B0/B7 retain all ingredient identities and injection water. A1/B1 have chemical strings too uncertain to certify (U). Others corrupt an ingredient; B4 explicitly changes chloride to chlorite.
 
@@ -2766,8 +2666,6 @@ EN: These issues are high on the governments agendas,” says Høybråten.
 
 Reference IS: Þessi málefni eru ofarlega á dagskránni hjá ríkisstjórnunum,“ segir Høybråten.
 
-两侧均没有可靠完整表达政府议程上高度优先的这些问题。部分保留政府与重视/计划框架，但问题、议程或优先性损坏；姓名的可识别拼写变体本身不决定失败。
-
 Neither side reliably renders these issues being high on governments agendas. Partial versions preserve authorities and planning/interest but corrupt issues, agendas or priority. Recognizable name variants alone are not treated as failure.
 
 R0: PPPPPBBP · no_good_observed
@@ -2803,8 +2701,6 @@ SFT: BPPPPBBB · no_good_observed
 EN: “The VFTS 352 is the best case yet found for a hot and massive double star that may show this kind of internal mixing,” explains lead author Leonardo A. Almeida of the University of São Paulo, Brazil.
 
 Reference IS: „VFTS 352 er besta dæmið sem við höfum fundið til þessa um heitt og massamikið tvístirni þar efnisblöndun af þessu tagi gæti átt sér stað,“ segir Leonardo A. Almeida við São Paulo háskóla í Brasilíu, aðalhöfundur greinarinnar um rannsóknina.
-
-没有完整保留热、质量大、双星、内部混合以及作者机构。A6/B2较接近天文学框架，但关键恒星性质和机构仍错误；多个候选虚构德国、其他地点或天体年龄。
 
 None preserves hot, massive, binary star, internal mixing and author affiliation together. A6/B2 are closer to the astronomy frame but still corrupt stellar properties/affiliation; others invent Germany, other places or an age.
 
@@ -2842,8 +2738,6 @@ EN: In addition, the entity is not entitled to reinvest such cash flows, except 
 
 Reference IS: Auk þess hefur einingin ekki rétt á að endurfjárfesta þess háttar sjóðstreymi ef undan eru skildar fjárfestingar í handbæru fé eða ígildi handbærs fjár (eins og það er skilgreint í IAS-staðli 7, yfirlit um sjóðstreymi) á því stutta greiðslutímabili frá innheimtudegi til þess dags þegar krafist er greiðslu til endanlegra viðtakenda, og vextir sem safnast á slíkar fjárfestingar greiðast endanlegum viðtakendum.
 
-长财务条件句没有完整候选。A2/A5/B5仍有部分禁止再投资、例外、日期或资金内容；大多数把现金流和收款人变成无关名词，并丢掉利息转交及结算期间限制。
-
 No complete financial-clause translation. A2/A5/B5 retain parts of reinvestment prohibition, exceptions, dates or funds. Most corrupt cash flows/recipients and lose passing on interest and the short-settlement restriction.
 
 R0: BBBBBPBB · no_good_observed
@@ -2879,8 +2773,6 @@ SFT: BBPBBPBB · no_good_observed
 EN: A pensioner who is entitled to draw pensions under the legislation of two or more Member States, of which one is that of the Member State in whose territory he resides, and who is entitled to benefits under the legislation of the latter Member State, taking account where appropriate of the provisions of Article 18 and Annex VI, shall, with the members of his family, receive such benefits from the institution of the place of residence and at the expense of that institution as though the person concerned were a pensioner whose pension was payable solely under the legislation of the latter Member State.
 
 Reference IS: Lífeyrisþegi sem á rétt á lífeyri samkvæmt löggjöf tveggja eða fleiri aðildarríkja, að meðtalinni löggjöf þess aðildarríkis sem hann er búsettur í, þar sem hann á rétt á bótum samkvæmt löggjöf þess ríkis, með tilliti til ákvæða 18. gr. og VI. viðauka eftir því sem við á, skal, ásamt aðstandendum, fá bætur frá stofnun á búsetustaðnum og á kostnað hennar eins og sá sem í hlut á væri lífeyrisþegi sem ætti eingöngu rétt á lífeyri samkvæmt löggjöf þess ríkis.
-
-两侧所有候选均丢失养老金领取者/养老金这一中心制度概念，替换为精神、天气、住房、奶油或志愿者；法律编号和成员国框架不足以构成有效翻译，部分还循环或截断。
 
 Every candidate loses pensioner/pension, substituting mental, weather, housing, cream or volunteer concepts. Legal numbers and Member-State scaffolding do not establish a usable translation; some also loop or cut off.
 
@@ -2918,8 +2810,6 @@ EN: • Without prejudice to the powers laid down in Article 17, where a compete
 
 Reference IS: • Ef lögbært yfirvald samþykkir ekki verklagsreglu eða inntak aðgerðar eða aðgerðaleysis lögbærs yfirvalds í öðru aðildarríki, í tilvikum sem tilgreind eru í gerðunum sem um getur í 2. mgr. 1. gr., skal stofnunin, að beiðni eins eða fleiri hlutaðeigandi lögbærra yfirvalda, aðstoða yfirvöldin við að ná samkomulagi í samræmi við verklagsregluna sem sett er fram í 2.–4. mgr. þessar greinar, með fyrirvara um valdheimildirnar sem mælt er fyrir um í 17. gr.
 
-均不完整。多数尚保留跨国主管机关、请求和达成协议的部分框架，但第17条保留权力、争议内容/不作为、请求条件或引文损坏；A6/B0重复退化。
-
 All are incomplete. Many retain parts of cross-state authorities, requests and agreement, but corrupt Article17 powers, disagreement/action or inaction, request conditions or references. A6/B0 degenerate into repetition.
 
 R0: PPPPPPBP · no_good_observed
@@ -2955,8 +2845,6 @@ SFT: BPPPPPPP · no_good_observed
 EN: (b) When the abovementioned products of animal origin, containing material from bovine, ovine or caprine animals are imported into the Community from third countries or regions thereof, the health certificates shall be accompanied by a declaration signed by the competent authority of the country of production, worded as follows:
 
 Reference IS: b) Þegar framangreindar afurðir úr dýraríkinu, sem innihalda efni úr nautgripum, sauðfé eða geitum, eru fluttar inn í Bandalagið frá þriðju löndum eða landsvæðum þeirra skal fylgja heilbrigðisvottorðunum yfirlýsing sem er undirrituð af lögbæra yfirvaldinu í framleiðslulandinu og hljóðar svo:
-
-均不能正确列出牛、羊、山羊及完整证明关系。大部分仍有动物产品进口、第三国、证书/声明与主管机关的部分内容，但动物种类和签署/随附关系损坏。
 
 None correctly lists bovine, ovine and caprine sources with the full certification relation. Most retain parts of animal-product import, third countries and authority/certificate/declaration framing, but corrupt species and signing/accompaniment.
 
@@ -2994,8 +2882,6 @@ EN: • Among those claims, the Authority gave a favourable assessment to the he
 
 Reference IS: • Matvælaöryggisstofnunin mat eina þessara fullyrðinga jákvætt en það er heilsufullyrðing er varðar áhrif kolvetna á viðhald eðlilegrar heilastarfsemi og lagði til að viðeigandi skilyrði fyrir notkun þessarar fullyrðingar yrðu: „áætlað er að dagleg inntaka á 130 g af blóðsykurshækkandi kolvetnum (e. glycaemic carbohydrates) nægi til að uppfylla glúkósaþörf heilans“(4).
 
-130 g常被保留，但碳水化合物、升糖性、脑功能/葡萄糖需要和积极评价被错误替换。A3/B6保留部分脑与食物框架，仍非完整翻译；只保留数字不算正确候选。
-
 130g often survives, but carbohydrates, glycaemic scope, brain/glucose requirements and favourable assessment are corrupted. A3/B6 retain some brain/food framing without a complete translation. A surviving number alone is not correctness.
 
 R0: BBBBBBPP · no_good_observed
@@ -3031,8 +2917,6 @@ SFT: PBBPBBBB · no_good_observed
 EN: For longer term treatment once clinical response has been observed (after 4 or more days), the dose of Meloxivet can be adjusted to the lowest effective individual dose reflecting that the degree of pain and inflammation associated with chronic musculo-skeletal disorders may vary over time.
 
 Reference IS: Þegar klínísk svörun hefur náðst (eftir ≥ 4 daga) í langvarandi meðferð, má minnka skammt Meloxivet í minnsta virkan skammt fyrir hvert og eitt dýr, í samræmi við það að miklir verkir og bólga í tengslum við langvarandi stoðkerfisraskanir getur verið breytilegt frá einum tíma til annars.
-
-两侧均无完整正确候选。多个候选把最低有效剂量写成增加剂量或最大剂量；较近的A5仍破坏炎症和肌肉骨骼疾病，A3/B3后半段严重退化。
 
 Neither side has a complete candidate. Several change the lowest effective dose into increasing dose or a maximum. Closer A5 still corrupts inflammation/musculoskeletal disorders; A3/B3 degenerate substantially.
 
@@ -3070,8 +2954,6 @@ EN: Researchers say that the collision between these galaxies could have lasted 
 
 Reference IS: Stjörnufræðingarnir segja að samruni vetrarbrautanna gæti hafa staðið yfir örlítið lengur en þeir árekstrar sem rannsakaðir voru í hinni rannsókninni. Það gerði jafnvel örlitlum núningskröftum kleift að byggjast upp með tímanum og verða að mælanlegri seinkun á hulduefninu.
 
-均丢失完整星系碰撞—微弱摩擦力累积—可测滞后的因果链。部分保留星系、比旧研究更久及作用随时间发展，但碰撞常变成条约、门、感染或吸力，摩擦和滞后损坏。
-
 All lose the complete galaxy-collision→tiny friction accumulating→measurable lag chain. Some retain galaxies, longer duration and time-dependent effects, but collision becomes a treaty, door, infection or suction, and friction/lag are corrupted.
 
 R0: BPPBBBBB · no_good_observed
@@ -3107,8 +2989,6 @@ SFT: BPBPBPBB · no_good_observed
 EN: 2. A company whose shares are officially listed on stock exchanges situated or operating in one or more Member States and in one or more non-member countries must make available to the markets of the Member State or States in which its shares are listed information which is at least equivalent to that which it makes available to the markets of the non-member country or countries in question, if such information may be of importance for the evaluation of the shares.
 
 Reference IS: 2. Félag, sem hefur fengið hlutabréf sín opinberlega skráð í kauphöllum sem eru staðsettar eða starfa í einu eða fleiri aðildarríkjum og í einu eða fleiri ríkjum utan bandalagsins, verður að birta á mörkuðum í aðildarríkinu eða -ríkjunum, þar sem verðbréf þess eru skráð, upplýsingar sem eru að minnsta kosti jafngildar þeim upplýsingum sem birtar eru í hlutaðeigandi ríki eða ríkjum utan bandalagsins ef þær upplýsingar geta skipt máli við mat á hlutabréfunum.
-
-没有完整股票披露义务译文。A1/A2/A3/A7、B3/B5/B6/B7保留部分跨市场提供信息或等值比较；股权、交易所、非成员国比较或估值条件仍损坏，B2循环。
 
 No complete share-disclosure translation. A1/A2/A3/A7 and B3/B5/B6/B7 retain parts of cross-market information provision/equivalence, but corrupt shares, exchanges, nonmember comparisons or valuation conditions. B2 loops.
 
@@ -3146,8 +3026,6 @@ EN: Chemical, physical and microbiological in-use stability has been demonstrate
 
 Reference IS: Sýnt hefur verið fram á efnafræðilegan, eðlisfræðilegan og örverufræðilegan stöðugleika við notkun í 28 daga við 2-8°C. Eftir að penninn hefur verið notaður einu sinni, má nota hann í allt að 28 daga ef hann er geymdur við 2° til 8°C. Notkun og geymsla umfram þennan tíma eða við önnur geymsluskilyrði er á ábyrgð notanda.
 
-两侧均有实质片段，但没有完整表达化学、物理、微生物使用中稳定性和全部保存条件。A多保留开封后28天及2–8°C，B1/B7误成2–2°C；其余也有开封、上限或用户责任缺损。
-
 Both retain substantive fragments without the full chemical/physical/microbiological in-use stability and storage conditions. A often keeps28days after opening at2–8°C; B1/B7 change this to2–2°C. Opening, upper bounds or user responsibility also suffer.
 
 R0: PPPPPPPP · no_good_observed
@@ -3178,7 +3056,7 @@ SFT: PPPPPPPP · no_good_observed
 
 </details>
 
-## 附录C：100对训练数据质量检查 / All100 training-pair reviews
+## All100 training-pair reviews
 
 <details><summary>OpenSubtitles18:59438 · pass_no_clear_major_defect</summary>
 
@@ -3186,7 +3064,7 @@ EN: No, it was here, this morning.
 
 IS: Nei, hér, í morgun.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Discourse ellipsis preserves here/this morning.
 
@@ -3198,7 +3076,7 @@ EN: I'm just gonna call it a night.
 
 IS: Ég ætla að láta þetta gott heita.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Idiomatic call it a night rendered as let this be enough.
 
@@ -3210,7 +3088,7 @@ EN: That's supposed to convince me to come?
 
 IS: Á þetta að sannfæra mig?
 
-发现明确缺损或对齐/完整性存疑，保守隔离。
+Target glues the next sentence after 2004.Í without whitespace.
 
 Key purpose to come is omitted; unsuitable for literal standalone translation.
 
@@ -3222,7 +3100,7 @@ EN: - His name is Django.
 
 IS: Hann heitir Django.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Name Django preserved.
 
@@ -3234,7 +3112,7 @@ EN: I don't care what Jack said.
 
 IS: Mér er sama hvað Jack sagði.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Indifference to what Jack said preserved.
 
@@ -3246,7 +3124,7 @@ EN: Why did you hate me so much when we met?
 
 IS: Því hataðirðu mig þegar við kynntumst?
 
-发现明确缺损或对齐/完整性存疑，保守隔离。
+Target glues the next sentence after 2004.Í without whitespace.
 
 Why/so much fidelity is uncertain; conservative quarantine, not a native-certified error.
 
@@ -3258,7 +3136,7 @@ EN: And I'm not Dutch. I'm Swiss.
 
 IS: Og ég er frá Sviss, ekki Hollandi.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Swiss versus Dutch contrast preserved.
 
@@ -3270,7 +3148,7 @@ EN: I know you can do this.
 
 IS: Ég veit að þið getið þetta.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 You plural is compatible with unspecified English you.
 
@@ -3282,7 +3160,7 @@ EN: Everyone thinks you were eaten by...
 
 IS: Allir halda að þú hafir verið étin af...
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Both retain the deliberate eaten-by ellipsis.
 
@@ -3294,7 +3172,7 @@ EN: She has been taking lessons from a great teacher.
 
 IS: Hún hefur sótt tíma hjá úrvalskennara.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Lessons and excellent teacher preserved.
 
@@ -3306,7 +3184,7 @@ EN: Who the hell is Scott?
 
 IS: Hver í fjandanum er Scott?
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Question and expletive preserved.
 
@@ -3318,7 +3196,7 @@ EN: Sara gave me one of her photographs.
 
 IS: Sara gaf mér eina af myndunum sínum.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Sara,one photograph and possession preserved.
 
@@ -3330,7 +3208,7 @@ EN: No, it's nearly over its limit.
 
 IS: Nei, kortið er í hámarki.
 
-发现明确缺损或对齐/完整性存疑，保守隔离。
+Target glues the next sentence after 2004.Í without whitespace.
 
 Nearly over its limit becomes a card at its maximum, with an added referent.
 
@@ -3342,7 +3220,7 @@ EN: But those boys are strong.
 
 IS: En strákarnir eru sterkir.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Boys and strong preserved.
 
@@ -3354,7 +3232,7 @@ EN: -This is the last I'll see of him.
 
 IS: -Ég sé hann aldrei aftur.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Last encounter paraphrased as never see him again.
 
@@ -3366,7 +3244,7 @@ EN: Do you want to go grab a drink?
 
 IS: Langar þig að fá þér drykk?
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Invitation for a drink preserved.
 
@@ -3378,7 +3256,7 @@ EN: Parents be aware, this show may be disturbing for smaller children.
 
 IS: Foreldrar, hafið í huga að þessi sýning er ekki við hæfi yngstu barna.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Parental warning and younger-child restriction preserved.
 
@@ -3390,7 +3268,7 @@ EN: He's not the hero. He's the villain.
 
 IS: Hann er ekki hetjan heldur sá vondi.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Hero/villain negation contrast preserved.
 
@@ -3402,7 +3280,7 @@ EN: I am using Twitter.
 
 IS: Ég nota Twitter.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Using Twitter preserved.
 
@@ -3414,7 +3292,7 @@ EN: Here's a fun fact.
 
 IS: Hér er skemmtileg staðreynd.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Fun fact preserved.
 
@@ -3426,7 +3304,7 @@ EN: For the protection of non-target organisms, in particular honey bees:
 
 IS: Til verndar lífvera utan markhóps, einkum býflugna:
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Protection of non-target organisms,especially bees retained.
 
@@ -3438,7 +3316,7 @@ EN: Short summaries are also available.
 
 IS: Einnig er unnt að fá stutta samantekt.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Availability of short summaries retained.
 
@@ -3450,7 +3328,7 @@ EN: For Valtropin no clinical data on exposed pregnancies are available.
 
 IS: Engin klínísk gögn liggja fyrir um notkun Valtropin á meðgöngu.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 No clinical pregnancy data for Valtropin retained.
 
@@ -3462,7 +3340,7 @@ EN: This is called and ‘intravenous infusion or drip.
 
 IS: Þetta kallast, innrennsli í bláæð“ eða dreyping.
 
-发现明确缺损或对齐/完整性存疑，保守隔离。
+Target glues the next sentence after 2004.Í without whitespace.
 
 Malformed source and stray quotation/and in an intravenous-route sentence.
 
@@ -3474,7 +3352,7 @@ EN: If its sugar content is between 12 and 17 grams per litre.
 
 IS: Ef sykurinnihald er 12–17 grömm á lítra.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 12–17 grams/litre retained.
 
@@ -3486,7 +3364,7 @@ EN: Part-time job is taken because:
 
 IS: Ástæður þess að hlutastarf er tekið:
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Reasons for taking part-time work retained.
 
@@ -3498,7 +3376,7 @@ EN: Those weightings may be expressed by providing for a range with an appropria
 
 IS: Þetta vægi má setja fram sem ákveðið bil með hæfilegum hámarksvikmörkum.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Weighting range and maximum spread retained.
 
@@ -3510,7 +3388,7 @@ EN: • The introductory part of Section 6.2 is replaced by the following:
 
 IS: • Eftirfarandi komi í stað inngangsins í lið 6.2:
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Replacement of introductory section6.2 retained.
 
@@ -3522,7 +3400,7 @@ EN: ‘Provisions may not exceed in amount the sums which are necessary.;
 
 IS: „Sjóðir, sem lagðir eru til hliðar, mega ekki vera hærri en nauðsyn krefur.“
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Accounting provisions rendered as reserved funds,not a generic legal prohibition.
 
@@ -3534,7 +3412,7 @@ EN: Addendum to EC type-approval certificate No ...
 
 IS: Viðbót við EB-gerðarviðurkenningarvottorð nr. ...
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 EC type-approval addendum retained.
 
@@ -3546,7 +3424,7 @@ EN: • if it is entirely auditory, it shall be clearly audible and display equi
 
 IS: • ef búnaðurinn gefur einungis frá sér hljóðmerki skal heyrast greinilega í honum og skal hann starfa á sambærilegan hátt og gaumljós.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Auditory warning,audibility and equivalence to optical tell-tale retained.
 
@@ -3558,7 +3436,7 @@ EN: However, these products for which a certificate has been issued, duly comple
 
 IS: Þó er heimilt að flytja þessar afurðir sem vottorð, sem eru útfyllt og undirrituð eins og vera ber í samræmi við landsreglur sem voru í gildi fyrir 31. október 2007, hafa verið gefin út fyrir, inn í Bandalagið til 31. desember 2007.“
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Certificate conditions and both2007 dates retained.
 
@@ -3570,7 +3448,7 @@ EN: ‘This method of sampling is of application for the official control of the
 
 IS: „Þessi sýnatökuaðferð er einnig notuð við opinbert eftirlit með fastsettum hámarksgildum fyrir okratoxín A, aflatoxín B1 og heildarmagn aflatoxína í kryddum nema þar sem kornastærð er tiltölulega mikil (misleit dreifing mengunar af völdum sveppaeiturs).“
 
-发现明确缺损或对齐/完整性存疑，保守隔离。
+Target glues the next sentence after 2004.Í without whitespace.
 
 Source OCR splits ochratoxin into ochra toxin.
 
@@ -3582,7 +3460,7 @@ EN: Any syringes containing unused product should be disposed of once a course o
 
 IS: Sérhverri sprautu með ónotuðu lyfi á að fleygja þegar meðferð hefur verið lokið.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Disposal of unused-product syringes after treatment retained.
 
@@ -3594,7 +3472,7 @@ EN: • a sparkling wine originating in a third country the conditions for whose
 
 IS: • freyðivíni sem er upprunnið í þriðja landi ef skilyrði vegna framleiðslu teljast jafngild þeim sem mælt er fyrir um í I-þætti V. viðauka eða K-þætti VI. viðauka.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Third-country sparkling wine,equivalence and both annex references retained.
 
@@ -3606,7 +3484,7 @@ EN: HTLV-I antibody testing must be performed for donors living in, or originati
 
 IS: Gjafar, sem búa á eða koma frá háalgengissvæðum eða eiga rekkjunauta eða foreldra sem koma frá slíkum svæðum, skulu gangast undir HTLVImótefnaprófun.“
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 HTLV-I testing,high-prevalence origin/residence,partners and parents retained;identifier punctuation is imperfect.
 
@@ -3618,7 +3496,7 @@ EN: Tell your doctor immediately if you experience rash and any of the other sid
 
 IS: Segðu lækninum strax frá því ef vart verður við útbrot og einhver önnur einkenni vegna ofnæmis.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Immediately tell doctor about rash and other allergy symptoms retained.
 
@@ -3630,7 +3508,7 @@ EN: Therefore, lighters present a serious risk with regard to the misuse by chil
 
 IS: Kveikjarar hafa því í för með sér verulega áhættu þegar börn nota þá með röngum hætti.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Risk of children misusing lighters retained.
 
@@ -3642,7 +3520,7 @@ EN: The measurement system shall meet the requirements of Section 1.4.1 (NRSC) o
 
 IS: Mælikerfið skal uppfylla kröfurnar í lið 1.4.1 (NRSC) eða lið 2.3.1 (NRTC), eftir því sem við á, í 1. viðbæti við III. viðauka.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Both measurement protocols and section references retained.
 
@@ -3654,7 +3532,7 @@ EN: Coverage for the firms referred to in Article 3(1)(b)(iii) shall take one of
 
 IS: Varnir fyrirtækjanna, sem um getur í iii-lið b-liðar 1. mgr. 3. gr., gegn áhættu skulu vera á einhvern eftirfarandi hátt:
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Risk coverage and Article3 references retained.
 
@@ -3666,7 +3544,7 @@ EN: Where several bilateral conventions apply, the periods of insurance or perio
 
 IS: Séu margir tvíhliða samningar í gildi skal taka til greina þau tryggingatímabil eða jafngild tímabil sem elst eru.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Oldest insurance periods under multiple bilateral conventions retained.
 
@@ -3678,7 +3556,7 @@ EN: The operator shall calculate fugitive emissions by multiplying the number of
 
 IS: Rekstraraðilinn skal reikna dreifða losun með því að margfalda fjölda hluta búnaðar í hverjum flokki með losunarstuðlinum og leggja saman niðurstöðurnar fyrir einstaka flokka, eins og sýnt er í eftirfarandi jöfnu:
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Equipment counts times factors and category summation retained.
 
@@ -3690,7 +3568,7 @@ EN: The goal is to reinforce international cross-border and cross-sector collabo
 
 IS: Markmiðið er að styrkja alþjóðlegt samstarf á sviði rannsókna og nýsköpunar þvert á landamæri og geira með því að skiptast á starfsfólki í þessum greinum og geta með þeim hætti betur tekist á við hnattrænar áskoranir.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Cross-border/sector personnel exchange for research and innovation retained.
 
@@ -3702,7 +3580,7 @@ EN: (3) the results of those inspections are relevant for the Commission to subm
 
 IS: 3) Niðurstöður úr þessum skoðunum varða framkvæmdastjórnina, sem leggur sérstakar skýrslur fyrir fastanefndina um dýraheilbrigði, á grundvelli 2. mgr. 6. gr. tilskipunar 98/58/EB.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Inspection results and Commission veterinary-reporting relation retained.
 
@@ -3714,7 +3592,7 @@ EN: The haemoglobin response varies between patients and may be impacted by iron
 
 IS: Blóðrauðasvörun er mismunandi milli sjúklinga og kann að verða fyrir áhrifum af járnforða og sjúkdóma sem eru fyrir hendi á sama tíma.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Haemoglobin variation,iron stores and concurrent illness retained.
 
@@ -3726,7 +3604,7 @@ EN: Whereas most Member States have adopted procedures for testing heavy commeri
 
 IS: Flest aðildarríkin hafa samþykkt prófunaraðferðir fyrir þung atvinnuökutæki með tilliti til reykþéttni í útblæstri.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Minor source spelling commerical does not obscure heavy-vehicle exhaust opacity.
 
@@ -3738,7 +3616,7 @@ EN: • More intensive use of rail freight in combined transport, in particular 
 
 IS: • A ukin notkun járnbrauta við vöruflutninga í sam settum flutningum , einkum „Rollende LandstraBe“, er um hverfisvænni en vöruflutningar á vegum og kann að draga úr álagi vegna þess fjölda um hverfispunkta sem til ráðstöfunar eru.
 
-发现明确缺损或对齐/完整性存疑，保守隔离。
+Target glues the next sentence after 2004.Í without whitespace.
 
 Target OCR splits A ukin,sam settum,um hverfi and corrupts the German proper term.
 
@@ -3750,7 +3628,7 @@ EN: the totalization scale interval is greater than the scale interval of the ze
 
 IS: álestrarbúnaðurinn fyrir heildarmassa sýnir einvörðungu jákvæð gildi, eða deilingargildi samtölukvarða er stærra en deilingargildi það á núll-mælinum sem tilgreint er í 5.2.1.2 fyrir 1. flokk og 5.2.2.2 fyrir 2. flokk.
 
-发现明确缺损或对齐/完整性存疑，保守隔离。
+Target glues the next sentence after 2004.Í without whitespace.
 
 Target adds an unaligned clause that the total-mass indicator only shows positive values.
 
@@ -3762,7 +3640,7 @@ EN: The Member States shall inform the Commission and the other Member States of
 
 IS: Aðildarríkin skulu tilkynna framkvæmdastjórninni og hinum aðildarríkjunum um samþykki fyrir slíkum viðbótarsvæðum.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Notify Commission and other states of additional-region approval retained.
 
@@ -3774,7 +3652,7 @@ EN: Patients with elevated liver enzymes (ALT/AST > 2 x ULN) or total bilirubin 
 
 IS: Sjúklingar með hækkuð lifrarensím (ALT/AST > 2 x eðlileg efri mörk) eða heildarbilirúbín ≥ 1,5 x eðlileg efri mörk, voru útilokaðir frá klínískum rannsóknum.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Liver enzymes,bilirubin,inequalities and decimal-locale normalization retained.
 
@@ -3786,7 +3664,7 @@ EN: This should be without preju dice to other applicable voice mail charges, fo
 
 IS: Þetta ætti að vera með fyrirvara um önnur gjöld fyrir talhólfsskilaboð sem kunna að eiga við, t.d. gjöld fyrir að hlusta á slík skilaboð.
 
-发现明确缺损或对齐/完整性存疑，保守隔离。
+Target glues the next sentence after 2004.Í without whitespace.
 
 Source OCR splits prejudice into preju dice.
 
@@ -3798,7 +3676,7 @@ EN: Each prolonged-release tablet contains 3.15 mg pramipexole (as 4.5 mg pramip
 
 IS: Hver forðatafla inniheldur 3,15 mg af pramipexóli (sem 4,5 mg af pramipexól tvíhýdróklóríð einhýdrati).
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Pramipexole base/salt identities and3.15/4.5mg retained.
 
@@ -3810,7 +3688,7 @@ EN: Neither abacavir nor lamivudine were mutagenic in bacterial tests, but consi
 
 IS: Hvorki abacavír né lamivúdín ollu stökkbreytingum í bakteríuprófum en eins og aðrar núkleósíðahliðstæður hindruðu þau eftirmyndun DNA í spendýraprófum in vitro, svo sem í eitlaæxlaprófi á músum.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Neither drug mutagenic in bacteria,but DNA-replication inhibition in mammalian tests retained.
 
@@ -3822,7 +3700,7 @@ EN: In patients with renal impairment, plasma concentrations of pioglitazone and
 
 IS: Þéttni pioglitazóns og umbrotsefna þess í plasma er lægri hjá sjúklingum með skerta nýrnastarfsemi en hjá heilbrigðum, en eftir inntöku er úthreinsun pioglitazóns svipuð.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Renal impairment,lower plasma concentration and similar oral clearance retained.
 
@@ -3834,7 +3712,7 @@ EN: Weight was a significant covariate resulting in a lower eculizumab clearance
 
 IS: Líkamsþyngd var marktæk skýribreyta sem leiddi til minni eculizumab úthreinsunar 0.0105 l/klst. hjá unglingum.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Weight covariate,lower clearance and0.0105L/h retained.
 
@@ -3846,7 +3724,7 @@ EN: The purpose of this document is to give guidance on how the European Eco-man
 
 IS: Tilgangurinn með þessu skjali er að veita leiðbeiningar um hvernig evrópska umhverfisstjórnunarkerfið (EMAS) virkar fyrir fyrirtæki/stofnanir sem eru með dótturfyrirtæki og athafnasvæði í mörgum aðildarríkjum ESB og/eða í þriðju löndum, ásamt því að veita aðildarríkjunum, sannprófendum og fyrirtækjum/stofnunum sérstakar leiðbeiningar sem nota má við skráningu.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 EMAS guidance,subsidiaries/sites and registration actors retained.
 
@@ -3858,7 +3736,7 @@ EN: • In ships of 60 metres in length and above, in addition there shall be pr
 
 IS: • Í skipum sem eru 60 metrar að lengd eða lengri skulu, ef heildarlengd allra farþegarýma og þjónusturýma á þilfarinu, sem slík rými eru á, er meira en 80 metrar, eða, ef slík þilför eru fleiri en eitt, þá á því þilfari þar sem þau ná mestri heildarlengd, auk þess vera tveir slökkvibúningar og tvö sett af persónuhlífum fyrir hverja 80 metra, eða hluta af þeim, af slíkri heildarlengd.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Ship60m threshold,80m aggregate rule,two outfits and two sets retained.
 
@@ -3870,7 +3748,7 @@ EN: 2. Where a payment service user denies having authorised an executed payment
 
 IS: 2. Ef notandi greiðsluþjónustu neitar að hafa heimilað framkvæmda greiðslu nægir notkun greiðslumiðils, sem greiðslumiðlunin skráir, ein og sér ekki endilega til að sanna að greiðandi hafi annaðhvort heimilað greiðsluna eða hann hafi með sviksamlegum hætti, að yfirlögðu ráði eða af stórfelldu gáleysi látið ógert að uppfylla eina eða fleiri af skyldum sínum skv. 56. gr.
 
-发现明确缺损或对齐/完整性存疑，保守隔离。
+Target glues the next sentence after 2004.Í without whitespace.
 
 Fraud-or-intentional/gross-negligence alternatives appear collapsed into fraudulent nonfulfilment; conservative legal-scope quarantine.
 
@@ -3882,7 +3760,7 @@ EN: • Competent authorities of Member States having been designated as contact
 
 IS: • Lögbær yfirvöld aðildarríkja, sem tilnefnd hafa verið tengiliðir að því er þessa tilskipun varðar í samræmi við 1. mgr. 56. gr., skulu þegar í stað veita hvert öðru þær upplýsingar sem nauðsynlegar eru til að lögbæru yfirvöldin, sem eru tilnefnd í samræmi við 1. mgr. 48. gr., geti sinnt skyldum sínum sem settar eru fram í ákvæðum sem samþykkt eru samkvæmt þessari tilskipun.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Contact authorities,immediate exchange and both article references retained.
 
@@ -3894,7 +3772,7 @@ EN: • For the purposes of this Article, ‘by electronic means shall mean that
 
 IS: • Að því er snertir þessa grein merkir hugtakið „með rafrænum hætti“ að upplýsingarnar eru upphaflega sendar og við þeim tekið á ákvörðunarstað með rafrænum búnaði fyrir vinnslu (þ.m.t. stafræn þjöppun) og geymslu gagna og eingöngu sendar, fluttar og mótteknar á þann hátt sem aðildarríkin ákveða, með rafþræði, þráðlaust, með ljóstæknilegum aðferðum eða með öðrum rafsegulaðferðum.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Electronic processing/storage and transmission modalities retained.
 
@@ -3906,7 +3784,7 @@ EN: • Where the management companys home Member State is not the UCITS home Me
 
 IS: • Ef heimaaðildarríki rekstrarfélags er ekki hið sama og heimaaðildarríki verðbréfasjóðs skal vörslufyrirtækið undirrita skriflegt samkomulag við rekstrarfélagið sem stýrir flæði upplýsinga sem taldar eru nauðsynlegar til að það geti sinnt þeirri starfsemi sem fram kemur í 32. gr. og í öðrum lögum, reglugerðum eða stjórnsýslufyrirmælum sem eiga við um vörslufyrirtæki í heimaaðildarríki verðbréfasjóðsins.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Different UCITS home state,depositary agreement and information flow retained.
 
@@ -3918,7 +3796,7 @@ EN: • Manufacturers shall equip agricultural and forestry vehicles with system
 
 IS: • Framleiðendur skulu setja í ökutæki fyrir landbúnað og skógrækt kerfi, íhluti og aðskildar tæknieiningar sem hafa áhrif á hemlaafköst þeirra og eru hönnuð, smíðuð og sett saman þannig að ökutæki í eðlilegri notkun, sem viðhaldið er í samræmi við forskriftir framleiðanda, nái að uppfylla þær ítarlegu tæknilegu kröfur og prófunaraðferðir sem mælt er fyrir um í 4. til 17. gr.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Agricultural/forestry braking compliance and Articles4–17 retained.
 
@@ -3930,7 +3808,7 @@ EN: • If points 2.4 and 2.5 apply and the further audit or check results are d
 
 IS: • Ef ákvæði liða 2.4 og 2.5 eiga við og niðurstöður frekari úttektar eða skoðunar teljast ekki fullnægjandi að áliti viðurkenningaryfirvalds sem veitir heildargerðarviðurkenningu ökutækis skal framleiðandinn tryggja að samræmi framleiðslu sé komið á eins fljótt og auðið er með aðgerðum til úrbóta sem viðurkenningaryfirvaldið sem veitir heildargerðarviðurkenningu ökutækis og viðurkenningaryfirvaldið sem veitir gerðarviðurkenningu fyrir kerfi, íhlut eða aðskilda tæknieiningu telja fullnægjandi.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Unsatisfactory checks and restoration to both authorities satisfaction retained.
 
@@ -3942,7 +3820,7 @@ EN: Submission of the final clinical study report on a Post-Authorisation Safety
 
 IS: Að leggja fram lokaskýrslu úr klínískri öryggisrannsókn (Post-Authorisation Safety (PAS) Observational Cohort Study to Quantify the Incidence and Comparative Safety of Selected Cardiovascular and Cerebrovascular Events) hjá sjúklingum með langvinna lungnateppu með Anoro samanborið við tíótrópíum (rannsókn 201038), samkvæmt rannsóknaráætlun sem samþykkt er af PRAC.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 PAS cohort title,Anoro/tiotropium,study201038 and PRAC retained.
 
@@ -3954,7 +3832,7 @@ EN: Thus in the EAA, agricultural output represents the sum of output by all uni
 
 IS: Landbúnaðarframleiðsla í hagreikningum landbúnaðarins er þannig samtala framleiðslu allra eininga í atvinnugreininni (að undanskilinni framleiðslu til aðfanganotkunar sömu einingar), að viðbættri framleiðslu sem notuð er til aðfanganotkunar sömu einingar, að því tilskildu sú framleiðsla snerti tvenns konar grunnstarfsemi (s.s. ræktunarafurðir sem ætlaðar eru til nota sem dýrafóður) og uppfyllir tilteknar viðmiðunarreglur (settar fram í lið 2.055).
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Agricultural-output sum,internal use and two-basic-activity exception retained.
 
@@ -3966,7 +3844,7 @@ EN: • The national administrator may remove an authorised representative or an
 
 IS: • Landsstjórnandinn getur vikið viðurkenndum fulltrúa eða viðurkenndum viðbótarfulltrúa frá ef hann telur að synja hefði átt beiðni um að samþykkja viðurkennda fulltrúann eða viðurkenndan viðbótarfulltrúa skv. 3. mgr. 22. gr., einkum ef hann uppgötvar að skjölin og auðkennisupplýsingarnar, sem lögð voru fram við tilnefninguna, voru ófullgerð, úrelt eða með öðrum hætti ónákvæm eða röng.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Representative removal and incomplete/outdated/false documentation retained.
 
@@ -3978,7 +3856,7 @@ EN: Whereas acquisition of the lawful professional title of architect is subject
 
 IS: til að hefja og stunda starfsemi sem fullgildir arkitektar. Í sumum aðildarríkjum er rétturinn til að öðlast löggildingu sem arkitekt háður því að viðkomandi hafi lokið tiltekinni starfsþjálfun jafnframt því að hafa prófskírteini, vottorð eða annan vitnisburð um formlega menntun og hæfi. Þar sem kröfur um þjálfun á þessu sviði eru nú breytilegar frá einu aðildarríki til annars ætti, til að koma í veg fyrir hugsanleg vandræði, að viðurkenna jafnlangt starfsþjálfunartímabil á þessu sviði í öðru aðildarríki.
 
-发现明确缺损或对齐/完整性存疑，保守隔离。
+Target glues the next sentence after 2004.Í without whitespace.
 
 Target begins with a preceding unaligned sentence fragment about practising as architects.
 
@@ -3990,7 +3868,7 @@ EN: 7. In addition to the formalities referred to in Article 3, veterinary servi
 
 IS: er að ræða, ef þurfa þykir. 7. Auk formsatriðanna sem um getur í 3. gr. skal dýraheilbrigðisþjónustan gera allar nauðsynlegar ráðstafanir til að staðfesta að opinber athugun á ástandi vörusendingarinnar hafi farið fram, einkum með því að innsigla að nýju allar umbúðir sem hafa verið meðhöndlaðar og setja á þær opinberan stimpil, innsigla að nýju alla gáma sem hafa verið opnaðir og tilgreina innsiglisnúmerið sem kemur fram í skjalinu í viðauka B og á vottorðum og skjölum sem fylgja með vörusendingunni.
 
-发现明确缺损或对齐/完整性存疑，保守隔离。
+Target glues the next sentence after 2004.Í without whitespace.
 
 Target begins with an unaligned preceding clause before numbered item7.
 
@@ -4002,7 +3880,7 @@ EN: In order to facilitate, at the time of the renewal of the approvals of exist
 
 IS: Við endurnýjun á samþykki fyrir fyrirliggjandi gróðurhindrandi virkum efnum ætti samþykki fyrir þeim efnum að falla úr gildi sama dag til að auðvelda endurskoðun og samanburð á áhættu og kostum allra efnanna sem og þeim ráðstöfunum sem beitt er til að draga úr áhættu.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Common expiry date facilitates antifouling risk-benefit review retained.
 
@@ -4014,7 +3892,7 @@ EN: However, if the lessee has an option to purchase the asset at a price that i
 
 IS: Eigi leigutaki á hinn bóginn kauprétt á eigninni á verði, sem vænta má að sé nægilega mikið undir gangvirði daginn sem kauprétturinn verður nýtanlegur að það sé nokkuð víst þegar leigusamningurinn er gerður að kauprétturinn verði nýttur, eru lágmarksgreiðslurnar, sem greiða skal á leigutímanum til áætlaðs nýtingardags þessa kaupréttar, og greiðslan, sem þarf til að nýta þennan kauprétt, innifaldar í lágmarksleigunni.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Below-fair-value option and minimum lease-payment components retained.
 
@@ -4026,7 +3904,7 @@ EN: • Other personnel, such as medical staff, security staff, child minders, e
 
 IS: • Annað starfsfólk, eins og heilbrigðisstarfsfólk, öryggisverðir, gæslufólk barna, fylgdarmenn, tæknimenntað starfsfólk, skemmtikraftar og túlkar, sem sinnir störfum í farþegarýminu, skal ekki klæðast einkennisbúningi, sem gefur farþegum til kynna að um öryggis og þjónustuliða sé að ræða, nema það uppfylli kröfur þessa kafla og aðrar viðeigandi kröfur þessarar reglugerðar.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Other cabin personnel may not use crew-like uniforms unless requirements met.
 
@@ -4038,7 +3916,7 @@ EN: • In order to take account of economic, social and technical developments,
 
 IS: • Með hliðsjón af efnahagslegri, félagslegri og tæknilegri þróun ætti að fela framkvæmdastjórninni vald til að samþykkja gerðir í samræmi við 290. gr. sáttmálans um starfshætti Evrópusambandsins, að því er varðar aðlögun á frestum vegna gagnasendinga og viðaukanna, að undanskildu valfrjálsu eðli tilskilinna gagna og takmarkana á gildissviði, eins og það er skilgreint í viðaukunum.
 
-发现明确缺损或对齐/完整性存疑，保守隔离。
+Target glues the next sentence after 2004.Í without whitespace.
 
 Source OCR splits Functioning into Func tioning.
 
@@ -4050,7 +3928,7 @@ EN: Whereas that mutual information procedure will not in any case replace the b
 
 IS: Þessi gagnkvæmu upplýsingaskipti koma á engan hátt í stað þess tvíhliða samstarfs sem komið var á með 7. gr. tilskipunar 77/780/EBE. Lögbær yfirvöld í gistiríki geta, án þess að rýra valdsvið sitt, annaðhvort að eigin frumkvæði, ef mikið liggur við, eða að frumkvæði lögbærra yfirvalda í heimaríki, haldið áfram að hafa eftirlit með því að starfsemi lánastofnunar sem stofnuð hefur verið á yfirráðasvæði þeirra sé í samræmi við lög þar að lútandi og reglur um trausta stjórnun og bókhald og fullnægjandi innra eftirlit.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Information exchange does not replace bilateral cooperation;host-state supervision retained.
 
@@ -4062,7 +3940,7 @@ EN: • a description of ordinary share transactions or potential ordinary share
 
 IS: • lýsingu á viðskiptum með almenna hluti eða vænta hluti, aðra en þá sem gerð er grein fyrir í samræmi við 64. lið, sem fara fram eftir dagsetningu efnahagsreiknings og sem hefði breytt verulega fjölda almennra hluta eða væntra almennra hluta, sem eru virkir í lok tímabilsins, ef þessi viðskipti hefðu átt sér stað fyrir lok reikningsskilatímabilsins.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Post-balance-sheet ordinary-share transactions and counterfactual denominator retained.
 
@@ -4074,7 +3952,7 @@ EN: • The application of Article 1 of Regulation (EEC) No 1247/92 may not resu
 
 IS: • Beiting 1. gr. reglugerðar (EBE) nr. 1247/92 má ekki leiða til synjunar á umsókn um sérstakar iðgjaldsfrjálsar bætur, sem eru veittar til viðbótar við lífeyri, einstaklings er uppfyllti skilyrði fyrir úthlutun slíkra bóta fyrir 1. júní 1992, jafnvel þótt viðkomandi búi á yfirráðasvæði annars aðildarríkis en lögbæra ríkisins, að því tilskildu að umsóknin sé lögð fram eigi síðar en fimm árum eftir 1. júní 1992.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Pension supplement,1992 conditions and five-year application window retained.
 
@@ -4086,8 +3964,6 @@ EN: In particular, operational goals/objectives for official controls may have t
 
 IS: Einkum kann að reynast nauðsynlegt að setja bráðabirgðamarkmið um rekstur opinbers eftirlits á síðari árum landsbundnu eftirlitsáætlunarinnar og uppfæra þau jafnóðum í tengslum við gerð ársskýrslunnar sem krafist er samkvæmt 1. mgr. 44. gr. reglugerðar (EB) nr. 882/2004.Í því tilliti er vísað til ákvæða er varða aðlögun eða breytingar á landsbundnu eftirlitsáætluninni eins og kveðið er á um í 3. mgr. 42. gr. þeirrar reglugerðar.
 
-发现明确缺损或对齐/完整性存疑，保守隔离。
-
 Target glues the next sentence after 2004.Í without whitespace.
 
 </details>
@@ -4098,7 +3974,7 @@ EN: That certificate shall contain the name and address of the manufacturer, the
 
 IS: Vottorðið skal innihalda nafn og heimilisfang framleiðandans, niðurstöður prófunarinnar, þá þætti í grunnkröfunum sem falla undir prófunina, skilyrði fyrir því að vottorðið sé gilt (ef einhver eru) og nauðsynlegar upplýsingar til að auðkenna samþykkta gerðareintakið.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Certificate manufacturer,examination,validity and type identification retained.
 
@@ -4110,7 +3986,7 @@ EN: • Any person submitting information related to an active substance or a bi
 
 IS: • Hver sá aðili sem, vegna beitingar þessarar reglugerðar, leggur upplýsingar fyrir Efnastofnunina eða lögbært yfirvald, sem varða virkt efni eða sæfivöru, getur lagt fram beiðni um að ekki skuli veittur aðgangur að upplýsingunum í 3. mgr. 67. gr. ásamt rökstuðningi fyrir því að miðlun upplýsinganna gæti skaðað viðskiptahagsmuni hans eða annarra hlutaðeigandi aðila.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Commercial-harm justification for confidential biocide data retained.
 
@@ -4122,7 +3998,7 @@ EN: 5. Before the general meeting referred to in paragraph 6, one or more indepe
 
 IS: 5. Fyrir félagsfundinn, sem um getur í 6. mgr., skulu óháðir sérfræðingar, einn eða fleiri, sem hafa verið tilnefndir eða samþykktir af yfirvaldi á sviði dómgæslu eða stjórnsýslu í aðildarríkinu sem samvinnufélag, sem breyta á í evrópskt samvinnufélag, heyrir undir, votta, að breyttu breytanda, að reglurnar í b-lið 1. mgr. 22. gr. hafi verið virtar.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
+Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 Independent experts,conversion to SCE and legal references retained.
 
@@ -4134,8 +4010,6 @@ EN: This will be monitored by blood samples and if required the INOmax dose will
 
 IS: Fylgst verður með þessu með blóðprufum og ef á þarf að halda verður skammtur INOmax minnkaður og hugsanlega verður íhugað að gefa lyf svo sem C vítamín, methýlen bláma eða jafnvel blóðgjöf til þess að bæta getu blóðsins til að flytja súrefni.
 
-检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。
-
 Blood monitoring,INOmax dose reduction and supportive treatments retained.
 
 </details>
@@ -4146,7 +4020,7 @@ EN: I'll prove it to you.
 
 IS: Ég skal sanna það fyrir þér.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Promise to prove it retained.
 
@@ -4158,7 +4032,7 @@ EN: But I think that is a great quality.
 
 IS: En mér finnst það góður eiginleiki.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Positive evaluation as a good quality retained.
 
@@ -4170,7 +4044,7 @@ EN: Come up with a story if they ask. Stay quiet if they don't.
 
 IS: Ljúgðu einhverri sögu ef þú þarft en haltu þig annars til hlés.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 If they ask is changed into if you need to;conditional trigger mismatch.
 
@@ -4182,7 +4056,7 @@ EN: It's only a matter of time.
 
 IS: Það er bara tímaspursmál.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Only a matter of time retained.
 
@@ -4194,7 +4068,7 @@ EN: The fees are commensurate with the services provided.
 
 IS: Þóknanirnar eru í réttu hlutfalli við veitta þjónustu.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Fees commensurate with services retained.
 
@@ -4206,7 +4080,7 @@ EN: • What is the Member State of residence for the purpose of registration?
 
 IS: • Hvert er búsetuaðildarríkið að því er varðar skráningu?
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Residence Member State for registration retained.
 
@@ -4218,7 +4092,7 @@ EN: • Notwithstanding the inspections referred to in paragraph 1, the Agency m
 
 IS: • Þrátt fyrir eftirlitið, sem um getur í 1. mgr., er Flugöryggisstofnuninni heimilt að hefja vinnu við að leiðrétta frávik, sem koma ekki í ljós á vettvangi, þegar hún hefur safnað nægilegum sönnunargögnum um ósamræmið.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Raise off-site findings is rendered as beginning corrective work;procedural action differs.
 
@@ -4230,7 +4104,7 @@ EN: When density-temperature correlation tables are used the operator shall spec
 
 IS: Þegar samsvörunartöflur fyrir eðlismassa/hitastig eru notaðar skal rekstraraðilinn tilgreina hvaðan þau gögn koma.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Density-temperature tables and data-source disclosure retained.
 
@@ -4242,7 +4116,7 @@ EN: Measurement and data recording may be interrupted for less than 1 % of the t
 
 IS: Mælingar og gagnaskráning mega raskast í innan við 1% af heildartímalengd ferðarinnar en aldrei lengur samfellt en í 30 sekúndur og þá eingöngu ef merkið dettur óviljandi niður eða vegna viðhalds á færanlega mælikerfinu fyrir losun.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Less than1percent,at most30seconds,and signal-loss/maintenance exceptions retained.
 
@@ -4254,7 +4128,7 @@ EN: In pregnant rabbits, a maternal dose of 30 mg/kg that produced slight toxici
 
 IS: Í ungafullum kanínum sýndu 30 mg/kg skammtar sem höfðu smávægileg skaðleg áhrif á móður marktæka aukningu á vansköpun afkvæma.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Rabbit maternal30mg/kg,mild toxicity and increased litter malformations retained.
 
@@ -4266,7 +4140,7 @@ EN: • There are at present, no alternative methods validated by ECVAM, other t
 
 IS: • Eins og sakir standa hefur Evrópumiðstöð um fullgildingu nýrra aðferða ekki fullgilt aðrar aðferðir en þær sem eru skráðar í V. viðauka við tilskipun ráðsins 67/548/EBE.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 No other validated ECVAM methods except AnnexV retained.
 
@@ -4278,7 +4152,7 @@ EN: In addition, unacceptable risks due to acute or chronic effects on colony su
 
 IS: Að auki var ekki hægt að útiloka óviðunandi áhættu að því er varðar nokkrar plöntur vegna bráðra eða langvinnra áhrifa á lifun og þróun sambúa.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Acute/chronic risks to colony survival/development cannot be excluded retained.
 
@@ -4290,7 +4164,7 @@ EN: contests which are organised in the same cases as those referred to in Artic
 
 IS: b) samkeppni sem er haldin í sömu tilvikum og um getur í 13., 14. og 15. gr. þessarar tilskipunar varðandi opinbera þjónustusamninga.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Source contest clause retained;extra b-list marker is only formatting.
 
@@ -4302,7 +4176,7 @@ EN: There is no experience of DuoTrav in inflammatory ocular conditions; nor in 
 
 IS: Engin reynsla er af notkun DuoTrav við bólgusjúkdómum í augum né við nýæðamyndunargláku, frumgláku með lokuðu horni, þrönghornsgláku eða meðfædda gláku og einungis takmörkuð reynsla er af meðferð augnsjúkdóms af völdum skjaldkirtilssjúkdóms, gleiðhornsgláku hjá sjúklingum með gerviaugastein (pseudophakia) og við litgláku (pigmentary glaucoma) eða hálfskinnflagningsgláku (pseudoexfoliative glaucoma).
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 No/limited DuoTrav experience and the ocular-condition list retained.
 
@@ -4314,7 +4188,7 @@ EN: In clinical pharmacology studies using single-dose tadalafil (5 to 20 mg), t
 
 IS: Í klínískum lyfjafræðilegum rannsóknum hjá einstaklingum með væga (kreatínín úthreinsun 51 til 80 ml/mín.) eða miðlungs (kreatínín úthreinsun 31 til 50 ml/mín.) skerðingu á nýrnastarfsemi og hjá einstaklingum með nýrnabilun á lokastigi sem voru í blóðskilun, var útseting (AUC) tadalafils um tvöfalt meiri en hjá heilbrigðum einstaklingum eftir gjöf á einum tadalafil skammti (5 til 20 mg).
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Tadalafil single5–20mg,renal strata and doubled AUC retained.
 
@@ -4326,7 +4200,7 @@ EN: whereas it is therefore necessary that all Member States adopt the same requ
 
 IS: Því er nauðsynlegt að öll aðildarríki samþykki sömu kröfurnar, einkum til þess að greiða fyrir framkvæmd EBE-gerðarviðurkenningar á ökutækjagerðum, sem kveðið var á um í tilskipun ráðsins 70/156/EBE frá 6. febrúar 1970 um samræmingu laga aðildarríkjanna um gerðarviðurkenningu á vélknúnum ökutækjum og eftirvögnum þeirra(4), eins og henni var síðast breytt með tilskipun 87/403/EBE(5).
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Common vehicle-approval requirements and directive references retained.
 
@@ -4338,7 +4212,7 @@ EN: 2. Each Member State shall communicate to the Commission and the other Membe
 
 IS: 2. Hvert aðildarríki skal miðla til framkvæmdastjórnarinnar og annarra aðildarríkja upplýsingum um hvernig unnt er að ná sambandi við opinberu tengiliðanna sem um getur í málsgrein 4.16 í B-hluta ISPS-kóðans og upplýsingum sem kveðið er á um í málsgrein 4.41 í B-hluta ISPS-kóðans þegar skipi er vísað úr höfn eða er meinaður aðgangur að höfn innan Bandalagsins.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Contact officials,ISPS references and expulsion/refused-entry condition retained.
 
@@ -4350,7 +4224,7 @@ EN: Other selection criteria were that they are commercially available, that hig
 
 IS: Aðrar valviðmiðanir voru þær að efnin fengjust á almennum markaði, að hágæða tilvísunargögn um rannsóknir í lífi og hágæðagögn um rannsóknir í glasi, sem verða til með beinu prófuninni á hvarfgirni við peptíð, séu tiltæk og að þau hafi verið notuð í samræmdri fullgildingarrannsókn tilvísunarrannsóknarstofu Evrópusambandsins og Evrópumiðstöðinni um fullgildingu staðgönguaðferða (EURL ECVAM) til að sýna fram á árangursríka framkvæmd prófunaraðferðarinnar á rannsóknarstofunum sem tóku þátt í rannsókninni.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Availability,DPRA data and coordinated laboratory validation retained.
 
@@ -4362,7 +4236,7 @@ EN: To provide results of a double-blinded, placebo-controlled, long-term effica
 
 IS: Leggja fram niðurstöður úr tvíblindri langtímarannsókn á verkun og öryggi, með samanburði við lyfleysu, þar sem lagt er mat á samsettan aðalendapunkt sem hefur klíníska þýðingu með tilliti til göngugetu og hvernig bera megi snemma kennsl á þá sem svara meðferð, svo hafa megi það til hliðsjónar við frekari meðferð sem byggir á meðferðaráætlun sem samþykkt er af CHMP.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Broader primary endpoint is changed to composite endpoint;uncertain methodological equivalence,quarantine.
 
@@ -4374,13 +4248,13 @@ EN: Subject to budgetary availability, the Commission may decide to continue the
 
 IS: Með fyrirvara um fjárlagaheimildir getur framkvæmdastjórnin ákveðið að tilraunum og prófunum, sem um getur í viðaukanum, verði haldið áfram árin 2006-2009.Hámarksfjárframlag Bandalagsins, sem samsvarar 80% af styrkhæfum kostnaði við tilraunir eða prófanir, sem haldið er áfram á þessum grundvelli, skal ekki vera meiri en fjárhæðin sem er tilgreind í viðaukanum.
 
-辅助数据复查；保留英文具体依据。
+Supplementary data review; retain the specific English rationale.
 
 Target glues a sentence after2009.Hámarks;encoding/boundary quarantine.
 
 </details>
 
-## 附录D：每次实际更新 / Every actual optimizer update
+## Every actual optimizer update
 
 | Step | Target tokens | CE loss | Grad norm before clip | LR | Microbatch | Seconds |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -4715,7 +4589,7 @@ Target glues a sentence after2009.Hámarks;encoding/boundary quarantine.
 | 329 | 399606 | 1.248418 | 4.73900 | 1.0000229e-06 | 4 | 4.815 |
 | 330 | 399895 | 1.203202 | 8.44662 | 1.0000016e-06 | 4 | 2.370 |
 
-## 附录E：未选中末期模型的全部译文 / All nonselected final-checkpoint translations
+## All nonselected final-checkpoint translations
 
 | ID | Stratum | EN | Reference IS | Nonselected final IS | Truncated |
 | --- | --- | --- | --- | --- | --- |

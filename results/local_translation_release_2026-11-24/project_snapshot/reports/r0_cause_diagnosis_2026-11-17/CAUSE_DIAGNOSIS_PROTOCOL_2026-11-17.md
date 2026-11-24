@@ -1,28 +1,24 @@
-# R0原因定位：预先登记方案 / R0 cause diagnosis: registered protocol
+# R0 cause diagnosis: registered protocol
 
-2026-11-17。用户已授权。保持0.8B、原R0与既有模型不变，使用独立Colab L4。此文件是执行前方案，不是已获得的结论。 / Authorized protocol before new results; preserve all prior models.
+Authorized protocol before new results; preserve all prior models.
 
-问题：区分训练样本拟合不足、学习率/LoRA适配限制与保留样本泛化不足。此次不能证明0.8B的绝对SFT上限。 / Separate training-fit, optimization/adapter restrictions and held-out generalization; an absolute model ceiling is not identified by a small probe.
+Separate training-fit, optimization/adapter restrictions and held-out generalization; an absolute model ceiling is not identified by a small probe.
 
-## 1. 固定数据 / Fixed data
-
-训练32对来自上一轮通过质量复查且选中20万检查点确实见过的文对；本次运行前再次逐条阅读。全部在上一轮前5280次曝光内出现过一次，不代表基础模型或更早SFT只见过一次。另固定32对开发文对，排除既有G8难例，不参与训练。两批均8通用、4技术短、10中、10长。
+## Fixed data
 
 Training32 are quality-reviewed pairs exposed in the selected checkpoint prefix, read again before this run. Each appeared once in that continuation, not necessarily once in earlier training. Held-out32 are a fixed random stratified development subset excluding knownG8 diagnostics, never used in updates. Both:8 general,4 short,10 medium,10 long.
 
-选取种子2026111711/2026111712，仅按来源、分层、是否见过及质量状态选取，不按模型得分筛选。训练32对合计2322个目标token（含EOS）。保留集已在历史开发评估中使用，不是全新独立测试。 / Fixed seeds and eligibility, not outcome-based selection;2322 target tokens in training32;held-out data are reused development,not untouched test.
+Fixed seeds and eligibility, not outcome-based selection;2322 target tokens in training32;held-out data are reused development,not untouched test.
 
-## 2. 第一阶段 / Phase1
-
-原R0、选中20万、训练末期40万三个模型，对两批样本重新生成greedy译文，并逐句计算teacher-forced NLL。使用相同BF16舍入base再提升FP32，关闭TF32，max320。旧输出只用于逐token一致性核对，新对比使用本运行时重新生成的输出。
+## Phase1
 
 Regenerate train/held-out32 for original R0,SFT200 andSFT400. Report per-pair teacher NLL and greedy outputs on matched FP32 promotion of the same BF16-rounded base,TF32 off,max320. Prior outputs are parity checks,not mixed into the new comparison.
 
-先核对完整logits显式移位损失与tail-logit目标损失，再核对左填充batch与逐句损失。若出现实质不一致，先中止拟合对照并定位，不把它误判为模型容量问题。 / Audit explicit shifted loss versus optimized tail loss and padded-batch versus individual losses;material discrepancy stops fitting.
+Audit explicit shifted loss versus optimized tail loss and padded-batch versus individual losses;material discrepancy stops fitting.
 
-## 3. 条件性小集合拟合 / Conditional fitting
+## Conditional fitting
 
-若SFT200未达到描述性的近似记忆标准：训练NLL≤0.2、chrF++≥85、规范化参考精确匹配率≥50%，进入第二阶段。该标准是拟合诊断工具，不是翻译质量或DAPO合格门槛。 / The memorization-like trigger is descriptive,not a translation or DAPO qualification rule.
+The memorization-like trigger is descriptive,not a translation or DAPO qualification rule.
 
 | Condition | Initial weights | Rank | Peak LR | Run condition |
 | --- | --- | --- | --- | --- |
@@ -30,13 +26,11 @@ Regenerate train/held-out32 for original R0,SFT200 andSFT400. Report per-pair te
 | B_highLR | SFT200 | 16 | 1e-4 | If phase2 triggered |
 | C_r64 | Function-preserving SFT200 | 64 | 1e-4 | Only if B fails registered fitting criterion |
 
-每组独立fresh AdamW；相同样本顺序种子2026111713、有效batch8、micro2、dropout0、weight_decay0、前5步线性warmup后恒定学习率、clip1。每组上限150更新或15万目标token；固定32对实际约37.5遍。A/B只改变学习率；C增加rank并保持alpha/r=2，保留旧16列，新B列置零，逐模块校验初始有效增量不变。
-
 Fresh AdamW per condition;identical stream,batch8,micro2,dropout0,weight_decay0,5-update warmup then constant LR,clip1. Cap150 updates/150k targets per condition. A/B vary only LR;C expands rank at alpha/r=2 while preserving the old delta,with random newA and zero newB. This is a fitting probe,not an exact repeat of the previous decay/dropout recipe.
 
-在0/25/50/100/150步记录训练NLL曲线。最终以FP32对训练32及保留32生成译文。所有组都报告，不凭保留集重新挑选参数或追加预算；诊断adapter另存，不覆盖R0。 / Record curves and final matched greedy outputs for both sets. Report every condition;no held-out-driven tuning or budget extension;save separate diagnostic adapters.
+Record curves and final matched greedy outputs for both sets. Report every condition;no held-out-driven tuning or budget extension;save separate diagnostic adapters.
 
-## 4. 解释规则 / Interpretation
+## Interpretation
 
 | Outcome | Supported direction | Not established |
 | --- | --- | --- |
@@ -45,11 +39,9 @@ Fresh AdamW per condition;identical stream,batch8,micro2,dropout0,weight_decay0,
 | C fits where B does not | Adapter capacity/subspace may be limiting | Not proof that the whole0.8B model has reached a ceiling |
 | All short-budget conditions fit poorly | Continue implementation,optimization,data and representation audit | No absolute capacity-ceiling conclusion from this negative result |
 
-语义判断使用G/P/B/U标准，记录每个候选，身份与分数尽量隐藏；同一AI助手、已知数值结果与熟悉数据限制盲法，不是独立母语认证。小集合记忆不能冒充泛化能力。 / Semantic review is AI-assisted with explicit limits;memorization is not generalization.
+Semantic review is AI-assisted with explicit limits;memorization is not generalization.
 
-## 5. 预算、备份与完整性 / Budget and integrity
-
-L4分配上限150分钟，主进程上限110分钟，预留备份和释放时间。每个完成条件保存adapter、AdamW、RNG、样本顺序和游标；持续镜像D盘并下载哈希校验快照。仅释放本轮自有GPU。未使用MetricX或DAPO。
+## Budget and integrity
 
 Cap150 allocation minutes and110 worker minutes with backup reserve. Preserve adapter,optimizer,RNG and stream state;mirror and verify snapshots onD. Release only the owned runtime. NoMetricX orDAPO.
 
@@ -58,9 +50,9 @@ Cap150 allocation minutes and110 worker minutes with backup reserve. Preserve ad
 | Source bundle | 65babb5c56dd93887a8828288bbe79c792daf4d14f04c5cae4d57e4d8aeece0a |
 | Protocol | 066c84cb946dd7247f8aa13964bcf94315db5402774cf5a43e737bff159c6ff5 |
 
-本地4项测试通过：rank扩展函数保持与新列梯度、固定曝光顺序、训练/保留隔离、拟合判断分支。源代码与固定输入在分配GPU前冻结。 / Four local checks passed;source and inputs frozen before allocation.
+Four local checks passed;source and inputs frozen before allocation.
 
-## 附录：全部固定文对 / All fixed pairs
+## All fixed pairs
 
 <details><summary>train_seen32 00 OpenSubtitles18:683673 general</summary>
 

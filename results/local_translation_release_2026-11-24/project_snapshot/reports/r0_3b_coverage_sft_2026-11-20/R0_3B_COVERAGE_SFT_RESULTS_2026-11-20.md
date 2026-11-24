@@ -1,22 +1,20 @@
-# 3B R0 coverage SFT / 3B R0 覆盖补强续训
+# 3B R0 coverage SFT
 
-日期 / Date: 2026-11-20 · Updated UTC: 2026-11-20T18:00:29.562056+00:00
+Date: 2026-11-20 · Updated UTC: 2026-11-20T18:00:29.562056+00:00
 
-状态 / Status: PRIMARY_EXPERIMENT_COMPLETE_SEMANTIC_REVIEW_AND_GPU_RELEASE_VERIFIED
+Status: PRIMARY_EXPERIMENT_COMPLETE_SEMANTIC_REVIEW_AND_GPU_RELEASE_VERIFIED
 
-已核实新增更新 / Verified new updates: 1476; 新增目标token / Additional target tokens: 2096676.
+Verified new updates: 1476; additional target tokens: 2096676.
 
-## 主要结论 / Main finding
-
-本轮有小幅改善，技术长句仍未达到目标；已早停并保留P15与原P14。诊断显示已见长句也未掌握，不能只归咎泛化，更不能据此宣称3B容量已到上限。
+## Main finding
 
 Limited gains, persistent long-technical weakness; training stopped and both P15/P14 retained. Errors on known-seen long cases rule out a purely unseen-data account, without establishing a 3B capacity ceiling.
 
-GPU已释放 / GPU released: True.
+GPU released: True.
 
-原P14最佳R0始终保留。本轮是否改善，以实际开发集、既有评估和已完成语义审核分别报告；没有审核的数据不计作失败，也不计作正确。 / The preserved P14 R0 remains available. Automatic scores and completed semantic reviews are reported separately. Unreviewed outputs are neither failures nor successes.
+The preserved P14 R0 remains available. Automatic scores and completed semantic reviews are reported separately. Unreviewed outputs are neither failures nor successes.
 
-## 固定开发集 / Fixed development set
+## Fixed development set
 
 | Checkpoint | New targets | chrF++ | Tech chrF++ | Mid/long chrF++ | General chrF++ | Tech NLL | G8 P/24 | Greedy P/32 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -26,9 +24,9 @@ GPU已释放 / GPU released: True.
 | t1500729 | 1,500,729 | 48.175 | 48.603 | 48.604 | 42.572 | 1.06822 | 8 | 8 |
 | t2000728 | 2,000,728 | 48.283 | 48.693 | 49.044 | 42.828 | 1.05905 | 9 | 9 |
 
-### 语义分层 / Semantic strata
+### Semantic strata
 
-P=已确认关键含义保留，U=无法确认，F=已确认关键含义错误。G8的F要求检查全部不同候选。AI审核不等同母语专家认证。 / P=key meaning retained; U=uncertain; F=key meaning wrong. A G8 group is F only after all distinct candidates are inspected.
+P=key meaning retained; U=uncertain; F=key meaning wrong. A G8 group is F only after all distinct candidates are inspected.
 
 | Checkpoint | Role | Stratum | N | P | U | F |
 |---|---|---|---:|---:|---:|---:|
@@ -68,25 +66,25 @@ P=已确认关键含义保留，U=无法确认，F=已确认关键含义错误�
 | t2000728 | G8 | technical_medium | 8 | 6 | 2 | 0 |
 | t2000728 | G8 | technical_long | 8 | 0 | 2 | 6 |
 
-## 停止与选模 / Stopping and selection
+## Stopping and selection
 
-停止原因 / Stop reason: manual_primary_semantic_gain_gate_after_2M.
+Stop reason: manual_primary_semantic_gain_gate_after_2M.
 
-已封存选中版本 / Sealed selected checkpoint: t2000728.
+Sealed selected checkpoint: t2000728.
 
-选择只依赖开发集。每500k目标token检查；最初的自动早停联合考察近期chrF、NLL及已审核语义，本轮另有下述适应性操作性早停。硬截止为2026-11-20 22:56:56 CET。固定评估集已在P14观察，属于继续开发用的anchor比较，不能宣称是新的独立盲测。 / Selection uses development data only. Original automatic stopping jointly checks recent chrF, NLL and reviewed semantics; this run also uses the explicitly documented adaptive operational gate below. The reused P14 anchor is not a new independent confirmatory test.
+Selection uses development data only. Original automatic stopping jointly checks recent chrF, NLL and reviewed semantics; this run also uses the explicitly documented adaptive operational gate below. The reused P14 anchor is not a new independent confirmatory test.
 
-## 实际训练 / Actual training
+## Actual training
 
-起点为通用 Qwen2.5-3B-Instruct + P14最佳LoRA，继承AdamW动量与RNG，新的数据游标和目标token计数；冻结BF16基座、FP32 LoRA、target-only含EOS损失。LR从1e-5按新阶段4M目标token退火至5e-6。 / General-purpose Qwen initialization, preserved AdamW moments and RNG, explicitly new phase cursor, tested target-only loss, and no high-LR restart.
+General-purpose Qwen initialization, preserved AdamW moments and RNG, explicitly new phase cursor, tested target-only loss, and no high-LR restart.
 
-同一100,642句对过滤池；优先使用上轮调度未暴露句对，技术来源内短/中/长目标token请求配比10/55/35，通用句约20%；库存耗尽可改变实际比例。医学、法律与科学均保留，科学语料依旧稀缺。 / Use the same audited pool with unused-first source queues and explicit length balance. Inventory limits alter actual shares; science remains scarce.
+Use the same audited pool with unused-first source queues and explicit length balance. Inventory limits alter actual shares; science remains scarce.
 
-训练池的已保存来源包含ParIce21医学EMA、法规EEA、天文ESO及Tatoeba等通用句对，也包含OpenSubtitles18通用句对；本轮没有追加新的原始语料。开发与既有anchor沿用ParIce21官方dev/test构建，保护分割不变。完整行级来源由保存的训练JSONL与过滤记录给出。 / Saved training sources include ParIce21 EMA medicine, EEA regulations, ESO astronomy and general pairs such as Tatoeba, together with OpenSubtitles18 general pairs. No new raw corpus was added in this continuation. Development and reused anchors retain the protected official ParIce21 dev/test construction; row-level provenance and filtering records are preserved.
+Saved training sources include ParIce21 EMA medicine, EEA regulations, ESO astronomy and general pairs such as Tatoeba, together with OpenSubtitles18 general pairs. No new raw corpus was added in this continuation. Development and reused anchors retain the protected official ParIce21 dev/test construction; row-level provenance and filtering records are preserved.
 
-### 执行预算与继承字段 / Executed budget and inherited fields
+### Executed budget and inherited fields
 
-LR退火的4M是调度参考长度；本轮按吞吐量锁定的目标预算为3.5M新增目标token，随后按语义操作性条件提前停止。protocol中继承的dataset.token_mixture与training.nominal_new_target_tokens不是本轮实际数据调度/预算的依据，实际以coverage amendment、调度文件和frozen_budget为准。 / The4M LR schedule length is not the executed token budget. Throughput locked a3.5M target, superseded by the documented semantic stop. Inherited dataset.token_mixture and training.nominal_new_target_tokens fields are inactive for P15; the coverage amendment, actual order and frozen budget determine execution.
+The4M LR schedule length is not the executed token budget. Throughput locked a3.5M target, superseded by the documented semantic stop. Inherited dataset.token_mixture and training.nominal_new_target_tokens fields are inactive for P15; the coverage amendment, actual order and frozen budget determine execution.
 
 ```json
 {
@@ -105,9 +103,9 @@ LR退火的4M是调度参考长度；本轮按吞吐量锁定的目标预算为3
 }
 ```
 
-### 主语义决策 / Primary semantic decision
+### Primary semantic decision
 
-在150万token检查后、200万token输出出现前，另行登记了人工操作性早停条件：200万检查后，若所有检查点的G8和greedy均未达到相对起点净增2条，且技术长句无确认正确数增长，则停止。此为适应性探索决策，不能称为最初预注册的联合NLL/chrF平台期规则已触发。 / An additional operational gate was registered after1.5M and before2M outputs. Stop after2M if no checkpoint gains at least2confirmed G8 or greedy sources over the parent and no confirmed long-source gain. This adaptive exploratory decision is distinct from the original joint NLL/CHRF rule.
+An additional operational gate was registered after1.5M and before2M outputs. Stop after2M if no checkpoint gains at least2confirmed G8 or greedy sources over the parent and no confirmed long-source gain. This adaptive exploratory decision is distinct from the original joint NLL/CHRF rule.
 
 ```json
 {
@@ -213,12 +211,12 @@ LR退火的4M是调度参考长度；本轮按吞吐量锁定的目标预算为3
 }
 ```
 
-人工停止后，原worker的停止标志也阻止了内部评估；其错误与中断导出信息已保留在attempts/intentional_primary_semantic_stop。随后从完整检查点、使用同一选模规则和精度独立完成最终评估，没有恢复训练。所有已完成更新计入计算成本，未保存的尾部更新不用于交付模型。 / The original stop flag also blocked its internal evaluation; interruption records remain archived. Read-only finalization from full checkpoints completed the same selection and evaluation, with no resumed training. All completed compute is counted; an unsaved tail is never used for a delivered model.
-未保存尾部更新 / Uncheckpointed tail updates: 66.
+The original stop flag also blocked its internal evaluation; interruption records remain archived. Read-only finalization from full checkpoints completed the same selection and evaluation, with no resumed training. All completed compute is counted; an unsaved tail is never used for a delivered model.
+Uncheckpointed tail updates: 66.
 
-最终归档的校验与成功状态以runs目录下verified_export.json和completion_manifest.json为准。压缩包内部根目录的final_export.json可能是打包前保留的中断轮次元数据，不应误认为当前归档的状态。 / The authoritative final archive verification is runs/…/verified_export.json plus completion_manifest.json. A root final_export.json inside the archive can be the preserved preceding interruption metadata, captured before the new archive is completed.
+The authoritative final archive verification is runs/…/verified_export.json plus completion_manifest.json. A root final_export.json inside the archive can be the preserved preceding interruption metadata, captured before the new archive is completed.
 
-精度核查 / Precision check: 独立最终评估进程未调用训练main中的显式后端设置；同环境新进程实测matmul TF32=False、FP32 matmul precision=highest，cuDNN TF32默认True。该Transformer没有卷积层，基座仍为BF16、LoRA为FP32。不能把所有后端开关均显式关闭作为已执行事实。 / The standalone finalizer does not execute the training main function’s explicit backend assignments. Fresh-process defaults in the same environment were matmul TF32=False, highest FP32 matmul precision, and cuDNN TF32=True. This Transformer has no convolution layers; frozen BF16 base and FP32 LoRA remain unchanged.
+Precision check: the standalone finalizer does not execute training-main backend assignments. In the same environment, fresh-process defaults were matmul TF32=False, highest FP32 matmul precision and cuDNN TF32=True. This Transformer has no convolution layers; frozen BF16 base and FP32 LoRA are unchanged. Explicitly disabling every backend switch is not an executed fact.
 
 ```json
 {
@@ -259,7 +257,7 @@ LR退火的4M是调度参考长度；本轮按吞吐量锁定的目标预算为3
 }
 ```
 
-选中模型与最后训练状态必须区分；下表述为真正进入选中权重的新增暴露，前面的全阶段数据用于计算成本。 / Selected weights can precede the final training state. This exposure belongs to the selected checkpoint; whole-phase exposure above describes total cost.
+Selected weights can precede the final training state. This exposure belongs to the selected checkpoint; whole-phase exposure above describes total cost.
 
 ```json
 {
@@ -280,9 +278,9 @@ LR退火的4M是调度参考长度；本轮按吞吐量锁定的目标预算为3
 }
 ```
 
-### 原R0复现核查 / Parent reproduction
+### Parent reproduction
 
-本次原R0的256条greedy与64组G8，与P14保存的对应原R0输出逐条一致，包括生成token IDs、译文和截断标志。这支持前后比较的推理设置一致性。 / Parent decoding exactly reproduces the saved P14 outputs: all256greedy sources and all64G8groups match completion token IDs, text and truncation flags.
+Parent decoding exactly reproduces the saved P14 outputs: all256greedy sources and all64G8groups match completion token IDs, text and truncation flags.
 
 ```json
 {
@@ -305,7 +303,7 @@ LR退火的4M是调度参考长度；本轮按吞吐量锁定的目标预算为3
 }
 ```
 
-## 既有256句评估 / Reused 256-source anchor
+## Reused 256-source anchor
 
 | Stratum | N | Before chrF++ | After chrF++ | Delta | Before BLEU | After BLEU |
 |---|---:|---:|---:|---:|---:|---:|
@@ -315,9 +313,9 @@ LR退火的4M是调度参考长度；本轮按吞吐量锁定的目标预算为3
 | technical_medium | 64 | 43.970 | 43.415 | -0.556 | 18.905 | 17.211 |
 | technical_long | 64 | 44.623 | 45.004 | +0.381 | 19.634 | 19.995 |
 
-完整逐句greedy和G8采样保存在evaluation文件；自动分数不能证明语义正确。 / Full greedy and G8 outputs are saved. Automatic scores do not certify semantic fidelity.
+Full greedy and G8 outputs are saved. Automatic scores do not certify semantic fidelity.
 
-输出健全性与采样统计 / Output health and sampling statistics:
+Output health and sampling statistics:
 
 ```json
 {
@@ -354,9 +352,9 @@ LR退火的4M是调度参考长度；本轮按吞吐量锁定的目标预算为3
 }
 ```
 
-重复、截断与gate失败可能重叠，不能相加为独立失败数；候选多样性不等同于语义正确。 / Repetition, truncation and gate failures may overlap and must not be summed as independent cases. Candidate diversity does not establish semantic correctness.
+Repetition, truncation and gate failures may overlap and must not be summed as independent cases. Candidate diversity does not establish semantic correctness.
 
-### 同一256句的历史位置 / Historical models on the same256sources
+### Historical models on the same256sources
 
 | Model | chrF++ | BLEU |
 |---|---:|---:|
@@ -365,10 +363,10 @@ LR退火的4M是调度参考长度；本轮按吞吐量锁定的目标预算为3
 | P14 preserved parent | 43.670 | 19.662 |
 | P15 selected continuation | 44.140 | 19.598 |
 
-训练量和数据历史不同，该表描述已有模型，不隔离参数规模的因果作用。历史分数沿用P14已完成的同源比较，本轮没有重跑0.8B。 / Training histories differ; this table describes saved models and does not isolate a model-size effect. Historical results are reused from the completed P14 matched comparison;0.8B was not rerun.
+Training histories differ; this table describes saved models and does not isolate a model-size effect. Historical results are reused from the completed P14 matched comparison;0.8B was not rerun.
 Historical metrics: D:\deep learning project\runs\r0_3b_filtered_sft_resume_2026-11-20\analysis\matched_08b_3b_metrics.json; SHA256: a77494f32acc72cbe9877bc5e1d7cd80928b74a1355d050f9c772c87b6281b9c.
 
-### 配对区间 / Paired intervals
+### Paired intervals
 
 | Subset | chrF++ delta | 95% interval | BLEU delta | 95% interval |
 |---|---:|---|---:|---|
@@ -380,16 +378,16 @@ Historical metrics: D:\deep learning project\runs\r0_3b_filtered_sft_resume_2026
 | technical | +0.352 | [-1.1739006199995348, 1.760570589611209] | -0.160 | [-1.900631519083124, 1.726806856480279] |
 | technical_medium_long | +0.083 | [-1.612013255592015, 1.7955416103018125] | -0.549 | [-2.4398056028249884, 1.597009251361771] |
 
-按相同source成对抽样的corpus充分统计量bootstrap，2000次；并非句分数均值。区间不包含训练种子、语义标注和原文档聚类的不确定性。既有anchor已观察，不是独立确认性证据。 / Paired-source bootstrap of corpus sufficient statistics,2000replicates. Intervals omit training-seed, annotation and document-cluster uncertainty; the reused anchor is not independent confirmation.
+Paired-source bootstrap of corpus sufficient statistics,2000replicates. Intervals omit training-seed, annotation and document-cluster uncertainty; the reused anchor is not independent confirmation.
 
-## 最终anchor语义审核 / Final anchor semantic audit
+## Final anchor semantic audit
 
 | Model | Reviewed / Expected | Complete | G8 P/64 | G8 U | Greedy P/80 |
 |---|---:|---|---:|---:|---:|
 | before | 144/144 | True | 13 | 11 | 18 |
 | after | 144/144 | True | 18 | 8 | 20 |
 
-P是已确认语义完整的下界；U不能视作错误。未完成审核时表中数目不是完整覆盖率。 / P is confirmed semantic coverage; U is not counted as wrong. Counts from an incomplete review are not complete coverage rates.
+P is confirmed semantic coverage; U is not counted as wrong. Counts from an incomplete review are not complete coverage rates.
 
 | Model | Role/Stratum | N | P | U | F |
 |---|---|---:|---:|---:|---:|
@@ -408,9 +406,9 @@ P是已确认语义完整的下界；U不能视作错误。未完成审核时表
 | after | G8_technical_medium | 24 | 11 | 3 | 10 |
 | after | G8_technical_long | 24 | 1 | 3 | 20 |
 
-### 审核一致性修订 / Annotation consistency correction
+### Annotation consistency correction
 
-对全部前后P状态变化做双向一致性复核：8条G8来源和4条greedy来源。旧R0有一条几乎相同的太阳系比较句先前被判U，而新R0按语义相同且允许语法瑕疵被判P；统一后两者均P。故本报告的原R0为13/64，而历史P14报告和本轮初审为12/64。修订不是模型变化；原标注、理由和时间保留，权重与选模不变。 / All initial paired P-status changes were checked symmetrically:8G8and4greedy sources. A nearly equivalent parent Solar-System candidate had been graded U more strictly than its after counterpart. Applying the same grammar tolerance gives both P. The harmonised parent is13/64 rather than the historical/initial12/64. Original labels and correction provenance remain archived; model weights and selection are unchanged.
+All initial paired P-status changes were checked symmetrically:8G8and4greedy sources. A nearly equivalent parent Solar-System candidate had been graded U more strictly than its after counterpart. Applying the same grammar tolerance gives both P. The harmonised parent is13/64 rather than the historical/initial12/64. Original labels and correction provenance remain archived; model weights and selection are unchanged.
 
 ```json
 {
@@ -448,32 +446,32 @@ P是已确认语义完整的下界；U不能视作错误。未完成审核时表
 }
 ```
 
-项目综合目标的筛查不构成通用DAPO门槛；本轮没有训练或验证DAPO效果。 / Project screening is not a universal DAPO gate. This round does not demonstrate DAPO efficacy.
+Project screening is not a universal DAPO gate. This round does not demonstrate DAPO efficacy.
 
-## 已训练样本拟合诊断 / Known-seen fitting diagnostic
+## Known-seen fitting diagnostic
 
-该诊断在权重封存后执行，不参与选模、不增加任何训练更新。128条已知训练样本匹配开发集领域与句长配比，并尽量匹配source词数及target token数；16条greedy按四个句长/领域层各4条。 / Post-sealing evaluation only.128known-seen sources match development domain/length quotas and approximate source-word/target-token lengths;16greedy cases are balanced across four strata.
+Post-sealing evaluation only.128known-seen sources match development domain/length quotas and approximate source-word/target-token lengths;16greedy cases are balanced across four strata.
 
 | Model | Known-seen128 NLL | Known-seen technical NLL | Corresponding dev NLL | Seen greedy P/16 | Seen greedy U |
 |---|---:|---:|---:|---:|---:|
-| before | 0.92804 | 0.92578 | 1.13064 | 7 | 待审核 / Pending |
-| after | 0.82802 | 0.81955 | 1.07987 | 7 | 待审核 / Pending |
+| before | 0.92804 | 0.92578 | 1.13064 | 7 | Pending |
+| after | 0.82802 | 0.81955 | 1.07987 | 7 | Pending |
 
-已知被训练不等于已学会。NLL差距本身不能区分全部原因，也不能证明模型容量上限；结合生成语义、样本曝光次数和残留数据噪声解释。 / Known exposure is not mastery. An NLL gap alone does not establish all causes or a capacity ceiling; interpret it with generated semantics, exposure and possible residual data noise.
-完整采样与长度匹配清单 / Sample and matching plan: D:\deep learning project\runs\r0_3b_coverage_sft_2026-11-20\training_fit_audit\files\sample_plan.json
+Known exposure is not mastery. An NLL gap alone does not establish all causes or a capacity ceiling; interpret it with generated semantics, exposure and possible residual data noise.
+Sample and matching plan: D:\deep learning project\runs\r0_3b_coverage_sft_2026-11-20\training_fit_audit\files\sample_plan.json
 
-128条以最终所选模型的训练轨迹界定known-seen：其中121条出现在P14直接父模型调度，另7条只在本轮所选前缀中出现。后者对于before不能称为已知训练样本；这也不证明基座预训练或更早轮次从未见过。 / Known-seen is defined relative to the selected model: 121sources occur in the immediate P14 schedule and 7only in the selected P15 prefix. The latter are not confirmed-seen for the before model. This does not establish novelty to base pretraining or older runs.
+Known-seen is defined relative to the selected model: 121sources occur in the immediate P14 schedule and 7only in the selected P15 prefix. The latter are not confirmed-seen for the before model. This does not establish novelty to base pretraining or older runs.
 
 | Fixed sample subgroup | N | Before NLL | After NLL |
 |---|---:|---:|---:|
 | parent_seen | 121 | 0.94428 | 0.84251 |
 | new_phase_only_seen | 7 | 0.72321 | 0.64522 |
 
-本轮所选前缀的样本曝光次数分布 / Sample exposures in selected P15 prefix: {"1": 63, "0": 26, "2": 24, "3": 6, "4": 9}.
+Sample exposures in selected P15 prefix: {"1": 63, "0": 26, "2": 24, "3": 6, "4": 9}.
 
-### 四条已见长句的参考核查 / Four known-seen long reference spot-checks
+### Four known-seen long reference spot-checks
 
-参考译文包含这些关键术语的正确监督答案，生成仍错误；不能仅把这四例归咎于未见样本泛化或参考把这些术语翻错。该核查不证明整个池无噪声，也不是母语专家认证。 / Critical terms are present in these references while generation fails; these four errors are not explained solely by unseen-data generalisation or those particular reference terms being wrong. This is not a pool-wide clean-data certificate or native-expert audit.
+Critical terms are present in these references while generation fails; these four errors are not explained solely by unseen-data generalisation or those particular reference terms being wrong. This is not a pool-wide clean-data certificate or native-expert audit.
 
 | Source ID | P14 schedule seen | P15 selected exposures | Critical reference/generation comparison |
 |---|---|---:|---|
@@ -482,21 +480,19 @@ P是已确认语义完整的下界；U不能视作错误。未完成审核时表
 | ParIce21:eea:3205170 | True | 1 | Reference explicitly gives authors/listflytjendur, creative/artistic work and adequate income. Generated text changes these to registered persons/telescopes and loses the income relation. |
 | ParIce21:eea:1150937 | True | 1 | Reference explicitly contains umfermingu and skoðunarstöð á landamærum (transhipment/border inspection post). Generation corrupts these operational terms. |
 
-## 资源与截止 / Resources and deadline
+## Resources and deadline
 
-实际GPU分配 / GPU allocation: 229.36 min; 观察到账户计算单元减少 / Observed account CU drop: 7.3721; 截止满足 / Deadline met: True.
+GPU allocation: 229.36 min; observed account CU drop: 7.3721; deadline met: True.
 
-计算单元差额是账户余额观测，不是精确账单；包含设置、训练、评估、诊断和保存。 / CU drop is an account-balance observation, not an exact invoice; allocation includes setup, training, evaluation, diagnostic and persistence.
+CU drop is an account-balance observation, not an exact invoice; allocation includes setup, training, evaluation, diagnostic and persistence.
 
-## 结论 / Conclusion
+## Conclusion
 
-本轮续训有局部学习与候选覆盖增益，综合大幅提升未获支持。同一256句chrF++为43.67→44.14（差值95%区间−0.97至+1.89），BLEU19.66→19.60；统一审核口径后的G=8已确认正确候选覆盖13/64→18/64（净增5，配对区间0至10条），greedy18/80→20/80。技术长句G=8仅0/24→1/24，greedy仍0/20。U表示无法确认，不能当成错误；这些是AI辅助审核，未获母语专家认证。
+Continuation shows local learning and candidate-coverage gains, without evidence of a large comprehensive improvement. On256cases, chrF++43.67→44.14, paired95%interval−0.97to+1.89; BLEU19.66→19.60. Harmonized G=8 confirmed coverage13/64→18/64, net+5 with paired interval0to10sources; greedy18/80→20/80. Technical-long G8 is only0/24→1/24, and greedy remains0/20. U means unconfirmed rather than incorrect. These are AI-assisted reviews without native-expert certification.
 
-拟合诊断表明并非完全没有学习：所选模型已见128句的NLL从0.928降至0.828，开发集NLL从1.131降至1.080。但16条已知训练样本的greedy语义通过数仍是7/16，4条技术长句均未通过。对这4条参考译文的关键错误点检查发现，参考中包含正确的脱发、共同起源、作者/表演者及边境转运术语，生成端却仍译错。这4条在本轮所选训练前缀中均实际曝光1–2次，其中1条是相对P14调度的新样本；不是只把父模型见过误称为本轮已训练。但1–2次曝光并不证明已经充分收敛。因此至少这些例子包含“已暴露但未掌握正确生成”的问题，不能单独归咎于未见数据的泛化；这也不是对整个训练池噪声率的估计。
+Fit diagnostics show some learning: seen128 NLL0.928→0.828 and dev NLL1.131→1.080. Yet greedy semantic passes remain7/16 on known training cases, and all four technical-long cases fail. Reference checks confirm correct hair-loss, common-origin, author/performer and border-transfer terminology, which generation still mistranslates. Each case appears1–2times in the selected training prefix; one is new relative to P14 scheduling. This confirms actual round-specific exposure, but1–2exposures do not establish convergence. These examples include exposed-but-not-mastered generation failures rather than only unseen-data generalization; they do not estimate noise across the training pool.
 
-本次只检验了冻结3B基座、rank16 LoRA、当前数据/顺序/学习率的续训配方。它不能证明达到3B模型容量或全部SFT方法的上限，也不能把残留数据问题、术语监督、曝光深度与可更新参数范围的影响逐一分离。继续相同配方加时的综合收益缺乏充分证据；同样不能断言未来SFT完全无效。
-
-已按训练期间开发集的操作性语义条件早停，保留开发集选出的200万目标token版本及原P14。最终更大的候选审核显示有限增益，不改写当时的停止依据，也不用于事后换选检查点。目前应把P15作为“较有希望、但技术长句仍弱的候选基线”保留，不能宣布已得到综合很强的正式效率对照R0。后续若继续补强，需先提高已见技术长句的有效训练深度，并检查学习率与可更新参数配方；用关键术语/论元的实际生成保真度检验是否学会，再投入长时间扩大训练。受限DAPO试验仍可能进行，但需要独立通过奖励排序校准；本轮没有验证DAPO效果，没有普遍chrF++或正确候选数量的硬门槛。
+This tests only continuation with a frozen3B base, rank16 LoRA and this data/order/learning-rate recipe. It establishes neither a3B capacity ceiling nor the limit of all SFT methods, and does not isolate data quality, terminology supervision, exposure depth or trainable-parameter scope. Comprehensive gains from extending the same recipe lack sufficient evidence; future SFT is not proven ineffective.
 
 The continuation shows local learning and increased candidate coverage, without evidence of a large overall quality gain. On the same 256 sources, chrF++ changes from 43.67→44.14 (delta 95% interval −0.97to +1.89) and BLEU 19.66→19.60. After symmetric annotation-consistency correction, confirmed G=8 coverage is 13/64→18/64 (net +5 sources; paired interval 0 to 10), and greedy fidelity 18/80→20/80. Long technical G=8 coverage is only 0/24→1/24, with greedy 0/20 in both times. U denotes genuine uncertainty, not failure. Reviews are AI-assisted, not native-certified.
 
@@ -506,33 +502,33 @@ The experiment tests this frozen 3B base, rank 16 LoRA, data, order and learning
 
 Training stopped under the documented development-only operational semantic gate. The 2M-target checkpoint was selected on development data and the parent remains preserved. The larger final audit reveals limited gains without retroactively changing selection or the recorded stopping rationale. Preserve P15 as a promising candidate with weak long-technical translation, rather than claiming a strong comprehensive R0 for formal efficiency comparisons. Further substantial training should first address effective training depth on known-seen long texts, the learning rate and trainable-parameter recipe. Verify generated key-term/argument fidelity before scaling training time. A restricted DAPO pilot may remain possible after independent reward-ranking calibration. No DAPO effect was tested here, and there is no universal chrF++ or correct-candidate-count admission threshold.
 
-## 本地与持久化 / Local use and persistence
+## Local use and persistence
 
-所有模型运算均在Colab。本地仅后台低优先级控制；上传已结束，后续单线程下载限至512KiB/s；无本地GPU、无浏览器前台操作、无电源设置修改。仍有少量CPU/RAM/磁盘和网络占用。正式评估检查点均校验保存，冗余100步临时恢复点不全部下载。 / Model computation is on Colab. Local work is lightweight background control and one-worker downloads capped at512KiB/s, with no GPU use or power changes. Every formal evaluation checkpoint is retained; redundant scratch recoveries are not all downloaded.
+Model computation is on Colab. Local work is lightweight background control and one-worker downloads capped at512KiB/s, with no GPU use or power changes. Every formal evaluation checkpoint is retained; redundant scratch recoveries are not all downloaded.
 
-云端独立硬截止守护已安装。本地休眠可中断同步，未同步的临时检查点不保证持久化；保留的P14与已验证D盘检查点仍可用。 / The cloud deadline guard is independent, but unsynced temporary checkpoints are not guaranteed durable if local synchronization stops.
+The cloud deadline guard is independent, but unsynced temporary checkpoints are not guaranteed durable if local synchronization stops.
 
-## 复现文件 / Reproduction files
+## Reproduction files
 
 - Protocol/source: D:\deep learning project\experiments\r0_3b_coverage_sft_2026-11-20\source
 - Logs/checkpoints: D:\deep learning project\runs\r0_3b_coverage_sft_2026-11-20
 - Reviews: D:\deep learning project\experiments\r0_3b_coverage_sft_2026-11-20\development_review
 - Reports: D:\deep learning project\reports\r0_3b_coverage_sft_2026-11-20
 
-source_bundle.zip为原冻结包；训练前长度配比修订另存coverage_amendment.zip，保留原与实际执行清单。恢复必须使用匹配的优化器、数据顺序、RNG、协议和完整检查点，不能仅据最后一行日志重启。 / The initial source bundle and pretraining amendment are both preserved. Exact recovery requires matching optimizer, order, RNG, protocol and a full checkpoint.
+The initial source bundle and pretraining amendment are both preserved. Exact recovery requires matching optimizer, order, RNG, protocol and a full checkpoint.
 
-AI语义审核不等同于冰岛语母语专家认证。本轮没有DAPO更新，也没有MetricX调用。 / AI review is not native-expert certification. No DAPO updates or MetricX calls in this round.
+AI review is not native-expert certification. No DAPO updates or MetricX calls in this round.
 
-## 开发集逐条语义审核 / Development semantic audit
+## Development semantic audit
 
-## 开发集分数与语义覆盖 / Development scores and confirmed semantics
+## Development scores and confirmed semantics
 
-![开发集分数与语义覆盖 / Development scores and confirmed semantics](<D:/deep learning project/reports/r0_3b_coverage_sft_2026-11-20/development_scores_and_semantics.png>)
+![Development scores and confirmed semantics](<D:/deep learning project/reports/r0_3b_coverage_sft_2026-11-20/development_scores_and_semantics.png>)
 
 
-## 同条件最终比较 / Matched anchor comparison
+## Matched anchor comparison
 
-![同条件最终比较 / Matched anchor comparison](<D:/deep learning project/reports/r0_3b_coverage_sft_2026-11-20/matched_anchor_quality_and_coverage.png>)
+![Matched anchor comparison](<D:/deep learning project/reports/r0_3b_coverage_sft_2026-11-20/matched_anchor_quality_and_coverage.png>)
 
 
 <details><summary>A · G8 · p13official21:dev:eso:491 · U</summary>
@@ -3858,7 +3854,7 @@ AI语义审核不等同于冰岛语母语专家认证。本轮没有DAPO更新�
 
 </details>
 
-## 逐句结果 / All 256 anchor translations
+## All 256 anchor translations
 
 
 <details><summary>Anchor: p13official21:test:opensubtitles:2621</summary>
@@ -6165,7 +6161,7 @@ AI语义审核不等同于冰岛语母语专家认证。本轮没有DAPO更新�
 
 </details>
 
-## 最终anchor语义逐条审核 / Final anchor semantic cases
+## Final anchor semantic cases
 
 
 <details><summary>after · G8 · p13official21:test:eea:79 · F</summary>
@@ -7320,7 +7316,7 @@ AI语义审核不等同于冰岛语母语专家认证。本轮没有DAPO更新�
 **Candidate 4:** Lynparza er ætlað til einlyfja meðferðar við viðhaldsmeðferð hjá fullorðnum sjúklingum með brastefnavirkt endurtekið BRCA-smita (germline og/eða sjálfsbundin) líthjúpskrúfa í eggjastokkum, eftirlimni eða fyrir upphaf líffærskrampa í kæfa, sem hafa svörun (heildarsvörun eða hluta sjón) við þar til hefur verið notað krabbameinslyfjameðferð með platinum.
 **Candidate 5:** Lynparza er ætlað til einlyfja meðferðar við viðhaldsmeðferðar hjá fullorðnum sjúklingum með BRCA-hágrunnar (germline og/eða líffæra) hægðaeitilkynns eggjastokka (serous epithelial ovarian), hægðastokka (fallopian tube) eða grunnkrabbameins í keppslisbólu sem hefur upphafðar til að sjá (heilbrigði svörun eða hlutfallslegan svörun) á þá grundvelli á롤um.
 **Candidate 6:** Lynparza er ætlað til einlyfjameðferðar við viðhaldsmeðferð hjá fullorðnum sjúklingum með bróktrýstæð krabbamein í seröuml; heil fyrir lifur (serous epithelial ovarian, fallopian tube, or primary peritoneal cancer) með BRCA-verkun (germline and/or somatic) sem bregðast aftur og sem svaraðar eru (fullkominn svörun eða hluta sjúkrasvörun) við meðferð með platíníum.
-**Candidate 7:** Lynparza er ætlað til einlyfjameðferðar við viðhaldsmeðferð hjá fullorðnum sjúklingum með brísins- hjátrusögu (germlin- og/eða líkamans) óheilbrigða serískri ægishaldna kyrningasjúkdóms í maga, kyrningaslagaslag, eða grunnklínveiru sjúkdóms með krypir (kominn í fullanlegu (viðfullanlega) eða hlutfallslegan (viðhlutfallslegan) svörun) frá接种化疗platin.
+**Candidate 7:** Lynparza er ætlað til einlyfjameðferðar við viðhaldsmeðferð hjá fullorðnum sjúklingum með brísins- hjátrusögu (germlin- og/eða líkamans) óheilbrigða serískri ægishaldna kyrningasjúkdóms í maga, kyrningaslagaslag, eða grunnklínveiru sjúkdóms með krypir (kominn í fullanlegu (viðfullanlega) eða hlutfallslegan (viðhlutfallslegan) svörun) frá[inoculation chemotherapy]platin.
 
 </details>
 
@@ -9360,7 +9356,7 @@ AI语义审核不等同于冰岛语母语专家认证。本轮没有DAPO更新�
 
 </details>
 
-## 已训练样本逐条审核 / Known-seen fitting cases
+## Known-seen fitting cases
 
 
 <details><summary>after · fit-greedy · OpenSubtitles18:183388 · P</summary>

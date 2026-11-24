@@ -1,82 +1,82 @@
-# 3B R0：八小时内的分阶段补强方案 / Adaptive continuation within eight GPU hours
+# Adaptive continuation within eight GPU hours
 
-日期 / Date: 2026-11-18（Europe/Berlin）。这是本轮执行方案；实际完成状态和数值以execution_status及同目录RESULTS报告为准，本文不把计划写成结果。/ This is the execution plan for this run. Consult execution_status and the RESULTS report for actual completion and observed values; planned outcomes are not presented as results.
+Date: 2026-11-18 (Europe/Berlin). This is the execution plan. Consult execution_status and the RESULTS report for actual completion and observed values; planned outcomes are not presented as results.
 
-## 目标与当前证据 / Objective and existing evidence
+## Objective and existing evidence
 
-目标是在固定3B模型内获得更可靠的英→冰岛语SFT起点，特别改善技术中长句，并保留通用翻译能力。八小时是GPU累计占用上限，不是必须烧满的训练时长，也不保证达到某个分数。/ The objective is a more reliable English-to-Icelandic SFT starting policy, especially for technical medium/long sentences, while retaining general translation. Eight hours is a cumulative GPU allocation ceiling, not a requirement to spend it all or a promised score.
+The objective is a more reliable English-to-Icelandic SFT starting policy, especially for technical medium/long sentences, while retaining general translation. Eight hours is a cumulative GPU allocation ceiling, not a requirement to spend it all or a promised score.
 
-上一轮3B在同一128条旧诊断样本上的chrF++为34.46，旧0.8B SFT200为36.04；差值区间跨零。3B技术G=8样本中仅2/24组含明确正确候选，长句0/10。它说明当前检查点仍有明显候选能力缺口，不能证明3B容量不足，也不能把所有DAPO问题归咎于SFT。/ The previous 3B checkpoint scored34.46 chrF++ on128 reused diagnostic sources versus36.04 for the older0.8B SFT200; the paired interval crossed zero. Only2/24 technical G=8 groups, and0/10 long groups, contained a clearly good candidate. These observations identify an actor coverage gap, not a model-capacity ceiling or proof that SFT explains every DAPO failure.
+The previous 3B checkpoint scored34.46 chrF++ on128 reused diagnostic sources versus36.04 for the older0.8B SFT200; the paired interval crossed zero. Only2/24 technical G=8 groups, and0/10 long groups, contained a clearly good candidate. These observations identify an actor coverage gap, not a model-capacity ceiling or proof that SFT explains every DAPO failure.
 
-奖励排序错误是另一条独立证据。提高SFT不自动修复MetricX；本轮先补强actor，奖励可用性另行判断。/ Reward misranking is separate evidence. Improving SFT does not automatically repair MetricX; actor quality and reward readiness are assessed separately.
+Reward misranking is separate evidence. Improving SFT does not automatically repair MetricX; actor quality and reward readiness are assessed separately.
 
-## 硬预算、保留与控制 / Budget, preservation and control
+## Budget, preservation and control
 
-| 项目 / Item | 冻结安排 / Registered arrangement |
+| Item | Registered arrangement |
 | --- | --- |
-| 实际GPU / Actual GPU | Colab L4，约22.0GiB / approximately22.0GiB |
-| 累计起点 / Allocation start | 2026-11-18 00:35:19 Berlin |
-| 绝对截止 / Absolute release deadline | 2026-11-18 08:35:19 Berlin |
-| 计时范围 / Included | 下载、预热、训练、评估、空闲审查和传输均计入 / Setup, training, evaluation, review idle time and transfers |
-| 持久化 / Persistence | 完整optimizer/RNG检查点分块校验同步D盘；最终双副本 / Hashed full optimizer/RNG snapshots to D:, final duplicate verified export |
-| 既有模型 / Existing models | 旧0.8B和第一轮3B只读保留 / Older0.8B and first3B preserved |
-| 操作路径 / Workflow | 沿用Colab；已授权的官方CLI控制现有自有GPU，不依赖Drive挂载 / Same Colab workflow, authorized official CLI control, no Drive mount dependency |
+| Actual GPU | approximately22.0GiB |
+| Allocation start | 2026-11-18 00:35:19 Berlin |
+| Absolute release deadline | 2026-11-18 08:35:19 Berlin |
+| Included | Setup, training, evaluation, review idle time and transfers |
+| Persistence | Hashed full optimizer/RNG snapshots to D:, final duplicate verified export |
+| Existing models | Older0.8B and first3B preserved |
+| Workflow | Same Colab workflow, authorized official CLI control, no Drive mount dependency |
 
-## 阶段A：有界续训 / Stage A: bounded continuation
+## Stage A: bounded continuation
 
-从第一轮选中的3B非零LoRA权重续训，重置AdamW而非声称恢复旧优化器。目标898,707个新增target token；40%通用、5%技术短句、25%技术中句、30%技术长句。同一pair本阶段最多2次、此3B训练链累计最多3次。学习率5e-5，2%预热后cosine衰减到20%。/ Continue the trained, nonzero LoRA selected in round1 with a fresh AdamW stage. The stream has898,707 additional target tokens in a40/5/25/30 general/short/medium/long mixture. A pair is used at most twice in this stage and three times cumulatively on this3B chain. LR5e-5,2% warmup, cosine decay to20%.
+Continue the trained, nonzero LoRA selected in round1 with a fresh AdamW stage. The stream has898,707 additional target tokens in a40/5/25/30 general/short/medium/long mixture. A pair is used at most twice in this stage and three times cumulatively on this3B chain. LR5e-5,2% warmup, cosine decay to20%.
 
-在0/25万/50万/75万/结束评估固定dev64；连续两次未出现符合保留条件且至少+0.3的加权chrF++改善即提前停。选择最佳合格检查点，保留起点回退，不以最后一步或训练loss决定。新生成的128条起点译文及完整token已与上一轮保存输出128/128一致。/ Evaluate fixed dev64 at0/250k/500k/750k/end. Stop after two checks without an eligible weighted chrF++ gain of at least0.3. Keep the best eligible checkpoint with parent fallback, rather than selecting by the final update or training loss. All128 regenerated parent hypotheses and full token sequences match the saved previous-round outputs exactly.
+Evaluate fixed dev64 at0/250k/500k/750k/end. Stop after two checks without an eligible weighted chrF++ gain of at least0.3. Keep the best eligible checkpoint with parent fallback, rather than selecting by the final update or training loss. All128 regenerated parent hypotheses and full token sequences match the saved previous-round outputs exactly.
 
-dev64指生成评估：32通用/8短/12中/12长；另有固定144对teacher-forced NLL dev：64通用/24短/28中/28长，共8,649个target token，用于NLL诊断和并列判断，不与生成dev64混用。/ Generated dev64 comprises32general/8short/12medium/12long cases. A separate fixed144-pair teacher-forced NLL set (64general/24short/28medium/28long;8,649 target tokens) supports NLL diagnostics and tie-breaking; these sets are distinct.
+Generated dev64 comprises32general/8short/12medium/12long cases. A separate fixed144-pair teacher-forced NLL set (64general/24short/28medium/28long;8,649 target tokens) supports NLL diagnostics and tie-breaking; these sets are distinct.
 
-## 新增数据：先排错再用 / New data: quality checks before training
+## New data: quality checks before training
 
-扫描本地已有ParIceFiltered、OpenSubtitles和Tatoeba约322万对；排除整个旧3B候选池的精确source/reference重合，以及已知开发/评估集的精确和启发式近重复。新增候选经过语言、数字、长度、编码、OCR和句子完整性筛查。抽查64对发现5个明显问题、18个注意项，主要有漏句、药物名替换、OCR和限定词丢失，随后冻结V3过滤规则。V1/V2及其审查记录保留。/ Approximately3.22million locally available ParIceFiltered, OpenSubtitles and Tatoeba pairs were scanned. Exact source/reference overlap with the entire prior3B candidate pool and exact/heuristic near overlap with known development/evaluation data were excluded. Language, number, length, encoding, OCR and completeness checks were applied. A64-pair source/reference review found5 clear defects and18 cautions, including omitted clauses, changed drug names, OCR and lost qualifiers; V3 rules were then frozen. V1/V2 and their reviews are preserved.
+Approximately3.22million locally available ParIceFiltered, OpenSubtitles and Tatoeba pairs were scanned. Exact source/reference overlap with the entire prior3B candidate pool and exact/heuristic near overlap with known development/evaluation data were excluded. Language, number, length, encoding, OCR and completeness checks were applied. A64-pair source/reference review found5 clear defects and18 cautions, including omitted clauses, changed drug names, OCR and lost qualifiers; V3 rules were then frozen. V1/V2 and their reviews are preserved.
 
-当前V3有28,948对：通用3,608、技术短3,538、中15,131、长6,671。它仍是候选池，不等于全部合格训练数据。待A的actor完全退出后，使用固定版本MetricX QE(source,human reference)辅助筛查：FP32、batch8、输入超过1536直接排除不截断、error≤4、最多20分钟。若只完成一部分，仅使用预先按类别比例交错的已评分前缀。之后对通过样本按固定hash抽查32对，不看分数；R/U>2则修订或停止，不直接训练。/ V3 contains28,948 candidate pairs:3,608 general,3,538 short,15,131 medium and6,671 long. Candidates are not automatically approved training data. After A fully releases actor memory, pinned MetricX QE scores source/human-reference pairs as an auxiliary filter: FP32, batch8, reject inputs over1536 without truncation, error≤4,20-minute cap. A partial run uses only the prespecified proportionally interleaved scored prefix. Then32 accepted pairs are reviewed by fixed hash without numeric scores; more than2 clear/uncertain defects triggers revision or stopping.
+Current V3 has28,948pairs: general3,608, technical-short3,538, medium15,131 and long6,671. It remains a candidate pool, not universally qualified training data. Once actor A exits completely, use pinned MetricX QE(source,human reference) as auxiliary screening: FP32,batch8, reject rather than truncate inputs beyond1536, error≤4 and at most20minutes. If incomplete, use only the prespecified category-interleaved scored prefix. Then hash-sample32passing pairs for score-blind review; R/U>V3 contains28,948 candidate pairs:3,608 general,3,538 short,15,131 medium and6,671 long. Candidates are not automatically approved training data. After A fully releases actor memory, pinned MetricX QE scores source/human-reference pairs as an auxiliary filter: FP32, batch8, reject inputs over1536 without truncation, error≤4,20-minute cap. A partial run uses only the prespecified proportionally interleaved scored prefix. Then32 accepted pairs are reviewed by fixed hash without numeric scores; more than2 clear/uncertain defects triggers revision or stopping.
 
-同一评分器用于数据筛选和将来RL奖励会引入相关偏差；QE不是语义证明，需保留独立参考和源文审查。启发式去重不是文档级独立性或预训练去污染证明。/ Reusing the scorer for data selection and later RL rewards introduces dependence. QE is not semantic certification, so independent reference/source review remains necessary. Heuristic deduplication does not establish document-level independence or pretraining decontamination.
+Reusing the scorer for data selection and later RL rewards introduces dependence. QE is not semantic certification, so independent reference/source review remains necessary. Heuristic deduplication does not establish document-level independence or pretraining decontamination.
 
-## 阶段B与可选后续 / Stage B and optional follow-up
+## Stage B and optional follow-up
 
-先审查A的32条固定greedy及32×8采样。若新数据通过质量门槛，可从最佳非退化A检查点或原父模型进行一次换数据的有界B阶段：优先新技术中长句，加入仍有累计次数额度的通用回放，预计最多约150–180万target token、学习率约3e-5。实际规模、起点、数据列表、学习率、停止条件在B任何输出产生前写入并哈希冻结；此处范围不是已执行值。/ Review A on fixed32 greedy sources and32×8 samples. If fresh data pass QA, one bounded changed-data stage B may start from the best non-regressing A checkpoint or the original parent. Prefer fresh technical medium/long pairs and general replay within remaining exposure allowances; the provisional ceiling is approximately1.5–1.8million target tokens at around3e-5 LR. Exact scope, parent, data order, LR and stops are hashed before any B outputs; these ranges are not executed values.
+Review A on fixed32 greedy sources and32×8 samples. If fresh data pass QA, one bounded changed-data stage B may start from the best non-regressing A checkpoint or the original parent. Prefer fresh technical medium/long pairs and general replay within remaining exposure allowances; the provisional ceiling is approximately1.5–1.8million target tokens at around3e-5 LR. Exact scope, parent, data order, LR and stops are hashed before any B outputs; these ranges are not executed values.
 
-各阶段的通用保留门槛同时锚定原3B父模型，避免每一轮允许下降1.5而累计退化。若B明显停滞或语义退化则停止；仅当B仍改善、有足够合格新数据且不侵占最终评估/备份时间，才考虑短小追加阶段。不会为了用满八小时重复小数据池。/ General-retention guards remain anchored to the original3B parent across stages to avoid accumulating a1.5-point drop per stage. Stop on plateau or semantic regression. A short additional stage is considered only with continuing gains, qualified data and preserved final evaluation/backup time; no repeated small-pool training merely to fill eight hours.
+General-retention guards remain anchored to the original3B parent across stages to avoid accumulating a1.5-point drop per stage. Stop on plateau or semantic regression. A short additional stage is considered only with continuing gains, qualified data and preserved final evaluation/backup time; no repeated small-pool training merely to fill eight hours.
 
-## 评估隔离与最终判断 / Evaluation separation and final judgement
+## Evaluation separation and final judgement
 
-旧dev64用于检查点选择；旧128和G8用于诊断及后续阶段安排。另在该新集合任何模型输出产生前冻结了128条holdout，并完成仅看source/reference的质量审查：主分析112条，全部128及A-only76条为敏感性分析；无旧3B池近重复被检出。最终权重选择封存后才在新holdout生成，不用它挑模型或调整训练。/ Old dev64 selects checkpoints; reused128 andG8 guide diagnostics and follow-up. A fresh128-source holdout was frozen before any outputs on those sources and reviewed using only source/reference: primary112, with all128 and A-only76 sensitivity analyses. The prior3B pool audit found no heuristic near matches. Generate this new holdout only after sealing the final weight choice; do not use it for model selection or further adaptation.
+Old dev64 selects checkpoints; reused128 andG8 guide diagnostics and follow-up. A fresh128-source holdout was frozen before any outputs on those sources and reviewed using only source/reference: primary112, with all128 and A-only76 sensitivity analyses. The prior3B pool audit found no heuristic near matches. Generate this new holdout only after sealing the final weight choice; do not use it for model selection or further adaptation.
 
-最终比较本轮选中3B、原3B父模型和旧0.8B SFT200。在相同source/reference与匹配FP32生成设置下报告chrF++、BLEU、分层配对bootstrap区间、技术中长句和语义错误/G8正确候选覆盖；单种子、小语义样本和同一AI审查者的局限明确列出。为最终新holdout比较和备份预留至少约75分钟。/ Compare the selected3B, original3B parent and older0.8B SFT200 under identical sources/references and matched FP32 generation settings. Report chrF++, BLEU, source-stratified paired bootstrap intervals, technical medium/long results, semantic errors and G8 good-candidate coverage. State single-seed, small semantic sample and same-AI-reviewer limitations. Reserve at least approximately75minutes for final fresh-holdout comparisons and backups.
+Compare the selected3B, original3B parent and older0.8B SFT200 under identical sources/references and matched FP32 generation settings. Report chrF++, BLEU, source-stratified paired bootstrap intervals, technical medium/long results, semantic errors and G8 good-candidate coverage. State single-seed, small semantic sample and same-AI-reviewer limitations. Reserve at least approximately75minutes for final fresh-holdout comparisons and backups.
 
-最终结论分开回答：(1)actor是否有足够正确候选和语义对比，可进入小预算DAPO；(2)奖励管线是否可靠。没有普适的chrF++准入线。若结果仍不够好，会报告具体失败证据和下一项最有判别力的行动，不承诺“再SFT就一定行”。/ The final conclusion separates (1) whether the actor has useful good-candidate coverage and semantic contrast for a small DAPO pilot, and (2) whether the reward pipeline is reliable. There is no universal chrF++ admission threshold. If the model is still inadequate, report specific failure evidence and the next discriminating action, without promising that more SFT must work.
+The final conclusion separates (1) whether the actor has useful good-candidate coverage and semantic contrast for a small DAPO pilot, and (2) whether the reward pipeline is reliable. There is no universal chrF++ admission threshold. If the model is still inadequate, report specific failure evidence and the next discriminating action, without promising that more SFT must work.
 
-## 执行修订记录：第二阶段启动前 / Execution amendment before stage B
+## Execution amendment before stage B
 
-2026-11-18 02:22UTC：原error≤4池的32对复查为20A/9C/2R/1U，超过固定R+U≤2门槛，未批准训练。保留失败记录后，V4收紧至error≤3，加入古英语引文、角色和临床术语规则，将107对泛泛星/月/太阳对话归为通用；另抽不重叠32对为19A/11C/2U，按同一门槛通过，两条U及7条全局OCR样本仍排除。批准池17,282对。/ At02:22UTC, the original error≤4 pool had failed32-pair QA (20A/9C/2R/1U;fixed R+U≤2 gate). The failed records were retained. V4 tightened error to≤3, added archaic-quotation, role and clinical-term rules, and reclassified107 generic star/moon/sun dialogues as general. A disjoint32 review passed the same gate with19A/11C/2U;both U pairs and7 globally found OCR cases were excluded, leaving17,282 approved pairs.
+At02:22UTC, the original error≤4 pool had failed32-pair QA (20A/9C/2R/1U;fixed R+U≤2 gate). The failed records were retained. V4 tightened error to≤3, added archaic-quotation, role and clinical-term rules, and reclassified107 generic star/moon/sun dialogues as general. A disjoint32 review passed the same gate with19A/11C/2U;both U pairs and7 globally found OCR cases were excluded, leaving17,282 approved pairs.
 
-B于任何输出前冻结：继续A选中adapter，保持3B及rank16，LR3e-5，seed2026111841，新AdamW；流总1,799,948 target token，47,241 unique pair、55,010 exposures，其中新增14,792对。40/5/25/30为通用/短/中/长目标token占比，单阶段≤2次、全历史≤3次。11项CPU检查通过；未改变原八小时总预算和75分钟最终评估预留。A仍只是工作起点，技术G8正确覆盖4/24、长句0/10，不把它称为已合格R0。/ Before any B output, the parent A adapter,3B/rank16,LR3e-5,seed2026111841,fresh AdamW and1,799,948-target stream were frozen:47,241 unique pairs,55,010 exposures,including14,792 fresh pairs. General/short/medium/long target shares are40/5/25/30,with≤2 uses per stage and≤3 cumulatively. All11 CPU checks passed. The original eight-hour ceiling and75-minute final reserve remain. A is a working parent, not a qualified R0: technical G8 coverage4/24 and long0/10.
+Before any B output, the parent A adapter,3B/rank16,LR3e-5,seed2026111841,fresh AdamW and1,799,948-target stream were frozen:47,241 unique pairs,55,010 exposures,including14,792 fresh pairs. General/short/medium/long target shares are40/5/25/30,with≤2 uses per stage and≤3 cumulatively. All11 CPU checks passed. The original eight-hour ceiling and75-minute final reserve remain. A is a working parent, not a qualified R0: technical G8 coverage4/24 and long0/10.
 
-## 03:34UTC 条件修订：只在B早停且时间充足时 / Conditional amendment
+## Conditional amendment
 
-B首个50万target检查：加权chrF++38.70→38.88，长句40.56→39.17。元数据审计显示B计划的长句target约51.3%法律、28.6%医疗、5.5%天文，旧长句评估24条中5条来自天文语料；这只是相关线索。此处更新初稿的可选追加条件：只有B按原规则因两次停滞在≤105万target早停、完整审查后actor覆盖仍不足、且启动时还剩≥165分钟，才考虑C。/ At B500k,weighted chrF++38.70→38.88 and long40.56→39.17. Metadata show B long targets51.3% legal,28.6% medical,5.5% astronomy,while5/24 reused long cases have astronomy provenance;this is correlational. This amendment supersedes the initial optional-follow-up condition: consider C only after a frozen-rule B plateau stop at≤1.05m,completed review showing insufficient actor coverage,and≥165minutes remaining at launch.
+At B500k,weighted chrF++38.70→38.88 and long40.56→39.17. Metadata show B long targets51.3% legal,28.6% medical,5.5% astronomy,while5/24 reused long cases have astronomy provenance;this is correlational. This amendment supersedes the initial optional-follow-up condition: consider C only after a frozen-rule B plateau stop at≤1.05m,completed review showing insufficient actor coverage,and≥165minutes remaining at launch.
 
-C尚非已执行训练：上限30万target，3B/rank16不变，LR2e-5，seed2026111842，检查0/15万/30万；通用/短/中/长仍40/5/25/30，各技术长度内四领域各约25%target。只用同一已批准V4池及原通用回放，不放松质量阈值、单阶段≤2、累计≤3。保留最佳A/B起点和全部已有权重；准备、训练、评估、审查、备份须在约90分钟内，最终75分钟及原八小时总上限不变。触发条件不满足就不运行C。/ C is not yet executed:cap300k targets,same3B/rank16,LR2e-5,seed2026111842,checks0/150k/300k;general/short/medium/long remain40/5/25/30,with approximately equal four-domain targets within each technical length. Use only the approved V4 pool and vetted general replay,unchanged QA and≤2/≤3 exposure caps. Preserve the best A/B parent and all existing weights. Preparation,training,evaluation,review and backup must fit roughly90minutes,with the same75-minute final reserve and8h ceiling. Skip C if its conditions fail.
+C is not yet executed:cap300k targets,same3B/rank16,LR2e-5,seed2026111842,checks0/150k/300k;general/short/medium/long remain40/5/25/30,with approximately equal four-domain targets within each technical length. Use only the approved V4 pool and vetted general replay,unchanged QA and≤2/≤3 exposure caps. Preserve the best A/B parent and all existing weights. Preparation,training,evaluation,review and backup must fit roughly90minutes,with the same75-minute final reserve and8h ceiling. Skip C if its conditions fail.
 
-## 03:52UTC 取消可选C / Optional C skipped
+## Optional C skipped
 
-提高稀少领域权重前，另做领域均衡32对复查：21A9C2R，排除两条需上文的句对，并发现领域误标。保守修订领域标签后，另一批不重叠32对为21A7C4R，超过原R+U≤2门槛；包括恒星单复数、作者姓名、比较发生率遗漏和上文指代。依照门槛取消C，不放松标准或继续反复筛到通过。原B数据未改写，继续其冻结选择/停止流程，随后封存最佳A/B/原父模型并独立评估。C代码准备不等于C训练；C GPU更新为0。/ Before upweighting rare domains,an additional balanced32 review gave21A9C2R and exposed domain mislabels. After conservative relabelling,a disjoint32 review gave21A7C4R,exceeding the unchanged R+U≤2 gate:star plurality,author identity,comparative incidence and context-resolved references. Skip C rather than relax the gate or repeatedly filter until passing. B data remain frozen;complete its selection/stopping flow,seal the best A/B/original parent,and evaluate independently. Prepared C code is not C training:C GPU updates0.
+Before upweighting rare domains,an additional balanced32 review gave21A9C2R and exposed domain mislabels. After conservative relabelling,a disjoint32 review gave21A7C4R,exceeding the unchanged R+U≤2 gate:star plurality,author identity,comparative incidence and context-resolved references. Skip C rather than relax the gate or repeatedly filter until passing. B data remain frozen;complete its selection/stopping flow,seal the best A/B/original parent,and evaluate independently. Prepared C code is not C training:C GPU updates0.
 
-## 03:57UTC 新增独立G8测量 / Additional fresh G8 measurement
+## Additional fresh G8 measurement
 
-只增加最终测量，不增加训练：复用原先冻结24条语义来源中的16条技术来源（4短/6中/6长），对选中3B、原3B和旧0.8B各生成16×8候选。原112主分析及128/76敏感性集不变，任何新holdout输出前先封存最终权重，之后不继续训练。先锁72个greedy标签，再隐藏三模型身份、逐来源打乱24候选，锁384个G/P/B/U后汇总；相同source+译文沿用相同标签，并非384次独立专家评判。/ This adds final measurement only:reuse the16 technical IDs (4short/6medium/6long) of the earlier frozen24-source semantic subset and generate16×8 for selected3B,original3B and older0.8B. The112 primary and128/76 sensitivity sets remain. Seal weights before any fresh generation;no later training. Lock72 greedy labels first,then shuffle24 candidates per source with model identities hidden and lock384 labels before aggregation. Identical source/translation pairs keep identical labels;these are not384 independent expert decisions.
+This adds final measurement only:reuse the16 technical IDs (4short/6medium/6long) of the earlier frozen24-source semantic subset and generate16×8 for selected3B,original3B and older0.8B. The112 primary and128/76 sensitivity sets remain. Seal weights before any fresh generation;no later training. Lock72 greedy labels first,then shuffle24 candidates per source with model identities hidden and lock384 labels before aggregation. Identical source/translation pairs keep identical labels;these are not384 independent expert decisions.
 
-04:01UTC冻结的最终评估源代码SHA：b3d8d39667789939db4c0ac6196d5d6af8388169cf83cfddecb22b9067e99651。执行包装器先验证源代码并把代码和身份记录一同导出；原GPU八小时截止时间不变。/ The final evaluation source was frozen at04:01UTC with SHA b3d8d39667789939db4c0ac6196d5d6af8388169cf83cfddecb22b9067e99651. The wrapper verifies it and exports both source and identity;the original eight-hour deadline remains.
+The final evaluation source was frozen at04:01UTC with SHA b3d8d39667789939db4c0ac6196d5d6af8388169cf83cfddecb22b9067e99651. The wrapper verifies it and exports both source and identity;the original eight-hour deadline remains.
 
-<details><summary>完整冻结参数与文件 / Frozen parameters and files</summary>
+<details><summary>Frozen parameters and files</summary>
 
-| 参数 / Parameter | 值 / Value |
+| Parameter | Value |
 | --- | --- |
 | target_token_budget | 900000 |
 | actual_stream_tokens | 898707 |
@@ -101,10 +101,10 @@ C尚非已执行训练：上限30万target，3B/rank16不变，LR2e-5，seed2026
 | max_cumulative_pair_exposures | 3 |
 | early_stop | {'patience': 2, 'min_weighted_chrf_gain': 0.3, 'only_eligible_improvements': True} |
 
-| 目录 / Directory | 用途 / Purpose |
+| Directory | Purpose |
 | --- | --- |
-| D:\deep learning project\experiments\r0_3b_overnight_2026-11-18 | 冻结代码、数据、协议、质量审查 / Frozen code,data,protocol,QA |
-| D:\deep learning project\runs\r0_3b_overnight_2026-11-18 | 实际日志、检查点、验证导出 / Actual logs,checkpoints,verified exports |
-| D:\deep learning project\reports\r0_3b_overnight_2026-11-18 | 双语方案与最终结果 / Bilingual plan and final results |
+| D:\deep learning project\experiments\r0_3b_overnight_2026-11-18 | Frozen code,data,protocol,QA |
+| D:\deep learning project\runs\r0_3b_overnight_2026-11-18 | Actual logs,checkpoints,verified exports |
+| D:\deep learning project\reports\r0_3b_overnight_2026-11-18 | Bilingual plan and final results |
 
 </details>
