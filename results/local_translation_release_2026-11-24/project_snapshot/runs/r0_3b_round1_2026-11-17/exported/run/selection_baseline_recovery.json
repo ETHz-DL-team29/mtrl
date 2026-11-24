@@ -1,0 +1,10 @@
+{
+  "reused64": true,
+  "recomputed_nll": {
+    "nll": 3.4859837682995027,
+    "technical_nll": 3.533611743394119,
+    "dev_target_tokens": 8649
+  },
+  "prior_nll": 3.4859837682995027,
+  "not_new_generation": true
+}

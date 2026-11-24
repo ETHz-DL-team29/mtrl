@@ -1,0 +1,253 @@
+{
+  "UTC": "2026-11-21T23:29:07.348019+00:00",
+  "n": 128,
+  "metrics": {
+    "overall": {
+      "n": 128,
+      "chrfpp": {
+        "before": 47.78920011462019,
+        "after": 48.79670431379066,
+        "delta": 1.0075041991704694,
+        "delta95CI": [
+          -0.9986615868963105,
+          2.828889561899789
+        ],
+        "bootstrap_unit": "paired source",
+        "replicates": 2000
+      },
+      "bleu": {
+        "before": 27.171587925476437,
+        "after": 28.044991837313916,
+        "delta": 0.8734039118374781,
+        "delta95CI": [
+          -1.9986915731948272,
+          3.1948674563155253
+        ],
+        "bootstrap_unit": "paired source",
+        "replicates": 2000
+      }
+    },
+    "general": {
+      "n": 32,
+      "chrfpp": {
+        "before": 44.43129266089134,
+        "after": 42.01970795028274,
+        "delta": -2.4115847106085937,
+        "delta95CI": [
+          -5.664958507661377,
+          0.5653588300983565
+        ],
+        "bootstrap_unit": "paired source",
+        "replicates": 2000
+      },
+      "bleu": {
+        "before": 22.940777151930003,
+        "after": 19.07738391828844,
+        "delta": -3.8633932336415633,
+        "delta95CI": [
+          -8.515984167910153,
+          -0.5433184191931874
+        ],
+        "bootstrap_unit": "paired source",
+        "replicates": 2000
+      }
+    },
+    "technical_short": {
+      "n": 32,
+      "chrfpp": {
+        "before": 51.86318749976352,
+        "after": 52.16525048053645,
+        "delta": 0.3020629807729307,
+        "delta95CI": [
+          -3.2490879026676787,
+          4.016736201711273
+        ],
+        "bootstrap_unit": "paired source",
+        "replicates": 2000
+      },
+      "bleu": {
+        "before": 31.270738864678812,
+        "after": 31.61425993686813,
+        "delta": 0.3435210721893185,
+        "delta95CI": [
+          -4.523403029299836,
+          4.769520163251872
+        ],
+        "bootstrap_unit": "paired source",
+        "replicates": 2000
+      }
+    },
+    "technical_medium": {
+      "n": 32,
+      "chrfpp": {
+        "before": 42.09040929533485,
+        "after": 43.330056016917084,
+        "delta": 1.2396467215822327,
+        "delta95CI": [
+          -1.4969610947867427,
+          4.486994213408674
+        ],
+        "bootstrap_unit": "paired source",
+        "replicates": 2000
+      },
+      "bleu": {
+        "before": 19.10121070193217,
+        "after": 19.857085106769457,
+        "delta": 0.7558744048372859,
+        "delta95CI": [
+          -2.1599015730569464,
+          4.253545639611347
+        ],
+        "bootstrap_unit": "paired source",
+        "replicates": 2000
+      }
+    },
+    "technical_long": {
+      "n": 32,
+      "chrfpp": {
+        "before": 50.36175222167133,
+        "after": 51.79663119141006,
+        "delta": 1.434878969738726,
+        "delta95CI": [
+          -1.884201585571526,
+          4.3026416323884416
+        ],
+        "bootstrap_unit": "paired source",
+        "replicates": 2000
+      },
+      "bleu": {
+        "before": 30.607547517558082,
+        "after": 31.627823652956916,
+        "delta": 1.0202761353988343,
+        "delta95CI": [
+          -4.166419839498539,
+          5.284361081350292
+        ],
+        "bootstrap_unit": "paired source",
+        "replicates": 2000
+      }
+    },
+    "technical": {
+      "n": 96,
+      "chrfpp": {
+        "before": 47.99909998176716,
+        "after": 49.27508712198861,
+        "delta": 1.2759871402214529,
+        "delta95CI": [
+          -0.8826812852836545,
+          3.234172394001763
+        ],
+        "bootstrap_unit": "paired source",
+        "replicates": 2000
+      },
+      "bleu": {
+        "before": 27.358242897730637,
+        "after": 28.638235507210204,
+        "delta": 1.2799926094795673,
+        "delta95CI": [
+          -2.0044111075194047,
+          3.8868815606914033
+        ],
+        "bootstrap_unit": "paired source",
+        "replicates": 2000
+      }
+    },
+    "technical_medium_long": {
+      "n": 64,
+      "chrfpp": {
+        "before": 47.495718968443214,
+        "after": 48.90509167970245,
+        "delta": 1.4093727112592376,
+        "delta95CI": [
+          -1.0809593332348475,
+          3.540042318760272
+        ],
+        "bootstrap_unit": "paired source",
+        "replicates": 2000
+      },
+      "bleu": {
+        "before": 26.84057372413238,
+        "after": 28.301030250612854,
+        "delta": 1.460456526480474,
+        "delta95CI": [
+          -2.06078916288744,
+          4.120858553044608
+        ],
+        "bootstrap_unit": "paired source",
+        "replicates": 2000
+      }
+    }
+  },
+  "input_root": "D:\\deep learning project\\runs\\r0_3b_recovery_sft_2026-11-21\\live_mirror",
+  "input_sha256": {
+    "before_greedy.jsonl": "d87508d1709011291585c645733edcf80f5aa94d9d40ddb9803ea93e45269431",
+    "after_greedy.jsonl": "03e6bd8a2483f7d21abe6f37dc8f0f7837bc0de3b7566c37fc25b52d721da271",
+    "before_g8.jsonl": "19322cfb69f493757d65ca3e35cbfb704b8296b16e32acf7c2d11cb8ddaaaf5d",
+    "after_g8.jsonl": "4cb87251937faf367bc2a7444ef7818a4d0fff7c375d678a8695019487adc65c"
+  },
+  "matched_FP32": true,
+  "not_used_for_checkpoint_selection": true,
+  "limitations": [
+    "One training seed",
+    "Source bootstrap does not account for document clustering",
+    "Reference metric is not semantic certification"
+  ],
+  "signatures": {
+    "chrfpp": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0",
+    "bleu": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0"
+  },
+  "sampling": {
+    "before": {
+      "sources": 64,
+      "candidates": 512,
+      "mean_unique_texts": 7.875,
+      "truncated": 1,
+      "repetition": 1,
+      "by_stratum": {
+        "technical_short": {
+          "sources": 16,
+          "truncated": 0
+        },
+        "technical_medium": {
+          "sources": 24,
+          "truncated": 0
+        },
+        "technical_long": {
+          "sources": 24,
+          "truncated": 1
+        }
+      }
+    },
+    "after": {
+      "sources": 64,
+      "candidates": 512,
+      "mean_unique_texts": 7.75,
+      "truncated": 0,
+      "repetition": 0,
+      "by_stratum": {
+        "technical_short": {
+          "sources": 16,
+          "truncated": 0
+        },
+        "technical_medium": {
+          "sources": 24,
+          "truncated": 0
+        },
+        "technical_long": {
+          "sources": 24,
+          "truncated": 0
+        }
+      }
+    }
+  },
+  "greedy_health": {
+    "before": {
+      "truncated": 0,
+      "repetition": 0
+    },
+    "after": {
+      "truncated": 1,
+      "repetition": 1
+    }
+  }
+}

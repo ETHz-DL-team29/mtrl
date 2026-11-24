@@ -1,0 +1,194 @@
+[
+  {
+    "card": 0,
+    "id": "ParIce21:opensubtitles:test:1463",
+    "A": "R0",
+    "B": "SFT"
+  },
+  {
+    "card": 1,
+    "id": "ParIce21:opensubtitles:test:3600",
+    "A": "R0",
+    "B": "SFT"
+  },
+  {
+    "card": 2,
+    "id": "ParIce21:opensubtitles:test:1249",
+    "A": "R0",
+    "B": "SFT"
+  },
+  {
+    "card": 3,
+    "id": "OPUS-tatoeba-v20230412-eng-isl:7401",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 4,
+    "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 5,
+    "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+    "A": "R0",
+    "B": "SFT"
+  },
+  {
+    "card": 6,
+    "id": "OPUS-tatoeba-v20230412-eng-isl:6848",
+    "A": "R0",
+    "B": "SFT"
+  },
+  {
+    "card": 7,
+    "id": "ParIce21:opensubtitles:test:476",
+    "A": "R0",
+    "B": "SFT"
+  },
+  {
+    "card": 8,
+    "id": "ParIce21:ema:test:415",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 9,
+    "id": "ParIce21:ema:test:3040",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 10,
+    "id": "ParIce21:ema:test:1271",
+    "A": "R0",
+    "B": "SFT"
+  },
+  {
+    "card": 11,
+    "id": "ParIce21:eso:test:349",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 12,
+    "id": "ParIce21:norden:test:264",
+    "A": "R0",
+    "B": "SFT"
+  },
+  {
+    "card": 13,
+    "id": "ParIce21:ema:test:425",
+    "A": "R0",
+    "B": "SFT"
+  },
+  {
+    "card": 14,
+    "id": "ParIce:1086503",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 15,
+    "id": "ParIce:742910",
+    "A": "R0",
+    "B": "SFT"
+  },
+  {
+    "card": 16,
+    "id": "ParIce:1722911",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 17,
+    "id": "ParIce:648947",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 18,
+    "id": "ParIce:1641328",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 19,
+    "id": "ParIce21:norden:test:43",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 20,
+    "id": "ParIce21:ema:test:709",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 21,
+    "id": "ParIce21:norden:test:100",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 22,
+    "id": "ParIce21:eso:test:763",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 23,
+    "id": "ParIce:314793",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 24,
+    "id": "ParIce:804526",
+    "A": "R0",
+    "B": "SFT"
+  },
+  {
+    "card": 25,
+    "id": "ParIce:215549",
+    "A": "R0",
+    "B": "SFT"
+  },
+  {
+    "card": 26,
+    "id": "ParIce:290254",
+    "A": "R0",
+    "B": "SFT"
+  },
+  {
+    "card": 27,
+    "id": "ParIce:419917",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 28,
+    "id": "ParIce21:ema:test:2419",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 29,
+    "id": "ParIce21:eso:test:654",
+    "A": "SFT",
+    "B": "R0"
+  },
+  {
+    "card": 30,
+    "id": "ParIce:1179551",
+    "A": "R0",
+    "B": "SFT"
+  },
+  {
+    "card": 31,
+    "id": "ParIce21:ema:test:2944",
+    "A": "R0",
+    "B": "SFT"
+  }
+]

@@ -1,0 +1,279 @@
+{
+  "UTC": "2026-11-20T13:44:02.276589+00:00",
+  "models": {
+    "before": {
+      "expected": 144,
+      "reviewed": 144,
+      "complete": true,
+      "strata": {
+        "greedy_general": {
+          "expected": 20,
+          "reviewed": 20,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 15,
+            "U": 1,
+            "P": 4
+          }
+        },
+        "greedy_technical_short": {
+          "expected": 20,
+          "reviewed": 20,
+          "not_reviewed": 0,
+          "counts": {
+            "P": 3,
+            "F": 15,
+            "U": 2
+          }
+        },
+        "greedy_technical_medium": {
+          "expected": 20,
+          "reviewed": 20,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 19,
+            "U": 1
+          }
+        },
+        "greedy_technical_long": {
+          "expected": 20,
+          "reviewed": 20,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 20
+          }
+        },
+        "G8_technical_short": {
+          "expected": 16,
+          "reviewed": 16,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 13,
+            "U": 2,
+            "P": 1
+          }
+        },
+        "G8_technical_medium": {
+          "expected": 24,
+          "reviewed": 24,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 20,
+            "P": 3,
+            "U": 1
+          }
+        },
+        "G8_technical_long": {
+          "expected": 24,
+          "reviewed": 24,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 24
+          }
+        }
+      },
+      "G8_confirmed_P": 4,
+      "G8_U": 3,
+      "greedy_P": 7
+    },
+    "after": {
+      "expected": 144,
+      "reviewed": 144,
+      "complete": true,
+      "strata": {
+        "greedy_general": {
+          "expected": 20,
+          "reviewed": 20,
+          "not_reviewed": 0,
+          "counts": {
+            "P": 10,
+            "F": 10
+          }
+        },
+        "greedy_technical_short": {
+          "expected": 20,
+          "reviewed": 20,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 16,
+            "P": 3,
+            "U": 1
+          }
+        },
+        "greedy_technical_medium": {
+          "expected": 20,
+          "reviewed": 20,
+          "not_reviewed": 0,
+          "counts": {
+            "P": 5,
+            "F": 14,
+            "U": 1
+          }
+        },
+        "greedy_technical_long": {
+          "expected": 20,
+          "reviewed": 20,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 20
+          }
+        },
+        "G8_technical_short": {
+          "expected": 16,
+          "reviewed": 16,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 8,
+            "P": 5,
+            "U": 3
+          }
+        },
+        "G8_technical_medium": {
+          "expected": 24,
+          "reviewed": 24,
+          "not_reviewed": 0,
+          "counts": {
+            "P": 7,
+            "U": 6,
+            "F": 11
+          }
+        },
+        "G8_technical_long": {
+          "expected": 24,
+          "reviewed": 24,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 21,
+            "U": 3
+          }
+        }
+      },
+      "G8_confirmed_P": 12,
+      "G8_U": 12,
+      "greedy_P": 18
+    },
+    "old08": {
+      "expected": 144,
+      "reviewed": 144,
+      "complete": true,
+      "strata": {
+        "greedy_general": {
+          "expected": 20,
+          "reviewed": 20,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 13,
+            "P": 6,
+            "U": 1
+          }
+        },
+        "greedy_technical_short": {
+          "expected": 20,
+          "reviewed": 20,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 17,
+            "P": 2,
+            "U": 1
+          }
+        },
+        "greedy_technical_medium": {
+          "expected": 20,
+          "reviewed": 20,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 18,
+            "U": 2
+          }
+        },
+        "greedy_technical_long": {
+          "expected": 20,
+          "reviewed": 20,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 20
+          }
+        },
+        "G8_technical_short": {
+          "expected": 16,
+          "reviewed": 16,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 14,
+            "P": 2
+          }
+        },
+        "G8_technical_medium": {
+          "expected": 24,
+          "reviewed": 24,
+          "not_reviewed": 0,
+          "counts": {
+            "P": 2,
+            "F": 21,
+            "U": 1
+          }
+        },
+        "G8_technical_long": {
+          "expected": 24,
+          "reviewed": 24,
+          "not_reviewed": 0,
+          "counts": {
+            "F": 24
+          }
+        }
+      },
+      "G8_confirmed_P": 4,
+      "G8_U": 1,
+      "greedy_P": 8
+    }
+  },
+  "reviewer": "Same assistant,checkpoint names hidden,not external/native-certified",
+  "unit": "Source,not8independent candidate observations",
+  "paired_confirmed_P_coverage": {
+    "before": 4,
+    "after": 12,
+    "net_source_gain": 8,
+    "gain95CI_sources": [
+      2.0,
+      14.0
+    ],
+    "replicates": 2000,
+    "interpretation": "Confirmed-positive audit coverage only;U is not called incorrect. Interval conditions on this AI-assisted annotation and source sample,not native truth/training seeds."
+  },
+  "project_screening": {
+    "status": "SEMANTIC_PROJECT_TARGETS_NOT_DEMONSTRATED",
+    "checks": {
+      "G8_total_P_ge39": false,
+      "G8_short_P_ge8": false,
+      "G8_medium_P_ge12": false,
+      "G8_long_P_ge12": false,
+      "greedy_general_P_ge14": false,
+      "greedy_technical_P_ge30": false
+    },
+    "not_a_universal_DAPO_gate": true,
+    "meaning": "Comprehensive project baseline screen;does not establish that a restricted DAPO pilot is impossible if targets are missed."
+  },
+  "combined_project_screening": {
+    "status": "PROJECT_SCREEN_NOT_DEMONSTRATED",
+    "semantic_checks": {
+      "G8_total_P_ge39": false,
+      "G8_short_P_ge8": false,
+      "G8_medium_P_ge12": false,
+      "G8_long_P_ge12": false,
+      "greedy_general_P_ge14": false,
+      "greedy_technical_P_ge30": false
+    },
+    "metric_checks": {
+      "overall_chrf_delta_nonnegative": true,
+      "technical_chrf_delta_nonnegative": true,
+      "general_chrf_delta_at_least_minus1_5": true
+    },
+    "not_a_universal_DAPO_gate": true,
+    "not_native_certification": true
+  },
+  "substantial_confirmed_coverage_gain_target": {
+    "net_gain_at_least13": false,
+    "CI_lower_positive": true,
+    "separate_from_absolute_R0_qualification": true
+  }
+}

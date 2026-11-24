@@ -1,0 +1,18 @@
+{
+  "UTC": "2026-11-20T12:06:19.228826+00:00",
+  "compared_repeated_updates": 82,
+  "exact_record_contracts": {
+    "step": true,
+    "target_tokens": true,
+    "cursor": true,
+    "group_ids": true,
+    "group_target_tokens": true,
+    "lr": true,
+    "microbatch": true
+  },
+  "mean_absolute_loss_difference": 0.001161546547222316,
+  "maximum_absolute_loss_difference": 0.004214832321606576,
+  "mean_absolute_grad_norm_difference": 0.016874505252372926,
+  "maximum_absolute_grad_norm_difference": 0.14852285385131836,
+  "interpretation": "Confirms exact minibatch/cursor/token/LR continuation on the82 repeated updates. Floating results are not bit-identical and bitwise reproduction across GPU allocations is not claimed. No extra GPU work."
+}

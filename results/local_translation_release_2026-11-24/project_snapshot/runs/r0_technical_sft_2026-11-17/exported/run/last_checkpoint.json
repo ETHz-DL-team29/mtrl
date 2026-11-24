@@ -1,0 +1,8 @@
+{
+  "tag": "t400000",
+  "step": 330,
+  "target_tokens": 399895,
+  "adapter_sha256": "32dd7931c828d3c5ae069391cb7a4411acb70d8a93c670a1864276b375a2df52",
+  "optimizer_rng_sha256": "08350d75c68a80f82855e323f5995656b2a273c953b8966f5dc4e853abb7791c",
+  "path": "checkpoints/t400000"
+}

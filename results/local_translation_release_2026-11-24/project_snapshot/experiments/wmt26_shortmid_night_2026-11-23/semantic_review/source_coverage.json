@@ -1,0 +1,49 @@
+{
+  "UTC": "2026-11-24T02:27:51.987385+00:00",
+  "target_maximum": 32,
+  "actual_frozen_sources": 24,
+  "availability": {
+    "news": {
+      "short": {
+        "available": 188,
+        "selected": 4
+      },
+      "medium": {
+        "available": 184,
+        "selected": 4
+      }
+    },
+    "social": {
+      "short": {
+        "available": 378,
+        "selected": 4
+      },
+      "medium": {
+        "available": 300,
+        "selected": 4
+      }
+    },
+    "software": {
+      "short": {
+        "available": 0,
+        "selected": 0
+      },
+      "medium": {
+        "available": 0,
+        "selected": 0
+      }
+    },
+    "speech": {
+      "short": {
+        "available": 1291,
+        "selected": 4
+      },
+      "medium": {
+        "available": 128,
+        "selected": 4
+      }
+    }
+  },
+  "original_preoutput_selection_preserved": true,
+  "no_posthoc_padding": true
+}

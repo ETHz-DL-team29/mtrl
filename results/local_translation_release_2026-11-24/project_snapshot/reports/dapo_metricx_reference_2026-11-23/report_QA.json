@@ -1,0 +1,65 @@
+{
+  "UTC": "2026-11-23T14:23:41.591920+00:00",
+  "reports": {
+    "DAPO_METRICX_REFERENCE_RESULTS_2026-11-23.html": {
+      "bytes": 846901,
+      "counts": {
+        "html": 1,
+        "meta": 2,
+        "title": 1,
+        "style": 1,
+        "body": 1,
+        "h1": 2,
+        "p": 172,
+        "h2": 20,
+        "strong": 35,
+        "details": 33,
+        "summary": 33,
+        "pre": 33,
+        "code": 53,
+        "table": 8,
+        "thead": 8,
+        "tr": 15,
+        "th": 44,
+        "img": 1,
+        "tbody": 2,
+        "td": 25,
+        "a": 11,
+        "ol": 1,
+        "li": 29,
+        "ul": 2
+      },
+      "local_links_checked": true,
+      "sha256": "be0d46c1d2934a17a476cf6903dab46cae3309a613a65dfed53a5e9aeaadd777"
+    },
+    "P22_TRANSLATION_CASEBOOK_2026-11-23.html": {
+      "bytes": 228431,
+      "counts": {
+        "html": 1,
+        "meta": 2,
+        "title": 1,
+        "style": 1,
+        "body": 1,
+        "h1": 1,
+        "p": 245,
+        "a": 1,
+        "details": 64,
+        "summary": 64,
+        "strong": 240,
+        "br": 128,
+        "table": 112,
+        "thead": 112,
+        "tr": 624,
+        "th": 672,
+        "tbody": 112,
+        "td": 3072
+      },
+      "local_links_checked": true,
+      "sha256": "6daab1a8949f7603e57ae4dd99c496219a23c3bf315849dd442de18d1e2c692e"
+    }
+  },
+  "every_unique_hypothesis_in_casebook": true,
+  "live_vs_verified_export_inputs_identical": true,
+  "actual_updates": 120,
+  "objective_replay_passed": true
+}

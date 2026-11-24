@@ -1,0 +1,39 @@
+{
+  "UTC": "2026-11-22T00:06:29.749672+00:00",
+  "owned_runtime_released": true,
+  "account_assigned_runtime_count": 0,
+  "GPU_allocated_minutes": 236.73205313285192,
+  "total_task_minutes": 266.2423004229864,
+  "wall_budget": {
+    "user_request_anchor_unix": 1795290000.0,
+    "deadline_unix": 1795318800.0,
+    "training_deadline_unix": 1795311600.0,
+    "maximum_user_wall_hours": 8,
+    "deadline_Berlin": "2026-11-22 04:40 CET",
+    "conservative_anchor_includes_research": true,
+    "no_deadline_reset": true,
+    "allocated_unix": 1795291770.6148374,
+    "maximum_GPU_hours": 7.508162545164426
+  },
+  "hard_deadline_met": true,
+  "initial_compute_units": 228.97297643677106,
+  "final_compute_units": 221.40197007678634,
+  "observed_account_compute_unit_drop": 7.571006359984722,
+  "balance_drop_not_exact_invoice": true,
+  "peak_GPU_used_MiB": 20784.0,
+  "local_model_training_or_inference": false,
+  "one_worker_download_cap_KiB_per_second": 512,
+  "release_unix": 1795305974.5380254,
+  "peak_is_5_second_sampled_GPU_wide_not_allocator_true_max": true,
+  "supplemental_read_only_audit_verified": {
+    "bytes": 29939,
+    "sha256": "4771ecdb0dc17273c4aedccf2fed2864555d03559ab4a3d8c99922ec3cfdb142",
+    "all_supplemental_GPU_work_finished": true,
+    "success": true,
+    "unix": 1795303637.7921913,
+    "verified_UTC": "2026-11-21T23:27:19.748630+00:00",
+    "archive": "D:\\deep learning project\\runs\\r0_3b_recovery_sft_2026-11-21\\selected_train_known_audit\\archive.zip",
+    "read_only": true,
+    "not_used_for_checkpoint_selection": true
+  }
+}

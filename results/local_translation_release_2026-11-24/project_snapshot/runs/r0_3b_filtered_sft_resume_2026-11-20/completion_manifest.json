@@ -1,0 +1,110 @@
+{
+  "UTC": "2026-11-20T13:49:52.472968+00:00",
+  "main_training_and_evaluation_complete": true,
+  "main_semantic_review_complete": true,
+  "final_report": "D:\\deep learning project\\reports\\r0_3b_filtered_sft_resume_2026-11-20\\R0_3B_FILTERED_SFT_FINAL_RESULTS_2026-11-20.html",
+  "final_markdown": "D:\\deep learning project\\reports\\r0_3b_filtered_sft_resume_2026-11-20\\R0_3B_FILTERED_SFT_FINAL_RESULTS_2026-11-20.md",
+  "selected_adapter": "D:\\deep learning project\\runs\\r0_3b_filtered_sft_resume_2026-11-20\\final_selected_adapter",
+  "selected_identity": {
+    "UTC": "2026-11-20T13:36:23.257125+00:00",
+    "selected": {
+      "tag": "t2999996",
+      "step": 2543,
+      "target_tokens": 2999996,
+      "metrics": {
+        "nll": 1.1306406443526344,
+        "technical_nll": 1.113438619060956,
+        "dev_target_tokens": 7762,
+        "by_stratum": {
+          "general": {
+            "n": 32,
+            "chrfpp": 38.614636057116606,
+            "bleu": 15.534062052183817
+          },
+          "technical_short": {
+            "n": 32,
+            "chrfpp": 43.358207627688806,
+            "bleu": 20.36600694956158
+          },
+          "technical_medium": {
+            "n": 32,
+            "chrfpp": 44.56981532302277,
+            "bleu": 19.714936961743554
+          },
+          "technical_long": {
+            "n": 32,
+            "chrfpp": 48.9653759111669,
+            "bleu": 25.666730227525626
+          }
+        },
+        "overall_chrfpp": 46.48956123692833,
+        "technical_chrfpp": 47.100046286045774,
+        "technical_medium_long_chrfpp": 47.61391705001332,
+        "failures": 0
+      },
+      "adapter_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0",
+      "semantic": true,
+      "review_summary": {
+        "labels_locked": true,
+        "adapter_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0",
+        "technical_sources": 24,
+        "greedy_sources": 32,
+        "coverage_P": 8,
+        "coverage_U": 5,
+        "greedy_P": 8,
+        "greedy_U": 3,
+        "labels_sha256": "e99c778143a20b252c74f2686985282ad9c2c814dc82efc1545675435042c409"
+      },
+      "selection_reason": "Reviewed eligible maximum-coverage tie set,then greedy P,technical medium/long CHRF,earlier checkpoint"
+    },
+    "source": "D:\\deep learning project\\runs\\r0_3b_filtered_sft_resume_2026-11-20\\snapshots\\t2999996\\files\\adapter",
+    "delivered": "D:\\deep learning project\\runs\\r0_3b_filtered_sft_resume_2026-11-20\\final_selected_adapter",
+    "weights_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0",
+    "original_A_sha256": "9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199",
+    "original_A_preserved": true,
+    "base": "Qwen/Qwen2.5-3B-Instruct",
+    "base_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "inference": "NativeBF16 base with FP32 LoRA; no merge/precision change",
+    "selection_not_changed_by_final_metrics": true
+  },
+  "final_export_proof": "D:\\deep learning project\\runs\\r0_3b_filtered_sft_resume_2026-11-20\\verified_export.json",
+  "resource_ledger": "D:\\deep learning project\\runs\\r0_3b_filtered_sft_resume_2026-11-20\\resource_ledger.json",
+  "checkpoint_index": "D:\\deep learning project\\runs\\r0_3b_filtered_sft_resume_2026-11-20\\checkpoint_index.json",
+  "GPU_allocated": false,
+  "user_wall_elapsed_seconds": 10114.75493311882,
+  "user_wall_deadline_met": true,
+  "semantic_project_screen": {
+    "status": "SEMANTIC_PROJECT_TARGETS_NOT_DEMONSTRATED",
+    "checks": {
+      "G8_total_P_ge39": false,
+      "G8_short_P_ge8": false,
+      "G8_medium_P_ge12": false,
+      "G8_long_P_ge12": false,
+      "greedy_general_P_ge14": false,
+      "greedy_technical_P_ge30": false
+    },
+    "not_a_universal_DAPO_gate": true,
+    "meaning": "Comprehensive project baseline screen;does not establish that a restricted DAPO pilot is impossible if targets are missed."
+  },
+  "combined_project_screen": {
+    "status": "PROJECT_SCREEN_NOT_DEMONSTRATED",
+    "semantic_checks": {
+      "G8_total_P_ge39": false,
+      "G8_short_P_ge8": false,
+      "G8_medium_P_ge12": false,
+      "G8_long_P_ge12": false,
+      "greedy_general_P_ge14": false,
+      "greedy_technical_P_ge30": false
+    },
+    "metric_checks": {
+      "overall_chrf_delta_nonnegative": true,
+      "technical_chrf_delta_nonnegative": true,
+      "general_chrf_delta_at_least_minus1_5": true
+    },
+    "not_a_universal_DAPO_gate": true,
+    "not_native_certification": true
+  },
+  "all_original_models_preserved": true,
+  "DAPO_updates": 0,
+  "MetricX_calls": 0
+}

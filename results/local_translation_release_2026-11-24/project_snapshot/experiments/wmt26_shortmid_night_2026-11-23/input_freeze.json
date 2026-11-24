@@ -1,0 +1,29 @@
+{
+  "UTC": "2026-11-23T20:54:44.903462+00:00",
+  "source_segmentation_checks": {
+    "passed": true,
+    "synthetic_boundary_cases": 7,
+    "decimal_and_abbreviation_protected": true,
+    "lossless": true
+  },
+  "documents": 198,
+  "segments": 2551,
+  "all_documents_losslessly_reconstructed": true,
+  "units": {
+    "short": 1857,
+    "medium": 612,
+    "long": 82
+  },
+  "max_source_words": 462,
+  "training_sources": 1200,
+  "train_strata": {
+    "technical_short": 400,
+    "general": 400,
+    "technical_medium": 400
+  },
+  "dev_sources": 36,
+  "historical_test_sources": 72,
+  "WMT_training_source_exact_overlap": 0,
+  "references_not_used_for_segmentation": true,
+  "no_GPU_started": true
+}

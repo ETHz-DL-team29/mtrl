@@ -1,0 +1,22 @@
+{
+  "UTC": "2026-11-23T13:56:03.030695+00:00",
+  "points": [
+    0,
+    20,
+    40,
+    60,
+    80,
+    100,
+    120
+  ],
+  "input_SHA256": {
+    "step_000_metrics.json": "23451889b487799d30d232e2416e20423c4d6ef510328a927fe011e4b8d72919",
+    "step_020_metrics.json": "c5e105ea9feecfb8d64cce54ffa02e735d6bd73a16da63b7933ffee2aa73658a",
+    "step_040_metrics.json": "35ebb5e4f4e09c3c3d3d42b9c8d440f16bfd88e018f9c290566fb502b88b10ec",
+    "step_060_metrics.json": "4b4f78d869e5aa2aab055f8284f78e5bec70dcfa9f432091875ef7c9d575caa8",
+    "step_080_metrics.json": "dd3a107117d9a09b9c564cd4585544c9ce3cc43c47aea20024a9ce8e1cdad149",
+    "step_100_metrics.json": "abc28331fc081c3c786ee80c18d30cfc3f1eacfeed6b94ad4a9a702985e85d4f",
+    "step_120_metrics.json": "bc812cbf4022304c4d430ed786dc12575e5a33a31f81991ec685404231552acf"
+  },
+  "dev_not_independent_final_evidence": true
+}

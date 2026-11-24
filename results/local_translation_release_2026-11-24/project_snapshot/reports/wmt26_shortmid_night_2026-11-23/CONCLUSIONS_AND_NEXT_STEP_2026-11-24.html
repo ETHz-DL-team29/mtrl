@@ -1,0 +1,72 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><style>body{max-width:1120px;margin:30px auto;padding:20px;font:16px/1.7 system-ui,Microsoft YaHei;overflow-wrap:anywhere}table{border-collapse:collapse;width:100%}td,th{border:1px solid #cbd5e1;padding:8px}code{background:#f1f5f9}</style><h2>最终判断与下一步 / Final interpretation and next step</h2>
+<p><strong>值得保留这版短中句DAPO候选，但不能称为已经证实综合更强的翻译模型。原P18 R0继续作为共同SFT起点；本轮新增的是DAPO候选，不把它改名为新的SFT R0。</strong></p>
+<p><strong>Keep the specialized DAPO candidate, while recognizing that a reliably stronger general translation model has not been established. Original P18 remains the shared SFT R0. The new artifact is a DAPO candidate, not a relabeled SFT baseline.</strong></p>
+<table>
+<thead>
+<tr>
+<th>模型 / Model</th>
+<th style="text-align:right">WMT26 chrF++</th>
+<th style="text-align:right">WMT26 BLEU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原P18 R0 / Original SFT R0</td>
+<td style="text-align:right">39.72</td>
+<td style="text-align:right">19.76</td>
+</tr>
+<tr>
+<td>旧P22 DAPO-120 / Existing DAPO-120</td>
+<td style="text-align:right">39.91</td>
+<td style="text-align:right">20.87</td>
+</tr>
+<tr>
+<td>本轮短中句DAPO，第120步 / Specialized endpoint</td>
+<td style="text-align:right">40.83</td>
+<td style="text-align:right">21.70</td>
+</tr>
+</tbody>
+</table>
+<p>本轮相对原R0：chrF++ <strong>+1.12</strong>，95%区间 <strong>[-0.06,+2.56]</strong>；BLEU <strong>+1.94</strong>，区间 <strong>[-0.07,+5.22]</strong>。两个点估计都更好，但区间仍略跨零，未通过预设的198文档主门槛。没有更换bootstrap seed、删掉困难文档或改用别的主指标来追求“通过”。</p>
+<p>Relative to original R0, full WMT chrF++ is <strong>+1.12</strong> with95%CI <strong>[-0.06,+2.56]</strong>, and BLEU <strong>+1.94</strong> withCI <strong>[-0.07,+5.22]</strong>. Both point estimates improve, but both intervals narrowly include zero. The predeclared198-document primary rule is not met. Bootstrap seeds, difficult documents and the primary metric were not changed to obtain a pass.</p>
+<h3>中短句到底有没有信号 / What the short-medium evidence says</h3>
+<ul>
+<li><strong>153篇所有输入单元≤40词的完整WMT文档</strong>：chrF++ <strong>40.42→41.88</strong>，差值区间 <strong>[+0.02,+2.69]</strong>；BLEU <strong>17.33→20.33</strong>，区间 <strong>[+0.46,+4.83]</strong>。这是积极的探索性证据。该子集132篇为speech，且分析在初始WMT后补充、未校正多重比较，不能替代全量确认。</li>
+<li><strong>55篇所有单元≤12词的完整文档</strong>：chrF++ <strong>43.66→43.61</strong>，BLEU <strong>21.46→21.33</strong>，均无可靠改善。<strong>不能说纯短句已经变强。</strong></li>
+<li><strong>历史ParIce72条</strong>：chrF++ <strong>51.69→52.25</strong>，BLEU <strong>23.91→25.13</strong>，两个区间均跨零。技术短句和中句点估计向好，通用组chrF++ <strong>41.28→40.18</strong>；仍有取舍和不确定性，不能只报最好的分组。</li>
+</ul>
+<p>The153whole-document short/medium subset shows positive exploratory differences: chrF++ <strong>+1.46</strong>,CI <strong>[+0.02,+2.69]</strong>, and BLEU <strong>+3.00</strong>,CI <strong>[+0.46,+4.83]</strong>. However132documents are speech, the analysis was added after initial WMT, and multiplicity is unadjusted. The55all-short documents show no reliable gain. The historical72-pair ParIce set has positive overall/technical point estimates but zero-crossing intervals and a general-subset decline. Thus the evidence supports a promising short/medium candidate, not a confirmed pure-short or universal improvement.</p>
+<h3>具体译文说明什么 / What individual outputs show</h3>
+<p>盲化核查实际24个源单元，其中19个是实质内容、5个是格式/计数。19条内容中，同一助手判断原R0为P4/F13/U2，本轮为P5/F11/U3；只出现1条明确F→P，另有1条F→U，没有观察到P→F。样本小且非母语专家认证，<strong>不把5/19称作全模型正确率</strong>。</p>
+<p>The actual blind audit contains24source units, including19substantive items and five formatting/counter items. On the19, the same assistant labeled original R0 P4/F13/U2 and the specialized candidate P5/F11/U3: oneF→P and oneF→U, with no observedP→F. This small, non-native-certified audit is <strong>not a population correctness estimate</strong>.</p>
+<ul>
+<li>Jade与Beck复合的例子中，原R0遗漏“告诉他”的关键动作，本轮恢复为<code>segja honum það</code>，是可追踪的实际语义改善。</li>
+<li><code>volcano</code>、<code>organizing the strike</code>等简单但关键的词义，在三个模型里仍有明显问题；句子短并不自动容易。</li>
+<li>Robin Roefs的例子里，旧DAPO出现严重重复，本轮没有该重复，但三版仍有实质比赛信息错误。减少某个输出的重复，不等于整句翻译已正确。</li>
+<li>所有抽样和全部三版译文都保存在逐例报告，不仅展示上述几个例子。WMT全量里251个明显纯格式单元三模型均逐字保留，不拿它们冒充翻译成功病例。</li>
+</ul>
+<p>The Jade/Beck example recovers the missing tell-him action. Volcano and organizing the strike remain problematic across all three models. The old DAPO loops on the Robin Roefs example, whereas the new version does not, yet the new sentence still contains material match-information errors. The complete casebook retains every selected source/output. All three models copy the251obvious formatting units exactly; these are not counted as successful language translations in the substantive audit.</p>
+<h3>能否归因于SFT不够 / Does this prove insufficient SFT</h3>
+<p><strong>不能把本轮结果归结为“R0根本不能跑DAPO，必须继续SFT”。</strong> 本轮没有任何新增SFT，却有方向一致的WMT/技术子集改善信号；也没有证据说明3B到容量上限。与此同时，关键词义错误仍在，不能说基座已经精通翻译。</p>
+<p>The evidence does <strong>not</strong> support the absolute claim that R0 cannot undergo DAPO and must receive more SFT first. There were zero new SFT updates, yet positive WMT/technical signals appeared. Nor does this establish a3B capacity ceiling. Persistent key lexical errors also prevent claiming translation mastery.</p>
+<p>本轮核实了采样/teacher概率一致、实际权重更新、全部240步目标复算与全量WMT重组；这排除了这些已检查实现环节的明显失效，<strong>不是奖励语义正确性的证明</strong>。本轮没有重新做逐源G8正确候选覆盖率与MetricX排序的独立核查，因此无法把剩余瓶颈的比例准确分给“候选能力不足”或“奖励错排”。贪心失败例不证明该源句八个候选全错；单个自动分数提高也不证明语义全对。</p>
+<p>Sampler/teacher parity, actual parameter changes, all240objective replays and complete WMT reconstruction pass. This checks those implementation components, <strong>not reward semantic validity</strong>. This round does not repeat an independent per-source G8 correctness/ranker audit, so it cannot quantify the remaining candidate-coverage versus reward-ranking bottlenecks. A bad greedy output does not prove all eight samples are wrong; a higher automatic metric does not prove complete semantic correctness.</p>
+<h3>明确的下一步 / One concrete next step</h3>
+<p><strong>下一轮先复现本次短中句DAPO配方，不再盲目增加SFT或只延长训练。</strong> 从同一原P18 R0、同一1200源句池出发，换一个预先固定的采样/顺序seed，最多120步，固定120步端点；不再根据WMT挑步数。沿用相同评分与解码，报告全量WMT、同一长度次要集及关键语义审查。可按本轮实测为单L4预留约3–4小时（含准备、评估与回存；排队不可保证）。这只是下一轮建议，本轮未启动它。</p>
+<p><strong>Next, replicate this short/medium DAPO recipe rather than blindly add SFT or merely extend training.</strong> Start from the same original P18 and1200-source pool with one new prespecified sampling/order seed, run up to120updates and evaluate the fixed120-step endpoint without WMT checkpoint selection. Preserve identical scoring/decoding and report full WMT, the same secondary subsets and key semantic checks. Based on this run, reserve roughly3–4hours on one L4 including setup/evaluation/export, excluding unpredictable queuing. This is a next-round recommendation; it was not launched here.</p>
+<p>复现若支持短中句收益，再把“原R0→标准DAPO”锁为对照，研究选择性token更新/前缀复用，以同起点、同数据、同预算和真实GPU时间/显存比较。若仅分数改善、关键语义和复现均不支持，再审计实际G8候选与参考奖励，按证据决定奖励修正或少量定向SFT；不宣布容量到顶。本轮没有实现效率方法对照，不能把任何速度记作创新收益。</p>
+<p>If replication supports the short/medium gain, freeze original-R0→standard-DAPO as the control before selective-token/prefix-reuse comparisons, matching starts,data,budgets and actual GPU time/memory. If gains remain metric-only or nonreplicable, audit actual G8 candidates and reference-based reward before choosing reward changes or targeted SFT. Do not infer a capacity ceiling. No efficiency-method comparison was implemented in this round, so no speed result is an innovation gain.</p>
+<h3>效率方向的实际证据 / What the profiling says about efficiency</h3>
+<p>整轮240步实际尝试514个源组、接受480组，生成4112个候选、152262个completion token。<strong>新增排版多样性筛选仅额外剔除1组</strong>；因此不能把本轮质量变化归因于这一筛选，或把它包装成已经验证的效率创新。接受率不等于正确候选覆盖率。</p>
+<p>Across240updates, attempt514source groups, accept480, and generate4112candidates with152262completion tokens. <strong>The extra formatting-diversity filter rejects only1otherwise-eligible group.</strong> Quality changes cannot be attributed to this filter or presented as a validated efficiency innovation. Acceptance rate is not correct-candidate coverage.</p>
+<p>全240步优化阶段累计59.24分钟；完整DAPO阶段另含生成、打分、teacher前向、开发评估、存盘等，共约2.39小时。模型选择实际花240步，最终候选只保留120步参数，不能隐藏搜索成本。后续应分别报告训练管线耗时、质量以及包括WMT/回存的实验总开销；loss上乘token mask并不自动证明矩阵运算变少，本轮也没有验证该速度收益。</p>
+<p>Optimizer phases sum to59.24minutes; the complete DAPO phase, including generation,scoring,teacher passes,dev and snapshots, spans about2.39hours. Search consumed240updates even though the selected parameters are from120. Report training-pipeline time and quality separately from the entire evaluation/export-inclusive experiment. Multiplying losses by a token mask alone does not establish reduced matrix computation; no such speed gain was tested here.</p>
+<h3>已交付的checkpoint与资源 / Delivered checkpoint and resources</h3>
+<ul>
+<li>专项候选 / Specialized candidate: <strong>P25-shortmid-step120</strong>，完整适配器目录 / full adapter folder: <code>D:\deep learning project\runs\wmt26_shortmid_night_2026-11-23\snapshots\shortmid_selected_full\files\adapter</code>。</li>
+<li>权重SHA256 / weights SHA256: <code>40ee8312ead89272fd5e8190a3b8e1da91d5f0ff641721840600585ff4308c86</code>。该适配器仍需同一Qwen3B通用基座，不能独立运行。</li>
+<li>原R0未覆盖且哈希复核一致。20…240共12个常规权重及所选完整AdamW/RNG均回存；其他常规权重不冒称具有精确优化器续训状态。</li>
+<li>GPU分配到释放 / GPU allocation to release: <strong>6.03h</strong>；任务开始到释放 / request start to release: <strong>6.23h</strong>；账号计算单元余额变化 / account compute-unit difference: <strong>11.68</strong>（若存在其他账号活动不能独占归因）。科学结果导出、内部文件及checkpoint已校验，专属L4已释放并只读确认不在分配列表中。</li>
+</ul>
+<p>Original R0 is hash-verified and preserved. All12regular checkpoints and the selected full AdamW/RNG state are saved. The account balance difference is not exclusive attribution if there was other account activity. Verified scientific exports and checkpoints are on D, and this run's L4 is released and confirmed absent. All neural work ran on Colab.</p>
+</html>

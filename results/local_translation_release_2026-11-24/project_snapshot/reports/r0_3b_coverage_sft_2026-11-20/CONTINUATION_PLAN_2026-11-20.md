@@ -1,0 +1,54 @@
+# 3B R0 coverage continuation / 3B R0 覆盖补强续训
+
+日期 / Date: 2026-11-20, Europe/Berlin
+
+## 目标 / Objective
+继续训练通用 Qwen2.5-3B-Instruct，提升未见技术中长句翻译和 G=8 正确候选覆盖。保留 P14 最佳 R0，不承诺本轮一定改善；不切换翻译专用基座。
+Continue SFT from the best preserved P14 general-purpose Qwen adapter, improving technical translation and useful G=8 candidate coverage. Improvement is a hypothesis, not a guarantee.
+
+## 起点与证据 / Starting point and evidence
+P14: 256条既有评估集 chrF++43.6695 / BLEU19.6623，技术 G8正确覆盖12/64，长句0/24。既有评估已观察过；本轮比较属于继续开发证据，不能当作全新盲测。
+P14 substantially improved automatic scores, but correct long technical candidates remain scarce. Reusing its anchor evaluation does not create an untouched confirmatory test.
+
+## 数据 / Data
+同一 GPU 过滤并经质量审查的100,642句对池；沿用原隔离和去重，不加入评估句或改写。优先覆盖上轮调度未用的33,260句对、2,110,060目标token；并非声称这些文本从未被基座或更早训练接触。没有下载未经验证的新网络语料。
+Use the same audited GPU-filtered pool. Prioritize 33,260 pairs absent from the immediately preceding schedule, preserving all exclusions. This is schedule-relative novelty, not proof of first-ever model exposure.
+请求目标token比例：EMA35%、EEA40%、ESO5%、general20%。库存有限时重新分配；实际比例以更新日志为准，不把目标比例冒充实际比例。每对本轮最多两次，稀缺ESO最多四次。科学独立语料仍有限，重复不能制造新术语覆盖。
+Requested source-token shares are EMA35%, EEA40%, ESO5%, general20%; exhausted queues redistribute remaining exposure. Replay is bounded; ESO scarcity remains a limitation.
+
+## 优化 / Optimization
+继承 P14 全部 AdamW 动量、RNG和最佳LoRA；显式开启新数据顺序和新阶段token计数。BF16冻结基座、FP32 rank16 LoRA、有效batch32、target-only含EOS损失。新阶段学习率从上轮末端1e-5平滑降至4M目标token处5e-6；不清空优化器、不重启高学习率。
+Preserve AdamW moments and RNG, explicitly reset only this phase's data cursor and token counter. Keep the tested target-only loss and precision. Anneal from inherited terminal LR1e-5 to5e-6 at4M additional target tokens.
+
+## 预算与停止 / Budget and stopping
+本次请求起算8小时硬上限：2026-11-20 22:56:56 CET。训练最迟21:26:56 CET结束，预留90分钟选模、评估和保存；可更早结束。原检查点和先前预算不覆盖、不重置。
+Hard deadline22:56:56 CET, training cutoff21:26:56 CET. Reserve90min for evaluation and export. Earlier stopping is expected when justified.
+最多4M新增目标token，100次更新后仅按吞吐锁定可行目标；500k目标token检查128句greedy、24句G8和NLL。最近三次检查跨至少1M目标token，技术chrF增长不足0.3且NLL下降不足0.01，并且语义正确覆盖与greedy均未增加，则停止。语义审核缺失时最多等待10分钟，随后保守停止，不能把缺失审核称作证实平台期。严重通用退化、NaN、完整性失败立即或按连续检查规则停止。
+Check fixed dev metrics and candidate semantics every500k targets. Stop after three sustained flat checks with no semantic gain; absent review is a conservative operational stop, not evidence of a plateau. Stop on serious regression or numerical/integrity failure.
+仅审核过的开发检查点参与选模；通用chrF相对起点不能下降超过1.5、结构失败不能多于2。优先正确候选覆盖，再greedy语义和技术中长句chrF；原R0始终是可回退选项。最终既有256+64G8评估在封存权重后生成。
+Only reviewed eligible dev checkpoints can replace the preserved baseline. Seal selected weights before the reused anchor evaluation.
+
+## 本地使用 / Local computer use
+训练、模型加载、推理、数据编码均在Colab L4。本地仅低优先级后台控制和D盘结果同步，单连接传输，目标上限2MiB/s；无浏览器弹窗、无本地GPU、无防休眠或电源设置修改。轻量控制仍需少量CPU、内存和网络，不能承诺绝对零占用。
+All model computation runs on Colab. Local work is hidden, below-normal-priority control and throttled one-worker synchronization. No local GPU or power-setting changes. Small CPU/RAM/network usage remains.
+云端独立截止守护可在本地休眠或断线时释放本次运行时。若本地关闭，新的临时检查点未必已同步，且Colab本身可能断开；本轮不保证离线持续运行或尚未同步结果持久化。已保存的P14和已校验D盘检查点不受影响。
+An independent cloud deadline guard releases this owned runtime at the cap. Local shutdown can interrupt synchronization and Colab itself can disconnect; offline completion or persistence of unsynced checkpoints is not guaranteed.
+
+## 保存 / Artifacts
+实验配置和源码：D:/deep learning project/experiments/r0_3b_coverage_sft_2026-11-20
+日志、逐步更新和完整检查点：D:/deep learning project/runs/r0_3b_coverage_sft_2026-11-20
+双语MD/HTML报告：D:/deep learning project/reports/r0_3b_coverage_sft_2026-11-20
+完成报告必须区分：实际训练是否发生、实际数据暴露、已选版本与最后版本、指标与语义、已保存与未同步结果、停止原因和GPU释放。DAPO和MetricX本轮均不训练、不调用。
+Final reporting will separate actual exposure, selected versus last weights, automatic versus semantic quality, verified persistence, stop reason and GPU release. This round is SFT, with no DAPO updates or MetricX calls.
+
+## 训练前长度配比修订 / Pretraining length-balance revision
+仅按来源排序会令前500k目标token中长句占比仅2.8%，因此在任何模型更新前加入技术来源内部token配比：短10%、中55%、长35%。来源库存耗尽时按剩余可用队列分配；原清洗、隔离、优化器和学习率不变。已保存原打包与实际执行清单和哈希，便于重现。
+A source-only shuffle underrepresented long sentences. Before any actor update, each technical source now uses short10%/medium55%/long35% target-token fair queues, subject to available inventory. Both packaged and amended execution manifests are preserved.
+
+## 运行中同步策略 / Runtime synchronization policy
+上传完成后下载降为512KiB/s，单后台低优先级连接；每个正式评估检查点完整校验保存，100步冗余临时恢复点不全部下载。模型训练不受该同步策略修订影响。实际token上限在100次新更新后按吞吐锁定为350万。原协议少量P14历史字段未参与P15调度，详见registered_reporting_clarifications.json，冻结原文件保持不变。
+After upload, downloads are capped at512KiB/s. All formal evaluation full states are retained; redundant scratch recoveries are not all downloaded. Training is unchanged. Timing locked3.5M new targets at step100. Inactive inherited P14 metadata fields are explicitly documented without rewriting the executed protocol.
+
+## 主语义早停补充 / Adaptive primary-semantic stop supplement
+登记UTC: 2026-11-20T16:30:46.867372+00:00。已看到前三次新检查点G8确认覆盖8/24、9/24、8/24，故在200万token输出出现前补充操作规则：达到200万且有四次完整检查后，若没有检查点的G8或greedy确认正确数相对起点增加至少2条，且技术长句确认P无增长，则结束训练、保存已审核最佳完整检查点并做最终评估。任何达到净增2条或新的长句确认P都支持继续原350万token计划。该规则是适应性探索决策，不冒称原先联合NLL/chrF平台期规则已触发。训练超参数和八小时硬截止不变。
+Registered after the first three semantic checks and before2M outputs. At>=2M and four complete checks, stop if no checkpoint gains at least2confirmed G8 or greedy sources over the parent and no confirmed technical-long-source gain occurs. A qualifying gain warrants continuing the original3.5M plan. This is adaptive exploratory stopping; the original joint NLL/CHRF rule is unchanged. Training hyperparameters and the original hard deadline remain fixed.

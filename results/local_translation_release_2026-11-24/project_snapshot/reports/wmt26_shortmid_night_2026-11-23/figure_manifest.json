@@ -1,0 +1,9 @@
+{
+  "UTC": "2026-11-24T02:29:16.413218+00:00",
+  "files": {
+    "png": "15f7dfb8574e86f08a3ccaba5020dcdaf7469a43832f58d15c972e90fc220124",
+    "svg": "243590d168eff90c9d83abf0e3089f781ad4ace3f1cbc2ed6af6a670fa302444"
+  },
+  "CPU_only": true,
+  "confidence_intervals_are_document_sampling_not_training_seed_uncertainty": true
+}

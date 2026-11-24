@@ -1,0 +1,16 @@
+{
+  "selected_tag": "t2000728",
+  "selected_new_step": 1410,
+  "selected_additional_target_tokens": 2000728,
+  "selected_phase_distinct_pairs": 43244,
+  "selected_pairs_not_in_parent_P14_schedule": 12363,
+  "selected_stratum_target_tokens": {
+    "general": 400097,
+    "technical_short": 135872,
+    "technical_medium": 894955,
+    "technical_long": 569804
+  },
+  "entire_phase_additional_target_tokens": 2096676,
+  "model_selection_can_prefer_an_earlier_checkpoint": true,
+  "novelty_relative_to_immediate_parent_schedule_only": true
+}

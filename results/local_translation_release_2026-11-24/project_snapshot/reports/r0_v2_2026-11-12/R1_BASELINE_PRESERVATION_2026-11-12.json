@@ -1,0 +1,8 @@
+{
+  "date": "2026-11-12",
+  "snapshot_root": "D:\\deep learning project\\runs\\archives\\r0_before_r1_2026-11-12",
+  "old_sft": "e32ae12d4ece8416352a6920d422766a5cf00e7b29ae5a528efda4dc4645a411",
+  "current_r0": "81b369a5f6c6343c160c99c4d3271f2ecb63781363b05e9c89e7b2703b77785f",
+  "original_directories_unchanged": true,
+  "new_training_folder": "runs/r1_sft_2026-11-12"
+}

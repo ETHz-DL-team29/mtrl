@@ -1,0 +1,278 @@
+{
+  "UTC": "2026-11-24T02:32:02.474873+00:00",
+  "not_semantic_correctness_or_eligibility": true,
+  "source_copies_can_be_appropriate_for_code_or_names": true,
+  "all_truncated_outputs_retained_in_primary_metrics": true,
+  "results": {
+    "R0": {
+      "overall": {
+        "n": 2551,
+        "completion_tokens": 88858,
+        "truncated": 19,
+        "empty": 0,
+        "format_or_counter_source_units": 251,
+        "exact_source_copies": 297,
+        "substantive_exact_source_copies": 46,
+        "hypothesis_chars": 186096,
+        "source_chars": 166814
+      },
+      "short": {
+        "n": 1857,
+        "completion_tokens": 25252,
+        "truncated": 1,
+        "empty": 0,
+        "format_or_counter_source_units": 251,
+        "exact_source_copies": 297,
+        "substantive_exact_source_copies": 46,
+        "hypothesis_chars": 47243,
+        "source_chars": 45836
+      },
+      "medium": {
+        "n": 612,
+        "completion_tokens": 43589,
+        "truncated": 9,
+        "empty": 0,
+        "format_or_counter_source_units": 0,
+        "exact_source_copies": 0,
+        "substantive_exact_source_copies": 0,
+        "hypothesis_chars": 92928,
+        "source_chars": 78559
+      },
+      "long": {
+        "n": 82,
+        "completion_tokens": 20017,
+        "truncated": 9,
+        "empty": 0,
+        "format_or_counter_source_units": 0,
+        "exact_source_copies": 0,
+        "substantive_exact_source_copies": 0,
+        "hypothesis_chars": 45925,
+        "source_chars": 42419
+      },
+      "news": {
+        "n": 396,
+        "completion_tokens": 19143,
+        "truncated": 3,
+        "empty": 0,
+        "format_or_counter_source_units": 156,
+        "exact_source_copies": 156,
+        "substantive_exact_source_copies": 0,
+        "hypothesis_chars": 41384,
+        "source_chars": 38410
+      },
+      "social": {
+        "n": 728,
+        "completion_tokens": 41799,
+        "truncated": 12,
+        "empty": 0,
+        "format_or_counter_source_units": 95,
+        "exact_source_copies": 108,
+        "substantive_exact_source_copies": 13,
+        "hypothesis_chars": 86742,
+        "source_chars": 65931
+      },
+      "software": {
+        "n": 7,
+        "completion_tokens": 5720,
+        "truncated": 4,
+        "empty": 0,
+        "format_or_counter_source_units": 0,
+        "exact_source_copies": 0,
+        "substantive_exact_source_copies": 0,
+        "hypothesis_chars": 15184,
+        "source_chars": 19385
+      },
+      "speech": {
+        "n": 1420,
+        "completion_tokens": 22196,
+        "truncated": 0,
+        "empty": 0,
+        "format_or_counter_source_units": 0,
+        "exact_source_copies": 33,
+        "substantive_exact_source_copies": 33,
+        "hypothesis_chars": 42786,
+        "source_chars": 43088
+      }
+    },
+    "oldDAPO120": {
+      "overall": {
+        "n": 2551,
+        "completion_tokens": 83671,
+        "truncated": 14,
+        "empty": 0,
+        "format_or_counter_source_units": 251,
+        "exact_source_copies": 300,
+        "substantive_exact_source_copies": 49,
+        "hypothesis_chars": 181548,
+        "source_chars": 166814
+      },
+      "short": {
+        "n": 1857,
+        "completion_tokens": 24083,
+        "truncated": 0,
+        "empty": 0,
+        "format_or_counter_source_units": 251,
+        "exact_source_copies": 300,
+        "substantive_exact_source_copies": 49,
+        "hypothesis_chars": 45726,
+        "source_chars": 45836
+      },
+      "medium": {
+        "n": 612,
+        "completion_tokens": 39662,
+        "truncated": 6,
+        "empty": 0,
+        "format_or_counter_source_units": 0,
+        "exact_source_copies": 0,
+        "substantive_exact_source_copies": 0,
+        "hypothesis_chars": 87818,
+        "source_chars": 78559
+      },
+      "long": {
+        "n": 82,
+        "completion_tokens": 19926,
+        "truncated": 8,
+        "empty": 0,
+        "format_or_counter_source_units": 0,
+        "exact_source_copies": 0,
+        "substantive_exact_source_copies": 0,
+        "hypothesis_chars": 48004,
+        "source_chars": 42419
+      },
+      "news": {
+        "n": 396,
+        "completion_tokens": 19608,
+        "truncated": 4,
+        "empty": 0,
+        "format_or_counter_source_units": 156,
+        "exact_source_copies": 156,
+        "substantive_exact_source_copies": 0,
+        "hypothesis_chars": 45228,
+        "source_chars": 38410
+      },
+      "social": {
+        "n": 728,
+        "completion_tokens": 35384,
+        "truncated": 6,
+        "empty": 0,
+        "format_or_counter_source_units": 95,
+        "exact_source_copies": 110,
+        "substantive_exact_source_copies": 15,
+        "hypothesis_chars": 75909,
+        "source_chars": 65931
+      },
+      "software": {
+        "n": 7,
+        "completion_tokens": 5701,
+        "truncated": 3,
+        "empty": 0,
+        "format_or_counter_source_units": 0,
+        "exact_source_copies": 0,
+        "substantive_exact_source_copies": 0,
+        "hypothesis_chars": 15723,
+        "source_chars": 19385
+      },
+      "speech": {
+        "n": 1420,
+        "completion_tokens": 22978,
+        "truncated": 1,
+        "empty": 0,
+        "format_or_counter_source_units": 0,
+        "exact_source_copies": 34,
+        "substantive_exact_source_copies": 34,
+        "hypothesis_chars": 44688,
+        "source_chars": 43088
+      }
+    },
+    "shortmidDAPO": {
+      "overall": {
+        "n": 2551,
+        "completion_tokens": 84922,
+        "truncated": 15,
+        "empty": 0,
+        "format_or_counter_source_units": 251,
+        "exact_source_copies": 300,
+        "substantive_exact_source_copies": 49,
+        "hypothesis_chars": 177125,
+        "source_chars": 166814
+      },
+      "short": {
+        "n": 1857,
+        "completion_tokens": 26354,
+        "truncated": 2,
+        "empty": 0,
+        "format_or_counter_source_units": 251,
+        "exact_source_copies": 300,
+        "substantive_exact_source_copies": 49,
+        "hypothesis_chars": 48631,
+        "source_chars": 45836
+      },
+      "medium": {
+        "n": 612,
+        "completion_tokens": 38660,
+        "truncated": 4,
+        "empty": 0,
+        "format_or_counter_source_units": 0,
+        "exact_source_copies": 0,
+        "substantive_exact_source_copies": 0,
+        "hypothesis_chars": 82752,
+        "source_chars": 78559
+      },
+      "long": {
+        "n": 82,
+        "completion_tokens": 19908,
+        "truncated": 9,
+        "empty": 0,
+        "format_or_counter_source_units": 0,
+        "exact_source_copies": 0,
+        "substantive_exact_source_copies": 0,
+        "hypothesis_chars": 45742,
+        "source_chars": 42419
+      },
+      "news": {
+        "n": 396,
+        "completion_tokens": 17399,
+        "truncated": 1,
+        "empty": 0,
+        "format_or_counter_source_units": 156,
+        "exact_source_copies": 156,
+        "substantive_exact_source_copies": 0,
+        "hypothesis_chars": 37769,
+        "source_chars": 38410
+      },
+      "social": {
+        "n": 728,
+        "completion_tokens": 39873,
+        "truncated": 10,
+        "empty": 0,
+        "format_or_counter_source_units": 95,
+        "exact_source_copies": 110,
+        "substantive_exact_source_copies": 15,
+        "hypothesis_chars": 82257,
+        "source_chars": 65931
+      },
+      "software": {
+        "n": 7,
+        "completion_tokens": 5359,
+        "truncated": 4,
+        "empty": 0,
+        "format_or_counter_source_units": 0,
+        "exact_source_copies": 0,
+        "substantive_exact_source_copies": 0,
+        "hypothesis_chars": 14176,
+        "source_chars": 19385
+      },
+      "speech": {
+        "n": 1420,
+        "completion_tokens": 22291,
+        "truncated": 0,
+        "empty": 0,
+        "format_or_counter_source_units": 0,
+        "exact_source_copies": 34,
+        "substantive_exact_source_copies": 34,
+        "hypothesis_chars": 42923,
+        "source_chars": 43088
+      }
+    }
+  }
+}

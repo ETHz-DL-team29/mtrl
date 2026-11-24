@@ -1,0 +1,209 @@
+{
+  "date": "2026-11-16",
+  "status": "REGISTERED_EXECUTION_AUTHORIZED_NOT_YET_STARTED",
+  "name": "R0-TechSFT-v1",
+  "new_training_updates": 0,
+  "new_model_calls": 0,
+  "new_GPU_allocations": 0,
+  "initial_adapter": "D:\\deep learning project\\runs\\r0_v3_colab_2026-11-13\\nll_adapter",
+  "initial_adapter_sha256": "ebb4575fda36002c76ddb7e999a4e12c44a0be9ddb20b1e4e092d708e6a050e9",
+  "base": "Qwen/Qwen3.5-0.8B",
+  "base_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+  "purpose": "Improve technical medium/long candidate coverage while retaining general translation. No DAPO in this run.",
+  "training": {
+    "target_token_budget": 400000,
+    "include_EOS": true,
+    "exclude_prompt_and_padding": true,
+    "target_token_mixture": {
+      "general": 0.25,
+      "technical_short": 0.05,
+      "technical_medium": 0.35,
+      "technical_long": 0.35
+    },
+    "target_tokens_by_stratum": {
+      "general": 100000,
+      "technical_short": 20000,
+      "technical_medium": 140000,
+      "technical_long": 140000
+    },
+    "seed": 2026111608,
+    "lr": 1e-05,
+    "final_lr_fraction": 0.1,
+    "warmup_target_fraction": 0.03,
+    "optimizer": "fresh AdamW",
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.01,
+    "gradient_clip": 1.0,
+    "effective_batch_examples": 32,
+    "physical_microbatch_start": 4,
+    "physical_microbatch_fallback": 2,
+    "physical_microbatch_optional_after_probe": 8,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "base_frozen": true,
+    "trainable_parameters": 10822656,
+    "precision": "native BF16 frozen base, FP32 adapter, no FP16 fallback",
+    "attention": "sdpa",
+    "gradient_checkpointing": "nonreentrant",
+    "maximum_total_tokens": 768,
+    "maximum_target_tokens": 256,
+    "truncate_targets": false,
+    "checkpoints_target_tokens": [
+      0,
+      100000,
+      200000,
+      400000
+    ],
+    "max_exposures_per_exact_pair": 2,
+    "max_train_loop_minutes": 90,
+    "max_allocation_hours": 3,
+    "no_automatic_token_extension": true
+  },
+  "evaluation": {
+    "selection_dev": "Existing R2 decode_dev64; excluded from training",
+    "selection_metric_weights": {
+      "general": 0.25,
+      "technical_short": 0.05,
+      "technical_medium": 0.35,
+      "technical_long": 0.35
+    },
+    "selection": "Weighted stratum corpus chrF++; eligible general delta>=-1.5, failures<=baseline+2/64. Tie within0.1: lower technical NLL, then earlier checkpoint. Include original R0 fallback.",
+    "final_greedy": "Same128 development sources; matched FP32/max320 baseline from R5 when hashes/config match; otherwise regenerate.",
+    "G8_sources": 32,
+    "G8_counts": {
+      "general": 8,
+      "technical_short": 4,
+      "technical_medium": 10,
+      "technical_long": 10
+    },
+    "G8_temperature": 0.7,
+    "G8_top_p": 1.0,
+    "G8_top_k": 0,
+    "G8_max_new_tokens": 320,
+    "G8_precision": "Both original R0 and selected SFT candidate use the same FP32 promotion of original BF16-rounded base values; TF32/autocast disabled.",
+    "G8_reuse_old_BF16_256_labels_as_baseline": false,
+    "G8_selection": "Source-ID hash only; excludes one preflagged malformed source; frozen before new SFT outputs.",
+    "engineering_targets": {
+      "technical_greedy_chrf_delta": 2.0,
+      "general_greedy_chrf_floor": -1.5,
+      "technical_G8_good_group_net_gain": 3,
+      "technical_G8_denominator": 24
+    },
+    "interpretation": "Targets are planning heuristics, not universal SFT/RL gates. Require paired CIs and semantic evidence; label mixed outcomes inconclusive.",
+    "no_unused_final_test_inspection": true,
+    "not_native_certified_review": true
+  },
+  "timing": {
+    "end_to_end_hours": [
+      3,
+      4
+    ],
+    "pure_training_minutes": [
+      30,
+      60
+    ],
+    "allocated_GPU_hours": [
+      1.5,
+      2.5
+    ],
+    "CU_estimate": [
+      3,
+      5
+    ],
+    "CU_rate_previous_observed": 1.94,
+    "rate_recheck_at_actual_start": true,
+    "source": "Old L4 R2 actual242.06 target tokens/s; naive400k=27.54min. Allow length/padding and evaluation overhead. Not a new-run measurement."
+  },
+  "data": {
+    "existing_pool": "D:\\deep learning project\\experiments\\r2_sft_2026-11-13\\source\\data\\train.jsonl",
+    "long_pairs_unused_in_last_R2": 1317,
+    "long_unused_target_tokens": 213495,
+    "unused_scope": "Not used in this archived R2 prefix only, not proven never seen in any earlier SFT or pretraining.",
+    "quality_review_before_GPU": {
+      "total_pairs": 80,
+      "general": 20,
+      "technical_short": 10,
+      "technical_medium": 25,
+      "technical_long": 25
+    },
+    "no_evaluation_answer_training": true,
+    "avoid_near_duplicates": true,
+    "document_disjoint_only_if_metadata_available": true,
+    "no_automatic_synthetic_teacher_data": true,
+    "MetricX_not_sole_data_acceptance_filter": true
+  },
+  "workflow": "Same official Colab CLI and Edge account workflow, durable D mirroring, optional Drive backup, owned-runtime release after verified export.",
+  "execution_requires_later_start_instruction": true,
+  "execution_date": "2026-11-17",
+  "user_authorized": true,
+  "registered_utc": "2026-11-17T10:02:22.853692+00:00",
+  "actual_stream": {
+    "target_tokens": 399895,
+    "target_by_stratum": {
+      "general": 99998,
+      "technical_short": 19999,
+      "technical_medium": 139985,
+      "technical_long": 139913
+    },
+    "example_exposures": 10541,
+    "unique_pairs": 10539,
+    "max_pair_exposures": 2,
+    "new_relative_to_R2_long_pairs": 867,
+    "semantic_rejections": [
+      "OpenSubtitles18:1550596",
+      "OpenSubtitles18:778579",
+      "OpenSubtitles18:840128",
+      "OpenSubtitles18:866947",
+      "ParIce:1043587",
+      "ParIce:1212310",
+      "ParIce:1247145",
+      "ParIce:1289338",
+      "ParIce:1337512",
+      "ParIce:1391007",
+      "ParIce:1417337",
+      "ParIce:145537",
+      "ParIce:1482464",
+      "ParIce:1594405",
+      "ParIce:1609983",
+      "ParIce:1626381",
+      "ParIce:186993",
+      "ParIce:1886387",
+      "ParIce:2051589",
+      "ParIce:2058410",
+      "ParIce:509297",
+      "ParIce:522245",
+      "ParIce:526267",
+      "ParIce:53910",
+      "ParIce:76522",
+      "ParIce:77208",
+      "ParIce:776006",
+      "ParIce:798965",
+      "ParIce:799543",
+      "ParIce:985270",
+      "ParIce:989998"
+    ]
+  },
+  "data_review": {
+    "reviewed": 100,
+    "passed_in_final_training": 83,
+    "by_stratum": {
+      "general": 20,
+      "technical_short": 11,
+      "technical_medium": 27,
+      "technical_long": 25
+    },
+    "review_quarantined": 17,
+    "not_native_certified": true
+  },
+  "execution_notes": [
+    "First20 updates included in400k;micro4 or2 only;no micro8 escalation.",
+    "SFT stage only;no DAPO.",
+    "The candidate stream is399895 tokens or latest whole-target total,not forced padding to400000.",
+    "Exact resume includes optimizer/RNG and code/data/protocol hash checks;partial final decoding requires preserved journal repair,not an automatic duplicate run."
+  ]
+}

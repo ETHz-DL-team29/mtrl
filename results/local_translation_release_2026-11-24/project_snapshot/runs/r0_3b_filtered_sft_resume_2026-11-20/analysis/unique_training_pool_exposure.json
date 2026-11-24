@@ -1,0 +1,35 @@
+{
+  "UTC": "2026-11-20T13:36:20.604286+00:00",
+  "retained_actual_target_tokens": 2999996,
+  "pool_unique_pairs": 100642,
+  "pool_unique_target_tokens": 4748344,
+  "seen_unique_pairs": 67382,
+  "seen_unique_target_tokens": 2638284,
+  "unseen_unique_pairs": 33260,
+  "unseen_unique_target_tokens": 2110060,
+  "scope": "Only the new filtered schedule; priorA training and rolled-back updates are separate; unseen here does not prove globally unseen.",
+  "unseen_by_subcorpus": {
+    "eea": {
+      "pairs": 3458,
+      "target_tokens": 247270
+    },
+    "ema": {
+      "pairs": 29802,
+      "target_tokens": 1862790
+    }
+  },
+  "unseen_by_stratum": {
+    "technical_long": {
+      "pairs": 674,
+      "target_tokens": 97825
+    },
+    "technical_medium": {
+      "pairs": 28458,
+      "target_tokens": 1890244
+    },
+    "technical_short": {
+      "pairs": 4128,
+      "target_tokens": 121991
+    }
+  }
+}

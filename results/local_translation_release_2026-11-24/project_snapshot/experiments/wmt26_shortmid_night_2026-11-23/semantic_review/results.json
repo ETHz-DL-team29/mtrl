@@ -1,0 +1,155 @@
+{
+  "UTC": "2026-11-24T02:27:51.989383+00:00",
+  "source_units": 24,
+  "unique_blind_pairs": 52,
+  "arm_source_pairs": 72,
+  "counts": {
+    "all_preselected": {
+      "R0": {
+        "n": 24,
+        "P": 9,
+        "F": 13,
+        "U": 2
+      },
+      "oldDAPO120": {
+        "n": 24,
+        "P": 9,
+        "F": 11,
+        "U": 4
+      },
+      "shortmidDAPO": {
+        "n": 24,
+        "P": 10,
+        "F": 11,
+        "U": 3
+      }
+    },
+    "substantive_only": {
+      "R0": {
+        "n": 19,
+        "P": 4,
+        "F": 13,
+        "U": 2
+      },
+      "oldDAPO120": {
+        "n": 19,
+        "P": 4,
+        "F": 11,
+        "U": 4
+      },
+      "shortmidDAPO": {
+        "n": 19,
+        "P": 5,
+        "F": 11,
+        "U": 3
+      }
+    },
+    "formatting_only": {
+      "R0": {
+        "n": 5,
+        "P": 5,
+        "F": 0,
+        "U": 0
+      },
+      "oldDAPO120": {
+        "n": 5,
+        "P": 5,
+        "F": 0,
+        "U": 0
+      },
+      "shortmidDAPO": {
+        "n": 5,
+        "P": 5,
+        "F": 0,
+        "U": 0
+      }
+    }
+  },
+  "transitions": {
+    "all_preselected": {
+      "oldDAPO120": {
+        "P→P": 9,
+        "F→F": 11,
+        "U→U": 2,
+        "F→U": 2
+      },
+      "shortmidDAPO": {
+        "P→P": 9,
+        "F→F": 11,
+        "U→U": 2,
+        "F→P": 1,
+        "F→U": 1
+      }
+    },
+    "substantive_only": {
+      "oldDAPO120": {
+        "P→P": 4,
+        "F→F": 11,
+        "U→U": 2,
+        "F→U": 2
+      },
+      "shortmidDAPO": {
+        "P→P": 4,
+        "F→F": 11,
+        "U→U": 2,
+        "F→P": 1,
+        "F→U": 1
+      }
+    },
+    "formatting_only": {
+      "oldDAPO120": {
+        "P→P": 5
+      },
+      "shortmidDAPO": {
+        "P→P": 5
+      }
+    }
+  },
+  "availability": {
+    "news": {
+      "short": {
+        "available": 188,
+        "selected": 4
+      },
+      "medium": {
+        "available": 184,
+        "selected": 4
+      }
+    },
+    "social": {
+      "short": {
+        "available": 378,
+        "selected": 4
+      },
+      "medium": {
+        "available": 300,
+        "selected": 4
+      }
+    },
+    "software": {
+      "short": {
+        "available": 0,
+        "selected": 0
+      },
+      "medium": {
+        "available": 0,
+        "selected": 0
+      }
+    },
+    "speech": {
+      "short": {
+        "available": 1291,
+        "selected": 4
+      },
+      "medium": {
+        "available": 128,
+        "selected": 4
+      }
+    }
+  },
+  "same_assistant_not_independent_or_native_certification": true,
+  "not_population_correctness_rate": true,
+  "source_only_fidelity_not_sentence_reference_alignment": true,
+  "not_used_to_select_checkpoint": true,
+  "software_not_covered_by_shortmedium_audit": true
+}

@@ -1,0 +1,22 @@
+{
+  "observed_unix": 1794489565.6075995,
+  "assigned_runtimes": [
+    {
+      "index": 0,
+      "accelerator": "T4",
+      "variant": 1,
+      "machine_shape": 0
+    },
+    {
+      "index": 1,
+      "accelerator": "NONE",
+      "variant": 0,
+      "machine_shape": 0
+    }
+  ],
+  "compute_units": {
+    "paid_compute_units_balance": 292.15839191079107,
+    "consumption_rate_hourly": 1.23,
+    "assignments_count": 2
+  }
+}

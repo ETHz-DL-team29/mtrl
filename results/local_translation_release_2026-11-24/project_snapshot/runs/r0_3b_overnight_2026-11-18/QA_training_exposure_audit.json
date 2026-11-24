@@ -1,0 +1,113 @@
+{
+  "utc": "2026-11-18T04:41:18.314393+00:00",
+  "B_selected_tag": "t0500000",
+  "B_selected_step": 478,
+  "cases": [
+    {
+      "QA": "domain_balanced_QA",
+      "card": 0,
+      "id": "NewSubtitles18:983879",
+      "stratum": "general",
+      "source": "-I can pay for it if you need it.",
+      "reference": "Ég get greitt fyrir bílinn ef þess gerist þörf.",
+      "rating": "R",
+      "note_zh": "源文只说it，参考明确加入the car（bílinn），孤立句对无法支持这一实体。",
+      "note_en": "The reference specifies the car (bílinn),an entity unsupported by the standalone source's it.",
+      "exact_source_in_stage_A": false,
+      "B_planned_exposures": 2,
+      "B_executed_steps": [
+        26
+      ],
+      "B_selected_weight_exposures": 1,
+      "B_selected_step": 478
+    },
+    {
+      "QA": "domain_balanced_QA",
+      "card": 15,
+      "id": "ParIceFiltered:1430642",
+      "stratum": "technical_short",
+      "source": "Treatment with PREZISTA should be discontinued if such a condition develops.",
+      "reference": "Hætta skal meðferð með PREZISTA ef alvarleg útbrot koma fram.",
+      "rating": "R",
+      "note_zh": "参考把未指明的such a condition具体化为serious rash，孤立源句不能支持这个临床条件，需上文。",
+      "note_en": "The reference resolves such a condition into serious rash;the standalone source cannot support that specificity without prior context.",
+      "exact_source_in_stage_A": false,
+      "B_planned_exposures": 2,
+      "B_executed_steps": [
+        224
+      ],
+      "B_selected_weight_exposures": 1,
+      "B_selected_step": 478
+    },
+    {
+      "QA": "domain_balanced_QA_v2",
+      "card": 20,
+      "id": "ParIceFiltered:715064",
+      "stratum": "technical_medium",
+      "source": "It also allows Member States to derogate from its provisions in the case of undertakings providing exclusively urban, suburban or regional transport.",
+      "reference": "Í reglugerðinni er aðildarríkjunum einnig heimilað að veita undanþágur frá ákvæðum hennar þegar um er að ræða fyrirtæki sem eingöngu annast flutninga í þéttbýli, í úthverfum og á svæðavísu.",
+      "rating": "R",
+      "note_zh": "参考把It明确解释为Regulation，而孤立源句未说明法规类型；这与此前指代被具体化的问题一致，需上文。",
+      "note_en": "The reference resolves It into a Regulation although the standalone source does not specify the instrument type;this needs prior context.",
+      "exact_source_in_stage_A": false,
+      "B_planned_exposures": 1,
+      "B_executed_steps": [
+        222
+      ],
+      "B_selected_weight_exposures": 1,
+      "B_selected_step": 478
+    },
+    {
+      "QA": "domain_balanced_QA_v2",
+      "card": 24,
+      "id": "ParIceFiltered:407521",
+      "stratum": "technical_long",
+      "source": "“Finding the organohalogen Freon-40 near these young, Sun-like stars was surprising,” said Edith Fayolle, a researcher with the Harvard-Smithsonian Center for Astrophysics in Cambridge, Massachusetts in the USA, and lead author of the new paper.",
+      "reference": "„Það kom okkur á óvart að finna lífræna halógeninn Freon-40 nálægt þessari ungu stjörnu sem líkist sólinni,“ sagði Edith Fayolle hjá Harvard-Smithsonian Center for Astrophysics í Cambridge í Massachusetts í Bandaríkjunum, aðalhöfundur greinarinnar um rannsóknina.",
+      "rating": "R",
+      "note_zh": "源文Sun-like stars为复数，参考þessari ungu stjörnu明确为一颗年轻恒星，数量改变。",
+      "note_en": "Plural Sun-like stars becomes the singular þessari ungu stjörnu,a changed quantity.",
+      "exact_source_in_stage_A": false,
+      "B_planned_exposures": 1,
+      "B_executed_steps": [],
+      "B_selected_weight_exposures": 0,
+      "B_selected_step": 478
+    },
+    {
+      "QA": "domain_balanced_QA_v2",
+      "card": 25,
+      "id": "ParIceFiltered:1555911",
+      "stratum": "technical_long",
+      "source": "“While astronomers are often limited by the power of their telescopes, in some cases our ability to see detail is hugely boosted by natural lenses, created by the Universe,” explains lead author Hugo Messias of the Universidad de Concepción (Chile) and the Centro de Astronomia e Astrofísica da Universidade de Lisboa (Portugal).",
+      "reference": "„Þótt stærð sjónauka takmarki störf stjörnufræðinga er í sumum tilvikum hægt að greina mun fínni smáatriði með hjálp náttúrulegra linsa sem alheimurinn hefur búið til,“ segir Hugo Messier stjörnufræðingur við Universidad de Concepción í Chile og Centro de Astronomia e Astrofísica da Universidade de Lisboa í Portúgal, aðalhöfundur greinar um rannsóknina.",
+      "rating": "R",
+      "note_zh": "作者姓名Hugo Messias被写成Hugo Messier，明确命名实体错误；telescope power也被改写为尺寸。",
+      "note_en": "Hugo Messias becomes Hugo Messier,a clear named-entity error;instrument power is also recast as size.",
+      "exact_source_in_stage_A": false,
+      "B_planned_exposures": 1,
+      "B_executed_steps": [
+        754
+      ],
+      "B_selected_weight_exposures": 0,
+      "B_selected_step": 478
+    },
+    {
+      "QA": "domain_balanced_QA_v2",
+      "card": 31,
+      "id": "ParIceFiltered:73064",
+      "stratum": "technical_long",
+      "source": "A higher incidence, although still rare, of hypersensitivity reactions including skin rash, SJS or TEN in patients of Asian origin has been reported (see section 4.8).",
+      "reference": "Mjög sjaldan hefur verið tilkynnt um ofnæmisviðbrögð þar með talin útbrot í húð, Stevens-Johnson heilkenni (SJS) eða eitrunardreplos húðþekju (Toxic epidermal necrolysis (TEN)) hjá sjúklingum af asískum uppruna (sjá kafla 4.8).",
+      "rating": "R",
+      "note_zh": "参考保留罕见不良反应和人群，却丢失higher incidence的相对升高风险限定。",
+      "note_en": "The rare reaction and population remain,but the higher-incidence comparative risk is omitted.",
+      "exact_source_in_stage_A": false,
+      "B_planned_exposures": 0,
+      "B_executed_steps": [],
+      "B_selected_weight_exposures": 0,
+      "B_selected_step": 478
+    }
+  ],
+  "causal_limit": "Pool QA defects are not automatically defects consumed by selected weights. This is exposure bookkeeping,not a causal ablation or pretraining-overlap audit.",
+  "C_updates": 0
+}

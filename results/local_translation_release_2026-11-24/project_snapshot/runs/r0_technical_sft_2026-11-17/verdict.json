@@ -1,0 +1,190 @@
+{
+  "completed": true,
+  "date": "2026-11-17",
+  "step": 330,
+  "target_tokens": 399895,
+  "selected": {
+    "tag": "t200000",
+    "step": 165,
+    "target_tokens": 200770,
+    "metrics": {
+      "nll": 1.69655070573573,
+      "technical_nll": 1.7114732182150163,
+      "dev_target_tokens": 7613,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 46.78001741496425,
+          "bleu": 32.814394117761324
+        },
+        "technical_short": {
+          "n": 8,
+          "chrfpp": 54.4632170732151,
+          "bleu": 34.41812307635434
+        },
+        "technical_medium": {
+          "n": 12,
+          "chrfpp": 34.16632306720786,
+          "bleu": 12.521732139585936
+        },
+        "technical_long": {
+          "n": 12,
+          "chrfpp": 32.66916912366404,
+          "bleu": 14.067675097255824
+        }
+      },
+      "weighted_chrfpp": 37.81058747420698,
+      "failures": 2
+    }
+  },
+  "primary_semantic_coverage_goal_met": false,
+  "reliable_primary_quality_gain_established": false,
+  "recommended_for_formal_efficiency_baseline": false,
+  "small_DAPO_diagnostics_still_possible": true,
+  "original_R0_preserved": true,
+  "runtime_released": true,
+  "CPU_replay_all_fields_equal": true,
+  "source_parity": true,
+  "checkpoint_snapshots": {
+    "t000000": {
+      "verified": true,
+      "sha256": "4594549e3e475992498192a81032770ca99a798b31d57597ecccaac97a42ac7d"
+    },
+    "t100000": {
+      "verified": true,
+      "sha256": "2286bddec9e890ba875d3cce18062780bac387c81416442f1430496db7358918"
+    },
+    "t200000": {
+      "verified": true,
+      "sha256": "c6a182388265c545b71f00590701752ca898e0a676db2ebae89fef66ddec1395"
+    },
+    "t400000": {
+      "verified": true,
+      "sha256": "74d55dc26ec5869145bb2b1edaf0746393b41d48ed2051ee01b6311b7f079e17"
+    }
+  },
+  "technical_greedy_effects": {
+    "chrfpp": {
+      "delta": 1.5346935975405387,
+      "paired_source_stratified_CI95": [
+        -0.4183118915389176,
+        3.6373899428502043
+      ]
+    },
+    "bleu": {
+      "delta": 0.139330912923322,
+      "paired_source_stratified_CI95": [
+        -2.748676243674909,
+        2.541653173083764
+      ]
+    }
+  },
+  "general_greedy_effects": {
+    "chrfpp": {
+      "delta": 1.127016713361229,
+      "paired_source_stratified_CI95": [
+        -0.22600173610553964,
+        2.6403029945517336
+      ]
+    },
+    "bleu": {
+      "delta": 1.0626723282705992,
+      "paired_source_stratified_CI95": [
+        -0.48688382825548654,
+        2.7304237358546346
+      ]
+    }
+  },
+  "technical_G8": {
+    "R0": {
+      "groups": 24,
+      "coverage": {
+        "no_good_observed": 21,
+        "good_present": 3
+      },
+      "ratings": {
+        "B": 73,
+        "P": 107,
+        "G": 11,
+        "U": 1
+      },
+      "active_coarse_contrast_groups": 21,
+      "offline_variance_keep_groups": 24,
+      "active_reward_selects_good_when_present": 1,
+      "active_reward_pairwise": {
+        "comparable": 247,
+        "concordant": 190,
+        "discordant": 57
+      },
+      "coarse_contrast_groups": 21,
+      "truncated_candidates": 2,
+      "reference_selects_good_when_present": 1,
+      "covered_denominator": 3,
+      "QE_selects_good_when_present": 2,
+      "mean_reference_metricx": 17.21757034646968,
+      "mean_QE": 15.349710986949503,
+      "mean_random_sentence_chrf": 31.450731283602668,
+      "mean_reference_top1_sentence_chrf": 34.026306404388265,
+      "mean_oracle_sentence_chrf": 38.800184202887046
+    },
+    "SFT": {
+      "groups": 24,
+      "coverage": {
+        "no_good_observed": 21,
+        "good_present": 3
+      },
+      "ratings": {
+        "B": 79,
+        "P": 99,
+        "G": 13,
+        "U": 1
+      },
+      "active_coarse_contrast_groups": 17,
+      "offline_variance_keep_groups": 24,
+      "active_reward_selects_good_when_present": 3,
+      "active_reward_pairwise": {
+        "comparable": 247,
+        "concordant": 181,
+        "discordant": 63,
+        "tie": 3
+      },
+      "coarse_contrast_groups": 19,
+      "truncated_candidates": 4,
+      "reference_selects_good_when_present": 3,
+      "covered_denominator": 3,
+      "QE_selects_good_when_present": 2,
+      "mean_reference_metricx": 17.35248127952218,
+      "mean_QE": 15.274583076437315,
+      "mean_random_sentence_chrf": 31.772684200612975,
+      "mean_reference_top1_sentence_chrf": 33.49263831974658,
+      "mean_oracle_sentence_chrf": 39.29947180622799
+    },
+    "paired": {
+      "net_covered": 0,
+      "transitions": {
+        "no_good_observed -> no_good_observed": 21,
+        "good_present -> good_present": 3
+      },
+      "confirmed_gains": 0,
+      "confirmed_losses": 0,
+      "uncertainty_involved": 0
+    }
+  },
+  "cost": {
+    "date": "2026-11-17",
+    "gpu": "NVIDIA L4",
+    "runtime_released": true,
+    "allocated_minutes": 83.58019754091899,
+    "initial_compute_units": 276.23864285993494,
+    "final_compute_units": 273.6968603381737,
+    "observed_balance_decrease": 2.541782521761263,
+    "observed_rate_per_hour": 1.94,
+    "other_assignments_remaining": 0,
+    "note": "Observed account balance change;includes setup,model download,checks,training,evaluation andtransfer. Settlement may lag. No attribution to other users assignments.",
+    "unix": 1794914907.4369516
+  },
+  "DAPO_updates": 0,
+  "not_native_certified": true,
+  "report": "D:\\deep learning project\\reports\\r0_technical_sft_2026-11-17\\TECHNICAL_SFT_RESULTS_2026-11-17.html",
+  "completed_utc": "2026-11-17T11:34:10.042515+00:00"
+}

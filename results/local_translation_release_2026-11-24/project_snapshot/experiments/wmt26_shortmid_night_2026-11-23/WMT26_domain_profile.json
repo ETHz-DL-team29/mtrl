@@ -1,0 +1,31 @@
+{
+  "UTC": "2026-11-24T02:23:51.682614+00:00",
+  "domains": {
+    "news": {
+      "documents": 14,
+      "source_words": 6363,
+      "source_characters": 38636,
+      "reference_characters": 41472
+    },
+    "social": {
+      "documents": 44,
+      "source_words": 11090,
+      "source_characters": 66360,
+      "reference_characters": 71728
+    },
+    "software": {
+      "documents": 7,
+      "source_words": 2485,
+      "source_characters": 19385,
+      "reference_characters": 20876
+    },
+    "speech": {
+      "documents": 133,
+      "source_words": 8585,
+      "source_characters": 44375,
+      "reference_characters": 43107
+    }
+  },
+  "corpus_metrics_are_not_equal_weight_document_means": true,
+  "reference_lengths_used_only_for_descriptive_profile_not_subset_selection": true
+}

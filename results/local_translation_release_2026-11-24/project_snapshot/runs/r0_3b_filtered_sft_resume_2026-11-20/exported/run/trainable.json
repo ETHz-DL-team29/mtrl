@@ -1,0 +1,7 @@
+{
+  "parameters": 29933568,
+  "tensors": 504,
+  "all_fp32": true,
+  "base_frozen": true,
+  "initial_adapter_sha256": "9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199"
+}

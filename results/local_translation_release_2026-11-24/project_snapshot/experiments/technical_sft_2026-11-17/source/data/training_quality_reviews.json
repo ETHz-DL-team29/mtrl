@@ -1,0 +1,646 @@
+{
+  "method": "Read all80 source/reference pairs;AI-assisted,not native-certified. No reward-score based acceptance.",
+  "utc": "2026-11-17T09:53:22.336207+00:00",
+  "reviews": [
+    {
+      "card": 0,
+      "id": "OpenSubtitles18:59438",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Discourse ellipsis preserves here/this morning.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 1,
+      "id": "OpenSubtitles18:991095",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Idiomatic call it a night rendered as let this be enough.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 2,
+      "id": "OpenSubtitles18:840128",
+      "stratum": "general",
+      "status": "quarantine",
+      "reason_en": "Key purpose to come is omitted; unsuitable for literal standalone translation.",
+      "reason_zh": "发现明确缺损或对齐/完整性存疑，保守隔离。"
+    },
+    {
+      "card": 3,
+      "id": "OpenSubtitles18:1384516",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Name Django preserved.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 4,
+      "id": "OpenSubtitles18:840794",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Indifference to what Jack said preserved.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 5,
+      "id": "OpenSubtitles18:866947",
+      "stratum": "general",
+      "status": "quarantine",
+      "reason_en": "Why/so much fidelity is uncertain; conservative quarantine, not a native-certified error.",
+      "reason_zh": "发现明确缺损或对齐/完整性存疑，保守隔离。"
+    },
+    {
+      "card": 6,
+      "id": "OpenSubtitles18:76864",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Swiss versus Dutch contrast preserved.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 7,
+      "id": "OpenSubtitles18:1418459",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "You plural is compatible with unspecified English you.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 8,
+      "id": "OpenSubtitles18:1525180",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Both retain the deliberate eaten-by ellipsis.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 9,
+      "id": "OpenSubtitles18:639633",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Lessons and excellent teacher preserved.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 10,
+      "id": "OpenSubtitles18:654348",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Question and expletive preserved.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 11,
+      "id": "OpenSubtitles18:743072",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Sara,one photograph and possession preserved.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 12,
+      "id": "OpenSubtitles18:1550596",
+      "stratum": "general",
+      "status": "quarantine",
+      "reason_en": "Nearly over its limit becomes a card at its maximum, with an added referent.",
+      "reason_zh": "发现明确缺损或对齐/完整性存疑，保守隔离。"
+    },
+    {
+      "card": 13,
+      "id": "OpenSubtitles18:290425",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Boys and strong preserved.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 14,
+      "id": "OpenSubtitles18:683673",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Last encounter paraphrased as never see him again.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 15,
+      "id": "OpenSubtitles18:1254338",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Invitation for a drink preserved.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 16,
+      "id": "OpenSubtitles18:1543863",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Parental warning and younger-child restriction preserved.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 17,
+      "id": "OpenSubtitles18:448767",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Hero/villain negation contrast preserved.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 18,
+      "id": "Tatoeba:7566",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Using Twitter preserved.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 19,
+      "id": "Tatoeba:8987",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Fun fact preserved.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 20,
+      "id": "ParIce:700617",
+      "stratum": "technical_short",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Protection of non-target organisms,especially bees retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 21,
+      "id": "ParIce:1295816",
+      "stratum": "technical_short",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Availability of short summaries retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 22,
+      "id": "ParIce:1822446",
+      "stratum": "technical_short",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "No clinical pregnancy data for Valtropin retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 23,
+      "id": "ParIce:2051589",
+      "stratum": "technical_short",
+      "status": "quarantine",
+      "reason_en": "Malformed source and stray quotation/and in an intravenous-route sentence.",
+      "reason_zh": "发现明确缺损或对齐/完整性存疑，保守隔离。"
+    },
+    {
+      "card": 24,
+      "id": "ParIce:1422377",
+      "stratum": "technical_short",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "12–17 grams/litre retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 25,
+      "id": "ParIce:1537977",
+      "stratum": "technical_short",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Reasons for taking part-time work retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 26,
+      "id": "ParIce:56886",
+      "stratum": "technical_short",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Weighting range and maximum spread retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 27,
+      "id": "ParIce:987556",
+      "stratum": "technical_short",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Replacement of introductory section6.2 retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 28,
+      "id": "ParIce:186319",
+      "stratum": "technical_short",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Accounting provisions rendered as reserved funds,not a generic legal prohibition.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 29,
+      "id": "ParIce:278670",
+      "stratum": "technical_short",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "EC type-approval addendum retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 30,
+      "id": "ParIce:1589804",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Auditory warning,audibility and equivalence to optical tell-tale retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 31,
+      "id": "ParIce:1288360",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Certificate conditions and both2007 dates retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 32,
+      "id": "ParIce:1212310",
+      "stratum": "technical_medium",
+      "status": "quarantine",
+      "reason_en": "Source OCR splits ochratoxin into ochra toxin.",
+      "reason_zh": "发现明确缺损或对齐/完整性存疑，保守隔离。"
+    },
+    {
+      "card": 33,
+      "id": "ParIce:1735405",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Disposal of unused-product syringes after treatment retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 34,
+      "id": "ParIce:613412",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Third-country sparkling wine,equivalence and both annex references retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 35,
+      "id": "ParIce:391819",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "HTLV-I testing,high-prevalence origin/residence,partners and parents retained;identifier punctuation is imperfect.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 36,
+      "id": "ParIce:1999549",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Immediately tell doctor about rash and other allergy symptoms retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 37,
+      "id": "ParIce:196155",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Risk of children misusing lighters retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 38,
+      "id": "ParIce:1274613",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Both measurement protocols and section references retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 39,
+      "id": "ParIce:734865",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Risk coverage and Article3 references retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 40,
+      "id": "ParIce:536067",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Oldest insurance periods under multiple bilateral conventions retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 41,
+      "id": "ParIce:747921",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Equipment counts times factors and category summation retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 42,
+      "id": "ParIce:927320",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Cross-border/sector personnel exchange for research and innovation retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 43,
+      "id": "ParIce:1498640",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Inspection results and Commission veterinary-reporting relation retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 44,
+      "id": "ParIce:2014491",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Haemoglobin variation,iron stores and concurrent illness retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 45,
+      "id": "ParIce:787019",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Minor source spelling commerical does not obscure heavy-vehicle exhaust opacity.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 46,
+      "id": "ParIce:1482464",
+      "stratum": "technical_medium",
+      "status": "quarantine",
+      "reason_en": "Target OCR splits A ukin,sam settum,um hverfi and corrupts the German proper term.",
+      "reason_zh": "发现明确缺损或对齐/完整性存疑，保守隔离。"
+    },
+    {
+      "card": 47,
+      "id": "ParIce:1609983",
+      "stratum": "technical_medium",
+      "status": "quarantine",
+      "reason_en": "Target adds an unaligned clause that the total-mass indicator only shows positive values.",
+      "reason_zh": "发现明确缺损或对齐/完整性存疑，保守隔离。"
+    },
+    {
+      "card": 48,
+      "id": "ParIce:999143",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Notify Commission and other states of additional-region approval retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 49,
+      "id": "ParIce:1944560",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Liver enzymes,bilirubin,inequalities and decimal-locale normalization retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 50,
+      "id": "ParIce:1417337",
+      "stratum": "technical_medium",
+      "status": "quarantine",
+      "reason_en": "Source OCR splits prejudice into preju dice.",
+      "reason_zh": "发现明确缺损或对齐/完整性存疑，保守隔离。"
+    },
+    {
+      "card": 51,
+      "id": "ParIce:1798779",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Pramipexole base/salt identities and3.15/4.5mg retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 52,
+      "id": "ParIce:1916088",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Neither drug mutagenic in bacteria,but DNA-replication inhibition in mammalian tests retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 53,
+      "id": "ParIce:1872239",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Renal impairment,lower plasma concentration and similar oral clearance retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 54,
+      "id": "ParIce:2075491",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Weight covariate,lower clearance and0.0105L/h retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 55,
+      "id": "ParIce:593237",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "EMAS guidance,subsidiaries/sites and registration actors retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 56,
+      "id": "ParIce:1305459",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Ship60m threshold,80m aggregate rule,two outfits and two sets retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 57,
+      "id": "ParIce:799543",
+      "stratum": "technical_long",
+      "status": "quarantine",
+      "reason_en": "Fraud-or-intentional/gross-negligence alternatives appear collapsed into fraudulent nonfulfilment; conservative legal-scope quarantine.",
+      "reason_zh": "发现明确缺损或对齐/完整性存疑，保守隔离。"
+    },
+    {
+      "card": 58,
+      "id": "ParIce:9836",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Contact authorities,immediate exchange and both article references retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 59,
+      "id": "ParIce:476131",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Electronic processing/storage and transmission modalities retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 60,
+      "id": "ParIce:1126463",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Different UCITS home state,depositary agreement and information flow retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 61,
+      "id": "ParIce:1323460",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Agricultural/forestry braking compliance and Articles4–17 retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 62,
+      "id": "ParIce:1592226",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Unsatisfactory checks and restoration to both authorities satisfaction retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 63,
+      "id": "ParIce:1989245",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "PAS cohort title,Anoro/tiotropium,study201038 and PRAC retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 64,
+      "id": "ParIce:899295",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Agricultural-output sum,internal use and two-basic-activity exception retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 65,
+      "id": "ParIce:1089030",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Representative removal and incomplete/outdated/false documentation retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 66,
+      "id": "ParIce:526267",
+      "stratum": "technical_long",
+      "status": "quarantine",
+      "reason_en": "Target begins with a preceding unaligned sentence fragment about practising as architects.",
+      "reason_zh": "发现明确缺损或对齐/完整性存疑，保守隔离。"
+    },
+    {
+      "card": 67,
+      "id": "ParIce:1043587",
+      "stratum": "technical_long",
+      "status": "quarantine",
+      "reason_en": "Target begins with an unaligned preceding clause before numbered item7.",
+      "reason_zh": "发现明确缺损或对齐/完整性存疑，保守隔离。"
+    },
+    {
+      "card": 68,
+      "id": "ParIce:825245",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Common expiry date facilitates antifouling risk-benefit review retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 69,
+      "id": "ParIce:908276",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Below-fair-value option and minimum lease-payment components retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 70,
+      "id": "ParIce:1003972",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Other cabin personnel may not use crew-like uniforms unless requirements met.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 71,
+      "id": "ParIce:1247145",
+      "stratum": "technical_long",
+      "status": "quarantine",
+      "reason_en": "Source OCR splits Functioning into Func tioning.",
+      "reason_zh": "发现明确缺损或对齐/完整性存疑，保守隔离。"
+    },
+    {
+      "card": 72,
+      "id": "ParIce:114921",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Information exchange does not replace bilateral cooperation;host-state supervision retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 73,
+      "id": "ParIce:312822",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Post-balance-sheet ordinary-share transactions and counterfactual denominator retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 74,
+      "id": "ParIce:1531046",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Pension supplement,1992 conditions and five-year application window retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 75,
+      "id": "ParIce:76522",
+      "stratum": "technical_long",
+      "status": "quarantine",
+      "reason_en": "Target glues the next sentence after 2004.Í without whitespace.",
+      "reason_zh": "发现明确缺损或对齐/完整性存疑，保守隔离。"
+    },
+    {
+      "card": 76,
+      "id": "ParIce:63281",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Certificate manufacturer,examination,validity and type identification retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 77,
+      "id": "ParIce:1573080",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Commercial-harm justification for confidential biocide data retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 78,
+      "id": "ParIce:843684",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Independent experts,conversion to SCE and legal references retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    },
+    {
+      "card": 79,
+      "id": "ParIce:2055352",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Blood monitoring,INOmax dose reduction and supportive treatments retained.",
+      "reason_zh": "检查了主要内容、角色、否定和数值，未发现明确重大缺损；不代表母语认证。"
+    }
+  ]
+}

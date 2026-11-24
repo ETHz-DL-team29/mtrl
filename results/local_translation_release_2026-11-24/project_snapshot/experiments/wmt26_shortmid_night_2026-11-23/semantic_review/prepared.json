@@ -1,0 +1,23 @@
+{
+  "UTC": "2026-11-24T02:23:37.350990+00:00",
+  "sources": 24,
+  "unique_source_candidate_pairs": 52,
+  "arm_pairs": 72,
+  "inputs": [
+    {
+      "arm": "R0",
+      "SHA256": "a89a028d7442614d4873298e08ce21fefddf988b5a42c0b74e879da2fc6cc2a7"
+    },
+    {
+      "arm": "oldDAPO120",
+      "SHA256": "d402e40d60d1f31c3e06f25e20d024589e061bcae4b0484a250f549143f4c230"
+    },
+    {
+      "arm": "shortmidDAPO",
+      "SHA256": "b3161713d0066f85c76a239cd31e24976d9b96d57dc8ee11772be1329bf7fe57"
+    }
+  ],
+  "blinded_order_seed": 202611232532,
+  "meaning": "P: source meaning retained; F: definite material semantic error; U: uncertain; stylistic issues alone are not F",
+  "limitations": "Same assistant, not independent or native certification; source-only unit fidelity, no fabricated reference alignment; not used for checkpoint selection"
+}

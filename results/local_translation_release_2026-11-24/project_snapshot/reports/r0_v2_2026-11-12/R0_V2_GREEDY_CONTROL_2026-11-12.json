@@ -1,0 +1,46 @@
+{
+  "adapter_sha256": "806b9857024868131140da43ad3975d7c8653b97e5687420e4499a3769995847",
+  "selected_checkpoint": "checkpoints/step-001736-tokens-000750064",
+  "adapter_tensors_matched": 372,
+  "decoding": "greedy, no sampling, no thinking, SDPA, cap256; diagnostic only, not model selection or independent test",
+  "no_parameter_updates": true,
+  "records": [
+    {
+      "prompt_id": "p00",
+      "source": "I'm not able to translate this sentence.",
+      "reference": "Ég get ekki þýtt þessa setningu.",
+      "raw_output": "Ég get ekki þýtt þessa setningu.",
+      "hypothesis": "Ég get ekki þýtt þessa setningu.",
+      "prompt_tokens": 36,
+      "completion_tokens": 14,
+      "truncated": false,
+      "generation_seconds": 1.9767167500012874,
+      "sentence_chrfpp": 100.0
+    },
+    {
+      "prompt_id": "p04",
+      "source": "Tom was fired.",
+      "reference": "Tom var rekinn.",
+      "raw_output": "Tom var slökkvaður.",
+      "hypothesis": "Tom var slökkvaður.",
+      "prompt_tokens": 31,
+      "completion_tokens": 8,
+      "truncated": false,
+      "generation_seconds": 0.6948932489995059,
+      "sentence_chrfpp": 38.41264531049176
+    },
+    {
+      "prompt_id": "p10",
+      "source": "The room is hot.",
+      "reference": "Herbergið er heitt.",
+      "raw_output": "Húsið er heitt.",
+      "hypothesis": "Húsið er heitt.",
+      "prompt_tokens": 32,
+      "completion_tokens": 9,
+      "truncated": false,
+      "generation_seconds": 0.7689339200005634,
+      "sentence_chrfpp": 59.18796535876525
+    }
+  ],
+  "wall_seconds": 4.048321416999897
+}

@@ -1,0 +1,10 @@
+{
+  "UTC": "2026-11-20T16:02:37.177065+00:00",
+  "transfer_workers": 1,
+  "transfer_payload_cap_bytes_per_second": 524288,
+  "evaluation_full_states_preserved": true,
+  "initial_best_and_final_selected_preserved": true,
+  "temporary_100_step_recoveries_not_all_downloaded": true,
+  "cloud_training_untouched": true,
+  "reason": "Minimize bandwidth and disk work on the user computer; no need to mirror redundant scratch recoveries"
+}

@@ -1,0 +1,9 @@
+{
+  "from_budget": 100000,
+  "to_budget": 200000,
+  "unix": 1794433886.334513,
+  "basis": "Dev chrF++13.4330 to24.1625 and failure38.3721% to15.1163%; semantic errors remain; no held-out results inspected",
+  "source_sha256": "78c022d0b7c29e211e4f7635869446b8946932c51953adb5b6b393cc2da494fa",
+  "maximum_schedule_tokens": 300000,
+  "wall_hours": 4
+}

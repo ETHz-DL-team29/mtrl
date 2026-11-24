@@ -1,0 +1,12 @@
+{
+  "UTC": "2026-11-24T02:26:43.278769+00:00",
+  "annotations_SHA256": "a243ec873b324616caffa7119d8fac206181793b25e98972f999d7fb621b5a79",
+  "pending_SHA256": "2ae34add0469741bdc062c0abbcce9e8074bf0a487e97d9c8698c3f324eebd69",
+  "identity_mapping_not_opened_before_seal": true,
+  "unique_source_candidate_pairs": 52,
+  "source_units": 24,
+  "reviewer": "same assistant; not independent or Icelandic-native certification",
+  "rubric": "P: core source meaning retained, imperfect grammar allowed; F: identifiable material semantic error; U: uncertainty retained, not forced to P or F",
+  "formatting_only_sources_will_be_reported_separately_without_dropping_any_preselected_source": true,
+  "not_for_checkpoint_selection": true
+}

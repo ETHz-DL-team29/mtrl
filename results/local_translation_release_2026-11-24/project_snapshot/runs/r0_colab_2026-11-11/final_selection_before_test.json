@@ -1,0 +1,23 @@
+{
+  "selection": {
+    "checkpoint": "checkpoint-000176-000175027",
+    "metrics": {
+      "nll": 2.1788075774952893,
+      "chrfpp": 25.915105976395907,
+      "failure_rate": 0.16279069767441862,
+      "wrong_language_rate": 0.0,
+      "count": 86,
+      "chrf_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0",
+      "semantic_review": "pending",
+      "dev_loss_target_tokens": 15291,
+      "dev_forward_calls": 188,
+      "generation_prompt_tokens": 4745,
+      "generation_output_tokens": 6509,
+      "evaluation_wall_seconds": 630.0398268549998
+    },
+    "provisional": true,
+    "semantic_review": "pending"
+  },
+  "adapter_sha256": "81b369a5f6c6343c160c99c4d3271f2ecb63781363b05e9c89e7b2703b77785f",
+  "unix": 1794438033.0772777
+}

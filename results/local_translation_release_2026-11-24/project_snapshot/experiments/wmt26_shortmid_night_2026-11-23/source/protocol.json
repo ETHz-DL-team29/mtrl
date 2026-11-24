@@ -1,0 +1,65 @@
+{
+  "UTC": "2026-11-23T20:54:44.708331+00:00",
+  "parent_SHA256": "7f7a4914c5f403e757fdb882c3576ac68f2b0fa6edc00e537087716b28ddb07e",
+  "candidate_SHA256": "104ad503ce563a46b54fcf6d6580e5da01c7fc9228f5e741e3adeb1d232d5852",
+  "budget": {
+    "user_request_anchor_unix": 1795467049.0,
+    "deadline_unix": 1795503049.0,
+    "training_deadline_unix": 1795497649.0,
+    "evaluation_deadline_unix": 1795495849.0,
+    "maximum_user_wall_hours": 10,
+    "preparation_and_queue_included": true,
+    "deadline_Berlin": "2026-11-24T07:50:49+01:00",
+    "allocation_cutoff_unix": 1795477849.0,
+    "no_deadline_reset": true
+  },
+  "base_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "WMT26_documents": 198,
+  "WMT26_segments": 2551,
+  "source_only_segmentation": true,
+  "precision": "FP32",
+  "attention": "sdpa",
+  "TF32": false,
+  "greedy_batch_size": 4,
+  "greedy_max_new_tokens": 1024,
+  "source_prompt_limit": 2048,
+  "initial_comparison": [
+    "originalP18",
+    "oldDAPO120"
+  ],
+  "conditional_training_trigger": "Both initial198document arms complete,and not(chrF++paired95%lower>0 and BLEUpointdelta>=0);never use incomplete results as no gain",
+  "training_start": "OriginalP18R0,fresh optimizer;not continuing oldDAPO120",
+  "training_sampling": {
+    "G": 8,
+    "T": 0.7,
+    "top_p": 1,
+    "top_k": 0,
+    "maximum": 512
+  },
+  "training_optimizer": {
+    "lr": 3e-06,
+    "clip_grad": 1,
+    "epochs_per_rollout": 2,
+    "accepted_sources": 4
+  },
+  "training_max_updates": 240,
+  "quality_metric_early_stopping": false,
+  "training_source_limit_words": 40,
+  "training_eligibility": "At least2valid,nonzero actual reward variance,and>=2distinct whitespace-normalized word/punctuation token sequences;not certified P/F",
+  "training_reward": "Same pinned MetricX24hybrid source+candidate+reference,raw reward;no absolute score gate",
+  "training_selection": "Dev only:macro short/medium chrF++,then BLEU;retain overall/general chrF within1.5;earliest tie.OriginalR0 remains retained.",
+  "test_policy": "No WMT data in training or checkpoint selection.After conditional predeclared arm,one exploratory endpoint WMT re-evaluation only;not fresh confirmatory evidence.",
+  "ParIce_final": "Historical72-source short/medium project holdout,not fresh and not official WMT",
+  "reward_gate_SHA256": "0e9c3753d814dbc2e6d7b76487ea78bcc16dc1d482fe9604f890abc5ac961d36",
+  "data_manifest": {
+    "dev.jsonl": "5c875292d3a1bc7148f64ef3b1ca05747f4b5053f620dec1f1fd06ba4c8723b1",
+    "evaluation.jsonl": "8c53b0c3551c058fd53086cf7b091f64437d91d5321642ef6d81021c193bb423",
+    "reconstruction_map.jsonl": "6f64244a0ad1e09977d6a6c3e7659f72b81e2ee68631649eda0a5414a300ada1",
+    "review_selection.json": "9c350eb8fecaec4699e0b617ae9f9e717a19160cf93b62b2e642331685e47783",
+    "train.jsonl": "7ee490240d9cb63c6ad943cd26682e5ef482aec3533f53609b1e5a09cc83fe3e",
+    "wmt_documents.jsonl": "9c22775597f3f07b4c87ae1f6b5014d5259272f2643ff4d4c1a55ad150164976",
+    "wmt_segments.jsonl": "838a7afdcef0c58ecacdec36c1a8b98bae86c94d098ccee24c609012506f8f3d"
+  },
+  "new_SFT_updates": 0,
+  "training_data_is_predeclared": true
+}

@@ -1,0 +1,144 @@
+{
+  "date": "2026-11-24",
+  "github_pushed": false,
+  "models": [
+    {
+      "id": "qwen35-08b-sft-r0",
+      "repo_id": "huaq99/mtrl-qwen35-08b-en-is-sft-r0",
+      "url": "https://huggingface.co/huaq99/mtrl-qwen35-08b-en-is-sft-r0",
+      "revision": "c95800cbefea66cbe449a482c7515a74a6984564",
+      "tag": "release-2026-11-24",
+      "private": false,
+      "remote_weight_SHA256": "ebb4575fda36002c76ddb7e999a4e12c44a0be9ddb20b1e4e092d708e6a050e9",
+      "verified": true,
+      "hub_files": {
+        "adapter_config.json": {
+          "bytes": 1343,
+          "sha256": "29cfbc4e1cbace46be69817e97744d2f4b0d4e7bb6d7332c1c1a803bcb89280f"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 43346432,
+          "sha256": "ebb4575fda36002c76ddb7e999a4e12c44a0be9ddb20b1e4e092d708e6a050e9"
+        },
+        "BASE_MODEL_LICENSE.md": {
+          "bytes": 374,
+          "sha256": "e2a6842c7a2d6452146b333f57aabb3e63a561e12db40c203b08ac0446325b4a"
+        },
+        "eval_results.json": {
+          "bytes": 217,
+          "sha256": "2a7b0cf1dd9f2ae8859baf8ac71f62087ee78e0487802197dd9c54a595457fb4"
+        },
+        "load_example.py": {
+          "bytes": 786,
+          "sha256": "4f91eb8710b12d2daa69b34cb21d80e3182fdb604a5e504f429debf63cfa85f3"
+        },
+        "original_adapter_config.json": {
+          "bytes": 1291,
+          "sha256": "d60a131678e396da5b185733b22a6d303ed2a7c2e26f7f5649452844bf652119"
+        },
+        "README.md": {
+          "bytes": 2433,
+          "sha256": "eb2d27ef804375ee947c5292a9d0f3ad13323240157bb44919eddb276a982ba0"
+        },
+        "requirements.txt": {
+          "bytes": 339,
+          "sha256": "be3f81c903557597a5a273378aed346b757775292e67d9e3c444f01f3e1e8ffe"
+        }
+      },
+      "initial_upload_revision": "192a89e32b4995d9e9d6c11bed2e663f1443b507",
+      "anonymous_metadata_and_config_verified": true
+    },
+    {
+      "id": "qwen25-3b-sft-r0",
+      "repo_id": "huaq99/mtrl-qwen25-3b-en-is-sft-r0",
+      "url": "https://huggingface.co/huaq99/mtrl-qwen25-3b-en-is-sft-r0",
+      "revision": "ae660dd4ea272fff7caf840d2c9ccc76401e6780",
+      "tag": "release-2026-11-24",
+      "private": false,
+      "remote_weight_SHA256": "7f7a4914c5f403e757fdb882c3576ac68f2b0fa6edc00e537087716b28ddb07e",
+      "verified": true,
+      "hub_files": {
+        "adapter_config.json": {
+          "bytes": 1271,
+          "sha256": "9eed80c730113a2cbef6e347ed4cfc7a822e0c14ae6f6a1583df543c56c4d084"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 479005064,
+          "sha256": "7f7a4914c5f403e757fdb882c3576ac68f2b0fa6edc00e537087716b28ddb07e"
+        },
+        "BASE_MODEL_LICENSE.md": {
+          "bytes": 391,
+          "sha256": "0008729fe3c57039c19ed926594ec1a75f0dcf7039ae8ee43ecce63c73090269"
+        },
+        "eval_results.json": {
+          "bytes": 243,
+          "sha256": "cd8cf76c88dd6383d6182dd6dc343ab271102b68578ce1209ef8eb88fbb0cc2f"
+        },
+        "load_example.py": {
+          "bytes": 769,
+          "sha256": "38f96b894e5ae2945e51dc78dcd33d3b126d864e3b179fca2f803a8390579ab4"
+        },
+        "original_adapter_config.json": {
+          "bytes": 1269,
+          "sha256": "9f2f18840425789a44b770cc139308bb59ad856e2363f65046fee0fcd92851eb"
+        },
+        "README.md": {
+          "bytes": 2485,
+          "sha256": "3cd88f751fb5c92e8491e8b9d87f1abd53c29af25aea2aa5adeba59a88996963"
+        },
+        "requirements.txt": {
+          "bytes": 339,
+          "sha256": "be3f81c903557597a5a273378aed346b757775292e67d9e3c444f01f3e1e8ffe"
+        }
+      },
+      "initial_upload_revision": "e51714622a5d2768b569dc362e6fd614ebb25080",
+      "anonymous_metadata_and_config_verified": true
+    },
+    {
+      "id": "qwen25-3b-dapo-shortmid",
+      "repo_id": "huaq99/mtrl-qwen25-3b-en-is-dapo-shortmid-v1",
+      "url": "https://huggingface.co/huaq99/mtrl-qwen25-3b-en-is-dapo-shortmid-v1",
+      "revision": "1ec9cfaa813582bda509676497da2ffb2e69e6bc",
+      "tag": "release-2026-11-24",
+      "private": false,
+      "remote_weight_SHA256": "40ee8312ead89272fd5e8190a3b8e1da91d5f0ff641721840600585ff4308c86",
+      "verified": true,
+      "hub_files": {
+        "adapter_config.json": {
+          "bytes": 1271,
+          "sha256": "2872f054b2c63252c19d25df8cfb00f8597012b1dcfa946f366dc64f33e16a6a"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 479005064,
+          "sha256": "40ee8312ead89272fd5e8190a3b8e1da91d5f0ff641721840600585ff4308c86"
+        },
+        "BASE_MODEL_LICENSE.md": {
+          "bytes": 391,
+          "sha256": "0008729fe3c57039c19ed926594ec1a75f0dcf7039ae8ee43ecce63c73090269"
+        },
+        "eval_results.json": {
+          "bytes": 916,
+          "sha256": "77f420e150102211d1dcc461386fbb65b38248b83dd850e0a94b66c32dbea6cc"
+        },
+        "load_example.py": {
+          "bytes": 779,
+          "sha256": "54714533e0f23e8eb05183ec606e0e7ca83f240006f0f9f7be5771beb7521baf"
+        },
+        "original_adapter_config.json": {
+          "bytes": 1219,
+          "sha256": "c226a386d6b4dd55443dfe18abc0d9e956c8c6afc235d5de920b1d0541edcf50"
+        },
+        "README.md": {
+          "bytes": 2624,
+          "sha256": "42d008f63892ee985b0c2da486c3f96fbcd4c3d1a198c5982c0727097c8f3037"
+        },
+        "requirements.txt": {
+          "bytes": 339,
+          "sha256": "be3f81c903557597a5a273378aed346b757775292e67d9e3c444f01f3e1e8ffe"
+        }
+      },
+      "initial_upload_revision": "d284792e5ffa1880ae96dd7f26ac6935f158357d",
+      "anonymous_metadata_and_config_verified": true
+    }
+  ]
+}

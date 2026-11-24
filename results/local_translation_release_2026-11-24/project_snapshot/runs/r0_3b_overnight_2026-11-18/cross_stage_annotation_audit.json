@@ -1,0 +1,487 @@
+{
+  "stages": [
+    "stage_A",
+    "stage_B"
+  ],
+  "scope": "Old SFT200,original3B,and selected candidates of every completed stage",
+  "conflicting_source_hypotheses": 2,
+  "G_nonG_conflicts": 2,
+  "cases": [
+    {
+      "source": "I had no idea what to do.",
+      "hypothesis": "Ég hefði ekki hugmynd um hvað ég ætti að gera.",
+      "labels": [
+        {
+          "condition": "old_SFT200",
+          "kind": "G8",
+          "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+          "index": 0,
+          "rating": "G"
+        },
+        {
+          "condition": "original_3B_parent",
+          "kind": "G8",
+          "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+          "index": 0,
+          "rating": "P"
+        },
+        {
+          "condition": "stage_A/selected_3B",
+          "kind": "G8",
+          "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+          "index": 3,
+          "rating": "P"
+        },
+        {
+          "condition": "stage_A/selected_3B",
+          "kind": "G8",
+          "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+          "index": 5,
+          "rating": "P"
+        },
+        {
+          "condition": "stage_B/selected_3B",
+          "kind": "G8",
+          "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+          "index": 0,
+          "rating": "P"
+        }
+      ]
+    },
+    {
+      "source": "He is about your age.",
+      "hypothesis": "Hann er í ára hjá þér.",
+      "labels": [
+        {
+          "condition": "original_3B_parent",
+          "kind": "G8",
+          "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+          "index": 7,
+          "rating": "G"
+        },
+        {
+          "condition": "stage_A/selected_3B",
+          "kind": "G8",
+          "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+          "index": 7,
+          "rating": "P"
+        },
+        {
+          "condition": "stage_B/selected_3B",
+          "kind": "G8",
+          "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+          "index": 7,
+          "rating": "P"
+        }
+      ]
+    }
+  ],
+  "conditions": {
+    "old_SFT200": {
+      "greedy32": {
+        "raw": {
+          "P": 26,
+          "B": 3,
+          "G": 3
+        },
+        "symmetric_U": {
+          "P": 26,
+          "B": 3,
+          "G": 3
+        }
+      },
+      "G8": {
+        "all32": {
+          "raw": {
+            "groups": 32,
+            "good_present": 7,
+            "good_and_P_or_B": 5,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 32,
+            "good_present": 7,
+            "good_and_P_or_B": 5,
+            "uncertain": 0
+          }
+        },
+        "technical24": {
+          "raw": {
+            "groups": 24,
+            "good_present": 3,
+            "good_and_P_or_B": 2,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 24,
+            "good_present": 3,
+            "good_and_P_or_B": 2,
+            "uncertain": 0
+          }
+        },
+        "general8": {
+          "raw": {
+            "groups": 8,
+            "good_present": 4,
+            "good_and_P_or_B": 3,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 8,
+            "good_present": 4,
+            "good_and_P_or_B": 3,
+            "uncertain": 0
+          }
+        },
+        "technical_short": {
+          "raw": {
+            "groups": 4,
+            "good_present": 2,
+            "good_and_P_or_B": 1,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 4,
+            "good_present": 2,
+            "good_and_P_or_B": 1,
+            "uncertain": 0
+          }
+        },
+        "technical_medium": {
+          "raw": {
+            "groups": 10,
+            "good_present": 1,
+            "good_and_P_or_B": 1,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 10,
+            "good_present": 1,
+            "good_and_P_or_B": 1,
+            "uncertain": 0
+          }
+        },
+        "technical_long": {
+          "raw": {
+            "groups": 10,
+            "good_present": 0,
+            "good_and_P_or_B": 0,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 10,
+            "good_present": 0,
+            "good_and_P_or_B": 0,
+            "uncertain": 0
+          }
+        }
+      }
+    },
+    "original_3B_parent": {
+      "greedy32": {
+        "raw": {
+          "P": 21,
+          "B": 8,
+          "G": 3
+        },
+        "symmetric_U": {
+          "P": 21,
+          "B": 8,
+          "G": 3
+        }
+      },
+      "G8": {
+        "all32": {
+          "raw": {
+            "groups": 32,
+            "good_present": 5,
+            "good_and_P_or_B": 5,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 32,
+            "good_present": 5,
+            "good_and_P_or_B": 5,
+            "uncertain": 0
+          }
+        },
+        "technical24": {
+          "raw": {
+            "groups": 24,
+            "good_present": 2,
+            "good_and_P_or_B": 2,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 24,
+            "good_present": 2,
+            "good_and_P_or_B": 2,
+            "uncertain": 0
+          }
+        },
+        "general8": {
+          "raw": {
+            "groups": 8,
+            "good_present": 3,
+            "good_and_P_or_B": 3,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 8,
+            "good_present": 3,
+            "good_and_P_or_B": 3,
+            "uncertain": 0
+          }
+        },
+        "technical_short": {
+          "raw": {
+            "groups": 4,
+            "good_present": 1,
+            "good_and_P_or_B": 1,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 4,
+            "good_present": 1,
+            "good_and_P_or_B": 1,
+            "uncertain": 0
+          }
+        },
+        "technical_medium": {
+          "raw": {
+            "groups": 10,
+            "good_present": 1,
+            "good_and_P_or_B": 1,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 10,
+            "good_present": 1,
+            "good_and_P_or_B": 1,
+            "uncertain": 0
+          }
+        },
+        "technical_long": {
+          "raw": {
+            "groups": 10,
+            "good_present": 0,
+            "good_and_P_or_B": 0,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 10,
+            "good_present": 0,
+            "good_and_P_or_B": 0,
+            "uncertain": 0
+          }
+        }
+      }
+    },
+    "stage_A/selected_3B": {
+      "greedy32": {
+        "raw": {
+          "P": 18,
+          "B": 12,
+          "U": 1,
+          "G": 1
+        },
+        "symmetric_U": {
+          "P": 18,
+          "B": 12,
+          "U": 1,
+          "G": 1
+        }
+      },
+      "G8": {
+        "all32": {
+          "raw": {
+            "groups": 32,
+            "good_present": 6,
+            "good_and_P_or_B": 6,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 32,
+            "good_present": 6,
+            "good_and_P_or_B": 6,
+            "uncertain": 1
+          }
+        },
+        "technical24": {
+          "raw": {
+            "groups": 24,
+            "good_present": 4,
+            "good_and_P_or_B": 4,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 24,
+            "good_present": 4,
+            "good_and_P_or_B": 4,
+            "uncertain": 0
+          }
+        },
+        "general8": {
+          "raw": {
+            "groups": 8,
+            "good_present": 2,
+            "good_and_P_or_B": 2,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 8,
+            "good_present": 2,
+            "good_and_P_or_B": 2,
+            "uncertain": 1
+          }
+        },
+        "technical_short": {
+          "raw": {
+            "groups": 4,
+            "good_present": 2,
+            "good_and_P_or_B": 2,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 4,
+            "good_present": 2,
+            "good_and_P_or_B": 2,
+            "uncertain": 0
+          }
+        },
+        "technical_medium": {
+          "raw": {
+            "groups": 10,
+            "good_present": 2,
+            "good_and_P_or_B": 2,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 10,
+            "good_present": 2,
+            "good_and_P_or_B": 2,
+            "uncertain": 0
+          }
+        },
+        "technical_long": {
+          "raw": {
+            "groups": 10,
+            "good_present": 0,
+            "good_and_P_or_B": 0,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 10,
+            "good_present": 0,
+            "good_and_P_or_B": 0,
+            "uncertain": 0
+          }
+        }
+      }
+    },
+    "stage_B/selected_3B": {
+      "greedy32": {
+        "raw": {
+          "P": 20,
+          "B": 9,
+          "G": 3
+        },
+        "symmetric_U": {
+          "P": 20,
+          "B": 9,
+          "G": 3
+        }
+      },
+      "G8": {
+        "all32": {
+          "raw": {
+            "groups": 32,
+            "good_present": 3,
+            "good_and_P_or_B": 3,
+            "uncertain": 2
+          },
+          "symmetric_U": {
+            "groups": 32,
+            "good_present": 3,
+            "good_and_P_or_B": 3,
+            "uncertain": 3
+          }
+        },
+        "technical24": {
+          "raw": {
+            "groups": 24,
+            "good_present": 2,
+            "good_and_P_or_B": 2,
+            "uncertain": 2
+          },
+          "symmetric_U": {
+            "groups": 24,
+            "good_present": 2,
+            "good_and_P_or_B": 2,
+            "uncertain": 2
+          }
+        },
+        "general8": {
+          "raw": {
+            "groups": 8,
+            "good_present": 1,
+            "good_and_P_or_B": 1,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 8,
+            "good_present": 1,
+            "good_and_P_or_B": 1,
+            "uncertain": 1
+          }
+        },
+        "technical_short": {
+          "raw": {
+            "groups": 4,
+            "good_present": 2,
+            "good_and_P_or_B": 2,
+            "uncertain": 0
+          },
+          "symmetric_U": {
+            "groups": 4,
+            "good_present": 2,
+            "good_and_P_or_B": 2,
+            "uncertain": 0
+          }
+        },
+        "technical_medium": {
+          "raw": {
+            "groups": 10,
+            "good_present": 0,
+            "good_and_P_or_B": 0,
+            "uncertain": 1
+          },
+          "symmetric_U": {
+            "groups": 10,
+            "good_present": 0,
+            "good_and_P_or_B": 0,
+            "uncertain": 1
+          }
+        },
+        "technical_long": {
+          "raw": {
+            "groups": 10,
+            "good_present": 0,
+            "good_and_P_or_B": 0,
+            "uncertain": 1
+          },
+          "symmetric_U": {
+            "groups": 10,
+            "good_present": 0,
+            "good_and_P_or_B": 0,
+            "uncertain": 1
+          }
+        }
+      }
+    }
+  },
+  "raw_locked_labels_unchanged": true,
+  "exploratory": true,
+  "not_independent_native_review": true,
+  "rule": "Symmetrically mark all identical source+hypothesis labels U if any locked historical/current label disagrees;no model-specific relabelling"
+}

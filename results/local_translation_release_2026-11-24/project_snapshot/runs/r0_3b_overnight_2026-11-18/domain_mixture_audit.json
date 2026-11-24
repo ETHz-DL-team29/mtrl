@@ -1,0 +1,526 @@
+{
+  "stage_A": {
+    "planned": {
+      "general / general": {
+        "unique_pairs": 20044,
+        "example_exposures": 20044,
+        "target_tokens": 359998
+      },
+      "technical_long / ParIce": {
+        "unique_pairs": 375,
+        "example_exposures": 375,
+        "target_tokens": 65849
+      },
+      "technical_long / astronomy [source keyword heuristic]": {
+        "unique_pairs": 5,
+        "example_exposures": 5,
+        "target_tokens": 826
+      },
+      "technical_long / engineering [source keyword heuristic]": {
+        "unique_pairs": 60,
+        "example_exposures": 60,
+        "target_tokens": 10662
+      },
+      "technical_long / legal [source keyword heuristic]": {
+        "unique_pairs": 802,
+        "example_exposures": 802,
+        "target_tokens": 151974
+      },
+      "technical_long / medical [source keyword heuristic]": {
+        "unique_pairs": 223,
+        "example_exposures": 223,
+        "target_tokens": 40641
+      },
+      "technical_medium / ParIce": {
+        "unique_pairs": 1362,
+        "example_exposures": 1944,
+        "target_tokens": 122873
+      },
+      "technical_medium / astronomy [source keyword heuristic]": {
+        "unique_pairs": 4,
+        "example_exposures": 5,
+        "target_tokens": 300
+      },
+      "technical_medium / engineering [source keyword heuristic]": {
+        "unique_pairs": 80,
+        "example_exposures": 109,
+        "target_tokens": 7038
+      },
+      "technical_medium / legal [source keyword heuristic]": {
+        "unique_pairs": 515,
+        "example_exposures": 724,
+        "target_tokens": 52611
+      },
+      "technical_medium / medical [source keyword heuristic]": {
+        "unique_pairs": 456,
+        "example_exposures": 645,
+        "target_tokens": 40936
+      },
+      "technical_short / ParIce": {
+        "unique_pairs": 1214,
+        "example_exposures": 1447,
+        "target_tokens": 36749
+      },
+      "technical_short / engineering [source keyword heuristic]": {
+        "unique_pairs": 21,
+        "example_exposures": 29,
+        "target_tokens": 747
+      },
+      "technical_short / legal [source keyword heuristic]": {
+        "unique_pairs": 101,
+        "example_exposures": 122,
+        "target_tokens": 3423
+      },
+      "technical_short / medical [source keyword heuristic]": {
+        "unique_pairs": 119,
+        "example_exposures": 143,
+        "target_tokens": 4080
+      }
+    },
+    "actual_so_far": {
+      "general / general": {
+        "unique_pairs": 20044,
+        "example_exposures": 20044,
+        "target_tokens": 359998
+      },
+      "technical_long / ParIce": {
+        "unique_pairs": 375,
+        "example_exposures": 375,
+        "target_tokens": 65849
+      },
+      "technical_long / astronomy [source keyword heuristic]": {
+        "unique_pairs": 5,
+        "example_exposures": 5,
+        "target_tokens": 826
+      },
+      "technical_long / engineering [source keyword heuristic]": {
+        "unique_pairs": 60,
+        "example_exposures": 60,
+        "target_tokens": 10662
+      },
+      "technical_long / legal [source keyword heuristic]": {
+        "unique_pairs": 802,
+        "example_exposures": 802,
+        "target_tokens": 151974
+      },
+      "technical_long / medical [source keyword heuristic]": {
+        "unique_pairs": 223,
+        "example_exposures": 223,
+        "target_tokens": 40641
+      },
+      "technical_medium / ParIce": {
+        "unique_pairs": 1362,
+        "example_exposures": 1944,
+        "target_tokens": 122873
+      },
+      "technical_medium / astronomy [source keyword heuristic]": {
+        "unique_pairs": 4,
+        "example_exposures": 5,
+        "target_tokens": 300
+      },
+      "technical_medium / engineering [source keyword heuristic]": {
+        "unique_pairs": 80,
+        "example_exposures": 109,
+        "target_tokens": 7038
+      },
+      "technical_medium / legal [source keyword heuristic]": {
+        "unique_pairs": 515,
+        "example_exposures": 724,
+        "target_tokens": 52611
+      },
+      "technical_medium / medical [source keyword heuristic]": {
+        "unique_pairs": 456,
+        "example_exposures": 645,
+        "target_tokens": 40936
+      },
+      "technical_short / ParIce": {
+        "unique_pairs": 1214,
+        "example_exposures": 1447,
+        "target_tokens": 36749
+      },
+      "technical_short / engineering [source keyword heuristic]": {
+        "unique_pairs": 21,
+        "example_exposures": 29,
+        "target_tokens": 747
+      },
+      "technical_short / legal [source keyword heuristic]": {
+        "unique_pairs": 101,
+        "example_exposures": 122,
+        "target_tokens": 3423
+      },
+      "technical_short / medical [source keyword heuristic]": {
+        "unique_pairs": 119,
+        "example_exposures": 143,
+        "target_tokens": 4080
+      }
+    },
+    "actual_example_exposures": 26677
+  },
+  "stage_B": {
+    "planned": {
+      "general / astronomy": {
+        "unique_pairs": 105,
+        "example_exposures": 210,
+        "target_tokens": 4446
+      },
+      "general / general": {
+        "unique_pairs": 33711,
+        "example_exposures": 39928,
+        "target_tokens": 715446
+      },
+      "general / medical": {
+        "unique_pairs": 2,
+        "example_exposures": 4,
+        "target_tokens": 108
+      },
+      "technical_long / astronomy": {
+        "unique_pairs": 248,
+        "example_exposures": 248,
+        "target_tokens": 29720
+      },
+      "technical_long / engineering": {
+        "unique_pairs": 604,
+        "example_exposures": 604,
+        "target_tokens": 79119
+      },
+      "technical_long / legal": {
+        "unique_pairs": 1687,
+        "example_exposures": 1687,
+        "target_tokens": 276781
+      },
+      "technical_long / medical": {
+        "unique_pairs": 1024,
+        "example_exposures": 1024,
+        "target_tokens": 154344
+      },
+      "technical_medium / astronomy": {
+        "unique_pairs": 1132,
+        "example_exposures": 1132,
+        "target_tokens": 70949
+      },
+      "technical_medium / engineering": {
+        "unique_pairs": 2010,
+        "example_exposures": 2010,
+        "target_tokens": 115135
+      },
+      "technical_medium / legal": {
+        "unique_pairs": 1663,
+        "example_exposures": 1663,
+        "target_tokens": 94269
+      },
+      "technical_medium / medical": {
+        "unique_pairs": 3026,
+        "example_exposures": 3026,
+        "target_tokens": 169634
+      },
+      "technical_short / astronomy": {
+        "unique_pairs": 133,
+        "example_exposures": 223,
+        "target_tokens": 5461
+      },
+      "technical_short / engineering": {
+        "unique_pairs": 611,
+        "example_exposures": 1056,
+        "target_tokens": 27147
+      },
+      "technical_short / legal": {
+        "unique_pairs": 398,
+        "example_exposures": 671,
+        "target_tokens": 17762
+      },
+      "technical_short / medical": {
+        "unique_pairs": 887,
+        "example_exposures": 1524,
+        "target_tokens": 39627
+      }
+    },
+    "actual_so_far": {
+      "general / astronomy": {
+        "unique_pairs": 105,
+        "example_exposures": 105,
+        "target_tokens": 2223
+      },
+      "general / general": {
+        "unique_pairs": 22183,
+        "example_exposures": 22183,
+        "target_tokens": 397768
+      },
+      "general / medical": {
+        "unique_pairs": 2,
+        "example_exposures": 2,
+        "target_tokens": 54
+      },
+      "technical_long / astronomy": {
+        "unique_pairs": 142,
+        "example_exposures": 142,
+        "target_tokens": 17482
+      },
+      "technical_long / engineering": {
+        "unique_pairs": 327,
+        "example_exposures": 327,
+        "target_tokens": 42578
+      },
+      "technical_long / legal": {
+        "unique_pairs": 954,
+        "example_exposures": 954,
+        "target_tokens": 155489
+      },
+      "technical_long / medical": {
+        "unique_pairs": 558,
+        "example_exposures": 558,
+        "target_tokens": 84649
+      },
+      "technical_medium / astronomy": {
+        "unique_pairs": 638,
+        "example_exposures": 638,
+        "target_tokens": 40079
+      },
+      "technical_medium / engineering": {
+        "unique_pairs": 1131,
+        "example_exposures": 1131,
+        "target_tokens": 64373
+      },
+      "technical_medium / legal": {
+        "unique_pairs": 912,
+        "example_exposures": 912,
+        "target_tokens": 51974
+      },
+      "technical_medium / medical": {
+        "unique_pairs": 1677,
+        "example_exposures": 1677,
+        "target_tokens": 93642
+      },
+      "technical_short / astronomy": {
+        "unique_pairs": 124,
+        "example_exposures": 124,
+        "target_tokens": 3030
+      },
+      "technical_short / engineering": {
+        "unique_pairs": 571,
+        "example_exposures": 571,
+        "target_tokens": 14729
+      },
+      "technical_short / legal": {
+        "unique_pairs": 383,
+        "example_exposures": 383,
+        "target_tokens": 10143
+      },
+      "technical_short / medical": {
+        "unique_pairs": 853,
+        "example_exposures": 853,
+        "target_tokens": 22104
+      }
+    },
+    "actual_example_exposures": 30560
+  },
+  "evaluation_source_metadata": {
+    "decode_dev.jsonl": {
+      "general / general": {
+        "unique_pairs": 32,
+        "example_exposures": 32,
+        "target_tokens": 593
+      },
+      "technical_long / ParIce": {
+        "unique_pairs": 1,
+        "example_exposures": 1,
+        "target_tokens": 163
+      },
+      "technical_long / legal [corpus provenance]": {
+        "unique_pairs": 4,
+        "example_exposures": 4,
+        "target_tokens": 466
+      },
+      "technical_long / legal [source keyword heuristic]": {
+        "unique_pairs": 2,
+        "example_exposures": 2,
+        "target_tokens": 369
+      },
+      "technical_long / medical [corpus provenance]": {
+        "unique_pairs": 2,
+        "example_exposures": 2,
+        "target_tokens": 206
+      },
+      "technical_long / medical [source keyword heuristic]": {
+        "unique_pairs": 3,
+        "example_exposures": 3,
+        "target_tokens": 487
+      },
+      "technical_medium / ParIce": {
+        "unique_pairs": 4,
+        "example_exposures": 4,
+        "target_tokens": 212
+      },
+      "technical_medium / astronomy [corpus provenance]": {
+        "unique_pairs": 2,
+        "example_exposures": 2,
+        "target_tokens": 152
+      },
+      "technical_medium / legal [corpus provenance]": {
+        "unique_pairs": 3,
+        "example_exposures": 3,
+        "target_tokens": 223
+      },
+      "technical_medium / legal [source keyword heuristic]": {
+        "unique_pairs": 1,
+        "example_exposures": 1,
+        "target_tokens": 48
+      },
+      "technical_medium / medical [corpus provenance]": {
+        "unique_pairs": 1,
+        "example_exposures": 1,
+        "target_tokens": 51
+      },
+      "technical_medium / medical [source keyword heuristic]": {
+        "unique_pairs": 1,
+        "example_exposures": 1,
+        "target_tokens": 90
+      },
+      "technical_short / ParIce": {
+        "unique_pairs": 3,
+        "example_exposures": 3,
+        "target_tokens": 73
+      },
+      "technical_short / legal [corpus provenance]": {
+        "unique_pairs": 1,
+        "example_exposures": 1,
+        "target_tokens": 26
+      },
+      "technical_short / medical [corpus provenance]": {
+        "unique_pairs": 3,
+        "example_exposures": 3,
+        "target_tokens": 83
+      },
+      "technical_short / medical [source keyword heuristic]": {
+        "unique_pairs": 1,
+        "example_exposures": 1,
+        "target_tokens": 30
+      }
+    },
+    "evaluation128.jsonl": {
+      "general / general": {
+        "unique_pairs": 64,
+        "example_exposures": 64,
+        "target_tokens": 1177
+      },
+      "technical_long / astronomy [corpus provenance]": {
+        "unique_pairs": 5,
+        "example_exposures": 5,
+        "target_tokens": 560
+      },
+      "technical_long / legal [corpus provenance]": {
+        "unique_pairs": 13,
+        "example_exposures": 13,
+        "target_tokens": 1646
+      },
+      "technical_long / medical [corpus provenance]": {
+        "unique_pairs": 5,
+        "example_exposures": 5,
+        "target_tokens": 660
+      },
+      "technical_long / unlabelled": {
+        "unique_pairs": 1,
+        "example_exposures": 1,
+        "target_tokens": 113
+      },
+      "technical_medium / astronomy [corpus provenance]": {
+        "unique_pairs": 6,
+        "example_exposures": 6,
+        "target_tokens": 367
+      },
+      "technical_medium / legal [corpus provenance]": {
+        "unique_pairs": 8,
+        "example_exposures": 8,
+        "target_tokens": 485
+      },
+      "technical_medium / medical [corpus provenance]": {
+        "unique_pairs": 6,
+        "example_exposures": 6,
+        "target_tokens": 329
+      },
+      "technical_medium / unlabelled": {
+        "unique_pairs": 4,
+        "example_exposures": 4,
+        "target_tokens": 281
+      },
+      "technical_short / astronomy [corpus provenance]": {
+        "unique_pairs": 2,
+        "example_exposures": 2,
+        "target_tokens": 45
+      },
+      "technical_short / legal [corpus provenance]": {
+        "unique_pairs": 4,
+        "example_exposures": 4,
+        "target_tokens": 97
+      },
+      "technical_short / medical [corpus provenance]": {
+        "unique_pairs": 7,
+        "example_exposures": 7,
+        "target_tokens": 136
+      },
+      "technical_short / unlabelled": {
+        "unique_pairs": 3,
+        "example_exposures": 3,
+        "target_tokens": 83
+      }
+    },
+    "g8_32.jsonl": {
+      "general / general": {
+        "unique_pairs": 8,
+        "example_exposures": 8,
+        "target_tokens": 0
+      },
+      "technical_long / astronomy [corpus provenance]": {
+        "unique_pairs": 2,
+        "example_exposures": 2,
+        "target_tokens": 0
+      },
+      "technical_long / legal [source keyword heuristic]": {
+        "unique_pairs": 4,
+        "example_exposures": 4,
+        "target_tokens": 0
+      },
+      "technical_long / medical [corpus provenance]": {
+        "unique_pairs": 2,
+        "example_exposures": 2,
+        "target_tokens": 0
+      },
+      "technical_long / unlabelled": {
+        "unique_pairs": 2,
+        "example_exposures": 2,
+        "target_tokens": 0
+      },
+      "technical_medium / legal [source keyword heuristic]": {
+        "unique_pairs": 1,
+        "example_exposures": 1,
+        "target_tokens": 0
+      },
+      "technical_medium / medical [corpus provenance]": {
+        "unique_pairs": 2,
+        "example_exposures": 2,
+        "target_tokens": 0
+      },
+      "technical_medium / medical [source keyword heuristic]": {
+        "unique_pairs": 2,
+        "example_exposures": 2,
+        "target_tokens": 0
+      },
+      "technical_medium / unlabelled": {
+        "unique_pairs": 5,
+        "example_exposures": 5,
+        "target_tokens": 0
+      },
+      "technical_short / astronomy [corpus provenance]": {
+        "unique_pairs": 1,
+        "example_exposures": 1,
+        "target_tokens": 0
+      },
+      "technical_short / medical [corpus provenance]": {
+        "unique_pairs": 3,
+        "example_exposures": 3,
+        "target_tokens": 0
+      }
+    }
+  },
+  "notes": "Metadata labels are heuristic, not native domain certification. No fresh-holdout model outputs read. Target tokens may be0 where evaluation metadata does not contain token counts. Planned is not actual training.",
+  "updated_utc": "2026-11-18T04:41:19.404544+00:00"
+}

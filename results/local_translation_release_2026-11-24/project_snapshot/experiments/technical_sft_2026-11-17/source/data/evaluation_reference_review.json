@@ -1,0 +1,8 @@
+{
+  "review_date": "2026-11-16",
+  "review_timing": "Before any Nov16 model generations or reward scores",
+  "reviewer": "AI-assisted source-reference review, no native certification",
+  "policy": "Retain all 128 in the primary analysis; also report a prespecified 120-row sensitivity subset. No replacement or post-output filtering.",
+  "exclude_from_sensitivity": ["ParIce21:opensubtitles:dev:2975", "ParIce21:opensubtitles:dev:2168", "ParIce21:opensubtitles:dev:328", "ParIce21:opensubtitles:dev:522", "ParIce21:opensubtitles:dev:2099", "ParIce21:opensubtitles:dev:1147", "ParIce21:opensubtitles:dev:580", "ParIce21:opensubtitles:dev:1168"],
+  "reasons": ["Speaks highly: source subject omitted and target subject/meaning uncertain", "You/he shifted to I/he and past tense", "Sarcasm inferred and speaker material omitted", "Specific school name omitted", "I shifted to we", "Unspecified subject shifted to you", "Context-dependent malaria day wording", "Downed helicopters and source speaker label omitted"]
+}

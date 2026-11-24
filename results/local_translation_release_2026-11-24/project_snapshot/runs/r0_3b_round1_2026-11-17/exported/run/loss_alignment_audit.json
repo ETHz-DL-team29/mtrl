@@ -1,0 +1,16 @@
+{
+  "manual_checks": [
+    {
+      "id": "ParIce:1296309",
+      "per_token_difference": 0.0
+    },
+    {
+      "id": "OpenSubtitles18:793698",
+      "per_token_difference": 1.52587890625e-06
+    }
+  ],
+  "batch_nll": 3.4269003988314077,
+  "individual_nll": 3.426895742656804,
+  "per_token_batch_difference": 4.656174603656638e-06,
+  "passed": true
+}

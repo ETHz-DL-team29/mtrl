@@ -1,0 +1,9 @@
+{
+  "UTC": "2026-11-22T00:06:42.536855+00:00",
+  "MD_sha256": "4cfc4cced8ec0fe225e6731c1aab85debe6256fe9cc3f6639d3f472ec5acf077",
+  "HTML_sha256": "4bf4e95e8051ddd9298c8af34e83aab822079bd901639d213147c59094c7c151",
+  "case_details_expected": 1128,
+  "source_manifest_sha256": "430bb63b891506af368b69819f0c3b08b201378e20c01b5e0c7066b3f94d0a3e",
+  "GPU_released": true,
+  "project_qualification_passed": false
+}

@@ -1,0 +1,14 @@
+{
+  "details": 662,
+  "case_cards": 659,
+  "expanded": true,
+  "collapsed": true,
+  "tables": 11,
+  "images": 3,
+  "images_ok": true,
+  "overflow": 0,
+  "correct_date": true,
+  "source_sha256": "f50c690d0f3869ac0b1150ef039776e84e268c1a3191ddec2363e09f3988d805",
+  "source_name": "R0_3B_FILTERED_SFT_FINAL_RESULTS_2026-11-20.html",
+  "browser": "isolated Microsoft Edge headless"
+}

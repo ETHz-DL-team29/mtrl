@@ -1,0 +1,8 @@
+{
+  "tag": "t1000000",
+  "step": 926,
+  "target_tokens": 999931,
+  "path": "checkpoints/t1000000",
+  "adapter_sha256": "1ecf014712c7eb0004eaa20de58f54b0346cc4bd67b0ce07e3c7e30084e6c41f",
+  "optimizer_rng_sha256": "93b0b54cad6b3a3f55d209d50700eb73697d4eb3c9ca6ecc7940eb7b51937253"
+}

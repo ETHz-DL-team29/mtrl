@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-13",
+  "all_finite": true,
+  "baseline_preserved": true,
+  "keys_and_shapes_match": true,
+  "parameter_tensors": 372,
+  "parameters": 10822656,
+  "changed_tensors": 372,
+  "adapter_sha256": "ebb4575fda36002c76ddb7e999a4e12c44a0be9ddb20b1e4e092d708e6a050e9",
+  "checkpoint": "checkpoints/step-002106-tokens-001400474",
+  "quality_claim": "None; requires full-bank and semantic review"
+}

@@ -1,0 +1,11 @@
+{
+  "bytes": 29939,
+  "sha256": "4771ecdb0dc17273c4aedccf2fed2864555d03559ab4a3d8c99922ec3cfdb142",
+  "all_supplemental_GPU_work_finished": true,
+  "success": true,
+  "unix": 1795303637.7921913,
+  "verified_UTC": "2026-11-21T23:27:19.748630+00:00",
+  "archive": "D:\\deep learning project\\runs\\r0_3b_recovery_sft_2026-11-21\\selected_train_known_audit\\archive.zip",
+  "read_only": true,
+  "not_used_for_checkpoint_selection": true
+}

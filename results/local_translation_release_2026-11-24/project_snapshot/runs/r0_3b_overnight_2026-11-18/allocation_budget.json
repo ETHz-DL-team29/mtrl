@@ -1,0 +1,7 @@
+{
+  "allocated_unix": 1794958519.4626248,
+  "deadline_unix": 1794987319.4626248,
+  "allocation_cap_minutes": 480,
+  "reserve_minutes": 35,
+  "initial_compute_units": 267.04615833395104
+}

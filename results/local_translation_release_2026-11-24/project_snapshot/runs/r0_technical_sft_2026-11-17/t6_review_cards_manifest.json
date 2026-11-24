@@ -1,0 +1,10 @@
+{
+  "utc": "2026-11-17T11:12:13.282129+00:00",
+  "cards_sha256": "ea2db801de5622297f1147b07af53e1bf8c0bb5050c150838d83b148bdd75002",
+  "R0_file_sha256": "6d11b1e77c408ab0547a23c81136fb2267539b7cb742b521e93d9c7eb6bd4c22",
+  "SFT_file_sha256": "cd6e553bfc50b49cf80b02efdb5bfce12e54b78a75f67eb96a65973ee9779961",
+  "assessed_file": "g8_SFT.jsonl",
+  "all_candidates": 512,
+  "model_identity_hidden": true,
+  "reward_hidden": true
+}

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "explicit_shift_checks": [
+    {
+      "id": "ParIce21:ema:314968",
+      "per_token_difference": 0.0
+    },
+    {
+      "id": "ParIce21:ema:318825",
+      "per_token_difference": 0.0
+    }
+  ],
+  "batch_nll": 0.7547062127165092,
+  "single_nll": 0.7526794995448386,
+  "per_token_batch_delta": 0.00202671317167058
+}

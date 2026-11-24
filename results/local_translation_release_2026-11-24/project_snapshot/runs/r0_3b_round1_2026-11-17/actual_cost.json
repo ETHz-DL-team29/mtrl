@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-17",
+  "gpu": "NVIDIA L4",
+  "runtime_released": true,
+  "allocated_minutes": 150.84371637503307,
+  "allocation_duration_is_upper_bound": true,
+  "attempt_A_allocated_minutes_bounds": [
+    21.17579593261083,
+    25.48927887280782
+  ],
+  "attempt_B_allocated_minutes": 125.35443750222524,
+  "wall_since_first_allocation_minutes": 153.73175387382508,
+  "initial_compute_units": 271.6436531111127,
+  "final_compute_units": 267.04615833395104,
+  "observed_balance_decrease": 4.597494777161671,
+  "observed_rate_per_hour": 1.94,
+  "other_assignments_remaining": 0,
+  "attempts": 2,
+  "note": "Total observed balance change includes both attempts,all setup/downloads/evaluation/transfers. A assignment disappeared;exact removal time unknown and duration bounded. B restarted step0 with reused verified baseline,same seed/order;not an independent seed. Original absolute deadline retained. Settlement may lag.",
+  "unix": 1794931029.6442997
+}

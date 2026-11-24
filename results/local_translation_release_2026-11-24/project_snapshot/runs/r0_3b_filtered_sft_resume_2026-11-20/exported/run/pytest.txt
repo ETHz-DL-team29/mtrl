@@ -1,0 +1,13 @@
+...                                                                      [100%]
+=============================== warnings summary ===============================
+../../usr/local/lib/python3.13/dist-packages/torch/cuda/__init__.py:68
+  /usr/local/lib/python3.13/dist-packages/torch/cuda/__init__.py:68: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+    import pynvml  # type: ignore[import]
+
+tests/test_p13.py::Checks::test_target_only_shift_and_padding
+  /content/p14_project/tests/test_p13.py:18: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+  Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+    self.assertAlmostEqual(float(got),float(expected),places=5)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+3 passed, 2 warnings in 5.48s

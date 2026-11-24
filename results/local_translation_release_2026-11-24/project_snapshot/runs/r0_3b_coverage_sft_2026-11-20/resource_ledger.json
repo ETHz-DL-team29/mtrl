@@ -1,0 +1,35 @@
+{
+  "UTC": "2026-11-20T17:55:43.691636+00:00",
+  "owned_runtime_released": true,
+  "account_assigned_runtime_count": 0,
+  "current_account_consumption": {
+    "paid_compute_units_balance": 232.04457351587587,
+    "consumption_rate_hourly": 0.0,
+    "assignments_count": 0
+  },
+  "GPU_allocated_seconds": 13761.327826499939,
+  "GPU_allocated_minutes": 229.35546377499898,
+  "user_wall_seconds": 14296.454686164856,
+  "deadline_unix": 1795211816,
+  "released_unix": 1795197312.4546862,
+  "hard_deadline_met": true,
+  "initial_compute_units": 239.41670526926325,
+  "final_compute_units": 232.04457351587587,
+  "observed_account_compute_unit_drop": 7.372131753387379,
+  "account_balance_drop_not_claimed_exact_invoice": true,
+  "retained_new_target_tokens": 2000728,
+  "target_tokens_per_training_second": 269.4728509023914,
+  "local_model_training_or_inference": false,
+  "download_payload_cap_KiB_per_second": 512,
+  "actual_recorded_SFT_target_tokens": 2096676,
+  "selected_model_new_target_tokens": 2000728,
+  "uncheckpointed_tail_updates": 66,
+  "latest_recoverable_checkpoint_target_tokens": 2000728,
+  "recorded_training_seconds": 7780.657654300987,
+  "stage_NVML_peak_total_GPU_used_MiB": {
+    "primary_SFT_and_anchor": 17722.0,
+    "manual_anchor_finalization": 7330.0,
+    "postselection_fit": 8360.0
+  },
+  "NVML_peak_total_GPU_used_MiB": 17722.0
+}

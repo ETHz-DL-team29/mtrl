@@ -1,0 +1,6270 @@
+{
+  "date": "2026-11-17",
+  "run": {
+    "status": "completed_pending_semantic_review",
+    "step": 926,
+    "target_tokens": 999931,
+    "train_seconds": 4924.398165464401,
+    "worker_seconds": 7024.611177206039,
+    "stop_reason": "token_budget_completed",
+    "selected": {
+      "tag": "t1000000",
+      "step": 926,
+      "target_tokens": 999931,
+      "metrics": {
+        "nll": 1.5860389561608481,
+        "technical_nll": 1.5854127271791885,
+        "dev_target_tokens": 8649,
+        "by_stratum": {
+          "general": {
+            "n": 32,
+            "chrfpp": 35.54763100658314,
+            "bleu": 19.360401623540074
+          },
+          "technical_short": {
+            "n": 8,
+            "chrfpp": 49.24023592736956,
+            "bleu": 27.42528734477145
+          },
+          "technical_medium": {
+            "n": 12,
+            "chrfpp": 33.226753470076545,
+            "bleu": 13.096467631269178
+          },
+          "technical_long": {
+            "n": 12,
+            "chrfpp": 38.29559574729537,
+            "bleu": 18.990521688215434
+          }
+        },
+        "weighted_chrfpp": 36.476431290709485,
+        "failures": 0
+      }
+    },
+    "selected_adapter_sha256": "1ecf014712c7eb0004eaa20de58f54b0346cc4bd67b0ce07e3c7e30084e6c41f",
+    "initial_adapter_sha256": "033dd30456eb2352fbd04ee98e89a13e547195375aa0546ced755be62297bc74",
+    "G8_sources": 32,
+    "G8_candidates": 256,
+    "base_model": "Qwen/Qwen2.5-3B-Instruct",
+    "model_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "DAPO_updates": 0,
+    "MetricX_calls": 0
+  },
+  "protocol": {
+    "date": "2026-11-17",
+    "registered_utc": "2026-11-17T13:19:43.616920+00:00",
+    "name": "First3B practical R0",
+    "model": "Qwen/Qwen2.5-3B-Instruct",
+    "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "user_authorized": true,
+    "allocation_cap_minutes": 180,
+    "backup_reserve_minutes": 35,
+    "training_cap_minutes": 100,
+    "training": {
+      "target_token_budget": 1000000,
+      "actual_stream_tokens": 999931,
+      "mixture": {
+        "general": 0.4,
+        "technical_short": 0.05,
+        "technical_medium": 0.25,
+        "technical_long": 0.3
+      },
+      "seed": 2026111721,
+      "lr": 0.0001,
+      "warmup_fraction": 0.05,
+      "final_lr_fraction": 0.2,
+      "lora_rank": 16,
+      "lora_alpha": 32,
+      "lora_dropout": 0.05,
+      "weight_decay": 0.01,
+      "clip": 1.0,
+      "effective_batch": 32,
+      "microbatch_start": 4,
+      "max_total_tokens": 1024,
+      "max_target_tokens": 384,
+      "max_pair_exposures": 2,
+      "checkpoints": [
+        0,
+        250000,
+        500000,
+        1000000
+      ],
+      "base_frozen": true,
+      "precision": "native BF16 base+FP32 adapter;matched FP32 final generation"
+    },
+    "evaluation": {
+      "selection": "existing dev64,weightedchrF/general-retention guard;initialfallback",
+      "final": "reused128 diagnostic development",
+      "g8": "same32 diagnostic sources asT6;T=.7,top_p1,top_k0,max320,FP32",
+      "MetricX_used_for_SFT_selection": false,
+      "not_untouched_test": true
+    },
+    "data": {
+      "eligible_pairs": 38640,
+      "selected_unique_pairs": 27743,
+      "example_exposures": 29625,
+      "max_pair_exposures": 2,
+      "target_tokens": 999931,
+      "target_by_stratum": {
+        "general": 400000,
+        "technical_short": 49998,
+        "technical_medium": 249975,
+        "technical_long": 299958
+      },
+      "unique_target_tokens": 895573,
+      "rejected_length": 0,
+      "semantic_rejected_ids": 31,
+      "model_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+      "candidate_pool_sha256": "13393429c1234556cd7b5d6561408964fc39d44b33bffdd670503377ed9761b4",
+      "limitations": [
+        "Source/reference exact/heuristic near dedup;not complete document separation",
+        "Prior sample AI quality review,not full human-certified data"
+      ]
+    },
+    "absolute_model_capacity_claim": false,
+    "no_DAPO_this_round": true
+  },
+  "quality": {
+    "all128": {
+      "n": 128,
+      "values": {
+        "old_R0": {
+          "chrfpp": 34.567108849690364,
+          "bleu": 15.70054219786163
+        },
+        "old_SFT200": {
+          "chrfpp": 36.03694982273706,
+          "bleu": 16.0314940904708
+        },
+        "initial_3B": {
+          "chrfpp": 20.956641294918875,
+          "bleu": 4.033343637311316
+        },
+        "selected_3B": {
+          "chrfpp": 34.457398965701834,
+          "bleu": 14.510217574283462
+        }
+      },
+      "selected_effects_vs": {
+        "old_R0": {
+          "chrfpp": {
+            "delta": -0.1097098839885291,
+            "paired_source_stratified_CI95": [
+              -1.987970515881558,
+              1.908941899362487
+            ]
+          },
+          "bleu": {
+            "delta": -1.1903246235781673,
+            "paired_source_stratified_CI95": [
+              -3.1989349259572566,
+              0.8659690364112342
+            ]
+          }
+        },
+        "old_SFT200": {
+          "chrfpp": {
+            "delta": -1.5795508570352226,
+            "paired_source_stratified_CI95": [
+              -3.5049503894594825,
+              0.6736735363666607
+            ]
+          },
+          "bleu": {
+            "delta": -1.5212765161873385,
+            "paired_source_stratified_CI95": [
+              -4.18608774379419,
+              1.8383873484337296
+            ]
+          }
+        },
+        "initial_3B": {
+          "chrfpp": {
+            "delta": 13.50075767078296,
+            "paired_source_stratified_CI95": [
+              11.28049496537351,
+              15.755362191134376
+            ]
+          },
+          "bleu": {
+            "delta": 10.476873936972147,
+            "paired_source_stratified_CI95": [
+              7.612300266948204,
+              13.618677933095016
+            ]
+          }
+        }
+      },
+      "truncated": {
+        "old_R0": 3,
+        "old_SFT200": 2,
+        "initial_3B": 3,
+        "selected_3B": 1
+      }
+    },
+    "general64": {
+      "n": 64,
+      "values": {
+        "old_R0": {
+          "chrfpp": 35.28141938846085,
+          "bleu": 14.153271721753354
+        },
+        "old_SFT200": {
+          "chrfpp": 36.408436101822076,
+          "bleu": 15.215944050023953
+        },
+        "initial_3B": {
+          "chrfpp": 17.792611861109016,
+          "bleu": 1.3926212889531222
+        },
+        "selected_3B": {
+          "chrfpp": 32.88666215744137,
+          "bleu": 12.007895785138631
+        }
+      },
+      "selected_effects_vs": {
+        "old_R0": {
+          "chrfpp": {
+            "delta": -2.394757231019476,
+            "paired_source_stratified_CI95": [
+              -5.855571150328561,
+              1.137831185191011
+            ]
+          },
+          "bleu": {
+            "delta": -2.145375936614723,
+            "paired_source_stratified_CI95": [
+              -6.182519657310379,
+              3.0033383938062217
+            ]
+          }
+        },
+        "old_SFT200": {
+          "chrfpp": {
+            "delta": -3.521773944380705,
+            "paired_source_stratified_CI95": [
+              -7.122440784846251,
+              0.12293925272852242
+            ]
+          },
+          "bleu": {
+            "delta": -3.2080482648853224,
+            "paired_source_stratified_CI95": [
+              -7.699984876556498,
+              2.4652748639969166
+            ]
+          }
+        },
+        "initial_3B": {
+          "chrfpp": {
+            "delta": 15.094050296332355,
+            "paired_source_stratified_CI95": [
+              10.218951006547139,
+              20.009799506037897
+            ]
+          },
+          "bleu": {
+            "delta": 10.615274496185508,
+            "paired_source_stratified_CI95": [
+              5.469127403094483,
+              17.119325312045763
+            ]
+          }
+        }
+      },
+      "truncated": {
+        "old_R0": 0,
+        "old_SFT200": 0,
+        "initial_3B": 1,
+        "selected_3B": 1
+      }
+    },
+    "technical64": {
+      "n": 64,
+      "values": {
+        "old_R0": {
+          "chrfpp": 34.32676213152102,
+          "bleu": 15.956601866205789
+        },
+        "old_SFT200": {
+          "chrfpp": 35.86145572906156,
+          "bleu": 16.09593277912911
+        },
+        "initial_3B": {
+          "chrfpp": 21.69617164053675,
+          "bleu": 4.541279661150307
+        },
+        "selected_3B": {
+          "chrfpp": 34.7702469123396,
+          "bleu": 15.229141420773812
+        }
+      },
+      "selected_effects_vs": {
+        "old_R0": {
+          "chrfpp": {
+            "delta": 0.44348478081857934,
+            "paired_source_stratified_CI95": [
+              -1.623444929906415,
+              2.8860394322290843
+            ]
+          },
+          "bleu": {
+            "delta": -0.7274604454319764,
+            "paired_source_stratified_CI95": [
+              -2.6316308516993354,
+              1.3987463179918902
+            ]
+          }
+        },
+        "old_SFT200": {
+          "chrfpp": {
+            "delta": -1.0912088167219594,
+            "paired_source_stratified_CI95": [
+              -3.193113909976314,
+              1.6446198670495509
+            ]
+          },
+          "bleu": {
+            "delta": -0.8667913583552984,
+            "paired_source_stratified_CI95": [
+              -3.5090137285168512,
+              3.216229405497453
+            ]
+          }
+        },
+        "initial_3B": {
+          "chrfpp": {
+            "delta": 13.074075271802851,
+            "paired_source_stratified_CI95": [
+              10.623651150200317,
+              15.802737633950812
+            ]
+          },
+          "bleu": {
+            "delta": 10.687861759623505,
+            "paired_source_stratified_CI95": [
+              7.428875363341365,
+              14.345158971072873
+            ]
+          }
+        }
+      },
+      "truncated": {
+        "old_R0": 3,
+        "old_SFT200": 2,
+        "initial_3B": 2,
+        "selected_3B": 0
+      }
+    },
+    "technical_medium_long48": {
+      "n": 48,
+      "values": {
+        "old_R0": {
+          "chrfpp": 34.86011520257951,
+          "bleu": 16.412443711229546
+        },
+        "old_SFT200": {
+          "chrfpp": 36.517693577398596,
+          "bleu": 16.550074269750926
+        },
+        "initial_3B": {
+          "chrfpp": 21.860623820536034,
+          "bleu": 4.663191988994169
+        },
+        "selected_3B": {
+          "chrfpp": 35.169569271214954,
+          "bleu": 15.710930418414785
+        }
+      },
+      "selected_effects_vs": {
+        "old_R0": {
+          "chrfpp": {
+            "delta": 0.30945406863544633,
+            "paired_source_stratified_CI95": [
+              -2.0124407354716705,
+              2.9098584336033837
+            ]
+          },
+          "bleu": {
+            "delta": -0.7015132928147612,
+            "paired_source_stratified_CI95": [
+              -2.6073447972940333,
+              1.4965557533687632
+            ]
+          }
+        },
+        "old_SFT200": {
+          "chrfpp": {
+            "delta": -1.3481243061836423,
+            "paired_source_stratified_CI95": [
+              -3.5670891758363696,
+              1.5363403514446679
+            ]
+          },
+          "bleu": {
+            "delta": -0.8391438513361411,
+            "paired_source_stratified_CI95": [
+              -3.5611857405804317,
+              3.303772470994337
+            ]
+          }
+        },
+        "initial_3B": {
+          "chrfpp": {
+            "delta": 13.30894545067892,
+            "paired_source_stratified_CI95": [
+              10.769022702372553,
+              16.02070008192227
+            ]
+          },
+          "bleu": {
+            "delta": 11.047738429420615,
+            "paired_source_stratified_CI95": [
+              7.824369947368921,
+              14.638857820832843
+            ]
+          }
+        }
+      },
+      "truncated": {
+        "old_R0": 2,
+        "old_SFT200": 1,
+        "initial_3B": 2,
+        "selected_3B": 0
+      }
+    },
+    "prespecified120": {
+      "n": 120,
+      "values": {
+        "old_R0": {
+          "chrfpp": 34.779320130288525,
+          "bleu": 15.871145439538058
+        },
+        "old_SFT200": {
+          "chrfpp": 36.31294216781046,
+          "bleu": 16.252254934505306
+        },
+        "initial_3B": {
+          "chrfpp": 21.242844660055642,
+          "bleu": 4.227204949143633
+        },
+        "selected_3B": {
+          "chrfpp": 34.68680563027744,
+          "bleu": 14.746330192008958
+        }
+      },
+      "selected_effects_vs": {
+        "old_R0": {
+          "chrfpp": {
+            "delta": -0.09251450001108452,
+            "paired_source_stratified_CI95": [
+              -2.024599205572,
+              2.06402724936748
+            ]
+          },
+          "bleu": {
+            "delta": -1.1248152475290993,
+            "paired_source_stratified_CI95": [
+              -3.1084814879150624,
+              1.012154111860344
+            ]
+          }
+        },
+        "old_SFT200": {
+          "chrfpp": {
+            "delta": -1.6261365375330215,
+            "paired_source_stratified_CI95": [
+              -3.5731522702312613,
+              0.8609414685450423
+            ]
+          },
+          "bleu": {
+            "delta": -1.5059247424963473,
+            "paired_source_stratified_CI95": [
+              -4.185712577687352,
+              2.040816579185998
+            ]
+          }
+        },
+        "initial_3B": {
+          "chrfpp": {
+            "delta": 13.443960970221799,
+            "paired_source_stratified_CI95": [
+              11.238517006455975,
+              15.768301667201278
+            ]
+          },
+          "bleu": {
+            "delta": 10.519125242865325,
+            "paired_source_stratified_CI95": [
+              7.608544187531279,
+              13.532206154167788
+            ]
+          }
+        }
+      },
+      "truncated": {
+        "old_R0": 3,
+        "old_SFT200": 2,
+        "initial_3B": 2,
+        "selected_3B": 1
+      }
+    },
+    "technical_short": {
+      "n": 16,
+      "values": {
+        "old_R0": {
+          "chrfpp": 28.034657862126664,
+          "bleu": 8.141035417912587
+        },
+        "old_SFT200": {
+          "chrfpp": 28.147813073918655,
+          "bleu": 8.107639730849645
+        },
+        "initial_3B": {
+          "chrfpp": 19.723335435069995,
+          "bleu": 2.5637470596592897
+        },
+        "selected_3B": {
+          "chrfpp": 29.674968279268487,
+          "bleu": 5.587867692683595
+        }
+      },
+      "selected_effects_vs": {
+        "old_R0": {
+          "chrfpp": {
+            "delta": 1.6403104171418228,
+            "paired_source_stratified_CI95": [
+              -4.043092348037403,
+              7.9785126283238474
+            ]
+          },
+          "bleu": {
+            "delta": -2.5531677252289917,
+            "paired_source_stratified_CI95": [
+              -9.34896165382592,
+              2.2886408459748853
+            ]
+          }
+        },
+        "old_SFT200": {
+          "chrfpp": {
+            "delta": 1.5271552053498318,
+            "paired_source_stratified_CI95": [
+              -4.246246280978829,
+              7.754837456610973
+            ]
+          },
+          "bleu": {
+            "delta": -2.5197720381660496,
+            "paired_source_stratified_CI95": [
+              -9.054360844367942,
+              2.3603327442202233
+            ]
+          }
+        },
+        "initial_3B": {
+          "chrfpp": {
+            "delta": 9.951632844198492,
+            "paired_source_stratified_CI95": [
+              5.921947475129419,
+              14.51290703579777
+            ]
+          },
+          "bleu": {
+            "delta": 3.0241206330243053,
+            "paired_source_stratified_CI95": [
+              1.2785753154557418,
+              4.56811208882028
+            ]
+          }
+        }
+      },
+      "truncated": {
+        "old_R0": 1,
+        "old_SFT200": 1,
+        "initial_3B": 0,
+        "selected_3B": 0
+      }
+    },
+    "technical_medium": {
+      "n": 24,
+      "values": {
+        "old_R0": {
+          "chrfpp": 36.468010856747426,
+          "bleu": 16.55409685948291
+        },
+        "old_SFT200": {
+          "chrfpp": 37.603430829531845,
+          "bleu": 17.281671537255736
+        },
+        "initial_3B": {
+          "chrfpp": 20.16544453970242,
+          "bleu": 4.951657100602343
+        },
+        "selected_3B": {
+          "chrfpp": 32.556382845243704,
+          "bleu": 13.764993860694746
+        }
+      },
+      "selected_effects_vs": {
+        "old_R0": {
+          "chrfpp": {
+            "delta": -3.9116280115037227,
+            "paired_source_stratified_CI95": [
+              -6.851792707909909,
+              -0.7762210347866491
+            ]
+          },
+          "bleu": {
+            "delta": -2.789102998788165,
+            "paired_source_stratified_CI95": [
+              -5.872028754764819,
+              -0.04387819999118517
+            ]
+          }
+        },
+        "old_SFT200": {
+          "chrfpp": {
+            "delta": -5.047047984288142,
+            "paired_source_stratified_CI95": [
+              -7.968020181655623,
+              -2.582431220491978
+            ]
+          },
+          "bleu": {
+            "delta": -3.51667767656099,
+            "paired_source_stratified_CI95": [
+              -6.654746152158241,
+              -0.7682115789462081
+            ]
+          }
+        },
+        "initial_3B": {
+          "chrfpp": {
+            "delta": 12.390938305541283,
+            "paired_source_stratified_CI95": [
+              7.765394171391634,
+              17.353981124618194
+            ]
+          },
+          "bleu": {
+            "delta": 8.813336760092403,
+            "paired_source_stratified_CI95": [
+              3.3194248737320504,
+              16.073666100884605
+            ]
+          }
+        }
+      },
+      "truncated": {
+        "old_R0": 0,
+        "old_SFT200": 0,
+        "initial_3B": 1,
+        "selected_3B": 0
+      }
+    },
+    "technical_long": {
+      "n": 24,
+      "values": {
+        "old_R0": {
+          "chrfpp": 34.086883465486636,
+          "bleu": 16.2636975205325
+        },
+        "old_SFT200": {
+          "chrfpp": 36.00286288797507,
+          "bleu": 16.16888381604431
+        },
+        "initial_3B": {
+          "chrfpp": 22.723301930526993,
+          "bleu": 4.505521449767666
+        },
+        "selected_3B": {
+          "chrfpp": 36.42686859807749,
+          "bleu": 16.596607045693577
+        }
+      },
+      "selected_effects_vs": {
+        "old_R0": {
+          "chrfpp": {
+            "delta": 2.3399851325908543,
+            "paired_source_stratified_CI95": [
+              -0.5733152481831054,
+              5.875205187898233
+            ]
+          },
+          "bleu": {
+            "delta": 0.3329095251610781,
+            "paired_source_stratified_CI95": [
+              -2.208116050473241,
+              3.184641611729008
+            ]
+          }
+        },
+        "old_SFT200": {
+          "chrfpp": {
+            "delta": 0.4240057101024206,
+            "paired_source_stratified_CI95": [
+              -2.5674906983610892,
+              4.257900166666121
+            ]
+          },
+          "bleu": {
+            "delta": 0.427723229649267,
+            "paired_source_stratified_CI95": [
+              -3.431638833380507,
+              5.627653684134606
+            ]
+          }
+        },
+        "initial_3B": {
+          "chrfpp": {
+            "delta": 13.703566667550497,
+            "paired_source_stratified_CI95": [
+              10.577856714755598,
+              17.00664611840358
+            ]
+          },
+          "bleu": {
+            "delta": 12.091085595925911,
+            "paired_source_stratified_CI95": [
+              8.119054756424283,
+              16.3865489081816
+            ]
+          }
+        }
+      },
+      "truncated": {
+        "old_R0": 2,
+        "old_SFT200": 1,
+        "initial_3B": 1,
+        "selected_3B": 0
+      }
+    }
+  },
+  "G8_semantic": {
+    "all32": {
+      "old_SFT200": {
+        "groups": 32,
+        "coverage": {
+          "good_present": 7,
+          "no_good_observed": 25
+        },
+        "active_G_covered_groups": 7,
+        "ratings": {
+          "P": 122,
+          "B": 105,
+          "G": 28,
+          "U": 1
+        },
+        "active_coarse_contrast_groups": 23,
+        "truncated": 4
+      },
+      "selected_3B": {
+        "groups": 32,
+        "coverage": {
+          "no_good_observed": 27,
+          "good_present": 5
+        },
+        "active_G_covered_groups": 5,
+        "ratings": {
+          "B": 122,
+          "P": 118,
+          "G": 16
+        },
+        "active_coarse_contrast_groups": 24,
+        "truncated": 1
+      },
+      "paired": {
+        "net_good_groups": -2,
+        "transitions": {
+          "good_present -> no_good_observed": 4,
+          "no_good_observed -> no_good_observed": 23,
+          "no_good_observed -> good_present": 2,
+          "good_present -> good_present": 3
+        }
+      }
+    },
+    "technical24": {
+      "old_SFT200": {
+        "groups": 24,
+        "coverage": {
+          "no_good_observed": 21,
+          "good_present": 3
+        },
+        "active_G_covered_groups": 3,
+        "ratings": {
+          "B": 79,
+          "P": 99,
+          "G": 13,
+          "U": 1
+        },
+        "active_coarse_contrast_groups": 17,
+        "truncated": 4
+      },
+      "selected_3B": {
+        "groups": 24,
+        "coverage": {
+          "no_good_observed": 22,
+          "good_present": 2
+        },
+        "active_G_covered_groups": 2,
+        "ratings": {
+          "B": 88,
+          "P": 96,
+          "G": 8
+        },
+        "active_coarse_contrast_groups": 19,
+        "truncated": 1
+      },
+      "paired": {
+        "net_good_groups": -1,
+        "transitions": {
+          "no_good_observed -> no_good_observed": 20,
+          "good_present -> good_present": 1,
+          "good_present -> no_good_observed": 2,
+          "no_good_observed -> good_present": 1
+        }
+      }
+    },
+    "general8": {
+      "old_SFT200": {
+        "groups": 8,
+        "coverage": {
+          "good_present": 4,
+          "no_good_observed": 4
+        },
+        "active_G_covered_groups": 4,
+        "ratings": {
+          "P": 23,
+          "B": 26,
+          "G": 15
+        },
+        "active_coarse_contrast_groups": 6,
+        "truncated": 0
+      },
+      "selected_3B": {
+        "groups": 8,
+        "coverage": {
+          "no_good_observed": 5,
+          "good_present": 3
+        },
+        "active_G_covered_groups": 3,
+        "ratings": {
+          "B": 34,
+          "P": 22,
+          "G": 8
+        },
+        "active_coarse_contrast_groups": 5,
+        "truncated": 0
+      },
+      "paired": {
+        "net_good_groups": -1,
+        "transitions": {
+          "good_present -> no_good_observed": 2,
+          "no_good_observed -> no_good_observed": 3,
+          "no_good_observed -> good_present": 1,
+          "good_present -> good_present": 2
+        }
+      }
+    },
+    "technical_short": {
+      "old_SFT200": {
+        "groups": 4,
+        "coverage": {
+          "no_good_observed": 2,
+          "good_present": 2
+        },
+        "active_G_covered_groups": 2,
+        "ratings": {
+          "B": 9,
+          "P": 14,
+          "G": 9
+        },
+        "active_coarse_contrast_groups": 3,
+        "truncated": 0
+      },
+      "selected_3B": {
+        "groups": 4,
+        "coverage": {
+          "no_good_observed": 3,
+          "good_present": 1
+        },
+        "active_G_covered_groups": 1,
+        "ratings": {
+          "B": 15,
+          "P": 10,
+          "G": 7
+        },
+        "active_coarse_contrast_groups": 4,
+        "truncated": 0
+      },
+      "paired": {
+        "net_good_groups": -1,
+        "transitions": {
+          "no_good_observed -> no_good_observed": 2,
+          "good_present -> good_present": 1,
+          "good_present -> no_good_observed": 1
+        }
+      }
+    },
+    "technical_medium": {
+      "old_SFT200": {
+        "groups": 10,
+        "coverage": {
+          "no_good_observed": 9,
+          "good_present": 1
+        },
+        "active_G_covered_groups": 1,
+        "ratings": {
+          "B": 36,
+          "P": 39,
+          "G": 4,
+          "U": 1
+        },
+        "active_coarse_contrast_groups": 9,
+        "truncated": 0
+      },
+      "selected_3B": {
+        "groups": 10,
+        "coverage": {
+          "no_good_observed": 9,
+          "good_present": 1
+        },
+        "active_G_covered_groups": 1,
+        "ratings": {
+          "B": 36,
+          "P": 43,
+          "G": 1
+        },
+        "active_coarse_contrast_groups": 7,
+        "truncated": 0
+      },
+      "paired": {
+        "net_good_groups": 0,
+        "transitions": {
+          "no_good_observed -> no_good_observed": 8,
+          "no_good_observed -> good_present": 1,
+          "good_present -> no_good_observed": 1
+        }
+      }
+    },
+    "technical_long": {
+      "old_SFT200": {
+        "groups": 10,
+        "coverage": {
+          "no_good_observed": 10
+        },
+        "active_G_covered_groups": 0,
+        "ratings": {
+          "B": 34,
+          "P": 46
+        },
+        "active_coarse_contrast_groups": 5,
+        "truncated": 4
+      },
+      "selected_3B": {
+        "groups": 10,
+        "coverage": {
+          "no_good_observed": 10
+        },
+        "active_G_covered_groups": 0,
+        "ratings": {
+          "P": 43,
+          "B": 37
+        },
+        "active_coarse_contrast_groups": 8,
+        "truncated": 1
+      },
+      "paired": {
+        "net_good_groups": 0,
+        "transitions": {
+          "no_good_observed -> no_good_observed": 10
+        }
+      }
+    }
+  },
+  "greedy_semantic": {
+    "all32": {
+      "n": 32,
+      "old_SFT200": {
+        "P": 26,
+        "B": 3,
+        "G": 3
+      },
+      "selected_3B": {
+        "P": 21,
+        "B": 8,
+        "G": 3
+      }
+    },
+    "technical24": {
+      "n": 24,
+      "old_SFT200": {
+        "P": 21,
+        "B": 2,
+        "G": 1
+      },
+      "selected_3B": {
+        "P": 16,
+        "B": 7,
+        "G": 1
+      }
+    },
+    "technical_long": {
+      "n": 10,
+      "old_SFT200": {
+        "P": 10
+      },
+      "selected_3B": {
+        "B": 3,
+        "P": 7
+      }
+    }
+  },
+  "planning_screen": {
+    "technical_G8_coverage": false,
+    "long_G8_coverage": false,
+    "general_retention": false,
+    "technical_greedy_gain": false
+  },
+  "all_numeric_screens_pass": false,
+  "reward_supplement": {
+    "metadata": {
+      "status": "completed",
+      "groups": 32,
+      "total_groups": 32,
+      "model_forward_calls": 256,
+      "candidate_readouts": 512,
+      "seconds": 34.628886699676514,
+      "precision": "FP32,TF32off,old T6 scorer unchanged",
+      "used_for_training": false,
+      "used_for_selection": false,
+      "globally_calibrated": false,
+      "unix": 1794930735.8683298
+    },
+    "ranking": {
+      "all32": {
+        "old_SFT200": {
+          "reference": {
+            "active_groups": 32,
+            "active_G_covered_groups": 7,
+            "top1_G_when_active_G_present": 7,
+            "pairwise": {
+              "comparable": 341,
+              "discordant": 81,
+              "concordant": 257,
+              "tie": 3
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:opensubtitles:test:1463",
+                "active_G_present": true,
+                "top_index": 2,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:3600",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:1249",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:7401",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+                "active_G_present": true,
+                "top_index": 3,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:6848",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:476",
+                "active_G_present": true,
+                "top_index": 0,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 0,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "qe": {
+            "active_groups": 32,
+            "active_G_covered_groups": 7,
+            "top1_G_when_active_G_present": 5,
+            "pairwise": {
+              "comparable": 341,
+              "concordant": 252,
+              "discordant": 89
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:opensubtitles:test:1463",
+                "active_G_present": true,
+                "top_index": 2,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:3600",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:1249",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:7401",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+                "active_G_present": true,
+                "top_index": 0,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+                "active_G_present": true,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:6848",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:476",
+                "active_G_present": true,
+                "top_index": 0,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 0,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "full_reference_reward": {
+            "active_groups": 32,
+            "active_G_covered_groups": 7,
+            "top1_G_when_active_G_present": 7,
+            "pairwise": {
+              "comparable": 341,
+              "discordant": 81,
+              "concordant": 257,
+              "tie": 3
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:opensubtitles:test:1463",
+                "active_G_present": true,
+                "top_index": 2,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:3600",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:1249",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:7401",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+                "active_G_present": true,
+                "top_index": 3,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:6848",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:476",
+                "active_G_present": true,
+                "top_index": 0,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 0,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "chrfpp": {
+            "active_groups": 32,
+            "active_G_covered_groups": 7,
+            "top1_G_when_active_G_present": 6,
+            "pairwise": {
+              "comparable": 341,
+              "concordant": 228,
+              "discordant": 113
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:opensubtitles:test:1463",
+                "active_G_present": true,
+                "top_index": 2,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:3600",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:1249",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:7401",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:6848",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:476",
+                "active_G_present": true,
+                "top_index": 0,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": true,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "full_chrfpp_reward": {
+            "active_groups": 32,
+            "active_G_covered_groups": 7,
+            "top1_G_when_active_G_present": 6,
+            "pairwise": {
+              "comparable": 341,
+              "concordant": 228,
+              "discordant": 113
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:opensubtitles:test:1463",
+                "active_G_present": true,
+                "top_index": 2,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:3600",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:1249",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:7401",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:6848",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:476",
+                "active_G_present": true,
+                "top_index": 0,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": true,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              }
+            ]
+          }
+        },
+        "selected_3B": {
+          "reference": {
+            "active_groups": 32,
+            "active_G_covered_groups": 5,
+            "top1_G_when_active_G_present": 4,
+            "pairwise": {
+              "comparable": 314,
+              "discordant": 64,
+              "concordant": 241,
+              "tie": 9
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:opensubtitles:test:1463",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:3600",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:1249",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:7401",
+                "active_G_present": true,
+                "top_index": 3,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:6848",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:476",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 1,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "qe": {
+            "active_groups": 32,
+            "active_G_covered_groups": 5,
+            "top1_G_when_active_G_present": 3,
+            "pairwise": {
+              "comparable": 314,
+              "discordant": 70,
+              "concordant": 238,
+              "tie": 6
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:opensubtitles:test:1463",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:3600",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:1249",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "B"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:7401",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+                "active_G_present": true,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:6848",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:476",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "full_reference_reward": {
+            "active_groups": 32,
+            "active_G_covered_groups": 5,
+            "top1_G_when_active_G_present": 4,
+            "pairwise": {
+              "comparable": 314,
+              "discordant": 63,
+              "concordant": 242,
+              "tie": 9
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:opensubtitles:test:1463",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:3600",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:1249",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:7401",
+                "active_G_present": true,
+                "top_index": 3,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:6848",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:476",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 1,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "chrfpp": {
+            "active_groups": 32,
+            "active_G_covered_groups": 5,
+            "top1_G_when_active_G_present": 4,
+            "pairwise": {
+              "comparable": 314,
+              "discordant": 84,
+              "concordant": 230
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:opensubtitles:test:1463",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:3600",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:1249",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:7401",
+                "active_G_present": true,
+                "top_index": 3,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+                "active_G_present": true,
+                "top_index": 1,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:6848",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:476",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 1,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "full_chrfpp_reward": {
+            "active_groups": 32,
+            "active_G_covered_groups": 5,
+            "top1_G_when_active_G_present": 4,
+            "pairwise": {
+              "comparable": 314,
+              "discordant": 80,
+              "concordant": 234
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:opensubtitles:test:1463",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:3600",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:1249",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:7401",
+                "active_G_present": true,
+                "top_index": 3,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+                "active_G_present": true,
+                "top_index": 1,
+                "top_rating": "G"
+              },
+              {
+                "id": "OPUS-tatoeba-v20230412-eng-isl:6848",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:opensubtitles:test:476",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 1,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              }
+            ]
+          }
+        }
+      },
+      "technical24": {
+        "old_SFT200": {
+          "reference": {
+            "active_groups": 24,
+            "active_G_covered_groups": 3,
+            "top1_G_when_active_G_present": 3,
+            "pairwise": {
+              "comparable": 247,
+              "concordant": 181,
+              "discordant": 63,
+              "tie": 3
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 0,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "qe": {
+            "active_groups": 24,
+            "active_G_covered_groups": 3,
+            "top1_G_when_active_G_present": 2,
+            "pairwise": {
+              "comparable": 247,
+              "concordant": 175,
+              "discordant": 72
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 0,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "full_reference_reward": {
+            "active_groups": 24,
+            "active_G_covered_groups": 3,
+            "top1_G_when_active_G_present": 3,
+            "pairwise": {
+              "comparable": 247,
+              "concordant": 181,
+              "discordant": 63,
+              "tie": 3
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 0,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "chrfpp": {
+            "active_groups": 24,
+            "active_G_covered_groups": 3,
+            "top1_G_when_active_G_present": 2,
+            "pairwise": {
+              "comparable": 247,
+              "concordant": 157,
+              "discordant": 90
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": true,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "full_chrfpp_reward": {
+            "active_groups": 24,
+            "active_G_covered_groups": 3,
+            "top1_G_when_active_G_present": 2,
+            "pairwise": {
+              "comparable": 247,
+              "concordant": 157,
+              "discordant": 90
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": true,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              }
+            ]
+          }
+        },
+        "selected_3B": {
+          "reference": {
+            "active_groups": 24,
+            "active_G_covered_groups": 2,
+            "top1_G_when_active_G_present": 2,
+            "pairwise": {
+              "comparable": 237,
+              "discordant": 37,
+              "concordant": 191,
+              "tie": 9
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 1,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "qe": {
+            "active_groups": 24,
+            "active_G_covered_groups": 2,
+            "top1_G_when_active_G_present": 2,
+            "pairwise": {
+              "comparable": 237,
+              "concordant": 191,
+              "discordant": 41,
+              "tie": 5
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "full_reference_reward": {
+            "active_groups": 24,
+            "active_G_covered_groups": 2,
+            "top1_G_when_active_G_present": 2,
+            "pairwise": {
+              "comparable": 237,
+              "discordant": 36,
+              "concordant": 192,
+              "tie": 9
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 1,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "chrfpp": {
+            "active_groups": 24,
+            "active_G_covered_groups": 2,
+            "top1_G_when_active_G_present": 1,
+            "pairwise": {
+              "comparable": 237,
+              "concordant": 177,
+              "discordant": 60
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 1,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "full_chrfpp_reward": {
+            "active_groups": 24,
+            "active_G_covered_groups": 2,
+            "top1_G_when_active_G_present": 1,
+            "pairwise": {
+              "comparable": 237,
+              "concordant": 181,
+              "discordant": 56
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:ema:test:415",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:3040",
+                "active_G_present": true,
+                "top_index": 1,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:ema:test:1271",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:eso:test:349",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              }
+            ]
+          }
+        }
+      },
+      "technical_medium": {
+        "old_SFT200": {
+          "reference": {
+            "active_groups": 10,
+            "active_G_covered_groups": 1,
+            "top1_G_when_active_G_present": 1,
+            "pairwise": {
+              "comparable": 132,
+              "discordant": 40,
+              "concordant": 89,
+              "tie": 3
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "qe": {
+            "active_groups": 10,
+            "active_G_covered_groups": 1,
+            "top1_G_when_active_G_present": 1,
+            "pairwise": {
+              "comparable": 132,
+              "discordant": 37,
+              "concordant": 95
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "full_reference_reward": {
+            "active_groups": 10,
+            "active_G_covered_groups": 1,
+            "top1_G_when_active_G_present": 1,
+            "pairwise": {
+              "comparable": 132,
+              "discordant": 40,
+              "concordant": 89,
+              "tie": 3
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "chrfpp": {
+            "active_groups": 10,
+            "active_G_covered_groups": 1,
+            "top1_G_when_active_G_present": 1,
+            "pairwise": {
+              "comparable": 132,
+              "discordant": 59,
+              "concordant": 73
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              }
+            ]
+          },
+          "full_chrfpp_reward": {
+            "active_groups": 10,
+            "active_G_covered_groups": 1,
+            "top1_G_when_active_G_present": 1,
+            "pairwise": {
+              "comparable": 132,
+              "discordant": 59,
+              "concordant": 73
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": true,
+                "top_index": 7,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              }
+            ]
+          }
+        },
+        "selected_3B": {
+          "reference": {
+            "active_groups": 10,
+            "active_G_covered_groups": 1,
+            "top1_G_when_active_G_present": 1,
+            "pairwise": {
+              "comparable": 102,
+              "discordant": 18,
+              "concordant": 83,
+              "tie": 1
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "qe": {
+            "active_groups": 10,
+            "active_G_covered_groups": 1,
+            "top1_G_when_active_G_present": 1,
+            "pairwise": {
+              "comparable": 102,
+              "discordant": 21,
+              "concordant": 81
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "full_reference_reward": {
+            "active_groups": 10,
+            "active_G_covered_groups": 1,
+            "top1_G_when_active_G_present": 1,
+            "pairwise": {
+              "comparable": 102,
+              "discordant": 18,
+              "concordant": 83,
+              "tie": 1
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": true,
+                "top_index": 6,
+                "top_rating": "G"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "chrfpp": {
+            "active_groups": 10,
+            "active_G_covered_groups": 1,
+            "top1_G_when_active_G_present": 0,
+            "pairwise": {
+              "comparable": 102,
+              "discordant": 31,
+              "concordant": 71
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "full_chrfpp_reward": {
+            "active_groups": 10,
+            "active_G_covered_groups": 1,
+            "top1_G_when_active_G_present": 0,
+            "pairwise": {
+              "comparable": 102,
+              "discordant": 31,
+              "concordant": 71
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:norden:test:264",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:425",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1086503",
+                "active_G_present": true,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:742910",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1722911",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:648947",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1641328",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:norden:test:43",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:709",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:norden:test:100",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              }
+            ]
+          }
+        }
+      },
+      "technical_long": {
+        "old_SFT200": {
+          "reference": {
+            "active_groups": 10,
+            "active_G_covered_groups": 0,
+            "top1_G_when_active_G_present": 0,
+            "pairwise": {
+              "comparable": 66,
+              "concordant": 51,
+              "discordant": 15
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "qe": {
+            "active_groups": 10,
+            "active_G_covered_groups": 0,
+            "top1_G_when_active_G_present": 0,
+            "pairwise": {
+              "comparable": 66,
+              "concordant": 45,
+              "discordant": 21
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "full_reference_reward": {
+            "active_groups": 10,
+            "active_G_covered_groups": 0,
+            "top1_G_when_active_G_present": 0,
+            "pairwise": {
+              "comparable": 66,
+              "concordant": 51,
+              "discordant": 15
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "chrfpp": {
+            "active_groups": 10,
+            "active_G_covered_groups": 0,
+            "top1_G_when_active_G_present": 0,
+            "pairwise": {
+              "comparable": 66,
+              "concordant": 47,
+              "discordant": 19
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "full_chrfpp_reward": {
+            "active_groups": 10,
+            "active_G_covered_groups": 0,
+            "top1_G_when_active_G_present": 0,
+            "pairwise": {
+              "comparable": 66,
+              "concordant": 47,
+              "discordant": 19
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              }
+            ]
+          }
+        },
+        "selected_3B": {
+          "reference": {
+            "active_groups": 10,
+            "active_G_covered_groups": 0,
+            "top1_G_when_active_G_present": 0,
+            "pairwise": {
+              "comparable": 89,
+              "concordant": 70,
+              "discordant": 12,
+              "tie": 7
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "qe": {
+            "active_groups": 10,
+            "active_G_covered_groups": 0,
+            "top1_G_when_active_G_present": 0,
+            "pairwise": {
+              "comparable": 89,
+              "concordant": 68,
+              "discordant": 16,
+              "tie": 5
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "full_reference_reward": {
+            "active_groups": 10,
+            "active_G_covered_groups": 0,
+            "top1_G_when_active_G_present": 0,
+            "pairwise": {
+              "comparable": 89,
+              "concordant": 71,
+              "discordant": 11,
+              "tie": 7
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 0,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "chrfpp": {
+            "active_groups": 10,
+            "active_G_covered_groups": 0,
+            "top1_G_when_active_G_present": 0,
+            "pairwise": {
+              "comparable": 89,
+              "concordant": 72,
+              "discordant": 17
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 4,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              }
+            ]
+          },
+          "full_chrfpp_reward": {
+            "active_groups": 10,
+            "active_G_covered_groups": 0,
+            "top1_G_when_active_G_present": 0,
+            "pairwise": {
+              "comparable": 89,
+              "concordant": 76,
+              "discordant": 13
+            },
+            "metricx_input_truncated": 0,
+            "details": [
+              {
+                "id": "ParIce21:eso:test:763",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:314793",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce:804526",
+                "active_G_present": false,
+                "top_index": 7,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:215549",
+                "active_G_present": false,
+                "top_index": 1,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:290254",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:419917",
+                "active_G_present": false,
+                "top_index": 2,
+                "top_rating": "B"
+              },
+              {
+                "id": "ParIce21:ema:test:2419",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:eso:test:654",
+                "active_G_present": false,
+                "top_index": 3,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce:1179551",
+                "active_G_present": false,
+                "top_index": 5,
+                "top_rating": "P"
+              },
+              {
+                "id": "ParIce21:ema:test:2944",
+                "active_G_present": false,
+                "top_index": 6,
+                "top_rating": "P"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "plan": {
+      "registered_utc": "2026-11-17T14:15:39.473828+00:00",
+      "classification": "additive_exploratory_read_only_ranking_diagnostic",
+      "amends": "Original protocol excludes MetricX from SFT/selection. This adds only post-training ranking readout,not optimization or model choice.",
+      "before_selected_outputs_and_new_G8": true,
+      "model": "google/metricx-24-hybrid-large-v2p6",
+      "revision": "51e875ba5c525c81627cfd135ee10f43c87dce00",
+      "tokenizer": "google/mt5-xl",
+      "tokenizer_revision": "63fc6450d80515b48e026b69ef2fbbd426433e84",
+      "scorer_source_sha256": "f50676013b74a8d75fa4207e466168ff363c7ab14776d257da73016da56340af",
+      "sampling_bank": "all32 selected-model G8 banks,T=.7,max320;no new policy sampling",
+      "modes": [
+        "reference",
+        "qe"
+      ],
+      "reference_mode_remains_frozen_DAPO_mode": true,
+      "no_mode_selection": true,
+      "precision": "FP32,noTF32,sameT6Scorer,batch2,maxinput1536",
+      "GPU_starts_only_after_policy_process_exit": true,
+      "max_scoring_seconds": 480,
+      "minimum_remaining_minutes_to_start": 20,
+      "original_absolute_deadline_unchanged": true,
+      "analyses": [
+        "G>P>B pairwise ranking on active candidates",
+        "Top1G when anyG present",
+        "Raw reference/QE and frozen full reference+length reward separately"
+      ],
+      "no_new_global_calibration_claim": true,
+      "known_historical_controls_failures_remain": true,
+      "all_new_semantic_labels_locked_before_ranking_aggregates": true,
+      "implementation_amendments": [
+        {
+          "utc": "2026-11-17T14:40:58.136525+00:00",
+          "reason": "Top-level scorer module needs absolute mtgrpo imports;corrected before scorerGPUexecution and before selected-model outputs",
+          "old_sha256": "9eb78ef23c149088b91c08e9cf7addd8ce75f6e6bb658383b9de2562f69d22cc",
+          "new_sha256": "f50676013b74a8d75fa4207e466168ff363c7ab14776d257da73016da56340af",
+          "numerical_scoring_math_changed": false
+        }
+      ]
+    },
+    "globally_calibrated": false,
+    "cheap_comparator_plan": {
+      "registered_utc": "2026-11-17T14:58:58.949730+00:00",
+      "scope": "Exploratory CPU-only ranking on all32 fixed G8 groups,all8 candidates,oldSFT200 and selected3B",
+      "comparators": [
+        "raw sentence chrF++",
+        "sentence chrF++/100 with unchanged text gate and soft length penalty beyond256 completion tokens"
+      ],
+      "labels": "Lock all288 semantic judgements before rank aggregates;no metric scores on review cards",
+      "selection": "No actor checkpoint selection,reward mode selection or training based on these labels",
+      "purpose": "Contrast inexpensive reference-overlap ranking with the registered MetricX rankings;not global reward calibration",
+      "compute": "No GPU or extra generation"
+    }
+  },
+  "semantic_review_lock": {
+    "utc": "2026-11-17T15:54:39.329846+00:00",
+    "cards_sha256": "c5e190837d9ad7e8325c833cbaf5287aee5f09d65769a466d2b6bdde7b42d3b7",
+    "judgements_sha256": "50d85689e3f03230645a5c56180324e41a9d3c99107b1236857db53cfc398ac2",
+    "judgements": 288,
+    "before_semantic_aggregates": true,
+    "metric_aggregates_may_have_been_seen": true,
+    "AI_assisted_not_native_certified": true,
+    "availability_order_review_allowed": true
+  },
+  "loss_audit": {
+    "manual_checks": [
+      {
+        "id": "ParIce:1296309",
+        "per_token_difference": 0.0
+      },
+      {
+        "id": "OpenSubtitles18:793698",
+        "per_token_difference": 1.52587890625e-06
+      }
+    ],
+    "batch_nll": 3.4269003988314077,
+    "individual_nll": 3.426895742656804,
+    "per_token_batch_difference": 4.656174603656638e-06,
+    "passed": true
+  },
+  "compute": {
+    "updates": 926,
+    "target_tokens": 999931,
+    "physical_target_tokens": 999931,
+    "training_seconds": 4924.398165464401,
+    "sampled_peak_device_MiB": 18558.0,
+    "actual_target_tokens_by_stratum": {
+      "general": 400000,
+      "technical_short": 49998,
+      "technical_medium": 249975,
+      "technical_long": 299958
+    },
+    "example_exposures": 29625
+  },
+  "limitations": [
+    "Different model generation/pretraining/tokenizer,not a pure parameter-size ablation",
+    "Reused development/diagnostic sources,not untouched test",
+    "Single seed;source-stratified CIs do not cover document clustering,multiple comparisons or semantic-review uncertainty",
+    "AI-assisted same-reviewer labels;not native-certified or fully blinded",
+    "Supplemental MetricX ranking does not erase previously failed global controls;no DAPO thisround"
+  ]
+}

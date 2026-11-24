@@ -1,0 +1,8 @@
+{
+  "path": "/content/drive/MyDrive/deep learning project/r1_sft_2026-11-12/R1_EXPORT_2026-11-12.zip",
+  "bytes": 43221168,
+  "sha256": "c2ac407a98eeb1d271e3f76efb2c3aeafe9ff1d353349960f776f82e6eeccec1",
+  "selected_checkpoint": "checkpoints/step-001736-tokens-000750064",
+  "remote_zip_crc_verified": true,
+  "measured_unix": 1794494737.0757551
+}

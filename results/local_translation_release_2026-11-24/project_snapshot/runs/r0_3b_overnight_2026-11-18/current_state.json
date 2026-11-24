@@ -1,0 +1,476 @@
+{
+  "updated_utc": "2026-11-18T05:35:53.431079+00:00",
+  "phase": "COMPLETED_GPU_RELEASED",
+  "E": "D:\\deep learning project\\experiments\\r0_3b_overnight_2026-11-18",
+  "D": "D:\\deep learning project\\runs\\r0_3b_overnight_2026-11-18",
+  "remote": "/content/n8_project",
+  "deadline_unix": 1794987319.462625,
+  "deadline_Berlin": "2026-11-18 08:35:19",
+  "allocation_start_unix": 1794958519.462625,
+  "initial_CU": 267.04615833395104,
+  "rate_CU_hour": 1.94,
+  "sessions": {
+    "foreground_B": 45692,
+    "snapshot_watch_B": 55312,
+    "live_mirror_B": 68460,
+    "actual_IOPub_observer": 39967,
+    "automatic_B_final_export_and_integrity": 32418,
+    "last_resort_deadline_guard": 90405,
+    "final_frozen_evaluation": 93493,
+    "ranking_completed": 85082,
+    "ranking_transfer_analysis_completed": 99156
+  },
+  "GPU": "L4",
+  "interruption_or_reallocation": false,
+  "last_completed_quality_check": {
+    "stage": "stage_A",
+    "target_tokens": 898707,
+    "weighted_chrfpp": 38.7039300065,
+    "NLL": 1.4400738964,
+    "technical_G8_good_groups": "4/24",
+    "long_G8_good_groups": "0/10",
+    "reused128_chrfpp": 36.933516126,
+    "not_promoted": true
+  },
+  "A_stream_target_tokens": 898707,
+  "parent_3B_adapter_sha256": "1ecf014712c7eb0004eaa20de58f54b0346cc4bd67b0ce07e3c7e30084e6c41f",
+  "old08_SFT200_adapter_sha256": "89c874b1e04b011c6ee3f41f499c373b47826a7f106b9d61eaa83fdce85c77ae",
+  "next_steps": [],
+  "data_state": {
+    "V3_candidates": 28948,
+    "new_training_QE_executed": true,
+    "post_QE32_review_done": true,
+    "V2_training64_review": "41A18C5R locked;V3globalhygieneremoved9330",
+    "fresh_holdout128_generated": true,
+    "fresh_mask_primary": 112,
+    "fresh_mask_Aonly": 76,
+    "reference_review": "76A36C7R9U locked BEFOREallfreshmodeloutputs",
+    "prior38671near_matches": 0,
+    "first_QA": "20A9C2R1U FAILED and retained",
+    "V4_QA": "disjoint32:19A11C2U PASSED;same R+U<=2;exclude2U+7globalOCR",
+    "approved_V4_pairs": 17282,
+    "QE_cutoff_V4": 3
+  },
+  "method": {
+    "selection_generation_dev": 64,
+    "teacher_NLL_dev": 144,
+    "teacher_NLL_targets": 8649,
+    "G8_strata": "8G4S10M10L",
+    "G8_max_reference_tokens": 215,
+    "G8_max_prompt": 158,
+    "A_parent128_fulltoken_parity": true
+  },
+  "Python_CLI": "C:/Users/andre/AppData/Local/Programs/Python/Python313/python.exe",
+  "Python_ML": "D:/deep learning project/.venv/Scripts/python.exe",
+  "Python_plots": "C:/Users/andre/anaconda3/python.exe",
+  "permissions": "D writes/network use require_escalated,already userauthorized;no agents;do not print credentials/SDKlogs;CLIprivate files stayW",
+  "stage_A_complete": true,
+  "stage_A_verified": true,
+  "stage_A_review_locked": true,
+  "stage_A_analysis_done": true,
+  "stage_B_bundle": {
+    "bytes": 128235884,
+    "sha256": "099ec4d72fdada8f48efb75ea1cbcbb7a4b1f15e0816c384a51dcbb7607762cf",
+    "parts": [
+      {
+        "name": "part_000.bin",
+        "bytes": 6291456,
+        "sha256": "d0a16156b00dd13a87d82127dc9ce94536a21531711ab33f4632327a8c27cbe4"
+      },
+      {
+        "name": "part_001.bin",
+        "bytes": 6291456,
+        "sha256": "5ed508c283fa4f57c0b7e6f958e5bb19643c49a0b23645229cd5fa311b446304"
+      },
+      {
+        "name": "part_002.bin",
+        "bytes": 6291456,
+        "sha256": "7edb88cfde6a20d71c8b1e3da5369914474a6fe58f8852caa975046e462f7aa2"
+      },
+      {
+        "name": "part_003.bin",
+        "bytes": 6291456,
+        "sha256": "c5c9e7d752097e33b2cb57174b66eb52e362f6a47df3d7d054c9fd0e487053e4"
+      },
+      {
+        "name": "part_004.bin",
+        "bytes": 6291456,
+        "sha256": "0baaec37a45d27bcde2804a4531495acac852330ad906d889b8a3c21a7b61b5e"
+      },
+      {
+        "name": "part_005.bin",
+        "bytes": 6291456,
+        "sha256": "2259622258d27f05dc1ec0c3ac7b9fd36a559e97b1b71cc88a7f622961da40dc"
+      },
+      {
+        "name": "part_006.bin",
+        "bytes": 6291456,
+        "sha256": "8b84b6a8d9f0ed734e0352f947fd8b8843821702c6c2036640e2953c78c8a479"
+      },
+      {
+        "name": "part_007.bin",
+        "bytes": 6291456,
+        "sha256": "be4b54f8a61123457c5cc45fc16c69576a9abd41838bdaa3c2200b7bb89da426"
+      },
+      {
+        "name": "part_008.bin",
+        "bytes": 6291456,
+        "sha256": "81b02a145a03e99cf054916877723a3f84d3a64033eccf2001a19d4c6b30db29"
+      },
+      {
+        "name": "part_009.bin",
+        "bytes": 6291456,
+        "sha256": "4aead8671151865c10e18dc7822abda76c4eacdd0e6ab523889e7ab81590d914"
+      },
+      {
+        "name": "part_010.bin",
+        "bytes": 6291456,
+        "sha256": "29b15fe7e0aecfaa9f2cea56982c37eeefb8a9285cd010d2bc689628b64d2bd0"
+      },
+      {
+        "name": "part_011.bin",
+        "bytes": 6291456,
+        "sha256": "944c8f7979f3c5fd644cf11f259dbcb9271d6c129802ddde1ce51d544e1c6360"
+      },
+      {
+        "name": "part_012.bin",
+        "bytes": 6291456,
+        "sha256": "7c02d7e912697437adc03338c75b2a693756d8e54b623eb9df72d9c058b4fa98"
+      },
+      {
+        "name": "part_013.bin",
+        "bytes": 6291456,
+        "sha256": "fdb037c7e166a6928d66a7cb67d28cb1161aa5378fc5421d6c0525512f322bc5"
+      },
+      {
+        "name": "part_014.bin",
+        "bytes": 6291456,
+        "sha256": "19869676990b86806297ea12351ab9d5501f484f9cdfb757887bf80e90ffc676"
+      },
+      {
+        "name": "part_015.bin",
+        "bytes": 6291456,
+        "sha256": "612b8099fe893cae4056cb903dea0e8e0b68349c8db87efb7491e6bea9930604"
+      },
+      {
+        "name": "part_016.bin",
+        "bytes": 6291456,
+        "sha256": "8ffba707a61d04d3d0d8e7ce0298e96d9627eb4b21ba3ea537167d1f1889ca9c"
+      },
+      {
+        "name": "part_017.bin",
+        "bytes": 6291456,
+        "sha256": "fffc8e053fe41c24e7b38b0bd23a97c2ec553d7e0ecd0c0fcea130c23e635f53"
+      },
+      {
+        "name": "part_018.bin",
+        "bytes": 6291456,
+        "sha256": "06c95338919c26abcffb898d4920a4184f3233e046b22cc7ce092e525e56a6e5"
+      },
+      {
+        "name": "part_019.bin",
+        "bytes": 6291456,
+        "sha256": "f1626273eb67f4c7a5574a304ebbb1779fd162393c06c3819c1db89fae56d13d"
+      },
+      {
+        "name": "part_020.bin",
+        "bytes": 2406764,
+        "sha256": "28abaff046daaaee214e9906594709c5e8616307066767dc4f9040e8ff55e5e7"
+      }
+    ],
+    "files": 46
+  },
+  "stage_B_data": {
+    "selected_unique_pairs": 47241,
+    "example_exposures": 55010,
+    "target_tokens": 1799948,
+    "target_by_stratum": {
+      "general": 720000,
+      "technical_short": 89997,
+      "technical_medium": 449987,
+      "technical_long": 539964
+    },
+    "fresh_pairs": 14792,
+    "fresh_target_tokens": 1127774,
+    "max_pair_exposures_this_round": 2,
+    "max_cumulative_exposures": 3,
+    "source": "data_QE_v4 approved fresh data;old vetted general replay within remaining actual exposure cap",
+    "new_data_QA_lock_sha256": "559336a45e1640d68fca6d48f168340b87c3c57214447d7ec78cc4acdac5668c"
+  },
+  "stage_B_decision": {
+    "registered_utc": "2026-11-18T02:24:42.018532+00:00",
+    "authorized_followup": true,
+    "new_data_QA_passed": true,
+    "before_any_stage_B_outputs": true,
+    "parent_adapter_path": "D:\\deep learning project\\runs\\r0_3b_overnight_2026-11-18\\stage_A\\selected_candidate_adapter",
+    "parent_adapter_sha256": "9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199",
+    "parent_chain_target_tokens": 1898638,
+    "parent_fp32_128_cache": "D:\\deep learning project\\runs\\r0_3b_overnight_2026-11-18\\stage_A\\exported\\run\\evaluation\\selected_fp32_128.jsonl",
+    "target_token_ceiling": 1800000,
+    "data_QA_subdirectory": "data_QE_v4",
+    "data_QA_lock_sha256": "559336a45e1640d68fca6d48f168340b87c3c57214447d7ec78cc4acdac5668c",
+    "original_failed_QA_preserved": true,
+    "base_unchanged": true,
+    "lora_rank_unchanged": 16,
+    "LR": 3e-05,
+    "seed": 2026111841,
+    "global_deadline_unix": 1794987319.462625,
+    "final_reserve_minutes": 75,
+    "parent_is_working_SFT_start_not_promoted_R0": true,
+    "semantic_nonregression_proven": false,
+    "reason_zh": "A按冻结规则选中末期，匹配诊断chrF++和NLL改善，技术G8覆盖2/24到4/24；但greedy语义不一致、长句仍0/10。因此保留原父模型和A全部检查点，只把A作为进一步SFT工作起点，不宣称合格R0。B改用通过修订后独立32对复查的数据及通用回放，目标补强词汇和长句关系；不据此证明容量上限或单一因素因果。",
+    "reason_en": "A is selected by the frozen rule with improved matched diagnostic chrF++/NLL and technical G8 coverage2/24to4/24,but greedy semantics are mixed and long coverage remains0/10.Keep original/A checkpoints and use A only as a working SFT start,not a promoted R0.B uses newly approved V4 data and general replay to improve terminology and clause relations;this does not establish a capacity limit or isolate one causal factor."
+  },
+  "stage_B_review_plan_registered": true,
+  "stage_B_local_tests": 11,
+  "latest_mirrored_progress": {
+    "stage_A": {
+      "event": "completed",
+      "unix": 1794966595.47621,
+      "elapsed_seconds": 7715.209003686905,
+      "step": 834,
+      "target_tokens": 898707
+    },
+    "stage_B": {
+      "event": "decode_progress",
+      "unix": 1794975896.6711354,
+      "elapsed_seconds": 6781.19602060318,
+      "label": "selected_fp32_128",
+      "completed": 88,
+      "total": 128
+    }
+  },
+  "cross_stage_annotation_audit": "Run n8_cross_stage_annotation_audit.py after B analyses BEFORE final choice;all identical source+hyp conflicts symmetrically U,raw labelsunchanged;D/cross_stage_annotation_audit.json. Helper/report/repro integrated;currentlyAonly;refreshafterB.",
+  "reporting_updated": "n8_build_results.py includesfailedfirstQAandV4passed17282/CQE3,perstageexacttextaudit+crossstageaudit. n8_make_repro.py includesbothaudithelpers. FinalholdoutMUSTremainunseenuntilsealedchoice;allfiles D.",
+  "backup_watch_note": "Existing32418 was launched before source edit waiting allsnapshotverified;it may runverifybeforewatchlasttagfinishes. Ifintegrityfailsmissingverifiedsnapshots,wait55312thenrerun n8_verify_stage.py stage_B. Neverassumeintegritypassedfromexportalone.",
+  "budget_guard_note": "90405 waits untilUTC07:33:19 thenunassignsONLYownedruntimeaslastresort;normalreleaseearliercancelsit. Allwork stillneedscompletebackup/freshholdoutbeforedeadlineUTC07:35:19.",
+  "B_500k_result": {
+    "actual_targets": 500620,
+    "step": 478,
+    "weighted_chrfpp": 38.88118051731101,
+    "NLL": 1.3819644754763931,
+    "general": 38.01439154318264,
+    "short": 56.954565577814684,
+    "medium": 36.302864736513015,
+    "long": 39.17326479006322,
+    "failures": 0,
+    "plateau_bad": 1
+  },
+  "conditional_C": "PERMANENTLY SKIPPED IN THIS ALLOCATION AFTER NEW RARE-DOMAIN QA FAILED21A7C4R. E/stage_C_skip.json. DO NOT RUN C,n8_decide_C/n8_prepare_C guardagainstskip. NO Csource,bundle,GPUupdates. Preparedcontrollers/tools areUNEXECUTED. FinishBbyfrozenrules,review/analyze/verify,chooseA/B/original BEFOREfreshholdout,thenranking/finaleval/release/report. ExpectedHTML336details forA+B includingfresh16G8.",
+  "conditional_C_prepared_tools": "Historical preparation only;DO NOT EXECUTE. No C_parentdecisionneeded. NoCarchitecturechanges. Source-onlyrelabellingE/C_domain_data is NOTTRAINED;new32E/domain_balanced_QA_v2 failed4R. Firstdomain32passed21A9C2R butfounddomainmislabels;allrecordsretained. Morefilter/reviewloopsNOTplanned.",
+  "before_final_report": "Run n8_audit_domain_mixture.py afterallstages soactual domain counts final;conditional registration audit immutablecopyE/conditional_C_domain_audit_at_registration.json. inference.py helper installedbyfinalize. Finalstateupdatenowincludedfinalizer.",
+  "final_fresh_G8_extension": "Registered03:57 beforefreshoutputs andweightchoice. Same16technicalIDs(4short6mid6long) fromalreadyfrozen24semanticsourceplan,all3models16x8=384additionalcandidates. E/final_evaluation/fresh_G8_plan.json uploadedroot/final_input_fresh_G8_plan.json. No newsourcechoice,nofresh-weightselection,noSFTafterfreshgeneration.",
+  "final_runner_frozen": "Use n8_cli.py exec work/n8_run_final_frozen_remote.py prefetch (NOTdirectoldrunner). FrozenE/final_evaluation/runner_source.py SHA b3d8d39667789939db4c0ac6196d5d6af8388169cf83cfddecb22b9067e99651 uploadedroot/final_eval_runner_source.py. WrapperverifiesSHAandexportsrunneridentity+source. >=70min guardunchanged. Generates3x128greedyAND3x16x8G8. Do notmodifyfrozenrunner.",
+  "final_review_workflow": "Afterfinalevaltransfer/verify_before_release/release/accounting,CPU n8_final_review.py make/show/append/lock72greedy first. DO NOTanalyze_finalyet(unblind). Thenn8_fresh_G8_review.py make/show/append/lock16cards24shuffledhyps=384labels,W/n8_fresh_G8_review_batch.json. Samehypgradesmustmatchlockedgreedy(helperprints knownlabel,modelkeysremainhidden). AFTERbothlocks: Dvenv n8_analyze_final.py ANDn8_analyze_fresh_G8.py. reportreadsadditionalfresh_G8_results/cases16/CSV384. CPUreplayincludesnewhelper/fixtures+exactfieldcomparisons. HTMLexpected336/3images forA+B. FinalizerchecksnewCSV/lockaswell.",
+  "selected_B_candidate": {
+    "tag": "t0500000",
+    "step": 478,
+    "target_tokens": 500620,
+    "metrics": {
+      "nll": 1.3819644754763931,
+      "technical_nll": 1.3729641687782252,
+      "dev_target_tokens": 8649,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 38.01439154318264,
+          "bleu": 18.53893007684702
+        },
+        "technical_short": {
+          "n": 8,
+          "chrfpp": 56.954565577814684,
+          "bleu": 36.316631163493156
+        },
+        "technical_medium": {
+          "n": 12,
+          "chrfpp": 36.302864736513015,
+          "bleu": 12.869559327736233
+        },
+        "technical_long": {
+          "n": 12,
+          "chrfpp": 39.17326479006322,
+          "bleu": 19.217117375013753
+        }
+      },
+      "weighted_chrfpp": 38.88118051731101,
+      "failures": 0
+    }
+  },
+  "B_gradient_updates_finished": true,
+  "B_1000k_result": {
+    "nll": 1.3197171004821364,
+    "technical_nll": 1.3104457453042229,
+    "dev_target_tokens": 8649,
+    "by_stratum": {
+      "general": {
+        "n": 32,
+        "chrfpp": 37.56757611130588,
+        "bleu": 17.9734733603377
+      },
+      "technical_short": {
+        "n": 8,
+        "chrfpp": 57.40238202864183,
+        "bleu": 36.55682926349318
+      },
+      "technical_medium": {
+        "n": 12,
+        "chrfpp": 34.14684853622291,
+        "bleu": 11.959550489917886
+      },
+      "technical_long": {
+        "n": 12,
+        "chrfpp": 39.56760074356115,
+        "bleu": 19.754316625723096
+      }
+    },
+    "weighted_chrfpp": 38.304141903078516,
+    "failures": 0
+  },
+  "final_choice": {
+    "date": "2026-11-18",
+    "sealed_utc": "2026-11-18T04:43:45.113439+00:00",
+    "selected_stage": "stage_A",
+    "last_executed_stage": "stage_B",
+    "executed_stages": [
+      "stage_A",
+      "stage_B"
+    ],
+    "origin": "selected_stage_candidate",
+    "adapter_relative": "stage_A/run/checkpoints/t0900000/adapter",
+    "adapter_sha256": "9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199",
+    "local_source": "D:\\deep learning project\\runs\\r0_3b_overnight_2026-11-18\\stage_A\\selected_candidate_adapter",
+    "no_further_training": true,
+    "fresh_holdout_not_seen": true,
+    "reason_zh": "选择A用于最终独立检验，目标是DAPO的正确候选与组内对比。B旧128诊断chrF++36.93→37.97、BLEU15.74→17.48，但B-A配对chrF区间[-0.63,2.45]跨零；同源G8技术已确认G组A4/24、B2/24（B另2组不确定），G与P/B同组也是4→2，B未新增已确认G的技术组。A的通用和长句选择dev也更稳。保留B的指标增益与全部权重；这是目标导向的保守取舍，不是A全面显著优于B的因果/统计证明，也不是宣布A已经合格。最终新holdout尚未生成，之后不再训练。",
+    "reason_en": "Choose A for final independent evaluation because the goal is DAPO good-candidate coverage and contrast. B improves reused128 chrF++36.93to37.97 and BLEU15.74to17.48,but the B-minus-A chrF interval[-0.63,2.45]crosses zero. On matched G8,confirmed technical coverage is A4/24 versus B2/24(with2 additional uncertain B groups),and G-plus-P/B groups4versus2;B adds no newly confirmed technical-good group. A also retains stronger general/long selection-dev scores. Keep B and its metric gains. This is a conservative goal-oriented tradeoff,not proof of universal A superiority or of A readiness. No fresh-holdout output has been generated and no training follows it."
+  },
+  "no_further_training": true,
+  "selected_actor_stage": "stage_A",
+  "selected_actor_sha256": "9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199",
+  "B_integrity_complete": true,
+  "B_labels288_locked": true,
+  "B_analyses_and_cross_stage_audit_complete": true,
+  "C_permanently_skipped": true,
+  "B_final_result": {
+    "actual_targets": 1000317,
+    "updates": 955,
+    "train_seconds": 4894.373708724976,
+    "stopped": "development_plateau_two_checks",
+    "selected_tag": "t0500000",
+    "selected_targets": 500620,
+    "reused128_chrfpp": 37.966045586441105,
+    "reused128_bleu": 17.479115752162926,
+    "G8_technical_confirmed_G_groups": 2,
+    "G8_technical_uncertain_groups": 2,
+    "G8_long_confirmed_G_groups": 0,
+    "export_sha256": "a1e5826063e7df20aa3336d714b96512c0559413a06e70e4a3350ab6c32efa9d",
+    "full_snapshots": 19,
+    "source_files": 46
+  },
+  "ranking_completed_observation": "Aselected32groups scoredFP32 withpinnedscorer24.78s. TechnicalGcovered4groups:reference/fullref top1G4/4,QE3/4,chrF2/4;referencepairwise192concordant/251,59discordant. No metricmodeselection. GloballycalibratedFalse,historicalcontrolsfailed. SelectedAdoesNOTconsume currentV4 newQEpool(Bonly);historicalfilteringnotreaudited. D/final_ranking/all_scored_cases.json.",
+  "actual_training_data_exposure": {
+    "new_pool_sha256": "0bd41b2b89785ba1fa84214aea8010afcbf3bc15dc4eaee047218cb791b79cf1",
+    "new_pool_n": 17282,
+    "stages": {
+      "stage_A": {
+        "planned": {
+          "unique_pairs": 25381,
+          "example_exposures": 26677,
+          "target_tokens": 898707,
+          "new_QE_unique_pairs": 0,
+          "new_QE_example_exposures": 0,
+          "new_QE_target_tokens": 0
+        },
+        "executed": {
+          "unique_pairs": 25381,
+          "example_exposures": 26677,
+          "target_tokens": 898707,
+          "new_QE_unique_pairs": 0,
+          "new_QE_example_exposures": 0,
+          "new_QE_target_tokens": 0
+        },
+        "selected_weight_prefix": {
+          "unique_pairs": 25381,
+          "example_exposures": 26677,
+          "target_tokens": 898707,
+          "new_QE_unique_pairs": 0,
+          "new_QE_example_exposures": 0,
+          "new_QE_target_tokens": 0
+        },
+        "selected_step": 834
+      },
+      "stage_B": {
+        "planned": {
+          "unique_pairs": 47241,
+          "example_exposures": 55010,
+          "target_tokens": 1799948,
+          "new_QE_unique_pairs": 14792,
+          "new_QE_example_exposures": 17606,
+          "new_QE_target_tokens": 1127774
+        },
+        "executed": {
+          "unique_pairs": 30560,
+          "example_exposures": 30560,
+          "target_tokens": 1000317,
+          "new_QE_unique_pairs": 9639,
+          "new_QE_example_exposures": 9639,
+          "new_QE_target_tokens": 624185
+        },
+        "selected_weight_prefix": {
+          "unique_pairs": 15296,
+          "example_exposures": 15296,
+          "target_tokens": 500620,
+          "new_QE_unique_pairs": 5488,
+          "new_QE_example_exposures": 5488,
+          "new_QE_target_tokens": 324354
+        },
+        "selected_step": 478
+      }
+    }
+  },
+  "GPU_released": true,
+  "cost": {
+    "date": "2026-11-18",
+    "gpu": "NVIDIA L4",
+    "runtime_released": true,
+    "allocated_minutes": 347.973519829909,
+    "within_480min_ceiling": true,
+    "allocation_started_unix": 1794958519.4626248,
+    "released_unix": 1794979397.8738146,
+    "deadline_unix": 1794987319.4626248,
+    "initial_compute_units": 267.04615833395104,
+    "final_compute_units": 255.94943351395906,
+    "observed_balance_decrease": 11.096724819991977,
+    "observed_rate_per_hour": 1.94,
+    "other_assignments_remaining": 0,
+    "attempts": 1,
+    "note": "All assigned time includes setup,training,evaluation,review idle andtransfers. Balance settlement may lag. Any unexpected runtime interruptions must be reported separately.",
+    "unix": 1794979409.2784479
+  },
+  "report": "D:\\deep learning project\\reports\\r0_3b_overnight_2026-11-18\\R0_3B_OVERNIGHT_RESULTS_2026-11-18.html",
+  "interpretation": {
+    "verdict_zh": "本轮SFT有可复核的实际收益，但没有实现综合中长句都强的目标。选中A在独立新主集合112条上chrF++44.17、BLEU25.11；原3B为41.27/21.67，配对chrF增益+2.90、95%区间[+1.17,+4.71]。新技术G8确认正确候选覆盖A5/16、原3B1/16、旧0.8B1/16；A中句3/6，长句仍0/6。保存A为当前3B翻译R0及受限试验候选，不将其认证为综合正式DAPO/Efficient-ML基线。",
+    "verdict_en": "SFT delivers reproducible gains, but the goal of a broadly strong medium/long-segment base is not met. Selected A scores 44.17 chrF++/25.11 BLEU on 112 fresh primary cases versus 41.27/21.67 for the original 3B, paired chrF gain+2.90 with 95% interval[+1.17, +4.71]. Fresh technical G8 good-candidate coverage is A 5/16, parent 1/16, older 0.8B1/16; A covers 3/6 medium but 0/6 long sources. Retain A as the current 3B translation R0 and restricted-pilot candidate, not a certified comprehensive DAPO/Efficient-ML baseline.",
+    "actor_conclusion_zh": "相对原3B，主集合及技术中长句词面指标改善有配对区间支持，新G8也新增4个有G且有P/B的技术组。相对旧0.8B，主集合chrF增益+1.84但区间[-0.26,+3.83]跨零，不能称全面显著胜出。通用50条chrF35.71 vs35.24、BLEU12.58 vs14.41，均无可靠改善证据。技术greedy语义G2/16 vs原3B3/16，并未同步提升，不能将采样覆盖或词面增益解释成全面语义改善。",
+    "actor_conclusion_en": "Paired intervals support primary and medium/long technical metric gains over the parent; fresh G8 adds four technical groups containing both G and P/B. Versus older 0.8B, the primary chrF gain+1.84 has interval[-0.26, +3.83], so universal significant superiority is unsupported. General 50 scores 35.71 versus 35.24 chrF and 12.58 versus 14.41 BLEU, without reliable improvement. Technical greedy semantics are G=2/16 versus parent 3/16, not a parallel gain; sampling coverage and overlap metrics do not establish comprehensive semantic improvement.",
+    "promoted_as_translation_R0": true,
+    "comprehensive_formal_baseline_ready": false,
+    "promotion_scope_zh": "晋升仅指保留为当前翻译R0候选和短/中句受限试验起点；不指综合正式基线已合格。",
+    "promotion_scope_en": "Promotion means the retained current translation R0 candidate and restricted short/medium pilot start; it does not certify a comprehensive formal baseline.",
+    "DAPO_pilot_zh": "有条件可以做受限小试验，不需要宣布必须再SFT才能运行。先在独立的训练/开发池确认正确候选与组内差异，并让奖励通过语义对照；固定A后做小预算标准DAPO及零更新对照。新holdout及其G8来源继续冻结，不用于筛训练样本、改奖励或再挑权重。长句没有确认G的观察是当前限制，不是DAPO普遍准入门槛，也不是RL绝对无效证明。",
+    "DAPO_pilot_en": "A restricted small pilot is conditionally reasonable; another mandatory SFT round is not established. First confirm good candidates and within-group contrast on a separate training/development pool, and clear semantic reward controls; then compare fixed-A standard DAPO with a zero-update control under a small budget. Keep the fresh holdout/G8 sources frozen: do not use them to select training cases, tune reward or choose weights. No observed long-source G is a current limitation, not a universal DAPO threshold or proof that RL cannot help.",
+    "reward_pipeline_ready": false,
+    "reward_conclusion_zh": "历史奖励校准反例仍未通过，不能因本轮SFT进步宣布修复。选中A的旧技术诊断中，reference MetricX在4个含G组Top1均为G，但251对G/P/B比较仍有59次相反排序；QE为3/4。样本小、来源复用且为同一AI审查，未做全局奖励认证，也没有据此选择奖励模式。本轮没有DAPO更新。当前新QE数据池只进入B，选中A未训练该新池，因此不能把该池过滤与A的排序直接当作同源因果依赖。",
+    "reward_conclusion_en": "Historical reward-calibration counterexamples remain failed; SFT gains do not repair them. On selected A reused technical diagnostics, reference MetricX ranks G first in all four G-covered groups, but has 59 discordant of 251 comparable G/P/B pairs; QE top 1G is 3/4. Few reused sources and same-AI review do not certify global calibration, and no reward mode is selected from this check. This round has zero DAPO updates. The new QE-filtered pool enters B, not selected A, so that filtering is not direct current-pool exposure of A.",
+    "next_step_zh": "不要默认继续堆同配置SFT，也不要把结果解释为0.8B或3B容量上限。先保留A、B及旧模型；本轮最终独立检验后不再训练或改选。下一轮分两条问题：其一，在另建且核验的训练/开发集复核短中句正确候选，并修复奖励失败对照，随后用A做受限标准DAPO/零更新对照，独立报告质量与语义；其二，若目标仍是综合长句强基座，先用经过语义核验的技术数据筛选真正有英冰翻译基础的起点，再在相同数据和预算上只改变一种SFT适应能力（如LoRA rank）做小对照。更高rank、embedding更新和全参数SFT本轮都没测，不能预先保证哪一种会解决。新池的已发现参考缺陷及领域误标须先修复并独立复审；不能让评分器过滤代替正确性认证。新评估集现已被查看，下一次最终验收应再冻结新的测试集。",
+    "next_step_en": "Do not default to more identical SFT or infer a 0.8B/3B capacity ceiling. Preserve A, B and older models; no training or reselection follows this final independent evaluation. Separate the next questions: (1)recheck short/medium candidate coverage on another verified training/development pool, repair failed reward controls, and run fixed-A restricted standard DAPO versus zero update with independent quality/semantic evaluation; (2)if broad long-segment strength remains the goal, first screen starts with demonstrable English-Icelandic ability on verified technical data, then change only one SFT adaptation factor, such as LoRA rank, under matched data/budget. Higher rank, embedding updates and full tuning are untested and no remedy is guaranteed. Repair discovered reference defects/domain mislabels and obtain disjoint review; scorer filtering is not semantic certification. This final set has now been inspected, so freeze a new test for the next final acceptance.",
+    "limitations": [
+      "Single training chain,not seed replication",
+      "AI-assisted semantics,not native-expert certification",
+      "One fixed G8 seed rule and small16-source sample",
+      "New holdout selected/excluded before generation,but not document-independent/pretraining-decontaminated",
+      "No DAPO updates this round;reward controls still not globally passed"
+    ]
+  },
+  "fresh_holdout_evaluation_completed": true
+}

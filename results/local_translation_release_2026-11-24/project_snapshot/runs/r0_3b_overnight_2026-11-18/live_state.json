@@ -1,0 +1,21 @@
+{
+  "updated_utc": "2026-11-17T23:44:44.472784+00:00",
+  "status": "STAGE_A_ACTIVE_PARENT_BASELINE",
+  "user_GPU_cap_hours": 8,
+  "deadline_Berlin": "2026-11-18T08:35:19+01:00",
+  "sessions": {
+    "real_foreground": 72907,
+    "real_IOPub_observer": 39967,
+    "full_snapshot_watch": 78813,
+    "live_mirror": 42388,
+    "extra_data_CPU": 73875
+  },
+  "GPU": "L4",
+  "parent_sha256": "1ecf014712c7eb0004eaa20de58f54b0346cc4bd67b0ce07e3c7e30084e6c41f",
+  "stage_A_targets": 898707,
+  "remote_master": "/content/n8_project",
+  "current_stage": "stage_A",
+  "local_result": "D:\\deep learning project\\runs\\r0_3b_overnight_2026-11-18",
+  "source_experiment": "D:\\deep learning project\\experiments\\r0_3b_overnight_2026-11-18",
+  "originals_preserved": true
+}

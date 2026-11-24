@@ -1,0 +1,26 @@
+{
+  "utc": "2026-11-18T05:23:04.092007+00:00",
+  "ready_to_release": true,
+  "all_stages_verified": [
+    "stage_A",
+    "stage_B"
+  ],
+  "fresh_holdout_all384_verified": true,
+  "fresh_G8_all384_verified": true,
+  "final_selected_adapter_verified": true,
+  "final_export_duplicate_verified": true,
+  "old08_base_file_parity": {
+    "tokenizer_config.json": true,
+    "merges.txt": true,
+    "vocab.json": true,
+    "chat_template.jinja": true,
+    "model.safetensors.index.json": true,
+    "config.json": true,
+    "tokenizer.json": true,
+    "model.safetensors-00001-of-00001.safetensors": true
+  },
+  "older08_checkpoints_unchanged": 57,
+  "original3B_unchanged": true,
+  "last_stage": "stage_B",
+  "all_GPU_work_finished": true
+}

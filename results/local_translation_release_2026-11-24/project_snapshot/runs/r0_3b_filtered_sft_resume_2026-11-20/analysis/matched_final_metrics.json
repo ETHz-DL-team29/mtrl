@@ -1,0 +1,216 @@
+{
+  "UTC": "2026-11-20T13:37:14.617841+00:00",
+  "n": 256,
+  "metrics": {
+    "overall": {
+      "n": 256,
+      "chrfpp": {
+        "before": 35.40237065844744,
+        "after": 43.669530606611836,
+        "delta": 8.267159948164398,
+        "delta_95CI": [
+          6.7563882858521636,
+          9.735427514090967
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      },
+      "bleu": {
+        "before": 12.724898136384624,
+        "after": 19.66225672384921,
+        "delta": 6.937358587464587,
+        "delta_95CI": [
+          5.081245950248574,
+          8.52226554753015
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      }
+    },
+    "general": {
+      "n": 64,
+      "chrfpp": {
+        "before": 39.63807298088278,
+        "after": 42.6350394148342,
+        "delta": 2.996966433951421,
+        "delta_95CI": [
+          0.29813254770678893,
+          5.565331403979872
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      },
+      "bleu": {
+        "before": 20.896354488280203,
+        "after": 22.69639844694287,
+        "delta": 1.8000439586626662,
+        "delta_95CI": [
+          -1.5495957040836397,
+          5.98959702451324
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      }
+    },
+    "technical_short": {
+      "n": 64,
+      "chrfpp": {
+        "before": 33.054420922191206,
+        "after": 38.614809084980934,
+        "delta": 5.560388162789728,
+        "delta_95CI": [
+          3.5041850123391787,
+          7.740190608744785
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      },
+      "bleu": {
+        "before": 14.370262167355978,
+        "after": 17.09148264152302,
+        "delta": 2.7212204741670405,
+        "delta_95CI": [
+          -0.15416254012153352,
+          5.579532791944276
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      }
+    },
+    "technical_medium": {
+      "n": 64,
+      "chrfpp": {
+        "before": 34.45013198637659,
+        "after": 43.97041847545849,
+        "delta": 9.520286489081897,
+        "delta_95CI": [
+          7.176713464329314,
+          11.81628535714579
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      },
+      "bleu": {
+        "before": 11.378819687317547,
+        "after": 18.90507393200327,
+        "delta": 7.526254244685722,
+        "delta_95CI": [
+          4.779019304199267,
+          10.587851052233605
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      }
+    },
+    "technical_long": {
+      "n": 64,
+      "chrfpp": {
+        "before": 35.638337229355955,
+        "after": 44.62311365567933,
+        "delta": 8.984776426323378,
+        "delta_95CI": [
+          6.480180485338042,
+          11.392497374231619
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      },
+      "bleu": {
+        "before": 11.758907953899225,
+        "after": 19.633997538216207,
+        "delta": 7.8750895843169815,
+        "delta_95CI": [
+          4.9685290468465775,
+          10.25536131648982
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      }
+    },
+    "technical": {
+      "n": 192,
+      "chrfpp": {
+        "before": 35.000559645169574,
+        "after": 43.71256988819898,
+        "delta": 8.712010243029404,
+        "delta_95CI": [
+          7.151179811412797,
+          10.301657842933396
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      },
+      "bleu": {
+        "before": 11.973724929727233,
+        "after": 19.355501736136613,
+        "delta": 7.3817768064093805,
+        "delta_95CI": [
+          5.449778684961738,
+          8.978017131772022
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      }
+    },
+    "technical_medium_long": {
+      "n": 128,
+      "chrfpp": {
+        "before": 35.274651667958175,
+        "after": 44.42265562041025,
+        "delta": 9.148003952452072,
+        "delta_95CI": [
+          7.405930888245616,
+          10.932176101065442
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      },
+      "bleu": {
+        "before": 11.655133447511124,
+        "after": 19.647133133369024,
+        "delta": 7.9919996858579,
+        "delta_95CI": [
+          5.821772063790922,
+          9.862276565767472
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      }
+    }
+  },
+  "not_used_for_checkpoint_selection": true,
+  "failures": {
+    "before": {
+      "gate": 2,
+      "repetition": 2,
+      "truncated": 2
+    },
+    "after": {
+      "gate": 1,
+      "repetition": 1,
+      "truncated": 1
+    }
+  },
+  "signatures": {
+    "chrfpp": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0",
+    "bleu": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0"
+  },
+  "sampling": {
+    "before": {
+      "sources": 64,
+      "candidates": 512,
+      "mean_unique_texts": 8.0,
+      "truncated_candidates": 0,
+      "mean_completion_tokens": 88.017578125,
+      "not_a_semantic_accuracy_measure": true
+    },
+    "after": {
+      "sources": 64,
+      "candidates": 512,
+      "mean_unique_texts": 7.9375,
+      "truncated_candidates": 0,
+      "mean_completion_tokens": 83.736328125,
+      "not_a_semantic_accuracy_measure": true
+    }
+  }
+}

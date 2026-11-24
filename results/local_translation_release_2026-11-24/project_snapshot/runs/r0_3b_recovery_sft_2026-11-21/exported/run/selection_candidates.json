@@ -1,0 +1,599 @@
+[
+  {
+    "tag": "A",
+    "step": 0,
+    "target_tokens": 0,
+    "metrics": {
+      "nll": 1.1926426883046324,
+      "technical_nll": 1.1774527158499388,
+      "dev_target_tokens": 8008,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 50.188209462248565,
+          "bleu": 28.938563746908212
+        },
+        "technical_short": {
+          "n": 32,
+          "chrfpp": 47.201682780096796,
+          "bleu": 28.435364021618167
+        },
+        "technical_medium": {
+          "n": 32,
+          "chrfpp": 46.62521496791615,
+          "bleu": 22.34331849223511
+        },
+        "technical_long": {
+          "n": 32,
+          "chrfpp": 47.52747239586552,
+          "bleu": 21.39344330558707
+        }
+      },
+      "overall_chrfpp": 47.5735787187225,
+      "technical_chrfpp": 47.23262050807001,
+      "technical_medium_long_chrfpp": 47.24668307422644,
+      "failures": 0
+    },
+    "adapter_sha256": "9c72a423ac25e742d0c1b532fd704732ccad4e21510b71430f08cb744d47aa57",
+    "path": "expanded_adapter",
+    "review": {
+      "UTC": "2026-11-21T20:38:13.265354+00:00",
+      "case": "dev_A",
+      "complete": true,
+      "reviewed": 56,
+      "models": {
+        "candidate": {
+          "reviewed": 56,
+          "roles": {
+            "greedy": {
+              "n": 32,
+              "counts": {
+                "F": 19,
+                "U": 3,
+                "P": 10
+              },
+              "strata": {
+                "general": {
+                  "F": 5,
+                  "U": 1,
+                  "P": 2
+                },
+                "technical_short": {
+                  "U": 1,
+                  "P": 3,
+                  "F": 4
+                },
+                "technical_medium": {
+                  "F": 4,
+                  "U": 1,
+                  "P": 3
+                },
+                "technical_long": {
+                  "F": 6,
+                  "P": 2
+                }
+              }
+            },
+            "g8": {
+              "n": 24,
+              "counts": {
+                "P": 12,
+                "F": 7,
+                "U": 5
+              },
+              "strata": {
+                "general": {},
+                "technical_short": {
+                  "F": 3,
+                  "P": 3,
+                  "U": 2
+                },
+                "technical_medium": {
+                  "P": 6,
+                  "U": 2
+                },
+                "technical_long": {
+                  "P": 3,
+                  "F": 4,
+                  "U": 1
+                }
+              }
+            }
+          }
+        }
+      },
+      "labels_sha256": "66075fde8606de4fdc62016854ba979d857c74f1da31e78eb7c436ca28f9bd6d",
+      "cards_sha256": "2c880276dadc95e444095fc0364be46314de9d41c9da8169b76ab5f3135efb56",
+      "input_binding": {
+        "case": "dev_A",
+        "sha256": {
+          "dev_A.jsonl": "aa45c0670a719495c2745a1f27ee1548fc05a263f63274af4f05bc1f20c89b51",
+          "dev_g8_A.jsonl": "20b7ee3990391ddb0bc6516338dfe8a0811ccab969657f3bf761ede6ffb9efd7"
+        },
+        "labels_are_AI_not_native_certified": true
+      },
+      "not_native_certified": true,
+      "tag": "A",
+      "greedy_P": 10,
+      "coverage_P": 12
+    }
+  },
+  {
+    "tag": "t0500632",
+    "step": 281,
+    "target_tokens": 500632,
+    "adapter_sha256": "047f42b5b6a4c6b566f114e539e76b095568aa9393c896dbd8c898a1ce694b0e",
+    "full_optimizer_RNG": false,
+    "path": "run/checkpoints/t0500632/adapter",
+    "metrics": {
+      "nll": 1.219719524797681,
+      "technical_nll": 1.203922910612466,
+      "dev_target_tokens": 8008,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 49.26279594319892,
+          "bleu": 32.81063223715129
+        },
+        "technical_short": {
+          "n": 32,
+          "chrfpp": 48.20371916709647,
+          "bleu": 29.22151592992294
+        },
+        "technical_medium": {
+          "n": 32,
+          "chrfpp": 44.86327959872365,
+          "bleu": 20.89873374546614
+        },
+        "technical_long": {
+          "n": 32,
+          "chrfpp": 48.91798209103468,
+          "bleu": 23.813457437762022
+        }
+      },
+      "overall_chrfpp": 47.934965230440405,
+      "technical_chrfpp": 47.726628377212805,
+      "technical_medium_long_chrfpp": 47.66926480111471,
+      "failures": 0
+    },
+    "review": {
+      "UTC": "2026-11-21T21:13:41.795837+00:00",
+      "case": "dev_t0500632",
+      "complete": true,
+      "reviewed": 56,
+      "models": {
+        "candidate": {
+          "reviewed": 56,
+          "roles": {
+            "greedy": {
+              "n": 32,
+              "counts": {
+                "P": 6,
+                "F": 23,
+                "U": 3
+              },
+              "strata": {
+                "general": {
+                  "F": 5,
+                  "P": 2,
+                  "U": 1
+                },
+                "technical_short": {
+                  "F": 5,
+                  "P": 2,
+                  "U": 1
+                },
+                "technical_medium": {
+                  "P": 2,
+                  "F": 5,
+                  "U": 1
+                },
+                "technical_long": {
+                  "F": 8
+                }
+              }
+            },
+            "g8": {
+              "n": 24,
+              "counts": {
+                "F": 10,
+                "P": 10,
+                "U": 4
+              },
+              "strata": {
+                "general": {},
+                "technical_short": {
+                  "F": 2,
+                  "P": 5,
+                  "U": 1
+                },
+                "technical_medium": {
+                  "U": 3,
+                  "P": 3,
+                  "F": 2
+                },
+                "technical_long": {
+                  "F": 6,
+                  "P": 2
+                }
+              }
+            }
+          }
+        }
+      },
+      "labels_sha256": "13072d3beec7e24dc22a6f93ac3935a3e520f01eea93c63c7f87635735f20a0b",
+      "cards_sha256": "6463bf5405975f548b456125ea53e1b060d3ee4402cd834dd88bd4b0b7fb4ee9",
+      "input_binding": {
+        "case": "dev_t0500632",
+        "sha256": {
+          "dev_t0500632.jsonl": "833bd861dab627435a76ac7252ffb1384e31635e216d8dbab21a2cf355ec215f",
+          "dev_g8_t0500632.jsonl": "062a1bf45b418aa92a03148b614006b415942df446f65a1e6a99a2af2b800193"
+        },
+        "labels_are_AI_not_native_certified": true
+      },
+      "not_native_certified": true,
+      "tag": "t0500632",
+      "greedy_P": 6,
+      "coverage_P": 10
+    }
+  },
+  {
+    "tag": "t1000811",
+    "step": 566,
+    "target_tokens": 1000811,
+    "adapter_sha256": "898dc593f17abe30409dd8bcf77c63d2612b17fb41470dbd37058e9fe521c97c",
+    "full_optimizer_RNG": true,
+    "path": "run/checkpoints/t1000811/adapter",
+    "metrics": {
+      "nll": 1.1918823001952796,
+      "technical_nll": 1.1723726120414213,
+      "dev_target_tokens": 8008,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 49.87169325506668,
+          "bleu": 30.98937974021374
+        },
+        "technical_short": {
+          "n": 32,
+          "chrfpp": 48.117405495703615,
+          "bleu": 28.593123547726904
+        },
+        "technical_medium": {
+          "n": 32,
+          "chrfpp": 45.72322542409727,
+          "bleu": 20.874323599770868
+        },
+        "technical_long": {
+          "n": 32,
+          "chrfpp": 48.65733062779092,
+          "bleu": 21.59245632952828
+        }
+      },
+      "overall_chrfpp": 48.06199710421293,
+      "technical_chrfpp": 47.79399051061171,
+      "technical_medium_long_chrfpp": 47.7568471092866,
+      "failures": 0
+    },
+    "review": {
+      "UTC": "2026-11-21T21:50:05.330174+00:00",
+      "case": "dev_t1000811",
+      "complete": true,
+      "reviewed": 56,
+      "models": {
+        "candidate": {
+          "reviewed": 56,
+          "roles": {
+            "greedy": {
+              "n": 32,
+              "counts": {
+                "F": 16,
+                "P": 12,
+                "U": 4
+              },
+              "strata": {
+                "general": {
+                  "P": 3,
+                  "F": 4,
+                  "U": 1
+                },
+                "technical_short": {
+                  "P": 5,
+                  "F": 2,
+                  "U": 1
+                },
+                "technical_medium": {
+                  "F": 4,
+                  "P": 3,
+                  "U": 1
+                },
+                "technical_long": {
+                  "F": 6,
+                  "U": 1,
+                  "P": 1
+                }
+              }
+            },
+            "g8": {
+              "n": 24,
+              "counts": {
+                "P": 13,
+                "F": 7,
+                "U": 4
+              },
+              "strata": {
+                "general": {},
+                "technical_short": {
+                  "F": 2,
+                  "P": 3,
+                  "U": 3
+                },
+                "technical_medium": {
+                  "P": 6,
+                  "U": 1,
+                  "F": 1
+                },
+                "technical_long": {
+                  "F": 4,
+                  "P": 4
+                }
+              }
+            }
+          }
+        }
+      },
+      "labels_sha256": "7e265eb5c4838c9812e9a6e7eef18c795acc613867acf0329e301ff83dc7150b",
+      "cards_sha256": "c30daaac225995e1817098f373077bdb338addb9cd6b323007421242acc3c97c",
+      "input_binding": {
+        "case": "dev_t1000811",
+        "sha256": {
+          "dev_t1000811.jsonl": "ed82e1cfbc6c2dad6fc53d226b6143c13d5f8450feef048bbea5d86d8ff51bba",
+          "dev_g8_t1000811.jsonl": "5bd86bfe2ed24ac537a3ebdb738347d05772817d4cf8224566419355155772ba"
+        },
+        "labels_are_AI_not_native_certified": true
+      },
+      "not_native_certified": true,
+      "tag": "t1000811",
+      "greedy_P": 12,
+      "coverage_P": 13
+    }
+  },
+  {
+    "tag": "t1501693",
+    "step": 849,
+    "target_tokens": 1501693,
+    "adapter_sha256": "e2ad726d4c1792513ee25dc224b5f7fd9cc29b38f46c4f280bf686436a9e0bfe",
+    "full_optimizer_RNG": false,
+    "path": "run/checkpoints/t1501693/adapter",
+    "metrics": {
+      "nll": 1.1940424385723416,
+      "technical_nll": 1.1721855915845762,
+      "dev_target_tokens": 8008,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 47.87255724932865,
+          "bleu": 27.286498188887066
+        },
+        "technical_short": {
+          "n": 32,
+          "chrfpp": 49.270378529904264,
+          "bleu": 29.522403435500486
+        },
+        "technical_medium": {
+          "n": 32,
+          "chrfpp": 46.216352930063174,
+          "bleu": 20.174846439510286
+        },
+        "technical_long": {
+          "n": 32,
+          "chrfpp": 49.49848945928051,
+          "bleu": 22.037909042282173
+        }
+      },
+      "overall_chrfpp": 48.581256621200666,
+      "technical_chrfpp": 48.57688615047847,
+      "technical_medium_long_chrfpp": 48.491698112592566,
+      "failures": 0
+    },
+    "review": {
+      "UTC": "2026-11-21T22:25:23.639903+00:00",
+      "case": "dev_t1501693",
+      "complete": true,
+      "reviewed": 56,
+      "models": {
+        "candidate": {
+          "reviewed": 56,
+          "roles": {
+            "greedy": {
+              "n": 32,
+              "counts": {
+                "F": 20,
+                "P": 10,
+                "U": 2
+              },
+              "strata": {
+                "general": {
+                  "P": 3,
+                  "F": 4,
+                  "U": 1
+                },
+                "technical_short": {
+                  "F": 3,
+                  "P": 4,
+                  "U": 1
+                },
+                "technical_medium": {
+                  "F": 5,
+                  "P": 3
+                },
+                "technical_long": {
+                  "F": 8
+                }
+              }
+            },
+            "g8": {
+              "n": 24,
+              "counts": {
+                "P": 12,
+                "U": 5,
+                "F": 7
+              },
+              "strata": {
+                "general": {},
+                "technical_short": {
+                  "P": 4,
+                  "F": 2,
+                  "U": 2
+                },
+                "technical_medium": {
+                  "P": 5,
+                  "U": 2,
+                  "F": 1
+                },
+                "technical_long": {
+                  "U": 1,
+                  "F": 4,
+                  "P": 3
+                }
+              }
+            }
+          }
+        }
+      },
+      "labels_sha256": "c1d7afc765bea354c650bd0c363040fcaaffd2cb9d0717c9ec8006ba57a65949",
+      "cards_sha256": "ec4fa2cd6ba8c175faf4e5e6d5b8dfde7cfafd28b36011328f35055fa5cd78b3",
+      "input_binding": {
+        "case": "dev_t1501693",
+        "sha256": {
+          "dev_t1501693.jsonl": "19e0bbd5bc96a09735fe8568032311181065d930652c1b42090a572cf0f65b2a",
+          "dev_g8_t1501693.jsonl": "91862e84455cd157bc200679b83bdb945d9cb4a0ab3165f22b3f005623b5715f"
+        },
+        "labels_are_AI_not_native_certified": true
+      },
+      "not_native_certified": true,
+      "tag": "t1501693",
+      "greedy_P": 10,
+      "coverage_P": 12
+    }
+  },
+  {
+    "tag": "t1983726",
+    "step": 1121,
+    "target_tokens": 1983726,
+    "adapter_sha256": "7f7a4914c5f403e757fdb882c3576ac68f2b0fa6edc00e537087716b28ddb07e",
+    "full_optimizer_RNG": true,
+    "path": "run/checkpoints/t1983726/adapter",
+    "metrics": {
+      "nll": 1.1749328009553484,
+      "technical_nll": 1.152014861111471,
+      "dev_target_tokens": 8008,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 50.39504503144761,
+          "bleu": 29.80210252233543
+        },
+        "technical_short": {
+          "n": 32,
+          "chrfpp": 48.03016406102201,
+          "bleu": 28.90200402926307
+        },
+        "technical_medium": {
+          "n": 32,
+          "chrfpp": 45.723477837140386,
+          "bleu": 20.860666004467777
+        },
+        "technical_long": {
+          "n": 32,
+          "chrfpp": 48.98959852845523,
+          "bleu": 21.002768640775276
+        }
+      },
+      "overall_chrfpp": 48.287587848948846,
+      "technical_chrfpp": 47.99735079830076,
+      "technical_medium_long_chrfpp": 48.00002160960186,
+      "failures": 1
+    },
+    "review": {
+      "UTC": "2026-11-21T23:01:10.539336+00:00",
+      "case": "dev_t1983726",
+      "complete": true,
+      "reviewed": 56,
+      "models": {
+        "candidate": {
+          "reviewed": 56,
+          "roles": {
+            "greedy": {
+              "n": 32,
+              "counts": {
+                "F": 17,
+                "P": 12,
+                "U": 3
+              },
+              "strata": {
+                "general": {
+                  "F": 5,
+                  "P": 3
+                },
+                "technical_short": {
+                  "P": 5,
+                  "F": 3
+                },
+                "technical_medium": {
+                  "P": 3,
+                  "F": 3,
+                  "U": 2
+                },
+                "technical_long": {
+                  "F": 6,
+                  "U": 1,
+                  "P": 1
+                }
+              }
+            },
+            "g8": {
+              "n": 24,
+              "counts": {
+                "P": 13,
+                "F": 7,
+                "U": 4
+              },
+              "strata": {
+                "general": {},
+                "technical_short": {
+                  "P": 4,
+                  "F": 2,
+                  "U": 2
+                },
+                "technical_medium": {
+                  "P": 7,
+                  "F": 1
+                },
+                "technical_long": {
+                  "P": 2,
+                  "F": 4,
+                  "U": 2
+                }
+              }
+            }
+          }
+        }
+      },
+      "labels_sha256": "81fca532c9b01e405b1986a679b2488e9fdd51ca2be164adab7d3bf4ca02d60f",
+      "cards_sha256": "fa3f16add80a9c6c12ec9bf6daf4ad04eca34d78ce2266dd6b6e4225276556bf",
+      "input_binding": {
+        "case": "dev_t1983726",
+        "sha256": {
+          "dev_t1983726.jsonl": "21c4a715f2b2ba654a6ae0603043adc54e53c45fd8dd7cf54f0f4f6d9a964be4",
+          "dev_g8_t1983726.jsonl": "2420f72e15fc0ce56a60c0af9389ad85e525307c62e04a0e56ec3c1e90a1cc83"
+        },
+        "labels_are_AI_not_native_certified": true
+      },
+      "not_native_certified": true,
+      "tag": "t1983726",
+      "greedy_P": 12,
+      "coverage_P": 13
+    }
+  }
+]

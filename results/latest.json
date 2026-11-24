@@ -1,0 +1,60 @@
+{
+  "date": "2026-11-24",
+  "latest_experiment": "wmt26_shortmid_night_2026-11-23",
+  "source_release": "local_translation_release_2026-11-24",
+  "task": "English to Icelandic",
+  "official_documents": 198,
+  "source_segment_translation_then_document_reconstruction": true,
+  "reference": "official refA",
+  "not_official_competition_rank": true,
+  "original_sft_id": "qwen25-3b-sft-r0",
+  "latest_dapo_id": "qwen25-3b-dapo-shortmid",
+  "optimizer_updates": 240,
+  "dev_selected_step": 120,
+  "new_SFT_updates": 0,
+  "primary_initial": {
+    "n": 198,
+    "chrfpp": {
+      "before": 39.718915382450255,
+      "after": 39.9115793795913,
+      "delta": 0.19266399714104665,
+      "delta95CI": [
+        -1.3314760757591964,
+        1.9518907463427535
+      ]
+    },
+    "bleu": {
+      "before": 19.757162284647453,
+      "after": 20.868815047706505,
+      "delta": 1.1116527630590518,
+      "delta95CI": [
+        -1.3250543547390972,
+        4.313979544592103
+      ]
+    }
+  },
+  "primary_latest": {
+    "n": 198,
+    "chrfpp": {
+      "before": 39.718915382450255,
+      "after": 40.83466908840522,
+      "delta": 1.1157537059549654,
+      "delta95CI": [
+        -0.06422553477964374,
+        2.563144700650973
+      ]
+    },
+    "bleu": {
+      "before": 19.757162284647453,
+      "after": 21.69729738999143,
+      "delta": 1.9401351053439768,
+      "delta95CI": [
+        -0.06853441546312249,
+        5.216621055582654
+      ]
+    }
+  },
+  "primary_reliable_gain_rule_passed": false,
+  "shortmedium_secondary_positive_but_exploratory": true,
+  "pure_short_gain_not_established": true
+}

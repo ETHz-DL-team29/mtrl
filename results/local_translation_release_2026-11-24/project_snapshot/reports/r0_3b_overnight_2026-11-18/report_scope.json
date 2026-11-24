@@ -1,0 +1,9 @@
+{
+  "expected_case_details": 336,
+  "stages": [
+    "stage_A",
+    "stage_B"
+  ],
+  "generated_utc": "2026-11-18T05:35:14.545668+00:00",
+  "all_case_rows_included": true
+}

@@ -1,0 +1,34 @@
+{
+  "UTC": "2026-11-24T03:04:44.693509+00:00",
+  "sampling": {
+    "selected_checkpoint": {
+      "optimizer_updates": 120,
+      "source_attempts": 251,
+      "accepted_source_groups": 240,
+      "group_acceptance_fraction": 0.9561752988047809,
+      "generated_candidate_sequences": 2008,
+      "generated_completion_tokens": 77374,
+      "active_optimization_token_passes": 147018,
+      "optimizer_phase_seconds": 1780.8279141939902,
+      "incremental_format_filter_rejections": 1,
+      "groups_with_any_truncated_completion": 1,
+      "acceptance_is_not_correct_candidate_coverage": true
+    },
+    "whole_exploration": {
+      "optimizer_updates": 240,
+      "source_attempts": 514,
+      "accepted_source_groups": 480,
+      "group_acceptance_fraction": 0.933852140077821,
+      "generated_candidate_sequences": 4112,
+      "generated_completion_tokens": 152262,
+      "active_optimization_token_passes": 286204,
+      "optimizer_phase_seconds": 3554.505331712996,
+      "incremental_format_filter_rejections": 1,
+      "groups_with_any_truncated_completion": 3,
+      "acceptance_is_not_correct_candidate_coverage": true
+    }
+  },
+  "selected_checkpoint_cost_is_not_total_search_cost": true,
+  "whole_exploration_includes_all240_updates_and_dev_selection": true,
+  "no_selective_token_update_or_prefix_reuse_comparison_implemented_in_this_run": true
+}

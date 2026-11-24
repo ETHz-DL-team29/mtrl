@@ -1,0 +1,268 @@
+[
+  {
+    "tag": "A",
+    "step": 0,
+    "target_tokens": 0,
+    "metrics": {
+      "nll": 1.5703537802019245,
+      "technical_nll": 1.5867990943539874,
+      "dev_target_tokens": 7762,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 32.49513598436714,
+          "bleu": 13.661850824525631
+        },
+        "technical_short": {
+          "n": 32,
+          "chrfpp": 36.502600462317865,
+          "bleu": 16.15054999539318
+        },
+        "technical_medium": {
+          "n": 32,
+          "chrfpp": 33.97510642128125,
+          "bleu": 10.704081774767003
+        },
+        "technical_long": {
+          "n": 32,
+          "chrfpp": 37.75654991953216,
+          "bleu": 15.030621140963309
+        }
+      },
+      "overall_chrfpp": 36.32325711068724,
+      "technical_chrfpp": 36.59669402064523,
+      "technical_medium_long_chrfpp": 36.61265000576855,
+      "failures": 1
+    },
+    "adapter_sha256": "9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199",
+    "semantic": true
+  },
+  {
+    "tag": "t0500990",
+    "step": 401,
+    "target_tokens": 500990,
+    "metrics": {
+      "nll": 1.3694806076208055,
+      "technical_nll": 1.3635555198180536,
+      "dev_target_tokens": 7762,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 35.25565604463637,
+          "bleu": 15.824702350907463
+        },
+        "technical_short": {
+          "n": 32,
+          "chrfpp": 42.01609187553141,
+          "bleu": 18.585834878197268
+        },
+        "technical_medium": {
+          "n": 32,
+          "chrfpp": 38.63997269826399,
+          "bleu": 16.495708456232272
+        },
+        "technical_long": {
+          "n": 32,
+          "chrfpp": 42.03057486312777,
+          "bleu": 21.114629432404445
+        }
+      },
+      "overall_chrfpp": 40.683784765135854,
+      "technical_chrfpp": 41.09314727972354,
+      "technical_medium_long_chrfpp": 40.9759166925303,
+      "failures": 0
+    },
+    "adapter_sha256": "b3f32cfeb4b70a21bfe352d159d9aa397391e46c2f6e36c0ca56c3d3f2d01ece",
+    "semantic": false
+  },
+  {
+    "tag": "t1001129",
+    "step": 802,
+    "target_tokens": 1001129,
+    "metrics": {
+      "nll": 1.2719036462656526,
+      "technical_nll": 1.2614897407126466,
+      "dev_target_tokens": 7762,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 41.095581514464996,
+          "bleu": 21.880118890593035
+        },
+        "technical_short": {
+          "n": 32,
+          "chrfpp": 41.32786163661468,
+          "bleu": 20.253782252203724
+        },
+        "technical_medium": {
+          "n": 32,
+          "chrfpp": 41.12809086679285,
+          "bleu": 18.232415639322742
+        },
+        "technical_long": {
+          "n": 32,
+          "chrfpp": 45.48667307980014,
+          "bleu": 22.451886541832817
+        }
+      },
+      "overall_chrfpp": 43.63810478500827,
+      "technical_chrfpp": 43.79947192248392,
+      "technical_medium_long_chrfpp": 44.1408955266693,
+      "failures": 0
+    },
+    "adapter_sha256": "11ac61967f41b9dd397dc452b0b9281845d6b8deda3c7b70ffeabb27d7b9b079",
+    "semantic": true
+  },
+  {
+    "tag": "t1501089",
+    "step": 1220,
+    "target_tokens": 1501089,
+    "metrics": {
+      "nll": 1.2158822669285039,
+      "technical_nll": 1.2038109181234178,
+      "dev_target_tokens": 7762,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 38.682263780062705,
+          "bleu": 18.767871595165637
+        },
+        "technical_short": {
+          "n": 32,
+          "chrfpp": 44.75778542661569,
+          "bleu": 24.46316043634717
+        },
+        "technical_medium": {
+          "n": 32,
+          "chrfpp": 42.47134886278653,
+          "bleu": 18.44859720072085
+        },
+        "technical_long": {
+          "n": 32,
+          "chrfpp": 47.932078369626105,
+          "bleu": 23.66435646427285
+        }
+      },
+      "overall_chrfpp": 45.55969743418777,
+      "technical_chrfpp": 46.081366566050775,
+      "technical_medium_long_chrfpp": 46.26333836265025,
+      "failures": 1
+    },
+    "adapter_sha256": "c35b5783fc8e90368a8c64bac52962fdd062b5a56214db1683c88af9071c3939",
+    "semantic": false
+  },
+  {
+    "tag": "t2000188",
+    "step": 1653,
+    "target_tokens": 2000188,
+    "metrics": {
+      "nll": 1.1808031209809544,
+      "technical_nll": 1.1658686926821902,
+      "dev_target_tokens": 7762,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 37.981201872328995,
+          "bleu": 13.995310264056487
+        },
+        "technical_short": {
+          "n": 32,
+          "chrfpp": 44.171353307388806,
+          "bleu": 22.40089983166753
+        },
+        "technical_medium": {
+          "n": 32,
+          "chrfpp": 42.106667439906204,
+          "bleu": 16.799168902309827
+        },
+        "technical_long": {
+          "n": 32,
+          "chrfpp": 48.67948007194458,
+          "bleu": 25.05258397275677
+        }
+      },
+      "overall_chrfpp": 45.765404228986924,
+      "technical_chrfpp": 46.355460708346875,
+      "technical_medium_long_chrfpp": 46.655034054020945,
+      "failures": 0
+    },
+    "adapter_sha256": "174fac0f3a943dab7b8c2dc8ca93c7eca7881c10825874ec6e27f2b2c39baf92",
+    "semantic": true
+  },
+  {
+    "tag": "t2501000",
+    "step": 2095,
+    "target_tokens": 2501000,
+    "metrics": {
+      "nll": 1.137874255104183,
+      "technical_nll": 1.1226619504153428,
+      "dev_target_tokens": 7762,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 39.090032764828294,
+          "bleu": 18.695445703304124
+        },
+        "technical_short": {
+          "n": 32,
+          "chrfpp": 46.70795562514657,
+          "bleu": 24.103441890411116
+        },
+        "technical_medium": {
+          "n": 32,
+          "chrfpp": 43.53064547634374,
+          "bleu": 18.85684197111249
+        },
+        "technical_long": {
+          "n": 32,
+          "chrfpp": 48.300171923000875,
+          "bleu": 26.03609200391587
+        }
+      },
+      "overall_chrfpp": 46.254591819291804,
+      "technical_chrfpp": 46.80823026948102,
+      "technical_medium_long_chrfpp": 46.82741681961046,
+      "failures": 0
+    },
+    "adapter_sha256": "7740ca4208a2b5e11cd146c9a14a28862d0c3abf0726b103c9953dbd3c04c87d",
+    "semantic": false
+  },
+  {
+    "tag": "t2999996",
+    "step": 2543,
+    "target_tokens": 2999996,
+    "metrics": {
+      "nll": 1.1306406443526344,
+      "technical_nll": 1.113438619060956,
+      "dev_target_tokens": 7762,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 38.614636057116606,
+          "bleu": 15.534062052183817
+        },
+        "technical_short": {
+          "n": 32,
+          "chrfpp": 43.358207627688806,
+          "bleu": 20.36600694956158
+        },
+        "technical_medium": {
+          "n": 32,
+          "chrfpp": 44.56981532302277,
+          "bleu": 19.714936961743554
+        },
+        "technical_long": {
+          "n": 32,
+          "chrfpp": 48.9653759111669,
+          "bleu": 25.666730227525626
+        }
+      },
+      "overall_chrfpp": 46.48956123692833,
+      "technical_chrfpp": 47.100046286045774,
+      "technical_medium_long_chrfpp": 47.61391705001332,
+      "failures": 0
+    },
+    "adapter_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0",
+    "semantic": true
+  }
+]

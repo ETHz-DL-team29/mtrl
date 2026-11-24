@@ -1,0 +1,14 @@
+{
+  "details": 410,
+  "case_cards": 400,
+  "expanded": true,
+  "collapsed": true,
+  "searched": 1,
+  "reset": 400,
+  "images": 1,
+  "images_ok": true,
+  "overflow": 0,
+  "correct_date": true,
+  "source_sha256": "ebd5f9b2939d05c0fb85b23df8c208297d5529a0157b7d735acf1a55c01eb0db",
+  "browser": "isolated Microsoft Edge headless"
+}

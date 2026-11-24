@@ -1,0 +1,129 @@
+{
+  "passed": true,
+  "target_tokens": 100154,
+  "steps": 121,
+  "reviews": [
+    {
+      "tag": "fit_0025667",
+      "decision": {
+        "UTC": "2026-11-21T20:22:54.785917+00:00",
+        "case": "fit_0025667",
+        "complete": true,
+        "reviewed": 32,
+        "models": {
+          "candidate": {
+            "reviewed": 32,
+            "roles": {
+              "greedy": {
+                "n": 32,
+                "counts": {
+                  "F": 6,
+                  "P": 24,
+                  "U": 2
+                },
+                "strata": {
+                  "general": {},
+                  "technical_short": {},
+                  "technical_medium": {
+                    "P": 15,
+                    "U": 1
+                  },
+                  "technical_long": {
+                    "F": 6,
+                    "P": 9,
+                    "U": 1
+                  }
+                }
+              },
+              "g8": {
+                "n": 0,
+                "counts": {},
+                "strata": {
+                  "general": {},
+                  "technical_short": {},
+                  "technical_medium": {},
+                  "technical_long": {}
+                }
+              }
+            }
+          }
+        },
+        "labels_sha256": "b34bb81014b075bc05be9af9bd7255abda618715d09e2cac3f2c325907cefae3",
+        "cards_sha256": "e435ffa8e8a309121ce5700647a97101462f8439866c700df04106c174be80d9",
+        "input_binding": {
+          "case": "fit_0025667",
+          "sha256": {
+            "fit_0025667.jsonl": "2129db2556865d3daaf91a559c3b20de1e2215177935efa821edb8e648c80a24"
+          },
+          "labels_are_AI_not_native_certified": true
+        },
+        "not_native_certified": true,
+        "confirmed_P": 24,
+        "long_P": 9,
+        "passed": false,
+        "prediction_sha256": "2129db2556865d3daaf91a559c3b20de1e2215177935efa821edb8e648c80a24"
+      }
+    },
+    {
+      "tag": "fit_0100154",
+      "decision": {
+        "UTC": "2026-11-21T20:28:46.737757+00:00",
+        "case": "fit_0100154",
+        "complete": true,
+        "reviewed": 32,
+        "models": {
+          "candidate": {
+            "reviewed": 32,
+            "roles": {
+              "greedy": {
+                "n": 32,
+                "counts": {
+                  "F": 1,
+                  "P": 30,
+                  "U": 1
+                },
+                "strata": {
+                  "general": {},
+                  "technical_short": {},
+                  "technical_medium": {
+                    "P": 15,
+                    "U": 1
+                  },
+                  "technical_long": {
+                    "F": 1,
+                    "P": 15
+                  }
+                }
+              },
+              "g8": {
+                "n": 0,
+                "counts": {},
+                "strata": {
+                  "general": {},
+                  "technical_short": {},
+                  "technical_medium": {},
+                  "technical_long": {}
+                }
+              }
+            }
+          }
+        },
+        "labels_sha256": "e0470219b69c948e71b194c486e480fbae343554d1b5d5421db9e4a1c7bd88ce",
+        "cards_sha256": "cdddf0f8e6a509129e90ea2ea6c7323e7fcced673c6bee0b8824baef8c80e9a5",
+        "input_binding": {
+          "case": "fit_0100154",
+          "sha256": {
+            "fit_0100154.jsonl": "adaa1c12342b51dc20a364acb41480e09f811792172aa887e664340018b5b137"
+          },
+          "labels_are_AI_not_native_certified": true
+        },
+        "not_native_certified": true,
+        "confirmed_P": 30,
+        "long_P": 15,
+        "passed": true,
+        "prediction_sha256": "adaa1c12342b51dc20a364acb41480e09f811792172aa887e664340018b5b137"
+      }
+    }
+  ],
+  "production_weights_not_initialized_from_fit": true
+}

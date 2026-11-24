@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-17",
+  "status": "AWAITING_80_PAIR_SEMANTIC_REVIEW",
+  "source_pool": 38799,
+  "retained": 38671,
+  "by_stratum": {
+    "general": 32453,
+    "technical_medium": 2423,
+    "technical_long": 2338,
+    "technical_short": 1457
+  },
+  "rejected": {
+    "near_protected_5gram_Jaccard085": 86,
+    "suspected_ASCII_substitution_quarantine": 42
+  },
+  "untouched_long_in_R2_prefix": 1314,
+  "target_tokens_by_stratum": {
+    "general": 510354,
+    "technical_medium": 140397,
+    "technical_long": 380167,
+    "technical_short": 33909
+  },
+  "source_sha256": "e330c728c5472a032e0a7eb8bebce5146813896ca4acaa2769225acc018ece2e",
+  "initial_adapter_sha256": "ebb4575fda36002c76ddb7e999a4e12c44a0be9ddb20b1e4e092d708e6a050e9",
+  "limitations": [
+    "80-pair review is AI-assisted, not native certification.",
+    "ASCII rule is conservative quarantine, can reject valid strings.",
+    "No complete document-ID separation or perfect near-duplicate exclusion claimed."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-13",
+  "observed_unix": 1794588043.3981812,
+  "unassigned": true,
+  "owned_runtime_only": true,
+  "verified_export_sha256": "c1fbc8a97239e50422948a3ec22866bca92a4d5e85eaa39cd2d1eacf21dede0e",
+  "durable_model_verified": true,
+  "remaining_assignment_count": 0,
+  "compute_units": {
+    "paid_compute_units_balance": 281.83473526901435,
+    "consumption_rate_hourly": 0.0,
+    "assignments_count": 0
+  },
+  "approx_account_balance_decrease": 8.369812427502097
+}

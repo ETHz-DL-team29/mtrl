@@ -1,0 +1,30 @@
+{
+  "UTC": "2026-11-21T23:29:09.578841+00:00",
+  "project_engineering_gate_not_DAPO_theorem": true,
+  "checks": {
+    "trained_selected": true,
+    "g8_total": false,
+    "g8_short": true,
+    "g8_medium": false,
+    "g8_long": false,
+    "general_chrf_regression_within1p5": false,
+    "greedy_confirmed_semantic_direction_nonnegative": true,
+    "g8_confirmed_semantic_direction_nonnegative": true,
+    "no_broad_new_critical_regressions": true
+  },
+  "passed": false,
+  "selected_tag": "t1983726",
+  "selected_target_tokens": 1983726,
+  "G8_P": 17,
+  "G8_P_by_stratum": {
+    "technical_short": 9,
+    "technical_medium": 4,
+    "technical_long": 4
+  },
+  "general_chrfpp_delta": -2.4115847106085937,
+  "requires_reward_validation_before_DAPO": true,
+  "limitations": [
+    "Same-assistant semantic labels are conditional, not native-speaker certification",
+    "Small final source sample and one training seed"
+  ]
+}

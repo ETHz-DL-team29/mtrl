@@ -1,0 +1,9 @@
+{
+  "updates": 20,
+  "target_tokens": 24765,
+  "seconds": 99.63314723300027,
+  "tokens_per_second": 248.5618560466129,
+  "projected_train_seconds": 1609.2573750535073,
+  "included_in_budget": true,
+  "quality_used": false
+}

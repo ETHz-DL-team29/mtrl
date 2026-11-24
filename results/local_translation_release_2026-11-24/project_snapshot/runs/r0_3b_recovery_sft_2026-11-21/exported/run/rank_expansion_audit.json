@@ -1,0 +1,10 @@
+{
+  "old_rank": 16,
+  "new_rank": 64,
+  "old_scale": 2,
+  "new_scale": 2,
+  "old_blocks_identical": true,
+  "new_B_columns_zero": true,
+  "random_module_probe_max_delta": 0.0,
+  "original_adapter_sha256": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858"
+}

@@ -1,0 +1,138 @@
+[
+  {
+    "tag": "t000000",
+    "step": 0,
+    "target_tokens": 0,
+    "metrics": {
+      "nll": 1.7174256338672946,
+      "technical_nll": 1.7355333465070977,
+      "dev_target_tokens": 7613,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 45.99174488584887,
+          "bleu": 32.23343069034601
+        },
+        "technical_short": {
+          "n": 8,
+          "chrfpp": 51.09449667512759,
+          "bleu": 28.904182808587613
+        },
+        "technical_medium": {
+          "n": 12,
+          "chrfpp": 33.107288220201376,
+          "bleu": 12.963144864977606
+        },
+        "technical_long": {
+          "n": 12,
+          "chrfpp": 31.63537700569114,
+          "bleu": 11.675665659950377
+        }
+      },
+      "weighted_chrfpp": 36.71259388428098,
+      "failures": 4
+    }
+  },
+  {
+    "tag": "t100000",
+    "step": 82,
+    "target_tokens": 100445,
+    "metrics": {
+      "nll": 1.705118536087932,
+      "technical_nll": 1.7216135056599162,
+      "dev_target_tokens": 7613,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 46.61775523574368,
+          "bleu": 31.392907824083572
+        },
+        "technical_short": {
+          "n": 8,
+          "chrfpp": 57.71944968118575,
+          "bleu": 37.857494477054814
+        },
+        "technical_medium": {
+          "n": 12,
+          "chrfpp": 28.636055988955704,
+          "bleu": 5.972366920554601
+        },
+        "technical_long": {
+          "n": 12,
+          "chrfpp": 34.48203513731444,
+          "bleu": 16.955406876578575
+        }
+      },
+      "weighted_chrfpp": 36.631743187189755,
+      "failures": 3
+    }
+  },
+  {
+    "tag": "t200000",
+    "step": 165,
+    "target_tokens": 200770,
+    "metrics": {
+      "nll": 1.69655070573573,
+      "technical_nll": 1.7114732182150163,
+      "dev_target_tokens": 7613,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 46.78001741496425,
+          "bleu": 32.814394117761324
+        },
+        "technical_short": {
+          "n": 8,
+          "chrfpp": 54.4632170732151,
+          "bleu": 34.41812307635434
+        },
+        "technical_medium": {
+          "n": 12,
+          "chrfpp": 34.16632306720786,
+          "bleu": 12.521732139585936
+        },
+        "technical_long": {
+          "n": 12,
+          "chrfpp": 32.66916912366404,
+          "bleu": 14.067675097255824
+        }
+      },
+      "weighted_chrfpp": 37.81058747420698,
+      "failures": 2
+    }
+  },
+  {
+    "tag": "t400000",
+    "step": 330,
+    "target_tokens": 399895,
+    "metrics": {
+      "nll": 1.6916391983242678,
+      "technical_nll": 1.705850625754426,
+      "dev_target_tokens": 7613,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 43.57306731163538,
+          "bleu": 28.48243137635743
+        },
+        "technical_short": {
+          "n": 8,
+          "chrfpp": 52.46416874922305,
+          "bleu": 33.77760461667557
+        },
+        "technical_medium": {
+          "n": 12,
+          "chrfpp": 35.552998244028885,
+          "bleu": 13.925077558302126
+        },
+        "technical_long": {
+          "n": 12,
+          "chrfpp": 35.43914013609471,
+          "bleu": 17.557274062176674
+        }
+      },
+      "weighted_chrfpp": 38.36372369841325,
+      "failures": 2
+    }
+  }
+]

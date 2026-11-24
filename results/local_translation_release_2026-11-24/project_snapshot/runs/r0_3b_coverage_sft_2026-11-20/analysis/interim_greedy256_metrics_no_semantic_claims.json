@@ -1,0 +1,16 @@
+{
+  "UTC": "2026-11-20T17:31:34.130988+00:00",
+  "n": 256,
+  "not_used_for_checkpoint_selection": true,
+  "G8_semantic_review_not_complete": true,
+  "results": {
+    "before": {
+      "chrfpp": 43.669530606611836,
+      "bleu": 19.66225672384921
+    },
+    "after": {
+      "chrfpp": 44.139801947617734,
+      "bleu": 19.5975348395648
+    }
+  }
+}

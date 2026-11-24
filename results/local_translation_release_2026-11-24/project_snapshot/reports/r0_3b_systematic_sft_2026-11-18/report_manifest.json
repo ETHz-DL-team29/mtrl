@@ -1,0 +1,14 @@
+{
+  "html_qa.json": {
+    "bytes": 409,
+    "sha256": "aef84ca05db34da13e94c4508e20d6f305e2039841b99861dae3883e04104006"
+  },
+  "R0_3B_SYSTEMATIC_SFT_PLAN_2026-11-18.html": {
+    "bytes": 51096,
+    "sha256": "f6a0e1498018f3d533f8b7caf6bda50aa1cf88cbf1b5ea1eb6c9ed0ad1ad1b3f"
+  },
+  "R0_3B_SYSTEMATIC_SFT_PLAN_2026-11-18.md": {
+    "bytes": 45580,
+    "sha256": "fd21400c32e67595567b1dcbfbf679af04c466222dc130d457edcecbc47efa75"
+  }
+}

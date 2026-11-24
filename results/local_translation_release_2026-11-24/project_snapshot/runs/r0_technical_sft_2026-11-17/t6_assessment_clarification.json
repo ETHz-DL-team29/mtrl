@@ -1,0 +1,8 @@
+{
+  "registered_utc": "2026-11-17T10:19:30.463254+00:00",
+  "before_first_trained_checkpoint_metrics_inspected": true,
+  "training_changes": false,
+  "selection_rule_changes": false,
+  "rule": "If the fixed selection rule chooses original R0,do not report a self-comparison as evidence that SFT had zero effect. Separately decode the final trained checkpoint as a diagnostic,with its nonselected status explicit. When time permits also retain final-checkpoint greedy diagnostics if another trained checkpoint is selected. No promotion or checkpoint reselection uses these final diagnostics.",
+  "budget": "No added training tokens;extra inference only within existing3h allocation cap. If budget insufficient,report absent trained-final diagnosis rather than claim zero training effect."
+}

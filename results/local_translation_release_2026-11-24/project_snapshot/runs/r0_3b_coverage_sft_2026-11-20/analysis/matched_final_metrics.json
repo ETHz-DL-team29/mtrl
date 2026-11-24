@@ -1,0 +1,223 @@
+{
+  "UTC": "2026-11-20T17:38:26.290692+00:00",
+  "n": 256,
+  "metrics": {
+    "overall": {
+      "n": 256,
+      "chrfpp": {
+        "before": 43.669530606611836,
+        "after": 44.139801947617734,
+        "delta": 0.4702713410058976,
+        "delta_95CI": [
+          -0.9673516309847132,
+          1.8937668079368017
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      },
+      "bleu": {
+        "before": 19.66225672384921,
+        "after": 19.5975348395648,
+        "delta": -0.06472188428440973,
+        "delta_95CI": [
+          -1.857187619919748,
+          1.70848473015027
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      }
+    },
+    "general": {
+      "n": 64,
+      "chrfpp": {
+        "before": 42.6350394148342,
+        "after": 44.448076955630306,
+        "delta": 1.8130375407961026,
+        "delta_95CI": [
+          -0.08128467023384686,
+          3.7732454650478116
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      },
+      "bleu": {
+        "before": 22.69639844694287,
+        "after": 23.65939880029067,
+        "delta": 0.9630003533478018,
+        "delta_95CI": [
+          -1.3977995927147868,
+          3.4063590334297493
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      }
+    },
+    "technical_short": {
+      "n": 64,
+      "chrfpp": {
+        "before": 38.614809084980934,
+        "after": 40.88729389942958,
+        "delta": 2.272484814448646,
+        "delta_95CI": [
+          0.7978604062262841,
+          4.0127608876525
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      },
+      "bleu": {
+        "before": 17.09148264152302,
+        "after": 19.876103605667723,
+        "delta": 2.784620964144704,
+        "delta_95CI": [
+          0.1532376631080887,
+          6.06162479423798
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      }
+    },
+    "technical_medium": {
+      "n": 64,
+      "chrfpp": {
+        "before": 43.97041847545849,
+        "after": 43.41458019699415,
+        "delta": -0.5558382784643356,
+        "delta_95CI": [
+          -4.732896792789142,
+          2.5340584798651755
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      },
+      "bleu": {
+        "before": 18.90507393200327,
+        "after": 17.210978420377202,
+        "delta": -1.6940955116260668,
+        "delta_95CI": [
+          -5.811624326275605,
+          2.2442886828735267
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      }
+    },
+    "technical_long": {
+      "n": 64,
+      "chrfpp": {
+        "before": 44.62311365567933,
+        "after": 45.003714865098424,
+        "delta": 0.3806012094190905,
+        "delta_95CI": [
+          -1.2564419723585676,
+          2.2910688568764397
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      },
+      "bleu": {
+        "before": 19.633997538216207,
+        "after": 19.995080917419834,
+        "delta": 0.36108337920362743,
+        "delta_95CI": [
+          -1.3974164685653454,
+          2.6489435054164736
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      }
+    },
+    "technical": {
+      "n": 192,
+      "chrfpp": {
+        "before": 43.71256988819898,
+        "after": 44.064597948369205,
+        "delta": 0.3520280601702268,
+        "delta_95CI": [
+          -1.1739006199995348,
+          1.760570589611209
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      },
+      "bleu": {
+        "before": 19.355501736136613,
+        "after": 19.195295874648608,
+        "delta": -0.16020586148800575,
+        "delta_95CI": [
+          -1.900631519083124,
+          1.726806856480279
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      }
+    },
+    "technical_medium_long": {
+      "n": 128,
+      "chrfpp": {
+        "before": 44.42265562041025,
+        "after": 44.505689397298326,
+        "delta": 0.08303377688807956,
+        "delta_95CI": [
+          -1.612013255592015,
+          1.7955416103018125
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      },
+      "bleu": {
+        "before": 19.647133133369024,
+        "after": 19.098102962839807,
+        "delta": -0.5490301705292175,
+        "delta_95CI": [
+          -2.4398056028249884,
+          1.597009251361771
+        ],
+        "replicates": 2000,
+        "unit": "paired source; corpus statistic bootstrap"
+      }
+    }
+  },
+  "not_used_for_checkpoint_selection": true,
+  "input_root": "D:\\deep learning project\\runs\\r0_3b_coverage_sft_2026-11-20\\live_mirror",
+  "input_sha256": {
+    "before_greedy.jsonl": "5cdac92c7f3d189b6dbc5df886746c9831aa70da59b3e365ff1f65c873988da0",
+    "after_greedy.jsonl": "231e98180d2c39b7b0dc4afb49e567cae72c73f6db47a9a5735f4f34de816cf7",
+    "before_g8.jsonl": "3b7c2226d466195b6ac5c3044fcad417c38105ded9442b01b3c56929836991a0",
+    "after_g8.jsonl": "738262baba4185e44281366c8f30747d9b936cb4cfe90b6454916b47176a7823"
+  },
+  "failures": {
+    "before": {
+      "gate": 1,
+      "repetition": 1,
+      "truncated": 1
+    },
+    "after": {
+      "gate": 2,
+      "repetition": 2,
+      "truncated": 2
+    }
+  },
+  "signatures": {
+    "chrfpp": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0",
+    "bleu": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0"
+  },
+  "sampling": {
+    "before": {
+      "sources": 64,
+      "candidates": 512,
+      "mean_unique_texts": 7.9375,
+      "truncated_candidates": 0,
+      "mean_completion_tokens": 83.736328125,
+      "not_a_semantic_accuracy_measure": true
+    },
+    "after": {
+      "sources": 64,
+      "candidates": 512,
+      "mean_unique_texts": 7.9375,
+      "truncated_candidates": 0,
+      "mean_completion_tokens": 85.0234375,
+      "not_a_semantic_accuracy_measure": true
+    }
+  }
+}

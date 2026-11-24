@@ -1,0 +1,86 @@
+{
+  "recipe": "raw",
+  "fit_pair_accuracy": {
+    "raw": 0.9045138888888888,
+    "guarded": 0.9045138888888888
+  },
+  "threshold_selection": {
+    "threshold": 0.96828125,
+    "tp": 19,
+    "fp": 2,
+    "tn": 40,
+    "fn": 17,
+    "precision": 0.9047619047619048,
+    "recall": 0.5277777777777778,
+    "balanced_accuracy": 0.7400793650793651,
+    "predicted_positive": 21,
+    "mixed_proxy_groups": 9
+  },
+  "validation": {
+    "source_balanced_pair_accuracy": 0.774074074074074,
+    "technical_medium_long_pair_accuracy": 0.7142857142857143,
+    "classifier": {
+      "tp": 9,
+      "fp": 1,
+      "tn": 38,
+      "fn": 27,
+      "precision": 0.9,
+      "recall": 0.25,
+      "balanced_accuracy": 0.6121794871794872,
+      "predicted_positive": 10,
+      "mixed_proxy_groups": 5
+    },
+    "sources": 15,
+    "candidates": 75
+  },
+  "checks": {
+    "fit_threshold_exists": true,
+    "overall_pair_ranking": true,
+    "technical_medium_long_pair_ranking": true,
+    "positive_precision": true,
+    "enough_positive_candidates": true,
+    "enough_mixed_proxy_groups": true
+  },
+  "passed": true,
+  "UTC": "2026-11-23T10:58:29.157280+00:00",
+  "scores_SHA256": "20fb2d50bf1cba2b99a371e3479049a9e0b5ddadcdd0f579904c8d4a888266fc",
+  "input_manifest_SHA256": "80c6dd594801e8fabed6bfd58d9362d2e1e6ef5d678c06f220ef2ab1e1a30e53",
+  "actual_fit_sources": 16,
+  "actual_validation_sources": 15,
+  "new_policy_updates": 0,
+  "no_validation_based_recipe_switch": true,
+  "diagnostic_only_all_recipes": {
+    "raw": {
+      "fit": {
+        "all": 0.9045138888888888,
+        "general": 0.9722222222222222,
+        "technical_short": 0.9375,
+        "technical_medium": 0.7638888888888888,
+        "technical_long": 0.9444444444444444
+      },
+      "validation": {
+        "all": 0.774074074074074,
+        "general": 0.8194444444444444,
+        "technical_short": 0.8333333333333334,
+        "technical_medium": 0.8333333333333334,
+        "technical_long": 0.625
+      }
+    },
+    "guarded": {
+      "fit": {
+        "all": 0.9045138888888888,
+        "general": 0.9722222222222222,
+        "technical_short": 0.9375,
+        "technical_medium": 0.7638888888888888,
+        "technical_long": 0.9444444444444444
+      },
+      "validation": {
+        "all": 0.774074074074074,
+        "general": 0.8194444444444444,
+        "technical_short": 0.8333333333333334,
+        "technical_medium": 0.8333333333333334,
+        "technical_long": 0.625
+      }
+    }
+  }
+}

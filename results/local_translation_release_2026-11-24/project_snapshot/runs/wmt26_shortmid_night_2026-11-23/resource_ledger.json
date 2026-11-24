@@ -1,0 +1,50 @@
+{
+  "UTC": "2026-11-24T03:05:24.583094+00:00",
+  "budget": {
+    "user_request_anchor_unix": 1795467049.0,
+    "deadline_unix": 1795503049.0,
+    "training_deadline_unix": 1795497649.0,
+    "evaluation_deadline_unix": 1795495849.0,
+    "maximum_user_wall_hours": 10,
+    "preparation_and_queue_included": true,
+    "deadline_Berlin": "2026-11-24T07:50:49+01:00",
+    "allocation_cutoff_unix": 1795477849.0,
+    "no_deadline_reset": true
+  },
+  "allocated_GPU_hours": 6.0344229150480695,
+  "wall_to_release_hours": 6.228822821180025,
+  "release_within_10h": true,
+  "account_compute_unit_difference": 11.684326121448237,
+  "GPU_power_integral_kWh_approximate_active_monitor_only": 0.3467691556532109,
+  "energy_is_not_billing_or_full_system_energy": true,
+  "root_monitor_samples": 3622,
+  "root_monitor_phases": {
+    "download_reward": {
+      "samples": 6,
+      "span_seconds": 25.1264123990004,
+      "max_GPU_used_MiB": 254.0,
+      "max_process_RSS_bytes": 2057887744
+    },
+    "initial_WMT26": {
+      "samples": 1291,
+      "span_seconds": 6494.722947659,
+      "max_GPU_used_MiB": 13878.0,
+      "max_process_RSS_bytes": 8642564096
+    },
+    "new_endpoint_WMT": {
+      "samples": 613,
+      "span_seconds": 3081.200146949999,
+      "max_GPU_used_MiB": 13846.0,
+      "max_process_RSS_bytes": 17250689024
+    },
+    "shortmid_DAPO": {
+      "samples": 1712,
+      "span_seconds": 8618.333725949,
+      "max_GPU_used_MiB": 17460.0,
+      "max_process_RSS_bytes": 16251559936
+    }
+  },
+  "nested_training_monitor_not_double_counted": true,
+  "all_neural_work_on_Colab": true,
+  "local_cpu_preparation_statistics_and_capped_transfer_only": true
+}

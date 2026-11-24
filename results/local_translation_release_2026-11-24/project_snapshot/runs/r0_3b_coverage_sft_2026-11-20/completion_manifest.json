@@ -1,0 +1,173 @@
+{
+  "UTC": "2026-11-20T17:58:11.013630+00:00",
+  "summary": {
+    "status": "GPU_WORK_FINISHED_BLIND_REVIEW_PENDING",
+    "step": 1476,
+    "target_tokens": 2096676,
+    "unique_exposed_ids": 45218,
+    "example_exposures": 47232,
+    "train_seconds": 7780.657654300987,
+    "worker_seconds": 11696.83072257042,
+    "stop_reason": "manual_primary_semantic_gain_gate_after_2M",
+    "selected": {
+      "tag": "t2000728",
+      "step": 1410,
+      "target_tokens": 2000728,
+      "metrics": {
+        "nll": 1.0798653554314346,
+        "technical_nll": 1.0590489551952678,
+        "dev_target_tokens": 7762,
+        "by_stratum": {
+          "general": {
+            "n": 32,
+            "chrfpp": 42.82784306640718,
+            "bleu": 19.629668510432367
+          },
+          "technical_short": {
+            "n": 32,
+            "chrfpp": 46.13765111897385,
+            "bleu": 21.859946771214105
+          },
+          "technical_medium": {
+            "n": 32,
+            "chrfpp": 45.9388063709081,
+            "bleu": 19.59486332891507
+          },
+          "technical_long": {
+            "n": 32,
+            "chrfpp": 50.42532116345806,
+            "bleu": 25.713900176902158
+          }
+        },
+        "overall_chrfpp": 48.2834374103015,
+        "technical_chrfpp": 48.69313066710618,
+        "technical_medium_long_chrfpp": 49.04422308545938,
+        "failures": 0
+      },
+      "adapter_sha256": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858",
+      "semantic": true,
+      "review_summary": {
+        "labels_locked": true,
+        "adapter_sha256": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858",
+        "technical_sources": 24,
+        "greedy_sources": 32,
+        "coverage_P": 9,
+        "coverage_U": 7,
+        "greedy_P": 9,
+        "greedy_U": 5,
+        "labels_sha256": "5cda2db0fba0f85338637ffe821ecb2bd79d85452fe123a67ea90a2ab7ffe9dc"
+      },
+      "selection_reason": "Reviewed eligible maximum-coverage tie set,then greedy P,technical medium/long CHRF,earlier checkpoint"
+    },
+    "frozen_budget": {
+      "target_tokens": 3500000,
+      "p25_step_tokens_per_second": 250.31781314047265,
+      "projected_safe_token_cap": 3704655.9242773554,
+      "remaining_train_seconds": 17797.444574376495,
+      "safety_factor": 0.8,
+      "quality_used": false,
+      "lock_seen_tokens": 140642,
+      "lock_step": 100,
+      "unix": 1795185401.8929203,
+      "forecast_remaining_dev_seconds": 2616.6697141919994,
+      "training_deadline": 1795206416,
+      "first_allocation_deadline": 1795211816
+    },
+    "selected_adapter_sha256": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858",
+    "parent_adapter_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0",
+    "G8_sources": 64,
+    "final_greedy_sources": 256,
+    "DAPO_updates": 0,
+    "MetricX_calls": 0,
+    "last_recoverable_checkpoint": {
+      "tag": "t2000728",
+      "step": 1410,
+      "target_tokens": 2000728,
+      "path": "run/checkpoints/t2000728",
+      "adapter_sha256": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858",
+      "optimizer_rng_sha256": "4d7399bb49a2d953e0e4ac9ea89a7fcd50d9f1d8e637ecf698fdd9937c9bd12e"
+    },
+    "uncheckpointed_tail_updates": 66,
+    "original_joint_stop_not_claimed_triggered": true,
+    "manual_quality_stop_completed": true
+  },
+  "verified_export": "5d0dcfe89e2c20d70ec57e838e5abed992f8ff969d2c0f16a617ce00a707c0d5",
+  "selected_adapter": {
+    "UTC": "2026-11-20T17:58:10.896475+00:00",
+    "selected": {
+      "tag": "t2000728",
+      "step": 1410,
+      "target_tokens": 2000728,
+      "metrics": {
+        "nll": 1.0798653554314346,
+        "technical_nll": 1.0590489551952678,
+        "dev_target_tokens": 7762,
+        "by_stratum": {
+          "general": {
+            "n": 32,
+            "chrfpp": 42.82784306640718,
+            "bleu": 19.629668510432367
+          },
+          "technical_short": {
+            "n": 32,
+            "chrfpp": 46.13765111897385,
+            "bleu": 21.859946771214105
+          },
+          "technical_medium": {
+            "n": 32,
+            "chrfpp": 45.9388063709081,
+            "bleu": 19.59486332891507
+          },
+          "technical_long": {
+            "n": 32,
+            "chrfpp": 50.42532116345806,
+            "bleu": 25.713900176902158
+          }
+        },
+        "overall_chrfpp": 48.2834374103015,
+        "technical_chrfpp": 48.69313066710618,
+        "technical_medium_long_chrfpp": 49.04422308545938,
+        "failures": 0
+      },
+      "adapter_sha256": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858",
+      "semantic": true,
+      "review_summary": {
+        "labels_locked": true,
+        "adapter_sha256": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858",
+        "technical_sources": 24,
+        "greedy_sources": 32,
+        "coverage_P": 9,
+        "coverage_U": 7,
+        "greedy_P": 9,
+        "greedy_U": 5,
+        "labels_sha256": "5cda2db0fba0f85338637ffe821ecb2bd79d85452fe123a67ea90a2ab7ffe9dc"
+      },
+      "selection_reason": "Reviewed eligible maximum-coverage tie set,then greedy P,technical medium/long CHRF,earlier checkpoint"
+    },
+    "delivered": "D:\\deep learning project\\runs\\r0_3b_coverage_sft_2026-11-20\\final_selected_adapter",
+    "weights_sha256": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858",
+    "parent_preserved": "D:\\deep learning project\\runs\\r0_3b_filtered_sft_resume_2026-11-20\\final_selected_adapter",
+    "parent_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0",
+    "base": "Qwen/Qwen2.5-3B-Instruct",
+    "base_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "inference": "NativeBF16 base FP32 LoRA, unmerged",
+    "selection_not_changed_by_final_metrics": true
+  },
+  "final_semantic_analysis_sha256": "91b30fcd9c6b82a0ae9aa2e9347623407b958abd5b88b7318b5a063250897d97",
+  "training_fit_export": {
+    "finished": true,
+    "failed": false,
+    "bytes": 91124,
+    "sha256": "1f8b027d957b8bd2197819335f9a3146a9a0fc968700a73375f435b671b62218",
+    "unix": 1795196257.6810613,
+    "all_optional_GPU_work_finished": true,
+    "verified_UTC": "2026-11-20T17:55:08.522004+00:00"
+  },
+  "optional_fit_semantics_complete": true,
+  "released": {
+    "unix": 1795197312.4546862,
+    "export_sha256": "5d0dcfe89e2c20d70ec57e838e5abed992f8ff969d2c0f16a617ce00a707c0d5"
+  },
+  "report_manifest_sha256": "10b7a8ad3866c5bbf2bcf4290d1f0b9abf7b2fd88eb57dab0a09ebda55076b59",
+  "artifact_QA_sha256": "5f664146a6af4b93dea016e9dcd8f1940e5b440e33d437dbafc35a7c93f1c4bd"
+}

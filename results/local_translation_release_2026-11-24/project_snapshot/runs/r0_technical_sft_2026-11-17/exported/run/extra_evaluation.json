@@ -1,0 +1,15 @@
+{
+  "pre_registered": true,
+  "training_updates_added": 0,
+  "selected_tag": "t200000",
+  "final_trained_tag": "t400000",
+  "assessed_tag": "t200000",
+  "assessed_is_selected": true,
+  "primary_greedy_file": "SFT_fp32_128.jsonl",
+  "primary_G8_file": "g8_SFT.jsonl",
+  "primary_reward_file": "g8_rewards.jsonl",
+  "final_greedy_file": "final_trained_fp32_128.jsonl",
+  "seconds": 481.3532347679138,
+  "code_sha256": "9b9fa4a9ffa6b7e2e39773d00dd3b1f3faee79f2d2bb5b223f9cb58a3ea93d04",
+  "interpretation": "Nonselected final diagnostic does not alter the registered selector. If selector choseR0,this is the assessed trained model,not a self-comparison."
+}

@@ -1,0 +1,23 @@
+{
+  "protocol": "Same reused selection64,max320,BF16base/FP32adapter evaluation;weights recalculated .4/.05/.25/.3. Interim context only;formal final comparison uses separate128 matchedFP32 outputs.",
+  "values": {
+    "old_R0": {
+      "by_stratum": {
+        "general": 45.99174488584887,
+        "technical_short": 51.09449667512759,
+        "technical_medium": 33.107288220201376,
+        "technical_long": 31.63537700569114
+      },
+      "weighted_chrfpp": 38.71885794485361
+    },
+    "old_SFT200": {
+      "by_stratum": {
+        "general": 46.78001741496425,
+        "technical_short": 54.4632170732151,
+        "technical_medium": 34.16632306720786,
+        "technical_long": 32.66916912366404
+      },
+      "weighted_chrfpp": 39.77749932354764
+    }
+  }
+}

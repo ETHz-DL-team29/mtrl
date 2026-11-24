@@ -1,0 +1,352 @@
+{
+  "UTC": "2026-11-21T23:27:44.445370+00:00",
+  "case": "final",
+  "labels_sha256": "2f987b27395d18b5f29bbb477bbb53e7046552b813254ce777ad26af8a4f2f36",
+  "identical_hypothesis_conflicts": [],
+  "all_changed_pairs": [
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eea:1170",
+      "stratum": "technical_short",
+      "before_card": 130,
+      "after_card": 187,
+      "transition": "P->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eea:1655",
+      "stratum": "technical_long",
+      "before_card": 201,
+      "after_card": 185,
+      "transition": "U->F",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eea:1729",
+      "stratum": "technical_long",
+      "before_card": 153,
+      "after_card": 17,
+      "transition": "F->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eea:19",
+      "stratum": "technical_medium",
+      "before_card": 133,
+      "after_card": 93,
+      "transition": "P->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eea:2116",
+      "stratum": "technical_long",
+      "before_card": 19,
+      "after_card": 215,
+      "transition": "F->P",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:ema:1188",
+      "stratum": "technical_long",
+      "before_card": 158,
+      "after_card": 131,
+      "transition": "F->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:ema:2851",
+      "stratum": "technical_short",
+      "before_card": 38,
+      "after_card": 34,
+      "transition": "U->P",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:ema:665",
+      "stratum": "technical_medium",
+      "before_card": 160,
+      "after_card": 156,
+      "transition": "P->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eso:1056",
+      "stratum": "technical_medium",
+      "before_card": 115,
+      "after_card": 189,
+      "transition": "F->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eso:1062",
+      "stratum": "technical_short",
+      "before_card": 81,
+      "after_card": 89,
+      "transition": "F->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eso:155",
+      "stratum": "technical_medium",
+      "before_card": 236,
+      "after_card": 147,
+      "transition": "F->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eso:271",
+      "stratum": "technical_short",
+      "before_card": 217,
+      "after_card": 244,
+      "transition": "F->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eso:339",
+      "stratum": "technical_long",
+      "before_card": 173,
+      "after_card": 179,
+      "transition": "F->P",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eso:575",
+      "stratum": "technical_short",
+      "before_card": 154,
+      "after_card": 255,
+      "transition": "U->F",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eso:643",
+      "stratum": "technical_short",
+      "before_card": 118,
+      "after_card": 47,
+      "transition": "F->P",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eso:778",
+      "stratum": "technical_long",
+      "before_card": 91,
+      "after_card": 30,
+      "transition": "F->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eso:968",
+      "stratum": "technical_long",
+      "before_card": 144,
+      "after_card": 11,
+      "transition": "F->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:eea:1367",
+      "stratum": "technical_long",
+      "before_card": 159,
+      "after_card": 235,
+      "transition": "P->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:eea:1383",
+      "stratum": "technical_medium",
+      "before_card": 112,
+      "after_card": 226,
+      "transition": "P->F",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:eea:1729",
+      "stratum": "technical_long",
+      "before_card": 23,
+      "after_card": 162,
+      "transition": "F->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:eea:506",
+      "stratum": "technical_short",
+      "before_card": 54,
+      "after_card": 28,
+      "transition": "F->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:eea:83",
+      "stratum": "technical_short",
+      "before_card": 128,
+      "after_card": 195,
+      "transition": "P->F",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:eea:875",
+      "stratum": "technical_medium",
+      "before_card": 228,
+      "after_card": 186,
+      "transition": "U->F",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:ema:1949",
+      "stratum": "technical_long",
+      "before_card": 92,
+      "after_card": 192,
+      "transition": "F->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:ema:665",
+      "stratum": "technical_medium",
+      "before_card": 15,
+      "after_card": 98,
+      "transition": "F->P",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:eso:643",
+      "stratum": "technical_short",
+      "before_card": 126,
+      "after_card": 103,
+      "transition": "F->P",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:opensubtitles:2747",
+      "stratum": "general",
+      "before_card": 25,
+      "after_card": 121,
+      "transition": "F->P",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:opensubtitles:70",
+      "stratum": "general",
+      "before_card": 190,
+      "after_card": 107,
+      "transition": "U->F",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    }
+  ],
+  "regression_pairs": [
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eea:1170",
+      "stratum": "technical_short",
+      "before_card": 130,
+      "after_card": 187,
+      "transition": "P->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eea:19",
+      "stratum": "technical_medium",
+      "before_card": 133,
+      "after_card": 93,
+      "transition": "P->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:ema:665",
+      "stratum": "technical_medium",
+      "before_card": 160,
+      "after_card": 156,
+      "transition": "P->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:eea:1367",
+      "stratum": "technical_long",
+      "before_card": 159,
+      "after_card": 235,
+      "transition": "P->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:eea:1383",
+      "stratum": "technical_medium",
+      "before_card": 112,
+      "after_card": 226,
+      "transition": "P->F",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:eea:83",
+      "stratum": "technical_short",
+      "before_card": 128,
+      "after_card": 195,
+      "transition": "P->F",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    }
+  ],
+  "automatic_label_revisions": false,
+  "requires_manual_regression_judgement": true
+}

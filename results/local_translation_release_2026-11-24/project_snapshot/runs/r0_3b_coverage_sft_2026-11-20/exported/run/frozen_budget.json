@@ -1,0 +1,14 @@
+{
+  "target_tokens": 3500000,
+  "p25_step_tokens_per_second": 250.31781314047265,
+  "projected_safe_token_cap": 3704655.9242773554,
+  "remaining_train_seconds": 17797.444574376495,
+  "safety_factor": 0.8,
+  "quality_used": false,
+  "lock_seen_tokens": 140642,
+  "lock_step": 100,
+  "unix": 1795185401.8929203,
+  "forecast_remaining_dev_seconds": 2616.6697141919994,
+  "training_deadline": 1795206416,
+  "first_allocation_deadline": 1795211816
+}

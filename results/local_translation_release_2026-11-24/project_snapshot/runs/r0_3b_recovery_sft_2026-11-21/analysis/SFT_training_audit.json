@@ -1,0 +1,43 @@
+{
+  "UTC": "2026-11-21T23:29:09.561832+00:00",
+  "production_updates": 1121,
+  "production_target_tokens": 1983726,
+  "production_examples": 35822,
+  "unique_examples": 17911,
+  "maximum_example_exposures": 2,
+  "fit_updates": 121,
+  "fit_first_parameter_L2_delta": 0.8720435577638465,
+  "fit_diagnostic_not_production_origin": true,
+  "loss_alignment": {
+    "passed": true,
+    "explicit_shift_checks": [
+      {
+        "id": "ParIce21:eea:1503819",
+        "per_token_difference": 0.0
+      },
+      {
+        "id": "ParIce21:ema:72820",
+        "per_token_difference": 0.0
+      }
+    ],
+    "batch_nll": 0.9214060621995193,
+    "single_nll": 0.9205822049654447,
+    "per_token_batch_delta": 0.0008238572340745209
+  },
+  "rank_expansion": {
+    "old_rank": 16,
+    "new_rank": 64,
+    "old_scale": 2,
+    "new_scale": 2,
+    "old_blocks_identical": true,
+    "new_B_columns_zero": true,
+    "random_module_probe_max_delta": 0.0,
+    "original_adapter_sha256": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858"
+  },
+  "original_parent_sha256_verified": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858",
+  "finite_updates": true,
+  "exposure_sequence_verified": true,
+  "not_a_CPU_objective_replay": true,
+  "OOM_backward_retries": 0,
+  "optimizer_active_seconds": 6224.39148139199
+}

@@ -1,0 +1,146 @@
+{
+  "utc": "2026-11-17T09:58:37.634640+00:00",
+  "method": "All20 followup pairs read;AI-assisted,not native-certified.",
+  "reviews": [
+    {
+      "card": 0,
+      "id": "OpenSubtitles18:392505",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Promise to prove it retained."
+    },
+    {
+      "card": 1,
+      "id": "OpenSubtitles18:1527685",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Positive evaluation as a good quality retained."
+    },
+    {
+      "card": 2,
+      "id": "OpenSubtitles18:778579",
+      "stratum": "general",
+      "status": "quarantine",
+      "reason_en": "If they ask is changed into if you need to;conditional trigger mismatch."
+    },
+    {
+      "card": 3,
+      "id": "OpenSubtitles18:167891",
+      "stratum": "general",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Only a matter of time retained."
+    },
+    {
+      "card": 4,
+      "id": "ParIce:1603552",
+      "stratum": "technical_short",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Fees commensurate with services retained."
+    },
+    {
+      "card": 5,
+      "id": "ParIce:1408497",
+      "stratum": "technical_short",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Residence Member State for registration retained."
+    },
+    {
+      "card": 6,
+      "id": "ParIce:1626381",
+      "stratum": "technical_medium",
+      "status": "quarantine",
+      "reason_en": "Raise off-site findings is rendered as beginning corrective work;procedural action differs."
+    },
+    {
+      "card": 7,
+      "id": "ParIce:917849",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Density-temperature tables and data-source disclosure retained."
+    },
+    {
+      "card": 8,
+      "id": "ParIce:864589",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Less than1percent,at most30seconds,and signal-loss/maintenance exceptions retained."
+    },
+    {
+      "card": 9,
+      "id": "ParIce:1872893",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Rabbit maternal30mg/kg,mild toxicity and increased litter malformations retained."
+    },
+    {
+      "card": 10,
+      "id": "ParIce:508797",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "No other validated ECVAM methods except AnnexV retained."
+    },
+    {
+      "card": 11,
+      "id": "ParIce:93176",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Acute/chronic risks to colony survival/development cannot be excluded retained."
+    },
+    {
+      "card": 12,
+      "id": "ParIce:503513",
+      "stratum": "technical_medium",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Source contest clause retained;extra b-list marker is only formatting."
+    },
+    {
+      "card": 13,
+      "id": "ParIce:2042440",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "No/limited DuoTrav experience and the ocular-condition list retained."
+    },
+    {
+      "card": 14,
+      "id": "ParIce:1867205",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Tadalafil single5–20mg,renal strata and doubled AUC retained."
+    },
+    {
+      "card": 15,
+      "id": "ParIce:1485110",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Common vehicle-approval requirements and directive references retained."
+    },
+    {
+      "card": 16,
+      "id": "ParIce:1448492",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Contact officials,ISPS references and expulsion/refused-entry condition retained."
+    },
+    {
+      "card": 17,
+      "id": "ParIce:1150047",
+      "stratum": "technical_long",
+      "status": "pass_no_clear_major_defect",
+      "reason_en": "Availability,DPRA data and coordinated laboratory validation retained."
+    },
+    {
+      "card": 18,
+      "id": "ParIce:2058410",
+      "stratum": "technical_long",
+      "status": "quarantine",
+      "reason_en": "Broader primary endpoint is changed to composite endpoint;uncertain methodological equivalence,quarantine."
+    },
+    {
+      "card": 19,
+      "id": "ParIce:776006",
+      "stratum": "technical_long",
+      "status": "quarantine",
+      "reason_en": "Target glues a sentence after2009.Hámarks;encoding/boundary quarantine."
+    }
+  ]
+}

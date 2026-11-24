@@ -1,0 +1,8 @@
+{
+  "python": "3.13.16",
+  "torch": "2.14.1+cu130",
+  "transformers": "5.22.1",
+  "cuda_build": "13.0",
+  "gpu": "NVIDIA L4",
+  "vram_bytes": 23659151360
+}

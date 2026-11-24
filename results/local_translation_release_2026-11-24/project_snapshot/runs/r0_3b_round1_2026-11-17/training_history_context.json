@@ -1,0 +1,17 @@
+{
+  "recorded_utc": "2026-11-17T15:03:53.523847+00:00",
+  "old_R0_v3_added_target_tokens": 1400474,
+  "old_R0_v3_initial_adapter_sha256": "806b9857024868131140da43ad3975d7c8653b97e5687420e4499a3769995847",
+  "old_R0_had_prior_SFT": true,
+  "old_SFT200_added_target_tokens": 200770,
+  "old_SFT200_known_added_tokens_since_v3_start": 1601244,
+  "earlier_warmstart_tokens_not_reconstructed_here": true,
+  "new_3B_start": "Fresh zero-B LoRA on instruct base;planned up to1000000 target tokens",
+  "comparison": "Practical checkpoint-quality comparison;not matched cumulative SFT exposure,model generation,tokenizer,data mixture or compute",
+  "causal_limit": "Different tokenizers make token counts nonidentical measures;this historical context alone does not attribute any quality difference to training budget",
+  "sources": {
+    "D:\\deep learning project\\runs\\r0_v3_colab_2026-11-13\\recovery\\summary.json": "60822d2fcefa6dc2403fcb30d589ab9a472d271e2d02f37aad5a58c5eab9c8d4",
+    "D:\\deep learning project\\runs\\r0_v3_colab_2026-11-13\\recovery\\config.json": "572ec8cc1771308dc94f34ba43d045e086ee3ea26070199485da23ef84299482",
+    "D:\\deep learning project\\runs\\r0_technical_sft_2026-11-17\\exported\\run\\summary.json": "3ac5746098ae9c04a5d6cf5b8debbcea1f6fa977ea986aa6758f4aa6e1c5ac2d"
+  }
+}

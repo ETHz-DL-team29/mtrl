@@ -1,0 +1,387 @@
+{
+  "date": "2026-11-17",
+  "completed": true,
+  "previous_08B_preserved": true,
+  "GPU_released": true,
+  "step": 926,
+  "target_tokens": 999931,
+  "selected": {
+    "tag": "t1000000",
+    "step": 926,
+    "target_tokens": 999931,
+    "metrics": {
+      "nll": 1.5860389561608481,
+      "technical_nll": 1.5854127271791885,
+      "dev_target_tokens": 8649,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 35.54763100658314,
+          "bleu": 19.360401623540074
+        },
+        "technical_short": {
+          "n": 8,
+          "chrfpp": 49.24023592736956,
+          "bleu": 27.42528734477145
+        },
+        "technical_medium": {
+          "n": 12,
+          "chrfpp": 33.226753470076545,
+          "bleu": 13.096467631269178
+        },
+        "technical_long": {
+          "n": 12,
+          "chrfpp": 38.29559574729537,
+          "bleu": 18.990521688215434
+        }
+      },
+      "weighted_chrfpp": 36.476431290709485,
+      "failures": 0
+    }
+  },
+  "selected_adapter_sha256": "1ecf014712c7eb0004eaa20de58f54b0346cc4bd67b0ce07e3c7e30084e6c41f",
+  "planning_screen": {
+    "technical_G8_coverage": false,
+    "long_G8_coverage": false,
+    "general_retention": false,
+    "technical_greedy_gain": false
+  },
+  "promoted_as_translation_R0": false,
+  "formal_DAPO_ready": false,
+  "global_reward_calibration_passed": false,
+  "reward_ranking_audit_status": "completed",
+  "runtime_interruption": {
+    "utc": "2026-11-17T13:50:44.807180+00:00",
+    "assignment_disappeared": true,
+    "exact_cause_unknown": true,
+    "latest_mirrored_updates": 28,
+    "latest_mirrored_target_tokens": 29762,
+    "durable_trained_checkpoint_step": 0,
+    "restart_from_initial_seed_and_order": true,
+    "no_automatic_budget_extension": true
+  },
+  "restart_prefix_audit": {
+    "matched_prefix_updates": 28,
+    "same_group_order": true,
+    "same_token_budget_prefix": true,
+    "same_initial_adapter_sha256": true,
+    "max_abs_mean_loss_difference": 0.010140527192471271,
+    "max_abs_grad_norm_difference": 0.1146242618560791,
+    "bitwise_training_replay_established": false,
+    "note": "Matching initial weights,seed andorder,with numerical loss/gradient differences;their cause is not isolated. A final weights unavailable,no bitwise model-equivalence claim. Known A work is a lower bound.",
+    "known_A_target_tokens": 29762,
+    "current_B_updates": 48,
+    "unix": 1794923986.869234,
+    "checks": [
+      {
+        "step": 1,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0,
+        "abs_grad_norm_difference": 0.002042531967163086
+      },
+      {
+        "step": 2,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0011910340991962975,
+        "abs_grad_norm_difference": 0.0353851318359375
+      },
+      {
+        "step": 3,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.002463893639884862,
+        "abs_grad_norm_difference": 0.01882767677307129
+      },
+      {
+        "step": 4,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.010140527192471271,
+        "abs_grad_norm_difference": 0.050830841064453125
+      },
+      {
+        "step": 5,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.000674664716183937,
+        "abs_grad_norm_difference": 0.005110740661621094
+      },
+      {
+        "step": 6,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0034863577142867364,
+        "abs_grad_norm_difference": 0.1146242618560791
+      },
+      {
+        "step": 7,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0017112620618071617,
+        "abs_grad_norm_difference": 0.04002642631530762
+      },
+      {
+        "step": 8,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.002904485316280958,
+        "abs_grad_norm_difference": 0.05102944374084473
+      },
+      {
+        "step": 9,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0034332275390625,
+        "abs_grad_norm_difference": 0.0024292469024658203
+      },
+      {
+        "step": 10,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0025532018000156143,
+        "abs_grad_norm_difference": 0.020137310028076172
+      },
+      {
+        "step": 11,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0005971300131957236,
+        "abs_grad_norm_difference": 0.03523445129394531
+      },
+      {
+        "step": 12,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0011055496071992188,
+        "abs_grad_norm_difference": 0.01718592643737793
+      },
+      {
+        "step": 13,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0036800908396736887,
+        "abs_grad_norm_difference": 0.01264333724975586
+      },
+      {
+        "step": 14,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.003176708756206459,
+        "abs_grad_norm_difference": 0.014184713363647461
+      },
+      {
+        "step": 15,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.00037128528889818213,
+        "abs_grad_norm_difference": 0.0012969970703125
+      },
+      {
+        "step": 16,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0006256434868263661,
+        "abs_grad_norm_difference": 0.0047473907470703125
+      },
+      {
+        "step": 17,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.002618299642570765,
+        "abs_grad_norm_difference": 0.01736164093017578
+      },
+      {
+        "step": 18,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0033083779471261288,
+        "abs_grad_norm_difference": 0.01867055892944336
+      },
+      {
+        "step": 19,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0043989544042313256,
+        "abs_grad_norm_difference": 0.08302640914916992
+      },
+      {
+        "step": 20,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.003617327163861983,
+        "abs_grad_norm_difference": 0.01105344295501709
+      },
+      {
+        "step": 21,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0012544096036313235,
+        "abs_grad_norm_difference": 0.01264941692352295
+      },
+      {
+        "step": 22,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0026806014623397267,
+        "abs_grad_norm_difference": 0.019152283668518066
+      },
+      {
+        "step": 23,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0015709843467828222,
+        "abs_grad_norm_difference": 0.006385087966918945
+      },
+      {
+        "step": 24,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0022599474131630437,
+        "abs_grad_norm_difference": 0.01223456859588623
+      },
+      {
+        "step": 25,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0004853025545292766,
+        "abs_grad_norm_difference": 0.011418700218200684
+      },
+      {
+        "step": 26,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.00148973010835185,
+        "abs_grad_norm_difference": 0.005801081657409668
+      },
+      {
+        "step": 27,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0013089771113121706,
+        "abs_grad_norm_difference": 0.001986384391784668
+      },
+      {
+        "step": 28,
+        "group_ids_equal": true,
+        "target_tokens_equal": true,
+        "abs_mean_loss_difference": 0.0020796189285778865,
+        "abs_grad_norm_difference": 0.0057718753814697266
+      }
+    ],
+    "initial_checkpoint_rng_comparison": {
+      "torch_CPU_rng_equal": true,
+      "CUDA_rng_equal": true,
+      "python_rng_equal": true,
+      "numpy_rng_array_equal": true
+    }
+  },
+  "diagnosis": {
+    "verdict_zh": "首轮3B训练和诊断已完成，但未得到可替代旧0.8B的可靠综合R0；保留为实验候选，不晋升，不进入正式DAPO效率对比。",
+    "verdict_en": "The first 3B training and diagnostic round is complete, but it has not produced a reliable broad R0 that replaces the old 0.8B checkpoint. Preserve it as an experimental candidate without promotion or formal DAPO efficiency comparisons.",
+    "promoted_as_translation_R0": false,
+    "evidence": [
+      {
+        "zh": "统一128条匹配FP32评估：3B初始chrF++20.957，经SFT到34.457，BLEU到14.510；旧R0为34.567/15.701，旧SFT200为36.037/16.031。相对旧SFT200的chrF++差为−1.580，配对95%区间[−3.505,+0.674]，不能说显著更差，也没有可靠更好证据。",
+        "en": "On the same 128 matched-FP32 cases, 3B improves from20.957 to34.457 chrF++ and reaches14.510 BLEU, versus old R0 at34.567/15.701 and old SFT200 at36.037/16.031. The chrF++ difference versus SFT200 is−1.580,95% paired CI[−3.505,+0.674]: neither significant inferiority nor reliable superiority is established."
+      },
+      {
+        "zh": "技术64条chrF++34.770，对旧SFT200差−1.091，区间[−3.193,+1.645]；中长48条为35.170，对照36.518。开发选模长句分数上涨，并未转化为这组独立于选模的复用诊断样本上可靠优势。",
+        "en": "Technical 64 chrF++ is34.770, a−1.091 difference versus SFT200 with CI[−3.193,+1.645]. Medium/long48 scores35.170 versus36.518. Selection-development long-sentence gains do not establish reliable superiority on the separate reused diagnostic set."
+      },
+      {
+        "zh": "锁定全部288个新语义判断后：技术G8仅2/24组观察到G，旧SFT200为3/24；长句仍0/10。全部32组覆盖5/32，旧模型7/32。固定greedy32两模型均3个G，但新3B有8个B，旧模型3个B。语义证据没有支持晋升。",
+        "en": "After locking all 288 new semantic judgements, technical G8 coverage is2/24 versus3/24 for SFT200; long coverage remains0/10. All 32 coverage is5/32 versus7/32. Both have3 G outputs on the fixed greedy32, but new 3B has8 B outputs versus3. Semantics do not support promotion."
+      },
+      {
+        "zh": "具体缺损包括platelet变成血型、novel变成新书、星系/双星/尘带等术语变成不可靠词、临床人群和法律时限改变。这些不是仅靠调chrF或奖励归一化就能修正的表面格式问题。",
+        "en": "Observed errors include platelets becoming blood groups, novel becoming new book, unreliable galaxy/binary-star/dust-lane terms, and changed clinical populations or legal deadlines. These semantic defects are not merely formatting issues solved by score normalization."
+      },
+      {
+        "zh": "新3B技术G8中，固定reference MetricX在有G的2组均选到G；全奖励跨层可比较候选对192顺序一致、36逆序、9平分。旧SFT200有G的3组也均选G。当前直接可见的限制是大量组没有观察到完整正确候选；但本轮没有训练DAPO，不能据此给旧30步DAPO的失败原因做唯一或最大贡献归因。历史奖励错排控制也仍未通过。",
+        "en": "Reference MetricX selects G in both covered technical groups for new 3B; full reward has192 concordant,36 discordant and9 tied cross-tier pairs. It also selects G in all 3 covered old-SFT groups. Scarce observed correct candidates are a direct current limitation, but no DAPO is trained here and causal contributions to the old 30-step result remain unisolated. Historical failed reward controls still fail."
+      },
+      {
+        "zh": "只读廉价奖励核对不支持直接用chrF替掉MetricX：新3B技术组，原始chrF跨层逆序60对、完整chrF奖励逆序56对，且有G的2组只选到1组；旧SFT200对应chrF逆序90对、选G2/3。不能因为便宜就宣称其语义排序更可靠。",
+        "en": "The cheap read-only comparison does not support simply replacing MetricX with chrF. On new 3B technical groups, raw/full chrF gives60/56 discordant pairs and selects G in only1/2 covered groups; old-SFT chrF gives90 discordant pairs and2/3 selections. Lower cost does not establish more reliable semantic ranking."
+      },
+      {
+        "zh": "训练确实学习且未出现已观察的数值故障：926更新、999931目标token，开发NLL3.486→1.586、开发加权chrF++20.067→36.476，末期最佳、结构失败0；没有观察到开发曲线的平台。这说明本轮预算末尚在改善，不证明达到3B容量上限，也不证明追加训练必然达到目标。",
+        "en": "Training learns without an observed numerical failure:926 updates,999931 targets, dev NLL3.486→1.586 and weighted chrF++20.067→36.476, with the final checkpoint best and zero structural failures. The observed curve has not plateaued; this neither establishes a 3B capacity ceiling nor guarantees success from more training."
+      },
+      {
+        "zh": "较可信的项目判断是：参数量没有解决起点与英冰任务的匹配问题。本轮未经SFT的3B起点很弱，有限SFT使其明显变好，却未获得可用候选覆盖。模型代际、预训练、分词器及累计SFT历史同时不同，无法拆出“训练量不够”与“起点语言基础/数据覆盖”各自贡献。",
+        "en": "The supported project judgement is that size alone has not solved starting-point/task fit. The raw3B is weak and bounded SFT improves it substantially without adequate candidate coverage. Model generation, pretraining, tokenizer and cumulative SFT history all differ, so training exposure versus language foundation/data coverage cannot be separately attributed."
+      }
+    ],
+    "next_steps": [
+      {
+        "zh": "当前决策：保留新3B与全部0.8B；旧SFT200仍是本轮比较中更实用的参考候选，但同样未验证为综合正式DAPO基座。本轮预算在已释放GPU处结束，不自动追加当前配方训练。",
+        "en": "Current decision: preserve new 3B and all 0.8B checkpoints. Old SFT200 remains the more practical comparator here, but is also not validated as a broad formal-DAPO base. This budget ends with the released GPU."
+      },
+      {
+        "zh": "下一步优先做起点筛选，先不训练：对有翻译预训练的约3B模型，使用同一固定32条greedy，再按预先固定的分层ID选8条做G8（2通用、2中、4长）。逐条看关键概念和角色，并与现有缓存配对；通过前不进入百万token SFT。预计单一起点约30–60分钟Colab，取决于下载、运行环境与生成速度，尚未执行。",
+        "en": "Prioritize starting-point screening without training: use the fixed 32 greedy sources and 8 preselected stratified G8 sources,2 general / 2 medium / 4 long. Inspect concepts and roles against cached comparators before committing to another million-token SFT. A single candidate is estimated at30–60 Colab minutes depending on downloads/runtime/generation; not executed."
+      },
+      {
+        "zh": "若项目允许encoder–decoder，建议优先筛选[Google Research发布的MADLAD 3B MT](https://github.com/google-research/google-research/blob/master/madlad_400/README.md)，其[转换模型卡](https://huggingface.co/google/madlad400-3b-mt)说明为T5翻译模型。这里只是有任务依据的候选建议，本项目英冰技术长句质量未测，不能承诺更强。它需要重新实现/核对条件decoder logp、目标mask和采样，不能直接替换现有decoder-only目录。",
+        "en": "If encoder–decoder is within scope, prioritize screening the [Google Research MADLAD3B MT release](https://github.com/google-research/google-research/blob/master/madlad_400/README.md); its [converted model card](https://huggingface.co/google/madlad400-3b-mt) describes a T5 translation model. This is a task-based candidate, not measured English–Icelandic superiority. Conditional decoder logp, target masks and sampling require adaptation and validation; it is not a directory-only replacement."
+      },
+      {
+        "zh": "筛选后的分岔明确：若候选基础明显更好，先固定该起点、冻结一份未用于选择的新质量留出，做最小必要SFT；若必须保留decoder-only架构，则先筛选满足项目规模条件且实测英冰能力更好的起点，再谈训练规模。不要再仅凭3B标签决定投入。",
+        "en": "After screening, freeze a clearly stronger starting point and a new quality holdout unused for selection, then do only the necessary SFT. If decoder-only is mandatory, first screen an allowed-size decoder-only model for actual English–Icelandic ability. Do not commit on the3B label alone."
+      },
+      {
+        "zh": "拿到有实质正确候选的actor后，再用与模型选择分开的语义控制核对奖励，运行固定小预算标准DAPO。只有独立翻译质量有可信收益或保持，才冻结actor/数据/奖励/采样研究选择性token更新与前缀复用的时间和显存收益。",
+        "en": "Once an actor supplies meaningful correct candidates, validate reward on semantic controls separate from model selection, then run bounded standard DAPO. Freeze actor/data/reward/sampling for selective-token and prefix-reuse efficiency research only after independent quality benefits or retention are credible."
+      }
+    ],
+    "limitations": [
+      {
+        "zh": "G/P/B/U为同一助手按预先标准所作AI辅助判断，不是母语专家认证；P/B边界有主观性。所有候选、随机显示顺序、逐组理由和锁定哈希均保留，允许外部复核。",
+        "en": "G/P/B/U labels are same-assistant AI-assisted judgements, not native certification; P/B boundaries are subjective. All outputs, randomized display order, reasons and lock hashes remain available for review."
+      },
+      {
+        "zh": "128条及G8源句属于反复使用的开发/诊断材料，不是未触碰测试；旧标签复用不等于独立盲评。单种子、小样本区间也不覆盖文档聚类和模型选择不确定性。",
+        "en": "The128 and G8 sources are reused development/diagnostic material, not untouched tests; reused old labels are not independent blind review. Single-seed source CIs omit document clustering and model-selection uncertainty."
+      },
+      {
+        "zh": "在G8下未观察到G，不等于无限采样都没有正确译文；P与B之间仍可能提供RL相对学习信号。因此不把此次筛选失败解释为DAPO在数学上不能学习。",
+        "en": "No G observed in G8 does not imply zero probability under unlimited sampling. P/B contrasts may still provide relative RL signals; this failed screen does not prove DAPO cannot learn."
+      },
+      {
+        "zh": "新旧分词器不同，同一256 token长度惩罚不对应同一字符长度；完整奖励跨模型差异不能全部解释为评分器差异。reference/QE/chrF比较不用于选择新的奖励模式，历史失败控制仍如实保留。",
+        "en": "Different tokenizers make the 256-token penalty a different character-length constraint; full-reward cross-model differences are not purely scorer differences. Reference/QE/chrF comparisons do not select a new reward mode, and historical failed controls remain recorded."
+      },
+      {
+        "zh": "A运行时消失后B从已核验初始权重重跑，不是两个独立种子。总耗时与计算单元包括A已知/未知的工作、B、评估和传输；全部旧权重保持原位。",
+        "en": "After A lost its assignment, B restarted from verified initial weights; these are not independent seeds. Total time/CU includes A work, B, evaluation and transfer; all old weights remain in place."
+      }
+    ]
+  },
+  "cost": {
+    "date": "2026-11-17",
+    "gpu": "NVIDIA L4",
+    "runtime_released": true,
+    "allocated_minutes": 150.84371637503307,
+    "allocation_duration_is_upper_bound": true,
+    "attempt_A_allocated_minutes_bounds": [
+      21.17579593261083,
+      25.48927887280782
+    ],
+    "attempt_B_allocated_minutes": 125.35443750222524,
+    "wall_since_first_allocation_minutes": 153.73175387382508,
+    "initial_compute_units": 271.6436531111127,
+    "final_compute_units": 267.04615833395104,
+    "observed_balance_decrease": 4.597494777161671,
+    "observed_rate_per_hour": 1.94,
+    "other_assignments_remaining": 0,
+    "attempts": 2,
+    "note": "Total observed balance change includes both attempts,all setup/downloads/evaluation/transfers. A assignment disappeared;exact removal time unknown and duration bounded. B restarted step0 with reused verified baseline,same seed/order;not an independent seed. Original absolute deadline retained. Settlement may lag.",
+    "unix": 1794931029.6442997
+  },
+  "CPU_replay_all_fields_equal": true,
+  "report": "D:\\deep learning project\\reports\\r0_3b_round1_2026-11-17\\R0_3B_ROUND1_RESULTS_2026-11-17.html",
+  "utc": "2026-11-17T16:01:28.784481+00:00"
+}

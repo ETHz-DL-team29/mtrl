@@ -1,0 +1,34 @@
+{
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "transformers": "5.22.1",
+    "cuda_build": "13.0",
+    "gpu": "Tesla T4",
+    "vram_bytes": 15637086208
+  },
+  "dtype": "torch.bfloat16",
+  "attention": "sdpa",
+  "kernel_functions": {
+    "chunk_gated_delta_rule": "None",
+    "causal_conv1d_fn": "<function causal_conv1d_fn at 0x7d4e254049a0>"
+  },
+  "representative_target_tokens": 457,
+  "step_seconds": [
+    3.831931671999996,
+    2.5067143090000172,
+    2.5250017839999828
+  ],
+  "target_tokens_per_second": 181.64776849622623,
+  "estimate_140k_train_seconds": 770.7223774835886,
+  "peak_vram_bytes": 2945202176,
+  "generation": {
+    "raw_output": "Hver er hans?",
+    "hypothesis": "Hver er hans?",
+    "prompt_tokens": 33,
+    "completion_tokens": 6,
+    "truncated": false,
+    "generation_seconds": 0.8039479999999912
+  },
+  "note": "Speed estimate excludes dev generation, model download and checkpoint IO; preflight adapter is discarded"
+}

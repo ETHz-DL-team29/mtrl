@@ -1,0 +1,26 @@
+{
+  "html_qa.json": {
+    "bytes": 308,
+    "sha256": "4480f83034990da907300d6c0d7f4b8661002865d2a39b089e6b6253220fd092"
+  },
+  "paired_G8_coverage.png": {
+    "bytes": 73886,
+    "sha256": "97ffe75479934e95569fdfbb90a6b3613c43211ec9a51127d8e9df257aebb7e4"
+  },
+  "quality_changes.png": {
+    "bytes": 72102,
+    "sha256": "0567e4d6bf3ab4ba6087cfcc46e091ee1f714a332618a5531ea87e88ff9e4ded"
+  },
+  "TECHNICAL_SFT_RESULTS_2026-11-17.html": {
+    "bytes": 985892,
+    "sha256": "f2a59f481d0e7b8d963ef2471ccba2b6b42c6f3a6fe74c0e4690762288897dc9"
+  },
+  "TECHNICAL_SFT_RESULTS_2026-11-17.md": {
+    "bytes": 436473,
+    "sha256": "6309a834be474d8550d2fade06b02b6b306f334157158001c881a955cdf605a6"
+  },
+  "training_and_selection.png": {
+    "bytes": 203622,
+    "sha256": "a79b70aa59b17e2e53c5105733710aad782dff62e2015b5da2fd73033b79a4f7"
+  }
+}

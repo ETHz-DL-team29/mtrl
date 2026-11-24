@@ -1,0 +1,86 @@
+{
+  "observed_unix": 1794585485.6272168,
+  "progress": {
+    "step": 2106,
+    "target_tokens": 1400474,
+    "cursor": 67392,
+    "loss": 1.511795082870795,
+    "lr": 8.878025029915356e-06,
+    "train_seconds": 2.4892755379987648,
+    "examples": 32,
+    "group_target_tokens": 588,
+    "physical_target_tokens": 588,
+    "overflow_retries": 0,
+    "group_input_tokens": 1835,
+    "padded_input_tokens": 2536,
+    "loss_scale": 1.0,
+    "peak_vram_bytes": 8208424448,
+    "group_tokens_by_stratum": {
+      "general": 387,
+      "technical_short": 58,
+      "technical_medium": 143,
+      "technical_long": 0
+    },
+    "elapsed_seconds": 8072.411316099,
+    "grad_norm": 6.752884864807129
+  },
+  "summary": {
+    "target_tokens": 1400474,
+    "step": 2106,
+    "best": {
+      "step": 903,
+      "metrics": {
+        "nll": 1.7964328999871981,
+        "selection_score": 43.40879717076494,
+        "gated_sentence_chrfpp_by_stratum": {
+          "general": 46.80678648313596,
+          "technical_short": 60.120613983915,
+          "technical_medium": 27.848785110322385,
+          "technical_long": 32.063024480944364
+        },
+        "corpus_chrfpp": 34.755027908369904,
+        "failure_rate": 0.0625,
+        "foreign_script_rate": 0.0,
+        "count": 64,
+        "dev_target_tokens": 7613,
+        "wall_seconds": 337.90944065000076,
+        "semantic_review": "pending; chrF and gates are proxies"
+      }
+    },
+    "stop_reason": "dev_plateau",
+    "train_seconds": 5785.54832316101,
+    "total_seconds": 8404.648439943001,
+    "completed": true,
+    "improved_over_warmstart": true,
+    "status": "candidate_pending_G8_and_semantic_review"
+  },
+  "runner_done": {
+    "path": "/content/r2_sft_project/R0_V3_EXPORT_2026-11-13.zip",
+    "bytes": 49878088,
+    "sha256": "c1fbc8a97239e50422948a3ec22866bca92a4d5e85eaa39cd2d1eacf21dede0e",
+    "best": {
+      "checkpoint": "checkpoints/step-000903-tokens-000600408",
+      "metrics": {
+        "nll": 1.7964328999871981,
+        "selection_score": 43.40879717076494,
+        "gated_sentence_chrfpp_by_stratum": {
+          "general": 46.80678648313596,
+          "technical_short": 60.120613983915,
+          "technical_medium": 27.848785110322385,
+          "technical_long": 32.063024480944364
+        },
+        "corpus_chrfpp": 34.755027908369904,
+        "failure_rate": 0.0625,
+        "foreign_script_rate": 0.0,
+        "count": 64,
+        "dev_target_tokens": 7613,
+        "wall_seconds": 337.90944065000076,
+        "semantic_review": "pending; chrF and gates are proxies"
+      },
+      "step": 903,
+      "target_tokens": 600408,
+      "semantic_review": "pending"
+    },
+    "completed_unix": 1794585465.7477117
+  }
+}

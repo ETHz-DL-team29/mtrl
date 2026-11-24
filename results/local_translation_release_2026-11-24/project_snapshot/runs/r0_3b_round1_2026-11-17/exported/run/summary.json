@@ -1,0 +1,50 @@
+{
+  "status": "completed_pending_semantic_review",
+  "step": 926,
+  "target_tokens": 999931,
+  "train_seconds": 4924.398165464401,
+  "worker_seconds": 7024.611177206039,
+  "stop_reason": "token_budget_completed",
+  "selected": {
+    "tag": "t1000000",
+    "step": 926,
+    "target_tokens": 999931,
+    "metrics": {
+      "nll": 1.5860389561608481,
+      "technical_nll": 1.5854127271791885,
+      "dev_target_tokens": 8649,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 35.54763100658314,
+          "bleu": 19.360401623540074
+        },
+        "technical_short": {
+          "n": 8,
+          "chrfpp": 49.24023592736956,
+          "bleu": 27.42528734477145
+        },
+        "technical_medium": {
+          "n": 12,
+          "chrfpp": 33.226753470076545,
+          "bleu": 13.096467631269178
+        },
+        "technical_long": {
+          "n": 12,
+          "chrfpp": 38.29559574729537,
+          "bleu": 18.990521688215434
+        }
+      },
+      "weighted_chrfpp": 36.476431290709485,
+      "failures": 0
+    }
+  },
+  "selected_adapter_sha256": "1ecf014712c7eb0004eaa20de58f54b0346cc4bd67b0ce07e3c7e30084e6c41f",
+  "initial_adapter_sha256": "033dd30456eb2352fbd04ee98e89a13e547195375aa0546ced755be62297bc74",
+  "G8_sources": 32,
+  "G8_candidates": 256,
+  "base_model": "Qwen/Qwen2.5-3B-Instruct",
+  "model_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "DAPO_updates": 0,
+  "MetricX_calls": 0
+}

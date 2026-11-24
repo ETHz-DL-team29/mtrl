@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-13",
+  "package_files": 551,
+  "all_package_hashes_verified": true,
+  "complete_zip_sha256": "85356f7c83ae260e93f28f321dced6035ca70963f11491271800739073928c3e",
+  "html_candidate_groups": 320,
+  "html_unique_candidates": 2560,
+  "html_self_contained_image": true,
+  "html_search": true,
+  "html_tables": 356,
+  "notebook_python_cells": 6,
+  "guide_code_parses": true,
+  "source_and_models_preserved": true,
+  "old_r0_v2_preserved": true,
+  "D_copies_match": true,
+  "owned_L4_released": true,
+  "qualification_decision": "Not accepted for comprehensive DAPO starting scope; further SFT and reward calibration required"
+}

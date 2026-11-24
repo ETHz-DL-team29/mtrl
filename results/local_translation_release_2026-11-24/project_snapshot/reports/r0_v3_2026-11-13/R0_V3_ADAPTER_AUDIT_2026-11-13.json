@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-13",
+  "all_finite": true,
+  "baseline_preserved": true,
+  "keys_match_initial": true,
+  "shapes_match_initial": true,
+  "parameter_tensors": 372,
+  "parameters": 10822656,
+  "changed_tensors": 372,
+  "lora_rank": 16,
+  "lora_alpha": 32,
+  "selected_adapter_sha256": "0f075c31d0bee3192f2b449a59b7ba6ca3f9370ad219b1c6a98fcf00a01660df",
+  "baseline_adapter_sha256": "806b9857024868131140da43ad3975d7c8653b97e5687420e4499a3769995847",
+  "caveat": "Finite and changed tensors establish serialization/loading sanity, not translation quality or DAPO readiness."
+}

@@ -1,0 +1,1595 @@
+# P22 全部逐句证据 / Complete paired translation casebook
+
+2026-11-23 · Europe/Berlin
+
+64来源、461个去重候选全部逐条复核；相同源文/译文共享一次判断。标签在模型身份与奖励隐藏时封存，随后解盲并追加MetricX评分。P保留关键意义，F有明确关键错误，U为真实不确定；并非冰岛语母语或医疗专业认证。文字P仍须未截断才能计入G8来源覆盖。
+
+All64sources and461unique candidates were read individually. Exact source/translation duplicates share one judgment. Labels were sealed with model identity and reward hidden,then unblinded and scored withMetricX.P preserves critical meaning,F confirms a critical error,U denotes genuine uncertainty.This is not native Icelandic or clinical certification.Text-P only counts towardG8source coverage when untruncated.
+
+before = 原P18 R0 / originalP18R0；after = P22第120步 / P22step120。MetricX误差越低越好，仅为事后诊断；它不定义P/F/U。 / LowerMetricXerror is better;post-hoc scores do not define semantic labels.
+
+[返回主报告 / Main report](DAPO_METRICX_REFERENCE_RESULTS_2026-11-23.html)
+
+<details><summary>0 · technical_medium · p22official21:test:eso:605</summary>
+
+<p><strong>源文 / Source</strong><br>The new estimate is based on detailed observations of two slightly different forms of water in Marss atmosphere.</p>
+
+<p><strong>参考 / Reference</strong><br>Nýja matið er byggt á nákvæmum mælingum á tveimur mismunandi gerðum vatns í lofthjúpi Mars.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Nýja matið byggist á nákvæmum mælingum á tveimur örlítið mismunandi vökvaformum í Marsloftinu.</td><td>F</td><td>False</td><td>3.75</td><td>Mars air retained, but the specifically water forms are changed to generic fluid forms.</td></tr>
+<tr><td>after</td><td>Nýja matið byggist á nákvæmum mælingum á tveimur lítillega mismunandi vökvaformum í Marsslokkur.</td><td>F</td><td>False</td><td>5.8125</td><td>Water becomes generic fluid forms; Mars atmosphere is replaced by an unintelligible Marsslokkur.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>1 · technical_short · p22official21:test:ema:1851</summary>
+
+<p><strong>源文 / Source</strong><br>Reduce next dose by 25%.</p>
+
+<p><strong>参考 / Reference</strong><br>Næsti skammtur minnkaður um 25%.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Færið skammtinum í næstu skammti um 25%.</td><td>F</td><td>False</td><td>8.8125</td><td>Moving dose into the next dose lacks the required reduction.</td></tr>
+<tr><td>after</td><td>Færið skammtinn í næstu skammti um 25%.</td><td>F</td><td>False</td><td>10.3125</td><td>Move dose into the next dose does not express reducing it.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Færið skammtinum yfir í 25%.</td><td>F</td><td>False</td><td>4.4375</td><td>Move over to 25 percent changes the target amount and omits next-dose scope.</td></tr>
+<tr><td>1</td><td>Færið skammtinum næstu um 25%.</td><td>F</td><td>False</td><td>12.5625</td><td>Move next dose by 25 percent lacks the required reduction direction.</td></tr>
+<tr><td>2</td><td>Fást að skömmtunni næstu skammti um 25%.</td><td>F</td><td>False</td><td>16.0</td><td>Malformed get/dosing construction does not convey reduce the next dose.</td></tr>
+<tr><td>3</td><td>Færið 25% af næsta skammti.</td><td>F</td><td>False</td><td>11.0625</td><td>Move 25 percent of the next dose is not reduce the next dose by 25 percent.</td></tr>
+<tr><td>4</td><td>Færið skammtinum minnkaður um 25%.</td><td>F</td><td>False</td><td>8.25</td><td>Dose reduced by 25 percent lacks restriction to the next dose.</td></tr>
+<tr><td>5</td><td>Færið skammtinum um 25% minni.</td><td>F</td><td>False</td><td>5.96875</td><td>Smaller dose is suggested, but the clinically important restriction to the next dose is absent.</td></tr>
+<tr><td>6</td><td>Færið skammtinum í næstu tæki um 25%.</td><td>F</td><td>False</td><td>7.75</td><td>Next dose becomes next device; reducing the dose is not expressed.</td></tr>
+<tr><td>7</td><td>Færið skammtinum næsta í 25%.</td><td>F</td><td>False</td><td>6.8125</td><td>Next dose to 25 percent changes by 25 percent into to 25 percent.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Færið skammtinum yfir í 25%.</td><td>F</td><td>False</td><td>4.4375</td><td>Move over to 25 percent changes the target amount and omits next-dose scope.</td></tr>
+<tr><td>1</td><td>Færið skammtinum næsta um 25%.</td><td>F</td><td>False</td><td>11.125</td><td>Move the next dose by 25 percent does not specify reducing it.</td></tr>
+<tr><td>2</td><td>Fást skammtinum minnkaður um 25%.</td><td>F</td><td>False</td><td>9.875</td><td>Reduction by 25 percent appears, but next-dose timing is omitted.</td></tr>
+<tr><td>3</td><td>Færið 25% af næsta skammti.</td><td>F</td><td>False</td><td>11.0625</td><td>Move 25 percent of the next dose is not reduce the next dose by 25 percent.</td></tr>
+<tr><td>4</td><td>Færið skammtinum minnkaður um 25%.</td><td>F</td><td>False</td><td>8.25</td><td>Dose reduced by 25 percent lacks restriction to the next dose.</td></tr>
+<tr><td>5</td><td>Færið skammtinum minnkaður um 25%.</td><td>F</td><td>False</td><td>8.25</td><td>Dose reduced by 25 percent lacks restriction to the next dose.</td></tr>
+<tr><td>6</td><td>Færið skammtinum minnkað 25%.</td><td>F</td><td>False</td><td>12.5</td><td>Reduced 25 percent appears, but next-dose scope is omitted.</td></tr>
+<tr><td>7</td><td>Færið skammtinn um 25% í næsta skammt.</td><td>F</td><td>False</td><td>10.3125</td><td>Moves the dose into a next dose rather than instructing reduction.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>2 · technical_short · p22official21:test:ema:2673</summary>
+
+<p><strong>源文 / Source</strong><br>Always use a new needle for activation.</p>
+
+<p><strong>参考 / Reference</strong><br>Notaðu ávallt nýja nál við virkjunarferlið.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Notið alltaf nýja nál til virkjunar.</td><td>P</td><td>False</td><td>1.3984375</td><td>Always use a new needle for activation; all key content retained.</td></tr>
+<tr><td>after</td><td>Notið alltaf nýja nál til virkjunar.</td><td>P</td><td>False</td><td>1.3984375</td><td>Always use a new needle for activation; all key content retained.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>3 · technical_long · p22official21:test:eea:45</summary>
+
+<p><strong>源文 / Source</strong><br>Soil residue studies must be reported where DT50lab is greater than one-third of the period between the application and harvest and where absorption by the succeeding crop is possible, except where soil residues at sowing or planting of a succeeding crop can be reliably estimated from the data of the soil dissipation studies or where it can be justified that these residues can not be phytotoxic to or leave unacceptable residues in rotational crops.</p>
+
+<p><strong>参考 / Reference</strong><br>Gera skal grein fyrir rannsóknum á efnaleifum þegar DT50lab er meira en einn þriðji af tímabilinu frá meðhöndlun og fram að uppskeru og möguleiki er á að næsta ræktun geti sogað upp efnaleifar, nema þegar unnt er að meta efnaleifar í jarðvegi við sáningu eða gróðursetningu fyrir næstu ræktun með áreiðanlegum hætti út frá gögnum úr rannsóknum á dreifingu í jarðvegi eða þegar unnt er að færa rök að því að þessar efnaleifar geti ekki verið plöntum skaðvænlegar eða skilið eftir sig óviðunandi leifar í víxleftirtekju.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Greina verður frá rannsóknum á leifa úr jarðvegi þegar DT50lab er meiri en einn þriðjungur af tímabilinu milli aðgerðar og uppskeru og þegar frásog á næstu ávinningsgetu er mögulegt, nema þegar hægt sé að áætla leifa úr jarðvegi við söl eða plating næstu ávinningsgetu út frá niðurstöðum rannsókna á leifum úr jarðvegi eða þegar hægt er að rökstýra að þessi leifar geti ekki verið fæðubælandi eða leiddi fram óásættanlegar leifar í áætlunarávinnustöðum.</td><td>F</td><td>False</td><td>13.125</td><td>Succeeding crop becomes benefit capacity and phytotoxicity becomes feeding inhibition.</td></tr>
+<tr><td>after</td><td>Greina verður frá rannsóknum á leifa úr jarðvegi þegar DT50lab er meiri en einn þriðjungur af tímabilinu milli notkunar og uppskeru og þegar frásog á næstu ávinnings er mögulegt, nema þegar hægt sé að áætla leifa úr jarðvegi við söl eða sett á næstu ávinnings með áreiðanlegum gögnum úr rannsóknum á leifum úr jarðvegi eða þegar hægt er að rökstýra að þessi leifar geti ekki verið fræðisvölduþrengandi eða leiddar ósamþykktar leifar í áætlunarávinnustöðum.</td><td>F</td><td>False</td><td>14.5</td><td>Crop becomes benefit and phytotoxicity/rotational crop exception is corrupted.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Greina verður frá rannsóknum á leifa úr jarðvegi þegar DT50lab er meiri en þrjátali framanlega tímabilið frá notkun og frislnings og þegar frásog til síðari vaxtarvegs er mögulegt, nema þegar hægt sé að meta sótthexandi úrraunum fyrir útsetningu jarðvegsleifa við fæðingu eða frambúð mæltar vaxtarvegs eða þegar hægt er að rökstýra að þessi leifar hugsanlega verði ekki fæðileg áhrifu eða leiddu ekki ófullnægjandi leifum í vaxtarvegsrot.</td><td>F</td><td>False</td><td>17.875</td><td>One-third interval, harvest and toxicity exception contain invented terms and lost relations.</td></tr>
+<tr><td>1</td><td>Greina verður frá rannsóknum á leifa úr jarðvegi þegar DT50lab er stærri en þrjár hlutir af frestinni milli að aðlingi og uppbót og þegar frásog á næstu ætlunarveg er hugsanleg á grundvelli gagna úr rannsóknum á jarðvegsútsetningu, nema þegar hægt er að meta, án fylgjur, útsetningu á jarðvegi við sækjun eða aðlögun næstu ætlunarvegs eða þegar hægt er að rökstýra að þessar leifar geti ekki verið fræðisvöldum af baksviðs og leifar af baksviðs heldur ekki viðunandi.</td><td>F</td><td>False</td><td>20.125</td><td>One third becomes three parts; harvest and crop/phytotoxicity conditions are corrupted.</td></tr>
+<tr><td>2</td><td>Greina verður frá rannsóknum á sundurhvarfi í jarðvegi þegar DT50lab er meiri en þrjátítrar tímann síðan ánotað er og þegar frásog aukinnar uppruna er mögulegt, nema að því er varðar það þegar hægt er að áætla þau í jarðvegargreiningum við sölutíma eða fæðingu aukinnar uppruna eða þegar hægt er að rökstýra að þau séu ekki völdum ávextisaðgerðum eða föggur einstaklingsbundið jarðvegsafn í gegnumferðarupprunalegum upprunum.</td><td>F</td><td>False</td><td>17.125</td><td>One-third and succeeding crop become corrupted time/origin phrases; toxicity condition lost.</td></tr>
+<tr><td>3</td><td>Greina verður frá rannsóknum á ammönnum í jarðvegi þegar DT50lab er stærri en einnis þriðjasta tímann milli viðurkenningar og uppskerusjóðs og þegar aðgengi á næstu uppskeru er möguleg, að undanskildum tilvikum þegar hægt er að áætla þau samt enginn í jarðvegi eða við sáningu næstuppskeru frá niðurstöðum rannsókna á útskilnaði jarðvervs eða þegar hægt er að rökstýra það að þessi ammu kan ekki vera fæðubælandi eða leysa fram óviðeigandi ammu í uppskeiðisuppskegðum.</td><td>F</td><td>False</td><td>20.5</td><td>Residue, interval and harvest exceptions are replaced by unintelligible or unrelated terms.</td></tr>
+<tr><td>4</td><td>Greina verður frétt um skuggalyf í jarðvegi þegar DT50lab er meiri en þrjátítri tímann frá notkun og vistgengissjúðum fræi er mögulegt, að undanskildu tilvikum þegar hægt er að áætla skuggalyf í jarðvegi við upphafslát eða plöntu senningslát með þeim upplýsingum sem fylgja rannsóknunum á drægingu í jarðvegi, eða þegar hægt er að rökstýra að þessi skuggalyf geti ekki verið fræðisvirk á eða skildist ekki viðræðum afleiddum skuggalyfjum í umferðarhráðum.</td><td>F</td><td>False</td><td>20.5</td><td>One-third interval and crop-residue/toxicity conditions are corrupted.</td></tr>
+<tr><td>5</td><td>Greina verður frá rannsóknum á afleiðum úr jarðvegi þegar DT50lab er meiri en einn þriðjum tímans sem fyrirbrögð er og að síðari fræi getur frásogast, nema þegar hægt sé að áætla útsetningu af jarðvegsafurðum við sér eða við bæti fræs í síðari fræi frá upplýsingum úr rannsóknum sem fela til útskilnaðarjarðvegsafurðanna eða þegar hægt er að rökstýra það að þessar afleiður geti ekki verið frjósemisvaldandi eða veldi óásætvangs afleiðum í hefðbundnum fræs.</td><td>F</td><td>False</td><td>15.3125</td><td>Residue/phytotoxicity becomes products/fertility; crop rotation condition is absent.</td></tr>
+<tr><td>6</td><td>Lögðar verður fram niðurstöður úr rannsóknum á varnir úr jarðvökvi ef DT50lab er hærri en einn þriðjungur af tímabilinu milli notkunar og uppskerunar eða hægt er að frásog verði af næstu vökva og niðurstöður úr rannsóknum á jarðvarfseminni eru í gagni fyrir það, nema þar sem hægt er að meta bestu viðmiðunarmálum um jarðvarfseminn innan vistarsins sem varnir úr jarðvökum eru við upphafningu eða plástur nærstu vöktunar og eða hægt er að rökstu það að þessir varnir geti ekki verið fyrir örvaða eða leitt út óásættanlegar varnir í ræktköstum.</td><td>F</td><td>False</td><td>13.9375</td><td>AND condition becomes OR; soil residue and succeeding crop become liquid/monitoring terms.</td></tr>
+<tr><td>7</td><td>Greina verði um rannsóknir á leifum í jarðvegi þegar DT50lab er meiri en þrjáundrawiðtökunum á tímabilinu, milli áfarms- og útfjóra og þegar frásog hófstar til ætlunartvísar ávinnings er mögulegt, nema þegar hægt sé að áætla þau á grundvelli niðurstöðna úr rannsóknum á hreinsun jarðverfis eða þegar áætla má að þessi leifar geti ekki áhrif óbætur á plöntu- eða skipta ávinnings eða leiddu óviðunandi leifar.</td><td>F</td><td>False</td><td>17.875</td><td>One-third interval is unintelligible and crop/phytotoxicity conditions are corrupted.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Greina verður frá rannsóknum á leifa úr jarðvegi þegar DT50lab er meiri en einn þriðjungur áferðarinnar milli notkunar og upptöku og þegar frásog samtengdra fræs er mögulegt, nema greinileg sé á að ákvarða leif í jarðverðinni við fræ- eða plástrun samtengdra fræs frá gögnum úr rannsóknum á útfellingu jarðvegarefna eða greint sé af því að rétt sé að þessir leifar geti ekki verið skrýtið á plöntufarandi fræi eða leita óviðunandi leifar í plöntufarandi fræi.</td><td>F</td><td>False</td><td>16.0</td><td>Successive crop becomes connected seed; phytotoxicity exception loses its meaning.</td></tr>
+<tr><td>1</td><td>Greina verður framlag í jarðvegi þar sem DT50lab er hærri en einn þriðjungur af tímabilið milli notkunar og upptöku og þar sem frásog á næði í næstu árotinn er mögulegt, nema sé hægt að áætla uppsæði frumlingsjarðarfrásogs rannsókna til að meta framlag í jarðvegi við sowing eða planting næðinnar árotta eða hægt er að rökstýra það að þessi frumlingsjarðarfrásöfn geti ekki verið fræðistvísaleg ógarnir í næði árotta.</td><td>F</td><td>False</td><td>21.25</td><td>Succeeding crop and phytotoxic/rotational residue conditions become nonmeaningful compounds.</td></tr>
+<tr><td>2</td><td>Greina verður frá rannsóknum á sundurhröðum í jarðvegi þegar DT50lab er hærri en einn þriðjá þeirra tíðna milli notkunar og uppskerunar og ef frásog á næstu plöntu er mögulegt, nema þegar hægt sé að ákvarða samtengda jarðvegsbroti við söl eða meðgang á næstu plöntu frá niðurstöðum rannsókna á jarðvegsbroti eða þegar hægt er að rökstýra það að þessir sundurskeri séu ekki fæðubælandi eða leyst ófullnægjandi í ferðalíkani.</td><td>F</td><td>False</td><td>16.5</td><td>Residue studies become decomposition and rotational crop residues become a travel model.</td></tr>
+<tr><td>3</td><td>Greina verður framlagingsrannsóknir þar sem DT50lab er hærri en þrjáundri hluta tímans milli aðgerðar og upptorps og þar sem frásogur fyrir síðari upplýsingu er möguleg, nema við að teknu upp framlagingsrannsóknir með upptökum í landi með tilliti til frumlýsa fyrir síðari upplýsinga með upptökum í landi eða þegar hægt er að rökstýra þyngra vegna þess að frumlíuðar framlagingseitur geta ekki verið fæðuvirkir eða leysi ekki viðunandi frumlíuðar framlagingseitur.</td><td>F</td><td>False</td><td>20.125</td><td>Residue studies and succeeding crop are replaced by contribution/information constructs.</td></tr>
+<tr><td>4</td><td>Greina verður frétt um skuggalyf í jarðvegi þegar DT50lab er meiri en einn þriðjum tímamarka milli notkunar og upptöku og hægt er að frásog sérutafna í eftirfjórðugri vökva, nema vera getur á viðteknum upptöku í jarðveginu eða vistfræðilegum reikningum í jarðvegaskerðingarrannsóknum, vegna útskilnaðarjarðvega eða vera getið rökstudda að ekki sé hægt að gæta ávistunar fyrir þessum leifa eða að ósamþykktar leifar séu skildar af þeim.</td><td>F</td><td>False</td><td>19.75</td><td>Residues become shadow medicines and the succeeding-crop exception is lost.</td></tr>
+<tr><td>5</td><td>Greina verður frá rannsóknum á afleiðingum úr jarðvegi þegar DT50lab er meiri en einn þriðjungur hluta tímans milli notkunar og uppsækningar og gæti frásog hinn fólksefns valdið, að undanskildu tilvikum þegar hægt er að ákvarða afleiðingu úr jarðvegi við söl eða settning hinn fólksefns úr uppskjölin með árangri frá niðurstöðum rannsókna um útfelling jarðvegsins eða þegar hægt er að rökstýra að þessar afleiðingar geti ekki verið fyrir plöntu- eða lagt af óvenjulegum afleiðingum.</td><td>F</td><td>False</td><td>18.625</td><td>Crop absorption becomes a people/substance construction; crop-residue exception is lost.</td></tr>
+<tr><td>6</td><td>Greina verður frá rannsóknum á leifar í jarðvegi þar sem DT50lab er meiri en einþrídd hlutfall tímans á milta um notkun og uppsöfnun og kynni frumurinn samanleitinn að frýsa sig, að undanskildum tilvikum þar sem hægt er að meta leifar við upphaflega vist eða ásamt settu nýju frumur innan meginjarðrásar rannsóknanna eða hægt er að rökstýra að þær leifar geti ekki verið frægandi fyrir græn- eða vist- lyfjamein eða skiljast óviðeigandi leifar í hæfisráðlun.</td><td>F</td><td>False</td><td>20.5</td><td>Application/harvest and succeeding crop become accumulation/cells, altering the conditions.</td></tr>
+<tr><td>7</td><td>Greina verði skýrslu um miltaflösku þegar DT50lab er hærri en einn þriðjum tímabils frá notkun til og efnisfrásogs og þegar frásogi ánfræssa júgryks er möguleg, nema þegar hægt sé að áætla miltaflösku við söl eða uppsetning júgryks er á betua hátt fyrir framleiðslu rannsókna á milliverkunum á jarðvinnum eða þegar hægt er að sýna fram á áreiðanlega að þessi miltaflösku sé ekki fræysvænn og að ósamþykktar milliverkanir verði ekki að fá af rættlunum.</td><td>F</td><td>False</td><td>17.75</td><td>Soil residue becomes spleen flask; crop and toxicity conditions are lost.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>4 · technical_long · p22official21:test:eea:326</summary>
+
+<p><strong>源文 / Source</strong><br>To facilitate the mutual acceptance of test data generated for submission to Regulatory Authorities of the OECD member countries, harmonisation of the procedures adopted to monitor good laboratory practice compliance, as well as comparability of their quality and rigour, are essential.</p>
+
+<p><strong>参考 / Reference</strong><br>Til að auðvelda gagnkvæma viðurkenningu á prófunargögnum sem eru lögð fyrir lögbær yfirvöld í aðildarríkjum Efnahags- og framfarastofnunarinnar er mikilvægt að aðferðir við eftirlit með góðum starfsvenjum við rannsóknir séu samræmdar og að hægt sé að gera samanburð á því hversu góðar og strangar þær eru.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Til að auðvelda gagnkvæma samþykki á prófunargögnum, sem eru gefnar til reglueftirlitsyfirvalda í aðildarríkjum Efnahags- og framfarastofnunarinnar, er nauðsynlegt að gera samræmingar á málsmeðferðum sem samþykktar eru til að fylgjast með samræmi við fyrirhugaðar rannsóknarráðstafanir, ásamt samanburði á gæði og þróun þeirra.</td><td>F</td><td>False</td><td>2.75</td><td>GLP becomes planned research measures and rigour becomes development.</td></tr>
+<tr><td>after</td><td>Til að auðvelda gagnkvæma samþykki á prófunargögnum sem eru framleiddar til skila reglueftirlitsyfirvalda í aðildarríkjum Efnahags- og framfarastofnunarinnar, er nauðsynlegt að samræma málsmeðferðina sem samþykktar eru til að fylgjast með samræmi við fyrirhugaðar rannsóknarráðstafanir, sem og að gæði og skilvirkni séu samanburðarmáttar.</td><td>F</td><td>False</td><td>3.4375</td><td>Good laboratory practice becomes planned research measures; rigour becomes efficiency.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Til að auðvelda henni gagnkvæma viðurkenningu árannsóknargögnum sem eru gefnar til lyfjastofnanir bandalags Evrópsku og Annar Efnahættulandsins (OECD) er það nauðsynlegt að gera samræmingu á ferlinu sem samþykktar eru til að hafa eftirlit með að farið sé að fyrirskipunum árfræðilegrar starfsemi og að gæta gæðs og þrýstingar í þeim.</td><td>F</td><td>False</td><td>14.8125</td><td>OECD authorities become European drug bodies; GLP and rigour are corrupted.</td></tr>
+<tr><td>1</td><td>Til að auðvelda samþykkt mótverða niðurstöðna úr prófunum, sem eru útbúin til að lagðar verði fyrir opinbera bandalagsins að lagðar við eftirlit með uppfyllingu þágerða í rannsóknarstofum, er gert ráð fyrir samhæfingu starfsferla sem einnig eru samræmdir á gæði og öflugni þeirra.</td><td>F</td><td>False</td><td>17.375</td><td>OECD member-state authorities and GLP compliance are not retained.</td></tr>
+<tr><td>2</td><td>Til að auðvelda gagnkvæma samþykki á prófunargögnum sem eru framleiddar til lagbóta er nauðsynlegt að gera samræmingar á málefnum og að þau verði samanburðarmarg og skarpgreind.</td><td>F</td><td>False</td><td>12.375</td><td>Regulatory authorities, OECD and GLP compliance are omitted.</td></tr>
+<tr><td>3</td><td>Til að auðvelda gagnkvæm samþykki á prófunargögnum, sem eru framkvæmdar sem skila bætur fyrir stjórnsýslustofnanir í aðildarríkjum Eftirlitsaðilsins og Evrópska efnahagstofa, er nauðsynlegt að gera samræmingar á málsmeðferðum sem samþykktar eru til að fylgjast með fyrrkomið samræmi við ræktunarreglur, sem og að gildi og gagnsæi í þeim séjistjána.</td><td>F</td><td>False</td><td>17.625</td><td>OECD and GLP become European agency/agricultural rules, changing core referents.</td></tr>
+<tr><td>4</td><td>Til að auðvelda gagnkvæm samþykkt árannsóknaupplýsinga sem eru framkvæmdar til að lagðar séu fyrir yfirvald í aðildarríkjum samans efnahags- og framfarastofnunarinnar, er sérörungur að samræma málsmeðferð þannig að hægt sé að vakta að við- stæði í rannsóknum sé uppfyllt, og að gæta og erfiðleika í samanburði á gæðum og grunnvöktu þeirra.</td><td>F</td><td>False</td><td>16.125</td><td>GLP compliance and required comparable rigour are not meaningfully conveyed.</td></tr>
+<tr><td>5</td><td>Til að auðvelda gagnstöðu fyrir viðurkenningu á mismunandi upplýsingum sem útbúið var til að lagðar séu fram fyrir yfirvöld í Efnahags- og framfarastofnunarþokum, er grunnleg að samhæfing hæfni- og þess eftirlitsaðferða sem sem stofnað er á til að fylgjast með uppfyllingu á reyndar-viðmiðunarreglum, og að gæði og meðgöngu þeirra sé jafngild.</td><td>F</td><td>False</td><td>11.6875</td><td>Mutual acceptance, OECD countries and GLP standards are corrupted.</td></tr>
+<tr><td>6</td><td>Til að auðvelda gagnkvæma viðurkenningu á rannsóknargögnum sem gefnar eru fram til vegna lagbókunar yfirvölda í Einkustofnuninni, einkum gera þarf samræmingu á verklagi þeirra starfsreglur sem viðurkennd eru til að fylgjast með uppfyllingu á þeirri markmiði og sýna að gæði og innsigli þeirra sé sambærilegt.</td><td>F</td><td>False</td><td>10.8125</td><td>OECD identity and GLP compliance object are replaced by unrelated terms.</td></tr>
+<tr><td>7</td><td>Til að auðvelda gagnkvæmandi viðurkenningu á prófunargögnum, sem eru gefnar til skila reglueftir- aðila í aðildarríkjunum Efnahags- orðskólaþróuninnar, eru samskipti á ferlum, sem samþykkt eru til að fylgjast með samræmi fyrir bestu starfsvenjur, auk samskipti á gæði og gagnræðslu, nauðsynlegar.</td><td>F</td><td>False</td><td>12.1875</td><td>OECD institution is corrupted and laboratory-specific compliance/rigour are lost.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Til að auðvelda gagnvart samþykki mismunandi ráðgjafaraðila fyrir prófunargögn, sem eru farið út í samráði við regluröð yfir- félagsins, er nauðsynlegt að samræma málsmeðferðinni sem samþykkt er og er miðar saman að hæfni og endurskoðanleika.</td><td>F</td><td>False</td><td>15.1875</td><td>OECD/GLP compliance and rigour are omitted or replaced by advisers/capacity.</td></tr>
+<tr><td>1</td><td>Til að auðvelda samþykki í báðum sinni samanburðarupplýsinga, sem eru framleiddar til skila til eftirlitsstofnana í aðildarríkjum Efnis- og framfarastofnunar Asa ökutækja, ber að gera samræmingu á málsmeðferðunum, sem samþykktar hafa verið til að fylgja á samræmi við aðsetningu viðræðastaðla rannsóknar- stofa, sem og samanburð á gæði og öflugni þeirra.</td><td>F</td><td>False</td><td>16.375</td><td>OECD identity becomes Asia vehicles; GLP standards are unintelligible.</td></tr>
+<tr><td>2</td><td>Til að auðvelda gagnkvæma samþykki á prófunargögnum sem framleidd eru til skila reglueftirlitsstofnana í OECD- aðildarríkjunum er nauðsynlegt að gera samræmingar á málsmeðferðunum sem samþykktar eru til að fylgjast með samræmi við gæðar rannsóknarstofu og að gæta samanburðar á gæði og verkun þeirra.</td><td>F</td><td>False</td><td>3.0</td><td>Good laboratory practice compliance becomes quality of a laboratory; rigour becomes operation/effect.</td></tr>
+<tr><td>3</td><td>Til að auðvelda gagnvart samþykki fyrir prófunargögn, sem eru framleiddar til skila fyrir stjórnbókögum sem eru aðildarríki Efnahags- og framfarastofnunar Evrópu (OECD), er ráðstafanir, sem var samþykkt til að fylgjast með samræmi við farið að rannsóknarskrIFTI í vissu, sem og samanburður á gæði og gríði þeirra, frímikluðar.</td><td>F</td><td>False</td><td>18.0</td><td>OECD identity and GLP practice are corrupted; necessary nature becomes unintelligible.</td></tr>
+<tr><td>4</td><td>Til að auðvelda gagnkvæm samþykki árannsóknaupplýsingum sem eru framleiddar til lagbókunar reglueftirlitsyfirvalda í aðildarríkjum EES og samræmingar reglum sem samþykktar eru til að fylgjast með samræmi við farið í rannsóknarstofum og ásamt samanburði á gæði og vistgæði þeirra er nauðsynleg.</td><td>F</td><td>False</td><td>5.5625</td><td>OECD becomes EEA; good laboratory practice is not retained.</td></tr>
+<tr><td>5</td><td>Til að auðvelda gagnstöðu mismunandi viðurkenningar á prófunargöngnum sem eru gerðar til að lagðar séu fram fyrir yfirvöld í aðildarríkjunum bandalagsins Evrópulandsins fyrir eftirlit með samræmi við fyrirhugaðar rannsóknarreglur, sem ákvarðað eru til að fylgjast með, og samanburði á gæði og grunnlag sáttmálanna, eru nauðsynlegar.</td><td>F</td><td>False</td><td>15.875</td><td>OECD member states become a European alliance and GLP compliance is altered.</td></tr>
+<tr><td>6</td><td>Til að trúna að gagn, sem eru viðljandi samruna í gegnumhliða viðurkenningar, sem lagtar fyrir mótteknilegan útgáfa í handa reglniðu samsættar alríkjanna Efnahags- og framfarastofnunarinnar, er nauðsynleg að gera samræmingu á verklagsgreiðslum sem samþykktar hafa verið til að fylgjast með samræmi við sjálfsmælikerfi, sem og samanburð á gæði og velgildi þeirra.</td><td>F</td><td>False</td><td>22.125</td><td>Good laboratory practice becomes self-measurement systems; submission relationship is corrupted.</td></tr>
+<tr><td>7</td><td>Til að auðvelda gagnkvæmandi samþykki á prófunarskýrslum, sem eru gefnar til skila reglueftirstaðana í aðildarríkjum Efnahags- og framfarastofnunarinnar, er nauðsynlegt að samræma málsmeðferðina sem eru samþykktar til að fylgjast með samræmi fyrir stofnunarefni, auk að gera samanburðarhæf og -kraftar skilvirkum.</td><td>F</td><td>False</td><td>12.375</td><td>GLP compliance becomes institution material; rigour is lost.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>5 · general · p22official21:test:opensubtitles:779</summary>
+
+<p><strong>源文 / Source</strong><br>I didn‘t argue with her.</p>
+
+<p><strong>参考 / Reference</strong><br>Ég þrætti ekki við hana.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Ég ræddi henni ekki.</td><td>F</td><td>False</td><td>6.8125</td><td>Discussed-her construction does not preserve arguing with her.</td></tr>
+<tr><td>after</td><td>Ég ræddi ekki við hana.</td><td>F</td><td>False</td><td>2.71875</td><td>Did not discuss/talk to her is not did not argue with her.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>6 · technical_short · p22official21:test:ema:1929</summary>
+
+<p><strong>源文 / Source</strong><br>Co-administration of Ribavirin Mylan and didanosine is not recommended.</p>
+
+<p><strong>参考 / Reference</strong><br>Samhliða gjöf Ribavirin Mylan og dídanósíns er ekki ráðlögð.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Samhliða notkun Ribavirin Mylan og didanosíns er ekki ráðlögð.</td><td>P</td><td>False</td><td>0.18359375</td><td>Concomitant use of both named medicines is not recommended.</td></tr>
+<tr><td>after</td><td>Samhliða lyfjagjöf Ribavirin Mylan og didanosíns er ekki ráðlögð.</td><td>P</td><td>False</td><td>0.0</td><td>Co-administration and negative recommendation retain both medicines.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>7 · technical_long · p22official21:test:ema:2334</summary>
+
+<p><strong>源文 / Source</strong><br>Solutions of CINQAERO diluted in sodium chloride 9 mg/mL (0.9%) solution for infusion may be stored refrigerated at 2 °C-8 °C (or not above 25 °C if dilution has taken place in controlled and validated aseptic conditions), protected from light for up to 16 hours.</p>
+
+<p><strong>参考 / Reference</strong><br>Geyma má CINQAERO lausnir þynntar með natríum klóríð 9 mg/ml (0,9%) innrennslislyfi, lausn í kæli við 2°C-8°C (eða ekki við hærra hitastig en 25°C ef þynning hefur farið fram við stýrðar og gildaðar smitgátaraðstæður), varðar gegn ljósi í allt að 16 klst.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Lausn af CINQAERO þynnuð með 9 mg/ml (0,9%) natríumklóríð innrennslislausn má geyma í kæli við 2°C-8°C (eða ekki hærri en 25°C ef þynning hefur orðið í samanburði og staðfestu óseiðu aðstæðum), verndað gegn ljósi í allt að 16 klukkustundir.</td><td>F</td><td>False</td><td>8.8125</td><td>Controlled aseptic conditions become comparison and an unintelligible condition; critical storage exception altered.</td></tr>
+<tr><td>after</td><td>Lausn af CINQAERO þynnuð með 9 mg/ml (0,9%) natríumklóríð innrennslislausn má geyma í kæli við 2 °C-8 °C (eða ekki hærri en 25 °C ef þynning var gerð í samanburði og staðfestu óseiðsmyndandi aðstæðum), verndað gegn ljósi í allt að 16 klukkustundir.</td><td>F</td><td>False</td><td>7.8125</td><td>Controlled validated aseptic condition is replaced by comparison and an unintelligible aseptic term.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>8 · technical_short · p22official21:test:ema:959</summary>
+
+<p><strong>源文 / Source</strong><br>Allergic type hypersensitivity reactions are possible with OBIZUR.</p>
+
+<p><strong>参考 / Reference</strong><br>Ofnæmisviðbrögð eru möguleg við notkun OBIZUR.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Ofnæmisviðbrögð eru hugsanleg við notkun OBIZUR.</td><td>P</td><td>False</td><td>0.09619140625</td><td>Possible allergic reactions with OBIZUR retained.</td></tr>
+<tr><td>after</td><td>Ofnæmisvart ofnæmisviðbrögð eru möguleg við notkun OBIZUR.</td><td>P</td><td>False</td><td>2.890625</td><td>Redundant malformed modifier; normal allergic-reaction phrase, possibility and medicine remain clear.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Ofnæmisviðbrögð er mögulegt við notkun OBIZUR.</td><td>P</td><td>False</td><td>0.1767578125</td><td>Minor agreement error; allergic-reaction possibility and medicine retained.</td></tr>
+<tr><td>1</td><td>Ofnæmisvart ofnæmisviðbrögð geta komið fyrir af völdum OBIZUR.</td><td>P</td><td>False</td><td>4.65625</td><td>Redundant malformed modifier, but normal allergic-reaction phrase and possibility with OBIZUR retained.</td></tr>
+<tr><td>2</td><td>Ofnæmisviðbrögð eru möguleg við notkun OBIZUR.</td><td>P</td><td>False</td><td>0.0</td><td>Allergic reactions are possible with OBIZUR; faithful.</td></tr>
+<tr><td>3</td><td>Ofnæmisviðbrögð af þessu gerð eru möguleg við notkun OBIZUR.</td><td>P</td><td>False</td><td>0.357421875</td><td>Allergic reactions of this type are possible with OBIZUR; critical warning retained.</td></tr>
+<tr><td>4</td><td>Ofnæmisviðbrögð, sjá um sér, geta komið fyrir af völdum OBIZUR.</td><td>U</td><td>False</td><td>4.25</td><td>Allergic possibility retained, but extra sja um ser aside has uncertain instruction-like significance.</td></tr>
+<tr><td>5</td><td>Ofnæmissvörunarvartar (allergic type hypersensitivity reactions) eru mögulegar við notkun OBIZUR.</td><td>U</td><td>False</td><td>2.4375</td><td>Invented Icelandic reaction term with correct English gloss; adequacy of target-language meaning uncertain.</td></tr>
+<tr><td>6</td><td>Ofnæmisvörr er hugsanlegt af völdum OBIZUR.</td><td>U</td><td>False</td><td>6.34375</td><td>Uncertain whether ofnaemisvorr conveys a reaction rather than a corrupted allergy term.</td></tr>
+<tr><td>7</td><td>Ofnæmi af eituráhrifum er hugsanleg með tilliti til OBIZUR.</td><td>F</td><td>False</td><td>5.09375</td><td>Adds toxic-effects cause not present in hypersensitivity warning.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Ofnæmisviðbrögð er mögulegt við notkun OBIZUR.</td><td>P</td><td>False</td><td>0.1767578125</td><td>Minor agreement error; allergic-reaction possibility and medicine retained.</td></tr>
+<tr><td>1</td><td>Ofnæmisvart ofnæmisviðbrögð geta komið fyrir af völdum OBIZUR.</td><td>P</td><td>False</td><td>4.65625</td><td>Redundant malformed modifier, but normal allergic-reaction phrase and possibility with OBIZUR retained.</td></tr>
+<tr><td>2</td><td>Ofnæmisviðbrögð eru möguleg við notkun OBIZUR.</td><td>P</td><td>False</td><td>0.0</td><td>Allergic reactions are possible with OBIZUR; faithful.</td></tr>
+<tr><td>3</td><td>Ofnæmisviðbrögð eru mögulegar við notkun OBIZUR.</td><td>P</td><td>False</td><td>0.026123046875</td><td>Minor agreement error; possible allergic reactions with OBIZUR retained.</td></tr>
+<tr><td>4</td><td>Ofnæmisvart ofnæmisviðbrögð eru möguleg við notkun OBIZUR.</td><td>P</td><td>False</td><td>2.890625</td><td>Redundant malformed modifier; normal allergic-reaction phrase, possibility and medicine remain clear.</td></tr>
+<tr><td>5</td><td>Ofnæmissvörunarafstöður (Allergic type hypersensitivity reactions) eru hugsanlegar við notkun OBIZUR.</td><td>U</td><td>False</td><td>2.53125</td><td>Nonstandard Icelandic reaction compound with English gloss; cannot certify its target-language adequacy.</td></tr>
+<tr><td>6</td><td>Ofnæmisvörr er hugsanlegt af völdum OBIZUR.</td><td>U</td><td>False</td><td>6.34375</td><td>Uncertain whether ofnaemisvorr conveys a reaction rather than a corrupted allergy term.</td></tr>
+<tr><td>7</td><td>Ofnæmi af eituráhrifum er hugsanleg við notkun OBIZUR.</td><td>F</td><td>False</td><td>2.875</td><td>Allergic hypersensitivity is changed to allergy from toxic effects.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>9 · general · p22official21:test:opensubtitles:1715</summary>
+
+<p><strong>源文 / Source</strong><br>Break it up, I tell you.</p>
+
+<p><strong>参考 / Reference</strong><br>Ég sagði, hættið að slást.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Þrýstið þér upp, ég segi þér.</td><td>F</td><td>False</td><td>10.0</td><td>Push yourself up changes the instruction to stop fighting.</td></tr>
+<tr><td>after</td><td>Brekkið upp, ég segi þér.</td><td>F</td><td>False</td><td>6.5625</td><td>Brekkið upp does not convey the contextual instruction to stop fighting.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>10 · technical_long · p22official21:test:eea:478</summary>
+
+<p><strong>源文 / Source</strong><br>Member States shall bring into force the laws, regulations and administrative provisions necessary to comply with this Directive by 1 October 1999; however, if the publication of the texts referred to in Article 3 is delayed beyond 1 April 1999, the Member States shall comply with this obligation six months after the actual date of publication of these texts.</p>
+
+<p><strong>参考 / Reference</strong><br>Aðildarríkin skulu samþykkja nauðsynleg lög og stjórnsýslufyrirmæli til að fara að tilskipun þessari eigi síðar en 1. október 1999; hafi birting textanna, sem um getur í 3. gr., dregist fram yfir 1. apríl 1999 ber aðildarríkjunum að standa við þessa skuldbindingu innan sex mánaða frá birtingu fyrrnefndra texta.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Aðildarríkin skulu samþykkja nauðsynleg lög og stjórnsýslufyrirmæli til að fara að tilskipun þessari eigi síðar en 1. október 1999; en ef birtun texta, sem um getur í 3. gr., er seinkað eftir 1. apríl 1999 skulu aðildarríkin fara að þessari skyldu sex mánuðum eftir að birtun textanna hefur farið fram.</td><td>P</td><td>False</td><td>0.6328125</td><td>Both dates, Article 3, delayed-publication exception and six-month obligation preserved; minor spelling only.</td></tr>
+<tr><td>after</td><td>Aðildarríkin skulu samþykkja nauðsynleg lög og stjórnsýslufyrirmæli til að fara að tilskipun þessari eigi síðar en 1. október 1999; en ef birtun texta, sem um getur í 3. gr., er seinkað eftir 1. apríl 1999 skulu aðildarríkin fara að þessari skyldu sex mánuðum eftir að birtun textanna hefur farið fram.</td><td>P</td><td>False</td><td>0.6328125</td><td>Both dates, Article 3, delayed-publication exception and six-month obligation preserved; minor spelling only.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>11 · technical_long · p22official21:test:eea:1927</summary>
+
+<p><strong>源文 / Source</strong><br>A puttable instrument is a financial instrument that gives the holder the right to put the instrument back to the issuer for cash or another financial asset or is automatically put back to the issuer on the occurrence of an uncertain future event or the death or retirement of the instrument holder.</p>
+
+<p><strong>参考 / Reference</strong><br>Innleysanlegur gerningur er fjármálagerningur sem gefur handhafa rétt til að skila gerningnum aftur til útgefanda gegn handbæru fé eða annarri fjáreign, eða er sjálfkrafa innleyst hjá útgefanda við óþekktan atburð sem á sér stað í framtíðinni eða við andlát eða starfslok handhafa gerningsins.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Fjárhagsvætt er fjárhagsvætt sem veitir haldandi rétt til að setja vottorðið aftur á útgáfuþegi í peninga eða annað fjárhagsverð eða setjið aftur á útgáfuþegi þegar óvissur framtíðarvirkni á sér stað eða þegar haldandi vottorðsins er dauðsfallinn eða hættur á starfsemi hans.</td><td>F</td><td>False</td><td>18.0</td><td>Automatic issuer return is omitted and financial-instrument terminology is corrupted.</td></tr>
+<tr><td>after</td><td>Tilhögun er fjármálavör unnið sem er fjármálavör sem veitir haldandi rétt til að setja unnið aftur til útgáfuma í peninga eða annarri fjármálavöru eða setja unnið aftur til útgáfuma þegar óvissa framtíðarvöxtur ákveðnar er að gerast eða hætt er á haldandi unnið eða hann er hættur í launamála.</td><td>F</td><td>False</td><td>24.625</td><td>Uncertain future event becomes future growth; automatic return and death are lost.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Minnkjalíkur eru fjármálamál sem veita haldandi hlutverki rétt á að minnkjalíkurinn sé sett aftur í útgáfu þess af yrki eða öðru fjármálavöru eða haldið aftur á útgáfu af yrki eða fjármálavöru sem þeir er sett í af yrki eða fjármálavöru sem þeir eru sett í af yrki eða fjármálavöru sem þeir eru sett í, þegar óvissa framtíðarfyrirbygging eða dauðsfall eða áskilun hinna sem hafa hlutverkinn í á.</td><td>F</td><td>False</td><td>25.0</td><td>Puttable instrument becomes an invented term with repeated asset clauses; retirement lost.</td></tr>
+<tr><td>1</td><td>Fjárlægð hæfi er fjármálahæfi sem veitir haldandi hæfileika rétt til að gefa hæfileikann til útgefanda í peninga eða annarra fjármálaverða eða er laus fyrir útgefanda til að gefa hæfileikann til útgefanda ef óvissur framtíðarhætti, dauði eða aðgangsjáar haldandi hæfileika á sér stað.</td><td>F</td><td>False</td><td>20.0</td><td>Financial instrument becomes ability; automatic return and retirement are corrupted.</td></tr>
+<tr><td>2</td><td>Lyfjaútbeining er fjármálamál sem gefur úthlutandinn rétt á að leggja útbeininguna aftur á útgáfuþegi fyrir peninga eða önnur fjármala eða leggja útbeininguna aftur á útgáfuþegi með sjálfvirku aðferð þegar óvissa tilfinningur kemur fram eða það er dennt eða hættur eftir fara úr handa útbeiningum.</td><td>F</td><td>False</td><td>18.875</td><td>Instrument becomes medicine instructions and holder/issuer roles and events are corrupted.</td></tr>
+<tr><td>3</td><td>Fjárhagssvörun er fjárhagslegur reikningssvörun sem veitir haldanda rétt til að setja svörunina aftur til útgáfuberjanda á peningum eða annarri fjárhagsverðu eða setja svörunina aftur til útgáfuberjanda með sjálfvirku mælikast við óvissa framtíðarás eða dauða eða aðstöðu sjálfvirkis haldandi.</td><td>F</td><td>False</td><td>21.375</td><td>Instrument becomes accounting response and automatic return/retirement conditions are corrupted.</td></tr>
+<tr><td>4</td><td>Vinnuaðstæða er fjármálavél sem veitir haldandi rétt til að endursafa vélinn til úthlutandi til heimstriðu í peninga eða öðru fjármálavílu eða endursafað vélinn til úthlutandi þegar óvissur framtíðarvirkni komi fram eða hættur eða lausa skipti samtökaraðila.</td><td>F</td><td>False</td><td>24.0</td><td>Instrument becomes work conditions/machine; return and termination events are corrupted.</td></tr>
+<tr><td>5</td><td>Mótefnasvið er ráðgengið mótefni sem veitir háttgarnar hlutaðeigandi mig út gegnir mótefninu til útgáfumanns í peninga eða öðru fjármálagreiddu eða færist út gegn þegar óvissa framvinduð gerð verður eða mótefnsþega dánar eða hættur þegar hún er mótefnsþeirri.</td><td>F</td><td>False</td><td>25.0</td><td>Instrument becomes antibody; right/issuer/cash relationships are unintelligible.</td></tr>
+<tr><td>6</td><td>Fyrirbært eign er fjármálagerning sem veitir haldendur rétt til að endurreikja eignina aftur til útgefnanda í peninga eða öðrum fjármálum eða endurreiknað eignarhaldandi eignarinnar þegar óvissur á framtíu verður eða það afar eignarhaldið eignarhaldandi eigi eða dauður.</td><td>F</td><td>False</td><td>21.75</td><td>Returning instrument becomes recalculating property; retirement condition is lost.</td></tr>
+<tr><td>7</td><td>Styrkur er fjármálastyrkur sem gefur afykingöp hlutaðeigandi einku rétt á að farga styrkinn aftur til útgáfuma til peninga eða annars fjármálategils eða farið aftur til útgáfuma þegar óvissur í framtíðinni gerist eða einku afykingjöpinn dánist eða hættur sig.</td><td>F</td><td>False</td><td>21.25</td><td>Puttable financial instrument becomes a grant and holder relationship is corrupted.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Minnkjalíkur eru fjármálagerningar sem gefa eignaraðilinn rétt á að minnkjalíkurinn sé settur aftur í útgáfu útgáfuvanmæla til endurgreiðslu eða aðrar fjármála eða hafa sérstaklega verið sett aftur í útgáfa útgáfuvanmæla þegar óvissa framtíðarskyldi ákveðnar eða síðkomið er eignaraðilur eða hunið náðist.</td><td>F</td><td>False</td><td>21.125</td><td>Automatic return and holder death/retirement events are unintelligible.</td></tr>
+<tr><td>1</td><td>Forðaerill er fjármálaverill sem veitir haldandællum rétt til að flytja verið inni aftur til útgáfuendur í peningum eða öðru fjárlag eða er flytja inni aftar til útgáfuendurs sjálfur þegar óþekktur fyrirframtengd ástand komi á eða ef haldandi erlendur láti sig líða eða hætta.</td><td>F</td><td>False</td><td>22.25</td><td>Puttable instrument and holder return-right terminology is corrupted beyond reliable meaning.</td></tr>
+<tr><td>2</td><td>Lyfjaútbeitingarvörð er fjármálavörður sem veitir viðtakanda rétt til að skila vörunni aftur til útgefnanda í pörun eða annan fjármálaveri eða skila hana aftur til útgefnanda með sjálfvirkum skilningi þegar óvissa fjölgunartengda tilvik, dauði eða lausn viðtakanda af vörunni koma upp.</td><td>F</td><td>False</td><td>17.625</td><td>Cash becomes a pair/mating term and instrument/retirement terminology is corrupted.</td></tr>
+<tr><td>3</td><td>Fjárhagsskil er fjármálaskil sem veitir haldandi rétt á að flytja skilið aftur til útgefanda með peningum eða einhverju öðru fjármála eða er sjálfkrafa flutt aftur til útgefanda við óvissa framtíðarskyldu eða dauða eða hæð eignaraðila skilinn.</td><td>F</td><td>False</td><td>16.25</td><td>Retirement becomes height and financial asset is not retained as an asset.</td></tr>
+<tr><td>4</td><td>Vinnuaðstæða er fjármálavél sem veitir haldandi rétt til að endursafa vélinn til útgáfuvöru sem ladrar peninga eða annað fjármálavald eða endursafarinn er að öryggistengdum til útgáfuvöru við óvissa framtíðarskyldu eða deyðu eða skiljun hagsmunaeignarinnar.</td><td>F</td><td>False</td><td>25.0</td><td>Instrument becomes machine/work conditions and automatic return/retirement is corrupted.</td></tr>
+<tr><td>5</td><td>Mótefni er fjármagnsóknmiðt sem veitir haldandi rétt til að leggja mótefnið aftur til útgáfuma í peninga eða annarra fjármálabéta eða leggi hlutfallið aftur til útgáfuma þegar óvissa framtíðarmiðan eða látni eða launþega mótefnis hins vegar koma fram.</td><td>F</td><td>False</td><td>21.125</td><td>Puttable instrument becomes antibody and holder/retirement relationship is corrupted.</td></tr>
+<tr><td>6</td><td>Fyrirbært eign er fjármálagerning sem veitir haldendur rétt til að endurreikja eignina aftur til útgefnanda í peninga eða öðrum fjármálum eða endurreiknað eignarhaldandi við framangreint óvissa framtíðarnefnd, dauða eða sjálfboðal eignarhaldandi.</td><td>F</td><td>False</td><td>21.0</td><td>Returning becomes recalculation and retirement becomes voluntary holder wording.</td></tr>
+<tr><td>7</td><td>Tilbúið eignartegund er fjármálategund sem veitir eignaraðILA rétt á að skila eignarteiganum aftur til útgáfuma til peninga eða annars fjármálategðs og er tilbúað skilað aftur til útgáfuma þegar óvissur framtíðarskyldi gerist eða eignaraðila hann drifa eða láti sér.</td><td>F</td><td>False</td><td>21.25</td><td>Automatic return and holder death/retirement conditions are corrupted.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>12 · technical_medium · p22official21:test:ema:116</summary>
+
+<p><strong>源文 / Source</strong><br>Cases of photosensitivity reactions have been reported with thiazides diuretics (see section 4.8).</p>
+
+<p><strong>参考 / Reference</strong><br>Greint hefur verið frá tilfellum um ljósnæmisviðbrögð við gjöf tíazíð þvagræsilyfja (sjá kafla 4.8).</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Greint hefur verið frá ljósnæmisviðbrögðum af völdum tíazíð þvagræsilyfja (sjá kafla 4.8).</td><td>P</td><td>False</td><td>0.022705078125</td><td>Reported photosensitivity reactions with thiazide diuretics and section 4.8 retained.</td></tr>
+<tr><td>after</td><td>Greint hefur verið frá sýkingum af ljósnæmi með tilliti til tiazíða þvagræsilyfja (sjá kafla 4.8).</td><td>F</td><td>False</td><td>4.5625</td><td>Photosensitivity reactions become infections of photosensitivity.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>13 · general · p22official21:test:opensubtitles:373</summary>
+
+<p><strong>源文 / Source</strong><br>We are not adorable, okay?</p>
+
+<p><strong>参考 / Reference</strong><br>Við erum ekki sæt, ókei?</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Við erum ekki sæt, allt í lagi?</td><td>P</td><td>False</td><td>1.046875</td><td>We are not cute/adorable and the okay question retained.</td></tr>
+<tr><td>after</td><td>Við erum ekki sæt, allt í lagi?</td><td>P</td><td>False</td><td>1.046875</td><td>We are not cute/adorable and the okay question retained.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>14 · general · p22official21:test:opensubtitles:115</summary>
+
+<p><strong>源文 / Source</strong><br>But, Sonny, you work in a tollbooth.</p>
+
+<p><strong>参考 / Reference</strong><br>En þú innheimtir vegtoll, Sonny.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>En, Sonny, þú vinnur í tollbúð.</td><td>U</td><td>False</td><td>5.03125</td><td>Sonny and work location retained; uncertain whether tollbud adequately denotes a road tollbooth rather than a customs shop.</td></tr>
+<tr><td>after</td><td>En, Sonny, þú vinnur í tollbúð.</td><td>U</td><td>False</td><td>5.03125</td><td>Sonny and work location retained; uncertain whether tollbud adequately denotes a road tollbooth rather than a customs shop.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>15 · technical_medium · p22official21:test:ema:3131</summary>
+
+<p><strong>源文 / Source</strong><br>This can lead to swelling of the clear layer in the front of the eye and cause blurred vision.</p>
+
+<p><strong>参考 / Reference</strong><br>Þetta getur valdið bólgu í glæra laginu framan á auganu og valdið óskýrri sjón.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Þetta getur leitt til þrota í gegnumþokunni í auganum og valdið þokunni í sjón.</td><td>F</td><td>False</td><td>7.28125</td><td>Clear layer and its front-of-eye location are lost in a through-fog expression.</td></tr>
+<tr><td>after</td><td>Þetta getur leitt til þrota í gegnumþokunni í framhluta augans og valdi þokunni í sjón.</td><td>F</td><td>False</td><td>7.65625</td><td>Clear front layer of the eye becomes an unintelligible through-fog structure.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>16 · technical_medium · p22official21:test:eso:431</summary>
+
+<p><strong>源文 / Source</strong><br>The special filter for observing hydrogen emission was kindly made available by the VPHAS+ Consortium.</p>
+
+<p><strong>参考 / Reference</strong><br>VPHAS+ samstarfið lagði góðfúslega fram síuna sem notuð var til að safna vetnisljómuninni.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>VPHAS+ samstarfsins gerði sérstakri þurrætinu til að fylgjast með hýdrógenið út í ljós.</td><td>F</td><td>False</td><td>13.4375</td><td>Filter and hydrogen-emission observing relationship are corrupted into drying/bringing hydrogen to light.</td></tr>
+<tr><td>after</td><td>Sérstakur gegnþurrðartækið til að fylgjast með hýdrógenlosun var fráhugað af VPHAS+ samstarfinu.</td><td>F</td><td>False</td><td>10.875</td><td>Observing filter becomes a drying-related device and made available is not retained.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>17 · technical_long · p22official21:test:eea:1980</summary>
+
+<p><strong>源文 / Source</strong><br>AG14E The total expected cash flows of the instrument over the life of the instrument must be substantially based on the profit or loss, change in the recognised net assets or fair value of the recognised and unrecognised net assets of the entity over the life of the instrument.</p>
+
+<p><strong>参考 / Reference</strong><br>AG14E Samanlagt vænt sjóðstreymi á gildistíma gerningsins skal byggjast að verulegu leyti á rekstrarreikningi, breytingum á færðri, hreinni eign eða gangvirði færðrar og ófærðrar, hreinnar eignar einingarinnar á gildistíma gerningsins.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>AG14E Heildarætlanir í gegnum líf gernings gerningsins verða að vera verulega byggðar á ávinningi eða losun, breytingum á viðurkenndum hleðsluverðvirkum eignum eða hlutfallslegu gildi viðurkenndra og óviðurkenndra hleðsluverðvirkra eigna í gegnum líf gernings gerningsins.</td><td>F</td><td>False</td><td>14.0</td><td>Cash flows become plans and net assets/fair value become invented loaded-value asset terms.</td></tr>
+<tr><td>after</td><td>AG14E Heildarætlanir, sem búast má við við útbreiðslu tækniflokkar í gegnum líf tækniflokkar, verða að vera verulega byggðar á ávinnings- eða losum, breytingum á viðurkenndum hleðsluverðvirkum eignum eða hlutfallslegu verðvirkum eignum sem viðurkenndir eru eða eru ekki viðurkenndir, gegnum líf tækniflokkarinnar.</td><td>F</td><td>False</td><td>16.875</td><td>Expected cash flows become total plans; instrument becomes technical class and net/fair assets are corrupted.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>18 · technical_long · p22official21:test:eso:944</summary>
+
+<p><strong>源文 / Source</strong><br>We now know that this was caused by the larger star of the pair expelling huge amounts of gas and dust in a short amount of time, which led to the distinctive lobes, known as the Homunculus Nebula, that we see in the system today.</p>
+
+<p><strong>参考 / Reference</strong><br>Í dag vitum við að ástæða þess var sú að stærri stjarnan í kerfinu varpaði frá sér miklu magni af gasi og ryki á mjög stuttum tíma sem leiddi til myndunar tveggja kekkja sem kallast Litli maðurinn og við sjáum í kerfinu í dag.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Við vita nú nú að þetta var af völdum stjarnannar í tvíhliðinu sem drifði stór miga af gass og ryki á stuttum tíma, sem leiddi til þess að það varðstætt með því að það drifði stóra þokum sem við sjáum í kerfinu í dag.</td><td>F</td><td>False</td><td>15.3125</td><td>Larger-star distinction and Homunculus name omitted; lobes become large clouds.</td></tr>
+<tr><td>after</td><td>Nú veita við það að þetta var af völdum stjarnannar í tvíhliðinni sem skilgreind er með stórum magni gasa og ryks á skemmju tíma sem leiddi til skilgreindra húðar, sem kallast Homunculus nebla, sem við sjáum í kerfinu í dag.</td><td>F</td><td>False</td><td>16.875</td><td>Expulsion becomes being defined with gas/dust and lobes become skins.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Nú vita við að þetta var þau stærri stjörnur í tvíliminum af geimverjum, sem skolum miklu magni gassa og ryks á stuttum tíma, sem leitti til þess efri ólíklega flögu sem við sjáum í kerfinu í dag.</td><td>F</td><td>False</td><td>14.1875</td><td>Adds aliens, loses Homunculus name and corrupts lobes.</td></tr>
+<tr><td>1</td><td>Við vita nú nú að það varð byggt af því að stjörnurin sem er stærri hafi fargað þoku af ryki og ryks í skamman tíma, sem leiddi til þess að útbrotin voru merktar með þeim skýjöldum sem við sjáum á dag, Homunculus nebla.</td><td>F</td><td>False</td><td>17.25</td><td>Gas becomes dust-and-dust and distinctive lobes are lost.</td></tr>
+<tr><td>2</td><td>Við vôi nú nú alveg að þetta sé framkallað af stjörnunnar af fólksemmlunni sem fyrirvarar eru stórar magnir af gasi og ryki í stuttan tíma, en það leiddu til þess að verulegir þörföstur komu fram sem kallast Homunculusþokan sem við sjáum í kerfinu í dag.</td><td>F</td><td>False</td><td>15.625</td><td>Pair relation and distinctive lobes become unintelligible unrelated compounds.</td></tr>
+<tr><td>3</td><td>Við vita nú nú að þetta var af völdum stjarna með stærri af tvíhliðunum um að skilgreina stór magn af gassi og ryki í stuttum tíma, sem leiddi til þess að við sjáum stakra, þekkta lóba sem nefnist Homúnculus nóbula.</td><td>F</td><td>False</td><td>12.625</td><td>Gas/dust expulsion becomes defining amounts of gas and dust.</td></tr>
+<tr><td>4</td><td>Nú þekkjur við að stjarnan í stakinni döknum hafi földst stórar magni gas og ryks fljótandi á stuttum tíma, sem leitti til úrskútarlobanna, sem kallast Hausmaðurþokan, sem við sjáum í kerfinu í dag.</td><td>F</td><td>False</td><td>18.25</td><td>Larger star of the pair becomes a star in solitary darkness.</td></tr>
+<tr><td>5</td><td>Nú þekktum við að þetta var af leiðandi af stærri stjörnuna í fjarlægingu tveggja stjarnanna sem skildi úr miklu magni gas og ryks á stuttu tíma sem leiddi til þess að útvarpið var greinilegur og kallast Homunculus þokan sem við sjáum í bókuninni í dag.</td><td>F</td><td>False</td><td>20.375</td><td>Lobes become radio and the system becomes a booking/book context.</td></tr>
+<tr><td>6</td><td>Niðurliðnum vitað er að stjarnan í stakinni dvali hafi losað stórar magn af gasi og ryki á stuttum tíma sem leiddi til einkenndra hæfa við rannsóknirnar í dag sem kallast Homunculus nebúna.</td><td>F</td><td>False</td><td>20.0</td><td>Larger star/pair relationship lost; lobes replaced by research abilities.</td></tr>
+<tr><td>7</td><td>Nú vita við að þetta var orsakinn af meiri stjörnunni í pörunni sem hreinsaði mikla magn af gama og ryki á stuttum tíma sem leiða til þess að hægt er að líta á svæðin sem eru kallaðar Homúnculus þokanina sem er sýnilegt í kerfinu í dag.</td><td>F</td><td>False</td><td>14.3125</td><td>Gas becomes gama and lobes become nonspecific areas; key morphology/composition altered.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Nú veistum við að þetta var af völdum stórstarsinnar í tvíhliðinni sem sprautaði miklum magni gassa og ryks skösmiðum tímanum sem leiddi til undarlegtum húðum sem kallaðar eru Hómúntulusþokan sem sýnilega sést í kerfinu í dag.</td><td>F</td><td>False</td><td>13.5</td><td>Distinctive lobes become strange skins rather than the astronomical structures.</td></tr>
+<tr><td>1</td><td>Við vita nú nú að þetta var vandlað af stóru stjörnu pörunnar sem flysti miklum magni af gass og ryki í skemmja tíma, sem leiddi til þess að útarsigtilið, sem kallast Homunculus þokan, er sem sýnt er í kerfinu í dag.</td><td>F</td><td>False</td><td>19.25</td><td>Expelled gas/dust and name partly retained, but distinctive lobes become an unintelligible structure.</td></tr>
+<tr><td>2</td><td>Við vita nú nú að þetta var orsakinn af stóru stjörnu flogfrá fólkastjörnu síðkominu, sem sprautuðu miklu mikið gróf og ryk í smásundrun, sem leiddu til skilgreindra nefiðu í sér, sem vitað er sem Homunculus neysklár, sem við sjáum í kerfinu í dag.</td><td>F</td><td>False</td><td>19.25</td><td>Gas becomes rough material and pair/star relationship is corrupted.</td></tr>
+<tr><td>3</td><td>Við vita nú nú að þetta var af völdum stjarna meiri stjarna í tvíhliðið um að skilgreindum lofttæmingum og ryki í stuttum tíma sem leiða til þess að verulegir lóbor eru, sem kallast Homunculus-þokan sem við sjáum í kerfinu í dag.</td><td>F</td><td>False</td><td>20.0</td><td>Expelling huge amounts of gas becomes defined air depletions, losing the causal action.</td></tr>
+<tr><td>4</td><td>Nú þekkist víst að stjarnan í stakinni dreyminu skilti úr sér háttar gas og ryk í stuttum tíma sem leiddi til þess að verulegir lóbarnir, sem kallast Homunculus nebla, sýna sér í kerfinu í dag.</td><td>F</td><td>False</td><td>13.6875</td><td>Larger star of a pair becomes a star in a solitary dream.</td></tr>
+<tr><td>5</td><td>Nú veitum við að það var af leiðum af stærri stjörnu tveggja súrarnar, sem sendi miklu mikið gas og ryk yfir í smástíma sem leiddi til þess einkenna hulana sem við sjáum í kerfinu í dag, Homunculus nebula.</td><td>F</td><td>False</td><td>16.875</td><td>Pair relation is corrupted and lobes become coverings rather than the specified morphology.</td></tr>
+<tr><td>6</td><td>Nú vita við að kraftigerð stjarnannar í kvarðinni var fyrir öruggum magni gas og ryks af fyrir skammingu, sem leiddi til einkennilegra hælsanna sem við sjáum í kerfinu í dag.</td><td>F</td><td>False</td><td>18.125</td><td>Pair, clear expulsion action and Homunculus name are lost.</td></tr>
+<tr><td>7</td><td>Nú veita við þetta að þetta var af orsökum stjörnunnar sem er stærri í dreyminum sem losnar hámarki af gasi og ryki á skemmja tíðni sem leiða til frátrúa risanna sem við sjáum í kerfinu í dag.</td><td>F</td><td>False</td><td>20.625</td><td>Homunculus name is omitted and distinctive lobes become giants.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>19 · general · p22official21:test:opensubtitles:1</summary>
+
+<p><strong>源文 / Source</strong><br>Everyone present, sir, but the surgeon.</p>
+
+<p><strong>参考 / Reference</strong><br>Já, herra, allir nema læknirinn.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Allir sem eru, herra, nema skurðlækninn.</td><td>P</td><td>False</td><td>3.703125</td><td>All present except the surgeon, with sir address; awkward but critical meaning retained.</td></tr>
+<tr><td>after</td><td>Allir sem eru, herra, nema skurðlækninn.</td><td>P</td><td>False</td><td>3.703125</td><td>All present except the surgeon, with sir address; awkward but critical meaning retained.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>20 · technical_short · p22official21:test:ema:1115</summary>
+
+<p><strong>源文 / Source</strong><br>Therefore, the combination should be administered with caution, especially in the elderly.</p>
+
+<p><strong>参考 / Reference</strong><br>Því skal nota þessar samsetningar með varúð, einkum hjá öldruðum.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Því skal gæta varúðar við samsetninguna, sérstaklega hjá öldruðum.</td><td>P</td><td>False</td><td>0.55859375</td><td>Therefore caution with combination, especially elderly, retained.</td></tr>
+<tr><td>after</td><td>Því skal gæta varúðar við samsetninguna, sérstaklega hjá öldruðum.</td><td>P</td><td>False</td><td>0.55859375</td><td>Therefore caution with combination, especially elderly, retained.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>21 · technical_short · p22official21:test:ema:48</summary>
+
+<p><strong>源文 / Source</strong><br>After preparing the Enbrel solution, immediate use is recommended.</p>
+
+<p><strong>参考 / Reference</strong><br>Ráðlagt er að nota Enbrel lausn strax eftir blöndun.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Eftir að lausninn hefur verið búinn skal nota Enbrel tafarlaust.</td><td>F</td><td>False</td><td>1.890625</td><td>Recommended use becomes shall use, strengthening the medical instruction into an obligation.</td></tr>
+<tr><td>after</td><td>Eftir að undirbúin varði Enbrel lausnin er ráðlagt að nota hana tafarlaust.</td><td>U</td><td>False</td><td>7.46875</td><td>Preparation phrase contains vardi with uncertain temporal/semantic role.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Eftir að enbrel mixtúraðgerðinni hefur farið fram er mælt með því að henni byrjaðist notkun samstundis.</td><td>U</td><td>False</td><td>10.875</td><td>Immediate-use intent present; uncertain whether nonstandard mixture-procedure term preserves solution preparation.</td></tr>
+<tr><td>1</td><td>Eftir að undirbúin var Enbrel lausnin er mælt með því að hún sé notað strax.</td><td>P</td><td>False</td><td>4.25</td><td>After prepared Enbrel solution, immediate use recommended; minor agreement error.</td></tr>
+<tr><td>2</td><td>Eftir að undirbúin var lausn af Enbrel er ráðlagt að nota hana tafarlaust.</td><td>P</td><td>False</td><td>4.53125</td><td>After preparing Enbrel solution, immediate use is recommended.</td></tr>
+<tr><td>3</td><td>Eftir að ensímsgjöfinn Enbrel lausn hefur verið búinn er ráðlagt að nota hann tafarlaust.</td><td>F</td><td>False</td><td>8.125</td><td>Adds enzyme administration into the preparation prerequisite, changing the clinical process.</td></tr>
+<tr><td>4</td><td>Eftir að hlutað er útbúin Enbrel stungulyfslausn er ráðlagt að nota það strax.</td><td>U</td><td>False</td><td>3.5625</td><td>Extra hlutad wording may mean partial preparation; cannot certify completed-preparation requirement.</td></tr>
+<tr><td>5</td><td>Eftir að undirbúin hafnar lausninni Enbrel er ráðlagt að nota hana tafarlaust.</td><td>U</td><td>False</td><td>5.3125</td><td>Prepared/rejected-harbour wording makes the prerequisite preparation clause uncertain.</td></tr>
+<tr><td>6</td><td>Eftir að ábyrgðarinnu hefur verið búið að útbúa Enbrel lausn er ráðlagt að nota hana strax.</td><td>U</td><td>False</td><td>5.84375</td><td>Preparation and immediate use appear, but extra abyrgdarinnu compound has uncertain meaning.</td></tr>
+<tr><td>7</td><td>Þegar Enbrel lausnin hefur verið undirhlotu er ráðlagt að nota hana tafarlaust.</td><td>U</td><td>False</td><td>3.015625</td><td>Uncertain whether undirhlotu conveys the required completed preparation.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Eftir að enbrel lausnin hefur verið undirhnað er mælt með notkun hafnaðar.</td><td>F</td><td>False</td><td>15.3125</td><td>Immediate use is lost and usage is described with rejection wording.</td></tr>
+<tr><td>1</td><td>Eftir að undirbúin var Enbrel lausnin er mælt með því að hún sé notað strax.</td><td>P</td><td>False</td><td>4.25</td><td>After prepared Enbrel solution, immediate use recommended; minor agreement error.</td></tr>
+<tr><td>2</td><td>Eftir að undirbúin var lausn Enbrel er mælt með að hún sé notuð tafarlaust.</td><td>P</td><td>False</td><td>2.734375</td><td>Preparation of named solution and immediate-use recommendation retained.</td></tr>
+<tr><td>3</td><td>Eftir að ensíugreyðið Enbrel lausn er ráðlagt að nota hana strax.</td><td>U</td><td>False</td><td>9.375</td><td>Immediate use retained; unintelligible ensiugreydid leaves preparation condition uncertain.</td></tr>
+<tr><td>4</td><td>Eftir að undirbúin hefur verið Enbrel lausnin er ráðlagt að nota hana tafarlaust.</td><td>P</td><td>False</td><td>4.40625</td><td>After preparing Enbrel solution, use immediately is recommended.</td></tr>
+<tr><td>5</td><td>Eftir að undirbúin hefur verið ensímlaþykkni Enbrel er mælt með notkun hérna strax.</td><td>F</td><td>False</td><td>14.3125</td><td>Solution becomes enzyme concentrate, changing the pharmaceutical form.</td></tr>
+<tr><td>6</td><td>Eftir að undirbúnaðið hefur verið lausn Enbrel er ráðlagt að nota hana strax.</td><td>U</td><td>False</td><td>7.65625</td><td>Immediate recommendation retained, but severely malformed preparation clause has uncertain temporal meaning.</td></tr>
+<tr><td>7</td><td>Eftir að tilbúið hefur verið lausn af Enbrel er ráðlagt að nota hana tafarlaust.</td><td>P</td><td>False</td><td>1.2578125</td><td>Solution prepared followed by recommended immediate use; minor agreement only.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>22 · general · p22official21:test:opensubtitles:1258</summary>
+
+<p><strong>源文 / Source</strong><br>It has to mean something.</p>
+
+<p><strong>参考 / Reference</strong><br>Hún hlýtur að hafa merkingu.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Það þarf að þýða eitthvað.</td><td>P</td><td>False</td><td>1.9375</td><td>It has to mean something retained.</td></tr>
+<tr><td>after</td><td>Það þarf að koma fyrir eitthvað.</td><td>F</td><td>False</td><td>11.25</td><td>Must mean something becomes something must happen.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>23 · technical_long · p22official21:test:eea:2080</summary>
+
+<p><strong>源文 / Source</strong><br>Where appropriate, with regard to the nature of the payment transaction concerned, for all invoicing of goods and services in the Community, a supplier of goods and services that accepts payments covered by this Regulation shall communicate its IBAN and the BIC of its payment service provider to its customers.</p>
+
+<p><strong>参考 / Reference</strong><br>Þegar við á vegna eðlis viðkomandi greiðslna að því er varðar gerð allra vöru- og þjónustureikninga í Bandalaginu skal aðili, sem býður vöru og þjónustu og tekur við greiðslum, sem falla undir þessa reglugerð, upplýsa viðskiptavini sína um alþjóðlegt bankareikningsnúmer sitt og auðkenniskóða banka greiðslumiðlunar sinnar.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Ef við á, með tilliti til eðlis viðkomandi greiðslu, skal veitandi vörum og þjónustu, sem tekur greiðslur sem falla undir þessa reglugerð, senda viðskiptavinum IBAN- númer og BIC- númer greiðsluþjónustuveitanda síns.</td><td>F</td><td>False</td><td>5.8125</td><td>Core account communication retained, but all invoicing within the Community scope is entirely omitted.</td></tr>
+<tr><td>after</td><td>Ef við á, með tilliti til eðlis viðkomandi greiðslu, skal veitandi vörum og þjónustu, sem samþykkir greiðslur sem falla undir þessa reglugerð, senda viðskiptavinum IBAN- númer og BIC- númer greiðsluþjónustuveitanda síns IBAN- númer og BIC- númer greiðsluþjónustuveitanda síns IBAN- númer og BIC- númer greiðsluþjónustuveitanda síns.</td><td>F</td><td>False</td><td>10.125</td><td>Invoicing within Community scope omitted and provider account phrase repeated three times.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Ef við á, með tilliti til eðlis viðkomandi greiðslu, skal viðskiptavörði vöru og þjónustu, sem taka greiðslur sem falla undir þessa reglugerð, senda viðskiptavinum sínum IBAN- númer og BIC- númer viðskiptaaðilans síns.</td><td>F</td><td>False</td><td>6.9375</td><td>Community/invoicing scope omitted; payment provider becomes business counterparty.</td></tr>
+<tr><td>1</td><td>Við umsókn á vörum og þjónustu innan Bandalagsins skal vörum og þjónustuveitanda, sem tekur á gegnum pörunnar sem um er að ræða, gefa neytendum þeirra IBAN- númer og BIC-efnis fyrir pöruna sem veitir er til að þeir rita á sér.</td><td>F</td><td>False</td><td>13.3125</td><td>Payment nature, regulation coverage and supplier/account relations are corrupted.</td></tr>
+<tr><td>2</td><td>Við hvernig við á, með tilliti til þess hvernig umræddar sendingar er, fyrir öllum viðskiptum á vöru og þjónustu í bandalaginu skal fram- gardælli, sem taka greiðslur sem falla undir þessa reglugerð, gefa viðskiptavinum sínum IBAN- númer og BIC- númer tækniaðila greiðsluþjónustunnar síns.</td><td>F</td><td>False</td><td>13.875</td><td>All invoicing becomes all transactions and supplier is an unintelligible compound.</td></tr>
+<tr><td>3</td><td>Hugsanlega, með tilliti til eðli viðkomandi viðskipta, fyrir allar viðskipti með vörum og þjónustu innan Bandalagsins, skal búnaður sem lögir vörur og þjónustu en tekur við skráða viðskipti samkvæmt þessari reglugerð, senda neytendum sín IBAN- númeri og BIC- númeri fyrir fjármálaþjónustu sinni.</td><td>F</td><td>False</td><td>10.5625</td><td>Supplier becomes equipment and invoicing/payment-provider relations are corrupted.</td></tr>
+<tr><td>4</td><td>Ef við á að taka tillit til eðlis viðkomandi greiðslu, skal efni- og þjónustuveitandinn, sem tekur greiðslur sem falla undir þessa reglugerð, senda viðskiptavettvangi sínum IBAN og BIC- umfangsþjónustuveitandans síns IBAN og BIC, þegar þeir gefa upp vöru og þjónustu á Sambandinu í skráningu.</td><td>F</td><td>False</td><td>10.4375</td><td>Customer becomes a business platform and IBAN ownership/provider relationships are corrupted.</td></tr>
+<tr><td>5</td><td>Ef við á, með tilliti til þeirrar einkenna gjaldskiptisins sem um er að ræða, skal vörumódeli, sem viðtakandi hefur takið upp og viðtaka gjalda sem falla undir þessa reglugerð, senda viðskiptavörum einkönnunargrennd og sjálfsgreiningu (IBAN) og sjálfsgreiningu veitanda greiðsluþjónustunnar (BIC) til þeirra.</td><td>F</td><td>False</td><td>17.0</td><td>Supplier/customer roles and own IBAN communication become unintelligible identification constructs.</td></tr>
+<tr><td>6</td><td>Ef við á, með tilliti til eðlis viðkomandi fjármálaskipta, skal vörumilfarið, sem taka til greiðslur sem falla undir þessa reglugerð, senda kvenntölum og BIC fyrir greiðsluþjónustu þess rekstraraðila til að mæla við neytendur sína.</td><td>F</td><td>False</td><td>15.6875</td><td>IBAN becomes a women-number term and customer/provider communication is corrupted.</td></tr>
+<tr><td>7</td><td>Ef við á, með tilliti til eðli viðkomandi greiðslu, skal afurðar sendingi og þjónustu, sem verði lagður fram á Sambandinu, krafna, gefa viðskiptavinir umsæða sína IBAN og BIC afurðar sendingarþjónusta til viðskiptum sína, til heimta.</td><td>F</td><td>False</td><td>19.25</td><td>Supplier/customer and account-provider relationships become unintelligible shipment/demand wording.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Ef við á, með tilliti til eðlis viðkomandi greiðslu, fyrir allar viðskipti með vöru ogþjónustu í Bandalaginu skal fram- gefandi vörum og þjónustu, sem samþykkir greiðslur sem gilda undir þessa reglugerð, senda viðtökum sínum IBAN og BIC greiðsluþjónustu þeirra.</td><td>F</td><td>False</td><td>12.6875</td><td>Invoicing scope becomes all transactions; payment-provider BIC ownership is not retained clearly.</td></tr>
+<tr><td>1</td><td>Við eftirlit, með hliðsjón af eðli viðkomandi greiðslu, fyrir allar upplýsingar á vöru og þjónustu innan Bandalagsins skal veitandi vöru- og þjónustu, sem samþykki greiðslur, sem falla undir þessa reglugerð, senda krafni sína IBAN og BIC viðtaka greiðsluþjónustu síns til krafanda.</td><td>F</td><td>False</td><td>11.75</td><td>Where appropriate becomes under supervision and customers become claimants.</td></tr>
+<tr><td>2</td><td>Við eftirlit með skráningu viðskipta sem á umráði við erfiðleikann efnis greina, fyrir allar endurgreiningar varðandi vörur og þjónustu í Bandalaginu, skal veitendur vöruaðskilnaðar og þjónustu, sem taka greiðslur, sem falla undir þessa reglugerð, gefa neytendum þeirra IBAN og BIC gagnvart greiðsluþjónustu þeirra.</td><td>F</td><td>False</td><td>15.75</td><td>Relevant payment nature and invoicing become difficult registration/reanalysis constructs.</td></tr>
+<tr><td>3</td><td>Hugsanlega, með tilliti til eðli viðkomandi greiðslutilgangar, fyrir allar viðskipti við vörur og þjónustu í Bandalaginu skal vörusjóði og þjónustusjóður, sem greiðar greiðslur sem falla undir þessa reglugerð, senda viðskiptamenn sínum IBAN og BIC viðskiptavörðu sína.</td><td>F</td><td>False</td><td>8.625</td><td>Supplier becomes goods/service funds and BIC provider becomes a business guard.</td></tr>
+<tr><td>4</td><td>Samkvæmt viðeigandi krafni, með tilliti til eðlis viðkomandi greiðslu, fyrir allar viðskipti með vöru og þjónustu innan Bandalagsins skal afurðarveitandinn sem samþykkir greiðslur sem falla undir þessa reglugerð gefa neytendum sínum upplýsingar um IBAN- númer og BIC fyrirtækisins með greiðsluþjónustu.</td><td>F</td><td>False</td><td>2.328125</td><td>All invoicing becomes all transactions, broadening the legal scope.</td></tr>
+<tr><td>5</td><td>Ef við á, með tilliti til eðlis greiðsluverfarsins, skal seljandili, sem samþykki greiðslur sem falla undir þessa reglugerð, senda neytandanum IBAN- númeri og BIC- númeri viðskiptaaðila greiðsluafstarinnar.</td><td>F</td><td>False</td><td>5.90625</td><td>Community/invoicing scope omitted; BIC belongs to a counterparty rather than clearly the provider.</td></tr>
+<tr><td>6</td><td>Ef við á, með tilliti til eðlis viðkomandi greiðslu, fyrir allar viðskipti á vöru og þjónustu innan Bandalagsins skal vörumúladur, sem samþykkir greiðslur sem falla undir þessa reglugerð, senda viðskiptavinum IBAN- númeri og BIC af pöntunareitanda sinni.</td><td>F</td><td>False</td><td>7.125</td><td>BIC of payment service provider becomes BIC of an ordering-field-like entity.</td></tr>
+<tr><td>7</td><td>Ef við á, með tilliti til eðlis viðkomandi greiðslu, fyrir allar sendingar viðskiptaleiðseðla vöru og þjónustu í Bandalaginu skal veitendi vöru og þjónustu, sem viðtakar greiðslur samkvæmt þessari reglugerð, gefa viðskiptavinum sínum IBAN- númeri og BIC númeri frá greiðsluvörum sín.</td><td>F</td><td>False</td><td>8.5625</td><td>Invoicing becomes shipping waybills and payment provider becomes payment goods.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>24 · general · p22official21:test:opensubtitles:685</summary>
+
+<p><strong>源文 / Source</strong><br>Oh man, I have been banned from banks for like the next 7 years, and there is a guy down state willing to sell me a human skull, but he says all I have to do is send him a check.</p>
+
+<p><strong>参考 / Reference</strong><br>Ég er í bankabanni næstu 7 árin og það er maður sem vill selja mér hauskúpu úr manni en hann segir að ég verði að senda honum ávísun.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Mér hefur verið bannist frá banka í næstu 7 ár og það er náungi hér í landi sem vill selt húðmannskeið til mín en hann segir að það eina sem ég þarf að senda honum er skrá.</td><td>F</td><td>False</td><td>13.0625</td><td>Human skull becomes an unintelligible skin-person compound and cheque becomes registry/file.</td></tr>
+<tr><td>after</td><td>Mér hefur verið bannist frá bankum í nokkru 7 ár næstu og þá er maður í statinu sem vill selt húðmanni, en hann segir að það eina sem ég þarf að senda honum er skrá.</td><td>F</td><td>False</td><td>19.0</td><td>Human skull becomes skin-person wording and cheque becomes a registry/file.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>25 · technical_long · p22official21:test:eea:41</summary>
+
+<p><strong>源文 / Source</strong><br>Similar studies for one soil must be reported for all relevant metobolites, degradation and reaction products which occur in soil and which at any time during the studies account for more than 10 % of the amount of active substance added, except where their DT50 values were able to be determined from the results of the degradation studies with the active substance.</p>
+
+<p><strong>参考 / Reference</strong><br>Gera skal grein fyrir svipuðum rannsóknum á einni jarðvegsgerð með tilliti til allra umbrots-, niðurbrots- og hvarfaefna sem koma fyrir í jarðvegi, og nema á einhverjum tímapunkti meðan á rannsókninni stendur meira en 10% af viðbættu magni virka efnisins, nema þegar unnt er að ákvarða DT50-gildi þeirra á grundvelli niðurstaðna úr niðurbrotsrannsóknum með virka efninu.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Greina skal sambærilegar rannsóknir á einni jarðvegi fyrir öll viðkomandi umbrotsefni, umbrotsefni og afleiðingar sem eru til staðar í jarðvegi og sem hafa meira en 10% af hlutfalli virka efnisins sem bætti var í rannsóknunum, nema þegar þessi gildi DT50 gæti verið ákvarðað út frá niðurstöðum umbrotsrannsóknanna á virku efninu.</td><td>F</td><td>False</td><td>9.5</td><td>Degradation/reaction products become repeated metabolites and effects; any-time condition is omitted.</td></tr>
+<tr><td>after</td><td>Greina skal sambærilegar rannsóknir á einni jarðvegi fyrir öll viðkomandi umbrotsefni, umbrotsefni og afleiðingar sem eru til staðar í jarðvegi og sem ná yfir 10% af heildarþéttni virka efnisins sem bætti var í rannsóknina, nema DT50 gildi þeirra hafi verið ákvarðað út frá niðurstöðum umbrotsrannsóknanna með virku efninu.</td><td>F</td><td>False</td><td>7.90625</td><td>Amount added becomes total concentration; degradation/reaction classes and any-time condition altered.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>26 · technical_medium · p22official21:test:ema:2586</summary>
+
+<p><strong>源文 / Source</strong><br>Non-clinical data from cynomolgus monkeys revealed no special hazards for humans based on repeat- dose toxicity studies, safety pharmacology evaluations, and reproductive and developmental toxicity studies.</p>
+
+<p><strong>参考 / Reference</strong><br>Forklínískar upplýsingar úr rannsóknum á cynomolgus-öpum sýndu ekki fram á sérstaka áhættu fyrir menn á grundvelli rannsókna á eiturverkunum eftir endurtekna skammta, lyfjafræðilegu öryggi og eiturverkunum á æxlun og þroska.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Ekki kom fram nein sérstakur hætta vegna manna úr upplýsingum frá rannsóknum án klínískra áhrifa hjá cynomolgus öpum, á grundvelli endurtekna rannsókna á eiturverkunum við endurtekna skammta, matarlyfjaskoðana á öryggi og rannsókna á eiturverkunum á æxlun og þroska.</td><td>F</td><td>False</td><td>8.1875</td><td>Nonclinical data becomes studies without clinical effects and safety pharmacology becomes a food-medicine compound.</td></tr>
+<tr><td>after</td><td>Ekki kom fram neinar sérstöðugir hætta vegna manna úr upplýsingum sem ekki eru klínískar úr cynomolgus öpum og varða eiturverkanir eftir endurtekna skammta, öryggisprófir á lyfjafræði og eiturverkanir á æxlun og þroska.</td><td>U</td><td>False</td><td>9.5</td><td>Study types retained, but vegna manna makes hazards for humans versus caused by humans linguistically uncertain.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>27 · technical_long · p22official21:test:eea:1597</summary>
+
+<p><strong>源文 / Source</strong><br>Actions will aim to promote cooperation and exchange of best practices, tools, methods, experience and infomation at international level in order to encourage common approaches and methods of work and improve and enhance the effectiveness, cost-efficiency and the range of global initiatives.</p>
+
+<p><strong>参考 / Reference</strong><br>Aðgerðir skulu miða að því að efla samstarf og skipti á bestu starfsvenjum, úrræðum, aðferðum, reynslu og upplýsingum á alþjóðlegum vettvangi með það að markmiði að hvetja til sameiginlegra nálgana og vinnuaðferða og bæta og efla skilvirkni, kostnaðarhagkvæmni og alþjóðleg framtaksverkefni.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Aðgerðir verða að markmiði að stuðla að samvinnu og skiptum á bestu starfsvenjum, tækjum, aðferðum, reynslu og upplýsingum á alþjóða vettvangi til að stuðla að sameiginlegum aðferðum og starfsaðferðum og auka og bæta skilvirkni, kostnaðarhæfni og sviði alþjóða- aðgerða.</td><td>P</td><td>False</td><td>3.546875</td><td>International exchange, common work methods, effectiveness, cost fitness and scope of global actions retained; awkward grammar.</td></tr>
+<tr><td>after</td><td>Aðgerðirinn munur aðeins vera að stuðla að samvinnu og skiptum bestu starfsvenjur, tækjum, aðferðum, reynslu og upplýsingum á alþjóða vettvangi til að stuðla að sameiginlegum aðferðum og starfsaðferðum og auka og bæta skilvirkni, kostnaðarhæfni og sviði alþjóðlegra aðgerða.</td><td>P</td><td>False</td><td>5.53125</td><td>All listed exchange items, international scope, common methods, effectiveness, cost fitness and initiative scope retained.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Ráðstafanir eru beint til að stuðla að samvinnu og skiptum á bestu starfsskili, tæknilegum hlutlögum, aðferðum, reynslu og upplýsingum á alþjóða vettvangi til að stuðla að sameiginlegum aðferðum og vinnuheiti og auka skilvirkni, kostnaðarhæfni og alþjóðasafaðgerðaóvinnumagnið.</td><td>F</td><td>False</td><td>6.8125</td><td>Global initiative range becomes an unintelligible no-work-volume compound.</td></tr>
+<tr><td>1</td><td>Aðgerðirinn mun vera hún að stuðla að samvinnu og skiptum um bestu starfsvenjum, tækjum, aðferðum, reynslu og upplýsingum á alþjóðastigi til að stuðla að sameiginlegum aðferðum og starfsaðferðum og auka hæfi og kostnaðarhag og hagsvaranum alþjóða- áætlana.</td><td>F</td><td>False</td><td>8.0625</td><td>Range of global initiatives becomes an unintelligible interest-defender term.</td></tr>
+<tr><td>2</td><td>Aðgerðir leggast til að stuðla að samstarf og skiptum um bestu starfsvenjur, tækjum, aðferðum, reynslu og upplýsingum á alþjóða vettvangi til að stuðla að sameiginlegum aðferðum og áætlunum og auka virknin og kostnaðarhagshæfni og röð alþjóðaframkvæmda.</td><td>U</td><td>False</td><td>3.140625</td><td>Cooperation and many objectives retained; common work methods and initiative range are ambiguously plans/series.</td></tr>
+<tr><td>3</td><td>Aðgerðir verða að markmiði að stuðla að samvinnu og skiptum á bestu starfsvenjum, tækninum, aðferðum, reynslu og upplýsingum á alþjóðaframkvæmdi til að stuðla að sameiginlegum meðferðarmiðum og vinnuáætlunum og stuðla að því að hagnýta og bæta skilvirkni, þjálfagátt og skilvirkni alþjóðaáætlananna.</td><td>F</td><td>False</td><td>4.21875</td><td>Cost efficiency becomes a training-portal term.</td></tr>
+<tr><td>4</td><td>Aðgerðir ætla að hvetja til samstarf og skiptis að bestu starfsvenjum, tækjum, aðferðum, reynslu og upplýsingum í alþjóðasamræmi til að stuðla að sameiginlegum aðferðum og starfsaðferðum og auka virkni, kostnaðarvirkni og röð öllra framtaksáætlana.</td><td>U</td><td>False</td><td>4.53125</td><td>Most objectives retained; uncertain whether order of all initiatives conveys range of global initiatives.</td></tr>
+<tr><td>5</td><td>Aðgerðir ætla að stuðla að samvinnu og skiptum á bestu starfsvenjum, tækjum, aðferðum, reynslu og upplýsingum í alþjóðlegum skyni til að stuðla að sameiginlegum aðferðum og starfsaðferðum og auka og auka skilvirkni, kostnaðarhæfni og þáttum almennra stefnum á.</td><td>F</td><td>False</td><td>7.90625</td><td>Range of global initiatives becomes aspects of general policies.</td></tr>
+<tr><td>6</td><td>Aðgerðirinn mun hjálpa að samvinnu og skiptum á bestu starfsvenjum, tæki, aðferðum, reynslu og upplýsingum að alþjóðamænnum til að stuðla að sameiginlegum aðferðum og starfsaðferðum og auka virkni, kostnaðarþéttni og marki alþjóðalegra aðgerða.</td><td>F</td><td>False</td><td>8.0</td><td>Cost efficiency becomes cost density and initiative range becomes a goal/mark.</td></tr>
+<tr><td>7</td><td>Aðgerðum verður að vera að stuðla að samstarfi og skiptum á bestu stofnunum, aðferðum, reynslu og upplýsingum á alþjóða vettvangi í því skyni að stuðla að sameiginlegum aðferðum og vinnuaðferðum og auka virkni, kostnaðarhæfni og altæknivaldsmörkuðum aðgerðum.</td><td>F</td><td>False</td><td>6.8125</td><td>Best practices become institutions, tools omitted and global range corrupted.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Ráðstafana munu vera að stuðla að samvinnu og skipti á bestu viðmæli, tækjum, aðferðum, reynslu og upplýsingum á alþjóðavettvangi í því skyni að stuðla að sameiginlegum aðferðum og atvinnuferli og eyða og bæta skilvirki, kostnaðarþræðingu og umfang sameinaðra verkefna.</td><td>F</td><td>False</td><td>6.0</td><td>Best practices become interlocutor/advice wording and cost efficiency becomes an unrelated compound.</td></tr>
+<tr><td>1</td><td>Aðgerðirinn mun vera hún að stuðla að samvinnu og skipti um bestu viðhaldsanleifum, tækjum, aðferðum, reynslu og upplýsingum á vettvangi í því skyni að hrinda til meðhöndlunar samkeppnis og vinnumarkaðssjóða og auka og bæta skilvaranleika, kostnaðarhæfni og gildiskrári heimsráðstafana.</td><td>F</td><td>False</td><td>8.9375</td><td>Best practices/common approaches become maintenance remains and competition/labour funds.</td></tr>
+<tr><td>2</td><td>Aðgerðir leggast til að stuðla að samvinnu og skiptum um bestu starfsvenjur, tækjum, aðferðum, reynslu og upplýsingum að alþjóðalínu í því skyni að hvetja til sameiginlegra meðferðar og starfræksla og auka og stuðla að skilvirkni, kostnaðarhæfni og sviði alþjóðlegra framtaks.</td><td>U</td><td>False</td><td>4.34375</td><td>Shared approaches/work methods become treatment/operation wording; target-language adequacy uncertain.</td></tr>
+<tr><td>3</td><td>Aðgerðirinn munur aðstoða samvinnu og skipti milli besta starfsvenna, tækja, aðferða, reynslu og upplýsinga að alþjóðalitlum til að stuðla að sameiginlegum aðferðum og starfsskyldum og auka virkni, kostnaðarhæfni og gildissvið alþjóðlegra aðgerða.</td><td>F</td><td>False</td><td>9.5</td><td>Methods of work become work duties, changing the common-method objective.</td></tr>
+<tr><td>4</td><td>Aðgerðir ætla að hvetja til samstarfshætti og skiptis á besta starfsvenjum, tækjum, aðferðum, reynslu og upplýsingum hins staðar til að hrinda til samræmdra aðferða og starfrækslu og auka skilvirkni, kostnaðarhæfni og geðgengni almennra aðgerða.</td><td>F</td><td>False</td><td>4.15625</td><td>International level and global initiative range become elsewhere/unintelligible general-action terms.</td></tr>
+<tr><td>5</td><td>Aðgerðir ætla að stuðla að samvinnu og skiptum bestu starfsvenjum, tækjum, aðferðum, reynslu og upplýsingum á alþjóðaliðum til að efla sameiginlegar atriði og starfrækja og auka og bæta skilvirkni, kostnaðarheimta og svið alþjóðlegra framtaks.</td><td>F</td><td>False</td><td>3.765625</td><td>Cost efficiency becomes cost recovery and common work methods are not retained.</td></tr>
+<tr><td>6</td><td>Aðgerðirinn mun ráðlagt að stuðla að samvinnu og skiptum bestu starfsvenjur, tækjum, aðferðum, reynslu og upplýsingum í alþjóðaskyni í því skyni að stuðla að sameiginlegum atriðum og vinnu- atriðum og auka skilvirkni, kostnaðarhæfi og rammi alþjóðaaðgerða.</td><td>F</td><td>False</td><td>10.375</td><td>Common approaches and methods of work become common items/work items.</td></tr>
+<tr><td>7</td><td>Aðgerðum verður að vera að stuðla að samstarfi og skiptum á bestu starfsvenjum, fyrirkomulag, aðferðum, reynslu og upplýsingum á alþjóðavettvangi til að efla sameiginlega aðferðir og verklag og auka og auka skilvirki, kostnaðarheilkenni og röð almennra aðgerða.</td><td>F</td><td>False</td><td>7.21875</td><td>Cost efficiency becomes cost syndrome and global range becomes general-action order.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>28 · technical_short · p22official21:test:ema:1359</summary>
+
+<p><strong>源文 / Source</strong><br>Proteinuria has been observed with cabozantinib.</p>
+
+<p><strong>参考 / Reference</strong><br>Prótein í þvagi hefur komið fram við notkun cabozantinibs.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Proteínmyndun hefur komið fram við notkun cabozantinibs.</td><td>F</td><td>False</td><td>4.6875</td><td>Proteinuria becomes protein production, losing the urinary adverse event.</td></tr>
+<tr><td>after</td><td>Proteínmyndun hefur komið fram við notkun cabozantinibs.</td><td>F</td><td>False</td><td>4.6875</td><td>Proteinuria becomes protein production, losing the urinary adverse event.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>29 · technical_medium · p22official21:test:ema:151</summary>
+
+<p><strong>源文 / Source</strong><br>Correspondingly, the incidences of nocturnal hypoglycaemia were 32% in the insulin glargine / lispro group versus 52% in the NPH / regular group.</p>
+
+<p><strong>参考 / Reference</strong><br>Samsvarandi tíðni blóðsykursfalls að nóttu var 32% í glargíninsúlín/líspró hópnum á móti 52% í NPH/ venjulega hópnum.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Samsvarandi var tíðni blóðsykursfalls að nóttu 32% hjá insúlín glargín / lispró hópnum á móti 52% hjá NPH / reglulegu hópnum.</td><td>P</td><td>False</td><td>6.0625</td><td>Faithful nocturnal hypoglycaemia rate comparison with 32 and 52 percent.</td></tr>
+<tr><td>after</td><td>Samsvarandi var tíðni blóðsykursfalla að nóttu 32% hjá insúlínglargríni/lispró hópnum samanborið við 52% hjá NPH/venjulegu hópnum.</td><td>P</td><td>False</td><td>2.171875</td><td>Nocturnal hypoglycaemia, both insulin arms and 32 versus 52 percent retained; minor drug spelling.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Samsvarandi var tíðni blóðsykursfalls að nóttu 32% hjá insúlínglargín/lispró hópnum, á móti 52% hjá NPH / venjulegu hópnum.</td><td>P</td><td>False</td><td>2.078125</td><td>All critical event, timing, treatment and percentage details retained.</td></tr>
+<tr><td>1</td><td>Á sama hátt var tíðni blóðsykursfalls fyrir kvöld 32% hjá insúlín glargín / lispró hópnum á móti 52% hjá NPH / venjulegu hópnum.</td><td>F</td><td>False</td><td>5.625</td><td>Nocturnal events become events before evening.</td></tr>
+<tr><td>2</td><td>Eins og áður var tíðni blóðsykursfalls á nóttu 32% hjá insúlínglargín / lispró hópnum á móti 52% hjá NPH / venjulegu (regular) hópnum.</td><td>P</td><td>False</td><td>4.8125</td><td>Nighttime event, rates and glargine/lispro versus NPH/regular retained.</td></tr>
+<tr><td>3</td><td>Samsvarandi voru tíðni dwarfglúkúrna til baka 32% í insúlín glargín / lispró hópnum á móti 52% í NPH / reglulegu insúlín hópnum.</td><td>F</td><td>False</td><td>18.125</td><td>Nocturnal hypoglycaemia becomes an unrelated dwarf-glucose/back expression.</td></tr>
+<tr><td>4</td><td>Samsvarandi var tíðni þýðis blóðsykursfalla að nóttu 32% hjá insúlín glargín / lispró hópnum og 52% hjá NPH / hægæta hópnum.</td><td>F</td><td>False</td><td>11.0</td><td>Regular insulin comparator becomes a slow-eating term.</td></tr>
+<tr><td>5</td><td>Í samræmi við það voru tíðni blóðsykursfalls á nóttum 32% hjá insúlínglargín/lispró hópnum á móti 52% í NPH/venjulegum hópnum.</td><td>P</td><td>False</td><td>2.8125</td><td>Both percentages, nocturnal event and treatment comparison retained.</td></tr>
+<tr><td>6</td><td>Samsvarandi var tíðni blóðsykursfalls að nóttu 32% hjá insúlín glargín / lispró hópnum á móti 52% hjá NPH / reglulegu hópnum.</td><td>P</td><td>False</td><td>6.0625</td><td>Faithful nocturnal hypoglycaemia rate comparison with 32 and 52 percent.</td></tr>
+<tr><td>7</td><td>Samsvarandi var tíðni blóðsykursfalla á nóttu 32% hjá insúlín glargín/lispró hópnum á móti 52% hjá NPH-/reglulegu hópnum.</td><td>P</td><td>False</td><td>6.09375</td><td>Nocturnal event and complete rate/arm comparison retained.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Samsvarandi var tíðni blóðsykursfalls að nóttu 32% hjá insúlínglargín/lispró hópnum, samanborið við 52% hjá NPH / regluklóp hópnum.</td><td>U</td><td>False</td><td>7.375</td><td>Comparator drug regular is corrupted into regluklop; cannot certify its identification.</td></tr>
+<tr><td>1</td><td>Á sama hátt var tíðni blóðsykursfalls fyrir svefn 32% í insúlín glargíni / lispró hópnum samanborið við 52% í NPH / reglulegum hópnum.</td><td>F</td><td>False</td><td>6.59375</td><td>Nocturnal timing becomes before sleep, a different time window.</td></tr>
+<tr><td>2</td><td>Eins og áður var tíðni blóðsykursfalls á nótt 32% hjá insúlín glargín / lispró hópnum á móti 52% hjá NPH / venjulegu hópnum.</td><td>P</td><td>False</td><td>3.25</td><td>Nighttime hypoglycaemia and correct percentages/arms retained; minor phrasing.</td></tr>
+<tr><td>3</td><td>Samsvarandi var tíðni blóðsykursfalls að nóttum 32% hjá insúlínglargíns/lispró hjálgildingar samanborið við 52% hjá NPH/venjulegum hjálgildingum.</td><td>U</td><td>False</td><td>9.625</td><td>Numbers/drugs/night retained, but hjalgildingar is an uncertain replacement for study groups.</td></tr>
+<tr><td>4</td><td>Samsvarandi var tíðni blóðsykursfalla til nóttum 32% hjá insúlín glargín / lispróni hópnum samanborið við 52% hjá NPH / reglulegu hópnum.</td><td>P</td><td>False</td><td>8.1875</td><td>Nighttime hypoglycaemia rates and both named treatment arms retained; minor inflection.</td></tr>
+<tr><td>5</td><td>Samsvarandi var tíðni blóðsykursfalla að nóttu 32% hjá insúlín glargíni/lispró hópnum samanborið við 52% í NPH / venjulegum hópnum.</td><td>P</td><td>False</td><td>3.515625</td><td>Nocturnal hypoglycaemia with 32 versus 52 percent in correct treatment arms retained.</td></tr>
+<tr><td>6</td><td>Samsvarandi var tíðni blóðsykursfalla á nóttvöldum 32% hjá insúlínglargríni / lispró hlutaaftaga hópnum samanborið við 52% hjá NPH / reglulegu hlutaaftaga hópnum.</td><td>U</td><td>False</td><td>9.75</td><td>Numbers/drugs retained; nonstandard night and group compounds make timing/arm interpretation uncertain.</td></tr>
+<tr><td>7</td><td>Samsvarandi var tíðni blóðsykursfalla neytis 32% hjá insúlínglargín / lispró hópnum samanborið við 52% hjá NPH / reglulegu hópnum.</td><td>F</td><td>False</td><td>7.625</td><td>Nocturnal timing is replaced by consumption wording.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>30 · technical_long · p22official21:test:eso:1000</summary>
+
+<p><strong>源文 / Source</strong><br>These galaxies are known for a much higher rate of star formation compared to sedate Milky Way-like galaxies, making these structures ideal to study galaxy growth and the interplay between gas, dust, stars, and the black holes at the centres of galaxies.</p>
+
+<p><strong>参考 / Reference</strong><br>Þessar vetrarbrautir eru þekktar fyrir miklu örari stjörnumyndun samanborið við vetrarbrautir á borð við okkar eigin, sem gerir þær kjörnar til rannsókna á vexti vetrarbrauta og víxlverkunar gass, ryks, stjarna og svarthola í miðju þeirra.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Þessi vetrarbrautir eru þekktar fyrir miklu hærri stjörnumyndun samanborið við vetrarbrautir sem líka eru í hvíta vetrarbrautshlutanum, sem gerir þessi myndir ákveðin fyrir að rannsaka vetrarbrautafjölgun og millifreið milli gasa, ryks, stjarna og svarthorns í miðju vetrarbrauta.</td><td>F</td><td>False</td><td>15.875</td><td>Milky-Way-like comparator becomes galaxies in a white galaxy section; black holes corrupted.</td></tr>
+<tr><td>after</td><td>Þessi vetrarbrautir eru þekktar fyrir miklu hærri stjörnumyndunarhraða samanborið við hæfileika vetrarbrauta eins og Vetrarbrautin, sem gerir þessar vörur háttar til að rannsaka vetrarbrautafjölgun og milliverkun á gasi, ryki, stjörnum og svartholum í miðju vetrarbrauta.</td><td>F</td><td>False</td><td>9.75</td><td>Sedate comparator becomes galaxy abilities and galaxy growth becomes galaxy multiplication.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Þessi vetrarbrautir er þekkt fyrir miklu hærri stjörnumyndun samanborið við óóslandi vetrarbrautir í kringum vetrarbrautinu og þessi myndir eru í fullum sambandi við að rannsaka vetrarbrautafjölgun og milliverkanir á vökva, ryki, stjörnum og svartholum í miðju vetrarbrautar.</td><td>F</td><td>False</td><td>10.0625</td><td>Milky-Way-like comparison becomes galaxies around a galaxy; gas becomes fluid.</td></tr>
+<tr><td>1</td><td>Þessi vetrarbrautir eru þekktar fyrir miklu hærri stjörnumyndun samanborið við vetrarbrautir sem líka hafa nýmyndun í þeirri hring, þannig að þessar myndunum getur verið fyrir hæfilegan rannsókn á vetrarbrauta og milliverkun á gas, ryki, stjörnum og svarthol um miðstaðar vetrarbrautta.</td><td>F</td><td>False</td><td>15.5</td><td>Sedate Milky-Way-like comparator becomes galaxies with new formation in a ring.</td></tr>
+<tr><td>2</td><td>Þessar vetrarbrautir eru þekktar fyrir miklu hærra stjörnumyndun samanborið við þættilega vetrarbrautir eins og Vetrarbrautin en þar sem mikið hafnar að myndast stjörnur, sem gera þessa myndar háðar til þess að rannsaka þróun vetrarbrauta og mikilvæga milliverkun þeirra á gasi, ryki, stjörnum og djöfullum í miðju vetrarbrauta.</td><td>F</td><td>False</td><td>7.8125</td><td>Central black holes become devils, changing a key scientific object.</td></tr>
+<tr><td>3</td><td>Þessi vetrarbrautir eru þekktar vegna hærri stjörnumyndunarhækkunar samanborið við sikra vetrarbrautir í röð með það merki að þeir eru fyrirhugaðir til að rannsaka þróun vetrarbrauta og milliverkun á vökva, ryk, stjörnum og myndun svarthúsa í hjartum vetrarbrauta.</td><td>F</td><td>False</td><td>8.75</td><td>Milky-Way-like comparator lost; gas becomes fluid and black holes become black houses.</td></tr>
+<tr><td>4</td><td>Þessi vetrarbrautir eru þekktar fyrir mun hærri mgni æxlunargerðar samanborið við hvíta vetrarbrautarliða, sem gerir þau myndun telja á þannig hentug fyrir að rannsaka vetrarbrautafjölgun og milliverkun vefja, ryks, stjarna og svarthorns í hjúkruni.</td><td>F</td><td>False</td><td>16.625</td><td>Star formation becomes reproduction-type wording, gas becomes tissue and galactic centres become nursing.</td></tr>
+<tr><td>5</td><td>Þessar vetrarbrautir hafa víst í um miklu hærri stjörnumyndun samanborið við sólarbrautir sem liggja á mylgrindum, sem gerir þessar byggingar háttar til að rannsaka myndun og millifreið á vetrarbrautum.</td><td>F</td><td>False</td><td>14.8125</td><td>Gas, dust, stars and central black holes are omitted; comparator becomes solar orbits.</td></tr>
+<tr><td>6</td><td>Þessir vetrarbrautir eru þekktir fyrir háttar mikið hærri munnformi stjörnumyndunar samanborið við sólkenna sem líka eru í mænu og svipuð erðu þannig fyrir hægt að rannsaka þróun og milliverkanir milli gasa, ryks, stjarna og svarthorns í miðju vetrarbrauta.</td><td>F</td><td>False</td><td>23.125</td><td>Milky-Way-like comparator is replaced by sun/spinal wording and black holes corrupted.</td></tr>
+<tr><td>7</td><td>Þessar vetrarbrautir eru þekktir vegna frekari stjörnumyndunar á borð við hæfileg milækkaðan Vetrarbraut og því eru þær tilbúin til rannsókna á vöxti vetrarbrautar og millifreiðar milli gasa, ryks, stjarna og svarthorns í miðju vetrarbrautar.</td><td>F</td><td>False</td><td>12.875</td><td>Comparison is unintelligible and black holes become black horns.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Þessi vetrarbrautir er þekktar fyrir mikilli hærra stjörnumyndunarhraða samanborið við slöngu vetrarbraut og nálgun þeirra er mikill þar sem þeir eru fyrirhugstæðir til að rannsaka vetrarbrautmyndun og milliverkanir milli gasa, ryks, stjarna og svarthópa í miðju vetrarbrauta.</td><td>F</td><td>False</td><td>9.8125</td><td>Comparator becomes snake galaxy and black holes become black groups.</td></tr>
+<tr><td>1</td><td>Þessi vetrarbrautir eru þekktar fyrir miklu hærri migt stjörnumyndunarhraða samanborið við gyðgjöf á svöruhliða víxlanu, sem gerir þessi myndir hátt til að rannsaka vetrarbrautamyndun og milliverkun á gass, ryki, stjörnum og svarthólum í miðju vetrarbrauta.</td><td>F</td><td>False</td><td>9.3125</td><td>Milky Way comparator becomes an unintelligible ritual/response phrase.</td></tr>
+<tr><td>2</td><td>Þessar vetrarbrautir eru þekktar fyrir miklu hærra stjörnumyndunarhraða samanborið við vetrarbrautir sem líka taka til, sem gerir þessar tilhléi til að rannsaka vetrarbrautarþroska og milliverkun varanleika, ryks, stjarna og svarthorns í miðju vetrarbrautanna.</td><td>F</td><td>False</td><td>14.1875</td><td>Gas becomes permanence and black holes become black horns; Milky Way comparison lost.</td></tr>
+<tr><td>3</td><td>Þessi vetrarbrautir eru þekktar vegna hærri stjörnumyndunarhækkunar samanborið við siktar vetrarbrautir í röð með þekktu Mjólkurbrautina og þekkja þá besta um að rannsaka vetrarbraut vaxtarhækkun og millifreið milli gasa, ryks, starna og svarthorns í miðju vetrarbrauta.</td><td>F</td><td>False</td><td>18.25</td><td>Black holes become black horns and interplay terminology is corrupted.</td></tr>
+<tr><td>4</td><td>Þessi vetrarbraut eru þekkt fyrir mun hærri stjörnumyndunarhraða samanborið við hvíta vetrarbrautarliðar, sem gerir þessar innsiglingar fullnægjandi fyrir rannsóknir á vörn vetrarbrautanna og milliverkun á gasi, ryki, stjörnum og svartholum í miðju vetrarbrauta.</td><td>F</td><td>False</td><td>5.59375</td><td>Milky Way comparator becomes white galaxy components and growth becomes defence.</td></tr>
+<tr><td>5</td><td>Þessar vetrarbrautir hafa víst í um miklu hærri stjörnumyndun samanborið við sólarbrautir sem eru sýnaðar og hafa sýnt stíflaða myndun, en þessi röð eru ískertar til að rannsaka vörumyndun og milligreiningu á gasi, ryki, stjörnum og svartholum í miðju vetrarbrauta.</td><td>F</td><td>False</td><td>16.375</td><td>Milky-Way-like galaxies become solar orbits and galaxy growth becomes product formation.</td></tr>
+<tr><td>6</td><td>Þessar vetrarbrautir eru þekktar fyrir háara heilkenni stjörnumyndunar samanborið við sveigjanlega vetrarbrautir eins og mænuverða og gilda þessi ströngið fyrir því að rannsaka myndun og milliverkun vetrarbrautanna og gasa, ryks, stjarna og svæða.</td><td>F</td><td>False</td><td>13.9375</td><td>Milky Way comparison is corrupted and central black holes become areas.</td></tr>
+<tr><td>7</td><td>Þessar vetrarbrautir eru þekktir vegna frekar mjaðarstafa í samanburði við aðgengilega vetrarbrautir í sameiginlegu hugsanlegu hugsanlegu samhliða milliverkunum milli gasa, ryks, stjarna og svartholunnar í miðju vetrarbrautarnar.</td><td>F</td><td>False</td><td>16.875</td><td>Star formation and galaxy-growth research purpose are lost in unrelated phrases.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>31 · technical_short · p22official21:test:ema:973</summary>
+
+<p><strong>源文 / Source</strong><br>Most side effects are mild to moderate.</p>
+
+<p><strong>参考 / Reference</strong><br>Flestar aukaverkanirnar eru vægar eða miðlungs alvarlegar.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Flestar aukaverkanir eru vægar til miðlungs mikil.</td><td>P</td><td>False</td><td>2.078125</td><td>Mild to moderate intensity of most effects retained.</td></tr>
+<tr><td>after</td><td>Flestar aukaverkanir eru vægar til miðlungs mikil.</td><td>P</td><td>False</td><td>2.078125</td><td>Mild to moderate intensity of most effects retained.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Flestar aukaverkanir eru vægar til miðlungs mikil.</td><td>P</td><td>False</td><td>2.078125</td><td>Mild to moderate intensity of most effects retained.</td></tr>
+<tr><td>1</td><td>Flestar aukaverkanir eru vægar til miðlungsmikil.</td><td>P</td><td>False</td><td>1.59375</td><td>Most effects mild to moderate intensity; faithful meaning.</td></tr>
+<tr><td>2</td><td>Flestar aukaverkanir eru vægar til í meðallagi mikið.</td><td>P</td><td>False</td><td>1.7890625</td><td>Most adverse effects mild to moderate intensity; minor agreement.</td></tr>
+<tr><td>3</td><td>Flestar aukaverkanir eru vægar til miðlungs mikil.</td><td>P</td><td>False</td><td>2.078125</td><td>Mild to moderate intensity of most effects retained.</td></tr>
+<tr><td>4</td><td>Flest aukaverkanir eru vægar til miðlungs mikil.</td><td>P</td><td>False</td><td>2.40625</td><td>Most adverse effects mild to moderate intensity; minor agreement.</td></tr>
+<tr><td>5</td><td>Flestar aukaverkanir eru vægar til miðlungs miklar.</td><td>P</td><td>False</td><td>0.0</td><td>Most effects mild to moderate retained; minor inflection.</td></tr>
+<tr><td>6</td><td>Flest aukaverkanir eru vægar til í meðallagi mikil.</td><td>P</td><td>False</td><td>0.8125</td><td>Most adverse effects mild to moderate; agreement errors only.</td></tr>
+<tr><td>7</td><td>Flesta aukaverkanir eru vægar til meðal verulegar.</td><td>U</td><td>False</td><td>0.162109375</td><td>Uncertain whether medal verulegar denotes moderate rather than a different severity.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Flestar aukaverkanir eru vægar til miðlungs mikil.</td><td>P</td><td>False</td><td>2.078125</td><td>Mild to moderate intensity of most effects retained.</td></tr>
+<tr><td>1</td><td>Flestar aukaverkanir eru vægar til miðlungsmikil.</td><td>P</td><td>False</td><td>1.59375</td><td>Most effects mild to moderate intensity; faithful meaning.</td></tr>
+<tr><td>2</td><td>Flestar aukaverkanir eru vægar til í meðallagi alvarlegar.</td><td>P</td><td>False</td><td>0.0</td><td>Most effects mild to moderately serious retained.</td></tr>
+<tr><td>3</td><td>Flestar aukaverkanir eru vægar til miðlungskábir.</td><td>U</td><td>False</td><td>1.2421875</td><td>Mild retained, but midlungskabir is an uncertain moderate-severity term.</td></tr>
+<tr><td>4</td><td>Flest aukaverkanir eru vægar til miðlungs mikil.</td><td>P</td><td>False</td><td>2.40625</td><td>Most adverse effects mild to moderate intensity; minor agreement.</td></tr>
+<tr><td>5</td><td>Flestar aukaverkanir eru vægar til miðlungs mikil.</td><td>P</td><td>False</td><td>2.078125</td><td>Mild to moderate intensity of most effects retained.</td></tr>
+<tr><td>6</td><td>Flest aukaverkanir eru vægar til í meðallagi alvarlegar.</td><td>P</td><td>False</td><td>0.0</td><td>Mild to moderately serious in most effects retained.</td></tr>
+<tr><td>7</td><td>Flesta aukaverkanir eru vægar til miðlungsalvarlegar.</td><td>P</td><td>False</td><td>0.0</td><td>Most adverse effects mild to moderately serious; minor agreement.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>32 · general · p22official21:test:opensubtitles:1951</summary>
+
+<p><strong>源文 / Source</strong><br>How do you feel about that?</p>
+
+<p><strong>参考 / Reference</strong><br>Hvað finnst þér um það?</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Hvernig líður þér um þetta?</td><td>P</td><td>False</td><td>0.8203125</td><td>How you feel about this retained; acceptable conversational rendering.</td></tr>
+<tr><td>after</td><td>Hvernig líður þér um þetta?</td><td>P</td><td>False</td><td>0.8203125</td><td>How you feel about this retained; acceptable conversational rendering.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>33 · technical_long · p22official21:test:eea:1295</summary>
+
+<p><strong>源文 / Source</strong><br>The Competent Bodies are recommended to take into account the implementation of recognised environmental management schemes, such as EMAS or ISO 14001, when assessing applications and monitoring compliance with the criteria (note: it is not required to implement such management schemes).</p>
+
+<p><strong>参考 / Reference</strong><br>Mælt er með því að þar til bærar stofnanir taki tillit til þess, við mat á umsóknum og eftirlit með því að viðmiðanir séu uppfylltar, hvort viðurkenndum umhverfisstjórnunarkerfum, svo sem EMAS eða ISO 14001, er beitt (aths.: ekki er gerð krafa um að slíkum stjórnunarkerfum sé beitt).</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Nytjaleyfishafi eru ráðlagðar að taka tillit til framkvæmdar viðurkenndra umhverfisstjórnunaráætlana, svo sem EMAS-áætlunarinnar eða ISO 14001, þegar þeir meta umsóknir og fylgjast með að viðmiðanirnar séu uppfylltar (tilgreining: ekki er þörf á framkvæmd slíkra stjórnunaráætlana).</td><td>F</td><td>False</td><td>3.140625</td><td>Competent bodies become licence holders despite otherwise retained management-scheme conditions.</td></tr>
+<tr><td>after</td><td>Nytjaleyfishafi eru ráðlagðar að taka tillit til framkvæmdar viðurkenndra umhverfisstjórnunaráætlananna, svo sem EMAS-áætlunarinnar eða ISO 14001, þegar þeir meta umsóknir og eftirlit með samræmi við viðmiðanirnar (tilgreining: ekki er krafist að framkvæma slíkar stjórnunaraætlana).</td><td>F</td><td>False</td><td>3.59375</td><td>Competent assessing bodies become licence holders, changing the responsible actor.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>34 · technical_medium · p22official21:test:eea:1388</summary>
+
+<p><strong>源文 / Source</strong><br>Port security plans shall be approved by the Member State concerned before implementation.</p>
+
+<p><strong>参考 / Reference</strong><br>Hlutaðeigandi aðildarríki skal samþykkja verndaráætlanir hafna áður en þeim er hrint í framkvæmd.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Portverndaráætlanir skulu samþykktar af hlutaðeigandi aðildarríki áður en þær eru framkvæmdar.</td><td>P</td><td>False</td><td>0.60546875</td><td>Port security plans, concerned Member State approval and prior timing retained.</td></tr>
+<tr><td>after</td><td>Portvæntaráðstafanir skulu samþykktar af hlutaðeigandi aðildarríki áður en þær eru framkvæmdar.</td><td>F</td><td>False</td><td>1.4375</td><td>Security plans become port-expectation measures, losing protection/planning meaning.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Lagt skal undirn afvís umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer umfer um</td><td>F</td><td>True</td><td>19.25</td><td>Repeated umfer loop fails to translate the approval rule.</td></tr>
+<tr><td>1</td><td>Lögsanstraðla um öryggi skipa skal samþykkt hinsráðhópsildru aðildarríkis fyrir framkvæmd.</td><td>F</td><td>False</td><td>8.8125</td><td>Port security becomes ship security and the approving authority is corrupted.</td></tr>
+<tr><td>2</td><td>Aðildarríkið með árum yfir það skal samþykkja port-öryggisáætlunina áður en hún er framkvæmd.</td><td>U</td><td>False</td><td>10.125</td><td>Approval, state and port plan retained, but extra years-over-it phrase makes concerned-state relation uncertain.</td></tr>
+<tr><td>3</td><td>Portvörnaráætlanir skulu samþykktar í viðkomandi aðildarríki áður en þær verða framkvæmdar.</td><td>F</td><td>False</td><td>0.609375</td><td>Approval by the Member State becomes approval in the Member State, losing required approving authority.</td></tr>
+<tr><td>4</td><td>Áætlanir um öryggi hafnar skulu samþykktar af viðkomandi aðildarríki áður en þær eru framkvæmdar.</td><td>P</td><td>False</td><td>0.984375</td><td>Faithful port safety plans approved by concerned Member State before execution.</td></tr>
+<tr><td>5</td><td>Áætlanir um öryggi viðskiptastöðva skulu samþykktar af hlutaðeigandi aðildarríki áður en um leiða.</td><td>F</td><td>False</td><td>4.15625</td><td>Ports become commercial stations and prior implementation relation is corrupted.</td></tr>
+<tr><td>6</td><td>Áætlanir um fyrirvara í hafnar skulu samþykktar af hlutaðeigandi aðildarríki áður en þær eru framkvæmdar.</td><td>F</td><td>False</td><td>5.65625</td><td>Port security becomes reservations in ports.</td></tr>
+<tr><td>7</td><td>Portverndarerneðd skal samþykkt aðildarríkinu fyrir framkvæmd.</td><td>F</td><td>False</td><td>9.375</td><td>Port protection plans become an unintelligible committee-like noun.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Portvörnaráætlan skulu samþykkt fyrir framkvæmd af viðkomandi aðildarríki.</td><td>P</td><td>False</td><td>2.84375</td><td>Port protection plans approved by concerned Member State before implementation retained.</td></tr>
+<tr><td>1</td><td>Lögreglur um vörn skál vera samþykkt áviðstæðu aðildarríki áður en þær eru framkvæmdar.</td><td>F</td><td>False</td><td>12.6875</td><td>Port security plans become police/protection rules without port scope.</td></tr>
+<tr><td>2</td><td>Lögregldar á port-öryggisáætlanum skulu komið þar til bæði samræmdum og samþykktu af viðkomandi aðildarríki áður en þær veitra framkvæmd.</td><td>F</td><td>False</td><td>9.8125</td><td>Adds police/coordination requirements and corrupts plan/approval relationship.</td></tr>
+<tr><td>3</td><td>Portvörunaráætlunum skal samþykkt íhlutaðildarríki áður en þær eru framkvæmdar.</td><td>U</td><td>False</td><td>7.65625</td><td>Uncertain whether portvorun denotes protection or a changed warning-plan object.</td></tr>
+<tr><td>4</td><td>Áætla skal samþykki hlutaðeigandi aðildarríkis fyrir framkvæmd áætlana um öryggi farna.</td><td>F</td><td>False</td><td>9.6875</td><td>Port security becomes security of travellers/gone persons, changing the object.</td></tr>
+<tr><td>5</td><td>Áætlaðar öryggisáætlanir að flugumferðum skulu samþykktar áherslaða aðildarríkis fyrir framkvæmd.</td><td>F</td><td>False</td><td>7.1875</td><td>Port security plans become air-traffic security plans.</td></tr>
+<tr><td>6</td><td>Áætlan um öryggi vörslu á skrá er samþykktum af hlutaðeigandi aðildarríki áður en henni verður framkvæmd.</td><td>F</td><td>False</td><td>12.4375</td><td>Port scope becomes custody/on-register security, losing the protected location.</td></tr>
+<tr><td>7</td><td>Portverndarernefnd skal samþykkt af viðkomandi aðildarríki áður en aðgerðir eru beittar.</td><td>F</td><td>False</td><td>12.5</td><td>Plans become a port-protection committee-like term.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>35 · technical_medium · p22official21:test:eso:162</summary>
+
+<p><strong>源文 / Source</strong><br>It is bright and recognisable enough to be seen even in observations of very faint and faraway galaxies.</p>
+
+<p><strong>参考 / Reference</strong><br>Hún er björt og auðþekkjanleg, jafnvel í ljósi mjög daufra og fjarlægra vetrarbrauta.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Það er glítur og þekkt nokkuð nægilega til að sjást jafnvel í mælingum á mjög daufum og fjarlægum vetrarbrautum.</td><td>U</td><td>False</td><td>10.875</td><td>Distant faint galaxies and visibility retained; uncertain whether glitur adequately conveys bright.</td></tr>
+<tr><td>after</td><td>Það er glítur og þekkt nokkuð nægilega til að sjást jafnvel í mælingum á mjög daufum og fjarlægum vetrarbrautum.</td><td>U</td><td>False</td><td>10.875</td><td>Distant faint galaxies and visibility retained; uncertain whether glitur adequately conveys bright.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>36 · technical_short · p22official21:test:eea:2003</summary>
+
+<p><strong>源文 / Source</strong><br>After paragraph 136, a heading and paragraph 136A are inserted.</p>
+
+<p><strong>参考 / Reference</strong><br>Nýrri fyrirsögn og lið 136A er bætt við á eftir 136. lið.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Eftir 136. lið bætast við undirgrein og 136A. lið.</td><td>F</td><td>False</td><td>9.0</td><td>Heading becomes subparagraph despite correct 136/136A placement.</td></tr>
+<tr><td>after</td><td>Eftir 136. lið bætast við undirgrein og 136A-lið.</td><td>F</td><td>False</td><td>8.25</td><td>Inserted heading becomes a subparagraph, changing the legal amendment object.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>37 · technical_medium · p22official21:test:eea:931</summary>
+
+<p><strong>源文 / Source</strong><br>Following rinsing with PBS-Tween-20 buffer, biotinylated antibodies of a specificity corresponding to that of the coating antibodies are added and allowed to react for 60 minutes at 20 °C.</p>
+
+<p><strong>参考 / Reference</strong><br>Eftir skolun með PBS-Tween-20 jafnalausn er bíótínuðum mótefnum, með sérhæfni sem svarar til sérhæfni húðunarefnanna, bætt við og leyft að bindast í 60 mínútur við 20 °C.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Eftir að PBS-Tween-20-búfaðlið er notuð er bítóntengd mótefni sem eru sértækileg í samræmi við mótefnið sem eru notuð til að húfa eru bætt við og laus til að viðbrögðin verði 60 mínútur við 20°C.</td><td>F</td><td>False</td><td>10.875</td><td>Required rinsing step becomes merely buffer use; antibody-coating description also corrupted.</td></tr>
+<tr><td>after</td><td>Eftir að PBS-Tween-20-búfaðli hefur verið notað til skilunar, bætast biótínleit mótefni sem eru sértækileg í samræmi við mótefni sem eru í húðina og laus fyrir 60 mínútur við 20°C.</td><td>F</td><td>False</td><td>13.1875</td><td>Rinsing becomes separation and biotinylated/coating antibody properties are corrupted.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>38 · technical_medium · p22official21:test:eea:198</summary>
+
+<p><strong>源文 / Source</strong><br>The results of the audits and reviews should be brought to the attention of all personnel having responsibility in the area involved.</p>
+
+<p><strong>参考 / Reference</strong><br>Niðurstöður endurskoðana og endurmats skulu kynntar þeim starfsmönnum sem bera ábyrgð á viðkomandi svæði.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Niðurstöður endurskoðana og endurskoðunar eiga að láta allan starfsmenn, sem hafa ábyrgð á því sviði, vita.</td><td>P</td><td>False</td><td>4.8125</td><td>All personnel responsible for that area should be informed of the results.</td></tr>
+<tr><td>after</td><td>Niðurstöður endurskoðana og endurskoðunar skal láta öll starfsmenn, sem hafa ábyrgð á þeim sviði sem varðar, vita.</td><td>P</td><td>False</td><td>3.53125</td><td>Notify all responsible staff of results retained.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Niðurstöður endurskoðana og endurskoðunar sem ekki eru endurskoðana skal láta allir starfsmenn, sem bera ábyrgð á því sviðinu, vita um.</td><td>F</td><td>False</td><td>6.96875</td><td>Adds reviews that are not audits, changing the result category/scope.</td></tr>
+<tr><td>1</td><td>Niðurstöður endurskoðana og endurskoðunarfræðinga skulu láttar allri starfsmenn, sem eru á ábyrgð á því sviði, vita.</td><td>F</td><td>False</td><td>3.984375</td><td>Reviews become review specialists/auditors, changing source of results.</td></tr>
+<tr><td>2</td><td>Niðurstöður endurskoðana og endurskoðana skulu látt hafa í sér allir starfsmenn sem hafa ábyrgð á því sviði.</td><td>U</td><td>False</td><td>10.5625</td><td>Results and responsible staff present, but have-in-themselves construction leaves notification direction uncertain.</td></tr>
+<tr><td>3</td><td>Niðurstöður úr endurskoðunum og endurskoðunum skulu komið fram fyrir alla starfsmenn sem stofna á ákvæði þess sem á viðkomandi sviði.</td><td>F</td><td>False</td><td>14.6875</td><td>Responsible staff become staff establishing provisions; accountability condition lost.</td></tr>
+<tr><td>4</td><td>Gögn úr endurskoðunum og endurskoðunum skulu látt fyrir allt starfsfólk sem á ábyrgð á þeirri sviði sem varðar.</td><td>P</td><td>False</td><td>9.0625</td><td>Audit/review data placed before all responsible staff; results meaning retained.</td></tr>
+<tr><td>5</td><td>Nákvæm fyrirvara skal vera eftir blokka og endurskoðunum á allan starfsmenn sem bera ábyrgð á því svæði.</td><td>F</td><td>False</td><td>16.625</td><td>Results become exact reservations following blocks, losing the notification content.</td></tr>
+<tr><td>6</td><td>Niðurstöður endurskoðana og endurskoðunar skal láta öll starfsmenn, sem hafa ábyrgð á þeirri sviði, vita.</td><td>P</td><td>False</td><td>2.828125</td><td>All responsible staff informed of review/audit results; minor inflection.</td></tr>
+<tr><td>7</td><td>Niðurstöður endurskoðana og endurskoðunar skal láta öllum starfsmönnum, sem hafa ábyrgð á þeim svæði sem er um sig, vita.</td><td>P</td><td>False</td><td>3.1875</td><td>Inform all personnel responsible for involved area of results retained.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Niðurstöður endurskoðana og endurskoðunar skal láta öll starfsmenn sem eru á ábyrgð á því svæði tilkynna um tilrála.</td><td>F</td><td>False</td><td>10.5</td><td>Staff become subjects notifying advice rather than recipients of results.</td></tr>
+<tr><td>1</td><td>Niðurstöður endurskoðana og endurskoðunar skal láta tilkynna alla starfsfólk sem á ábyrgð á því sviði.</td><td>P</td><td>False</td><td>4.21875</td><td>Results notified to all responsible personnel retained.</td></tr>
+<tr><td>2</td><td>Niðurstöður endurskoðana og endurskoðana skulu látt hafa áhersla allra starfsmanna sem bera ábyrgð á þeim sviði sem varðar.</td><td>U</td><td>False</td><td>8.9375</td><td>Responsible staff and results present, but have emphasis of all staff is uncertain as a notification instruction.</td></tr>
+<tr><td>3</td><td>Niðurstöður endurskoðana og endurskoðana skulu kynnt öllum starfsmönnum sem ábyrgð er á þeim sviði.</td><td>P</td><td>False</td><td>5.875</td><td>Review/audit results brought to all staff responsible for the area; minor grammar.</td></tr>
+<tr><td>4</td><td>Niðurstöður endurskoðana og endurskoðana skal láta alla starfsmenn, sem bera ábyrgð á þeirri svæði, íhuga.</td><td>P</td><td>False</td><td>5.34375</td><td>Put results before all responsible staff to consider; attention requirement retained.</td></tr>
+<tr><td>5</td><td>Niðurstöður endurskoðana og endurskoðunar skal láta öll starfsmenn, sem skulu baura á umræddu sviði, sýna áhersla á.</td><td>F</td><td>False</td><td>9.9375</td><td>Personnel having responsibility is replaced by an unintelligible action phrase.</td></tr>
+<tr><td>6</td><td>Niðurstöður endurskoðana og endurskoðunar skal láta öll starfsmenn sem vega ábyrgð á þeirri sviði íhugast.</td><td>P</td><td>False</td><td>7.21875</td><td>Results put before all responsible personnel for consideration; key notification meaning retained.</td></tr>
+<tr><td>7</td><td>Niðurstöður endurskoðana og endurskoðunar skal láta öllum starfsmönnum, sem hafa ábyrgð á þeim svæði sem er tilgreitt, íhuga.</td><td>P</td><td>False</td><td>4.0</td><td>Results brought before responsible staff for consideration retained.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>39 · technical_medium · p22official21:test:eso:546</summary>
+
+<p><strong>源文 / Source</strong><br>The strikingly different colours of NGC 2014 and NGC 200 are the result of both the different chemical makeup of the surrounding gas and the temperatures of the stars that are causing the clouds to glow.</p>
+
+<p><strong>参考 / Reference</strong><br>Litamuninn á NGC 2014 og NGC 200 má bæði rekja til mismunandi efnasamsetningar gassins í kring og hitastigs stjarnanna sem lýsa upp skýin.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Það sem er ósköpunlegt munur á NGC 2014 og NGC 200 er af völdum bæði mismunandi efnafræðilegrar samsetningar gasins í kringum þau og hita stjarnanna sem valda glóin í þokunum.</td><td>F</td><td>False</td><td>2.171875</td><td>The specifically colour difference is omitted, becoming an unspecified difference between objects.</td></tr>
+<tr><td>after</td><td>Sköpum mismunandi litana NGC 2014 og NGC 200 eru bæði mismunandi efnafræðileg samsetning vasa í kringum þær og hitastig stjarna sem orsa þær gegnum gló.</td><td>F</td><td>False</td><td>16.75</td><td>Surrounding gas becomes pockets/vases and cloud relation is corrupted.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Óhjákvægri muninn litur NGC 2014 og NGC 200 stafi bæði ólíku tilskildri efnafræðilegu samsetningu gasins um um það og hita stjarnanna sem leiða til glóuðu þarna.</td><td>F</td><td>False</td><td>14.75</td><td>Stars causing clouds to glow becomes stars leading to glowing there, losing the cloud object.</td></tr>
+<tr><td>1</td><td>Þær óhjákvæmdar breytilegar litur af NGC 2014 og NGC 200 eru vegna bæði mismunandi efnafræðilegrar samsetningar gassins og hita stjarnanna sem valda glóin í þokunum.</td><td>P</td><td>False</td><td>2.671875</td><td>Different colours, gas chemistry and temperatures of stars causing nebula glow retained; awkward emphasis/grammar.</td></tr>
+<tr><td>2</td><td>Öflugu breytilegar litur NGC 2014 og NGC 200 eru afleiðingin bæði mismunandi efnafræðilegra samsetningar vefjarins í kringum þau og hita stjarna sem örva hvítrúnina.</td><td>F</td><td>False</td><td>8.5</td><td>Gas becomes tissue and cloud glow becomes a white-hair term.</td></tr>
+<tr><td>3</td><td>Viðskiptin á litum NGC 2014 og NGC 200 eru bæði af völdum mismunandi efnafræðilegra samsetningar gasins í kringum þá og hitastigs stjarnanna sem valda að það slæmir.</td><td>F</td><td>False</td><td>9.625</td><td>Colour differences become trade and causing glow becomes causing something bad.</td></tr>
+<tr><td>4</td><td>Hárlega munurinn á litinu NGC 2014 og NGC 200 er afleiðing bæði mismunandi efnafræðilegrar samsetningar umhverfisins og hitamagns stjarnanna sem olli vökvaskýrnunum.</td><td>F</td><td>False</td><td>4.1875</td><td>Gas becomes environment and stars causing clouds to glow becomes liquid-clearance wording.</td></tr>
+<tr><td>5</td><td>Fjarrastirnar litar NGC 2014 og NGC 200 eru af völdum bæði mismunandi efnafræðilegra samsetningar vasa í kringum þær stjörnur og hita stjarna sem fram veitir gló á þær ský.</td><td>F</td><td>False</td><td>10.25</td><td>Gas becomes pockets/vases rather than the surrounding gaseous material.</td></tr>
+<tr><td>6</td><td>Ótrúlega munurinn á litið NGC 2014 og NGC 200 er af leiðum bæði þess að litundir í kringum þau eru mismunandi og það sem stjörnurnar sem dregja úr gló eru á mismunandi hitastigi.</td><td>F</td><td>False</td><td>13.5625</td><td>Stars reduce the glow rather than cause it, reversing the causal action.</td></tr>
+<tr><td>7</td><td>Ósköpunlegar breytilegar litar NGC 2014 og NGC 200 eru afleiðingin bæði mismunandi efnafræðilegu samsetningar vopna um rásins og hita stjarnanna sem örva það til að glóa þessi vökvar.</td><td>F</td><td>False</td><td>12.5</td><td>Gas becomes weapons and clouds become liquids.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Ósköpunarmáttar litar NGC 2014 og NGC 200 eru af fleiri en einn ólíkum tilvikum: bæði mismunandi efnafræðileg samsetning mungríkans og hita stjarnanna sem gefa skýunum rauðu ljós.</td><td>F</td><td>False</td><td>10.3125</td><td>Gas composition corrupted and red light is added without support.</td></tr>
+<tr><td>1</td><td>Þær óhóflega mismunandi lit NGC 2014 og NGC 200 eru afleiðingin bæði mismunandi efnafræðilegs samsettunar gassins í kringum þau og hitahæðar stjarna sem vega það til að glóa.</td><td>U</td><td>False</td><td>6.84375</td><td>Colours, gas chemistry and temperature present; uncertain causative construction and missing explicit cloud object.</td></tr>
+<tr><td>2</td><td>Öflugu breytilegar litur NGC 2014 og NGC 200 eru afleiðingin bæði mismunandi efnafræðilegra samsetningar vopnins í umhverfið og hita stjarna sem örva hvíldin.</td><td>F</td><td>False</td><td>9.5</td><td>Gas becomes weapons and stellar glow action is corrupted.</td></tr>
+<tr><td>3</td><td>Viðskiptin á litum NGC 2014 og NGC 200 er af bæði mismunandi efnafræðilegri samsetningu gasins sem snertir þau og hitahæð stjarnanna sem valda glösuminn.</td><td>F</td><td>False</td><td>6.28125</td><td>Cloud glow becomes a glass-related unintelligible term.</td></tr>
+<tr><td>4</td><td>Ákveðin muninn litur NGC 2014 og NGC 200 eru afleiðingin bæði mismunandi efnafræðilega samsetningar vasains í kringum þá og hitastigs stjarna sem valda rökjaröndunarniðursemi.</td><td>F</td><td>False</td><td>16.0</td><td>Gas and cloud glow become unintelligible compounds.</td></tr>
+<tr><td>5</td><td>Fjarrastiltu breytileg lit NGC 2014 og NGC 200 eru afleiðing bæði til breytilegs efnafræðilegs samsetningar velfarins og hitahæðar stjarna sem rýmkaðir grípa til gló.</td><td>F</td><td>False</td><td>19.375</td><td>Surrounding gas becomes welfare and cloud-glow causality is corrupted.</td></tr>
+<tr><td>6</td><td>Ósköpunarsjúta litar NGC 2014 og NGC 200 eru afleiðing báða mismunandi efnafræðilegu samsetningar gassins í kringum þær og hitastigs stjarna sem bregja tæmislagana til gló.</td><td>F</td><td>False</td><td>8.1875</td><td>Clouds become empty-layer-like structures, losing the causal target.</td></tr>
+<tr><td>7</td><td>Ósköpunlegar breytilegar litar NGC 2014 og NGC 200 eru afleiðingin bæði mismunandi efnafræðilegu samsetningar vopna um um um og hita stjarna sem valda gló skýanna.</td><td>F</td><td>False</td><td>13.0625</td><td>Gas becomes weapons, changing the material whose chemistry causes colours.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>40 · technical_short · p22official21:test:eea:1324</summary>
+
+<p><strong>源文 / Source</strong><br>The weight of refill packaging shall not exceed 1,7 g per wash.</p>
+
+<p><strong>参考 / Reference</strong><br>Þyngd umbúða með áfyllingu skal ekki fara yfir 1,7 grömm á þvott.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Vefi endurtekna umbúða skal ekki fara yfir 1,7 g í hverja þvag.</td><td>F</td><td>False</td><td>8.0</td><td>Weight/refill/wash become web/repeated/urine wording.</td></tr>
+<tr><td>after</td><td>Vefi endurfillpakkningar skal ekki fara yfir 1,7 g fyrir hverja þvag.</td><td>F</td><td>False</td><td>11.125</td><td>Weight becomes web and per wash becomes per urine.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Öryggisbundin pakking skal ekki vera þyngri en 1,7 g í hverja þvau.</td><td>F</td><td>False</td><td>8.8125</td><td>Refill packaging becomes safety-bound packaging.</td></tr>
+<tr><td>1</td><td>Vigt endurtekna umbúta skal ekki fara yfir 1,7 g í hverri þvagun.</td><td>F</td><td>False</td><td>8.8125</td><td>Refill becomes repeated packaging and wash becomes urination.</td></tr>
+<tr><td>2</td><td>Vöginn í endurrotunarpakkningum skal ekki fara yfir 1,7 g fyrir hverja þvag.</td><td>F</td><td>False</td><td>7.65625</td><td>Refill becomes recycling and wash becomes urine.</td></tr>
+<tr><td>3</td><td>Vefmiði endurtekna pakkaingar skal ekki vera á meira en 1,7 g fyrir hverja þvag.</td><td>F</td><td>False</td><td>12.25</td><td>Weight becomes label and wash becomes urine.</td></tr>
+<tr><td>4</td><td>Þyngd endurtekinna umbúta skal ekki vera meiri en 1,7 g í hverjum þvagræsingu.</td><td>F</td><td>False</td><td>6.15625</td><td>Per wash becomes per diuresis.</td></tr>
+<tr><td>5</td><td>Vefi endurtekna umbúða skal ekki vera meira en 1,7 g hver þvag.</td><td>F</td><td>False</td><td>10.1875</td><td>Weight becomes web and wash becomes urine.</td></tr>
+<tr><td>6</td><td>Vögi endurtekna umbúða skal ekki vera þyngri en 1,7 g í hverja þvag.</td><td>F</td><td>False</td><td>6.84375</td><td>Wash becomes urine and refill becomes repeated packaging.</td></tr>
+<tr><td>7</td><td>Þyngdarinn í endurtekin pakkning skulu ekki vera meiri en 1,7 g í hverja þvott.</td><td>F</td><td>False</td><td>9.6875</td><td>Refill packaging becomes repeated packaging, changing the regulated packaging type.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Öryggispackinu, sem siktur enduranteytindi, skal ekki verað meiri en 1,7 g í hverja þvag.</td><td>F</td><td>False</td><td>17.25</td><td>Wash becomes urine and packaging type is unintelligible.</td></tr>
+<tr><td>1</td><td>Vigt endurtekna umbúta skal ekki fara yfir 1,7 g í hverri þvagun.</td><td>F</td><td>False</td><td>8.8125</td><td>Refill becomes repeated packaging and wash becomes urination.</td></tr>
+<tr><td>2</td><td>Vög endurnýtingarpakkningar skal ekki vera meiri en 1,7 g fyrir hverja þvaskipti.</td><td>F</td><td>False</td><td>14.5</td><td>Refill packaging becomes reuse packaging; wash-unit term also corrupted.</td></tr>
+<tr><td>3</td><td>Vefmiði endurfillpakkningar skal ekki vera meiri en 1,7 g í hverja þvæti.</td><td>F</td><td>False</td><td>8.375</td><td>Weight becomes label rather than mass.</td></tr>
+<tr><td>4</td><td>Þyngd endurtekinna umbúta skal ekki vera meiri en 1,7 g í hverja þvætningu.</td><td>F</td><td>False</td><td>5.1875</td><td>Refill is replaced by repeated packaging; cleaning unit is also nonstandard.</td></tr>
+<tr><td>5</td><td>Vefþyngd endurtekna umbúða skal ekki fara yfir 1,7 g á hverja þvau.</td><td>F</td><td>False</td><td>1.5625</td><td>Refill is lost as repeated packaging and weight becomes web weight.</td></tr>
+<tr><td>6</td><td>Öryggispackning endurfillu skal ekki vera þyngri en 1,7 g í hverja þvag.</td><td>F</td><td>False</td><td>14.6875</td><td>Per wash becomes per urine.</td></tr>
+<tr><td>7</td><td>Þyngdarinn í endurtekin pakkning skulu ekki vera meiri en 1,7 g í hverja þvott.</td><td>F</td><td>False</td><td>9.6875</td><td>Refill packaging becomes repeated packaging, changing the regulated packaging type.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>41 · technical_long · p22official21:test:ema:938</summary>
+
+<p><strong>源文 / Source</strong><br>It is unclear whether or not there is a direct association between pioglitazone and macular oedema but prescribers should be alert to the possibility of macular oedema if patients report disturbances in visual acuity; an appropriate ophthalmological referral should be considered.</p>
+
+<p><strong>参考 / Reference</strong><br>Ekki er ljóst hvort beint samband er á milli pioglitazóns og sjónudepilsbjúgs, en þeir sem ávísa lyfinu ættu að vera á varðbergi gagnvart mögulegum sjónudepilsbjúg ef sjúklingar lýsa truflun á sjónskerpu; íhuga þarf þá viðeigandi tilvísun til augnlæknis.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Ekki er klár hvort eða ekki sé bein tengsl milli pioglitazóns og blóðþynningar í sjónuklukkum en læknar sem ávísa lyfið ættu að vera áberandi við hugsanlega blóðþynningar í sjónuklukkum ef sjúklingar gefa til kynna truflanir á sjónskerpu; íhuga skal viðeigandi sjónaukarannsókn.</td><td>F</td><td>False</td><td>2.421875</td><td>Oedema becomes blood thinning in retinal-clock-like structures.</td></tr>
+<tr><td>after</td><td>Ekki er klár hvort eða ekki sé bein tengsl milli pioglitazóns og blóðþurrðar í sjónuklófum en læknarsemendur ættu að vera í vart við hugsanlegan blóðþurrð í sjónuklóf ef sjúklingar gefa til kynna truflanir á sjónskerpu; íhuga skal viðeigandi sjónarlækning.</td><td>F</td><td>False</td><td>2.8125</td><td>Oedema becomes ischaemia, changing the warning condition.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Ekki er klár hvort eða ekki verður bein samband á milli pioglítazóns og eggjaáhæðar (macular) en læknar sem ávísa lyfinu skulu vera gátlaust fyrir því að hætta stjórnun á eggjaáhæð ef sjúklingar segja frá truflunum í sjónskerpi; ítarlega skal finna í grundvalli vísa til augnheilkardinna.</td><td>F</td><td>False</td><td>12.5</td><td>Macular oedema becomes egg-height wording and alert becomes careless.</td></tr>
+<tr><td>1</td><td>Ekki er skýrt hvort eða ekki verður víðtengda tengsl á milli pioglitazóns og jörtubláa og áþekkja þarf sjónauðmiða ef sjúklingar gefa til kynna skerðingu á sjónskerpu og íhuga skal viðeigandi sjónarlækningsfyrirmæli.</td><td>F</td><td>False</td><td>14.625</td><td>Named oedema condition becomes an unintelligible term and direct association is altered.</td></tr>
+<tr><td>2</td><td>Ekki er klár hvort eða ekki sé bein tengsl milli pioglitazóns og bláæðaseitil á mjólkursjónar og læknar skal gæta þess að því er varðar bláæðaseitil á mjólkursjónar ef sjúklingar gefa sögu um truflun á sjónskerpu; íhuga skal viðeigandi sjónaukarferð.</td><td>F</td><td>False</td><td>12.875</td><td>Macular oedema becomes venous/lymphatic milk-vision wording.</td></tr>
+<tr><td>3</td><td>Ekki er klínískt þekkt hvort eða ekki verði bein tenging á milli pioglitazóns og bjúgur á ljósnúfjölli en læknarætur skal vera fyrir vek um hættuna á því ef sjúklingar gefa upp tilkynningu um hömlun á sjónskerpu; í samráði við viðeigandi sjónafræðilegan áreiðanir skal íhuga framkvæmd sjúklinga til sjúkrahafa í sérstök viðkomandi sviði.</td><td>F</td><td>False</td><td>14.125</td><td>Macular anatomical site becomes a light-mountain compound and referral is corrupted.</td></tr>
+<tr><td>4</td><td>Ekki er klár hvort eða ekki verður skilvirka samband milli píóglítazóns og bjarthækkunar í mikið og á að leita að því ef sjúklingar gefa upp merki um truflun á sjónskerpu, tilvist á að gefa sjúklingum læknisherli fyrir sjúkdómslýsingu.</td><td>F</td><td>False</td><td>18.0</td><td>Macular oedema becomes brightness increase and specialist-referral instruction is corrupted.</td></tr>
+<tr><td>5</td><td>Ekki er skýrt hvort eða hvort pioglítazón tengist bjúgavísi til markaðsverks. Sé notendur með sjónskerpaþornar, sem leggja fram truflanir á sjónskerpa, ættu ávitnir að hafa í huga það að markaðsverk sé kominn fram hjá sjúklingum sem greina það.</td><td>F</td><td>False</td><td>22.375</td><td>Macular oedema becomes market-work-like wording and ophthalmology referral is lost.</td></tr>
+<tr><td>6</td><td>Ekki er þekkt hvort eða ekki sé bein samband á milli pioglítazóns og eitilbólgu á mjólkursvörtum en læknarsemendur ættu að vera í vart við hugsanlegt eitilbólga á mjólkursvörtum ef sjúklingar gefa til kynna skað þolað sjónskerpa; íhuga skal viðeigandi sjónaaðferðaútgáfu.</td><td>F</td><td>False</td><td>8.5625</td><td>Macular oedema becomes lymphatic inflammation on milk-black structures.</td></tr>
+<tr><td>7</td><td>Ekki er þekkt hvort eða ekki vera bein samband milli píóglítazóns og meðvolgsbauga en læknaráðendur skulu vera virk ósæða um hugsanlega meðvolgsbaugþurrð ef sjúklingar gefu upp tilkynningu um úrbatað sjónskerpa; íni ber að íhuga viðeigandi sjónarfræðilegan aðferð.</td><td>F</td><td>False</td><td>16.625</td><td>Oedema condition corrupted and visual-acuity disturbances become improvement.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Ekki er klár hvort eða ekki sé bein tengsl milli pioglitazóns og mjótaþrýstingar en læknarsemillum ætti að vera ávarnir við möguleigan um mjótaþrýsting ef sjúklingar gefa til kynna truflanir á sjónskerpu; ílagt skal við viðeigandi sjúkrahag til augna.</td><td>F</td><td>False</td><td>6.90625</td><td>Oedema becomes a pressure-like condition rather than the specified pathology.</td></tr>
+<tr><td>1</td><td>Ekki er skýrt hvort bein tengsl séu milli pioglítazóns og blóðþurrðar í sjónukerfi séu til staðar en læknar sem ávísa lyfið skulu vera ávarnir um hugsanlegan blóðþurrð í sjónukerfi ef sjúklingar gefa til kynna truflun á sjónskerpu; íhuga skal viðeigandi sjónakeðjapróf.</td><td>F</td><td>False</td><td>6.875</td><td>Oedema becomes ischaemia in the visual system.</td></tr>
+<tr><td>2</td><td>Ekki er klár hvort eða ekki sé beina tengsl á milli próglitazóns og blóðþurrðar í sjónudeili en ráðgjafendur ættu að hafa gætu fyrir sig áhyggjur af hugsanlegri blóðþurrð í sjónudeili ef sjúklingar gefu upp tilkynningu um skerðingu á sjónskerpu; íhuga skal viðeigandi sjónarlæknisskoðun.</td><td>F</td><td>False</td><td>3.296875</td><td>Macular oedema becomes retinal ischaemia, a different pathology.</td></tr>
+<tr><td>3</td><td>Ekki er klínískt vitað hvort eða ekki sé bein tengsl milli pioglitazóns og sjónukrampa en læknar sem ávísa lyfið ættu að vera áur á hugsanlegu hætti að sjónukrampa sé til kynna ef sjúklingurinn segir frá truflunum á sjónskerpu; íhuga skal viðeigandi vísa til augnkrannkvæða.</td><td>F</td><td>False</td><td>3.609375</td><td>Macular oedema becomes retinal cramps.</td></tr>
+<tr><td>4</td><td>Ekki er klár hvort eða ekki sé bein samband milli píóglítasóns og sjónulaugmyndar en læknarberi ætti að vera í vart við hugsanlega sjónulaugmynd ef sjúklingurinn lýsir truflanir á sjónskerpu; íhuga skal viðeigandi sjúklingarskoðun til augnmálakerfis.</td><td>F</td><td>False</td><td>11.1875</td><td>Macular oedema becomes a vision-pool/image-like term.</td></tr>
+<tr><td>5</td><td>Ekki er skýrt hvort beiting er fram á milliverkun píóglítazona með glerbólgu ekki eða hvort meðferðarlyfjafarerir skulu hafa gæði um hætta á glerbólgu ef sjúklingar greina skerðingu á sjónskerpa; íhuga skal viðeigandi sjónarfræðilega tilvísun.</td><td>F</td><td>False</td><td>9.1875</td><td>Macular oedema becomes vitreous/glass inflammation.</td></tr>
+<tr><td>6</td><td>Ekki er skýrt hvort beint tengsl er milli pioglitazóns og blöndunar á mjötu en læknarsemillum skal vera að huga hættu á sjónulók ef sjúklingar gefa tilkynningu um truflun á sjónskerpu; ítarlega skal leggja sjúklinga undir sjúklingahag í auga.</td><td>F</td><td>False</td><td>17.625</td><td>Macular oedema becomes mixing in an unintelligible anatomical site.</td></tr>
+<tr><td>7</td><td>Ekki er skýrt hvort eða ekki vera bein samband milli píóglítazóns og meðvolgsbauga en læknaráðendur skulu vera virk af því að möguleiki á meðvolgsbaugabólgu sé að vera ef sjúklingar gefu til kynna truflanir á sjónskerpu; íhuga skal viðeigandi sjónarlagtakningu.</td><td>F</td><td>False</td><td>9.875</td><td>Macular oedema becomes an invented ring/inflammation condition.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>42 · technical_medium · p22official21:test:ema:2302</summary>
+
+<p><strong>源文 / Source</strong><br>At week 16, all ACR Ped components demonstrated clinically relevant improvement from baseline (see Table 8).</p>
+
+<p><strong>参考 / Reference</strong><br>Í 16. viku sýndu allir þættir ACR Ped ávinning sem skipti máli klínískt frá grunnlínu (sjá töflu 8).</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Í viku 16 sýndu allar ACR Ped þætti klínískt mikilvægum bata frá upphafi (sjá töflu 8).</td><td>P</td><td>False</td><td>2.5625</td><td>Correct week, all components, clinical improvement, baseline and table retained.</td></tr>
+<tr><td>after</td><td>Í viku 16 sýndu allar ACR Ped-hluta klínískt marktæk bata frá upphafi (sjá töflu 8).</td><td>P</td><td>False</td><td>4.9375</td><td>All key clinical-improvement details retained; agreement errors only.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Í viku 16 voru allar ACR Ped þætti meðal sjúklinganna þekktir hvað varðar klínískan vægi frá upphafsgildi (sjá töflu 8).</td><td>F</td><td>False</td><td>7.40625</td><td>Improvement is replaced by components known regarding clinical weight in patients.</td></tr>
+<tr><td>1</td><td>Í viku 16 sýndust klínískt marktæk bata hjá öllum ACR Ped þýðingaskiptum frá upphafi (sjá töflu 8).</td><td>F</td><td>False</td><td>6.53125</td><td>Components become significance-change/translation-change terms.</td></tr>
+<tr><td>2</td><td>Í 16. viku sýndu allar ACR Ped-hluta klínískt marktækt bata frá upphafi (sjá töflu 8).</td><td>P</td><td>False</td><td>4.9375</td><td>Week 16, all ACR Ped components, clinically significant improvement from baseline and Table 8 retained.</td></tr>
+<tr><td>3</td><td>Í viku 16 sýndu allir ACR Ped þætti klínískt mikilvæg ábending frá upphafi (sjá töflu 8).</td><td>F</td><td>False</td><td>4.09375</td><td>Improvement becomes a clinically important indication.</td></tr>
+<tr><td>4</td><td>Í 16. viku sýndust klínískt mikilvæg framför úr grunnlínu hjá öllum ACR Ped-hluta (sjá töflu 8).</td><td>P</td><td>False</td><td>3.65625</td><td>Clinically important improvement from baseline in all components at week 16 retained.</td></tr>
+<tr><td>5</td><td>Í viku 16 sýndust klínískt mikilvæg bata í allar ACR Ped þætti frá upphafi (sjá töflu 8).</td><td>P</td><td>False</td><td>2.3125</td><td>All components improved clinically from baseline at week 16; table retained.</td></tr>
+<tr><td>6</td><td>Í viku 16 sýndu allir hópar ACR Ped sýnum klíníska þýðingu á betnun frá upphafi (sjá töflu 8).</td><td>F</td><td>False</td><td>9.5</td><td>ACR Ped components become groups.</td></tr>
+<tr><td>7</td><td>Í viku 16 sýndust klínískt mikilvæg ábending af allum ACR Ped hluta (sjá töflu 8).</td><td>F</td><td>False</td><td>5.09375</td><td>Improvement becomes indication and baseline comparison is omitted.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Í viku 16 sýndust klínískt mikilvæg breyting frá grunngildi hjá öllum ACR Ped samsetningunum (sjá töflu 8).</td><td>F</td><td>False</td><td>4.03125</td><td>Improvement becomes nondirectional change and components become combinations.</td></tr>
+<tr><td>1</td><td>Í viku 16 sýndust klínískt marktæk bata frá upphafi hjá öllum ACR Ped samsetningunum (sjá töflu 8).</td><td>F</td><td>False</td><td>3.328125</td><td>Components become combinations rather than individual measures.</td></tr>
+<tr><td>2</td><td>Í 16. viku sýndu allar ACR Ped-hluta klínískt marktæk bata frá upphafi (sjá töflu 8).</td><td>P</td><td>False</td><td>4.6875</td><td>Week, components, clinically significant improvement, baseline and table preserved.</td></tr>
+<tr><td>3</td><td>Í viku 16 sýndu allir ACR Ped samsetningar klínískt mikilvæg ábending frá upphafi (sjá töflu 8).</td><td>F</td><td>False</td><td>6.0</td><td>Improvement becomes indication and components become combinations.</td></tr>
+<tr><td>4</td><td>Í 16. viku sýndust klínískt mikilvæg framför úr grunnlínu hjá öllum ACR Ped-hluta (sjá töflu 8).</td><td>P</td><td>False</td><td>3.65625</td><td>Clinically important improvement from baseline in all components at week 16 retained.</td></tr>
+<tr><td>5</td><td>Í viku 16 sýndust klínískt marktæk bata í öllum ACR Ped þáttum frá grunngildi (sjá töflu 8).</td><td>P</td><td>False</td><td>3.421875</td><td>All components show clinically significant improvement from baseline at week 16; table retained.</td></tr>
+<tr><td>6</td><td>Í viku 16 sýndu allar hópar ACR Ped klínískt marktæk bata frá upphafi (sjá töflu 8).</td><td>F</td><td>False</td><td>3.1875</td><td>Components become all ACR Ped groups.</td></tr>
+<tr><td>7</td><td>Í viku 16 sýndust klínískt mikilvæg bata í allum ACR Ped samsetningunum frá upphafi (sjá töflu 8).</td><td>F</td><td>False</td><td>3.625</td><td>All individual ACR Ped components become combinations.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>43 · technical_short · p22official21:test:ema:3088</summary>
+
+<p><strong>源文 / Source</strong><br>Cardboard box with 1 or 10 PET bottles of 10 doses.</p>
+
+<p><strong>参考 / Reference</strong><br>Pappaaskja með 1 eða 10 PET glösum sem innihalda 10 skammta.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Pappaaskja með 1 eða 10 PET glösum með 10 skömmtum.</td><td>P</td><td>False</td><td>0.91796875</td><td>Cardboard box, 1 or 10 PET bottles and 10 doses retained.</td></tr>
+<tr><td>after</td><td>Pappaaskja með 1 eða 10 PET glösum með 10 skömmtum.</td><td>P</td><td>False</td><td>0.91796875</td><td>Cardboard box, 1 or 10 PET bottles and 10 doses retained.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>44 · general · p22official21:test:opensubtitles:3227</summary>
+
+<p><strong>源文 / Source</strong><br>You&#x27;re not supposed to use your powers outside of school.</p>
+
+<p><strong>参考 / Reference</strong><br>Þú mátt ekki nota kraftana utan skólans.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Þú ættir ekki að nota skyn þína utan skóla.</td><td>F</td><td>False</td><td>8.9375</td><td>Powers become senses, changing the prohibited ability.</td></tr>
+<tr><td>after</td><td>Þú átt ekki að nota skyn þína utan skóla.</td><td>F</td><td>False</td><td>8.625</td><td>Powers become senses rather than the source abilities.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>45 · technical_medium · p22official21:test:ema:2285</summary>
+
+<p><strong>源文 / Source</strong><br>Angiotensin II is the principal pressor agent of the RAAS, with effects that include vasoconstriction, stimulation of synthesis and release of aldosterone, cardiac stimulation, and renal reabsorption of sodium.</p>
+
+<p><strong>参考 / Reference</strong><br>Angíótensín II er helsta þrýstingsvaldandi efnið í RAAS og eru helstu áhrif þess æðasamdráttur, örvun nýmyndunar og losunar aldósteróns, hjartaörvun og endurupptaka natríums í nýrum.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Angíótensín II er helsta þrýstingshækkandi lyfja í RAAS, sem hefur áhrif sem ná yfir æðaskynnun, örva myndun og losun aldósteróns, hjartastýring og endurupptöku natríums í nýrum.</td><td>F</td><td>False</td><td>2.78125</td><td>Vasoconstriction becomes vessel perception and cardiac stimulation becomes regulation.</td></tr>
+<tr><td>after</td><td>Angíótensín II er helsta þrýstingshækkandi lyfja í RAAS, sem hefur áhrif sem ná allt frá blóðþrýstingskústur, örva myndunar og losunar aldósteróns, hjartastillandi og endurupptöku natríums í nýrum.</td><td>F</td><td>False</td><td>5.09375</td><td>Vasoconstriction becomes blood-pressure broom wording.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Angíótensín II er helsta þrýstingshækkandi lyf í RAAS hópnum, með áhrifum sem eru æðaskammtaraukning, örvun framleiðslu aldosteróns, hjartastýrslu og endur uphleypun natríums í nýrum.</td><td>F</td><td>False</td><td>4.53125</td><td>Aldosterone release is omitted and vasoconstriction becomes increased vascular doses.</td></tr>
+<tr><td>1</td><td>Angíótensín II er aðal háþrýstingsvirkjandi lyfja hjá RAAS (renin-angiotensín-aldhormóns skilvirki) og hefur áhrif á æðahömlun, örvaðina til síðurbúnaðar og losunar aldosteróns, hjartastýringu og endurupptöku natríums í nýrum.</td><td>F</td><td>False</td><td>6.78125</td><td>Aldosterone synthesis becomes a typesetting/preparation-like term; cardiac stimulation altered.</td></tr>
+<tr><td>2</td><td>Angíótensín II er helstu lyfið til aukningar hjá RAAS með áhrifum sem eru æðaskötjum, örva frumudreifingu (synthesis) og losun aldósteróns, hjartastillandi og endurupptöku natríums í nýrum.</td><td>F</td><td>False</td><td>9.9375</td><td>Aldosterone synthesis becomes cell spreading and vascular effect is corrupted.</td></tr>
+<tr><td>3</td><td>Angíótensín II er helsta þrýstingsaukandi meðferðarvirkja RAAS-veiru, þar með talið æðaháðun, örvað myndun og losun aldosteróns, hjartastillun og endurupptöku natríum í nýrum.</td><td>F</td><td>False</td><td>8.25</td><td>RAAS becomes virus and vascular/cardiac stimulation terms are corrupted.</td></tr>
+<tr><td>4</td><td>Angíótensín II er helsta stífkerfisþáttur á RAAS-kvöði (RAAS) og hefur áhrif sem fela í sér æðaþrýsting, örvað aukning og útgeilen aldósteróns, hjartasöfnun og endurupptöku natríums í nýrum.</td><td>F</td><td>False</td><td>6.84375</td><td>Cardiac stimulation becomes cardiac accumulation and aldosterone release corrupted.</td></tr>
+<tr><td>5</td><td>Angíótensín II er helsta þrýstingshækkandi lyfja í RAAS, sem hefur áhrif á æðastækkun, örvað þátt í myndun og losun aldósteróns, hjartastýring og endurupptöku natríums í nýrum.</td><td>F</td><td>False</td><td>3.046875</td><td>Vasoconstriction becomes vasodilation.</td></tr>
+<tr><td>6</td><td>Angíótensín II er helstu innrennslispakkandi lyfja hjá RAAS, sem hefur áhrif á æðarþrengingu, örvað lyfjameðferð við aldósteróni, hjartagjöf og endurupptöku natríum í nýrum.</td><td>F</td><td>False</td><td>5.5</td><td>Stimulated aldosterone synthesis/release becomes aldosterone drug treatment.</td></tr>
+<tr><td>7</td><td>Angíótensín II er megin hækkandi virkni RAAS og hefur áhrif sem ná yfir æðaskröfun, örvað hreinsun og losun aldósteróns, hjartavirkni og enduruppgjör úr þarmi natríum.</td><td>F</td><td>False</td><td>5.5625</td><td>Renal sodium reabsorption becomes a gut process.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Angíótensín II er helsta þrýstingshækkandi lyfjaáhrif RAAS-gefna, með áhrifum sem gera þyngdarþrýstingi, örvaða eða afvöxtu aldosteróns, hjartastillandi og endurvinnslu natríums í nýrum.</td><td>F</td><td>False</td><td>11.0</td><td>Vasoconstriction becomes gravity pressure and aldosterone synthesis/release list corrupted.</td></tr>
+<tr><td>1</td><td>Angíótensín II er aðal háþrýstingsvirkjandi lyfja hjá RAAS (renin-angíótensín-hormónaætlun), sem hefur afleiðingar á meðal annars þrýstingsbælingu, örvað samtengingu og losun aldósteróns, hjartastillandi og endurupptöku natríums í nýrum.</td><td>F</td><td>False</td><td>4.3125</td><td>Vasoconstriction becomes pressure suppression and RAAS expansion is corrupted.</td></tr>
+<tr><td>2</td><td>Angíótensín II er helstu lyfið til aukningar hjá RAAS með áhrifum sem flokka æðarþykki, örva semja og losun aldósteróns, hjartastillun og endurupptöku natríums í nýru.</td><td>F</td><td>False</td><td>10.375</td><td>Vasoconstriction becomes vessel thickening and synthesis becomes negotiation wording.</td></tr>
+<tr><td>3</td><td>Angíótensín II er helsta þrýstingsaukandi meðferðarvirkja RAAS-veiru, þar með talið æðahrollun, örvað myndun og losun aldosterons, hjartastillun og endurupplýsingu natríums í nýru.</td><td>F</td><td>False</td><td>11.875</td><td>RAAS becomes virus and sodium reabsorption becomes information.</td></tr>
+<tr><td>4</td><td>Angíótensín II er helsta stimplandi lyfjaáhrifarkvæði RAAS- (RAAS) viðbragða, sem meðferðinni hefur áhrif til æðastækkunar, örvunar til myndunar og losunar aldósteróns, hjartavökva og enduruppleifa natríums í nýrum.</td><td>F</td><td>False</td><td>6.5</td><td>Vasoconstriction becomes vasodilation, reversing the vascular effect.</td></tr>
+<tr><td>5</td><td>Angíótensín II er helsta þrýstingshækkandi lyfja í RAAS, sem hefur áhrif sem ná allt frá skertu blóðþrýstingi, örvun við myndbúnað og losun aldósteróns, hjartastýringu og endurupphaf natríums í nýrum.</td><td>F</td><td>False</td><td>6.3125</td><td>Vascular effect becomes lowered blood pressure rather than vasoconstriction.</td></tr>
+<tr><td>6</td><td>Angíótensín II er helstu blóðþrýstingshækkandi lyfjaþátt RAAS-meðferðarinnar með áhrifum sem taka til æðaskrýmingar, örvaðrar myndunar og losunar aldósteróns, hjartastillandi og endurupptöku natríum í nýrum.</td><td>F</td><td>False</td><td>1.6484375</td><td>Vasoconstriction becomes an unintelligible vessel term and cardiac stimulation becomes regulation/calming.</td></tr>
+<tr><td>7</td><td>Angíótensín II er helsta hækkunarlyfi rannsóknarstuðulins II, með áhrifum sem eru æðastífun, örvaður nýmyndun og losun aldósteróns, hjartastillun og endurupptöku natríums í nýrum.</td><td>F</td><td>False</td><td>6.5</td><td>RAAS becomes research index II; cardiac/vascular actions altered.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>46 · technical_short · p22official21:test:eso:1067</summary>
+
+<p><strong>源文 / Source</strong><br>The team tested several hypotheses to explain the unexpected change in speed.</p>
+
+<p><strong>参考 / Reference</strong><br>Stjörnufræðingarnir prófuðu ýmsar tilgátur til að útskýra þessa óvæntu hraðabreytingu.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Hópurinn prófaði nokkrar hugsanir til að skýra óvænta breytingu á hraða.</td><td>P</td><td>False</td><td>6.34375</td><td>Testing several explanatory ideas for unexpected speed change retained.</td></tr>
+<tr><td>after</td><td>Hópurinn prófaði nokkrar hugsanir til að skýra óvænta breytingu á hraða.</td><td>P</td><td>False</td><td>6.34375</td><td>Testing several explanatory ideas for unexpected speed change retained.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Hópurinn prófaði ýmsu hyfjunum til að útskýra óvæntu hraðni bati.</td><td>F</td><td>False</td><td>16.875</td><td>Unexpected speed change becomes speed improvement.</td></tr>
+<tr><td>1</td><td>Hópurinn prófaði nokkrar áthugasemdir til að skýra óvænta breytingu á hraða.</td><td>F</td><td>False</td><td>6.28125</td><td>Hypotheses become comments/remarks, changing the tested scientific objects.</td></tr>
+<tr><td>2</td><td>Teymið prófaði nokkrar hópgrein til að skýra óvæntum breytingu á hraða.</td><td>F</td><td>False</td><td>18.5</td><td>Hypotheses become a group-branch term.</td></tr>
+<tr><td>3</td><td>Hópurinn rannsakaði nokkrar hugsanir til að skýra óvæntanlegu völdun á hraða.</td><td>F</td><td>False</td><td>14.25</td><td>Unexpected speed change becomes an unexpected power/selection-like effect on speed.</td></tr>
+<tr><td>4</td><td>Hópurinn prófaði nokkrar hófum til að skýra óvænta breytingu á hraða.</td><td>F</td><td>False</td><td>17.5</td><td>Hypotheses become hofum, a hoof/moderation-like term rather than explanatory ideas.</td></tr>
+<tr><td>5</td><td>Hópurinn prófaði mörgum hins vegar tilum til að útskýra óvænta breytingu á hraða.</td><td>F</td><td>False</td><td>15.625</td><td>Tested hypotheses becomes an unintelligible however/for construction.</td></tr>
+<tr><td>6</td><td>Hópurinn prófaði nokkrar hugsanir til að skýra óvænta breytingu á hraða.</td><td>P</td><td>False</td><td>6.34375</td><td>Testing several explanatory ideas for unexpected speed change retained.</td></tr>
+<tr><td>7</td><td>Hópurinn prófaði margar hliðstæður hyrningar til að skýra óvæntu hreyfingartækninguna.</td><td>F</td><td>False</td><td>19.125</td><td>Hypotheses and speed change become parallel angles and movement technology.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Hópurinn prófaði nokkrar hyargar tilgreiningar til að skýra óvæntu hraðni breytinguna.</td><td>U</td><td>False</td><td>12.1875</td><td>Unexpected speed change retained; hyargar tilgreiningar is uncertain as hypotheses.</td></tr>
+<tr><td>1</td><td>Hópurinn prófaði nokkrar grunngreiningar til að skýra óvænta hreyfingaráhrif.</td><td>F</td><td>False</td><td>12.5625</td><td>Hypotheses become basic analyses and speed change becomes movement effects.</td></tr>
+<tr><td>2</td><td>Teymið prófaði nokkrar hugsanir til að skýra óvænta breytingu á hraða.</td><td>P</td><td>False</td><td>4.0625</td><td>Team tests several ideas to explain unexpected speed change; faithful paraphrase.</td></tr>
+<tr><td>3</td><td>Hópurinn prófaði nokkrar hugsanir til að skýra óvæntu breytingu á hraða.</td><td>P</td><td>False</td><td>6.25</td><td>Team tested several ideas to explain unexpected speed change; hypotheses paraphrased as ideas.</td></tr>
+<tr><td>4</td><td>Hópurinn prófaði nokkrar hófum til að skýra óvæntu breytingu á hraða.</td><td>F</td><td>False</td><td>17.5</td><td>Hypotheses become an unrelated hofum term.</td></tr>
+<tr><td>5</td><td>Hópurinn prófaði nokkrar hugsanir til að skýra óvænta breytingu á hraða.</td><td>P</td><td>False</td><td>6.34375</td><td>Testing several explanatory ideas for unexpected speed change retained.</td></tr>
+<tr><td>6</td><td>Hópurinn prófaði nokkrar hugsanir til að skýra óvænta breytingu á hraða.</td><td>P</td><td>False</td><td>6.34375</td><td>Testing several explanatory ideas for unexpected speed change retained.</td></tr>
+<tr><td>7</td><td>Hópurinn prófaði margar hugsanir til að skýra óvæntu breytingu á hraða.</td><td>P</td><td>False</td><td>4.90625</td><td>Group tests explanatory ideas for unexpected speed change retained.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>47 · general · p22official21:test:opensubtitles:530</summary>
+
+<p><strong>源文 / Source</strong><br>I want you to meet Betty.</p>
+
+<p><strong>参考 / Reference</strong><br>Ég vil þú hittir Betty.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Ég vil að þú hitti Betty.</td><td>P</td><td>False</td><td>0.08837890625</td><td>I want you to meet Betty retained.</td></tr>
+<tr><td>after</td><td>Ég vil að þú hitti Betty.</td><td>P</td><td>False</td><td>0.08837890625</td><td>I want you to meet Betty retained.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>48 · technical_medium · p22official21:test:ema:2726</summary>
+
+<p><strong>源文 / Source</strong><br>The ALIMTA maintenance safety profiles from the two studies JMEN and PARAMOUNT were similar.</p>
+
+<p><strong>参考 / Reference</strong><br>Öryggissnið fyrir ALIMTA sem viðhaldsmeðferð var svipað í JMEN og PARAMOUNT rannsóknunum.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Öryggisupplýsingar um viðhaldsmeðferð með ALIMTA úr rannsóknum JMEN og PARAMOUNT voru svipuð.</td><td>P</td><td>False</td><td>2.84375</td><td>Similar ALIMTA maintenance safety information across both named studies retained.</td></tr>
+<tr><td>after</td><td>Öryggisupplýsingar frá ALIMTA viðhaldsmeðferðar úr rannsóknunum JMEN og PARAMOUNT voru svipaðar.</td><td>P</td><td>False</td><td>6.03125</td><td>ALIMTA maintenance safety profiles/information from JMEN and PARAMOUNT similar; faithful.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>49 · technical_short · p22official21:test:ema:2134</summary>
+
+<p><strong>源文 / Source</strong><br>Never take your inhaler apart.</p>
+
+<p><strong>参考 / Reference</strong><br>Þú skalt aldrei taka innöndunartækið í sundur.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Ekki að taka innöndunartækið í aðstæður.</td><td>F</td><td>False</td><td>13.375</td><td>Taking apart becomes taking into circumstances.</td></tr>
+<tr><td>after</td><td>Aldrei skiptið innöndunartækið í aðlögun.</td><td>F</td><td>False</td><td>8.375</td><td>Dismantle becomes change into adjustment.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Alltaf skal ekki að skipta innöndunartækið saman.</td><td>F</td><td>False</td><td>1.96875</td><td>Apart becomes together, changing the prohibited action.</td></tr>
+<tr><td>1</td><td>Hvorki má skipta úr innöndunartæki.</td><td>F</td><td>False</td><td>8.0</td><td>Taking apart becomes switching out of an inhaler.</td></tr>
+<tr><td>2</td><td>Aldrei snúa innöndunartækið saman.</td><td>F</td><td>False</td><td>2.140625</td><td>Taking apart becomes twisting together.</td></tr>
+<tr><td>3</td><td>Aldrei skal skipta innöndunartækið af.</td><td>F</td><td>False</td><td>0.78125</td><td>Dismantle becomes switch off/change off.</td></tr>
+<tr><td>4</td><td>Ekki að taka innöndunartækið í sömu.</td><td>F</td><td>False</td><td>8.3125</td><td>Taking apart becomes taking into the same.</td></tr>
+<tr><td>5</td><td>Ekki að rofa innöndunartækið.</td><td>U</td><td>False</td><td>11.4375</td><td>Prohibits rofa the inhaler; uncertain whether this means breaking apart or merely disrupting it.</td></tr>
+<tr><td>6</td><td>Ekki að taka nefið innöndunartækið ástæða.</td><td>F</td><td>False</td><td>21.25</td><td>Dismantling becomes a nose/reason construction.</td></tr>
+<tr><td>7</td><td>Aldrei bera innöndunartækið í þær brott.</td><td>F</td><td>False</td><td>5.90625</td><td>Dismantle becomes carry away.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Alltaf skal ekki skipta innöndunartækið saman.</td><td>F</td><td>False</td><td>1.2890625</td><td>Taking apart becomes combining together.</td></tr>
+<tr><td>1</td><td>Akaðu aldrei innöndunartækið í smástöð.</td><td>F</td><td>False</td><td>9.375</td><td>Dismantling becomes driving inhaler to a small station.</td></tr>
+<tr><td>2</td><td>Aldrei skipta innöndunartækið saman.</td><td>F</td><td>False</td><td>1.2109375</td><td>Taking apart becomes combining together.</td></tr>
+<tr><td>3</td><td>Aldrei skal skipta innöndunartækið saman.</td><td>F</td><td>False</td><td>0.35546875</td><td>Apart becomes together.</td></tr>
+<tr><td>4</td><td>Ekki að taka innöndunartækið í sömu saman.</td><td>F</td><td>False</td><td>6.90625</td><td>Taking apart becomes taking into same/together.</td></tr>
+<tr><td>5</td><td>Ekki að rofa innöndunartækið aldrei upp.</td><td>U</td><td>False</td><td>7.125</td><td>Breaking open appears, but double negative ekki/aldrei leaves the prohibition uncertain.</td></tr>
+<tr><td>6</td><td>Alltaf má ekki skipta innöndunartækið saman.</td><td>F</td><td>False</td><td>0.87890625</td><td>Apart becomes together.</td></tr>
+<tr><td>7</td><td>Aldrei taka innöndunartækið í þær brott.</td><td>F</td><td>False</td><td>5.21875</td><td>Take it into those away does not convey dismantling.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>50 · technical_long · p22official21:test:ema:2271</summary>
+
+<p><strong>源文 / Source</strong><br>The MAH commits to performing the studies and additional pharmacovigilance activities detailed in the Pharmacovigilance Plan, as agreed in the version dated 28 February 2005 of the Risk Management Plan (RMP) presented in Module 1.8.2. of the Marketing Authorisation and any subsequent updates of the RMP agreed by the CHMP.</p>
+
+<p><strong>参考 / Reference</strong><br>Markaðsleyfishafi skuldbindur sig til að gera rannsóknir og vinna viðbótarverkefni tengd lyfjagát sem tilgreind eru í áætlun um lyfjagát, eins og fram kemur í útgáfu dagsett 28. febrúar 2005 af áætlun um áhættustjórnun sem lýst er í kafla 1.8.2. í markaðsleyfinu og öllum uppfærslum á áætlun um áhættustjórnun sem CHMP samþykkir.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Markaðsleyfishafi skulur að framkvæma þær rannsóknir og viðbótar- lyfjafræðilegar aðgerðir sem tilgreindar eru í áætlun um lyfjagát, eins og komið var á í útgáfu frá 28. febrúar 2005 af áætlun um áhættustýringu sem er að finna í 1.8.2. hluta markaðsleyfisins og öllum síðari uppfærslum á áætlun um áhættustýringu sem CHMP hefur samþykkt.</td><td>F</td><td>False</td><td>1.640625</td><td>Additional pharmacovigilance activities become pharmacological actions, changing the required safety-monitoring activity type.</td></tr>
+<tr><td>after</td><td>Markaðsleyfishafi skulur að framkvæma rannsóknirnar og viðbótarviðmiðunarverkefni varðandi lyfjagát sem tilgreind eru í lyfjagátáætluninni, eins og komið var í samyni við útgáfu þess, sem er á þeirri dag 28. febrúar 2005, af áætlun um áhættustýringu sem er sett fram í 1.8.2. hluta markaðsleyfisins og öll síðari uppfærslur á áætluninni um áhættustýringu sem CHMP samiði við.</td><td>U</td><td>False</td><td>3.703125</td><td>Date/module/RMP retained; extra reference-benchmark activity qualifier and CHMP agreement construction have uncertain scope.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>51 · technical_short · p22official21:test:ema:2646</summary>
+
+<p><strong>源文 / Source</strong><br>Metabolites and parent drug are excreted in the bile.</p>
+
+<p><strong>参考 / Reference</strong><br>Umbrotsefni og lyfið skiljast út með galli.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Umbrotsefni og upprunaleyfi skiljast út í galli.</td><td>F</td><td>False</td><td>9.3125</td><td>Parent drug becomes original licence, losing the excreted substance.</td></tr>
+<tr><td>after</td><td>Umbrotsefni og upprunaleyfi skiljast út í galli.</td><td>F</td><td>False</td><td>9.3125</td><td>Parent drug becomes original licence, losing the excreted substance.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>52 · general · p22official21:test:opensubtitles:1162</summary>
+
+<p><strong>源文 / Source</strong><br>I don&#x27;t know why you&#x27;re torturing him.</p>
+
+<p><strong>参考 / Reference</strong><br>Ég veit ekki hvers vegna þú kvelur hann.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Ég veit ekki af hverju þú ert að skírta hann.</td><td>U</td><td>False</td><td>10.125</td><td>Uncertain lexical adequacy of skirta for torture; not certified correct or wrong without native confirmation.</td></tr>
+<tr><td>after</td><td>Ég veit ekki af hverju þú erð að skírta hann.</td><td>U</td><td>False</td><td>12.1875</td><td>Pronouns/ignorance retained; cannot certify skirta as torturing versus an erroneous action word.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>53 · general · p22official21:test:opensubtitles:2999</summary>
+
+<p><strong>源文 / Source</strong><br>I want you to train me.</p>
+
+<p><strong>参考 / Reference</strong><br>Ég vil að þú þjálfir mig.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Ég vil að þú ættir að þjála mér.</td><td>U</td><td>False</td><td>10.625</td><td>Uncertain whether thjala is a minor corruption of training or a different make-pliable verb.</td></tr>
+<tr><td>after</td><td>Ég vil að þú ættir að þróa mig.</td><td>F</td><td>False</td><td>7.96875</td><td>Train me becomes develop me, losing the specific requested training action.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>54 · technical_short · p22official21:test:ema:144</summary>
+
+<p><strong>源文 / Source</strong><br>Consumption of alcohol and medicinal products containing alcohol should be avoided.</p>
+
+<p><strong>参考 / Reference</strong><br>Forðast skal neyslu áfengis og lyf sem innihalda alkóhól.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Forðast skal neyslu áfengis og lyfja sem innihalda áfengi.</td><td>P</td><td>False</td><td>0.10986328125</td><td>Avoid both alcohol and medicines containing it; faithful.</td></tr>
+<tr><td>after</td><td>Forðast skal neyslu áfengis og lyfja sem innihalda áfengi.</td><td>P</td><td>False</td><td>0.10986328125</td><td>Avoid both alcohol and medicines containing it; faithful.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Forðast skal neyslu áfengis og lyfja sem innihalda áfengi.</td><td>P</td><td>False</td><td>0.10986328125</td><td>Avoid both alcohol and medicines containing it; faithful.</td></tr>
+<tr><td>1</td><td>Forðast skal neyslu áfengis og lyfja sem innihalda áfengi.</td><td>P</td><td>False</td><td>0.10986328125</td><td>Avoid both alcohol and medicines containing it; faithful.</td></tr>
+<tr><td>2</td><td>Forðast skal neyslu alkóhóls og lyfja sem innihalda alkóhóli.</td><td>P</td><td>False</td><td>0.0</td><td>Both alcohol consumption and alcohol-containing medicines avoided; minor case ending.</td></tr>
+<tr><td>3</td><td>Forðast skal neyslu áfengis og lyfja sem innihalda áfengi.</td><td>P</td><td>False</td><td>0.10986328125</td><td>Avoid both alcohol and medicines containing it; faithful.</td></tr>
+<tr><td>4</td><td>Forðast skal neyslu áfensla og lyfja sem innihalda áfengi.</td><td>U</td><td>False</td><td>2.09375</td><td>Alcohol-containing medicines retained; afensla as the first substance is not a certifiable alcohol word.</td></tr>
+<tr><td>5</td><td>Forðast skal neyslu áfengis og lyfja sem innihalda áfengi.</td><td>P</td><td>False</td><td>0.10986328125</td><td>Avoid both alcohol and medicines containing it; faithful.</td></tr>
+<tr><td>6</td><td>Forðast ætti neyslu áfengis og lyfja sem innihalda áfengi.</td><td>P</td><td>False</td><td>0.0</td><td>Should avoid alcohol and alcohol-containing medicines retained.</td></tr>
+<tr><td>7</td><td>Forðast skal neyslu áfengis og lyfja sem innihalda áfengi.</td><td>P</td><td>False</td><td>0.10986328125</td><td>Avoid both alcohol and medicines containing it; faithful.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Forðast skal neyslu alkóhóls og lyfja sem innihalda alkóhol.</td><td>P</td><td>False</td><td>0.0</td><td>Alcohol and medicines containing alcohol avoided; minor spelling.</td></tr>
+<tr><td>1</td><td>Forðast skal neyslu alkóhóls og lyfja sem innihalda alkóhól.</td><td>P</td><td>False</td><td>0.0</td><td>Avoid alcohol and alcohol-containing medicines retained.</td></tr>
+<tr><td>2</td><td>Forðast skal neyslu alkóhóls og lyfja sem innihalda alkóhóli.</td><td>P</td><td>False</td><td>0.0</td><td>Both alcohol consumption and alcohol-containing medicines avoided; minor case ending.</td></tr>
+<tr><td>3</td><td>Forðast skal neyslu áfengis og lyfja sem innihalda áfengi.</td><td>P</td><td>False</td><td>0.10986328125</td><td>Avoid both alcohol and medicines containing it; faithful.</td></tr>
+<tr><td>4</td><td>Forðast skal neyslu áfensla og lyfja sem innihalda áfengi.</td><td>U</td><td>False</td><td>2.09375</td><td>Alcohol-containing medicines retained; afensla as the first substance is not a certifiable alcohol word.</td></tr>
+<tr><td>5</td><td>Forðast skal neyslu áfengis og lyfja sem innihalda áfengi.</td><td>P</td><td>False</td><td>0.10986328125</td><td>Avoid both alcohol and medicines containing it; faithful.</td></tr>
+<tr><td>6</td><td>Forðast ætti neyslu áfengis og lyfja sem innihalda áfengi.</td><td>P</td><td>False</td><td>0.0</td><td>Should avoid alcohol and alcohol-containing medicines retained.</td></tr>
+<tr><td>7</td><td>Forðast skal neyslu alkóhóls og lyfja sem innihalda alkóhól.</td><td>P</td><td>False</td><td>0.0</td><td>Avoid alcohol and alcohol-containing medicines retained.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>55 · general · p22official21:test:opensubtitles:354</summary>
+
+<p><strong>源文 / Source</strong><br>Hey, Johnny, I just had a great idea.</p>
+
+<p><strong>参考 / Reference</strong><br>Johnny, ég fékk frábæra hugmynd.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Johnny, ég átti frábær hugmynd.</td><td>P</td><td>False</td><td>2.421875</td><td>Speaker had a great idea, addressed to Johnny; critical meaning retained.</td></tr>
+<tr><td>after</td><td>Hey, Johnny, ég hef fengið frábær hugmynd.</td><td>P</td><td>False</td><td>3.03125</td><td>Johnny addressed and speaker just got a great idea; minor agreement.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>56 · technical_long · p22official21:test:eea:1959</summary>
+
+<p><strong>源文 / Source</strong><br>Except as stated in paragraph 22A, a contract that will be settled by the entity (receiving or) delivering a fixed number of its own equity instruments in exchange for a fixed amount of cash or another financial asset is an equity instrument.</p>
+
+<p><strong>参考 / Reference</strong><br>Að undanskildu því sem tekið er fram í lið 22A er samningur, sem einingin gerir upp með því að (taka við eða) afhenda fastan fjölda eiginfjárgerninga sinna í skiptum fyrir fasta fjárhæð handbærs fjár eða annarrar fjáreignar, eiginfjárgerningur.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Að undanskildum því sem kveðið er á um í lið 22A er samningur, sem einingur (einnig eða) gefur upp til borgaralegra fjárhagsafurða sína í tilhlýðilegu fjölda í skipti fyrir tilhlýðilega fjárhagslega fjárhagsaða, skilningarfjárhagsafurð.</td><td>F</td><td>False</td><td>17.375</td><td>Fixed number becomes suitable number and own equity instruments become civil financial products.</td></tr>
+<tr><td>after</td><td>Að undanskildum því sem kveðið er á um í lið 22A er samningur, sem einingur (sem fær eða gefur) fasta fjölda eigin reikningssjóða í skipti við fasta fjárhæð peninga eða annars fjárhagsaðstæða, reikningssjóð.</td><td>F</td><td>False</td><td>15.8125</td><td>Own equity instruments and equity classification become accounting funds.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>57 · general · p22official21:test:opensubtitles:3625</summary>
+
+<p><strong>源文 / Source</strong><br>Max, is this just an excuse to grope Marcy?</p>
+
+<p><strong>参考 / Reference</strong><br>Max, er þetta afsökun til að káfa á Marcy?</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Max, er þetta bara ábending til að ræða Marcy?</td><td>F</td><td>False</td><td>17.375</td><td>Excuse to grope becomes a hint to discuss Marcy.</td></tr>
+<tr><td>after</td><td>Max, er þetta bara ábending til að snúa Marcy?</td><td>F</td><td>False</td><td>16.0</td><td>Excuse to grope becomes a hint to turn/twist Marcy.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>58 · general · p22official21:test:opensubtitles:3355</summary>
+
+<p><strong>源文 / Source</strong><br>He knows that Sicily, not Sardinia, has always been the key to Italy.</p>
+
+<p><strong>参考 / Reference</strong><br>Hann veit að Sikiley, ekki Sardinía, er lykillinn að Ítalíu.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Hann veit að Síklína, ekki Sardína, hefur alltaf verið lykillinn við Ítalíu.</td><td>U</td><td>False</td><td>2.125</td><td>Core contrast retained; nonstandard Sik lina/Sardina names need native geographical confirmation.</td></tr>
+<tr><td>after</td><td>Hann veit að Síklíu, ekki Sardíu, hefur alltaf verið lykillinn við Ítalíu.</td><td>U</td><td>False</td><td>5.15625</td><td>Contrast, knowledge and Italy relation retained; cannot certify nonstandard Sikliu/Sardiu island names.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>59 · technical_medium · p22official21:test:eso:215</summary>
+
+<p><strong>源文 / Source</strong><br>It shows not just the brilliant massive stars, but hundreds of thousands of much fainter stars that were previously invisible.</p>
+
+<p><strong>参考 / Reference</strong><br>Á henni sjást ekki einungis skærar og massamiklar stjörnur heldur mörg hundruð þúsund miklu daufari stjörnur sem voru áður ósýnilegar.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Það sýnir ekki aðeins risastóru stjörnur, heldur hundruð þúsund stjarna sem voru fyrr ósýnilegar vegna þess að þær voru mjög þungar og daufar.</td><td>F</td><td>False</td><td>1.40625</td><td>Adds that faint stars were very heavy as a cause of invisibility.</td></tr>
+<tr><td>after</td><td>Það sýnir ekki aðeins skýjaða, massamikla stjörnur heldur hundruð þúsund minni stjörnur sem áður hafa ekki verið sýndar.</td><td>F</td><td>False</td><td>4.53125</td><td>Bright becomes cloudy and much fainter becomes smaller.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Það sýnir fyrir utan hálfu af ljósastjörnunum og alls mörgum hundruð þúsundum fjarlægari stjörnum sem áður voru ósjónleikandi.</td><td>F</td><td>False</td><td>12.375</td><td>Fainter becomes farther away and bright massive stars are altered.</td></tr>
+<tr><td>1</td><td>Það sýnir ekki því bara bjartar stórstjörnur, heldur hundruð þúsund fyrir sig örlítið stjörnur sem því áður hafa ekki sést.</td><td>F</td><td>False</td><td>7.15625</td><td>Much fainter becomes tiny individual stars.</td></tr>
+<tr><td>2</td><td>Það sýnir ekki aðeins kastaloðan sterkir stjörnur heldur þúsundir okkar þunga minni stjörnur sem hafa áður verið ósýnilegar.</td><td>F</td><td>False</td><td>12.75</td><td>Hundreds of thousands becomes thousands; massive/brightness descriptions corrupted.</td></tr>
+<tr><td>3</td><td>Það sýnir ekki aðeins háfáuleg gigtstjörnur, heldur þrátt fyrir mörgum hundruð þúsund stjarna sem voru áður ekki sýnilegar.</td><td>F</td><td>False</td><td>13.0</td><td>Bright massive stars become an unintelligible rheumatism-star expression.</td></tr>
+<tr><td>4</td><td>Það sýnir ekki aðeins skýr massamiklar stjörnur, heldur nokkur hundruð þúsund stjarna sem voru fyrr óvíska.</td><td>F</td><td>False</td><td>8.0625</td><td>Much fainter omitted and previously invisible becomes unwise-like wording.</td></tr>
+<tr><td>5</td><td>Það sýnir ekki aðeins taldeilum massamiklu stjörnum heldur hundruð þúsundum lágræðum stjörnum sem áður hafa ekki verið sýndar.</td><td>F</td><td>False</td><td>13.0</td><td>Brightness becomes an unintelligible modifier and fainter becomes low-voice-like wording.</td></tr>
+<tr><td>6</td><td>Það sýnir ekki aðeins risastóru stjörnur, heldur hundruð þúsund minnihéttra stjarna sem áður voru þekkt ekki.</td><td>F</td><td>False</td><td>8.3125</td><td>Fainter becomes less-named and invisible becomes not known.</td></tr>
+<tr><td>7</td><td>Það sýnir ekki aðeins glæsilega stóru stjörnur, heldur hundruð þúsund af mikið þenjum stjörnum sem voru fyrr ekki sýnileg.</td><td>F</td><td>False</td><td>9.25</td><td>Much fainter becomes much expanded stars, changing the comparison.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Það sýnir ekki aðeins skýjaða meginstirnastjörnur heldur hundruð þúsund fjarlægari stjörnur sem hafa áður verið ósýrnar.</td><td>F</td><td>False</td><td>5.875</td><td>Bright massive becomes cloudy and fainter becomes farther away.</td></tr>
+<tr><td>1</td><td>Það sýnir ekki aðeins sköftan massamiklar stjörnur heldur hundruð þúsund næmir stjörnur sem voru fyrr ósýnilegar.</td><td>F</td><td>False</td><td>7.28125</td><td>Fainter becomes sensitive stars rather than lower luminosity.</td></tr>
+<tr><td>2</td><td>Það sýnir ekki aðeins kraftlega stjörnur, heldur mun hundruð þúsund minnkaðra stjarna sem voru fyrr ósíðum.</td><td>F</td><td>False</td><td>14.375</td><td>Fainter becomes reduced/smaller stars, changing brightness into size.</td></tr>
+<tr><td>3</td><td>Það sýnir ekki aðeins kraftlega stjörnur, heldur hundruð þúsund minni stjörnur sem hafa áður verið ósýnileg.</td><td>F</td><td>False</td><td>9.5</td><td>Much fainter becomes smaller, changing the scientific comparison.</td></tr>
+<tr><td>4</td><td>Það sýnir ekki aðeins skýr massamiklar stjörnur, heldur hundruð þúsund stjarna sem var fyrr ósýra.</td><td>F</td><td>False</td><td>9.875</td><td>Much fainter is omitted and previously invisible becomes an unintelligible adjective.</td></tr>
+<tr><td>5</td><td>Það sýnir ekki aðeins taldeilum massamiklu stjörnum heldur hundruð til þúsunda lágrar stjörnum sem áður var ósýrnar.</td><td>F</td><td>False</td><td>12.3125</td><td>Hundreds of thousands becomes hundreds to thousands.</td></tr>
+<tr><td>6</td><td>Það sýnir ekki aðeins kölluð smáhlóðstjörnur, heldur hundruð þúsund fyrir sig stærri og svipaðar stjörnur sem áður hafa ekki verið sýndar.</td><td>F</td><td>False</td><td>9.375</td><td>Fainter stars become larger and similar stars.</td></tr>
+<tr><td>7</td><td>Það sýnir ekki aðeins glæsilega massamikla stjörnur heldur hundruð þúsund af mikið minni stjörnum sem áður hafa ekki verið sýndar.</td><td>F</td><td>False</td><td>3.296875</td><td>Fainter becomes much smaller rather than lower luminosity.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>60 · technical_medium · p22official21:test:eea:1272</summary>
+
+<p><strong>源文 / Source</strong><br>The Commission shall make available to the Agency any information the latter considers relevant to that evaluation.</p>
+
+<p><strong>参考 / Reference</strong><br>Framkvæmdastjórnin skal láta stofnuninni í té hvers kyns upplýsingar sem stofnunin telur að skipti máli í tengslum við matið.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Framkvæmdastjórnin skal gera stofnuninni aðgang að allar upplýsingar sem síðari er átt að gera að því er varðar þessa mat.</td><td>F</td><td>False</td><td>6.84375</td><td>Agency relevance judgement becomes a meant-to-do construction.</td></tr>
+<tr><td>after</td><td>Framkvæmdastjórnin skal gera stofnuninni aðgang að allar upplýsingar sem síðara er átt að gera ráð fyrir þeirri mat.</td><td>F</td><td>False</td><td>6.90625</td><td>Agency considering information relevant is replaced by a meant-to-assume phrase.</td></tr>
+</tbody></table>
+
+<p><strong>before · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Framkvæmdastjórnin skal gera boðsveit fyrirtækið allar upplýsingar sem síðara stofnunin telur skipta máli fyrir þessa mati.</td><td>F</td><td>False</td><td>10.375</td><td>Recipient agency becomes messenger company.</td></tr>
+<tr><td>1</td><td>Framkvæmdastjórnin skal gera stofnuninni aðgang að allri þeirri upplýsingum sem síðari er, sem hún telur skipta máli við þessa mat.</td><td>P</td><td>False</td><td>7.375</td><td>Commission gives Agency access to all information it considers relevant to evaluation; minor grammar/redundancy.</td></tr>
+<tr><td>2</td><td>Framkvæmdastjórnin skal gera starfsmann flugöryggisstofnunarinnar aðgengileg öllum upplýsingum sem síðari eru að hlýtur að því er varðar mat á því.</td><td>F</td><td>False</td><td>12.6875</td><td>Adds an aviation-safety-agency employee instead of the source Agency.</td></tr>
+<tr><td>3</td><td>Framkvæmdastjórnin skal leggja fram við þýðingarfyrirtækið allar upplýsingar sem það telur marktækar við það mat.</td><td>F</td><td>False</td><td>9.3125</td><td>Agency becomes translation company.</td></tr>
+<tr><td>4</td><td>Framkvæmdastjórnin skal gera stofnuninni öll upplýsingar sem síðari farið er um er ávallt viðmatsskilaðar.</td><td>F</td><td>False</td><td>7.875</td><td>Agency relevance judgement replaced by always evaluation-delivered wording.</td></tr>
+<tr><td>5</td><td>Framkvæmdastjórnin skal gera hagstofnuninni aðgengi hvaða upplýsinga hún telur skipta máli við þessa mat.</td><td>F</td><td>False</td><td>7.625</td><td>Agency becomes a statistics/economic institution without source support.</td></tr>
+<tr><td>6</td><td>Framkvæmdastjórnin skal gera stofnuninni aðgengi til þeirra upplýsinga sem síðara hafa þýðingu fyrir þá mat sem þannig er á.</td><td>F</td><td>False</td><td>5.15625</td><td>Agency judgement of relevance is omitted, replaced by information later having meaning.</td></tr>
+<tr><td>7</td><td>Framkvæmdastjórnin skal gera stofnuninni aðgengi á öllum upplýsingum sem síðara eru á vísbendingu vottorðinu.</td><td>F</td><td>False</td><td>6.34375</td><td>Relevant evaluation becomes an indication on a certificate.</td></tr>
+</tbody></table>
+
+<p><strong>after · G8</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>0</td><td>Framkvæmdastjórnin skal gera boðsveit fyrirtækið allar upplýsingar sem síðara skýrar er skýra að þessari mati.</td><td>F</td><td>False</td><td>16.125</td><td>Agency becomes messenger company and relevance relationship is corrupted.</td></tr>
+<tr><td>1</td><td>Framkvæmdastjórnin skal gera stofnuninni fyrirboð á allar upplýsingar sem síðara kynna mikilvægar fyrir þá mat sem gerð er á.</td><td>F</td><td>False</td><td>7.5</td><td>Making information available becomes a foreboding/notice construction and agency relevance judgement lost.</td></tr>
+<tr><td>2</td><td>Framkvæmdastjórnin skal gera starfsmann sá aðil aðgerðarmyndunar aðgengileg aðferðaráðstofnuninni allar upplýsingar sem síðara er teljast hafa mikilvægi vegna þessarar matar.</td><td>F</td><td>False</td><td>15.375</td><td>Adds staff/action-formation actors and corrupts the recipient-agency relationship.</td></tr>
+<tr><td>3</td><td>Framkvæmdastjórnin skal leggja fram allar upplýsingar sem síðara hefur átt við að erfiðar er varða þessa mat.</td><td>F</td><td>False</td><td>15.6875</td><td>Agency recipient omitted and relevance judgement becomes an unintelligible difficulty phrase.</td></tr>
+<tr><td>4</td><td>Framkvæmdastjórnin skal gera stofnuninni öll upplýsingar sem síðari farið telur hafa viðmiðunartækingu fyrir þessa mat.</td><td>U</td><td>False</td><td>6.0625</td><td>Commission/agency/information retained; invented reference-technique relevance wording cannot be certified.</td></tr>
+<tr><td>5</td><td>Framkvæmdastjórnin skal gera hagstofnuninni aðgengi hvaða upplýsinga hún telur skipta máli við þessa mat.</td><td>F</td><td>False</td><td>7.625</td><td>Agency becomes a statistics/economic institution without source support.</td></tr>
+<tr><td>6</td><td>Framkvæmdastjórnin skal gera hagstofunni aðgengi til allra upplýsinga sem síðarnefnda telur skipta máli fyrir þessa mat.</td><td>F</td><td>False</td><td>2.375</td><td>Generic Agency becomes specifically the statistics office.</td></tr>
+<tr><td>7</td><td>Framkvæmdastjórnin skal gera stofnuninni aðgengi allra upplýsinga sem síðari reynsla kemur til skilvirkra atriða þessarar matar.</td><td>F</td><td>False</td><td>8.25</td><td>Agency considering relevance becomes later experience/effective-aspect wording.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>61 · technical_long · p22official21:test:eea:1608</summary>
+
+<p><strong>源文 / Source</strong><br>Taking account of national legislation, activities will aim to complement the existing actions by improving cooperation with domain name registries in Member States, and encouraging positive relationships with registries outside the EU to enable earlier detection of potentially illegal content and minimise the longevity of websites known to offer child sexual abuse content.</p>
+
+<p><strong>参考 / Reference</strong><br>Að teknu tilliti til landslöggjafar skulu aðgerðir miða að því að vera til fyllingar fyrirliggjandi aðgerðum með auknu samstarfi við skráningarstöðvar yfir lénsheiti í aðildarríkjunum, og verða hvatning til árangursríks sambands við skráningarstöðvar utan Evrópusambandsins svo að unnt verði að fylgjast með innihaldi sem hugsanlega er ólöglegt og lágmarka líftíma vefsetra sem vitað er að bjóða efni þar sem börn eru misnotuð kynferðislega.</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Að teknu tilliti til landslöggjafar verða starfsemi að munur að því að bæta áfram þær aðgerðir sem þegar eru með því að bæta samstarf við skráningarstofur á landsvæðum og að hvetja til þess að þeirri samfélagsi sem eru við stofur utan ESB geti komið snemma í veg fyrir að greinist hafi af hugsanlega ólöglegri innihaldi og minnka það tíma sem búnaður á vefjum sem eru þekktur og eru tilgreindir sem gefa kynslóðaæskileika barna.</td><td>F</td><td>False</td><td>21.0</td><td>Domain-name registries lost; early detection becomes preventing detection and child-abuse-content meaning corrupted.</td></tr>
+<tr><td>after</td><td>Að teknu tilliti til landslaga mun starfsemi vera að marka að auka þær aðgerðir sem liggja fyrir með að bæta samstarf við skráningarkerfi í aðildarríkjum og hvetja til aðstoðar við samstarf við skráningarkerfi utan EB til að greiða fyrir snemmingu á hugsanlega ólöglegu innihaldi og minnka þann tíma sem vefseti sem vita að bjóða upp kynslaómesi fyrir barni sé áframhaldandi.</td><td>F</td><td>False</td><td>17.375</td><td>Domain-name registry specificity and child sexual-abuse-content meaning are not retained.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>62 · general · p22official21:test:opensubtitles:1892</summary>
+
+<p><strong>源文 / Source</strong><br>You mean the other one&#x27;s here too?</p>
+
+<p><strong>参考 / Reference</strong><br>Áttu við að hinn sé líka hér?</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Ertu að segja að hún sé hérna líka?</td><td>F</td><td>False</td><td>18.0</td><td>The other one becomes merely she, losing the distinguishing other-person relation.</td></tr>
+<tr><td>after</td><td>Ætlaðir þið að hin sé hérna líka?</td><td>F</td><td>False</td><td>5.21875</td><td>Do you mean becomes did you intend, changing interpretation into intention.</td></tr>
+</tbody></table>
+
+</details>
+
+<details><summary>63 · technical_short · p22official21:test:ema:1466</summary>
+
+<p><strong>源文 / Source</strong><br>Each capsule contains 80 mg of sucrose (in the 80 mg capsule).</p>
+
+<p><strong>参考 / Reference</strong><br>Hvert hylki inniheldur 80 mg af súkrósa (í 80 mg hylkinu).</p>
+
+<p><strong>贪心生成 / Greedy</strong></p>
+
+<table><thead><tr><th>模型/索引 Model/draw</th><th>译文 Translation</th><th>文字语义 Grade</th><th>截断 Truncated</th><th>MetricX error ↓</th><th>语义说明 Semantic note</th></tr></thead><tbody>
+<tr><td>before</td><td>Hvert hylki inniheldur 80 mg af súkrósa (í 80 mg hylkinu).</td><td>P</td><td>False</td><td>0.0031280517578125</td><td>Each capsule, 80 mg sucrose and parenthetical 80 mg capsule all retained.</td></tr>
+<tr><td>after</td><td>Hvert hylki inniheldur 80 mg af súkrósa (í 80 mg hylkinu).</td><td>P</td><td>False</td><td>0.0031280517578125</td><td>Each capsule, 80 mg sucrose and parenthetical 80 mg capsule all retained.</td></tr>
+</tbody></table>
+
+</details>

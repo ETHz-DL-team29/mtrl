@@ -1,0 +1,10 @@
+{
+  "UTC": "2026-11-22T00:06:38.253177+00:00",
+  "date": "2026-11-21",
+  "name": "r0_3b_recovery_sft_2026-11-21",
+  "phase": "COMPLETED_EVALUATED_CHECKPOINT_GPU_RELEASED",
+  "GPU_allocated": false,
+  "production_updates": 1121,
+  "project_qualification_passed": false,
+  "selected_tag": "t1983726"
+}

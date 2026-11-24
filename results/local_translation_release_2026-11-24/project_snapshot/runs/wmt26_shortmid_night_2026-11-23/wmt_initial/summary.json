@@ -1,0 +1,9 @@
+{
+  "documents_per_arm": 198,
+  "segments_per_arm": 2551,
+  "seconds": 6481.0004115104675,
+  "truncated": {
+    "before": 19,
+    "oldDAPO120": 14
+  }
+}

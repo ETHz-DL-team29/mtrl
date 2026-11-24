@@ -1,0 +1,35 @@
+{
+  "observed_unix": 1794494692.2816925,
+  "best": {
+    "checkpoint": "checkpoints/step-001736-tokens-000750064",
+    "metrics": {
+      "nll": 1.7999888362635352,
+      "selection_score": 44.80405428153941,
+      "gated_sentence_chrfpp_by_stratum": {
+        "general": 50.05994334752192,
+        "technical_short": 58.8869914118937,
+        "technical_medium": 29.07370198703179,
+        "technical_long": 30.683802247745206
+      },
+      "corpus_chrfpp": 34.76042628060445,
+      "failure_rate": 0.03125,
+      "foreign_script_rate": 0.0,
+      "count": 32,
+      "dev_target_tokens": 4746,
+      "wall_seconds": 183.55983900200044,
+      "semantic_review": "pending; chrF and gates are proxies"
+    },
+    "step": 1736,
+    "target_tokens": 750064,
+    "semantic_review": "pending"
+  },
+  "complete": {
+    "step": 1736,
+    "target_tokens": 750064,
+    "reason": "dev",
+    "adapter_sha256": "806b9857024868131140da43ad3975d7c8653b97e5687420e4499a3769995847"
+  },
+  "previous_r0_sha256": "81b369a5f6c6343c160c99c4d3271f2ecb63781363b05e9c89e7b2703b77785f",
+  "old_sft_sha256": "e32ae12d4ece8416352a6920d422766a5cf00e7b29ae5a528efda4dc4645a411",
+  "private_drive_originals_preserved": true
+}

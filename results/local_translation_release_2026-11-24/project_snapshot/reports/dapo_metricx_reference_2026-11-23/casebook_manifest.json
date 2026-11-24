@@ -1,0 +1,15 @@
+{
+  "UTC": "2026-11-23T14:23:35.504136+00:00",
+  "sources": 64,
+  "reviewed_unique_candidates": 461,
+  "raw_input_SHA256": {
+    "before_greedy.jsonl": "7fc15c6e8ffde873d08fc14068c527f5051ae5e765947da853d89a38bef7dc44",
+    "after_greedy.jsonl": "856573532c8bcb9c6d5988de16c4241378bda9c24b1dcc80324c2a2d578396dd",
+    "before_g8.jsonl": "b0fc4509992cf8a7cce33d4d979f43db8d91fc0e34cd9996f6aa590d551f79cc",
+    "after_g8.jsonl": "5c9da011a53815607e3d48eb02c655ef67830e413c7ebc660d4458a370bf1434"
+  },
+  "labels_SHA256": "583fbc13c10340037374fef4b57c9943bc172dbb3d0561dd4124c9e2afc95100",
+  "scores_SHA256": "d76b6a96ba2761429e09c9b42332b6b3e03c7b88c281de9b112a71e2eb69f60f",
+  "markdown_SHA256": "fca414fb2ceb848cf026f80d755d3553edf4bce0ce028d80917a382f7218593e",
+  "html_SHA256": "6daab1a8949f7603e57ae4dd99c496219a23c3bf315849dd442de18d1e2c692e"
+}

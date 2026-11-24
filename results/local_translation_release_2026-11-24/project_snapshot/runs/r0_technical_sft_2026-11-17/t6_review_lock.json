@@ -1,0 +1,9 @@
+{
+  "utc": "2026-11-17T11:20:24.407996+00:00",
+  "judgements_sha256": "c462df246b2a73d598c5366a1e2b88f76c51cc1979fb78b593d7a593577aead7",
+  "cards_sha256": "ea2db801de5622297f1147b07af53e1bf8c0bb5050c150838d83b148bdd75002",
+  "cards": 32,
+  "candidate_judgements": 512,
+  "before_unblinding_and_aggregate_final_quality": true,
+  "not_independent_or_native_certified": true
+}

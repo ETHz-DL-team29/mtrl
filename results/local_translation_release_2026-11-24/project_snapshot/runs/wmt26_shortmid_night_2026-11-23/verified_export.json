@@ -1,0 +1,22 @@
+{
+  "bytes": 11600244,
+  "sha256": "fe692d5e37e50007bfe01648293e0d07583fd0f93935980e7a46b9f06284d545",
+  "parts": [
+    {
+      "name": "part_000.bin",
+      "bytes": 6291456,
+      "sha256": "9e6112ba1a7789c26a4a857e52bcd76aa923fdea84d856594887195e01dde7b9"
+    },
+    {
+      "name": "part_001.bin",
+      "bytes": 5308788,
+      "sha256": "d58b9c5f1a9a846f3379d9ee7df0a768b8e82f71e9f4d7eeb4a32feaf7f05ae7"
+    }
+  ],
+  "all_GPU_work_finished": true,
+  "failed": false,
+  "unix": 1795486963.2924776,
+  "verified_UTC": "2026-11-24T03:04:29.851810+00:00",
+  "local_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\p25_export.zip",
+  "durable_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\p25_export_verified_copy.zip"
+}

@@ -1,0 +1,9 @@
+{
+  "inherited_Adam_steps": [
+    2543
+  ],
+  "parent_optimizer_sha256": "3576678e88cb77f43945e8c2d01f3ddf17354cc68ea8aacdc044655cf54fd7da",
+  "new_phase_cursor": 0,
+  "new_phase_tokens": 0,
+  "new_phase_seed_not_replacing_restored_RNG": true
+}

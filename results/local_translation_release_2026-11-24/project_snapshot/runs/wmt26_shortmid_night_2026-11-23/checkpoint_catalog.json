@@ -1,0 +1,140 @@
+{
+  "UTC": "2026-11-24T03:05:24.559295+00:00",
+  "original_R0_path": "D:\\deep learning project\\runs\\r0_3b_recovery_sft_2026-11-21\\final_selected_adapter",
+  "original_R0_SHA256": "7f7a4914c5f403e757fdb882c3576ac68f2b0fa6edc00e537087716b28ddb07e",
+  "original_R0_unchanged": true,
+  "checkpoints": [
+    {
+      "tag": "shortmid_selected_full",
+      "step": 120,
+      "adapter_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\snapshots\\shortmid_selected_full\\files\\adapter",
+      "adapter_SHA256": "40ee8312ead89272fd5e8190a3b8e1da91d5f0ff641721840600585ff4308c86",
+      "optimizer_RNG_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\snapshots\\shortmid_selected_full\\files\\optimizer_rng.pt",
+      "archive_SHA256": "151f77626999d8fbaab9450a10614648f512fdc9c429e1c191e6510dbfad34b1",
+      "archive_bytes": 1334173519,
+      "transfer_and_file_hashes_verified": true
+    },
+    {
+      "tag": "step_020",
+      "step": 20,
+      "adapter_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\snapshots\\step_020\\files\\adapter",
+      "adapter_SHA256": "af8e2501c99716d60a4450c194623b65586632341c8d5fec0eb761be0fcd1e8a",
+      "optimizer_RNG_path": null,
+      "archive_SHA256": "b99ba85d34b13ae008b41fd3fac3643dc00916a230e765b2defe21cd93297dff",
+      "archive_bytes": 445692843,
+      "transfer_and_file_hashes_verified": true
+    },
+    {
+      "tag": "step_040",
+      "step": 40,
+      "adapter_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\snapshots\\step_040\\files\\adapter",
+      "adapter_SHA256": "25ecbbfb39f2c3407ffd1662806dd40678c2210412ae1fd4ce149d5b204671ad",
+      "optimizer_RNG_path": null,
+      "archive_SHA256": "bad31e1c28a2cd5e29c4dc1d89d2bd65ab3f9a6133555edc603b625e0ba41426",
+      "archive_bytes": 445693824,
+      "transfer_and_file_hashes_verified": true
+    },
+    {
+      "tag": "step_060",
+      "step": 60,
+      "adapter_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\snapshots\\step_060\\files\\adapter",
+      "adapter_SHA256": "61676d79aa3ee501b156d6522b410b753eeef7b266346afde4e7eecaa6f88bd8",
+      "optimizer_RNG_path": null,
+      "archive_SHA256": "ee894f8511873b07eb3c0e87373ca02265b7d03cfbad6e08ad3930ac510bd8ec",
+      "archive_bytes": 445691610,
+      "transfer_and_file_hashes_verified": true
+    },
+    {
+      "tag": "step_080",
+      "step": 80,
+      "adapter_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\snapshots\\step_080\\files\\adapter",
+      "adapter_SHA256": "298264ba7aa67c361e7d3b770320dbecff5e9e8b627cc89623dc414fa8d636b6",
+      "optimizer_RNG_path": null,
+      "archive_SHA256": "ecd28a0dd672d286994b04b35517a0451b09a61f337673abc9cda02e93f591fe",
+      "archive_bytes": 445694362,
+      "transfer_and_file_hashes_verified": true
+    },
+    {
+      "tag": "step_100",
+      "step": 100,
+      "adapter_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\snapshots\\step_100\\files\\adapter",
+      "adapter_SHA256": "31fb9f93e7a36a0d0426ac524bffe9b41113ac0d83e80b33eb7b98e122f9153a",
+      "optimizer_RNG_path": null,
+      "archive_SHA256": "e65f6973d14855a8874402f9c48b7e8bd7d39213839d98ba4ad1ccdee3a7e164",
+      "archive_bytes": 445694525,
+      "transfer_and_file_hashes_verified": true
+    },
+    {
+      "tag": "step_120",
+      "step": 120,
+      "adapter_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\snapshots\\step_120\\files\\adapter",
+      "adapter_SHA256": "40ee8312ead89272fd5e8190a3b8e1da91d5f0ff641721840600585ff4308c86",
+      "optimizer_RNG_path": null,
+      "archive_SHA256": "5eeb0b2c6d185f5739e83a6cec173836cd3acd2945837e89879ecda5a8675cad",
+      "archive_bytes": 445689932,
+      "transfer_and_file_hashes_verified": true
+    },
+    {
+      "tag": "step_140",
+      "step": 140,
+      "adapter_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\snapshots\\step_140\\files\\adapter",
+      "adapter_SHA256": "022c781a3d5f434d288ad2e8c86750abf47af4fe9b788c8ebfabe7bed93e7874",
+      "optimizer_RNG_path": null,
+      "archive_SHA256": "f5fe55a9921180cc751ca6b7cfe94ee6e88faa45f107b58547dfa9679ba13479",
+      "archive_bytes": 445693187,
+      "transfer_and_file_hashes_verified": true
+    },
+    {
+      "tag": "step_160",
+      "step": 160,
+      "adapter_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\snapshots\\step_160\\files\\adapter",
+      "adapter_SHA256": "5877daa3e3233674c73896492c121a1a0c214970d66ca43cab31a4ec6adba836",
+      "optimizer_RNG_path": null,
+      "archive_SHA256": "9296f5869aa76180d972c3eb486bec5cb6746e9aee55a43f4c857ecf8c64268a",
+      "archive_bytes": 445691052,
+      "transfer_and_file_hashes_verified": true
+    },
+    {
+      "tag": "step_180",
+      "step": 180,
+      "adapter_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\snapshots\\step_180\\files\\adapter",
+      "adapter_SHA256": "eecbf77ec72c66836eb12b7c234933a8fd9ab04da6a4c7d7e9c6630048161bd5",
+      "optimizer_RNG_path": null,
+      "archive_SHA256": "6404bbf926260290333c986be7ac8079eca8895839deab4d4981701cebb22533",
+      "archive_bytes": 445691632,
+      "transfer_and_file_hashes_verified": true
+    },
+    {
+      "tag": "step_200",
+      "step": 200,
+      "adapter_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\snapshots\\step_200\\files\\adapter",
+      "adapter_SHA256": "1683ab5445101e997f435bf005e490a86fdd2261745ac6b7fc432a21704d86f8",
+      "optimizer_RNG_path": null,
+      "archive_SHA256": "eac4ae93d598de0001a6db936056860bd570d0038750ce93278dda9f68aa66a6",
+      "archive_bytes": 445690791,
+      "transfer_and_file_hashes_verified": true
+    },
+    {
+      "tag": "step_220",
+      "step": 220,
+      "adapter_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\snapshots\\step_220\\files\\adapter",
+      "adapter_SHA256": "4827ae5d9369f2ccd4edf38bd1ee1304ae63dd1558d7e439ce37595663a9c7ee",
+      "optimizer_RNG_path": null,
+      "archive_SHA256": "e2adf5642055433f765097019796b27aa7caaab86f983da17d2aa05f71b9a62d",
+      "archive_bytes": 445690840,
+      "transfer_and_file_hashes_verified": true
+    },
+    {
+      "tag": "step_240",
+      "step": 240,
+      "adapter_path": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\snapshots\\step_240\\files\\adapter",
+      "adapter_SHA256": "1a33af1ed9324e33445a909710815bc427c72e12db3841ea56c1858934cff86f",
+      "optimizer_RNG_path": null,
+      "archive_SHA256": "2cc2d6865e33ef510bba96d082b2820ac378c6fe254b86f53cedd44997022666",
+      "archive_bytes": 445692824,
+      "transfer_and_file_hashes_verified": true
+    }
+  ],
+  "full_optimizer_and_RNG_only_for_selected": true,
+  "regular_weights_can_be_warm_started_but_not_claimed_exact_optimizer_resume": true
+}

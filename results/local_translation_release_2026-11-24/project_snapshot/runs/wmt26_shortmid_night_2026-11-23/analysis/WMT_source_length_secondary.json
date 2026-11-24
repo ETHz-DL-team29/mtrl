@@ -1,0 +1,115 @@
+{
+  "UTC": "2026-11-24T02:23:55.070976+00:00",
+  "plan_SHA256": "5e1ab95a12a255a8272f54e7d95cae178c526b6d5000cb95719381ea4bc7c900",
+  "exploratory_secondary_no_multiple_comparison_adjustment": true,
+  "not_official_sentence_aligned_scores": true,
+  "full_official_document_references_preserved": true,
+  "results": {
+    "all_units_short": {
+      "n": 55,
+      "domains": {
+        "speech": 55
+      },
+      "comparisons": {
+        "oldDAPO120": {
+          "chrfpp": {
+            "before": 43.663353636228614,
+            "after": 43.84633436119727,
+            "delta": 0.18298072496865814,
+            "delta95CI": [
+              -0.5140290590315809,
+              0.886137257344545
+            ],
+            "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0"
+          },
+          "bleu": {
+            "before": 21.461884621015923,
+            "after": 21.154894603067756,
+            "delta": -0.3069900179481664,
+            "delta95CI": [
+              -1.1025288817874868,
+              0.558039612591832
+            ],
+            "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0"
+          }
+        },
+        "shortmidDAPO": {
+          "chrfpp": {
+            "before": 43.663353636228614,
+            "after": 43.60557982357613,
+            "delta": -0.057773812652484935,
+            "delta95CI": [
+              -0.8819388625221534,
+              0.7594650863215217
+            ],
+            "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0"
+          },
+          "bleu": {
+            "before": 21.461884621015923,
+            "after": 21.332574123781775,
+            "delta": -0.12931049723414745,
+            "delta95CI": [
+              -0.8957177125706304,
+              0.5938665795526485
+            ],
+            "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0"
+          }
+        }
+      }
+    },
+    "all_units_shortmid": {
+      "n": 153,
+      "domains": {
+        "news": 3,
+        "social": 18,
+        "speech": 132
+      },
+      "comparisons": {
+        "oldDAPO120": {
+          "chrfpp": {
+            "before": 40.41964639023854,
+            "after": 41.248562716970014,
+            "delta": 0.8289163267314734,
+            "delta95CI": [
+              -0.28441466496450546,
+              1.9556987244001394
+            ],
+            "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0"
+          },
+          "bleu": {
+            "before": 17.329282554426904,
+            "after": 18.855321683083016,
+            "delta": 1.5260391286561124,
+            "delta95CI": [
+              -0.6053580292885986,
+              3.4712405038641445
+            ],
+            "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0"
+          }
+        },
+        "shortmidDAPO": {
+          "chrfpp": {
+            "before": 40.41964639023854,
+            "after": 41.8757197074851,
+            "delta": 1.4560733172465632,
+            "delta95CI": [
+              0.02282859637512367,
+              2.6889796555164307
+            ],
+            "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0"
+          },
+          "bleu": {
+            "before": 17.329282554426904,
+            "after": 20.330419171522845,
+            "delta": 3.0011366170959413,
+            "delta95CI": [
+              0.46384999572185015,
+              4.827658373453065
+            ],
+            "signature": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0"
+          }
+        }
+      }
+    }
+  }
+}

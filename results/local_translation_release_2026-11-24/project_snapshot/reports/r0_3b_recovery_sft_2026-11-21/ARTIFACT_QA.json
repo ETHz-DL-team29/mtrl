@@ -1,0 +1,16 @@
+{
+  "UTC": "2026-11-22T00:06:47.563245+00:00",
+  "passed": true,
+  "HTML_case_details": 1128,
+  "balanced_details": true,
+  "all12primary_source_links_present": true,
+  "plot_file_present": true,
+  "UTF8_replacement_characters": 0,
+  "all_appended_review_cards_labelled": true,
+  "inference_script_syntax_valid": true,
+  "adapter_manifest_sha256": "86e33c958d5c94d78d2e46698e7c30f7eae981b3e600baaf00d826bd94f90236",
+  "HTML_sha256": "4bf4e95e8051ddd9298c8af34e83aab822079bd901639d213147c59094c7c151",
+  "MD_sha256": "4cfc4cced8ec0fe225e6731c1aab85debe6256fe9cc3f6639d3f472ec5acf077",
+  "not_browser_render_QA": true,
+  "figure_visual_inspection_required_separately": true
+}

@@ -1,0 +1,16 @@
+{
+  "status": "completed_pending_locked_semantic_review",
+  "step": 330,
+  "target_tokens": 399895,
+  "train_seconds": 1641.9192237019936,
+  "worker_seconds": 3851.7225792149998,
+  "stop_reason": "frozen_budget_completed",
+  "selected_tag": "t200000",
+  "selected_step": 165,
+  "selected_target_tokens": 200770,
+  "initial_adapter_sha256": "ebb4575fda36002c76ddb7e999a4e12c44a0be9ddb20b1e4e092d708e6a050e9",
+  "selected_adapter_sha256": "89c874b1e04b011c6ee3f41f499c373b47826a7f106b9d61eaa83fdce85c77ae",
+  "G8_sources": 32,
+  "G8_candidates_per_side": 256,
+  "selection_used_final_outputs": false
+}

@@ -1,0 +1,72 @@
+{
+  "UTC": "2026-11-21T23:29:06.210794+00:00",
+  "all_final_cards_checked": true,
+  "labels_sha256": "2f987b27395d18b5f29bbb477bbb53e7046552b813254ce777ad26af8a4f2f36",
+  "no_broad_new_critical_regressions": true,
+  "review_method": "All 256 cards inspected or strictly identical inspected evidence reused; all six P-to-U/F pairs and all changed pairs re-read from saved outputs. Same-assistant AI, not native certification.",
+  "regressions": [
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eea:1170",
+      "stratum": "technical_short",
+      "before_card": 130,
+      "after_card": 187,
+      "transition": "P->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:eea:19",
+      "stratum": "technical_medium",
+      "before_card": 133,
+      "after_card": 93,
+      "transition": "P->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "g8",
+      "source_id": "p18official21:test:ema:665",
+      "stratum": "technical_medium",
+      "before_card": 160,
+      "after_card": 156,
+      "transition": "P->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:eea:1367",
+      "stratum": "technical_long",
+      "before_card": 159,
+      "after_card": 235,
+      "transition": "P->U",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:eea:1383",
+      "stratum": "technical_medium",
+      "before_card": 112,
+      "after_card": 226,
+      "transition": "P->F",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    },
+    {
+      "role": "greedy",
+      "source_id": "p18official21:test:eea:83",
+      "stratum": "technical_short",
+      "before_card": 128,
+      "after_card": 195,
+      "transition": "P->F",
+      "before_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading.",
+      "after_note": "Exact previously inspected source/hypothesis evidence, no fuzzy or metric-based grading."
+    }
+  ],
+  "judgment_zh": "存在真实局部退步：地下水被译成基础、港口计划制定变继续；长句委员会提交义务变不明确。另有3组G8由P到U。各自保留退步，不改标签以制造收益；未观察到跨多数任务统一出现的新型关键语义崩溃，不能以此声称模型无退步。总P计数持平或微增仍不构成可靠改善。",
+  "judgment_en": "Local regressions remain: groundwater becomes foundation; developing port plans becomes continuing them; the Commission submission obligation becomes unclear. Three G8 groups shift P to U. These regressions are retained. No new systematic critical collapse across most tasks was observed; this does not mean no regression, nor do flat/slightly positive P counts establish improvement.",
+  "labels_modified_in_paired_review": false
+}

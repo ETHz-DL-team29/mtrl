@@ -1,0 +1,31 @@
+{
+  "nll": 1.3694806076208055,
+  "technical_nll": 1.3635555198180536,
+  "dev_target_tokens": 7762,
+  "by_stratum": {
+    "general": {
+      "n": 32,
+      "chrfpp": 35.25565604463637,
+      "bleu": 15.824702350907463
+    },
+    "technical_short": {
+      "n": 32,
+      "chrfpp": 42.01609187553141,
+      "bleu": 18.585834878197268
+    },
+    "technical_medium": {
+      "n": 32,
+      "chrfpp": 38.63997269826399,
+      "bleu": 16.495708456232272
+    },
+    "technical_long": {
+      "n": 32,
+      "chrfpp": 42.03057486312777,
+      "bleu": 21.114629432404445
+    }
+  },
+  "overall_chrfpp": 40.683784765135854,
+  "technical_chrfpp": 41.09314727972354,
+  "technical_medium_long_chrfpp": 40.9759166925303,
+  "failures": 0
+}

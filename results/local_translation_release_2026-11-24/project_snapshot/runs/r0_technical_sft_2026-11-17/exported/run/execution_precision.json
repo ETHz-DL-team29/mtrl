@@ -1,0 +1,6 @@
+{
+  "SFT": "BF16 base+FP32 LoRA",
+  "evaluation": "same loaded BF16-rounded base promoted toFP32",
+  "TF32": false,
+  "autocast": false
+}

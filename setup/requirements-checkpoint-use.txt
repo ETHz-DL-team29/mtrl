@@ -1,0 +1,9 @@
+# Install a GPU-compatible PyTorch separately; packaging does not replace it.
+# Recorded Colab environment: torch 2.14.1+cu130, Python 3.13, L4.
+# The following model-library versions were used by the saved experiments.
+transformers==5.22.1
+peft==0.21.2
+accelerate==1.15.0
+safetensors==0.8.0
+sentencepiece==0.2.2
+sacrebleu==2.6.0

@@ -1,0 +1,1870 @@
+{
+  "dev.jsonl": {
+    "n": 144,
+    "max_reference_target_tokens": 257,
+    "reference_over320": [],
+    "rows": [
+      {
+        "id": "Tatoeba:6323",
+        "stratum": "general",
+        "target_tokens": 18
+      },
+      {
+        "id": "Tatoeba:4130",
+        "stratum": "general",
+        "target_tokens": 27
+      },
+      {
+        "id": "Tatoeba:5481",
+        "stratum": "general",
+        "target_tokens": 23
+      },
+      {
+        "id": "Tatoeba:8153",
+        "stratum": "general",
+        "target_tokens": 23
+      },
+      {
+        "id": "Tatoeba:2067",
+        "stratum": "general",
+        "target_tokens": 16
+      },
+      {
+        "id": "Tatoeba:6940",
+        "stratum": "general",
+        "target_tokens": 13
+      },
+      {
+        "id": "Tatoeba:3760",
+        "stratum": "general",
+        "target_tokens": 19
+      },
+      {
+        "id": "Tatoeba:8808",
+        "stratum": "general",
+        "target_tokens": 9
+      },
+      {
+        "id": "Tatoeba:4180",
+        "stratum": "general",
+        "target_tokens": 11
+      },
+      {
+        "id": "Tatoeba:8262",
+        "stratum": "general",
+        "target_tokens": 10
+      },
+      {
+        "id": "Tatoeba:4956",
+        "stratum": "general",
+        "target_tokens": 25
+      },
+      {
+        "id": "Tatoeba:3207",
+        "stratum": "general",
+        "target_tokens": 18
+      },
+      {
+        "id": "Tatoeba:8114",
+        "stratum": "general",
+        "target_tokens": 29
+      },
+      {
+        "id": "Tatoeba:6506",
+        "stratum": "general",
+        "target_tokens": 16
+      },
+      {
+        "id": "Tatoeba:115",
+        "stratum": "general",
+        "target_tokens": 21
+      },
+      {
+        "id": "Tatoeba:6876",
+        "stratum": "general",
+        "target_tokens": 19
+      },
+      {
+        "id": "Tatoeba:8741",
+        "stratum": "general",
+        "target_tokens": 13
+      },
+      {
+        "id": "Tatoeba:4404",
+        "stratum": "general",
+        "target_tokens": 11
+      },
+      {
+        "id": "Tatoeba:7414",
+        "stratum": "general",
+        "target_tokens": 18
+      },
+      {
+        "id": "Tatoeba:313",
+        "stratum": "general",
+        "target_tokens": 30
+      },
+      {
+        "id": "Tatoeba:4692",
+        "stratum": "general",
+        "target_tokens": 18
+      },
+      {
+        "id": "Tatoeba:1558",
+        "stratum": "general",
+        "target_tokens": 19
+      },
+      {
+        "id": "Tatoeba:854",
+        "stratum": "general",
+        "target_tokens": 12
+      },
+      {
+        "id": "Tatoeba:5445",
+        "stratum": "general",
+        "target_tokens": 19
+      },
+      {
+        "id": "Tatoeba:3309",
+        "stratum": "general",
+        "target_tokens": 14
+      },
+      {
+        "id": "Tatoeba:2765",
+        "stratum": "general",
+        "target_tokens": 10
+      },
+      {
+        "id": "Tatoeba:3068",
+        "stratum": "general",
+        "target_tokens": 8
+      },
+      {
+        "id": "Tatoeba:827",
+        "stratum": "general",
+        "target_tokens": 16
+      },
+      {
+        "id": "Tatoeba:4960",
+        "stratum": "general",
+        "target_tokens": 19
+      },
+      {
+        "id": "Tatoeba:7055",
+        "stratum": "general",
+        "target_tokens": 25
+      },
+      {
+        "id": "Tatoeba:2046",
+        "stratum": "general",
+        "target_tokens": 17
+      },
+      {
+        "id": "Tatoeba:5615",
+        "stratum": "general",
+        "target_tokens": 8
+      },
+      {
+        "id": "ParIce:1670566",
+        "stratum": "technical_short",
+        "target_tokens": 21
+      },
+      {
+        "id": "ParIce:1839366",
+        "stratum": "technical_short",
+        "target_tokens": 26
+      },
+      {
+        "id": "ParIce:2059231",
+        "stratum": "technical_short",
+        "target_tokens": 33
+      },
+      {
+        "id": "ParIce:1921618",
+        "stratum": "technical_short",
+        "target_tokens": 33
+      },
+      {
+        "id": "ParIce:2068327",
+        "stratum": "technical_short",
+        "target_tokens": 21
+      },
+      {
+        "id": "ParIce:1930457",
+        "stratum": "technical_short",
+        "target_tokens": 34
+      },
+      {
+        "id": "ParIce:383684",
+        "stratum": "technical_short",
+        "target_tokens": 24
+      },
+      {
+        "id": "ParIce:2042405",
+        "stratum": "technical_short",
+        "target_tokens": 35
+      },
+      {
+        "id": "ParIce:1180142",
+        "stratum": "technical_short",
+        "target_tokens": 28
+      },
+      {
+        "id": "ParIce:2013310",
+        "stratum": "technical_short",
+        "target_tokens": 36
+      },
+      {
+        "id": "ParIce:2028504",
+        "stratum": "technical_short",
+        "target_tokens": 32
+      },
+      {
+        "id": "ParIce:1888203",
+        "stratum": "technical_short",
+        "target_tokens": 33
+      },
+      {
+        "id": "ParIce:1798570",
+        "stratum": "technical_short",
+        "target_tokens": 26
+      },
+      {
+        "id": "ParIce:2022576",
+        "stratum": "technical_short",
+        "target_tokens": 31
+      },
+      {
+        "id": "ParIce:866390",
+        "stratum": "technical_short",
+        "target_tokens": 37
+      },
+      {
+        "id": "ParIce:608582",
+        "stratum": "technical_short",
+        "target_tokens": 34
+      },
+      {
+        "id": "ParIce:1396014",
+        "stratum": "technical_medium",
+        "target_tokens": 87
+      },
+      {
+        "id": "ParIce:1213407",
+        "stratum": "technical_medium",
+        "target_tokens": 99
+      },
+      {
+        "id": "ParIce:280996",
+        "stratum": "technical_medium",
+        "target_tokens": 54
+      },
+      {
+        "id": "ParIce:1849023",
+        "stratum": "technical_medium",
+        "target_tokens": 51
+      },
+      {
+        "id": "ParIce:1833956",
+        "stratum": "technical_medium",
+        "target_tokens": 60
+      },
+      {
+        "id": "ParIce:479689",
+        "stratum": "technical_medium",
+        "target_tokens": 49
+      },
+      {
+        "id": "ParIce:462195",
+        "stratum": "technical_medium",
+        "target_tokens": 69
+      },
+      {
+        "id": "ParIce:221848",
+        "stratum": "technical_medium",
+        "target_tokens": 78
+      },
+      {
+        "id": "ParIce:47606",
+        "stratum": "technical_medium",
+        "target_tokens": 78
+      },
+      {
+        "id": "ParIce:1223981",
+        "stratum": "technical_medium",
+        "target_tokens": 61
+      },
+      {
+        "id": "ParIce:1122237",
+        "stratum": "technical_medium",
+        "target_tokens": 107
+      },
+      {
+        "id": "ParIce:1246695",
+        "stratum": "technical_medium",
+        "target_tokens": 73
+      },
+      {
+        "id": "ParIce:1878274",
+        "stratum": "technical_medium",
+        "target_tokens": 110
+      },
+      {
+        "id": "ParIce:205549",
+        "stratum": "technical_medium",
+        "target_tokens": 82
+      },
+      {
+        "id": "ParIce:858652",
+        "stratum": "technical_medium",
+        "target_tokens": 106
+      },
+      {
+        "id": "ParIce:1399017",
+        "stratum": "technical_medium",
+        "target_tokens": 58
+      },
+      {
+        "id": "ParIce:1287011",
+        "stratum": "technical_long",
+        "target_tokens": 167
+      },
+      {
+        "id": "ParIce:996187",
+        "stratum": "technical_long",
+        "target_tokens": 257
+      },
+      {
+        "id": "ParIce:276474",
+        "stratum": "technical_long",
+        "target_tokens": 190
+      },
+      {
+        "id": "ParIce:86199",
+        "stratum": "technical_long",
+        "target_tokens": 188
+      },
+      {
+        "id": "ParIce:1961690",
+        "stratum": "technical_long",
+        "target_tokens": 180
+      },
+      {
+        "id": "ParIce:1892182",
+        "stratum": "technical_long",
+        "target_tokens": 209
+      },
+      {
+        "id": "ParIce:193768",
+        "stratum": "technical_long",
+        "target_tokens": 180
+      },
+      {
+        "id": "ParIce:391549",
+        "stratum": "technical_long",
+        "target_tokens": 197
+      },
+      {
+        "id": "ParIce:481099",
+        "stratum": "technical_long",
+        "target_tokens": 219
+      },
+      {
+        "id": "ParIce:894001",
+        "stratum": "technical_long",
+        "target_tokens": 191
+      },
+      {
+        "id": "ParIce:722085",
+        "stratum": "technical_long",
+        "target_tokens": 176
+      },
+      {
+        "id": "ParIce:2011797",
+        "stratum": "technical_long",
+        "target_tokens": 181
+      },
+      {
+        "id": "ParIce:1953350",
+        "stratum": "technical_long",
+        "target_tokens": 207
+      },
+      {
+        "id": "ParIce:557166",
+        "stratum": "technical_long",
+        "target_tokens": 174
+      },
+      {
+        "id": "ParIce:1210714",
+        "stratum": "technical_long",
+        "target_tokens": 194
+      },
+      {
+        "id": "ParIce:294434",
+        "stratum": "technical_long",
+        "target_tokens": 241
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:3603",
+        "stratum": "general",
+        "target_tokens": 52
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1143",
+        "stratum": "general",
+        "target_tokens": 20
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1870",
+        "stratum": "general",
+        "target_tokens": 24
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2554",
+        "stratum": "general",
+        "target_tokens": 25
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1820",
+        "stratum": "general",
+        "target_tokens": 20
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:510",
+        "stratum": "general",
+        "target_tokens": 16
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:216",
+        "stratum": "general",
+        "target_tokens": 46
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:3201",
+        "stratum": "general",
+        "target_tokens": 13
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2220",
+        "stratum": "general",
+        "target_tokens": 12
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:520",
+        "stratum": "general",
+        "target_tokens": 20
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1091",
+        "stratum": "general",
+        "target_tokens": 19
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1323",
+        "stratum": "general",
+        "target_tokens": 33
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2379",
+        "stratum": "general",
+        "target_tokens": 31
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2159",
+        "stratum": "general",
+        "target_tokens": 26
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1992",
+        "stratum": "general",
+        "target_tokens": 16
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1193",
+        "stratum": "general",
+        "target_tokens": 28
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:3085",
+        "stratum": "general",
+        "target_tokens": 13
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:799",
+        "stratum": "general",
+        "target_tokens": 22
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:264",
+        "stratum": "general",
+        "target_tokens": 14
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1319",
+        "stratum": "general",
+        "target_tokens": 13
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:3470",
+        "stratum": "general",
+        "target_tokens": 19
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1391",
+        "stratum": "general",
+        "target_tokens": 22
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1730",
+        "stratum": "general",
+        "target_tokens": 28
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:958",
+        "stratum": "general",
+        "target_tokens": 18
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1735",
+        "stratum": "general",
+        "target_tokens": 15
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1698",
+        "stratum": "general",
+        "target_tokens": 20
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:716",
+        "stratum": "general",
+        "target_tokens": 17
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:573",
+        "stratum": "general",
+        "target_tokens": 14
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:470",
+        "stratum": "general",
+        "target_tokens": 22
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:3426",
+        "stratum": "general",
+        "target_tokens": 18
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2305",
+        "stratum": "general",
+        "target_tokens": 17
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1804",
+        "stratum": "general",
+        "target_tokens": 20
+      },
+      {
+        "id": "ParIce21:ema:dev:2167",
+        "stratum": "technical_short",
+        "target_tokens": 32
+      },
+      {
+        "id": "ParIce21:ema:dev:804",
+        "stratum": "technical_short",
+        "target_tokens": 27
+      },
+      {
+        "id": "ParIce21:eea:dev:1731",
+        "stratum": "technical_short",
+        "target_tokens": 31
+      },
+      {
+        "id": "ParIce21:ema:dev:2669",
+        "stratum": "technical_short",
+        "target_tokens": 37
+      },
+      {
+        "id": "ParIce21:ema:dev:247",
+        "stratum": "technical_short",
+        "target_tokens": 30
+      },
+      {
+        "id": "ParIce21:ema:dev:2271",
+        "stratum": "technical_short",
+        "target_tokens": 37
+      },
+      {
+        "id": "ParIce21:eea:dev:1182",
+        "stratum": "technical_short",
+        "target_tokens": 31
+      },
+      {
+        "id": "ParIce21:ema:dev:680",
+        "stratum": "technical_short",
+        "target_tokens": 21
+      },
+      {
+        "id": "ParIce21:eea:dev:1484",
+        "stratum": "technical_medium",
+        "target_tokens": 46
+      },
+      {
+        "id": "ParIce21:eea:dev:2125",
+        "stratum": "technical_medium",
+        "target_tokens": 99
+      },
+      {
+        "id": "ParIce21:eso:dev:455",
+        "stratum": "technical_medium",
+        "target_tokens": 79
+      },
+      {
+        "id": "ParIce21:ema:dev:150",
+        "stratum": "technical_medium",
+        "target_tokens": 57
+      },
+      {
+        "id": "ParIce21:eea:dev:1283",
+        "stratum": "technical_medium",
+        "target_tokens": 104
+      },
+      {
+        "id": "ParIce21:eso:dev:948",
+        "stratum": "technical_medium",
+        "target_tokens": 86
+      },
+      {
+        "id": "ParIce21:ema:dev:852",
+        "stratum": "technical_medium",
+        "target_tokens": 58
+      },
+      {
+        "id": "ParIce21:ema:dev:2051",
+        "stratum": "technical_medium",
+        "target_tokens": 54
+      },
+      {
+        "id": "ParIce21:eea:dev:374",
+        "stratum": "technical_medium",
+        "target_tokens": 43
+      },
+      {
+        "id": "ParIce21:ema:dev:636",
+        "stratum": "technical_medium",
+        "target_tokens": 77
+      },
+      {
+        "id": "ParIce21:eea:dev:19",
+        "stratum": "technical_medium",
+        "target_tokens": 67
+      },
+      {
+        "id": "ParIce21:eea:dev:961",
+        "stratum": "technical_medium",
+        "target_tokens": 77
+      },
+      {
+        "id": "ParIce21:eea:dev:2082",
+        "stratum": "technical_long",
+        "target_tokens": 144
+      },
+      {
+        "id": "ParIce21:ema:dev:1705",
+        "stratum": "technical_long",
+        "target_tokens": 116
+      },
+      {
+        "id": "ParIce21:eea:dev:462",
+        "stratum": "technical_long",
+        "target_tokens": 125
+      },
+      {
+        "id": "ParIce21:ema:dev:727",
+        "stratum": "technical_long",
+        "target_tokens": 113
+      },
+      {
+        "id": "ParIce21:eea:dev:1140",
+        "stratum": "technical_long",
+        "target_tokens": 125
+      },
+      {
+        "id": "ParIce21:eea:dev:1078",
+        "stratum": "technical_long",
+        "target_tokens": 128
+      },
+      {
+        "id": "ParIce21:eso:dev:83",
+        "stratum": "technical_long",
+        "target_tokens": 110
+      },
+      {
+        "id": "ParIce21:eso:dev:512",
+        "stratum": "technical_long",
+        "target_tokens": 114
+      },
+      {
+        "id": "ParIce21:ema:dev:1423",
+        "stratum": "technical_long",
+        "target_tokens": 126
+      },
+      {
+        "id": "ParIce21:ema:dev:2534",
+        "stratum": "technical_long",
+        "target_tokens": 117
+      },
+      {
+        "id": "ParIce21:norden:dev:116",
+        "stratum": "technical_long",
+        "target_tokens": 109
+      },
+      {
+        "id": "ParIce21:norden:dev:738",
+        "stratum": "technical_long",
+        "target_tokens": 125
+      }
+    ]
+  },
+  "decode_dev.jsonl": {
+    "n": 64,
+    "max_reference_target_tokens": 257,
+    "reference_over320": [],
+    "rows": [
+      {
+        "id": "Tatoeba:6323",
+        "stratum": "general",
+        "target_tokens": 18
+      },
+      {
+        "id": "Tatoeba:4130",
+        "stratum": "general",
+        "target_tokens": 27
+      },
+      {
+        "id": "Tatoeba:5481",
+        "stratum": "general",
+        "target_tokens": 23
+      },
+      {
+        "id": "Tatoeba:8153",
+        "stratum": "general",
+        "target_tokens": 23
+      },
+      {
+        "id": "Tatoeba:2067",
+        "stratum": "general",
+        "target_tokens": 16
+      },
+      {
+        "id": "Tatoeba:6940",
+        "stratum": "general",
+        "target_tokens": 13
+      },
+      {
+        "id": "Tatoeba:3760",
+        "stratum": "general",
+        "target_tokens": 19
+      },
+      {
+        "id": "Tatoeba:8808",
+        "stratum": "general",
+        "target_tokens": 9
+      },
+      {
+        "id": "Tatoeba:4180",
+        "stratum": "general",
+        "target_tokens": 11
+      },
+      {
+        "id": "Tatoeba:8262",
+        "stratum": "general",
+        "target_tokens": 10
+      },
+      {
+        "id": "Tatoeba:4956",
+        "stratum": "general",
+        "target_tokens": 25
+      },
+      {
+        "id": "Tatoeba:3207",
+        "stratum": "general",
+        "target_tokens": 18
+      },
+      {
+        "id": "Tatoeba:8114",
+        "stratum": "general",
+        "target_tokens": 29
+      },
+      {
+        "id": "Tatoeba:6506",
+        "stratum": "general",
+        "target_tokens": 16
+      },
+      {
+        "id": "Tatoeba:115",
+        "stratum": "general",
+        "target_tokens": 21
+      },
+      {
+        "id": "Tatoeba:6876",
+        "stratum": "general",
+        "target_tokens": 19
+      },
+      {
+        "id": "ParIce:1670566",
+        "stratum": "technical_short",
+        "target_tokens": 21
+      },
+      {
+        "id": "ParIce:1839366",
+        "stratum": "technical_short",
+        "target_tokens": 26
+      },
+      {
+        "id": "ParIce:2059231",
+        "stratum": "technical_short",
+        "target_tokens": 33
+      },
+      {
+        "id": "ParIce:1921618",
+        "stratum": "technical_short",
+        "target_tokens": 33
+      },
+      {
+        "id": "ParIce:1396014",
+        "stratum": "technical_medium",
+        "target_tokens": 87
+      },
+      {
+        "id": "ParIce:1213407",
+        "stratum": "technical_medium",
+        "target_tokens": 99
+      },
+      {
+        "id": "ParIce:280996",
+        "stratum": "technical_medium",
+        "target_tokens": 54
+      },
+      {
+        "id": "ParIce:1849023",
+        "stratum": "technical_medium",
+        "target_tokens": 51
+      },
+      {
+        "id": "ParIce:1833956",
+        "stratum": "technical_medium",
+        "target_tokens": 60
+      },
+      {
+        "id": "ParIce:479689",
+        "stratum": "technical_medium",
+        "target_tokens": 49
+      },
+      {
+        "id": "ParIce:1287011",
+        "stratum": "technical_long",
+        "target_tokens": 167
+      },
+      {
+        "id": "ParIce:996187",
+        "stratum": "technical_long",
+        "target_tokens": 257
+      },
+      {
+        "id": "ParIce:276474",
+        "stratum": "technical_long",
+        "target_tokens": 190
+      },
+      {
+        "id": "ParIce:86199",
+        "stratum": "technical_long",
+        "target_tokens": 188
+      },
+      {
+        "id": "ParIce:1961690",
+        "stratum": "technical_long",
+        "target_tokens": 180
+      },
+      {
+        "id": "ParIce:1892182",
+        "stratum": "technical_long",
+        "target_tokens": 209
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:3603",
+        "stratum": "general",
+        "target_tokens": 52
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1143",
+        "stratum": "general",
+        "target_tokens": 20
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1870",
+        "stratum": "general",
+        "target_tokens": 24
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2554",
+        "stratum": "general",
+        "target_tokens": 25
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1820",
+        "stratum": "general",
+        "target_tokens": 20
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:510",
+        "stratum": "general",
+        "target_tokens": 16
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:216",
+        "stratum": "general",
+        "target_tokens": 46
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:3201",
+        "stratum": "general",
+        "target_tokens": 13
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2220",
+        "stratum": "general",
+        "target_tokens": 12
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:520",
+        "stratum": "general",
+        "target_tokens": 20
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1091",
+        "stratum": "general",
+        "target_tokens": 19
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1323",
+        "stratum": "general",
+        "target_tokens": 33
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2379",
+        "stratum": "general",
+        "target_tokens": 31
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2159",
+        "stratum": "general",
+        "target_tokens": 26
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1992",
+        "stratum": "general",
+        "target_tokens": 16
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1193",
+        "stratum": "general",
+        "target_tokens": 28
+      },
+      {
+        "id": "ParIce21:ema:dev:2167",
+        "stratum": "technical_short",
+        "target_tokens": 32
+      },
+      {
+        "id": "ParIce21:ema:dev:804",
+        "stratum": "technical_short",
+        "target_tokens": 27
+      },
+      {
+        "id": "ParIce21:eea:dev:1731",
+        "stratum": "technical_short",
+        "target_tokens": 31
+      },
+      {
+        "id": "ParIce21:ema:dev:2669",
+        "stratum": "technical_short",
+        "target_tokens": 37
+      },
+      {
+        "id": "ParIce21:eea:dev:1484",
+        "stratum": "technical_medium",
+        "target_tokens": 46
+      },
+      {
+        "id": "ParIce21:eea:dev:2125",
+        "stratum": "technical_medium",
+        "target_tokens": 99
+      },
+      {
+        "id": "ParIce21:eso:dev:455",
+        "stratum": "technical_medium",
+        "target_tokens": 79
+      },
+      {
+        "id": "ParIce21:ema:dev:150",
+        "stratum": "technical_medium",
+        "target_tokens": 57
+      },
+      {
+        "id": "ParIce21:eea:dev:1283",
+        "stratum": "technical_medium",
+        "target_tokens": 104
+      },
+      {
+        "id": "ParIce21:eso:dev:948",
+        "stratum": "technical_medium",
+        "target_tokens": 86
+      },
+      {
+        "id": "ParIce21:eea:dev:2082",
+        "stratum": "technical_long",
+        "target_tokens": 144
+      },
+      {
+        "id": "ParIce21:ema:dev:1705",
+        "stratum": "technical_long",
+        "target_tokens": 116
+      },
+      {
+        "id": "ParIce21:eea:dev:462",
+        "stratum": "technical_long",
+        "target_tokens": 125
+      },
+      {
+        "id": "ParIce21:ema:dev:727",
+        "stratum": "technical_long",
+        "target_tokens": 113
+      },
+      {
+        "id": "ParIce21:eea:dev:1140",
+        "stratum": "technical_long",
+        "target_tokens": 125
+      },
+      {
+        "id": "ParIce21:eea:dev:1078",
+        "stratum": "technical_long",
+        "target_tokens": 128
+      }
+    ]
+  },
+  "evaluation128.jsonl": {
+    "n": 128,
+    "max_reference_target_tokens": 240,
+    "reference_over320": [],
+    "rows": [
+      {
+        "id": "ParIce21:opensubtitles:dev:3611",
+        "stratum": "general",
+        "target_tokens": 13
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2506",
+        "stratum": "general",
+        "target_tokens": 17
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:343",
+        "stratum": "general",
+        "target_tokens": 9
+      },
+      {
+        "id": "ParIce21:ema:dev:1057",
+        "stratum": "technical_medium",
+        "target_tokens": 91
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2269",
+        "stratum": "general",
+        "target_tokens": 17
+      },
+      {
+        "id": "ParIce21:ema:dev:2813",
+        "stratum": "technical_short",
+        "target_tokens": 23
+      },
+      {
+        "id": "ParIce21:eso:dev:471",
+        "stratum": "technical_long",
+        "target_tokens": 134
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2776",
+        "stratum": "general",
+        "target_tokens": 30
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:580",
+        "stratum": "general",
+        "target_tokens": 18
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2932",
+        "stratum": "general",
+        "target_tokens": 16
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:3113",
+        "stratum": "general",
+        "target_tokens": 13
+      },
+      {
+        "id": "ParIce21:ema:dev:1351",
+        "stratum": "technical_medium",
+        "target_tokens": 40
+      },
+      {
+        "id": "ParIce21:ema:dev:968",
+        "stratum": "technical_short",
+        "target_tokens": 14
+      },
+      {
+        "id": "ParIce21:eea:dev:485",
+        "stratum": "technical_long",
+        "target_tokens": 132
+      },
+      {
+        "id": "ParIce21:ema:dev:2509",
+        "stratum": "technical_long",
+        "target_tokens": 171
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1168",
+        "stratum": "general",
+        "target_tokens": 36
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2362",
+        "stratum": "general",
+        "target_tokens": 26
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2868",
+        "stratum": "general",
+        "target_tokens": 15
+      },
+      {
+        "id": "ParIce21:eea:dev:2030",
+        "stratum": "technical_medium",
+        "target_tokens": 112
+      },
+      {
+        "id": "ParIce21:eso:dev:277",
+        "stratum": "technical_long",
+        "target_tokens": 116
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2521",
+        "stratum": "general",
+        "target_tokens": 21
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1385",
+        "stratum": "general",
+        "target_tokens": 35
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2975",
+        "stratum": "general",
+        "target_tokens": 12
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2435",
+        "stratum": "general",
+        "target_tokens": 30
+      },
+      {
+        "id": "ParIce21:norden:dev:435",
+        "stratum": "technical_medium",
+        "target_tokens": 71
+      },
+      {
+        "id": "ParIce21:eso:dev:783",
+        "stratum": "technical_medium",
+        "target_tokens": 88
+      },
+      {
+        "id": "ParIce21:eso:dev:176",
+        "stratum": "technical_medium",
+        "target_tokens": 75
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1948",
+        "stratum": "general",
+        "target_tokens": 24
+      },
+      {
+        "id": "ParIce21:eea:dev:373",
+        "stratum": "technical_medium",
+        "target_tokens": 86
+      },
+      {
+        "id": "ParIce21:norden:dev:929",
+        "stratum": "technical_long",
+        "target_tokens": 138
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1822",
+        "stratum": "general",
+        "target_tokens": 14
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:3416",
+        "stratum": "general",
+        "target_tokens": 18
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:591",
+        "stratum": "general",
+        "target_tokens": 18
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2232",
+        "stratum": "general",
+        "target_tokens": 19
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1819",
+        "stratum": "general",
+        "target_tokens": 15
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1351",
+        "stratum": "general",
+        "target_tokens": 13
+      },
+      {
+        "id": "ParIce21:eea:dev:879",
+        "stratum": "technical_short",
+        "target_tokens": 21
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:969",
+        "stratum": "general",
+        "target_tokens": 22
+      },
+      {
+        "id": "ParIce21:norden:dev:243",
+        "stratum": "technical_medium",
+        "target_tokens": 100
+      },
+      {
+        "id": "ParIce21:eea:dev:982",
+        "stratum": "technical_short",
+        "target_tokens": 36
+      },
+      {
+        "id": "ParIce21:eea:dev:228",
+        "stratum": "technical_short",
+        "target_tokens": 25
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1368",
+        "stratum": "general",
+        "target_tokens": 16
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2119",
+        "stratum": "general",
+        "target_tokens": 17
+      },
+      {
+        "id": "ParIce21:norden:dev:25",
+        "stratum": "technical_medium",
+        "target_tokens": 87
+      },
+      {
+        "id": "ParIce21:eea:dev:803",
+        "stratum": "technical_long",
+        "target_tokens": 191
+      },
+      {
+        "id": "ParIce21:ema:dev:1941",
+        "stratum": "technical_medium",
+        "target_tokens": 34
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:3200",
+        "stratum": "general",
+        "target_tokens": 25
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1993",
+        "stratum": "general",
+        "target_tokens": 26
+      },
+      {
+        "id": "ParIce21:ema:dev:1436",
+        "stratum": "technical_long",
+        "target_tokens": 159
+      },
+      {
+        "id": "ParIce21:eea:dev:1354",
+        "stratum": "technical_long",
+        "target_tokens": 131
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:336",
+        "stratum": "general",
+        "target_tokens": 16
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2610",
+        "stratum": "general",
+        "target_tokens": 19
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2384",
+        "stratum": "general",
+        "target_tokens": 14
+      },
+      {
+        "id": "ParIce21:eea:dev:1907",
+        "stratum": "technical_long",
+        "target_tokens": 109
+      },
+      {
+        "id": "ParIce21:eso:dev:635",
+        "stratum": "technical_short",
+        "target_tokens": 24
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2168",
+        "stratum": "general",
+        "target_tokens": 43
+      },
+      {
+        "id": "ParIce21:ema:dev:2728",
+        "stratum": "technical_medium",
+        "target_tokens": 88
+      },
+      {
+        "id": "ParIce21:ema:dev:1873",
+        "stratum": "technical_long",
+        "target_tokens": 154
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2475",
+        "stratum": "general",
+        "target_tokens": 18
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1991",
+        "stratum": "general",
+        "target_tokens": 18
+      },
+      {
+        "id": "ParIce21:eea:dev:858",
+        "stratum": "technical_medium",
+        "target_tokens": 45
+      },
+      {
+        "id": "ParIce21:eso:dev:409",
+        "stratum": "technical_long",
+        "target_tokens": 121
+      },
+      {
+        "id": "ParIce21:eso:dev:861",
+        "stratum": "technical_medium",
+        "target_tokens": 83
+      },
+      {
+        "id": "ParIce21:ema:dev:2640",
+        "stratum": "technical_short",
+        "target_tokens": 12
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1147",
+        "stratum": "general",
+        "target_tokens": 17
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:328",
+        "stratum": "general",
+        "target_tokens": 15
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:3233",
+        "stratum": "general",
+        "target_tokens": 20
+      },
+      {
+        "id": "ParIce21:eso:dev:620",
+        "stratum": "technical_long",
+        "target_tokens": 123
+      },
+      {
+        "id": "ParIce21:eea:dev:1204",
+        "stratum": "technical_long",
+        "target_tokens": 126
+      },
+      {
+        "id": "ParIce21:ema:dev:2348",
+        "stratum": "technical_short",
+        "target_tokens": 12
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:785",
+        "stratum": "general",
+        "target_tokens": 15
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2974",
+        "stratum": "general",
+        "target_tokens": 33
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2388",
+        "stratum": "general",
+        "target_tokens": 29
+      },
+      {
+        "id": "ParIce21:eea:dev:35",
+        "stratum": "technical_medium",
+        "target_tokens": 84
+      },
+      {
+        "id": "ParIce21:eea:dev:2130",
+        "stratum": "technical_medium",
+        "target_tokens": 50
+      },
+      {
+        "id": "ParIce21:norden:dev:514",
+        "stratum": "technical_short",
+        "target_tokens": 33
+      },
+      {
+        "id": "ParIce21:eea:dev:1729",
+        "stratum": "technical_long",
+        "target_tokens": 128
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2255",
+        "stratum": "general",
+        "target_tokens": 15
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:888",
+        "stratum": "general",
+        "target_tokens": 14
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2882",
+        "stratum": "general",
+        "target_tokens": 34
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:895",
+        "stratum": "general",
+        "target_tokens": 15
+      },
+      {
+        "id": "ParIce21:ema:dev:3027",
+        "stratum": "technical_long",
+        "target_tokens": 116
+      },
+      {
+        "id": "ParIce21:eso:dev:801",
+        "stratum": "technical_long",
+        "target_tokens": 150
+      },
+      {
+        "id": "ParIce21:eea:dev:1084",
+        "stratum": "technical_medium",
+        "target_tokens": 66
+      },
+      {
+        "id": "ParIce21:ema:dev:2194",
+        "stratum": "technical_medium",
+        "target_tokens": 59
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1282",
+        "stratum": "general",
+        "target_tokens": 21
+      },
+      {
+        "id": "ParIce21:eea:dev:471",
+        "stratum": "technical_long",
+        "target_tokens": 132
+      },
+      {
+        "id": "ParIce21:eso:dev:399",
+        "stratum": "technical_medium",
+        "target_tokens": 54
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2783",
+        "stratum": "general",
+        "target_tokens": 21
+      },
+      {
+        "id": "ParIce21:eea:dev:322",
+        "stratum": "technical_long",
+        "target_tokens": 130
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:543",
+        "stratum": "general",
+        "target_tokens": 26
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1758",
+        "stratum": "general",
+        "target_tokens": 25
+      },
+      {
+        "id": "ParIce21:eea:dev:1909",
+        "stratum": "technical_long",
+        "target_tokens": 182
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:904",
+        "stratum": "general",
+        "target_tokens": 28
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:95",
+        "stratum": "general",
+        "target_tokens": 24
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2480",
+        "stratum": "general",
+        "target_tokens": 16
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2432",
+        "stratum": "general",
+        "target_tokens": 23
+      },
+      {
+        "id": "ParIce21:eea:dev:209",
+        "stratum": "technical_long",
+        "target_tokens": 240
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:951",
+        "stratum": "general",
+        "target_tokens": 15
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:465",
+        "stratum": "general",
+        "target_tokens": 35
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2005",
+        "stratum": "general",
+        "target_tokens": 29
+      },
+      {
+        "id": "ParIce21:ema:dev:99",
+        "stratum": "technical_short",
+        "target_tokens": 22
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1302",
+        "stratum": "general",
+        "target_tokens": 40
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:522",
+        "stratum": "general",
+        "target_tokens": 41
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2047",
+        "stratum": "general",
+        "target_tokens": 17
+      },
+      {
+        "id": "ParIce21:norden:dev:207",
+        "stratum": "technical_medium",
+        "target_tokens": 66
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1950",
+        "stratum": "general",
+        "target_tokens": 16
+      },
+      {
+        "id": "ParIce21:eea:dev:719",
+        "stratum": "technical_long",
+        "target_tokens": 111
+      },
+      {
+        "id": "ParIce21:eea:dev:372",
+        "stratum": "technical_long",
+        "target_tokens": 107
+      },
+      {
+        "id": "ParIce21:eea:dev:616",
+        "stratum": "technical_short",
+        "target_tokens": 27
+      },
+      {
+        "id": "ParIce21:ema:dev:1962",
+        "stratum": "technical_short",
+        "target_tokens": 34
+      },
+      {
+        "id": "ParIce21:eso:dev:804",
+        "stratum": "technical_medium",
+        "target_tokens": 68
+      },
+      {
+        "id": "ParIce21:eea:dev:826",
+        "stratum": "technical_medium",
+        "target_tokens": 53
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:3120",
+        "stratum": "general",
+        "target_tokens": 18
+      },
+      {
+        "id": "ParIce21:norden:dev:717",
+        "stratum": "technical_short",
+        "target_tokens": 27
+      },
+      {
+        "id": "ParIce21:eea:dev:255",
+        "stratum": "technical_medium",
+        "target_tokens": 64
+      },
+      {
+        "id": "ParIce21:eea:dev:937",
+        "stratum": "technical_long",
+        "target_tokens": 136
+      },
+      {
+        "id": "ParIce21:ema:dev:2311",
+        "stratum": "technical_medium",
+        "target_tokens": 37
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2099",
+        "stratum": "general",
+        "target_tokens": 19
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:230",
+        "stratum": "general",
+        "target_tokens": 15
+      },
+      {
+        "id": "ParIce21:norden:dev:185",
+        "stratum": "technical_short",
+        "target_tokens": 29
+      },
+      {
+        "id": "ParIce21:eso:dev:750",
+        "stratum": "technical_short",
+        "target_tokens": 27
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:2151",
+        "stratum": "general",
+        "target_tokens": 12
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:3668",
+        "stratum": "general",
+        "target_tokens": 20
+      },
+      {
+        "id": "ParIce21:ema:dev:67",
+        "stratum": "technical_short",
+        "target_tokens": 35
+      },
+      {
+        "id": "ParIce21:opensubtitles:dev:1573",
+        "stratum": "general",
+        "target_tokens": 24
+      },
+      {
+        "id": "ParIce21:eso:dev:1126",
+        "stratum": "technical_medium",
+        "target_tokens": 53
+      },
+      {
+        "id": "ParIce21:ema:dev:1346",
+        "stratum": "technical_long",
+        "target_tokens": 141
+      }
+    ]
+  },
+  "g8_32.jsonl": {
+    "n": 32,
+    "max_reference_target_tokens": 215,
+    "reference_over320": [],
+    "rows": [
+      {
+        "id": "ParIce21:opensubtitles:test:1463",
+        "stratum": "general",
+        "target_tokens": 25
+      },
+      {
+        "id": "ParIce21:opensubtitles:test:3600",
+        "stratum": "general",
+        "target_tokens": 18
+      },
+      {
+        "id": "ParIce21:opensubtitles:test:1249",
+        "stratum": "general",
+        "target_tokens": 27
+      },
+      {
+        "id": "OPUS-tatoeba-v20230412-eng-isl:7401",
+        "stratum": "general",
+        "target_tokens": 9
+      },
+      {
+        "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+        "stratum": "general",
+        "target_tokens": 27
+      },
+      {
+        "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+        "stratum": "general",
+        "target_tokens": 11
+      },
+      {
+        "id": "OPUS-tatoeba-v20230412-eng-isl:6848",
+        "stratum": "general",
+        "target_tokens": 6
+      },
+      {
+        "id": "ParIce21:opensubtitles:test:476",
+        "stratum": "general",
+        "target_tokens": 20
+      },
+      {
+        "id": "ParIce21:ema:test:415",
+        "stratum": "technical_short",
+        "target_tokens": 28
+      },
+      {
+        "id": "ParIce21:ema:test:3040",
+        "stratum": "technical_short",
+        "target_tokens": 33
+      },
+      {
+        "id": "ParIce21:ema:test:1271",
+        "stratum": "technical_short",
+        "target_tokens": 21
+      },
+      {
+        "id": "ParIce21:eso:test:349",
+        "stratum": "technical_short",
+        "target_tokens": 39
+      },
+      {
+        "id": "ParIce21:norden:test:264",
+        "stratum": "technical_medium",
+        "target_tokens": 53
+      },
+      {
+        "id": "ParIce21:ema:test:425",
+        "stratum": "technical_medium",
+        "target_tokens": 73
+      },
+      {
+        "id": "ParIce:1086503",
+        "stratum": "technical_medium",
+        "target_tokens": 37
+      },
+      {
+        "id": "ParIce:742910",
+        "stratum": "technical_medium",
+        "target_tokens": 65
+      },
+      {
+        "id": "ParIce:1722911",
+        "stratum": "technical_medium",
+        "target_tokens": 78
+      },
+      {
+        "id": "ParIce:648947",
+        "stratum": "technical_medium",
+        "target_tokens": 69
+      },
+      {
+        "id": "ParIce:1641328",
+        "stratum": "technical_medium",
+        "target_tokens": 83
+      },
+      {
+        "id": "ParIce21:norden:test:43",
+        "stratum": "technical_medium",
+        "target_tokens": 59
+      },
+      {
+        "id": "ParIce21:ema:test:709",
+        "stratum": "technical_medium",
+        "target_tokens": 52
+      },
+      {
+        "id": "ParIce21:norden:test:100",
+        "stratum": "technical_medium",
+        "target_tokens": 41
+      },
+      {
+        "id": "ParIce21:eso:test:763",
+        "stratum": "technical_long",
+        "target_tokens": 106
+      },
+      {
+        "id": "ParIce:314793",
+        "stratum": "technical_long",
+        "target_tokens": 176
+      },
+      {
+        "id": "ParIce:804526",
+        "stratum": "technical_long",
+        "target_tokens": 215
+      },
+      {
+        "id": "ParIce:215549",
+        "stratum": "technical_long",
+        "target_tokens": 206
+      },
+      {
+        "id": "ParIce:290254",
+        "stratum": "technical_long",
+        "target_tokens": 135
+      },
+      {
+        "id": "ParIce:419917",
+        "stratum": "technical_long",
+        "target_tokens": 168
+      },
+      {
+        "id": "ParIce21:ema:test:2419",
+        "stratum": "technical_long",
+        "target_tokens": 123
+      },
+      {
+        "id": "ParIce21:eso:test:654",
+        "stratum": "technical_long",
+        "target_tokens": 129
+      },
+      {
+        "id": "ParIce:1179551",
+        "stratum": "technical_long",
+        "target_tokens": 203
+      },
+      {
+        "id": "ParIce21:ema:test:2944",
+        "stratum": "technical_long",
+        "target_tokens": 153
+      }
+    ]
+  }
+}

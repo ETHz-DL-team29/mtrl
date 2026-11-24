@@ -5,3 +5,7 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 .DS_Store
+
+# Local model handoff: weights and recipient ZIPs stay out of Git.
+/artifacts/
+/deliveries/

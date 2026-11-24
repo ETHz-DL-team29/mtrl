@@ -1,4 +1,25 @@
+> **Latest result highlight / 最新结果**
+> **P25 · 2026-11-24 · 3B SFT→reference-reward DAPO**
+>
+> | WMT26 · 198 documents | chrF++ | BLEU |
+> | --- | ---: | ---: |
+> | Original SFT R0 | 39.72 | 19.76 |
+> | Previous DAPO-120 | 39.91 | 20.87 |
+> | **Latest short/medium DAPO-120** | **40.83** | **21.70** |
+>
+> Positive point estimates; full-test95%intervals still cross zero. The153-document short/medium secondary subset is positive but exploratory; pure-short improvement is not established.
+> 点估计向好，尚未通过全量可靠提升标准；保留原R0与最新候选。
+> **[Latest results and evidence / 最新结果与完整证据](LATEST_RESULTS.md)** · **[Model loading / 模型使用](models/README.md)**
+
+> **Local checkpoint delivery · 2026-11-24 / 本地模型交付**
+> Ready-to-load 0.8B/3B SFT adapters, 3B DAPO candidates, loading code and results are documented in **[models/README.md](models/README.md)**.
+> Start with `python scripts/models.py list`, then `python scripts/models.py verify`.
+> The original zero-shot pipeline below is preserved. Executed training code is archived under `results/local_translation_release_2026-11-24/project_snapshot/experiments/`; the existing `src/mtrl/train/` placeholders were not replaced.
+> GitHub代码改动仅在本地，未提交或推送；三个核心适配器已公开在[Hugging Face](models/HUGGING_FACE.md)，其余历史适配器在本地ZIP。大权重被Git忽略。
+
 # mtrl
+
+> The section below is the preserved collaborator zero-shot README. Our added trained checkpoints and latest experiments are documented in the delivery links above.
 
 Compute-efficient reinforcement learning (GRPO-style) for low-resource English-to-xx machine translation with small language models.
 

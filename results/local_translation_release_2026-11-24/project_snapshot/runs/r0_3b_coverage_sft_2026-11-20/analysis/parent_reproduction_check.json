@@ -1,0 +1,18 @@
+{
+  "UTC": "2026-11-20T17:21:56.558138+00:00",
+  "purpose": "Check parent native decoding reproduction; no model inference",
+  "banks": {
+    "greedy": {
+      "n": 256,
+      "exact_matching_sources": 256,
+      "all_completion_token_ids_text_and_truncation_identical": true,
+      "differing_ids": []
+    },
+    "g8": {
+      "n": 64,
+      "exact_matching_sources": 64,
+      "all_completion_token_ids_text_and_truncation_identical": true,
+      "differing_ids": []
+    }
+  }
+}

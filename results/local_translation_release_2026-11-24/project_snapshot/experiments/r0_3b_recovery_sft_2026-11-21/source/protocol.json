@@ -1,0 +1,141 @@
+{
+  "date": "2026-11-21",
+  "classification": "research_informed_recovery_SFT_not_a_causal_ablation",
+  "actor": {
+    "base": "Qwen/Qwen2.5-3B-Instruct",
+    "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "parent_adapter": "D:\\deep learning project\\runs\\r0_3b_coverage_sft_2026-11-20\\final_selected_adapter",
+    "parent_sha256": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858",
+    "translation_specialist_start": false
+  },
+  "rank_expansion": {
+    "old_rank": 16,
+    "old_alpha": 32,
+    "new_rank": 64,
+    "new_alpha": 128,
+    "scale_preserved": 2,
+    "new_B_columns_zero": true,
+    "old_blocks_copied_exactly": true,
+    "module_output_parity_required": true
+  },
+  "fit": {
+    "pairs": 64,
+    "medium": 32,
+    "long": 32,
+    "audit": 32,
+    "minimum_P": 26,
+    "minimum_long_P": 12,
+    "max_target_tokens": 250000,
+    "max_training_minutes": 45,
+    "lr": 0.0001,
+    "fresh_AdamW": true,
+    "dropout": 0,
+    "review_points": [
+      25000,
+      100000,
+      250000
+    ],
+    "diagnostic_adapter_never_initializes_production": true
+  },
+  "production": {
+    "fresh_start_from_rank_expanded_original": true,
+    "fresh_AdamW": true,
+    "lr": 5e-05,
+    "warmup_targets": 50000,
+    "final_lr": 5e-06,
+    "dropout": 0.05,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.01,
+    "grad_clip": 1,
+    "maximum_exposures": 2,
+    "maximum_target_tokens": 1983726,
+    "maximum_hours": 4,
+    "target_tokens_per_update": 2048,
+    "maximum_examples_per_update": 32,
+    "loss": "global valid target-token mean;explicit shift audited",
+    "microbatch_start": 4,
+    "OOM_retry_before_optimizer_only": true,
+    "BF16_base_FP32_LoRA": true,
+    "gradient_checkpointing": true,
+    "no_quantization": true
+  },
+  "evaluation": {
+    "development": 128,
+    "dev_g8": 24,
+    "dev_semantic_greedy": 32,
+    "final_greedy": 128,
+    "final_g8": 64,
+    "final_precision": "matched FP32 both sides;TF32off;batch8 greedy;G8T0.7 sample",
+    "previously_selected_eval_inputs_excluded": true,
+    "near_duplicate_Jaccard85_vs_full_pool": true,
+    "not_pretraining_decontamination": true,
+    "not_document_independence": true,
+    "final_does_not_select_weights": true
+  },
+  "selection": {
+    "general_CF_eligibility_delta": -1.5,
+    "order": [
+      "development semanticG8coverage",
+      "greedy semanticP",
+      "technical mediumlongCF",
+      "earlier"
+    ],
+    "only_reviewed": true
+  },
+  "stopping": {
+    "no_semantic_gain_at1M": true,
+    "general_single_drop": 5,
+    "general_two_drops": 2,
+    "fit_gate_failure_stops_production": true,
+    "all_deadlines_fixed": true
+  },
+  "project_acceptance": {
+    "G8_coverage_min": 39,
+    "denominator": 64,
+    "short_min": 8,
+    "short_n": 16,
+    "medium_min": 12,
+    "medium_n": 24,
+    "long_min": 12,
+    "long_n": 24,
+    "general_CF_loss_max": 1.5,
+    "paired_semantic_direction_required": true,
+    "not_universal_DAPO_theory": true,
+    "no_quality_guarantee": true
+  },
+  "budget": {
+    "user_request_anchor_unix": 1795290000.0,
+    "deadline_unix": 1795318800.0,
+    "training_deadline_unix": 1795311600.0,
+    "maximum_user_wall_hours": 8,
+    "deadline_Berlin": "2026-11-22 04:40 CET",
+    "conservative_anchor_includes_research": true,
+    "no_deadline_reset": true
+  },
+  "preservation": {
+    "original_R0_unchanged": true,
+    "all_adapter_checkpoints": true,
+    "full_optimizer_RNG_every1M_and_final": true,
+    "small_fit_adapter_diagnostic_only": true,
+    "final_export_excludes_large_states_already_separately_verified": true,
+    "download_KiBps": 512
+  },
+  "DAPO_updates": 0,
+  "MetricX_calls": 0,
+  "data_manifest": {
+    "dev.jsonl": "deb8ed1bab7c421b68ce75cc7f9a28d09391d8c3b2ffdbe323ae2d2a3205e0ff",
+    "dev_g8.jsonl": "63e381cde02d1b49cfe18f8d53aae2caab5c6772ed9638c44ef757661bb144b7",
+    "dev_semantic_ids.json": "b5a547b931b4b619f04f1ee2ebff55307fbf989884cc3e2030c8de0530d54b22",
+    "encoded_train.jsonl": "eadb36f266f4aba4d107675c0b80aa399e84ef4d0e15f2ed8726344715332100",
+    "exposure_order.json": "b59d40571bd0db817ce161b4ba570d877a264a047187ad3633a3a7d368d60ff6",
+    "final_g8.jsonl": "4188ab43e6f8a7c03c941c4b2fa7da85512c534abc60c9c93a2588cba322071d",
+    "final_test.jsonl": "8fba378e7c1713228576343f5c2f0b4ac96d75b2afd8467770a7a65f6668c086",
+    "fit.jsonl": "07bb2919ce105f4d171193a263a3fd3b1cb173d14c65caf916b12d15b5d23f10",
+    "fit_audit_ids.json": "a61ddc2bfd62e009447461bc389cbc65289e7dc620ec0fc1d9ea2b54a585e260",
+    "train.jsonl": "e8d80839f840614d77ae3963c5b2198fa45f875f10112885995162dd9db36ee3"
+  }
+}

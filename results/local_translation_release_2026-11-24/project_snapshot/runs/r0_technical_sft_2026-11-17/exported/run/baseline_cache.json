@@ -1,0 +1,7 @@
+{
+  "reused": true,
+  "sha256": "5c3831dfe898e299690910bbbb8ab0f66c30e5a92a5dcd9b7bde3417de161041",
+  "anchors_exact": true,
+  "precision": "FP32",
+  "max_new_tokens": 320
+}

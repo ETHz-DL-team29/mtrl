@@ -1,0 +1,34 @@
+{
+  "CAUSE_DIAGNOSIS_PROTOCOL_2026-11-17.html": {
+    "bytes": 40472,
+    "sha256": "affb3225a706bdf27f157ff85d4875080ec83f6d358efe076e42c2e16e27acb9"
+  },
+  "CAUSE_DIAGNOSIS_PROTOCOL_2026-11-17.md": {
+    "bytes": 36865,
+    "sha256": "1860aaa9535ac22c8ce14f371ef8652cc04b002e5f131e144489f15f7160d026"
+  },
+  "fitting_curves.png": {
+    "bytes": 116557,
+    "sha256": "ef3d6395474324acb55ad9179df8dbb69174461850dac5a1661d9b78f2bca134"
+  },
+  "html_qa.json": {
+    "bytes": 306,
+    "sha256": "cd6eb48b224eaf47e68d623b37b12f1bbd0b8b6e549e1035c1ab927790b6ce5d"
+  },
+  "R0_CAUSE_DIAGNOSIS_RESULTS_2026-11-17.html": {
+    "bytes": 590148,
+    "sha256": "6e5a2bf5c648a1ce5173b90b25cb60c12a33bedbc8692670b78c4a920e3561b5"
+  },
+  "R0_CAUSE_DIAGNOSIS_RESULTS_2026-11-17.md": {
+    "bytes": 197028,
+    "sha256": "e93fccf5c295cc6b78890a65c0ee47bd5a111b4a8213a9478130d014d2ef038a"
+  },
+  "semantic_review.png": {
+    "bytes": 70248,
+    "sha256": "faa22cc605483a05fcb6edb156c9276a6ed1cb3fc2939540f7e4c422816aedf1"
+  },
+  "training_vs_heldout.png": {
+    "bytes": 72164,
+    "sha256": "dab04eb3eb80288ea1dcd2afdb064f3a72ce5bc03034f72f5e785371d280efd7"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "candidate_and_semantic_quality.png": {
+    "bytes": 98933,
+    "sha256": "d39a4e22e270b06675d9283b09e080ba815e9bffed3ae56710851f7a71690074"
+  },
+  "html_qa.json": {
+    "bytes": 316,
+    "sha256": "45c9e279aec7798a5e94dd1298059c7991dfc941a84947f3995548525a6cd24c"
+  },
+  "R0_3B_ROUND1_RESULTS_2026-11-17.html": {
+    "bytes": 995055,
+    "sha256": "125982ecbe64d365fecf7127f9e485ff77793d367d6a679026150abe555ea1d3"
+  },
+  "R0_3B_ROUND1_RESULTS_2026-11-17.md": {
+    "bytes": 441951,
+    "sha256": "d318acc84aec0b9953b6c862230f63e8f76c1675f2fc87cac24468659394ca0c"
+  },
+  "training_and_selection.png": {
+    "bytes": 149829,
+    "sha256": "2b7ed22ae69a7920be6b9b2150adabf4d41f2c5c98d623b3dc4573ed614011ad"
+  },
+  "translation_quality.png": {
+    "bytes": 77750,
+    "sha256": "889ac343f72fb19f64d19f4bfdb7916c46cb9c8c37d7cf33d0bc5b73048b3819"
+  }
+}

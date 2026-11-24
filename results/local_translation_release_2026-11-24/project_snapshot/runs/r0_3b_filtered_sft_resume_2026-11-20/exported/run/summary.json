@@ -1,0 +1,80 @@
+{
+  "status": "GPU_WORK_FINISHED_BLIND_REVIEW_PENDING",
+  "step": 2543,
+  "target_tokens": 2999996,
+  "unique_exposed_ids": 67382,
+  "example_exposures": 81348,
+  "train_seconds": 13233.670571006041,
+  "worker_seconds": 6899.763650178909,
+  "stop_reason": "token_budget_completed",
+  "selected": {
+    "tag": "t2999996",
+    "step": 2543,
+    "target_tokens": 2999996,
+    "metrics": {
+      "nll": 1.1306406443526344,
+      "technical_nll": 1.113438619060956,
+      "dev_target_tokens": 7762,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 38.614636057116606,
+          "bleu": 15.534062052183817
+        },
+        "technical_short": {
+          "n": 32,
+          "chrfpp": 43.358207627688806,
+          "bleu": 20.36600694956158
+        },
+        "technical_medium": {
+          "n": 32,
+          "chrfpp": 44.56981532302277,
+          "bleu": 19.714936961743554
+        },
+        "technical_long": {
+          "n": 32,
+          "chrfpp": 48.9653759111669,
+          "bleu": 25.666730227525626
+        }
+      },
+      "overall_chrfpp": 46.48956123692833,
+      "technical_chrfpp": 47.100046286045774,
+      "technical_medium_long_chrfpp": 47.61391705001332,
+      "failures": 0
+    },
+    "adapter_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0",
+    "semantic": true,
+    "review_summary": {
+      "labels_locked": true,
+      "adapter_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0",
+      "technical_sources": 24,
+      "greedy_sources": 32,
+      "coverage_P": 8,
+      "coverage_U": 5,
+      "greedy_P": 8,
+      "greedy_U": 3,
+      "labels_sha256": "e99c778143a20b252c74f2686985282ad9c2c814dc82efc1545675435042c409"
+    },
+    "selection_reason": "Reviewed eligible maximum-coverage tie set,then greedy P,technical medium/long CHRF,earlier checkpoint"
+  },
+  "frozen_budget": {
+    "target_tokens": 3000000,
+    "p25_step_tokens_per_second": 230.43680722291424,
+    "projected_safe_token_cap": 3160795.6167740114,
+    "remaining_train_seconds": 16465.03250367127,
+    "safety_factor": 0.8,
+    "quality_used": false,
+    "lock_seen_tokens": 125476,
+    "lock_step": 100,
+    "unix": 1795093681.893078,
+    "forecast_remaining_dev_seconds": 2921.777256184,
+    "training_deadline": 1795113668.702343,
+    "first_allocation_deadline": 1795120868.7023432
+  },
+  "selected_adapter_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0",
+  "parent_adapter_sha256": "9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199",
+  "G8_sources": 64,
+  "final_greedy_sources": 256,
+  "DAPO_updates": 0,
+  "MetricX_calls": 0
+}

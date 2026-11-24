@@ -1,0 +1,146 @@
+{
+  "date": "2026-11-12",
+  "files": [
+    {
+      "path": "R0_V2_RESULTS_2026-11-12.md",
+      "bytes": 47845,
+      "sha256": "dd9aa0284830d145a114159d35f40582a580d94cfddfda9f563b76067119281d"
+    },
+    {
+      "path": "R0_V2_RESULTS_2026-11-12.html",
+      "bytes": 610478,
+      "sha256": "79f068da9f77bb80fead9d79e2db753535c61c739f31936a1aac0296cda4f9bc"
+    },
+    {
+      "path": "R0_V2_MODEL_2026-11-12.zip",
+      "bytes": 40222851,
+      "sha256": "3a778cec51bbf2cd736d9449a1cbac0955a69c9aacf36b4d6427947ccb6e393a"
+    },
+    {
+      "path": "R0_V2_MODEL_README_2026-11-12.md",
+      "bytes": 5330,
+      "sha256": "406a6b829b1716954ade793ae26656f2c2829a2828a8350e993a32363b7d8f03"
+    },
+    {
+      "path": "R0_V2_COLAB_EXPORT_2026-11-12.zip",
+      "bytes": 43221168,
+      "sha256": "c2ac407a98eeb1d271e3f76efb2c3aeafe9ff1d353349960f776f82e6eeccec1"
+    },
+    {
+      "path": "R0_V2_COLAB_EXPORT_2026-11-12.metadata.json",
+      "bytes": 354,
+      "sha256": "f2171392173e3e16c00ade982f702e2bd60549def35d95012a290b9ab6918140"
+    },
+    {
+      "path": "R0_V2_COMPARISON_2026-11-12.json",
+      "bytes": 19989,
+      "sha256": "0567cf717479a5e81165750cb8a49aa4b32181698992dbe7ca779a637ae3c148"
+    },
+    {
+      "path": "R0_V2_AUDIT_2026-11-12.json",
+      "bytes": 3791,
+      "sha256": "e831dae582a81b805454dce25a2e1a8d2b49425278e0f99732da288e1eebfac3"
+    },
+    {
+      "path": "R0_V2_SOURCE_REVIEW_2026-11-12.json",
+      "bytes": 79004,
+      "sha256": "f4bb28c44ec7ddcba4c514ffe16adfb40d24c323c6d3a25d7b9ee8d995f0c000"
+    },
+    {
+      "path": "R0_V2_INSTALLATION_2026-11-12.json",
+      "bytes": 11402,
+      "sha256": "e59f11d49872502218ae6a1de386f02ee4be25142d5413aa1ceff9333582029c"
+    },
+    {
+      "path": "R0_V2_REMOTE_METADATA_2026-11-12.json",
+      "bytes": 1230,
+      "sha256": "77ce59250e17dcd5bdcc9e8af11e6048347077365869445fa975617f4fdec4ab"
+    },
+    {
+      "path": "R0_V2_RUNTIME_CLOSED_2026-11-12.json",
+      "bytes": 688,
+      "sha256": "db06c870a771a5f8ed631997ef94ae34112c8bf672f0287b2fb0feebcaa73b22"
+    },
+    {
+      "path": "R0_V2_COMPUTE_SNAPSHOT_2026-11-12.json",
+      "bytes": 443,
+      "sha256": "9f3f220e624ad98ac2a40012ddb701d3ea8468fb89b2af577e5921ae0e0462d0"
+    },
+    {
+      "path": "R0_V2_GREEDY_CONTROL_2026-11-12.json",
+      "bytes": 1638,
+      "sha256": "9ec00e26f5048f7da123c6a5c71176df85216e39c0e6366caaf6b411576263b0"
+    },
+    {
+      "path": "R0_V2_DOCUMENT_VALIDATION_2026-11-12.json",
+      "bytes": 773,
+      "sha256": "fe8c8b0029e74073a4b2ce5de4825d6f9726724ec15c63799f1ce5d5cc934632"
+    },
+    {
+      "path": "R0_V2_LEARNING_CURVES_2026-11-12.png",
+      "bytes": 149692,
+      "sha256": "40cb9dddd4d9e154aa7a977002db06433b445ce01bf6b8a49d69905161e3ebfc"
+    },
+    {
+      "path": "R0_V2_MATCHED_COMPARISON_2026-11-12.png",
+      "bytes": 83959,
+      "sha256": "804e1fef0cc3998cf83111efe17e5f62f35cf5e001aa11eb460122b42822c4c3"
+    },
+    {
+      "path": "R1_SFT_CONTINUATION_2026-11-12.ipynb",
+      "bytes": 9374,
+      "sha256": "6576eb00693bef7a180a402534e9df4ec33bd8a5459432ccca3cd53a96e2b4f6"
+    },
+    {
+      "path": "R1_SFT_CONTINUATION_2026-11-12.py",
+      "bytes": 7559,
+      "sha256": "f3fb13eacbab8cbff5bfdc738881b4f7424659769bf753e203b52c21b8ad3998"
+    },
+    {
+      "path": "R1_SOURCE_BUNDLE_2026-11-12.zip",
+      "bytes": 2316444,
+      "sha256": "663360a350ea59b5d411e697ae395441a8e53d03f2882127de79b32c7d7d4a04"
+    },
+    {
+      "path": "R1_CONTINUATION_PLAN_2026-11-12.md",
+      "bytes": 3505,
+      "sha256": "7f53256eb0dbb9bab32788c711fc64542131efba57f9006bfe8e2bd328f9cd52"
+    },
+    {
+      "path": "R1_CONTINUATION_PLAN_2026-11-12.html",
+      "bytes": 3936,
+      "sha256": "84ad85a3898efeebf11601785ec6ccbc6c10bac2b575c1079a7665dcf9defa72"
+    },
+    {
+      "path": "R1_BASELINE_PRESERVATION_2026-11-12.json",
+      "bytes": 380,
+      "sha256": "925c72082e5e03368f6b39f5c32bb107f1a247c2160e514c8c18012dd9ef6120"
+    },
+    {
+      "path": "G8_READINESS_RAW_2026-11-12.zip",
+      "bytes": 1123943,
+      "sha256": "893915bf9c602ca10e6bd838a6240f220b9f2eebc4d1e69fa8c7821d94be4c6c"
+    },
+    {
+      "path": "G8_READINESS_RAW_2026-11-12.metadata.json",
+      "bytes": 292,
+      "sha256": "3376918f1acec9ef10d4bc9784f57efcbe46623cb3a0bf2d72382adcb0eb517e"
+    },
+    {
+      "path": "R0_V2_DECISION_2026-11-12.json",
+      "bytes": 9200,
+      "sha256": "0767d8f2abf478e08476c635f78cb7827b1d060b890eb6c4cdc304716b872717"
+    },
+    {
+      "path": "R0_V2_POSTPROCESSING_CODE_2026-11-12.zip",
+      "bytes": 74839,
+      "sha256": "cf71b4f76ca95dd9633abeee9a81b29f9e2419e81facab43e1005f01cba95b74"
+    },
+    {
+      "path": "R0_V2_BASELINE_ADAPTERS_2026-11-12.zip",
+      "bytes": 80371425,
+      "sha256": "cac9f3c6f92d97b7fc8d72a28e5ba28d251b3bd06c2d2b8d28fa5caaef8a0823"
+    }
+  ],
+  "note": "Complete bundle includes raw new and cached prior G8 results, model-only ZIP and exact source/data. No base weights, credentials or optimizer state are bundled."
+}

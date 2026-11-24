@@ -1,0 +1,14 @@
+{
+  "details": 0,
+  "case_cards": 0,
+  "expanded": true,
+  "collapsed": true,
+  "tables": 3,
+  "images": 0,
+  "images_ok": true,
+  "overflow": 0,
+  "correct_date": true,
+  "source_sha256": "719541d7fd9e06aa7627e1dbf60f98904cb105df3e4872a1489a6b2a5ab65d06",
+  "source_name": "R0_3B_FULL_STATE_CONTINUATION_RECORD_2026-11-20.html",
+  "browser": "isolated Microsoft Edge headless"
+}

@@ -1,0 +1,23 @@
+{
+  "UTC": "2026-11-24T03:06:06.919258+00:00",
+  "verified_scientific_export": true,
+  "checkpoint_count": 13,
+  "original_R0_unchanged": true,
+  "owned_GPU_released_and_absent": true,
+  "all_neural_work_on_Colab": true,
+  "within_10h": true,
+  "semantic_and_statistical_report_finalization_pending": false,
+  "actual_optimizer_updates": 240,
+  "selected_step": 120,
+  "independent_WMT_replay_passed": true,
+  "all_actual_optimizer_objectives_replayed": true,
+  "blinded_audit_source_units": 24,
+  "substantive_audit_sources": 19,
+  "formatting_audit_sources": 5,
+  "annotated_unique_source_candidate_pairs": 52,
+  "all_prior_models_preserved": true,
+  "new_SFT_updates": 0,
+  "no_additional_replication_started": true,
+  "analysis_finalized_unix": 1795489566.9192755,
+  "request_to_analysis_finalization_hours": 6.254977576600181
+}

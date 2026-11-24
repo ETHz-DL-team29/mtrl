@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-17",
+  "gpu": "NVIDIA L4",
+  "runtime_released": true,
+  "allocated_minutes": 83.58019754091899,
+  "initial_compute_units": 276.23864285993494,
+  "final_compute_units": 273.6968603381737,
+  "observed_balance_decrease": 2.541782521761263,
+  "observed_rate_per_hour": 1.94,
+  "other_assignments_remaining": 0,
+  "note": "Observed account balance change;includes setup,model download,checks,training,evaluation andtransfer. Settlement may lag. No attribution to other users assignments.",
+  "unix": 1794914907.4369516
+}

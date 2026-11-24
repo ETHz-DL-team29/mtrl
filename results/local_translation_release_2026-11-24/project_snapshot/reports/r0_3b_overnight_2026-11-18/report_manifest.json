@@ -1,0 +1,38 @@
+{
+  "fresh_holdout_effects.png": {
+    "bytes": 56846,
+    "sha256": "ba6ddfb7398f24d9317cefff1d7885ca41a87f14b5165b88d79b1971ce895dbb"
+  },
+  "g8_coverage.png": {
+    "bytes": 86154,
+    "sha256": "00d7d8de08e281ac52b2942df173386d7dbc4ed4f24113227bd27fec588d7170"
+  },
+  "html_qa.json": {
+    "bytes": 316,
+    "sha256": "c1d695ebb077812b52aac19f32aaea4d092870bea0141cbc5bf2051659765f0c"
+  },
+  "R0_3B_OVERNIGHT_PLAN_2026-11-18.html": {
+    "bytes": 22348,
+    "sha256": "32f46ce410dc2db4ed9d8518662fe116b084cc7d0de732668eeb8d583726df84"
+  },
+  "R0_3B_OVERNIGHT_PLAN_2026-11-18.md": {
+    "bytes": 19399,
+    "sha256": "fb5213ac3c751a6a64823f0a15ff586c5a1396adc7acb0098979c81f7ee7c1c0"
+  },
+  "R0_3B_OVERNIGHT_RESULTS_2026-11-18.html": {
+    "bytes": 1461724,
+    "sha256": "02c1ac11969f90131b6174a133cf869fd6103030bb16891d03e3ae73781a83c7"
+  },
+  "R0_3B_OVERNIGHT_RESULTS_2026-11-18.md": {
+    "bytes": 942862,
+    "sha256": "fd2860c75e0ea09b02225f134733ec10a1f5a6f4a977ce9880fe52cff1bc6a33"
+  },
+  "report_scope.json": {
+    "bytes": 179,
+    "sha256": "fed7c906c089f61c720e98c5ae8b45cc588ca2882435d1d57d4bb1ca012e304c"
+  },
+  "selection_curves.png": {
+    "bytes": 118265,
+    "sha256": "1bb41e0840ab83e5f68af91f574a2624e09bfb96aafc45c47fd3c76a31d76b58"
+  }
+}

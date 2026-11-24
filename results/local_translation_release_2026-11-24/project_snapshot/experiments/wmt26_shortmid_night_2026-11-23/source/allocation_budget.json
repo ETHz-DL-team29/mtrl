@@ -1,0 +1,11 @@
+{
+  "user_request_anchor_unix": 1795467049.0,
+  "deadline_unix": 1795503049.0,
+  "training_deadline_unix": 1795497649.0,
+  "evaluation_deadline_unix": 1795495849.0,
+  "maximum_user_wall_hours": 10,
+  "preparation_and_queue_included": true,
+  "deadline_Berlin": "2026-11-24T07:50:49+01:00",
+  "allocation_cutoff_unix": 1795477849.0,
+  "no_deadline_reset": true
+}

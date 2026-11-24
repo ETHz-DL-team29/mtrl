@@ -1,0 +1,13 @@
+{
+  "sections": 16,
+  "expanded": true,
+  "collapsed": true,
+  "search_visible": 1,
+  "reset_visible": 16,
+  "overflow_px": 0,
+  "title": "R0_3B_SYSTEMATIC_SFT_PLAN_2026-11-18",
+  "status": "PLAN_ONLY_NOT_STARTED",
+  "source_sha256": "f6a0e1498018f3d533f8b7caf6bda50aa1cf88cbf1b5ea1eb6c9ed0ad1ad1b3f",
+  "browser": "isolated Microsoft Edge headless",
+  "proposal_consistency_checks_passed": true
+}

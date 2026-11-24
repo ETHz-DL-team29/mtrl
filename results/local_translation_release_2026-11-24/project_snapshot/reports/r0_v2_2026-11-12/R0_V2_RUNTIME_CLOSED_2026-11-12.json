@@ -1,0 +1,18 @@
+{
+  "unassigned": true,
+  "owned_runtime_absent": true,
+  "method": "official_client_unassign_verified_owned_endpoint",
+  "observed_unix": 1794494857.3268428,
+  "owned_endpoint_sha256": "6fa4d48e0ddaac850ded03ce70edfa08694a78fb803db146f5f4e636c56e715e",
+  "export_sha256": "c2ac407a98eeb1d271e3f76efb2c3aeafe9ff1d353349960f776f82e6eeccec1",
+  "adapter_sha256": "806b9857024868131140da43ad3975d7c8653b97e5687420e4499a3769995847",
+  "other_assignments_untouched": true,
+  "other_assignment_accelerators": [
+    "NONE"
+  ],
+  "account_compute_after": {
+    "paid_compute_units_balance": 290.417704476572,
+    "consumption_rate_hourly": 0.08,
+    "assignments_count": 1
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "accepted": false,
+  "decision": {
+    "UTC": "2026-11-20T12:49:37.495081+00:00",
+    "checkpoint_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0",
+    "checks": {
+      "technical_chrf_gain_ge_half": true,
+      "coverage_not_down": true,
+      "greedy_not_down": false,
+      "general_preserved": true,
+      "midlong_G8_not_down": true,
+      "midlong_greedy_not_down": true,
+      "some_midlong_semantic_gain": true,
+      "tail_can_finish_and_be_reviewed_before_worker_selection": false
+    },
+    "previous_checkpoint": "t2000188",
+    "current_checkpoint": "t2999996",
+    "midlong_before": {
+      "greedy": 1,
+      "G8": 4
+    },
+    "midlong_after": {
+      "greedy": 1,
+      "G8": 6
+    },
+    "reason": "Require observed medium/long semantic progress,not overlap improvement alone;runtime additionally enforces conservative time gate",
+    "final_test_not_used": true,
+    "tail_review_timing": {
+      "estimated_training_and_dev_seconds": 3630.4331529475294,
+      "review_reserve_seconds": 600,
+      "worker_review_window_end_unix": 1795180877.7181003,
+      "remaining_until_worker_review_end_seconds": 1900.2229936122894,
+      "timing_amendment": "tail_review_feasibility_2026-11-20.json"
+    },
+    "continue": false
+  },
+  "estimated_required_seconds": 3627.854039740842,
+  "remaining_training_seconds": 3397.919429540634,
+  "no_LR_reset": true
+}

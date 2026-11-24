@@ -1,0 +1,133 @@
+{
+  "UTC": "2026-11-24T02:30:55.276630+00:00",
+  "n": 72,
+  "one_seed": true,
+  "historical_previously_inspected_holdout": true,
+  "not_official_WMT_benchmark": true,
+  "no_checkpoint_selection_on_final": true,
+  "metrics": {
+    "overall": {
+      "n": 72,
+      "chrfpp": {
+        "before": 51.689443922997825,
+        "after": 52.252745541140335,
+        "delta": 0.5633016181425106,
+        "delta95CI": [
+          -0.6321734397569143,
+          1.9226264693838557
+        ],
+        "replicates": 2000
+      },
+      "bleu": {
+        "before": 23.912664988725634,
+        "after": 25.125972422862908,
+        "delta": 1.213307434137274,
+        "delta95CI": [
+          -0.8018512485891278,
+          3.851623619363464
+        ],
+        "replicates": 2000
+      }
+    },
+    "general": {
+      "n": 24,
+      "chrfpp": {
+        "before": 41.27591984362387,
+        "after": 40.178094571945586,
+        "delta": -1.097825271678282,
+        "delta95CI": [
+          -2.9283613249373817,
+          0.2494189399532996
+        ],
+        "replicates": 2000
+      },
+      "bleu": {
+        "before": 13.90370181868657,
+        "after": 13.588905087810586,
+        "delta": -0.3147967308759849,
+        "delta95CI": [
+          -0.8528365164394358,
+          0.25995759919612094
+        ],
+        "replicates": 2000
+      }
+    },
+    "technical_short": {
+      "n": 24,
+      "chrfpp": {
+        "before": 61.137210022973086,
+        "after": 62.398113276636714,
+        "delta": 1.2609032536636278,
+        "delta95CI": [
+          -0.8567471477418388,
+          4.090301806875181
+        ],
+        "replicates": 2000
+      },
+      "bleu": {
+        "before": 43.77913147458642,
+        "after": 44.10981057634706,
+        "delta": 0.3306791017606372,
+        "delta95CI": [
+          -3.019384017410542,
+          2.4342947275386306
+        ],
+        "replicates": 2000
+      }
+    },
+    "technical_medium": {
+      "n": 24,
+      "chrfpp": {
+        "before": 50.86194726128321,
+        "after": 51.62877696556822,
+        "delta": 0.7668297042850085,
+        "delta95CI": [
+          -0.8572533709727469,
+          2.711954904146014
+        ],
+        "replicates": 2000
+      },
+      "bleu": {
+        "before": 19.29737320061204,
+        "after": 21.61601697595604,
+        "delta": 2.3186437753440003,
+        "delta95CI": [
+          -1.6308336872477875,
+          6.866140334832679
+        ],
+        "replicates": 2000
+      }
+    },
+    "technical": {
+      "n": 48,
+      "chrfpp": {
+        "before": 53.92841188066102,
+        "after": 54.8638941132384,
+        "delta": 0.9354822325773853,
+        "delta95CI": [
+          -0.45497040325719346,
+          2.460461328453308
+        ],
+        "replicates": 2000
+      },
+      "bleu": {
+        "before": 26.678145650175935,
+        "after": 28.458827702878065,
+        "delta": 1.7806820527021294,
+        "delta95CI": [
+          -1.0824674517723056,
+          4.800218152130124
+        ],
+        "replicates": 2000
+      }
+    }
+  },
+  "input_SHA256": {
+    "before_greedy.jsonl": "faf3899ebbf9b2d4eb66cd7d6fc718f87d7b777b6568c329c0f790734dd1bff4",
+    "after_greedy.jsonl": "891a624a11ed0479037257e2a7703d76a3479d065a7237908a5e05825ca0458d"
+  },
+  "metric_signatures": {
+    "chrfpp": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0",
+    "bleu": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-13",
+  "preferred_candidate": "D:/deep learning project/runs/r0_v3_colab_2026-11-13/nll_adapter",
+  "adapter_sha256": "ebb4575fda36002c76ddb7e999a4e12c44a0be9ddb20b1e4e092d708e6a050e9",
+  "qualified_for_dapo": false,
+  "needs_more_sft": true,
+  "reward_pipeline_ready": false,
+  "purpose": "Further SFT / diagnostics; comprehensive DAPO readiness not accepted",
+  "greedy_selected_adapter_preserved": "D:\\deep learning project\\runs\\r0_v3_colab_2026-11-13\\best_adapter",
+  "report": "D:\\deep learning project\\reports\\r0_v3_2026-11-13\\R0_V3_RESULTS_2026-11-13.html"
+}

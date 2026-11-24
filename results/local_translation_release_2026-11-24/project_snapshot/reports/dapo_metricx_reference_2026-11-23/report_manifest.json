@@ -1,0 +1,10 @@
+{
+  "UTC": "2026-11-23T10:27:00.510910+00:00",
+  "status": "PREPARATION_ONLY_GPU_NOT_ALLOCATED",
+  "md_SHA256": "3acb139336cd37831f7d4371f62b57939bdf0bd0b92804ee40b86a315d084c66",
+  "html_SHA256": "855f7e342f22c08490e3c8bbb22155b32680ef0d37aafe395013039bf8557724",
+  "new_policy_updates": 0,
+  "calibration_scores": 0,
+  "all_reference_cards_included": 246,
+  "parent_SHA256_verified": "7f7a4914c5f403e757fdb882c3576ac68f2b0fa6edc00e537087716b28ddb07e"
+}

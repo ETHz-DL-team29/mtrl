@@ -1,0 +1,27 @@
+{
+  "UTC": "2026-11-20T13:41:05.130751+00:00",
+  "owned_runtime_released": true,
+  "account_assigned_runtime_count": 0,
+  "current_account_consumption": {
+    "paid_compute_units_balance": 239.41670526926325,
+    "consumption_rate_hourly": 0.0,
+    "assignments_count": 0
+  },
+  "segment2_allocated_seconds": 9012.361103534698,
+  "segment2_allocated_minutes": 150.20601839224497,
+  "segment1_allocated_seconds": 12395.729388237,
+  "cumulative_filtered_SFT_GPU_hours": 5.946691803269916,
+  "today_hard_deadline_unix": 1795186877.7181003,
+  "released_unix": 1795182000.2210627,
+  "hard_deadline_met": true,
+  "initial_compute_units": 244.23880510341385,
+  "final_compute_units": 239.41670526926325,
+  "observed_account_compute_unit_drop": 4.822099834150606,
+  "account_balance_drop_not_claimed_exact_invoice": true,
+  "segment1_observed_compute_unit_drop": 6.577003469176191,
+  "new_retained_training_seconds": 4179.083923874003,
+  "new_retained_target_tokens": 883444,
+  "new_training_target_tokens_per_second": 211.39656826538413,
+  "retained_total_target_tokens": 2999996,
+  "NVML_peak_total_GPU_used_MiB": 20340.0
+}

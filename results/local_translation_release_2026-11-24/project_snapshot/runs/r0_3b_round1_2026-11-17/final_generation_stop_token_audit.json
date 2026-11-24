@@ -1,0 +1,34 @@
+{
+  "g8_selected.jsonl": {
+    "outputs": 256,
+    "base_eos151643_present": 0
+  },
+  "initial_cache_anchors_attempt_B.jsonl": {
+    "outputs": 2,
+    "base_eos151643_present": 0
+  },
+  "initial_fp32_128.jsonl": {
+    "outputs": 128,
+    "base_eos151643_present": 0
+  },
+  "selected_fp32_128.jsonl": {
+    "outputs": 128,
+    "base_eos151643_present": 0
+  },
+  "selection_t000000.jsonl": {
+    "outputs": 64,
+    "base_eos151643_present": 0
+  },
+  "selection_t0250000.jsonl": {
+    "outputs": 64,
+    "base_eos151643_present": 0
+  },
+  "selection_t0500000.jsonl": {
+    "outputs": 64,
+    "base_eos151643_present": 0
+  },
+  "selection_t1000000.jsonl": {
+    "outputs": 64,
+    "base_eos151643_present": 0
+  }
+}

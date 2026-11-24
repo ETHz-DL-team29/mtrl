@@ -1,0 +1,86 @@
+{
+  "UTC": "2026-11-22T00:06:38.204570+00:00",
+  "weights_sha256": "7f7a4914c5f403e757fdb882c3576ac68f2b0fa6edc00e537087716b28ddb07e",
+  "selected_tag": "t1983726",
+  "selected_target_tokens": 1983726,
+  "production_updates": 1121,
+  "production_target_tokens": 1983726,
+  "base": "Qwen/Qwen2.5-3B-Instruct",
+  "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "LoRA_rank": 64,
+  "LoRA_alpha": 128,
+  "precision": "FP32 base and FP32 LoRA, unmerged, TF32 off, SDPA; greedy batch8",
+  "original_R0_preserved": "D:\\deep learning project\\runs\\r0_3b_coverage_sft_2026-11-20\\final_selected_adapter",
+  "original_R0_sha256": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858",
+  "selected_using_development_only": true,
+  "fit_diagnostic_weights_discarded_before_production": true,
+  "project_checkpoint_qualification_passed": false,
+  "recommended_to_replace_original_R0": false,
+  "requires_reward_validation_before_DAPO": true,
+  "quality_not_implied_by_filename": true,
+  "matched_metrics": {
+    "n": 128,
+    "chrfpp": {
+      "before": 47.78920011462019,
+      "after": 48.79670431379066,
+      "delta": 1.0075041991704694,
+      "delta95CI": [
+        -0.9986615868963105,
+        2.828889561899789
+      ],
+      "bootstrap_unit": "paired source",
+      "replicates": 2000
+    },
+    "bleu": {
+      "before": 27.171587925476437,
+      "after": 28.044991837313916,
+      "delta": 0.8734039118374781,
+      "delta95CI": [
+        -1.9986915731948272,
+        3.1948674563155253
+      ],
+      "bootstrap_unit": "paired source",
+      "replicates": 2000
+    }
+  },
+  "semantic_G8": {
+    "n": 64,
+    "counts": {
+      "F": 31,
+      "U": 16,
+      "P": 17
+    },
+    "strata": {
+      "general": {},
+      "technical_short": {
+        "P": 9,
+        "U": 4,
+        "F": 3
+      },
+      "technical_medium": {
+        "F": 15,
+        "P": 4,
+        "U": 5
+      },
+      "technical_long": {
+        "F": 13,
+        "U": 7,
+        "P": 4
+      }
+    }
+  },
+  "limitations": [
+    "Same-assistant semantic labels are conditional, not native-speaker certification",
+    "Small final source sample and one training seed"
+  ],
+  "portable_config": {
+    "original_colab_config_sha256": "f3c6d2c1e67aaf8f23b3a27edaa45166000c35a1dbedea199f3ac69061373186",
+    "portable_config_sha256": "9f2f18840425789a44b770cc139308bb59ad856e2363f65046fee0fcd92851eb",
+    "only_changes": [
+      "base_model_name_or_path",
+      "revision"
+    ],
+    "weights_unchanged": true,
+    "original_config_preserved": "D:\\deep learning project\\runs\\r0_3b_recovery_sft_2026-11-21\\final_selected_adapter\\adapter_config.original_colab.json"
+  }
+}

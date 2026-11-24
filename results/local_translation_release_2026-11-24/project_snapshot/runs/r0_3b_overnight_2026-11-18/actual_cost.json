@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-18",
+  "gpu": "NVIDIA L4",
+  "runtime_released": true,
+  "allocated_minutes": 347.973519829909,
+  "within_480min_ceiling": true,
+  "allocation_started_unix": 1794958519.4626248,
+  "released_unix": 1794979397.8738146,
+  "deadline_unix": 1794987319.4626248,
+  "initial_compute_units": 267.04615833395104,
+  "final_compute_units": 255.94943351395906,
+  "observed_balance_decrease": 11.096724819991977,
+  "observed_rate_per_hour": 1.94,
+  "other_assignments_remaining": 0,
+  "attempts": 1,
+  "note": "All assigned time includes setup,training,evaluation,review idle andtransfers. Balance settlement may lag. Any unexpected runtime interruptions must be reported separately.",
+  "unix": 1794979409.2784479
+}

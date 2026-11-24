@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-24",
+  "task": "English to Icelandic",
+  "default_sft_3b": "qwen25-3b-sft-r0",
+  "default_sft_08b": "qwen35-08b-sft-r0",
+  "dapo_candidate": "qwen25-3b-dapo-shortmid",
+  "base_weights_bundled": false,
+  "local_only": false,
+  "models": [
+    {
+      "id": "qwen25-3b-sft-r0",
+      "role": "sft_baseline",
+      "stage": "sft",
+      "base_model": "Qwen/Qwen2.5-3B-Instruct",
+      "base_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+      "base_license": "qwen-research",
+      "architecture": "qwen2",
+      "adapter_path": "artifacts/translation_models_2026-11-24/qwen25-3b-sft-r0",
+      "files": {
+        "adapter_config.json": {
+          "bytes": 1269,
+          "sha256": "9f2f18840425789a44b770cc139308bb59ad856e2363f65046fee0fcd92851eb"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 479005064,
+          "sha256": "7f7a4914c5f403e757fdb882c3576ac68f2b0fa6edc00e537087716b28ddb07e"
+        }
+      },
+      "lora_rank": 64,
+      "lora_alpha": 128,
+      "recorded_base_rounding": "float32",
+      "precision_note": "Recorded-style FP32 loader; historical exact evaluation settings remain in each report. Reduced-precision inference is optional and not score-identical.",
+      "default_max_new_tokens": 1024,
+      "source_experiment": "r0_3b_recovery_sft_2026-11-21",
+      "source_adapter": "D:\\deep learning project\\runs\\r0_3b_recovery_sft_2026-11-21\\final_selected_adapter",
+      "hub_repo_id": "huaq99/mtrl-qwen25-3b-en-is-sft-r0",
+      "uploaded": true,
+      "optimizer_state_bundled": false,
+      "hub_revision": "ae660dd4ea272fff7caf840d2c9ccc76401e6780",
+      "hub_tag": "release-2026-11-24",
+      "hub_private": false,
+      "hub_file_map": {
+        "adapter_model.safetensors": "adapter_model.safetensors",
+        "adapter_config.json": "original_adapter_config.json"
+      }
+    },
+    {
+      "id": "qwen25-3b-dapo-shortmid",
+      "role": "dapo_candidate",
+      "stage": "dapo",
+      "base_model": "Qwen/Qwen2.5-3B-Instruct",
+      "base_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+      "base_license": "qwen-research",
+      "architecture": "qwen2",
+      "adapter_path": "artifacts/translation_models_2026-11-24/qwen25-3b-dapo-shortmid",
+      "files": {
+        "adapter_config.json": {
+          "bytes": 1219,
+          "sha256": "c226a386d6b4dd55443dfe18abc0d9e956c8c6afc235d5de920b1d0541edcf50"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 479005064,
+          "sha256": "40ee8312ead89272fd5e8190a3b8e1da91d5f0ff641721840600585ff4308c86"
+        }
+      },
+      "lora_rank": 64,
+      "lora_alpha": 128,
+      "recorded_base_rounding": "float32",
+      "precision_note": "Recorded-style FP32 loader; historical exact evaluation settings remain in each report. Reduced-precision inference is optional and not score-identical.",
+      "default_max_new_tokens": 1024,
+      "source_experiment": "wmt26_shortmid_night_2026-11-23",
+      "source_adapter": "D:\\deep learning project\\runs\\wmt26_shortmid_night_2026-11-23\\snapshots\\shortmid_selected_full\\files\\adapter",
+      "hub_repo_id": "huaq99/mtrl-qwen25-3b-en-is-dapo-shortmid-v1",
+      "uploaded": true,
+      "optimizer_state_bundled": false,
+      "hub_revision": "1ec9cfaa813582bda509676497da2ffb2e69e6bc",
+      "hub_tag": "release-2026-11-24",
+      "hub_private": false,
+      "hub_file_map": {
+        "adapter_model.safetensors": "adapter_model.safetensors",
+        "adapter_config.json": "original_adapter_config.json"
+      }
+    },
+    {
+      "id": "qwen35-08b-sft-r0",
+      "role": "sft_baseline",
+      "stage": "sft",
+      "base_model": "Qwen/Qwen3.5-0.8B",
+      "base_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "base_license": "apache-2.0",
+      "architecture": "qwen3_5",
+      "adapter_path": "artifacts/translation_models_2026-11-24/qwen35-08b-sft-r0",
+      "files": {
+        "adapter_config.json": {
+          "bytes": 1291,
+          "sha256": "d60a131678e396da5b185733b22a6d303ed2a7c2e26f7f5649452844bf652119"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 43346432,
+          "sha256": "ebb4575fda36002c76ddb7e999a4e12c44a0be9ddb20b1e4e092d708e6a050e9"
+        }
+      },
+      "lora_rank": 16,
+      "lora_alpha": 32,
+      "recorded_base_rounding": "bfloat16_then_float32",
+      "precision_note": "Recorded-style FP32 loader; historical exact evaluation settings remain in each report. Reduced-precision inference is optional and not score-identical.",
+      "default_max_new_tokens": 320,
+      "source_experiment": "r0_v3_colab_2026-11-13",
+      "source_adapter": "D:\\deep learning project\\runs\\r0_v3_colab_2026-11-13\\nll_adapter",
+      "hub_repo_id": "huaq99/mtrl-qwen35-08b-en-is-sft-r0",
+      "uploaded": true,
+      "optimizer_state_bundled": false,
+      "hub_revision": "c95800cbefea66cbe449a482c7515a74a6984564",
+      "hub_tag": "release-2026-11-24",
+      "hub_private": false,
+      "hub_file_map": {
+        "adapter_model.safetensors": "adapter_model.safetensors",
+        "adapter_config.json": "original_adapter_config.json"
+      }
+    },
+    {
+      "id": "qwen35-08b-sft-technical",
+      "role": "sft_candidate",
+      "stage": "sft",
+      "base_model": "Qwen/Qwen3.5-0.8B",
+      "base_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "base_license": "apache-2.0",
+      "architecture": "qwen3_5",
+      "adapter_path": "artifacts/translation_models_2026-11-24/qwen35-08b-sft-technical",
+      "files": {
+        "adapter_config.json": {
+          "bytes": 1291,
+          "sha256": "d60a131678e396da5b185733b22a6d303ed2a7c2e26f7f5649452844bf652119"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 43346432,
+          "sha256": "89c874b1e04b011c6ee3f41f499c373b47826a7f106b9d61eaa83fdce85c77ae"
+        }
+      },
+      "lora_rank": 16,
+      "lora_alpha": 32,
+      "recorded_base_rounding": "bfloat16_then_float32",
+      "precision_note": "Recorded-style FP32 loader; historical exact evaluation settings remain in each report. Reduced-precision inference is optional and not score-identical.",
+      "default_max_new_tokens": 320,
+      "source_experiment": "r0_technical_sft_2026-11-17",
+      "source_adapter": "D:\\deep learning project\\runs\\r0_technical_sft_2026-11-17\\selected_candidate_adapter",
+      "hub_repo_id": null,
+      "uploaded": false,
+      "optimizer_state_bundled": false
+    },
+    {
+      "id": "qwen25-3b-dapo-reference",
+      "role": "dapo_historical",
+      "stage": "dapo",
+      "base_model": "Qwen/Qwen2.5-3B-Instruct",
+      "base_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+      "base_license": "qwen-research",
+      "architecture": "qwen2",
+      "adapter_path": "artifacts/translation_models_2026-11-24/qwen25-3b-dapo-reference",
+      "files": {
+        "adapter_config.json": {
+          "bytes": 1219,
+          "sha256": "bc80916fdc71d7434ea4b7d7d11217394a93cbc88a26083659e2d8bf13c72db8"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 479005064,
+          "sha256": "104ad503ce563a46b54fcf6d6580e5da01c7fc9228f5e741e3adeb1d232d5852"
+        }
+      },
+      "lora_rank": 64,
+      "lora_alpha": 128,
+      "recorded_base_rounding": "float32",
+      "precision_note": "Recorded-style FP32 loader; historical exact evaluation settings remain in each report. Reduced-precision inference is optional and not score-identical.",
+      "default_max_new_tokens": 1024,
+      "source_experiment": "dapo_metricx_reference_2026-11-23",
+      "source_adapter": "D:\\deep learning project\\runs\\dapo_metricx_reference_2026-11-23\\snapshots\\user_continued_selected_full\\files\\adapter",
+      "hub_repo_id": null,
+      "uploaded": false,
+      "optimizer_state_bundled": false
+    },
+    {
+      "id": "archive-r0-3b-coverage-sft-2026-11-20-final-selected-adapter",
+      "role": "sft_historical",
+      "stage": "sft",
+      "base_model": "Qwen/Qwen2.5-3B-Instruct",
+      "base_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+      "base_license": "qwen-research",
+      "architecture": "qwen2",
+      "adapter_path": "artifacts/translation_models_2026-11-24/archive-r0-3b-coverage-sft-2026-11-20-final-selected-adapter",
+      "files": {
+        "adapter_config.json": {
+          "bytes": 1202,
+          "sha256": "60e365e777e795ff512cd3e0a89ae605414ee33de49a4adbafb41d2a3576d5ca"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 119801528,
+          "sha256": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858"
+        }
+      },
+      "lora_rank": 16,
+      "lora_alpha": 32,
+      "recorded_base_rounding": "float32",
+      "precision_note": "Recorded-style FP32 loader; historical exact evaluation settings remain in each report. Reduced-precision inference is optional and not score-identical.",
+      "default_max_new_tokens": 1024,
+      "source_experiment": "r0_3b_coverage_sft_2026-11-20",
+      "source_adapter": "D:\\deep learning project\\runs\\r0_3b_coverage_sft_2026-11-20\\final_selected_adapter",
+      "hub_repo_id": null,
+      "uploaded": false,
+      "optimizer_state_bundled": false
+    },
+    {
+      "id": "archive-r0-3b-filtered-sft-resume-2026-11-20-final-selected-adapter",
+      "role": "sft_historical",
+      "stage": "sft",
+      "base_model": "Qwen/Qwen2.5-3B-Instruct",
+      "base_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+      "base_license": "qwen-research",
+      "architecture": "qwen2",
+      "adapter_path": "artifacts/translation_models_2026-11-24/archive-r0-3b-filtered-sft-resume-2026-11-20-final-selected-adapter",
+      "files": {
+        "adapter_config.json": {
+          "bytes": 1202,
+          "sha256": "53078166c64880c65725fe78df128421892d91ea6d5e7a23425c2ba65cb3dd42"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 119801528,
+          "sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0"
+        }
+      },
+      "lora_rank": 16,
+      "lora_alpha": 32,
+      "recorded_base_rounding": "float32",
+      "precision_note": "Recorded-style FP32 loader; historical exact evaluation settings remain in each report. Reduced-precision inference is optional and not score-identical.",
+      "default_max_new_tokens": 1024,
+      "source_experiment": "r0_3b_filtered_sft_resume_2026-11-20",
+      "source_adapter": "D:\\deep learning project\\runs\\r0_3b_filtered_sft_resume_2026-11-20\\final_selected_adapter",
+      "hub_repo_id": null,
+      "uploaded": false,
+      "optimizer_state_bundled": false
+    },
+    {
+      "id": "archive-r0-3b-overnight-2026-11-18-final-selected-adapter",
+      "role": "sft_historical",
+      "stage": "sft",
+      "base_model": "Qwen/Qwen2.5-3B-Instruct",
+      "base_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+      "base_license": "qwen-research",
+      "architecture": "qwen2",
+      "adapter_path": "artifacts/translation_models_2026-11-24/archive-r0-3b-overnight-2026-11-18-final-selected-adapter",
+      "files": {
+        "adapter_config.json": {
+          "bytes": 1202,
+          "sha256": "569a3b5b4cfc83c9d907b52f58a5da75610f2af039b19d6f8f05f14d08448d19"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 119801528,
+          "sha256": "9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199"
+        }
+      },
+      "lora_rank": 16,
+      "lora_alpha": 32,
+      "recorded_base_rounding": "float32",
+      "precision_note": "Recorded-style FP32 loader; historical exact evaluation settings remain in each report. Reduced-precision inference is optional and not score-identical.",
+      "default_max_new_tokens": 1024,
+      "source_experiment": "r0_3b_overnight_2026-11-18",
+      "source_adapter": "D:\\deep learning project\\runs\\r0_3b_overnight_2026-11-18\\final_selected_adapter",
+      "hub_repo_id": null,
+      "uploaded": false,
+      "optimizer_state_bundled": false
+    },
+    {
+      "id": "archive-r0-3b-round1-2026-11-17-final-trained-adapter",
+      "role": "sft_historical",
+      "stage": "sft",
+      "base_model": "Qwen/Qwen2.5-3B-Instruct",
+      "base_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+      "base_license": "qwen-research",
+      "architecture": "qwen2",
+      "adapter_path": "artifacts/translation_models_2026-11-24/archive-r0-3b-round1-2026-11-17-final-trained-adapter",
+      "files": {
+        "adapter_config.json": {
+          "bytes": 1202,
+          "sha256": "a7653e861a5aabe2bac359cb28a6318d2884ab96f4aa4e9470ff1df89cb23b4e"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 119801528,
+          "sha256": "1ecf014712c7eb0004eaa20de58f54b0346cc4bd67b0ce07e3c7e30084e6c41f"
+        }
+      },
+      "lora_rank": 16,
+      "lora_alpha": 32,
+      "recorded_base_rounding": "float32",
+      "precision_note": "Recorded-style FP32 loader; historical exact evaluation settings remain in each report. Reduced-precision inference is optional and not score-identical.",
+      "default_max_new_tokens": 1024,
+      "source_experiment": "r0_3b_round1_2026-11-17",
+      "source_adapter": "D:\\deep learning project\\runs\\r0_3b_round1_2026-11-17\\final_trained_adapter",
+      "hub_repo_id": null,
+      "uploaded": false,
+      "optimizer_state_bundled": false
+    },
+    {
+      "id": "archive-r0-3b-round1-2026-11-17-selected-candidate-adapter",
+      "role": "sft_historical",
+      "stage": "sft",
+      "base_model": "Qwen/Qwen2.5-3B-Instruct",
+      "base_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+      "base_license": "qwen-research",
+      "architecture": "qwen2",
+      "adapter_path": "artifacts/translation_models_2026-11-24/archive-r0-3b-round1-2026-11-17-selected-candidate-adapter",
+      "files": {
+        "adapter_config.json": {
+          "bytes": 1202,
+          "sha256": "a7653e861a5aabe2bac359cb28a6318d2884ab96f4aa4e9470ff1df89cb23b4e"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 119801528,
+          "sha256": "1ecf014712c7eb0004eaa20de58f54b0346cc4bd67b0ce07e3c7e30084e6c41f"
+        }
+      },
+      "lora_rank": 16,
+      "lora_alpha": 32,
+      "recorded_base_rounding": "float32",
+      "precision_note": "Recorded-style FP32 loader; historical exact evaluation settings remain in each report. Reduced-precision inference is optional and not score-identical.",
+      "default_max_new_tokens": 1024,
+      "source_experiment": "r0_3b_round1_2026-11-17",
+      "source_adapter": "D:\\deep learning project\\runs\\r0_3b_round1_2026-11-17\\selected_candidate_adapter",
+      "hub_repo_id": null,
+      "uploaded": false,
+      "optimizer_state_bundled": false
+    },
+    {
+      "id": "archive-r0-colab-2026-11-11-best-adapter",
+      "role": "sft_historical",
+      "stage": "sft",
+      "base_model": "Qwen/Qwen3.5-0.8B",
+      "base_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "base_license": "apache-2.0",
+      "architecture": "qwen3_5",
+      "adapter_path": "artifacts/translation_models_2026-11-24/archive-r0-colab-2026-11-11-best-adapter",
+      "files": {
+        "adapter_config.json": {
+          "bytes": 1283,
+          "sha256": "8f9bcfb7af281c998fe0c6f4d6fb73f2a74e9e33817bc26abfa02ae0005aa776"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 43346432,
+          "sha256": "81b369a5f6c6343c160c99c4d3271f2ecb63781363b05e9c89e7b2703b77785f"
+        }
+      },
+      "lora_rank": 16,
+      "lora_alpha": 32,
+      "recorded_base_rounding": "bfloat16_then_float32",
+      "precision_note": "Recorded-style FP32 loader; historical exact evaluation settings remain in each report. Reduced-precision inference is optional and not score-identical.",
+      "default_max_new_tokens": 320,
+      "source_experiment": "r0_colab_2026-11-11",
+      "source_adapter": "D:\\deep learning project\\runs\\r0_colab_2026-11-11\\best_adapter",
+      "hub_repo_id": null,
+      "uploaded": false,
+      "optimizer_state_bundled": false
+    },
+    {
+      "id": "archive-r0-technical-sft-2026-11-17-final-trained-adapter",
+      "role": "sft_historical",
+      "stage": "sft",
+      "base_model": "Qwen/Qwen3.5-0.8B",
+      "base_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "base_license": "apache-2.0",
+      "architecture": "qwen3_5",
+      "adapter_path": "artifacts/translation_models_2026-11-24/archive-r0-technical-sft-2026-11-17-final-trained-adapter",
+      "files": {
+        "adapter_config.json": {
+          "bytes": 1291,
+          "sha256": "d60a131678e396da5b185733b22a6d303ed2a7c2e26f7f5649452844bf652119"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 43346432,
+          "sha256": "32dd7931c828d3c5ae069391cb7a4411acb70d8a93c670a1864276b375a2df52"
+        }
+      },
+      "lora_rank": 16,
+      "lora_alpha": 32,
+      "recorded_base_rounding": "bfloat16_then_float32",
+      "precision_note": "Recorded-style FP32 loader; historical exact evaluation settings remain in each report. Reduced-precision inference is optional and not score-identical.",
+      "default_max_new_tokens": 320,
+      "source_experiment": "r0_technical_sft_2026-11-17",
+      "source_adapter": "D:\\deep learning project\\runs\\r0_technical_sft_2026-11-17\\final_trained_adapter",
+      "hub_repo_id": null,
+      "uploaded": false,
+      "optimizer_state_bundled": false
+    },
+    {
+      "id": "archive-r0-v2-colab-2026-11-12-best-adapter",
+      "role": "sft_historical",
+      "stage": "sft",
+      "base_model": "Qwen/Qwen3.5-0.8B",
+      "base_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "base_license": "apache-2.0",
+      "architecture": "qwen3_5",
+      "adapter_path": "artifacts/translation_models_2026-11-24/archive-r0-v2-colab-2026-11-12-best-adapter",
+      "files": {
+        "adapter_config.json": {
+          "bytes": 1291,
+          "sha256": "d60a131678e396da5b185733b22a6d303ed2a7c2e26f7f5649452844bf652119"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 43346432,
+          "sha256": "806b9857024868131140da43ad3975d7c8653b97e5687420e4499a3769995847"
+        }
+      },
+      "lora_rank": 16,
+      "lora_alpha": 32,
+      "recorded_base_rounding": "bfloat16_then_float32",
+      "precision_note": "Recorded-style FP32 loader; historical exact evaluation settings remain in each report. Reduced-precision inference is optional and not score-identical.",
+      "default_max_new_tokens": 320,
+      "source_experiment": "r0_v2_colab_2026-11-12",
+      "source_adapter": "D:\\deep learning project\\runs\\r0_v2_colab_2026-11-12\\best_adapter",
+      "hub_repo_id": null,
+      "uploaded": false,
+      "optimizer_state_bundled": false
+    },
+    {
+      "id": "archive-r0-v3-colab-2026-11-13-best-adapter",
+      "role": "sft_historical",
+      "stage": "sft",
+      "base_model": "Qwen/Qwen3.5-0.8B",
+      "base_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "base_license": "apache-2.0",
+      "architecture": "qwen3_5",
+      "adapter_path": "artifacts/translation_models_2026-11-24/archive-r0-v3-colab-2026-11-13-best-adapter",
+      "files": {
+        "adapter_config.json": {
+          "bytes": 1291,
+          "sha256": "d60a131678e396da5b185733b22a6d303ed2a7c2e26f7f5649452844bf652119"
+        },
+        "adapter_model.safetensors": {
+          "bytes": 43346432,
+          "sha256": "0f075c31d0bee3192f2b449a59b7ba6ca3f9370ad219b1c6a98fcf00a01660df"
+        }
+      },
+      "lora_rank": 16,
+      "lora_alpha": 32,
+      "recorded_base_rounding": "bfloat16_then_float32",
+      "precision_note": "Recorded-style FP32 loader; historical exact evaluation settings remain in each report. Reduced-precision inference is optional and not score-identical.",
+      "default_max_new_tokens": 320,
+      "source_experiment": "r0_v3_colab_2026-11-13",
+      "source_adapter": "D:\\deep learning project\\runs\\r0_v3_colab_2026-11-13\\best_adapter",
+      "hub_repo_id": null,
+      "uploaded": false,
+      "optimizer_state_bundled": false
+    }
+  ],
+  "github_code_pushed": false
+}

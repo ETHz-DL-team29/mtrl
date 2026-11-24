@@ -1,0 +1,22 @@
+{
+  "UTC": "2026-11-20T11:28:01.074403+00:00",
+  "resumed_from_step": 1753,
+  "resumed_targets": 2116552,
+  "first_new_update": {
+    "step": 1754,
+    "target_tokens": 2117740,
+    "lr": 1.8599002056327167e-05,
+    "grad_norm": 4.159056663513184,
+    "mean_loss": 0.8679697039954188,
+    "group_target_tokens": 1188
+  },
+  "old_warmup_not_restarted": true,
+  "record_count": 1768,
+  "source_manifest_amendment": {
+    "reason": "Explicit user-authorized segment2 budget replaces segment1 wall deadline before first resumed update; code/data/weights unchanged",
+    "packaged_manifest_sha256": "416d82f1d81a528f02c7f2f0e7906cf9cc83357e8667c6e0d4bed985f0df6699",
+    "execution_manifest_sha256": "f7fc2eaa12792a4412de86d628f682c4e49f848a1310bb6c7c51c19a8ed0dd2a",
+    "allocation_budget_sha256": "ac1822355b4cd1effa232ff8729243d7e33188cfbd8e49a9a9040c4376b3e445",
+    "unix": 1795173842.3406332
+  }
+}

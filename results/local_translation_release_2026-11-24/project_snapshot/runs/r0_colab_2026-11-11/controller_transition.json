@@ -1,0 +1,49 @@
+{
+  "reason": "Freeze formal300k schedule before any formal updates; active pilot continues unchanged",
+  "original_job": {
+    "pid": 2252,
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "mtgrpo.r0_pipeline",
+      "--run-root",
+      "/content/drive/MyDrive/deep learning project/r0_2026-11-11",
+      "--wall-hours",
+      "4",
+      "--microbatch",
+      "2"
+    ],
+    "project": "/content/r0_project",
+    "started_unix": 1794424987.3760936,
+    "source_bundle_sha256": "5ca4ebd3f8d015a6754b45c5b3df7e897fd692e7eac29109854bb76627e532f1"
+  },
+  "stopped_unix": 1794426004.5245197,
+  "active_children": [
+    {
+      "pid": 2253,
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "mtgrpo.r0_train",
+        "--run-dir",
+        "/content/drive/MyDrive/deep learning project/r0_2026-11-11/pilot_lr5e-5",
+        "--data-dir",
+        "/content/r0_project/data/r0_2026-11-11",
+        "--lr",
+        "5e-05",
+        "--budget",
+        "20000",
+        "--schedule-budget",
+        "100000",
+        "--eval-every-tokens",
+        "10000",
+        "--microbatch",
+        "2",
+        "--decode-count",
+        "32",
+        "--wall-hours",
+        "3.9999999502405554"
+      ]
+    }
+  ]
+}

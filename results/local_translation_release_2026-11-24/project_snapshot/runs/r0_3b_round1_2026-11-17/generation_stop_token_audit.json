@@ -1,0 +1,17 @@
+{
+  "initial": {
+    "rows": 128,
+    "endoftext_inside_completions": 0,
+    "examples": []
+  },
+  "dev250k": {
+    "rows": 64,
+    "endoftext_inside_completions": 0,
+    "examples": []
+  },
+  "dev500k_partial": {
+    "rows": 30,
+    "endoftext_inside_completions": 0,
+    "examples": []
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "UTC": "2026-11-21T23:29:06.217044+00:00",
+  "zh": "正式选中模型在固定32条困难训练句上P从5到12、长句从2/16到5/16；同精度64条参考token NLL从0.74637降至0.47464。32条本轮各曝光2次（原父模型的历史曝光未重建）。说明本轮确实学习了，但正式训练对这些句子仍未充分掌握，不是纯粹“训练句都学会、只差泛化”。另一个重复小集拟合副本曾30/32、长15/16，证明当前模型/训练通路能学进这批句子，但不能承诺增加曝光必然泛化，也不能排除语言表征与数据质量因素。此32条只是困难小面板，不能外推全训练集、识别唯一主因或证明3B容量上限。",
+  "en": "On 32 fixed hard train-known sources, confirmed P rises from 5 to 12 and long P from 2/16 to 5/16. Matched-precision reference-token NLL on 64 sources falls from 0.74637 to 0.47464. Each audited source has two exposures in this phase; parent-history exposures were not reconstructed. Learning occurred, but these hard training meanings remain incompletely acquired, so a purely held-out-transfer explanation is insufficient. The separate repeated-tiny-set model reached 30/32 and 15/16 long: this establishes learnability of this panel, not guaranteed generalization from more repetitions. Language representation and reference quality remain possible factors. This hard panel is not the whole pool, a unique-cause identification or a 3B-capacity-ceiling test.",
+  "initial_P": 5,
+  "selected_P": 12,
+  "initial_long_P": 2,
+  "selected_long_P": 5,
+  "tiny_fit_P": 30,
+  "tiny_fit_long_P": 15,
+  "initial_NLL64": 0.7463725925537578,
+  "selected_NLL64": 0.4746376591347523,
+  "actual_phase_exposures_per_audited_source": 2,
+  "not_causal_identification": true,
+  "not_used_for_checkpoint_selection": true
+}

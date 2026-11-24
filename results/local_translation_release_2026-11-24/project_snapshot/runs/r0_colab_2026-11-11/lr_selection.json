@@ -1,0 +1,71 @@
+{
+  "pilots": [
+    {
+      "name": "pilot_lr5e-5",
+      "lr": 5e-05,
+      "summary": {
+        "target_tokens": 19983,
+        "requested_budget": 20000,
+        "step": 20,
+        "train_seconds": 118.94589425199979,
+        "total_seconds": 1253.5615042930003,
+        "cumulative_train_target_tokens_per_second": 168.00075467644007,
+        "best": {
+          "step": 20,
+          "metrics": {
+            "nll": 2.7417502395463234,
+            "chrfpp": 14.032954203412814,
+            "failure_rate": 0.40625,
+            "wrong_language_rate": 0.0,
+            "count": 32,
+            "chrf_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0",
+            "semantic_review": "pending",
+            "dev_loss_target_tokens": 15291,
+            "dev_forward_calls": 188,
+            "generation_prompt_tokens": 1770,
+            "generation_output_tokens": 3710,
+            "evaluation_wall_seconds": 358.413726021
+          }
+        },
+        "completed": true,
+        "status": "candidate_only_pending_semantic_review",
+        "compute_units": "Read Colab resource panel; wall time is not an exact CU measurement"
+      }
+    },
+    {
+      "name": "pilot_lr1e-4",
+      "lr": 0.0001,
+      "summary": {
+        "target_tokens": 19983,
+        "requested_budget": 20000,
+        "step": 20,
+        "train_seconds": 120.86240704699867,
+        "total_seconds": 1194.1312863869998,
+        "cumulative_train_target_tokens_per_second": 165.3367700366036,
+        "best": {
+          "step": 11,
+          "metrics": {
+            "nll": 2.768023397789827,
+            "chrfpp": 14.216764348351523,
+            "failure_rate": 0.4375,
+            "wrong_language_rate": 0.03125,
+            "count": 32,
+            "chrf_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0",
+            "semantic_review": "pending",
+            "dev_loss_target_tokens": 15291,
+            "dev_forward_calls": 188,
+            "generation_prompt_tokens": 1770,
+            "generation_output_tokens": 3939,
+            "evaluation_wall_seconds": 381.8420951930002
+          }
+        },
+        "completed": true,
+        "status": "candidate_only_pending_semantic_review",
+        "compute_units": "Read Colab resource panel; wall time is not an exact CU measurement"
+      }
+    }
+  ],
+  "winner": "pilot_lr1e-4",
+  "lr": 0.0001,
+  "note": "Pilot generation subset is fixed; formal run restarts from the original base model"
+}

@@ -1,0 +1,33 @@
+{
+  "lr": 0.0001,
+  "formal": {
+    "target_tokens": 199856,
+    "requested_budget": 200000,
+    "step": 202,
+    "train_seconds": 1275.1523833979954,
+    "total_seconds": 8949.247300963,
+    "cumulative_train_target_tokens_per_second": 156.73107198955196,
+    "best": {
+      "step": 176,
+      "metrics": {
+        "nll": 2.1788075774952893,
+        "chrfpp": 25.915105976395907,
+        "failure_rate": 0.16279069767441862,
+        "wrong_language_rate": 0.0,
+        "count": 86,
+        "chrf_signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0",
+        "semantic_review": "pending",
+        "dev_loss_target_tokens": 15291,
+        "dev_forward_calls": 188,
+        "generation_prompt_tokens": 4745,
+        "generation_output_tokens": 6509,
+        "evaluation_wall_seconds": 630.0398268549998
+      }
+    },
+    "completed": true,
+    "status": "candidate_only_pending_semantic_review",
+    "compute_units": "Read Colab resource panel; wall time is not an exact CU measurement"
+  },
+  "status": "R0 candidate; inspect semantic alignment and generated translations before DAPO",
+  "extension": "Formal LR schedule frozen at300k before training; first stop100k. Continue with --resume and a larger --budget only if dev quality keeps improving."
+}

@@ -1,0 +1,330 @@
+{
+  "UTC": "2026-11-20T12:50:15.914285+00:00",
+  "exposure_previews": [
+    {
+      "target_limit": 2116552,
+      "actual_targets": 2116552,
+      "unique_sources": 50908,
+      "source_target_tokens": {
+        "OpenSubtitles18": 326512,
+        "eea": 437621,
+        "statisl": 38546,
+        "ema": 1050577,
+        "tatoeba": 132449,
+        "eso": 99247,
+        "ted2020": 31600
+      },
+      "source_fractions": {
+        "OpenSubtitles18": 0.15426599488224244,
+        "eea": 0.20676127966617405,
+        "statisl": 0.018211695247742556,
+        "ema": 0.4963624801091587,
+        "tatoeba": 0.06257772074581679,
+        "eso": 0.0468908866874048,
+        "ted2020": 0.014929942661460716
+      }
+    },
+    {
+      "target_limit": 3000000,
+      "actual_targets": 2999996,
+      "unique_sources": 67382,
+      "source_target_tokens": {
+        "OpenSubtitles18": 541894,
+        "eea": 601784,
+        "statisl": 38546,
+        "ema": 1522187,
+        "tatoeba": 137938,
+        "eso": 126047,
+        "ted2020": 31600
+      },
+      "source_fractions": {
+        "OpenSubtitles18": 0.18063157417543224,
+        "eea": 0.20059493412657883,
+        "statisl": 0.012848683798245065,
+        "ema": 0.5073963431951243,
+        "tatoeba": 0.04597939463919285,
+        "eso": 0.04201572268763025,
+        "ted2020": 0.010533347377796504
+      }
+    },
+    {
+      "target_limit": 3500000,
+      "actual_targets": 3499972,
+      "unique_sources": 73302,
+      "source_target_tokens": {
+        "OpenSubtitles18": 666897,
+        "eea": 694781,
+        "statisl": 38546,
+        "ema": 1788953,
+        "tatoeba": 137938,
+        "eso": 141257,
+        "ted2020": 31600
+      },
+      "source_fractions": {
+        "OpenSubtitles18": 0.1905435243481948,
+        "eea": 0.19851044522641895,
+        "statisl": 0.011013230962990561,
+        "ema": 0.5111335176395697,
+        "tatoeba": 0.0394111724322366,
+        "eso": 0.04035946573286872,
+        "ted2020": 0.00902864365772069
+      }
+    }
+  ],
+  "dev_sources": {
+    "opensubtitles": 32,
+    "eea": 30,
+    "ema": 30,
+    "eso": 36
+  },
+  "final_sources": {
+    "opensubtitles": 64,
+    "eea": 63,
+    "ema": 63,
+    "eso": 66
+  },
+  "development_semantics_by_source": {
+    "A": {
+      "greedy_opensubtitles": {
+        "n": 8,
+        "counts": {
+          "F": 5,
+          "P": 3
+        }
+      },
+      "greedy_eea": {
+        "n": 9,
+        "counts": {
+          "F": 6,
+          "U": 3
+        }
+      },
+      "greedy_ema": {
+        "n": 6,
+        "counts": {
+          "F": 4,
+          "P": 1,
+          "U": 1
+        }
+      },
+      "greedy_eso": {
+        "n": 9,
+        "counts": {
+          "F": 8,
+          "U": 1
+        }
+      },
+      "G8_eea": {
+        "n": 11,
+        "counts": {
+          "F": 6,
+          "U": 3,
+          "P": 2
+        }
+      },
+      "G8_ema": {
+        "n": 6,
+        "counts": {
+          "F": 4,
+          "U": 2
+        }
+      },
+      "G8_eso": {
+        "n": 7,
+        "counts": {
+          "F": 7
+        }
+      }
+    },
+    "t1001129": {
+      "greedy_opensubtitles": {
+        "n": 8,
+        "counts": {
+          "U": 2,
+          "P": 4,
+          "F": 2
+        }
+      },
+      "greedy_eea": {
+        "n": 9,
+        "counts": {
+          "F": 7,
+          "U": 2
+        }
+      },
+      "greedy_ema": {
+        "n": 6,
+        "counts": {
+          "F": 4,
+          "U": 2
+        }
+      },
+      "greedy_eso": {
+        "n": 9,
+        "counts": {
+          "F": 7,
+          "P": 2
+        }
+      },
+      "G8_eea": {
+        "n": 11,
+        "counts": {
+          "P": 3,
+          "F": 5,
+          "U": 3
+        }
+      },
+      "G8_ema": {
+        "n": 6,
+        "counts": {
+          "F": 3,
+          "U": 2,
+          "P": 1
+        }
+      },
+      "G8_eso": {
+        "n": 7,
+        "counts": {
+          "F": 7
+        }
+      }
+    },
+    "t2000188": {
+      "greedy_opensubtitles": {
+        "n": 8,
+        "counts": {
+          "P": 5,
+          "F": 3
+        }
+      },
+      "greedy_eea": {
+        "n": 9,
+        "counts": {
+          "F": 7,
+          "U": 2
+        }
+      },
+      "greedy_ema": {
+        "n": 6,
+        "counts": {
+          "P": 3,
+          "F": 1,
+          "U": 2
+        }
+      },
+      "greedy_eso": {
+        "n": 9,
+        "counts": {
+          "U": 2,
+          "P": 1,
+          "F": 6
+        }
+      },
+      "G8_eea": {
+        "n": 11,
+        "counts": {
+          "P": 4,
+          "F": 3,
+          "U": 4
+        }
+      },
+      "G8_ema": {
+        "n": 6,
+        "counts": {
+          "U": 2,
+          "P": 2,
+          "F": 2
+        }
+      },
+      "G8_eso": {
+        "n": 7,
+        "counts": {
+          "U": 2,
+          "F": 5
+        }
+      }
+    },
+    "t2999996": {
+      "greedy_opensubtitles": {
+        "n": 8,
+        "counts": {
+          "P": 4,
+          "F": 3,
+          "U": 1
+        }
+      },
+      "greedy_eea": {
+        "n": 9,
+        "counts": {
+          "F": 9
+        }
+      },
+      "greedy_ema": {
+        "n": 6,
+        "counts": {
+          "P": 3,
+          "F": 3
+        }
+      },
+      "greedy_eso": {
+        "n": 9,
+        "counts": {
+          "F": 6,
+          "U": 2,
+          "P": 1
+        }
+      },
+      "G8_eea": {
+        "n": 11,
+        "counts": {
+          "P": 4,
+          "F": 5,
+          "U": 2
+        }
+      },
+      "G8_ema": {
+        "n": 6,
+        "counts": {
+          "P": 3,
+          "F": 2,
+          "U": 1
+        }
+      },
+      "G8_eso": {
+        "n": 7,
+        "counts": {
+          "P": 1,
+          "F": 4,
+          "U": 2
+        }
+      }
+    }
+  },
+  "literal_source_cues": {
+    "frequency band": {
+      "unique_train_source_occurrences": 3,
+      "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"
+    },
+    "tilt of the orbit": {
+      "unique_train_source_occurrences": 0,
+      "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"
+    },
+    "yellow fever": {
+      "unique_train_source_occurrences": 13,
+      "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"
+    },
+    "pharmacodynamic": {
+      "unique_train_source_occurrences": 119,
+      "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"
+    },
+    "gamma-ray burst": {
+      "unique_train_source_occurrences": 2,
+      "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"
+    },
+    "maturity band": {
+      "unique_train_source_occurrences": 0,
+      "note": "Literal substring count only;not semantic/tokenizer coverage or proof of causality"
+    }
+  },
+  "limits": "Descriptive audit after dev review,not an intervention or proof of why errors occur. Do not edit/train the protected dev/test sources."
+}

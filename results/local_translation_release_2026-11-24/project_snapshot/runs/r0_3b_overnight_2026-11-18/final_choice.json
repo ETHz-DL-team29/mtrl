@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-18",
+  "sealed_utc": "2026-11-18T04:43:45.113439+00:00",
+  "selected_stage": "stage_A",
+  "last_executed_stage": "stage_B",
+  "executed_stages": [
+    "stage_A",
+    "stage_B"
+  ],
+  "origin": "selected_stage_candidate",
+  "adapter_relative": "stage_A/run/checkpoints/t0900000/adapter",
+  "adapter_sha256": "9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199",
+  "local_source": "D:\\deep learning project\\runs\\r0_3b_overnight_2026-11-18\\stage_A\\selected_candidate_adapter",
+  "no_further_training": true,
+  "fresh_holdout_not_seen": true,
+  "reason_zh": "选择A用于最终独立检验，目标是DAPO的正确候选与组内对比。B旧128诊断chrF++36.93→37.97、BLEU15.74→17.48，但B-A配对chrF区间[-0.63,2.45]跨零；同源G8技术已确认G组A4/24、B2/24（B另2组不确定），G与P/B同组也是4→2，B未新增已确认G的技术组。A的通用和长句选择dev也更稳。保留B的指标增益与全部权重；这是目标导向的保守取舍，不是A全面显著优于B的因果/统计证明，也不是宣布A已经合格。最终新holdout尚未生成，之后不再训练。",
+  "reason_en": "Choose A for final independent evaluation because the goal is DAPO good-candidate coverage and contrast. B improves reused128 chrF++36.93to37.97 and BLEU15.74to17.48,but the B-minus-A chrF interval[-0.63,2.45]crosses zero. On matched G8,confirmed technical coverage is A4/24 versus B2/24(with2 additional uncertain B groups),and G-plus-P/B groups4versus2;B adds no newly confirmed technical-good group. A also retains stronger general/long selection-dev scores. Keep B and its metric gains. This is a conservative goal-oriented tradeoff,not proof of universal A superiority or of A readiness. No fresh-holdout output has been generated and no training follows it."
+}

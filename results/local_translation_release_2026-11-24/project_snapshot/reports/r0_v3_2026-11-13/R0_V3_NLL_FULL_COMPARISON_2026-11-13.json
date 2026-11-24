@@ -1,0 +1,414 @@
+{
+  "date": "2026-11-13",
+  "identity": {
+    "plan": {
+      "date": "2026-11-13",
+      "role": "Expanded development evaluation of the existing minimum-NLL checkpoint after the purposive16-case probe was promising",
+      "checkpoint": "checkpoints/step-002106-tokens-001400474",
+      "selection_rule": "Existing minimum completed development NLL; no extra policy updates",
+      "temperature": 0.7,
+      "G": 8,
+      "banks": [
+        "historical",
+        "fresh"
+      ],
+      "prompts_per_bank": 32,
+      "reused_probe_groups": 16,
+      "newly_generated_groups": 48,
+      "comparison": "Same64 prompts, template, seed, L4/BF16, caps and FP32 QE1024 against both completed T0.7 controls",
+      "maximum_wall_minutes": 40,
+      "no_policy_updates": true,
+      "interpretation": "This is adaptive development evidence, not an independent confirmatory test. Preserve the original greedy-selected600k primary experiment and the16-case probe. Evaluate source meaning and reward behavior before recommending this late checkpoint. No DAPO outcomes are established."
+    },
+    "checkpoint": "checkpoints/step-002106-tokens-001400474",
+    "adapter_sha256": "ebb4575fda36002c76ddb7e999a4e12c44a0be9ddb20b1e4e092d708e6a050e9",
+    "metrics": {
+      "step": 2106,
+      "target_tokens": 1400474,
+      "nll": 1.7177169481119878,
+      "selection_score": 42.96576194404312,
+      "gated_sentence_chrfpp_by_stratum": {
+        "general": 48.07276321333995,
+        "technical_short": 54.608368307537624,
+        "technical_medium": 33.28719754424036,
+        "technical_long": 25.680716172460944
+      },
+      "corpus_chrfpp": 35.53383112158316,
+      "failure_rate": 0.0625,
+      "foreign_script_rate": 0.0,
+      "count": 64,
+      "dev_target_tokens": 7613,
+      "wall_seconds": 331.01452645399877,
+      "semantic_review": "pending; chrF and gates are proxies"
+    },
+    "environment": {
+      "python": "3.13.16",
+      "torch": "2.14.1+cu130",
+      "transformers": "5.22.1",
+      "cuda_build": "13.0",
+      "gpu": "NVIDIA L4",
+      "vram_bytes": 23659151360
+    }
+  },
+  "models": {
+    "historical": {
+      "summary": {
+        "prompts": 32,
+        "group_size": 8,
+        "candidates": 256,
+        "gate_pass_rate": 0.9609375,
+        "strict_pass_rate": 0.953125,
+        "truncation_rate": 0.0390625,
+        "repetition_rate": 0.01171875,
+        "wrong_language_rate": 0.0078125,
+        "metricx_truncated_rate": 0.0,
+        "groups_effective": 32,
+        "groups_all_gate_failed": 0,
+        "groups_all_strict_failed": 0,
+        "groups_with2_distinct_strict": 32,
+        "mean_sentence_chrfpp": 39.35986143824057,
+        "corpus_chrfpp_all8": 34.39148806429928,
+        "corpus_chrfpp_reward_top1": 34.89479294730381,
+        "mean_oracle_reference_chrfpp": 51.23643539847731,
+        "mean_reward_top1_reference_chrfpp": 42.84322481191002,
+        "mean_raw_metricx_top1_reference_chrfpp": 43.035448243058624,
+        "generation_seconds": 239.76869247399736,
+        "generated_tokens": 17859,
+        "semantic_review": "pending; strict validity is not semantic correctness"
+      },
+      "breakdown": {
+        "all": {
+          "prompts": 32,
+          "random_expected_sentence_chrfpp": 39.35986143824057,
+          "reward_top1_sentence_chrfpp": 42.84322481191002,
+          "best_of8_reference_sentence_chrfpp": 51.23643539847731,
+          "foreign_script_rate": 0,
+          "strict_pass_rate": 0.953125,
+          "truncation_rate": 0.0390625
+        },
+        "general": {
+          "prompts": 16,
+          "random_expected_sentence_chrfpp": 44.748813768903666,
+          "reward_top1_sentence_chrfpp": 51.77051105481774,
+          "best_of8_reference_sentence_chrfpp": 62.46287842086599,
+          "foreign_script_rate": 0,
+          "strict_pass_rate": 0.984375,
+          "truncation_rate": 0
+        },
+        "technical": {
+          "prompts": 16,
+          "random_expected_sentence_chrfpp": 33.97090910757748,
+          "reward_top1_sentence_chrfpp": 33.9159385690023,
+          "best_of8_reference_sentence_chrfpp": 40.009992376088626,
+          "foreign_script_rate": 0,
+          "strict_pass_rate": 0.921875,
+          "truncation_rate": 0.078125
+        },
+        "short": {
+          "prompts": 13,
+          "random_expected_sentence_chrfpp": 46.79457584118811,
+          "reward_top1_sentence_chrfpp": 54.578657911079155,
+          "best_of8_reference_sentence_chrfpp": 66.32730878228607,
+          "foreign_script_rate": 0,
+          "strict_pass_rate": 0.9807692307692307,
+          "truncation_rate": 0
+        },
+        "medium": {
+          "prompts": 11,
+          "random_expected_sentence_chrfpp": 35.52411193762907,
+          "reward_top1_sentence_chrfpp": 37.107121306659344,
+          "best_of8_reference_sentence_chrfpp": 43.480120326502615,
+          "foreign_script_rate": 0,
+          "strict_pass_rate": 0.9886363636363636,
+          "truncation_rate": 0.011363636363636364
+        },
+        "long": {
+          "prompts": 8,
+          "random_expected_sentence_chrfpp": 32.55260609679162,
+          "reward_top1_sentence_chrfpp": 31.660288345479845,
+          "best_of8_reference_sentence_chrfpp": 37.37869937375328,
+          "foreign_script_rate": 0,
+          "strict_pass_rate": 0.859375,
+          "truncation_rate": 0.140625
+        }
+      }
+    },
+    "fresh": {
+      "summary": {
+        "prompts": 32,
+        "group_size": 8,
+        "candidates": 256,
+        "gate_pass_rate": 0.99609375,
+        "strict_pass_rate": 0.99609375,
+        "truncation_rate": 0.00390625,
+        "repetition_rate": 0.00390625,
+        "wrong_language_rate": 0.0,
+        "metricx_truncated_rate": 0.0,
+        "groups_effective": 32,
+        "groups_all_gate_failed": 0,
+        "groups_all_strict_failed": 0,
+        "groups_with2_distinct_strict": 32,
+        "mean_sentence_chrfpp": 32.36152676212234,
+        "corpus_chrfpp_all8": 29.56394564792186,
+        "corpus_chrfpp_reward_top1": 31.377007228350845,
+        "mean_oracle_reference_chrfpp": 41.489398182637665,
+        "mean_reward_top1_reference_chrfpp": 35.95002338513887,
+        "mean_raw_metricx_top1_reference_chrfpp": 35.536838543699496,
+        "generation_seconds": 141.05590871200002,
+        "generated_tokens": 10889,
+        "semantic_review": "pending; strict validity is not semantic correctness"
+      },
+      "breakdown": {
+        "all": {
+          "prompts": 32,
+          "random_expected_sentence_chrfpp": 32.36152676212234,
+          "reward_top1_sentence_chrfpp": 35.95002338513887,
+          "best_of8_reference_sentence_chrfpp": 41.489398182637665,
+          "foreign_script_rate": 0.00390625,
+          "strict_pass_rate": 0.99609375,
+          "truncation_rate": 0.00390625
+        },
+        "general": {
+          "prompts": 16,
+          "random_expected_sentence_chrfpp": 34.817661968286316,
+          "reward_top1_sentence_chrfpp": 40.256325979990045,
+          "best_of8_reference_sentence_chrfpp": 44.74628092852214,
+          "foreign_script_rate": 0,
+          "strict_pass_rate": 1,
+          "truncation_rate": 0
+        },
+        "technical": {
+          "prompts": 16,
+          "random_expected_sentence_chrfpp": 29.90539155595837,
+          "reward_top1_sentence_chrfpp": 31.643720790287688,
+          "best_of8_reference_sentence_chrfpp": 38.23251543675318,
+          "foreign_script_rate": 0.0078125,
+          "strict_pass_rate": 0.9921875,
+          "truncation_rate": 0.0078125
+        },
+        "short": {
+          "prompts": 20,
+          "random_expected_sentence_chrfpp": 34.36834438517541,
+          "reward_top1_sentence_chrfpp": 39.35701076231279,
+          "best_of8_reference_sentence_chrfpp": 45.33747352399135,
+          "foreign_script_rate": 0,
+          "strict_pass_rate": 1,
+          "truncation_rate": 0
+        },
+        "medium": {
+          "prompts": 6,
+          "random_expected_sentence_chrfpp": 31.883454055911542,
+          "reward_top1_sentence_chrfpp": 33.587097750688386,
+          "best_of8_reference_sentence_chrfpp": 40.4290254382583,
+          "foreign_script_rate": 0.020833333333333332,
+          "strict_pass_rate": 1,
+          "truncation_rate": 0
+        },
+        "long": {
+          "prompts": 6,
+          "random_expected_sentence_chrfpp": 26.15020739148958,
+          "reward_top1_sentence_chrfpp": 26.95632442900961,
+          "best_of8_reference_sentence_chrfpp": 29.722853122504745,
+          "foreign_script_rate": 0,
+          "strict_pass_rate": 0.9791666666666666,
+          "truncation_rate": 0.020833333333333332
+        }
+      }
+    }
+  },
+  "paired": {
+    "historical": {
+      "r0_v2": {
+        "random_expected_sentence_chrfpp": {
+          "delta": 4.933607446059751,
+          "stratified_paired95ci": [
+            1.8367652046726592,
+            8.345707714452601
+          ]
+        },
+        "reward_top1_sentence_chrfpp": {
+          "delta": 6.417892148625074,
+          "stratified_paired95ci": [
+            1.3136368449673124,
+            11.889769346503911
+          ]
+        },
+        "best_of8_reference_sentence_chrfpp": {
+          "delta": 6.421785432713772,
+          "stratified_paired95ci": [
+            1.3960623302927693,
+            11.627014194513844
+          ]
+        }
+      },
+      "r0_v3_candidate": {
+        "random_expected_sentence_chrfpp": {
+          "delta": 3.343046226232481,
+          "stratified_paired95ci": [
+            1.4224813728497794,
+            5.4462190040825105
+          ]
+        },
+        "reward_top1_sentence_chrfpp": {
+          "delta": 3.5296998741379886,
+          "stratified_paired95ci": [
+            -0.9401249257546437,
+            9.594816698971206
+          ]
+        },
+        "best_of8_reference_sentence_chrfpp": {
+          "delta": 3.1243939963639162,
+          "stratified_paired95ci": [
+            -0.5407940132382574,
+            7.141584457890039
+          ]
+        }
+      }
+    },
+    "fresh": {
+      "r0_v2": {
+        "random_expected_sentence_chrfpp": {
+          "delta": 1.4712259304925943,
+          "stratified_paired95ci": [
+            -0.26296183023729336,
+            3.299638266387051
+          ]
+        },
+        "reward_top1_sentence_chrfpp": {
+          "delta": 2.587711006122107,
+          "stratified_paired95ci": [
+            -1.8534738299905076,
+            6.794096921954676
+          ]
+        },
+        "best_of8_reference_sentence_chrfpp": {
+          "delta": 2.120238179895293,
+          "stratified_paired95ci": [
+            -0.8204065241535183,
+            5.225482800106204
+          ]
+        }
+      },
+      "r0_v3_candidate": {
+        "random_expected_sentence_chrfpp": {
+          "delta": 1.2885971578291362,
+          "stratified_paired95ci": [
+            0.29503147854132694,
+            2.327644708406888
+          ]
+        },
+        "reward_top1_sentence_chrfpp": {
+          "delta": 0.7548583710200667,
+          "stratified_paired95ci": [
+            -1.93145258323574,
+            3.5677227229128166
+          ]
+        },
+        "best_of8_reference_sentence_chrfpp": {
+          "delta": 1.309595274643012,
+          "stratified_paired95ci": [
+            -0.545624602777115,
+            3.361753199169252
+          ]
+        }
+      }
+    }
+  },
+  "greedy": {
+    "historical": {
+      "mean_sentence_chrfpp": 47.068342768090076,
+      "by_domain": {
+        "general": 55.02804662545461,
+        "technical": 39.108638910725546
+      },
+      "truncated": 0
+    },
+    "fresh": {
+      "mean_sentence_chrfpp": 35.808341737468304,
+      "by_domain": {
+        "general": 37.47120166447922,
+        "technical": 34.14548181045739
+      },
+      "truncated": 0
+    }
+  },
+  "reference_sensitivity": {
+    "excluded": [
+      "f00",
+      "f28"
+    ],
+    "models": {
+      "r0_v2": {
+        "prompts": 30,
+        "random_expected_sentence_chrfpp": 31.17194371230127,
+        "reward_top1_sentence_chrfpp": 33.88840072277319,
+        "best_of8_reference_sentence_chrfpp": 39.88241829570744
+      },
+      "r0_v3_candidate": {
+        "prompts": 30,
+        "random_expected_sentence_chrfpp": 31.318617972432552,
+        "reward_top1_sentence_chrfpp": 35.504110367422975,
+        "best_of8_reference_sentence_chrfpp": 40.66570417085831
+      },
+      "r0_v3_nll_full": {
+        "prompts": 30,
+        "random_expected_sentence_chrfpp": 32.6996334741497,
+        "reward_top1_sentence_chrfpp": 36.47507900800109,
+        "best_of8_reference_sentence_chrfpp": 42.25242573863447
+      }
+    },
+    "paired": {
+      "r0_v2": {
+        "random_expected_sentence_chrfpp": {
+          "delta": 1.5276897618484295,
+          "stratified_paired95ci": [
+            -0.32836964092003135,
+            3.4286643611070104
+          ]
+        },
+        "reward_top1_sentence_chrfpp": {
+          "delta": 2.586678285227897,
+          "stratified_paired95ci": [
+            -2.1691387021045543,
+            7.034790337084226
+          ]
+        },
+        "best_of8_reference_sentence_chrfpp": {
+          "delta": 2.370007442927029,
+          "stratified_paired95ci": [
+            -0.8932027759052877,
+            5.574282941399915
+          ]
+        }
+      },
+      "r0_v3_candidate": {
+        "random_expected_sentence_chrfpp": {
+          "delta": 1.3810155017171504,
+          "stratified_paired95ci": [
+            0.3306303618862237,
+            2.4664290123564654
+          ]
+        },
+        "reward_top1_sentence_chrfpp": {
+          "delta": 0.9709686405781109,
+          "stratified_paired95ci": [
+            -1.9409762655477147,
+            3.9692452303867833
+          ]
+        },
+        "best_of8_reference_sentence_chrfpp": {
+          "delta": 1.5867215677761566,
+          "stratified_paired95ci": [
+            -0.37632523765401393,
+            3.8757354025578516
+          ]
+        }
+      }
+    }
+  },
+  "export_sha256": "f15d0d672a688b74ac9a40e2cab94e4588edf176399cd500a06fdaba707f0cc0",
+  "elapsed_seconds": 640.0280163288116,
+  "no_policy_updates": true,
+  "newly_generated_groups": 48,
+  "reused_probe_groups": 16
+}

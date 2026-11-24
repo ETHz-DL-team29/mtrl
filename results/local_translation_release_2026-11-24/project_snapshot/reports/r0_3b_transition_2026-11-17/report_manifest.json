@@ -1,0 +1,30 @@
+{
+  "CHECKPOINTS_08B_2026-11-17.csv": {
+    "bytes": 23913,
+    "sha256": "82e85719f42165a4baee4b781730cda53818e1a10e56c70912799669551c9af8"
+  },
+  "CHECKPOINTS_08B_2026-11-17.json": {
+    "bytes": 2637827,
+    "sha256": "bbc61b1c64359c284aa1c195771e99b62fb2fbf0e4a212fcc835735ac32c2172"
+  },
+  "CHECKPOINT_ALIASES_08B_2026-11-17.json": {
+    "bytes": 362628,
+    "sha256": "707eb71580309bcaad9004a53871752da05acba7e136694ff0adbde5fb24a47a"
+  },
+  "CHECKPOINT_QUICK_REFERENCE_08B_2026-11-17.md": {
+    "bytes": 2791,
+    "sha256": "49107e301c58c8154e450a9bb3ad4b4478edb28a90dea0b5d79e6d1bb0fe902a"
+  },
+  "html_qa.json": {
+    "bytes": 312,
+    "sha256": "c0798b5760642449a123494e28deabfdba1918e51b0b32fedce56e8f5be2549f"
+  },
+  "TRANSITION_AND_CHECKPOINTS_2026-11-17.html": {
+    "bytes": 30905,
+    "sha256": "0559bebf93a4e78941d9438e7d267acb166c60b653770920699f68b5875d279e"
+  },
+  "TRANSITION_AND_CHECKPOINTS_2026-11-17.md": {
+    "bytes": 26276,
+    "sha256": "44131ce79f8803b6518fe1770e986640164416ac471f65e3b44d80fd0bf2a111"
+  }
+}

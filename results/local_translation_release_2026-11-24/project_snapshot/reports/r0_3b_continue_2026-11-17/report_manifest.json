@@ -1,0 +1,14 @@
+{
+  "html_qa.json": {
+    "bytes": 312,
+    "sha256": "5048c6fae5862aa1dc2a49596f24c0ea88d1c85b417fc99e560e68a576162610"
+  },
+  "R0_3B_SFT_CONTINUATION_PLAN_2026-11-17.html": {
+    "bytes": 25509,
+    "sha256": "9bdd22150675efcf20485036a8ae20fd4e48e2ada9564bc93db35417dbf2921d"
+  },
+  "R0_3B_SFT_CONTINUATION_PLAN_2026-11-17.md": {
+    "bytes": 20720,
+    "sha256": "77c231fa7a7c8ee43d13bc40a86ec896d6b8ea5665f6efb59042f5627f11e0ad"
+  }
+}

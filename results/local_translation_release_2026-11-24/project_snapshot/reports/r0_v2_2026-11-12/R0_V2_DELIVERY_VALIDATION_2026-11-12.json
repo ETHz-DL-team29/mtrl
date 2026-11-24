@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-12",
+  "complete_zip_bytes": 168005628,
+  "complete_zip_sha256": "297c054f8defcf53476a1dff6f1d0bb5afb002a70a43715d11553d1279aef023",
+  "file_count": 29,
+  "all_member_hashes_verified": true,
+  "zip_crc_verified": true,
+  "html_embedded_figures": 2,
+  "html_candidate_rows": 768,
+  "html_prompt_groups": 32,
+  "limitations": "Static HTML structure and chart inspection; no new native browser rendering was available in this task."
+}

@@ -1,0 +1,8 @@
+{
+  "updates": 20,
+  "target_tokens": 21245,
+  "seconds": 105.9087266921997,
+  "tokens_per_second": 200.59725636909877,
+  "projected_training_seconds": 4985.113047408789,
+  "included_in_budget": true
+}

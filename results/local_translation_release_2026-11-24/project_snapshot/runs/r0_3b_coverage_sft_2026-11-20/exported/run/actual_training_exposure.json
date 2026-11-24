@@ -1,0 +1,26 @@
+{
+  "unix": 1795194375.9813323,
+  "new_phase_updates": 1476,
+  "actual_new_target_tokens": 2096676,
+  "unique_pairs": 45218,
+  "unique_target_tokens": 1957504,
+  "source_target_tokens": {
+    "eea": 838655,
+    "OpenSubtitles18": 335958,
+    "ema": 733824,
+    "tatoeba": 55948,
+    "ted2020": 12284,
+    "eso": 104861,
+    "statisl": 15146
+  },
+  "stratum_target_tokens": {
+    "technical_medium": 939549,
+    "general": 419336,
+    "technical_long": 598052,
+    "technical_short": 139739
+  },
+  "previously_unused_pairs_exposed": 12750,
+  "previously_unused_unique_target_tokens": 822024,
+  "novelty_relative_to_P14_schedule_only": true,
+  "all_training_updates_finished_before_audit": true
+}

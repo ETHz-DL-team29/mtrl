@@ -1,0 +1,10 @@
+{
+  "utc": "2026-11-17T09:53:23.015720+00:00",
+  "cards_sha256": "70beabe5fd78f2ce1b577106f827bc3b0001e10053b2bd59e6f34efbd9c143ba",
+  "reviews_sha256": "e88f0d7ad46c2fc0fcad46dfcfb2c44677471c9e6a792ce10daaac2f421e4aee",
+  "before_GPU_allocation": true,
+  "reviewed": 80,
+  "review_quarantined": 13,
+  "extended_quarantine": 15,
+  "native_certification": false
+}

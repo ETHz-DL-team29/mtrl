@@ -1,0 +1,188 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>P18 progress</title><style>body{font:16px/1.65 system-ui;max-width:1000px;margin:32px auto;padding:16px;background:#f6f8fb}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;padding:24px;border-radius:12px}</style><pre># 3B R0恢复训练进度 / 3B R0 recovery progress
+
+Updated UTC: 2026-11-21T23:42:37.991320+00:00
+
+状态必须按实际日志读取；小样本拟合通过不是最终泛化验收。 / Status reflects saved execution records; passing the fit probe is not final qualification.
+
+总上限截止 / Absolute release deadline: **2026-11-22 04:40 CET Berlin**. Original8hanchor includes research and preparation.
+
+| Review | Greedy P | Long P | G8 P | Fit gate passed |
+|---|---:|---:|---:|---|
+| dev_A | 10 | NA | 12 | NA |
+| dev_t0500632 | 6 | NA | 10 | NA |
+| dev_t1000811 | 12 | NA | 13 | NA |
+| dev_t1501693 | 10 | NA | 12 | NA |
+| dev_t1983726 | 12 | NA | 13 | NA |
+| final | NA | NA | NA | NA |
+| final_g8_after_component | NA | NA | NA | NA |
+| final_g8_before_component | NA | NA | NA | NA |
+| final_greedy_after_component | NA | NA | NA | NA |
+| final_greedy_before_component | NA | NA | NA | NA |
+| fit_0025667 | 24 | 9 | NA | False |
+| fit_0100154 | 30 | 15 | NA | True |
+| fit_before | 5 | 2 | NA | False |
+| train_selected_main | 12 | 5 | NA | NA |
+
+Latest mirrored cloud event
+
+```json
+{
+  &quot;phase&quot;: &quot;exporting&quot;,
+  &quot;unix&quot;: 1795303473.9609296
+}
+```
+
+fit_gate_outcome.json
+
+```json
+{
+  &quot;passed&quot;: true,
+  &quot;target_tokens&quot;: 100154,
+  &quot;steps&quot;: 121,
+  &quot;reviews&quot;: [
+    {
+      &quot;tag&quot;: &quot;fit_0025667&quot;,
+      &quot;decision&quot;: {
+        &quot;UTC&quot;: &quot;2026-11-21T20:22:54.785917+00:00&quot;,
+        &quot;case&quot;: &quot;fit_0025667&quot;,
+        &quot;complete&quot;: true,
+        &quot;reviewed&quot;: 32,
+        &quot;models&quot;: {
+          &quot;candidate&quot;: {
+            &quot;reviewed&quot;: 32,
+            &quot;roles&quot;: {
+              &quot;greedy&quot;: {
+                &quot;n&quot;: 32,
+                &quot;counts&quot;: {
+                  &quot;F&quot;: 6,
+                  &quot;P&quot;: 24,
+                  &quot;U&quot;: 2
+                },
+                &quot;strata&quot;: {
+                  &quot;general&quot;: {},
+                  &quot;technical_short&quot;: {},
+                  &quot;technical_medium&quot;: {
+                    &quot;P&quot;: 15,
+                    &quot;U&quot;: 1
+                  },
+                  &quot;technical_long&quot;: {
+                    &quot;F&quot;: 6,
+                    &quot;P&quot;: 9,
+                    &quot;U&quot;: 1
+                  }
+                }
+              },
+              &quot;g8&quot;: {
+                &quot;n&quot;: 0,
+                &quot;counts&quot;: {},
+                &quot;strata&quot;: {
+                  &quot;general&quot;: {},
+                  &quot;technical_short&quot;: {},
+                  &quot;technical_medium&quot;: {},
+                  &quot;technical_long&quot;: {}
+                }
+              }
+            }
+          }
+        },
+        &quot;labels_sha256&quot;: &quot;b34bb81014b075bc05be9af9bd7255abda618715d09e2cac3f2c325907cefae3&quot;,
+        &quot;cards_sha256&quot;: &quot;e435ffa8e8a309121ce5700647a97101462f8439866c700df04106c174be80d9&quot;,
+        &quot;input_binding&quot;: {
+          &quot;case&quot;: &quot;fit_0025667&quot;,
+          &quot;sha256&quot;: {
+            &quot;fit_0025667.jsonl&quot;: &quot;2129db2556865d3daaf91a559c3b20de1e2215177935efa821edb8e648c80a24&quot;
+          },
+          &quot;labels_are_AI_not_native_certified&quot;: true
+        },
+        &quot;not_native_certified&quot;: true,
+        &quot;confirmed_P&quot;: 24,
+        &quot;long_P&quot;: 9,
+        &quot;passed&quot;: false,
+        &quot;prediction_sha256&quot;: &quot;2129db2556865d3daaf91a559c3b20de1e2215177935efa821edb8e648c80a24&quot;
+      }
+    },
+    {
+      &quot;tag&quot;: &quot;fit_0100154&quot;,
+      &quot;decision&quot;: {
+        &quot;UTC&quot;: &quot;2026-11-21T20:28:46.737757+00:00&quot;,
+        &quot;case&quot;: &quot;fit_0100154&quot;,
+        &quot;complete&quot;: true,
+        &quot;reviewed&quot;: 32,
+        &quot;models&quot;: {
+          &quot;candidate&quot;: {
+            &quot;reviewed&quot;: 32,
+            &quot;roles&quot;: {
+              &quot;greedy&quot;: {
+                &quot;n&quot;: 32,
+                &quot;counts&quot;: {
+                  &quot;F&quot;: 1,
+                  &quot;P&quot;: 30,
+                  &quot;U&quot;: 1
+                },
+                &quot;strata&quot;: {
+                  &quot;general&quot;: {},
+                  &quot;technical_short&quot;: {},
+                  &quot;technical_medium&quot;: {
+                    &quot;P&quot;: 15,
+                    &quot;U&quot;: 1
+                  },
+                  &quot;technical_long&quot;: {
+                    &quot;F&quot;: 1,
+                    &quot;P&quot;: 15
+                  }
+                }
+              },
+              &quot;g8&quot;: {
+                &quot;n&quot;: 0,
+                &quot;counts&quot;: {},
+                &quot;strata&quot;: {
+                  &quot;general&quot;: {},
+                  &quot;technical_short&quot;: {},
+                  &quot;technical_medium&quot;: {},
+                  &quot;technical_long&quot;: {}
+                }
+              }
+            }
+          }
+        },
+        &quot;labels_sha256&quot;: &quot;e0470219b69c948e71b194c486e480fbae343554d1b5d5421db9e4a1c7bd88ce&quot;,
+        &quot;cards_sha256&quot;: &quot;cdddf0f8e6a509129e90ea2ea6c7323e7fcced673c6bee0b8824baef8c80e9a5&quot;,
+        &quot;input_binding&quot;: {
+          &quot;case&quot;: &quot;fit_0100154&quot;,
+          &quot;sha256&quot;: {
+            &quot;fit_0100154.jsonl&quot;: &quot;adaa1c12342b51dc20a364acb41480e09f811792172aa887e664340018b5b137&quot;
+          },
+          &quot;labels_are_AI_not_native_certified&quot;: true
+        },
+        &quot;not_native_certified&quot;: true,
+        &quot;confirmed_P&quot;: 30,
+        &quot;long_P&quot;: 15,
+        &quot;passed&quot;: true,
+        &quot;prediction_sha256&quot;: &quot;adaa1c12342b51dc20a364acb41480e09f811792172aa887e664340018b5b137&quot;
+      }
+    }
+  ],
+  &quot;production_weights_not_initialized_from_fit&quot;: true
+}
+```
+
+frozen_budget.json
+
+```json
+{
+  &quot;target_tokens&quot;: 1983726,
+  &quot;quality_used&quot;: false,
+  &quot;measured_target_tokens_per_second&quot;: 327.4510308321926,
+  &quot;available_seconds&quot;: 12469.20816540718,
+  &quot;maximum_main_end&quot;: 1795307377.125894
+}
+```
+
+本次正式SFT从扩容但函数保持的原R0开始；拟合诊断适配器不作为正式起点。训练期间保留原R0及不可变恢复检查点。 / Production restarts from function-preserving expanded original R0, not the fit adapter. Original and immutable recovery snapshots are retained.
+
+只有留出最终评估及语义审核完成，才判断新checkpoint是否合格。 / Qualification awaits held-out final evaluation and semantic review.
+
+Raw journals: D:\deep learning project\runs\r0_3b_recovery_sft_2026-11-21\live_mirror
+Reviews: D:\deep learning project\experiments\r0_3b_recovery_sft_2026-11-21\reviews
+Literature and frozen plan: D:\deep learning project\reports\r0_3b_recovery_sft_2026-11-21\RESEARCH_AND_8H_EXECUTION_2026-11-21.html
+</pre></html>

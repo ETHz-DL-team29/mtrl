@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-24",
+  "full_repository_CPU_tests": {
+    "passed": 41,
+    "failed": 0,
+    "command": "python -m pytest tests -q",
+    "seconds": 3.01,
+    "environment": "isolated artifacts/share_cpu_test_env; original Python environments unchanged"
+  },
+  "model_integrity": "14 adapters verified by SHA256, safetensors lengths and LoRA A/B rank pairing",
+  "notebook": "code cells parsed; notebook not executed",
+  "neural_inference_rerun": false,
+  "training_started": false,
+  "GPU_allocated": false,
+  "git_commit_created": false,
+  "remote_upload_performed": true,
+  "latest_result_highlight": [
+    "README.md",
+    "LATEST_RESULTS.md",
+    "results/latest.json",
+    "models/README.md"
+  ],
+  "public_HF_models": 3,
+  "anonymous_HF_config_download_verified": true,
+  "remote_LFS_weight_SHA256_verified": true,
+  "notebooks_parsed": [
+    "use_hf_models.ipynb",
+    "use_shared_models.ipynb"
+  ],
+  "original_HEAD_unchanged": "482d8a2e6290f4b144d22fdaf2c3b21f3f8d53f8",
+  "original_tracked_files_modified": [
+    ".gitignore",
+    "README.md"
+  ],
+  "git_index_empty": true,
+  "github_pushed": false,
+  "new_4h_8h_plan_written_to_repo": false
+}

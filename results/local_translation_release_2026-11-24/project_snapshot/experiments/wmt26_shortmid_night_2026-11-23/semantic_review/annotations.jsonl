@@ -1,0 +1,52 @@
+{"blind_id": "B001", "label": "F", "reason": "演员的完整性及与Atticus的比较被破坏 / Integrity and the comparison with Atticus are garbled."}
+{"blind_id": "B002", "label": "F", "reason": "纽扣和顶部变成皮肤上的其他物体 / The covered button at the peak becomes an unrelated object on skin."}
+{"blind_id": "B003", "label": "F", "reason": "无法克服的问题与卡在5x的含义未保留 / The stuck/insurmountable-problem meanings are not retained."}
+{"blind_id": "B004", "label": "F", "reason": "中心谓语impossible没有得到正确表达 / The central predicate impossible is mistranslated."}
+{"blind_id": "B005", "label": "F", "reason": "足球动作、比赛结果及26年首次击败顶级球队的意义破坏 / Football actions and the first top-flight scalp in26 years are materially garbled."}
+{"blind_id": "B006", "label": "F", "reason": "insurmountable被错译，关键评价改变 / Insurmountable is mistranslated, changing the central assessment."}
+{"blind_id": "B007", "label": "F", "reason": "罢工被译为战争相关词stríð / Strike is rendered with the war-related word stríð."}
+{"blind_id": "B008", "label": "P", "reason": "格式标记原样保留，非自然语言翻译 / Exact formatting-only preservation, not natural-language translation."}
+{"blind_id": "B009", "label": "U", "reason": "复合与告诉对方的大意可辨，但代词和谓语结构不足以确认 / Reunion is recognizable, but the pronoun/predicate structure prevents confident fidelity certification."}
+{"blind_id": "B010", "label": "F", "reason": "英雄、点球和晋级轮次等关键比赛信息损坏 / Hero, penalties and progression to round four are materially garbled."}
+{"blind_id": "B011", "label": "P", "reason": "格式标记原样保留 / Exact formatting-only preservation."}
+{"blind_id": "B012", "label": "P", "reason": "虽然语法生硬，今天感觉不同的核心意思保留 / Despite rough grammar, the central meaning that things feel different today is retained."}
+{"blind_id": "B013", "label": "F", "reason": "前两名进决赛及对阵胜者的关系被改坏 / The top-two progression and opponent/winner relationships are garbled."}
+{"blind_id": "B014", "label": "F", "reason": "严重无关重复且未完成关键比赛内容 / Severe irrelevant repetition and missing match information."}
+{"blind_id": "B015", "label": "P", "reason": "User manual正确译为Notendahandbók / User manual is faithfully rendered as Notendahandbók."}
+{"blind_id": "B016", "label": "F", "reason": "北极被译为北半球，另有Santa表达错误 / North Pole becomes Northern Hemisphere, with additional Santa-related distortion."}
+{"blind_id": "B017", "label": "U", "reason": "离开的核心可辨，但悄悄溜出与匆忙离开的差别不确定 / Leaving is recognizable, but slipped out versus hurried out remains uncertain."}
+{"blind_id": "B018", "label": "F", "reason": "火山没有被译为火山，位置意义错误 / Volcano is not translated as a volcano; the location is wrong."}
+{"blind_id": "B019", "label": "P", "reason": "格式与序号原样保留，非自然语言翻译 / Exact markup/counter preservation, not natural-language translation."}
+{"blind_id": "B020", "label": "U", "reason": "房屋施工中datum是否为测量基准存在歧义，候选只说信息 / Datum may mean a construction reference; the candidate says information, so technical fidelity is uncertain."}
+{"blind_id": "B021", "label": "F", "reason": "impossible的中心含义未正确表达 / The central meaning of impossible is mistranslated."}
+{"blind_id": "B022", "label": "F", "reason": "关键足球动作和首次战绩含义损坏 / Key football actions and the first top-flight scalp are materially garbled."}
+{"blind_id": "B023", "label": "F", "reason": "晋级规则和胜者对阵关系被破坏 / Progression rules and the winner/opponent relation are garbled."}
+{"blind_id": "B024", "label": "F", "reason": "顶部覆布纽扣变为皮肤上的物体 / The covered button at the peak becomes an unrelated object on skin."}
+{"blind_id": "B025", "label": "F", "reason": "火山被替换为kanna相关的容器词 / Volcano is replaced by a container-related kanna form."}
+{"blind_id": "B026", "label": "P", "reason": "与Beck复合并直接告诉他的核心含义保留 / Getting back together with Beck and telling him are retained."}
+{"blind_id": "B027", "label": "F", "reason": "卡住及并非无法克服的问题未正确表达 / Being stuck and not having an insurmountable problem are mistranslated."}
+{"blind_id": "B028", "label": "F", "reason": "北极变成北半球，Santa也被破坏 / North Pole becomes Northern Hemisphere, and Santa is also distorted."}
+{"blind_id": "B029", "label": "P", "reason": "格式标记原样保留 / Exact formatting-only preservation."}
+{"blind_id": "B030", "label": "F", "reason": "北极与Santa均被误译 / Both North Pole and Santa are mistranslated."}
+{"blind_id": "B031", "label": "P", "reason": "格式标记原样保留 / Exact formatting-only preservation."}
+{"blind_id": "B032", "label": "F", "reason": "为什么不告诉他的关键动作谓语缺失 / The key predicate tell him is missing."}
+{"blind_id": "B033", "label": "F", "reason": "罢工被译为战争相关词stríð / Strike is rendered with the war-related word stríð."}
+{"blind_id": "B034", "label": "F", "reason": "肘部与肌腱受伤的解剖和因果信息破坏 / Elbow, tendon and injury/causation details are materially garbled."}
+{"blind_id": "B035", "label": "P", "reason": "感谢关注的含义保留 / Thanks for following is retained."}
+{"blind_id": "B036", "label": "F", "reason": "英雄、点球及比赛晋级信息损坏 / Hero, penalties and match progression are materially garbled."}
+{"blind_id": "B037", "label": "F", "reason": "肘部、血管后壁及肌腱损伤信息破坏 / Elbow, vein-wall and tendon-injury details are materially garbled."}
+{"blind_id": "B038", "label": "U", "reason": "施工datum及起始时态表达不确定，不能认证语义完整 / Construction datum and the opening tense are uncertain; complete fidelity cannot be certified."}
+{"blind_id": "B039", "label": "F", "reason": "下周变成上周，前两名和对阵信息也破坏 / Next week becomes last week, with additional ranking/opponent distortion."}
+{"blind_id": "B040", "label": "F", "reason": "integrity及角色比较的核心关系丢失 / Integrity and the role-comparison relationship are lost."}
+{"blind_id": "B041", "label": "P", "reason": "迫不及待现在做这件事的意思保留，语法不完美 / Cannot wait to do this now is retained despite imperfect grammar."}
+{"blind_id": "B042", "label": "U", "reason": "slíp这一表达不能确认保留悄悄溜出的含义 / The form slíp does not allow confident certification of slipped out."}
+{"blind_id": "B043", "label": "F", "reason": "顶部纽扣的位置被译到皮肤上，服装描述错误 / The button location becomes skin; the garment description is wrong."}
+{"blind_id": "B044", "label": "F", "reason": "integrity比较关系损坏并出现Atticus重复 / The integrity comparison is garbled, with duplicated Atticus."}
+{"blind_id": "B045", "label": "F", "reason": "假设语气丢失，肘部和肌腱受伤信息错误 / The assumption is asserted as fact, with elbow/tendon injury distortion."}
+{"blind_id": "B046", "label": "P", "reason": "迫不及待现在做这件事的大意保留 / Cannot wait to do this now is retained."}
+{"blind_id": "B047", "label": "F", "reason": "足球动作、首次战绩与比赛结果表述破坏 / Football actions, the first scalp and result are materially garbled."}
+{"blind_id": "B048", "label": "F", "reason": "impossible的中心含义未正确表达 / The central meaning of impossible is mistranslated."}
+{"blind_id": "B049", "label": "F", "reason": "火山位置变为容器相关词，关键地点错误 / The volcano location becomes a container-related form."}
+{"blind_id": "B050", "label": "P", "reason": "今天感觉不同的核心含义保留 / The central meaning that things feel different today is retained."}
+{"blind_id": "B051", "label": "F", "reason": "sniffing的嗅闻行为变成sníðs相关的其他意义 / The olfactory action sniffing is not retained in sní­ðs."}
+{"blind_id": "B052", "label": "U", "reason": "末尾非标准词无法确认是嗅闻，其他观察内容大致保留 / The final nonstandard word cannot be certified as sniffing; the observation context is mostly retained."}

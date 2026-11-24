@@ -1,0 +1,134 @@
+{
+  "status": "GPU_WORK_FINISHED_REVIEW_PENDING",
+  "production_updates": 1121,
+  "target_tokens": 1983726,
+  "train_seconds": 6224.39148139199,
+  "selected": {
+    "tag": "t1983726",
+    "step": 1121,
+    "target_tokens": 1983726,
+    "adapter_sha256": "7f7a4914c5f403e757fdb882c3576ac68f2b0fa6edc00e537087716b28ddb07e",
+    "full_optimizer_RNG": true,
+    "path": "run/checkpoints/t1983726/adapter",
+    "metrics": {
+      "nll": 1.1749328009553484,
+      "technical_nll": 1.152014861111471,
+      "dev_target_tokens": 8008,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 50.39504503144761,
+          "bleu": 29.80210252233543
+        },
+        "technical_short": {
+          "n": 32,
+          "chrfpp": 48.03016406102201,
+          "bleu": 28.90200402926307
+        },
+        "technical_medium": {
+          "n": 32,
+          "chrfpp": 45.723477837140386,
+          "bleu": 20.860666004467777
+        },
+        "technical_long": {
+          "n": 32,
+          "chrfpp": 48.98959852845523,
+          "bleu": 21.002768640775276
+        }
+      },
+      "overall_chrfpp": 48.287587848948846,
+      "technical_chrfpp": 47.99735079830076,
+      "technical_medium_long_chrfpp": 48.00002160960186,
+      "failures": 1
+    },
+    "review": {
+      "UTC": "2026-11-21T23:01:10.539336+00:00",
+      "case": "dev_t1983726",
+      "complete": true,
+      "reviewed": 56,
+      "models": {
+        "candidate": {
+          "reviewed": 56,
+          "roles": {
+            "greedy": {
+              "n": 32,
+              "counts": {
+                "F": 17,
+                "P": 12,
+                "U": 3
+              },
+              "strata": {
+                "general": {
+                  "F": 5,
+                  "P": 3
+                },
+                "technical_short": {
+                  "P": 5,
+                  "F": 3
+                },
+                "technical_medium": {
+                  "P": 3,
+                  "F": 3,
+                  "U": 2
+                },
+                "technical_long": {
+                  "F": 6,
+                  "U": 1,
+                  "P": 1
+                }
+              }
+            },
+            "g8": {
+              "n": 24,
+              "counts": {
+                "P": 13,
+                "F": 7,
+                "U": 4
+              },
+              "strata": {
+                "general": {},
+                "technical_short": {
+                  "P": 4,
+                  "F": 2,
+                  "U": 2
+                },
+                "technical_medium": {
+                  "P": 7,
+                  "F": 1
+                },
+                "technical_long": {
+                  "P": 2,
+                  "F": 4,
+                  "U": 2
+                }
+              }
+            }
+          }
+        }
+      },
+      "labels_sha256": "81fca532c9b01e405b1986a679b2488e9fdd51ca2be164adab7d3bf4ca02d60f",
+      "cards_sha256": "fa3f16add80a9c6c12ec9bf6daf4ad04eca34d78ce2266dd6b6e4225276556bf",
+      "input_binding": {
+        "case": "dev_t1983726",
+        "sha256": {
+          "dev_t1983726.jsonl": "21c4a715f2b2ba654a6ae0603043adc54e53c45fd8dd7cf54f0f4f6d9a964be4",
+          "dev_g8_t1983726.jsonl": "2420f72e15fc0ce56a60c0af9389ad85e525307c62e04a0e56ec3c1e90a1cc83"
+        },
+        "labels_are_AI_not_native_certified": true
+      },
+      "not_native_certified": true,
+      "tag": "t1983726",
+      "greedy_P": 12,
+      "coverage_P": 13
+    }
+  },
+  "stop_reason": "planned_stream_completed",
+  "fit_gate_passed": true,
+  "original_adapter_sha256": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858",
+  "selected_adapter_sha256": "7f7a4914c5f403e757fdb882c3576ac68f2b0fa6edc00e537087716b28ddb07e",
+  "final_greedy_sources": 128,
+  "final_G8_sources": 64,
+  "precision": "MatchedFP32",
+  "DAPO_updates": 0,
+  "MetricX_calls": 0
+}

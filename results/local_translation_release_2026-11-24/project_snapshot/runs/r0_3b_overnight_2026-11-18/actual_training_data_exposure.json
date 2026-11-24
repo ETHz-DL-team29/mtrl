@@ -1,0 +1,60 @@
+{
+  "new_pool_sha256": "0bd41b2b89785ba1fa84214aea8010afcbf3bc15dc4eaee047218cb791b79cf1",
+  "new_pool_n": 17282,
+  "stages": {
+    "stage_A": {
+      "planned": {
+        "unique_pairs": 25381,
+        "example_exposures": 26677,
+        "target_tokens": 898707,
+        "new_QE_unique_pairs": 0,
+        "new_QE_example_exposures": 0,
+        "new_QE_target_tokens": 0
+      },
+      "executed": {
+        "unique_pairs": 25381,
+        "example_exposures": 26677,
+        "target_tokens": 898707,
+        "new_QE_unique_pairs": 0,
+        "new_QE_example_exposures": 0,
+        "new_QE_target_tokens": 0
+      },
+      "selected_weight_prefix": {
+        "unique_pairs": 25381,
+        "example_exposures": 26677,
+        "target_tokens": 898707,
+        "new_QE_unique_pairs": 0,
+        "new_QE_example_exposures": 0,
+        "new_QE_target_tokens": 0
+      },
+      "selected_step": 834
+    },
+    "stage_B": {
+      "planned": {
+        "unique_pairs": 47241,
+        "example_exposures": 55010,
+        "target_tokens": 1799948,
+        "new_QE_unique_pairs": 14792,
+        "new_QE_example_exposures": 17606,
+        "new_QE_target_tokens": 1127774
+      },
+      "executed": {
+        "unique_pairs": 30560,
+        "example_exposures": 30560,
+        "target_tokens": 1000317,
+        "new_QE_unique_pairs": 9639,
+        "new_QE_example_exposures": 9639,
+        "new_QE_target_tokens": 624185
+      },
+      "selected_weight_prefix": {
+        "unique_pairs": 15296,
+        "example_exposures": 15296,
+        "target_tokens": 500620,
+        "new_QE_unique_pairs": 5488,
+        "new_QE_example_exposures": 5488,
+        "new_QE_target_tokens": 324354
+      },
+      "selected_step": 478
+    }
+  }
+}

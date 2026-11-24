@@ -1,0 +1,50 @@
+{
+  "tag": "t2000728",
+  "step": 1410,
+  "target_tokens": 2000728,
+  "metrics": {
+    "nll": 1.0798653554314346,
+    "technical_nll": 1.0590489551952678,
+    "dev_target_tokens": 7762,
+    "by_stratum": {
+      "general": {
+        "n": 32,
+        "chrfpp": 42.82784306640718,
+        "bleu": 19.629668510432367
+      },
+      "technical_short": {
+        "n": 32,
+        "chrfpp": 46.13765111897385,
+        "bleu": 21.859946771214105
+      },
+      "technical_medium": {
+        "n": 32,
+        "chrfpp": 45.9388063709081,
+        "bleu": 19.59486332891507
+      },
+      "technical_long": {
+        "n": 32,
+        "chrfpp": 50.42532116345806,
+        "bleu": 25.713900176902158
+      }
+    },
+    "overall_chrfpp": 48.2834374103015,
+    "technical_chrfpp": 48.69313066710618,
+    "technical_medium_long_chrfpp": 49.04422308545938,
+    "failures": 0
+  },
+  "adapter_sha256": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858",
+  "semantic": true,
+  "review_summary": {
+    "labels_locked": true,
+    "adapter_sha256": "54cee7d5f8e3898281d20b70019a6a47088890f89c324445b8a72e652568b858",
+    "technical_sources": 24,
+    "greedy_sources": 32,
+    "coverage_P": 9,
+    "coverage_U": 7,
+    "greedy_P": 9,
+    "greedy_U": 5,
+    "labels_sha256": "5cda2db0fba0f85338637ffe821ecb2bd79d85452fe123a67ea90a2ab7ffe9dc"
+  },
+  "selection_reason": "Reviewed eligible maximum-coverage tie set,then greedy P,technical medium/long CHRF,earlier checkpoint"
+}

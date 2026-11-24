@@ -1,0 +1,62 @@
+{
+  "UTC": "2026-11-24T02:23:50.929725+00:00",
+  "CPU_only": true,
+  "results": {
+    "wmt_initial": {
+      "exact_replay": true,
+      "documents": 198,
+      "segments_per_arm": 2551,
+      "metrics_SHA256": "8e49cba3b2cde78558080256c954e3fd71e6ad80d4684f97cd83ef09c56cc221",
+      "overall": {
+        "n": 198,
+        "chrfpp": {
+          "before": 39.718915382450255,
+          "after": 39.9115793795913,
+          "delta": 0.19266399714104665,
+          "delta95CI": [
+            -1.3314760757591964,
+            1.9518907463427535
+          ]
+        },
+        "bleu": {
+          "before": 19.757162284647453,
+          "after": 20.868815047706505,
+          "delta": 1.1116527630590518,
+          "delta95CI": [
+            -1.3250543547390972,
+            4.313979544592103
+          ]
+        }
+      }
+    },
+    "wmt_shortmid": {
+      "exact_replay": true,
+      "documents": 198,
+      "segments_per_arm": 2551,
+      "metrics_SHA256": "128ccfee260b05b1f3e52a31dd8134cad227d29d6e35e5bc89f6a7028bfc1ea1",
+      "overall": {
+        "n": 198,
+        "chrfpp": {
+          "before": 39.718915382450255,
+          "after": 40.83466908840522,
+          "delta": 1.1157537059549654,
+          "delta95CI": [
+            -0.06422553477964374,
+            2.563144700650973
+          ]
+        },
+        "bleu": {
+          "before": 19.757162284647453,
+          "after": 21.69729738999143,
+          "delta": 1.9401351053439768,
+          "delta95CI": [
+            -0.06853441546312249,
+            5.216621055582654
+          ]
+        }
+      }
+    }
+  },
+  "original_R0_SHA256": "7f7a4914c5f403e757fdb882c3576ac68f2b0fa6edc00e537087716b28ddb07e",
+  "original_R0_unchanged": true
+}

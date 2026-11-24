@@ -1,0 +1,18 @@
+{
+  "html_QA.json": {
+    "bytes": 341,
+    "sha256": "91df170baa268bb8876da69a5db44b5ff21d9a1ee4892a621a033cf0ceb7f62d"
+  },
+  "QA_screening.png": {
+    "bytes": 97977,
+    "sha256": "b9d0f478429727f1702af2834d35629898be80b36ff3a5fffe6a6f3c72ab06e7"
+  },
+  "R0_3B_SYSTEMATIC_SFT_DATA_QA_RESULTS_2026-11-19.html": {
+    "bytes": 433018,
+    "sha256": "ebd5f9b2939d05c0fb85b23df8c208297d5529a0157b7d735acf1a55c01eb0db"
+  },
+  "R0_3B_SYSTEMATIC_SFT_DATA_QA_RESULTS_2026-11-19.md": {
+    "bytes": 289137,
+    "sha256": "7d56342e5fc24ad30a7c7075dc821feb8f48de038e4f9a3c5fcfac21eca68a85"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "UTC": "2026-11-20T13:36:23.257125+00:00",
+  "selected": {
+    "tag": "t2999996",
+    "step": 2543,
+    "target_tokens": 2999996,
+    "metrics": {
+      "nll": 1.1306406443526344,
+      "technical_nll": 1.113438619060956,
+      "dev_target_tokens": 7762,
+      "by_stratum": {
+        "general": {
+          "n": 32,
+          "chrfpp": 38.614636057116606,
+          "bleu": 15.534062052183817
+        },
+        "technical_short": {
+          "n": 32,
+          "chrfpp": 43.358207627688806,
+          "bleu": 20.36600694956158
+        },
+        "technical_medium": {
+          "n": 32,
+          "chrfpp": 44.56981532302277,
+          "bleu": 19.714936961743554
+        },
+        "technical_long": {
+          "n": 32,
+          "chrfpp": 48.9653759111669,
+          "bleu": 25.666730227525626
+        }
+      },
+      "overall_chrfpp": 46.48956123692833,
+      "technical_chrfpp": 47.100046286045774,
+      "technical_medium_long_chrfpp": 47.61391705001332,
+      "failures": 0
+    },
+    "adapter_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0",
+    "semantic": true,
+    "review_summary": {
+      "labels_locked": true,
+      "adapter_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0",
+      "technical_sources": 24,
+      "greedy_sources": 32,
+      "coverage_P": 8,
+      "coverage_U": 5,
+      "greedy_P": 8,
+      "greedy_U": 3,
+      "labels_sha256": "e99c778143a20b252c74f2686985282ad9c2c814dc82efc1545675435042c409"
+    },
+    "selection_reason": "Reviewed eligible maximum-coverage tie set,then greedy P,technical medium/long CHRF,earlier checkpoint"
+  },
+  "source": "D:\\deep learning project\\runs\\r0_3b_filtered_sft_resume_2026-11-20\\snapshots\\t2999996\\files\\adapter",
+  "delivered": "D:\\deep learning project\\runs\\r0_3b_filtered_sft_resume_2026-11-20\\final_selected_adapter",
+  "weights_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0",
+  "original_A_sha256": "9acc23c9595ac0b771bf8f21d125d18f3e993c3f449775377262e7ab73020199",
+  "original_A_preserved": true,
+  "base": "Qwen/Qwen2.5-3B-Instruct",
+  "base_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "inference": "NativeBF16 base with FP32 LoRA; no merge/precision change",
+  "selection_not_changed_by_final_metrics": true
+}

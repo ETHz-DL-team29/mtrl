@@ -1,0 +1,18 @@
+{
+  "filter_summary.png": {
+    "sha256": "69be58d064b63cae1bbdd57ccda173d17ad2c008dd7037727d396e415d42555f",
+    "bytes": 136811
+  },
+  "html_QA.json": {
+    "sha256": "c85ee844a7d91068b3ad73ae74acb0ce707ef5b0382c2307fde6ac8ac5ab2fb4",
+    "bytes": 322
+  },
+  "R0_GPU_DATA_FILTER_RESULTS_2026-11-19.html": {
+    "sha256": "fc9525c399e5da6e5849b61e7ac0239e8d389bf0c33a167078339c9549c6bb31",
+    "bytes": 374270
+  },
+  "R0_GPU_DATA_FILTER_RESULTS_2026-11-19.md": {
+    "sha256": "e52af14c985bd9dc382f5ea3414feeb58d84b6b29feae4cae41b17b977452588",
+    "bytes": 178395
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "utc": "2026-11-17T13:50:44.807180+00:00",
+  "assignment_disappeared": true,
+  "exact_cause_unknown": true,
+  "latest_mirrored_updates": 28,
+  "latest_mirrored_target_tokens": 29762,
+  "durable_trained_checkpoint_step": 0,
+  "restart_from_initial_seed_and_order": true,
+  "no_automatic_budget_extension": true
+}

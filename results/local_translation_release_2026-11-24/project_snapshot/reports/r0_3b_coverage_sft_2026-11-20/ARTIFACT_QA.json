@@ -1,0 +1,17 @@
+{
+  "UTC": "2026-11-20T18:00:49.341303+00:00",
+  "passed": true,
+  "method": "HTMLParser structural QA, file hashes, figures visually inspected separately, all case counts; no foreground browser",
+  "details": 856,
+  "expected_details": 856,
+  "tables": 10,
+  "image_files": [
+    "development_scores_and_semantics.png",
+    "matched_anchor_quality_and_coverage.png"
+  ],
+  "MD_sha256": "93c3752fc9faabbbbfaf36fd42fd29b4829ed8eb91ec4080e45a3ee76faba5f0",
+  "HTML_sha256": "bd6b38b12deb82107de27651f99b9296a1d051125e17e157894c4da4062a0d01",
+  "labels_sha256": "aefb18ee0bc3b8d306e62fb5ab791940d05b3c1fb4b59ca9bfed72c225128619",
+  "final_export_sha256": "5d0dcfe89e2c20d70ec57e838e5abed992f8ff969d2c0f16a617ce00a707c0d5",
+  "limitations": "Static structure and separate PNG visual inspection do not simulate every browser viewport."
+}

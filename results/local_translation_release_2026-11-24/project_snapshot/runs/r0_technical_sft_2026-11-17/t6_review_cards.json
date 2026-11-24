@@ -1,0 +1,2402 @@
+[
+  {
+    "card": 0,
+    "id": "ParIce21:opensubtitles:test:1463",
+    "stratum": "general",
+    "source": "We're not going to deliver cookies until we do dance class.",
+    "reference": "Við förum ekki með smákökurnar fyrr en eftir danstímann.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Við ætlaðum ekki að fylgja upp kökuna síðan við getum lært þátta."
+      },
+      {
+        "index": 1,
+        "text": "Þetta er nú ekki beint að gefa köku fram enn þar sem við upptekum leiknám."
+      },
+      {
+        "index": 2,
+        "text": "Við færum ekki kökurinn fyrr en við útgangum dansakursi."
+      },
+      {
+        "index": 3,
+        "text": "Við ferum ekki að koma upp kyssan þar til við útbúaum leik."
+      },
+      {
+        "index": 4,
+        "text": "Við framfærum ekki kökunni þar til við höfum lætð nemenda."
+      },
+      {
+        "index": 5,
+        "text": "Við komum ekki til að gefa kjökin þegar við náum danslögum."
+      },
+      {
+        "index": 6,
+        "text": "Við ferum ekki að fá kökur þar er við erum að læra dans."
+      },
+      {
+        "index": 7,
+        "text": "Við ferum ekki til að gefa kökur þar til við skulum leika."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Við fórum ekki að fylgja úr kökunum til að dansast."
+      },
+      {
+        "index": 1,
+        "text": "Þetta er nú ekki beitt fyrir uppköstum."
+      },
+      {
+        "index": 2,
+        "text": "Við færum ekki kökurinn fyrr en við útgangum dansakursi."
+      },
+      {
+        "index": 3,
+        "text": "Við ferum ekki að koma upp kyrra þar til við útbúaum leik."
+      },
+      {
+        "index": 4,
+        "text": "Við framangriðum ekki kökur þar til við höfum lætð nemenda."
+      },
+      {
+        "index": 5,
+        "text": "Við komum ekki til að fylgja upp kökunum þar til við læsum dansakurs."
+      },
+      {
+        "index": 6,
+        "text": "Við ferum ekki að fá kökur þar er við erum ekki að draga skáldun."
+      },
+      {
+        "index": 7,
+        "text": "Við ferum ekki að gefa kökur án þess að ég skaut mér af kökur."
+      }
+    ]
+  },
+  {
+    "card": 1,
+    "id": "ParIce21:opensubtitles:test:3600",
+    "stratum": "general",
+    "source": "On the contrary, it was a real stroke of luck.",
+    "reference": "Þvert á móti var þetta óvæntur fengur.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Reksturinn var alveg í ljós."
+      },
+      {
+        "index": 1,
+        "text": "Þá er mér þetta hljótt af nýttum."
+      },
+      {
+        "index": 2,
+        "text": "Þú féllst á móti: Það var raunverulega ógnkur."
+      },
+      {
+        "index": 3,
+        "text": "Það var aðtöku útfall."
+      },
+      {
+        "index": 4,
+        "text": "Það var alveg vitlaust."
+      },
+      {
+        "index": 5,
+        "text": "Það var rétt stöðugur þorr."
+      },
+      {
+        "index": 6,
+        "text": "Svo konar er það raunverulegt skemmt."
+      },
+      {
+        "index": 7,
+        "text": "Því er það ánægjulegt að hafna."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Reksturinn var alveg í ljós."
+      },
+      {
+        "index": 1,
+        "text": "Þá er mér þó rétt að það hafi verið réttur heppnir."
+      },
+      {
+        "index": 2,
+        "text": "Þú féllst á móti: Það var raunverulega heppni."
+      },
+      {
+        "index": 3,
+        "text": "Það var í gegn valdbrið."
+      },
+      {
+        "index": 4,
+        "text": "Það var Santa í ljósi."
+      },
+      {
+        "index": 5,
+        "text": "Það var rétt stöðugur."
+      },
+      {
+        "index": 6,
+        "text": "Sama konar er það raunverulegt skemmti fyrir heppni."
+      },
+      {
+        "index": 7,
+        "text": "Þótt þetta séu ekkert ógerlegt var það alvarlegt gott."
+      }
+    ]
+  },
+  {
+    "card": 2,
+    "id": "ParIce21:opensubtitles:test:1249",
+    "stratum": "general",
+    "source": "Secret Service changes the security codes today at noon.",
+    "reference": "Leyniþjónustan breytir öryggiskóðunum í dag á hádegi.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Verksneytisvottorð eru breytt í vörsla í hádegi."
+      },
+      {
+        "index": 1,
+        "text": "Sjaldgætaheilmenn skipta öryggisvottorköldunum í dag núna."
+      },
+      {
+        "index": 2,
+        "text": "Hvorkun á öryggistöðum breytist í ár síðkrutta klukkan meðin."
+      },
+      {
+        "index": 3,
+        "text": "Sjálfboðstjórnin breytir sjálfboðskóðið í dag á hádegi."
+      },
+      {
+        "index": 4,
+        "text": "Við efnisgreinir skýrsluleika að morgun."
+      },
+      {
+        "index": 5,
+        "text": "Vetraskírtilvinnurinn breytir öryggislaginn í dag á hádegi."
+      },
+      {
+        "index": 6,
+        "text": "Sjálfsstörfingin breytir öryggisliðinu í dag úr kvöld og komi í miðnótt."
+      },
+      {
+        "index": 7,
+        "text": "Hættarfélag sendi öryggisliðina í dag klukkan midnasta."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Verksneymisvottorð eru breytt í dag á hádegi."
+      },
+      {
+        "index": 1,
+        "text": "Sjaldgætaheilmenn skipta öryggisfangnum í dag á midnæti."
+      },
+      {
+        "index": 2,
+        "text": "Hvorkun á öryggistökum í dag á hádegi."
+      },
+      {
+        "index": 3,
+        "text": "Sjálfboðstjórnin breytir sjálfboðskóðið í dag á hádegi."
+      },
+      {
+        "index": 4,
+        "text": "Við efnisgreinirna breytjum verlustölvum í hádegi."
+      },
+      {
+        "index": 5,
+        "text": "Vetraskírtilvinnurinn breytir öryggislagið í dag á næðum."
+      },
+      {
+        "index": 6,
+        "text": "Sjálfsstöðvarinn breytir viðvörunarkóðið úr lög og komið er í hádegi."
+      },
+      {
+        "index": 7,
+        "text": "Ýmsunaskynjuna breytir öryggislið til kvöldar á hádegi."
+      }
+    ]
+  },
+  {
+    "card": 3,
+    "id": "OPUS-tatoeba-v20230412-eng-isl:7401",
+    "stratum": "general",
+    "source": "The room is hot.",
+    "reference": "Herbergið er heitt.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Húsið er heit."
+      },
+      {
+        "index": 1,
+        "text": "Rúmið er heitt."
+      },
+      {
+        "index": 2,
+        "text": "Rúmið er heitt."
+      },
+      {
+        "index": 3,
+        "text": "Góður var í herberginu."
+      },
+      {
+        "index": 4,
+        "text": "Húsið er heitt."
+      },
+      {
+        "index": 5,
+        "text": "Bælið er heitt."
+      },
+      {
+        "index": 6,
+        "text": "Húsið er heitt."
+      },
+      {
+        "index": 7,
+        "text": "Húsið er heitt."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Húsið er heit."
+      },
+      {
+        "index": 1,
+        "text": "Rúmið er heitt."
+      },
+      {
+        "index": 2,
+        "text": "Rúmið er heitt."
+      },
+      {
+        "index": 3,
+        "text": "Geymsluðurinn er heldur heitur."
+      },
+      {
+        "index": 4,
+        "text": "Húsið er heitt."
+      },
+      {
+        "index": 5,
+        "text": "Bælið er heitt."
+      },
+      {
+        "index": 6,
+        "text": "Húsið er heitt."
+      },
+      {
+        "index": 7,
+        "text": "Húsið er heitt."
+      }
+    ]
+  },
+  {
+    "card": 4,
+    "id": "OPUS-tatoeba-v20230412-eng-isl:2115",
+    "stratum": "general",
+    "source": "I had no idea what to do.",
+    "reference": "Ég hafði enga hugmynd hvers ég ætti til bragðs að taka.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Ég hefði ekki hugmynd um hvað ég ætti að gera."
+      },
+      {
+        "index": 1,
+        "text": "Ég hafði engin hugmynd hvað ég ætti að gera."
+      },
+      {
+        "index": 2,
+        "text": "Ég hafði ekki hugmynd um hvað ég ætti að gera."
+      },
+      {
+        "index": 3,
+        "text": "Ég hafði ekki hugmynd um hvað ég átti að gera."
+      },
+      {
+        "index": 4,
+        "text": "Ég hafði ekki hugmynd um hvað ég ætti að gera."
+      },
+      {
+        "index": 5,
+        "text": "Ég var með ekki hugmynd af því hvað ég ætti að gera."
+      },
+      {
+        "index": 6,
+        "text": "Ég hafði enga hugmynd um hvað ég ætti að gera."
+      },
+      {
+        "index": 7,
+        "text": "Ég hafði engin hugmynd hvað ég gæði gera."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Ég hefði ekki hugmynd um hvað ég ætti að gera."
+      },
+      {
+        "index": 1,
+        "text": "Ég hafði engin hugmynd hvað ég ætti að gera."
+      },
+      {
+        "index": 2,
+        "text": "Ég hafði ekki hugmynd um hvað ég ætti að gera."
+      },
+      {
+        "index": 3,
+        "text": "Ég hafði engin hugmynd hvað ég átti að gera."
+      },
+      {
+        "index": 4,
+        "text": "Ég hafði ekki hugmynd um hvað ég ætti að gera."
+      },
+      {
+        "index": 5,
+        "text": "Ég var með ekkert hugmynd um hvað ég gæi gera."
+      },
+      {
+        "index": 6,
+        "text": "Ég hafði enga hugmynd um hvað ég ætti að gera."
+      },
+      {
+        "index": 7,
+        "text": "Ég hafði engin hugmynd hvað ég gæði gera."
+      }
+    ]
+  },
+  {
+    "card": 5,
+    "id": "OPUS-tatoeba-v20230412-eng-isl:5284",
+    "stratum": "general",
+    "source": "He is about your age.",
+    "reference": "Hann er á þínum aldri.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Hann er um þig ára."
+      },
+      {
+        "index": 1,
+        "text": "Hann er um þig ára."
+      },
+      {
+        "index": 2,
+        "text": "Hann er um tíma þinn."
+      },
+      {
+        "index": 3,
+        "text": "Hann er um tíma þér gamall."
+      },
+      {
+        "index": 4,
+        "text": "Hann er um tíma núna."
+      },
+      {
+        "index": 5,
+        "text": "Hann er um tíma þín."
+      },
+      {
+        "index": 6,
+        "text": "Hann er í þér aldri."
+      },
+      {
+        "index": 7,
+        "text": "Hann er um tímann um þig."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Hann er um þig ára."
+      },
+      {
+        "index": 1,
+        "text": "Hann er um þig ára."
+      },
+      {
+        "index": 2,
+        "text": "Hann er um tíma þinn."
+      },
+      {
+        "index": 3,
+        "text": "Hann er um tíma þér gamall."
+      },
+      {
+        "index": 4,
+        "text": "Hann er um tíma núna."
+      },
+      {
+        "index": 5,
+        "text": "Hann er um tíma þín."
+      },
+      {
+        "index": 6,
+        "text": "Hann er í þér aldri."
+      },
+      {
+        "index": 7,
+        "text": "Hann er á þínum aldri."
+      }
+    ]
+  },
+  {
+    "card": 6,
+    "id": "OPUS-tatoeba-v20230412-eng-isl:6848",
+    "stratum": "general",
+    "source": "Tom was fired.",
+    "reference": "Tom var rekinn.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Tom var fællur."
+      },
+      {
+        "index": 1,
+        "text": "Tom féllu."
+      },
+      {
+        "index": 2,
+        "text": "Tom var frestaður."
+      },
+      {
+        "index": 3,
+        "text": "Tom féll úr fjölskyldunni."
+      },
+      {
+        "index": 4,
+        "text": "Tom féll af."
+      },
+      {
+        "index": 5,
+        "text": "Tom var afsökunar."
+      },
+      {
+        "index": 6,
+        "text": "Tom var skildur."
+      },
+      {
+        "index": 7,
+        "text": "Tom fékk að fara úr höndum."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Tom var fællur."
+      },
+      {
+        "index": 1,
+        "text": "Tom féllu."
+      },
+      {
+        "index": 2,
+        "text": "Tom var frestaður."
+      },
+      {
+        "index": 3,
+        "text": "Tom féll úr fjölskyldunni."
+      },
+      {
+        "index": 4,
+        "text": "Tom féll af."
+      },
+      {
+        "index": 5,
+        "text": "Tom var afsökunar."
+      },
+      {
+        "index": 6,
+        "text": "Tom var skildur."
+      },
+      {
+        "index": 7,
+        "text": "Tom fékk að fara úr höndum."
+      }
+    ]
+  },
+  {
+    "card": 7,
+    "id": "ParIce21:opensubtitles:test:476",
+    "stratum": "general",
+    "source": "She'll be back when she's hungry.",
+    "reference": "Hún snýr aftur þegar hún verður svöng.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Hún kemur aftur þegar hún er svöng."
+      },
+      {
+        "index": 1,
+        "text": "Hún kemur aftur þegar hún er svangur."
+      },
+      {
+        "index": 2,
+        "text": "Hún kemur aftur þegar hún er svangur."
+      },
+      {
+        "index": 3,
+        "text": "Hún kemur aftur ef hún er svangur."
+      },
+      {
+        "index": 4,
+        "text": "Hún kemur aftur þegar hún er svangur."
+      },
+      {
+        "index": 5,
+        "text": "Hún kemur til baka þegar hún er svangur."
+      },
+      {
+        "index": 6,
+        "text": "Hún kemur aftur þegar hún er svöng."
+      },
+      {
+        "index": 7,
+        "text": "Hún kemur aftur þegar hún er svangur."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Hún kemur aftur þegar hún er svöng."
+      },
+      {
+        "index": 1,
+        "text": "Hún kemur aftur þegar hún er svangur."
+      },
+      {
+        "index": 2,
+        "text": "Hún kemur þegar hún er svangur."
+      },
+      {
+        "index": 3,
+        "text": "Hún kemur þegar hún er velvinn."
+      },
+      {
+        "index": 4,
+        "text": "Hún kemur þegar hún er svangur."
+      },
+      {
+        "index": 5,
+        "text": "Hún kemur þegar hún er svangur."
+      },
+      {
+        "index": 6,
+        "text": "Hún kemur aftur þegar hún er svöng."
+      },
+      {
+        "index": 7,
+        "text": "Hún kemur aftur þegar hún er svangur."
+      }
+    ]
+  },
+  {
+    "card": 8,
+    "id": "ParIce21:ema:test:415",
+    "stratum": "technical_short",
+    "source": "It is a solution that is clear to slightly opalescent, and colourless to pale yellow.",
+    "reference": "Lyfið er tær til örlítið skýjuð og litlaus til fölgul lausn.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Súla er skýri og hreinsuð, og ljósvit og gamlan gul."
+      },
+      {
+        "index": 1,
+        "text": "Það er lausn sem er skýr og mjög opaalleg og lossu ólægan."
+      },
+      {
+        "index": 2,
+        "text": "Sú þyngd er skýr, smáblóð og litlaus, og gæðuþrýstugul."
+      },
+      {
+        "index": 3,
+        "text": "Hún er skýr, einhvernig hreinskjað, og litlaus, hvílfgræin."
+      },
+      {
+        "index": 4,
+        "text": "Lösningin er skýr og það er viðtækt til opalýs, og ekki ljós eða mikið gul."
+      },
+      {
+        "index": 5,
+        "text": "Þetta er lausn sem er skýr og hviðskýr og litlaus og fíldýr gul."
+      },
+      {
+        "index": 6,
+        "text": "Þetta er skilur með litið og glæsibreytt og litlausur með grúðlegur yltir."
+      },
+      {
+        "index": 7,
+        "text": "Þetta er lausn sem er litlaus og smámélin og litlaus og mjóg ulit."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Súla er skýri og hreinsuð, gyðileg og gulsýr."
+      },
+      {
+        "index": 1,
+        "text": "Það er lausn sem er skýr og mjög opaalleg og lossu ólægan."
+      },
+      {
+        "index": 2,
+        "text": "Súrefnið er skýrt, aðeins þveikjanlegt og ekkert ljós, í guldgrænt."
+      },
+      {
+        "index": 3,
+        "text": "Hún er skýr, einhvernig hreinskjað, og litlaus, hvílfgræin."
+      },
+      {
+        "index": 4,
+        "text": "Lösningin er skýr og það er viðtæki til opalýs, og ekki ljóslegur, heldur opinleg ljósgul."
+      },
+      {
+        "index": 5,
+        "text": "Þetta er lausn sem er skýr og hviðskýr og litlaus og fíldýr gul."
+      },
+      {
+        "index": 6,
+        "text": "Þetta er skilræm tæka, með litla vískölluðu glitsa og ekkert litið, heldur sprenguljóta."
+      },
+      {
+        "index": 7,
+        "text": "Þetta er lausn sem er litlaus og smá hyljavegi og litlaus og þungul."
+      }
+    ]
+  },
+  {
+    "card": 9,
+    "id": "ParIce21:ema:test:3040",
+    "stratum": "technical_short",
+    "source": "Imatinib Teva is also a treatment for children and adolescents with CML.",
+    "reference": "Imatinib Teva er einnig ætlað til meðferðar hjá börnum og unglingum með CML.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Imatinib Teva er einnig meðferð fyrir börn og unglinga með CML."
+      },
+      {
+        "index": 1,
+        "text": "Imatinib Teva er einnig meðferð fyrir börn og unglinga með CML."
+      },
+      {
+        "index": 2,
+        "text": "Imatinib Teva er líka meðferð fyrir börn og unglinga með CML."
+      },
+      {
+        "index": 3,
+        "text": "Imatinib Teva er einnig meðferð fyrir börn og unglinga með CML."
+      },
+      {
+        "index": 4,
+        "text": "Imatinib Teva er einnig meðferð fyrir börn og unglinga með CML."
+      },
+      {
+        "index": 5,
+        "text": "Imatinib Teva er líka meðferð hjá börnum og unglingum með CML."
+      },
+      {
+        "index": 6,
+        "text": "Imatinib Teva er einnig meðferð fyrir börn og unglinga með CML."
+      },
+      {
+        "index": 7,
+        "text": "Imatinib Teva er einnig meðferð fyrir börn og unglinga með CML."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Imatinib Teva er einnig meðferð fyrir börn og unglinga með CML."
+      },
+      {
+        "index": 1,
+        "text": "Imatinib Teva er einnig meðferð fyrir börn og unglinga með CML."
+      },
+      {
+        "index": 2,
+        "text": "Imatinib Teva er líka meðferð fyrir börn og unglinga með CML."
+      },
+      {
+        "index": 3,
+        "text": "Imatinib Teva er einnig meðferð fyrir börn og unglinga með CML."
+      },
+      {
+        "index": 4,
+        "text": "Imatinib Teva er líka meðferð fyrir börn og unglinga með CML."
+      },
+      {
+        "index": 5,
+        "text": "Imatinib Teva er líka meðferð hjá börnum og unglingum með CML."
+      },
+      {
+        "index": 6,
+        "text": "Imatinib Teva er einnig meðferð fyrir börn og unglinga með CML."
+      },
+      {
+        "index": 7,
+        "text": "Imatinib Teva er einnig meðferð fyrir börn og unglinga með CML."
+      }
+    ]
+  },
+  {
+    "card": 10,
+    "id": "ParIce21:ema:test:1271",
+    "stratum": "technical_short",
+    "source": "Veterinary surgeons may wish to consider two vaccinations.",
+    "reference": "Dýralæknar gætu íhugað tvær bólusetningar.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Dýralæknar geta hugsað um að nota tvær bóluefni."
+      },
+      {
+        "index": 1,
+        "text": "Dýrarfræðingur má vilja fara með tvö bóluefna."
+      },
+      {
+        "index": 2,
+        "text": "Dýrarannsóknarfræðingar geta vilja að ræða tvisvar bólusetningar."
+      },
+      {
+        "index": 3,
+        "text": "Dýralæknar geta hafa hugmynd til að rannsaka tvær bólusetningu."
+      },
+      {
+        "index": 4,
+        "text": "Dýrarannsóknartæki má hugsa um að tilkynna tvö bólustind."
+      },
+      {
+        "index": 5,
+        "text": "Dýralæknar geta víst um að tilgreina tveimur bóluefnum."
+      },
+      {
+        "index": 6,
+        "text": "Dýralæknið skulu hafa áhuga á tveimur bóluefnum."
+      },
+      {
+        "index": 7,
+        "text": "Dýralæknir geta hugsað um tvö bólusetningu."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Dýralæknið er hægt að líta á tveimur bólusetningum."
+      },
+      {
+        "index": 1,
+        "text": "Dýrafísindarleikarnir má hvata með tvö bóluefnum."
+      },
+      {
+        "index": 2,
+        "text": "Dýrarannsóknafélög geta víst að þeir vilji hafa þátt í tveimur bóluskurðum."
+      },
+      {
+        "index": 3,
+        "text": "Dýralæknar geta ánægð meitt að rannsaka tvær bólusetningu."
+      },
+      {
+        "index": 4,
+        "text": "Dýrarannsóknartækjarnir geta vildi hætt að taka tillit til tveggja bólusetninga."
+      },
+      {
+        "index": 5,
+        "text": "Dýralæknar geta víst að þær vilji taka til tveggja bólusetninga."
+      },
+      {
+        "index": 6,
+        "text": "Dýralæknið hlutdeildarverksmiðjunir eiga þess að vilja taka tillit til tvö bólusetninga."
+      },
+      {
+        "index": 7,
+        "text": "Dýralæknir geta hugsað um tvö bólusetningu."
+      }
+    ]
+  },
+  {
+    "card": 11,
+    "id": "ParIce21:eso:test:349",
+    "stratum": "technical_short",
+    "source": "The results described here use some of these Science Verification data.",
+    "reference": "Gögnin sem notuð voru fyrir þessa rannsókn var að hluta til aflað við þessar prófanir.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Þeir niðurstöður sem hér eru lýst nota nokkuru vísindabindingarnar sem eru skýrt áður en þeir eru notaðir."
+      },
+      {
+        "index": 1,
+        "text": "Þær niðurstöður sem hér eru lýst nota um staðreyndarnir í þessum orðinu."
+      },
+      {
+        "index": 2,
+        "text": "Nákvæmni, sem hér er lýsð, er framkvæmd með þeim lestrum sem eru fleðir í þessum grein."
+      },
+      {
+        "index": 3,
+        "text": "Niðurstöðurnar sem hér eru lýst nota nokkrum þessum upplýsingum um aðgerðir."
+      },
+      {
+        "index": 4,
+        "text": "Niðurstöður sem hingað til eru lýst hér eru notkunar viðeigandi gögn fyrir þær rannsóknir."
+      },
+      {
+        "index": 5,
+        "text": "Niðurstöðurnar sem hingað eru tilheyrir eru meðeining á geisluefnið."
+      },
+      {
+        "index": 6,
+        "text": "Þar sem svarað er með þeim upplýsingum sem eru komnir í þetta varðar aðeins skráningu fyrir upprunalega lífrænni."
+      },
+      {
+        "index": 7,
+        "text": "Niðurstaðin sem hér er lýst notar einhverjar þessar sýni um vöktunarfingur."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Þeir niðurstöður sem hér eru lýst nota einhverja af þessum gangana um að verði."
+      },
+      {
+        "index": 1,
+        "text": "Þær niðurstöður sem hér eru lýst nota um staðreyndarþýðingabundið sem hér segir."
+      },
+      {
+        "index": 2,
+        "text": "Nákvæmni, sem er lýst hér, notar einhverjar greinir í verndarunum."
+      },
+      {
+        "index": 3,
+        "text": "Niðurstöðurnar sem hér eru lýst nota nokkrum þessum gögnum úr rannsóknadagrunum."
+      },
+      {
+        "index": 4,
+        "text": "Niðurstöðurnar sem er lýst hér eru með tilteknum upplýsingum um vart vernd samkvæmt vettvangi."
+      },
+      {
+        "index": 5,
+        "text": "Niðurstöðurnar sem hingað eru gefnar eru notuð í Viðmiðunarsönnuninni."
+      },
+      {
+        "index": 6,
+        "text": "Þar sem svarað er með. Það er notuð þeirrar gögn sem eru skýrtir hér."
+      },
+      {
+        "index": 7,
+        "text": "Niðurstaðin sem hér er lýst notar einhverjar þessar sýni um vöktunarfingur."
+      }
+    ]
+  },
+  {
+    "card": 12,
+    "id": "ParIce21:norden:test:264",
+    "stratum": "technical_medium",
+    "source": "Producers from North Atlantic to the Baltic Sea grin with pride as they present their treasures to the public.",
+    "reference": "Framleiðendur allt frá Norður Atlantshafi til Eystrasalts brosa með stolti þegar þeir kynna almenningi fjársjóði sína.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Fyrirtækar frá norður Atlantustjórninni til Balti skjautum þeirra til að fá ríkið."
+      },
+      {
+        "index": 1,
+        "text": "Upphafnendur frá Norður-Antíkinu til Baltatjófnins bár upp á þinn af þjáningarhaldanum til að láta útjörðum sjá þeim."
+      },
+      {
+        "index": 2,
+        "text": "Aðila úr Norðрованияi til Baltyny höfðu á megrænni kynningu að hafa íbúgðir fyrir almenninginn."
+      },
+      {
+        "index": 3,
+        "text": "Búnaður frá Nautígbæri til Báltasvatanins grína með óskjiðbundni hvað þeir koma upp til almannanna í skrif."
+      },
+      {
+        "index": 4,
+        "text": "Áfengjar úr Norður-Afröku að Baltíueyju stórip í hafað verðbréfa til að lækka."
+      },
+      {
+        "index": 5,
+        "text": "Uppbréfur frá Norður-Antýri til Baltíu-eyðar glíra í nagnægi þegar þau sjáum gærnina sinnum til allra."
+      },
+      {
+        "index": 6,
+        "text": "Aðila úr North Atlantic til Balticessans glæmísa þegar þeir sýna dýrum þeim opinberum."
+      },
+      {
+        "index": 7,
+        "text": "Fræðingar úr Norður-Antúkur til Baltasvæðis grínast vallandi með því að sýna yfirmaðurinnir í fjölskyldunni verðasvæði sína."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Fyrirtækar frá norður Atlantustjórninni til Balti sjáskjálfta grínast með skemmtu þegar þeir láta manna jafna þjáningar sína."
+      },
+      {
+        "index": 1,
+        "text": "Fjöllar úr Norður-Antíkur til Baltskóesins grínu sinni og gefa almenningi þær vejir."
+      },
+      {
+        "index": 2,
+        "text": "Fjármálarannir frá Norðurfrjóheýju til Baýsveins grínja af vanda sem þær tekin saman fyrir almenninginn."
+      },
+      {
+        "index": 3,
+        "text": "Búnaður frá Nautígbæri til Báltasvatanins grína með óskjiðbundinn hvað þeir koma upp með í þeim skýrslu."
+      },
+      {
+        "index": 4,
+        "text": "Fyringastjórnar frá Norðaauðusæðnum til Saltbæsins grínast of sérstakt við að sýna yfirborðslögum til almennings."
+      },
+      {
+        "index": 5,
+        "text": "Uppbréfur frá Norður-Austurland til Baltíuýjar svífa náungum nýtur sem þeir koma upp í æskingjafæri."
+      },
+      {
+        "index": 6,
+        "text": "Aðila frá Norður-Antýkinu til Baltasíðarinnar gríma frá sér í að sýna út þess að göngum sínum til hagsins."
+      },
+      {
+        "index": 7,
+        "text": "Fræðingarnir í Norður-Antúrgæðum til Baltaleymsins djappa yfir í þátttöku og setja þeim hálfu fyrir almenningi."
+      }
+    ]
+  },
+  {
+    "card": 13,
+    "id": "ParIce21:ema:test:425",
+    "stratum": "technical_medium",
+    "source": "It reduces the number of B cells in your blood by blocking the action of BLyS, a protein that helps B cells to live longer and is found in high levels in people with lupus.",
+    "reference": "Það dregur úr fjölda B-frumna í líkamanum með því að hindra virkni BLyS, próteins sem lengir líftíma B-frumna og finnst í miklu magni hjá fólki með rauða úlfa.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Það minnkar fjarvik B-flóðflagna í blóði þínum þar sem BLyS-efni, einmótubúin erlin, hafa virkni, hjálpar B-flóðflagnum að lifa lengur og er físt í hávöðum hjá sykluræðum."
+      },
+      {
+        "index": 1,
+        "text": "Þú færð minni fjölda B-kellja í blóði með því að eiga til baka verkar BlyS, próteína sem hjálpar B-kelljum að lifa lengur og finnst með háum magni í sjúklingum með lupus."
+      },
+      {
+        "index": 2,
+        "text": "Það minnkar fjöldi B-frumsýklana í blóði þínum með því að koma í veg fyrir virkni BLyS, próteinyð sem hjálpar B frumum til að lifa lengur og er fundinn á háum magni hjá mönnum með lupus."
+      },
+      {
+        "index": 3,
+        "text": "Það minnkar fjöldi B-klæða í blóðið með því að banna virkni BLyS, umræðufjóði sem þjóra B-klæðum til að lifa lengur og er finna í háu vöðvum hjá með slápur."
+      },
+      {
+        "index": 4,
+        "text": "Það minnkar fjöldi B fraka í blóði með því að hafa hafsstað á handlingu BLyS, próteins sem hjálpar B fraka að lifa lengur og er fundið í háu magni um fóður hjá fólki með lupus."
+      },
+      {
+        "index": 5,
+        "text": "Það minnkar fjöldi B frumna í blóðvöruðæmi vegna þess að BLyS, einn af próteintum sem hjálpa B frumnum til að lifa lengur, er hindrað."
+      },
+      {
+        "index": 6,
+        "text": "Það minnkar fæðahvörf B-fólk í blóðið með því að hafa monstrar á virkni BLyS, próteini sem hjálpa B-fólkum að lifa lengur og eru fengin með miklum háðagildi hjá fólki með lupus."
+      },
+      {
+        "index": 7,
+        "text": "Þetta minnkar fjarlægð B-klóttana af blóðvælinu með því að þjanna virkni BLyS, lífursýrðar sem hjálpar B-klóttum til að lifa lengur og er í hávæðum hjá því sem á svæðin."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Það minnkar fjarvik B-flóðflaugaðra hluta í blóminni með því að banna virkni BLyS, líffræðilegru protéins sem hjálpar B-flóðflaugum að lifa lengur og er fengið í miklum magni hjá sjúklingum með lupus."
+      },
+      {
+        "index": 1,
+        "text": "Þú færð minni fjölda B-kellja í blóði með því að eiga til baka verkar BlyS, próteína sem hjálpar B-kelljum að lifa lengur og er fengið á háu hátt hjáFullblóðlausum."
+      },
+      {
+        "index": 2,
+        "text": "Það minnkar fjöldi B-frumsýklana í blóði þínum með því að koma í veg fyrir virkni BLyS, próteinyðs sem hjálpa B frumsýklum til lífi lengra og er fýtt með háum magni hjá fólki með lupus."
+      },
+      {
+        "index": 3,
+        "text": "Það minnkar fjöldi B fruma í blóði þínu með því að blokkast virkni BLyS, umlíðeinyðars sem þjóra B frumum til að lifa lengur og er finnur í háum tæki hjá meðfærum með lupus."
+      },
+      {
+        "index": 4,
+        "text": "Það minnkar fjöldi B fraka í blóði með því að hafa hafa áhættu á tilgangi BLyS, lífursprótein sem hjálpar B fraka til að lifa lengur og er kominn fram í h Háttu sýkingar."
+      },
+      {
+        "index": 5,
+        "text": "Það dragar úr fjölda B-flóðfjölda í blóðinu með því að banna virkni BLyS, líffræðilegarsýrans sem hjálpar B-flóðfjöldum að lifa lengur og er fengið í háu styrkjum hjá þeim sem á sjúkdóm um blóðflóðfjölda."
+      },
+      {
+        "index": 6,
+        "text": "Það minnkar fæðahárnar í blóðinu með því að brenna verkanáttu BLyS, próteíns sem hjálpar B-fæðum að lifa lengur og fæst með miklum frekari þynningu í fæðahárnum á með meðhöndlu úrsluþagaskerðar."
+      },
+      {
+        "index": 7,
+        "text": "Þetta minnkar fjarlægð B-klóttana af blóðinu með því að brenna virkni BLyS, lífurðarproteins sem hjálpar B-klóttum að lifa lengur og er uppgötvað í háa meðalstæðum hjá fólki með lupus."
+      }
+    ]
+  },
+  {
+    "card": 14,
+    "id": "ParIce:1086503",
+    "stratum": "technical_medium",
+    "source": "The course consists of two modules, which may be taken separately or combined:",
+    "reference": "Námskeiðið samanstendur af tveimur áföngum sem má taka hvorn um sig eða saman:",
+    "A": [
+      {
+        "index": 0,
+        "text": "Áfør er tvo þáttur sem má taka saman eða í öðrum hætti:"
+      },
+      {
+        "index": 1,
+        "text": "Frágangurinn er upp á tvær hlutir sem má taka saman eða undir eitt:"
+      },
+      {
+        "index": 2,
+        "text": "Afmælismálum eru tvo efnahagsetningar sem geta verið teknuð tegundarlegra eða saman:"
+      },
+      {
+        "index": 3,
+        "text": "Framkvæmdastiginn består af tveimur vettvangi sem má taka einnig saman og tveimur eiga sér stað:"
+      },
+      {
+        "index": 4,
+        "text": "Í tímaðírunni eru tvö ríkið sem má taka er samkvæmt hverju sem er:"
+      },
+      {
+        "index": 5,
+        "text": "Hægt er að taka einhvern eiginlega tímabundið kennslahálastöð (t.d. e. „bækur“ í kennslunni) eða taka þau saman í tveggja tímabundiðna kennslahálastöðu:"
+      },
+      {
+        "index": 6,
+        "text": "Langurinn er framkvæmd af tvö fegurðum sem má taka sér fram eða nesja saman:"
+      },
+      {
+        "index": 7,
+        "text": "Lánmælið tekur tvo hluta sem kann að taka saman eða undirhraða:"
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Hlóðin gerist af tveimur skilum sem má taka sem eins eða saman:"
+      },
+      {
+        "index": 1,
+        "text": "Frágangurinn er upp á tvær hlutir sem má taka saman eða undir eitt:"
+      },
+      {
+        "index": 2,
+        "text": "Afidaðar leikverkir eru tvo veita sem má taka án afturherslis eða saman:"
+      },
+      {
+        "index": 3,
+        "text": "Framkvæmdastiginn består af tvö þætti, sem geta verið tækifærið til að taka einhluta eða þá saman:"
+      },
+      {
+        "index": 4,
+        "text": "Rithöfnin inniheldur tveir hóp sem má taka er samkvæmt hverju sem er:"
+      },
+      {
+        "index": 5,
+        "text": "Hæfið er tvo rinkja sem má taka sjálfum og samanbundna:"
+      },
+      {
+        "index": 6,
+        "text": "Áfagnarinnar eru tvær þáttir sem geta verið tekinn eiginlega, eða einn með öðrum:"
+      },
+      {
+        "index": 7,
+        "text": "Lánmælið tekur upp tvær hæfileikar, sem má taka af unum eða samanboru að:"
+      }
+    ]
+  },
+  {
+    "card": 15,
+    "id": "ParIce:742910",
+    "stratum": "technical_medium",
+    "source": "At the same time the socio-economic aspects inherent in the three priority themes and linked with the general topic of sustainable development will be tackled.",
+    "reference": "Samtímis þessu verður tekist á við félagshagfræðilega þáttinn sem er samfara meginefnissviðunum þremur og tengist hinu almenna markmiði um sjálfbæra þróun.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Þessum samvinnu verður að ræða þær eðlisfræðilegar og efnahagslegar framfar sem eru þær þrír stýripar, sem tengjast aðalþáttnum um öruggu þróun."
+      },
+      {
+        "index": 1,
+        "text": "Þótt það sé fram að þrátt fyrir þriðja mikilvægu máli og tengd stjórnandi þátt í að reynast heimilt, aðra hluta efnahagslegra og íþróttarlegra lífurs, er miðað við þátt í aðra hluta um að auka búnað efnahagslegri hlífki."
+      },
+      {
+        "index": 2,
+        "text": "Í sama tíma skal aðgengileg talsverðum þeim eiginlega valdandi ávinningum sem koma í hjálp við þessari þrjú mikilvægustu málin og tengjast almenna hópum um stöðugri þrýstingi."
+      },
+      {
+        "index": 3,
+        "text": "Sumum lagi er að ræða vörubundna efnahagslega og efnahagslega stöðu þessara þrjá mikilvægra máls og sem tengist almennum máli um vegnaðar þróun."
+      },
+      {
+        "index": 4,
+        "text": "Samsvarandi ástandi vaxta skal sérfræðileg og efnahagslegri hluti þess sem í þrjár frumskerina og tengdar almenninguðum málum um gildandi þróun."
+      },
+      {
+        "index": 5,
+        "text": "Í sama tíma mun framkvæmd þessara þrjá mikilvægustu þema og þeirra tengd við þá almenntu máli um stöðugri þróun gera þessum þeim aðstæður."
+      },
+      {
+        "index": 6,
+        "text": "Sá samtími er framkvæmd þess að hugsa um söfulega efnahagslegri þægilegum ávörum sem eru kenndar í þriðju megináttunum og tengdar alltþáttnum um jafngjafni þrýstingaveikinnar þrýstingarmál."
+      },
+      {
+        "index": 7,
+        "text": "Þegar þessi þriðju markmiðarhættir og tengd gagnvart umhverfisverunum rækta mætt er að ákvarða þessarhafna þeirra."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Þótt samræmtum dregið af þeim samhliða efnahagslegri og efnaskiptahagslegri hluta þessara þrjár markmiðarmeðferðirnar og tengjum þeim við almenntið um áhættuframboð og sjálfstæðir þróun verða stefnaðar."
+      },
+      {
+        "index": 1,
+        "text": "Þótt það sé fram að þrátt fyrir þriðja mikilvægu máli og tengd stjórnandi þátt í að reynast heimildarvísindir frá samhliða efnahagslegum og eiginleikum í þriðju mikilvægu máli og tengd við almennu málið um öruggan aðstæður."
+      },
+      {
+        "index": 2,
+        "text": "Í sama tíma skal aðgengileg talsverðum þeim áætluðu málinum sem hafa þá eiginleikar sem er að finna og þeim sem tengjast almennu málinu um ráðstafanir til að geta aðstoð í að verða að skölustæðum að því að verða að skilja af erarfæri."
+      },
+      {
+        "index": 3,
+        "text": "Sumum lagi er búinn að rannsaka þessari síðumbindingar, einkum og í stöðu þeirra þrjá mikilvægra máls og sem tengjast stólkunum um þróun sem eru í líf."
+      },
+      {
+        "index": 4,
+        "text": "Sams丸t á að nefra áhættulegri áfengi í þremur hlutum og sambreiðslu af þeim með almennu málið um stöðugt þróun."
+      },
+      {
+        "index": 5,
+        "text": "Í sama tíma mun ummatverður og efnahagslegur ástand þessara þriggja vörslu þáttu og tengd við almennum þáttum á vinkonaðætti tengist aðstæður fyrir aðrar vænnar þróun."
+      },
+      {
+        "index": 6,
+        "text": "Sá samtími er framkvæmd þessara þriðju hlutaðeigandi þættis og tengjandi almennum þætti um öruggan þróun."
+      },
+      {
+        "index": 7,
+        "text": "Þegar þessi þriðju markmiðargrein sem innihalda lífsemilag og fjárfesting ríkis eða ringsla og tengjast almennuhafsthöfu um sjálfstættar þróun verða þær finna að ræðum."
+      }
+    ]
+  },
+  {
+    "card": 16,
+    "id": "ParIce:1722911",
+    "stratum": "technical_medium",
+    "source": "Adverse events at very high doses were all considered to be related to an exaggerated pharmacological effect (decreased tissue perfusion due to increased blood viscosity).",
+    "reference": "Aukaverkanir eftir mjög stóra skammta voru allar taldar vera í tengslum við óhófleg lyfjafræðileg áhrif (minnkað gegnumflæði í vefjum vegna aukinnar seigju blóðs).",
+    "A": [
+      {
+        "index": 0,
+        "text": "Aukaverkanir í miklum skammtar varu allir tekin til að vera tengdar auknum lyfjalegra áhrifum (auðveltum hjartaþrýstingum vegna aukinn átökuna á blóðþurrku)."
+      },
+      {
+        "index": 1,
+        "text": "Mikilvægur ónæm leikki hefur verið telin tengjast of hlýðar lyfjahvörf (minnkað áætlun á blóðþrýstingi vegna aukin blóðþrýstingar)."
+      },
+      {
+        "index": 2,
+        "text": "Meðal aukaverkananna var allt tengd aukin lyfjahvörf (lækkað vöxt í blóðvísindaræði vegna aukin blóðvísindar)."
+      },
+      {
+        "index": 3,
+        "text": "Skemmdir sem meðhöndluðu óvirkar áhrif við mjög háa skammta var alls til neytist af því að það tekiði til að óþægileg verkun var aukin blóðþynning (að þynkuð verði blóðstund)."
+      },
+      {
+        "index": 4,
+        "text": "Miðlunar einkennum í mjög háum skomurnum var allt tekið fyrir sem tengd varðandi aukningu lyfjahvöðvunar (minnkuð blóðþurrðarheild vegna aukin blóðþurrðar)."
+      },
+      {
+        "index": 5,
+        "text": "Aukaverkanir í mjög stórum skammta voru allir teldir að fáðum efnalegum aukaverkunum (þrífti tjölaga vegna aukin blóðþýðis)."
+      },
+      {
+        "index": 6,
+        "text": "Við talaðir miklar skammtar, var öll tekin til að hafa samband við óþarfa lyfhefur, sem var að aukun í blóði, dregið á búning í eðlilegu lífum."
+      },
+      {
+        "index": 7,
+        "text": "Skemmandar aðrir aðrir hefur verið tekin til upphafs vegna miklar stakkja sem ákveðin var til að tala með að þau hafi verið viðvörun áframhaldandi lyfjahvörfu (greiðsla lífmi við aukna blóðvirði)."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Aunaverkanir í miklum skammtar varu allir tekin til að vera tengdar auknum lyfjalegra áhrifum (auðveltum prófnarsýni í vefum af auknum blóðþynningunni)."
+      },
+      {
+        "index": 1,
+        "text": "Aukaverkanir í mikið hita dreifum voru allir teldir að þær hafi tengist aukinni lyfjafleði (dúkum hitun í svæði vegna aukin blóðgleðsluefni)."
+      },
+      {
+        "index": 2,
+        "text": "Meðal aukaverkananna var líka talin vera sambærileg við aukna verkunarþrýstingi í líkamsblóði til að avorkunnar varðar aukna áhættu vegna aukna æfingar á blóðið."
+      },
+      {
+        "index": 3,
+        "text": "Skemmdir sem meðhöndluðu óvirkra áhrifa við mjög háa skammtar var alls tilgreind samræmt að þau hefðu áhrif á umثرn frá auknum blóðgreiningu."
+      },
+      {
+        "index": 4,
+        "text": "Miðlunarauka sem gerðust í miklu höfuðstuð um þær voru allar taldar að hafa tengi við óvirk þýðingu lyfja (minnkuðu blodþurrar sem varðar aukinn blóðþurrar)."
+      },
+      {
+        "index": 5,
+        "text": "Aukaverkanir í mjög stórt skammta voru allir taldar að hafa tengist úr minnkaðum vöktunum á húð vegna aukin blóðþýðingar."
+      },
+      {
+        "index": 6,
+        "text": "Við talaðir hárar skammta var öll tekin til að hafa sambandi við óþarfa lyfhefur sem myndu hafa tekið við aukin blóðþynning á vefum."
+      },
+      {
+        "index": 7,
+        "text": "Skemmandar aðrir aðrir voru áttu til að hafa tengist ofstóra lyfja skammti sem varðar aukningu blóðþyngðar á viðvörunargjöf á eignum."
+      }
+    ]
+  },
+  {
+    "card": 17,
+    "id": "ParIce:648947",
+    "stratum": "technical_medium",
+    "source": "The special manoeuvres mentioned under points 6.2.3 to 6.2.5 have to be implemented at the latest five years after entry into force of this Directive.",
+    "reference": "Þær sérstöku æfingar, sem um getur í liðum 6.2.3 til 6.2.5, skulu innleiddar eigi síðar en fimm árum eftir að tilskipun þessi öðlast gildi.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Meðal sérstakra hlutdeildanna sem um getur í liðum 6.2.3 til 6.2.5 skal framkvæma rannsóknirnar seja eftir að fimm árum eftir gildistig þessarar tilskipunar."
+      },
+      {
+        "index": 1,
+        "text": "Álagið eins og talin er í liðum 6.2.3 til 6.2.5 verður til framkvæmda síðast í fimm ár eftir gildistendanlar til þessarar tilskipunar."
+      },
+      {
+        "index": 2,
+        "text": "Útreikningar sem um getur í 6.2.3 til 6.2.5 liðar verða að vera framkvæmda einnig eftir að þeir settu í gildi þessa tilskipun í fimm ár."
+      },
+      {
+        "index": 3,
+        "text": "Þörfun er að þær sérstakar hreyfingar sem um getur í liðum 6.2.3 til 6.2.5 séu framkvæmdar síðar staðarríktar en tíð 5 ár eftir gildi þessa tilskipunar."
+      },
+      {
+        "index": 4,
+        "text": "Sjálfstæður leikja sem tilgreind voru í liðum 6.2.3 til 6.2.5 verða að vera framkvæmdi síðar en fimm ár eftir gildistöðnu þessa tilskipun."
+      },
+      {
+        "index": 5,
+        "text": "Lífliggjar uppfyllist recu eftir fimm árum eftir gildis gildis þessarar tilskipunar í liðum 6.2.3 til 6.2.5."
+      },
+      {
+        "index": 6,
+        "text": "Tilskipanirnar sem um getur í 6.2.3 til 6.2.5 korthafnar skulu gilda síðar en fimm ár eftir gildi þessarar tilskipunar."
+      },
+      {
+        "index": 7,
+        "text": "Aðrar framkvæmdarbúnaðar sem um getur í 6.2.3. til 6.2.5. liðum skulu gilda um eftir fyrstu í 5 ár þegar til skipulaginn gildir."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Meðal sérstakra hlutdeildanna sem um getur í liðum 6.2.3 til 6.2.5 skal framkvæma rannsóknir til þess að næst fremur fjögur ár eftir gildistýra þessarar tilskipunar."
+      },
+      {
+        "index": 1,
+        "text": "Álagi sem um getur í sér í 6.2.3. til 6.2.5. verða að gilda frá einu sinni eftir gildi þessa tilskipun."
+      },
+      {
+        "index": 2,
+        "text": "Útreikningar sem um getur í 6.2.3 til 6.2.5 skulu framkvæmdar bæði þegar þau hafa komið í gang og um þær leyfir eftir að þeim hefur orðið gert gildi þessar tilskipun."
+      },
+      {
+        "index": 3,
+        "text": "Þörfun er að þær sérstök hreyfingar sem um getur í liðum 6.2.3 til 6.2.5 séu framkvæmdar síðast eftir fimm ár og síðasundir af löggjöf þessa tilskipun."
+      },
+      {
+        "index": 4,
+        "text": "Sjálfstæðar markmiðir sem um getur í liðum 6.2.3 til 6.2.5 verða að framkvæmd í fjölvu árum eftir að tilskipun þessa er gild."
+      },
+      {
+        "index": 5,
+        "text": "Lífliggjar uppták sem um getur í 6.2.3 til 6.2.5 skulu beita síðast á fimm árum eftir gildi tilskipunarinnar."
+      },
+      {
+        "index": 6,
+        "text": "Tilskipunin um sérstökum kringumferðum, sem um getur í liðum 6.2.3 til 6.2.5, skal framkvæmd í síðasteigum fimm ár eftir að tilskipun þessa tilskipunar verður gildi."
+      },
+      {
+        "index": 7,
+        "text": "Aðrar framkvæmdarbúningar sem um getur er í 6.2.3. til 6.2.5. þar til skýrðu að framkvæmd þeirra verði síðar en fimm ár eftir gildisgildi þessa tilskipun."
+      }
+    ]
+  },
+  {
+    "card": 18,
+    "id": "ParIce:1641328",
+    "stratum": "technical_medium",
+    "source": "When adequate acute or chronic toxicity data for the mixture as a whole are lacking, “bridging principles” or “summation method” should be applied (see sections 4.1.3.4 and 4.1.3.5).",
+    "reference": "Þegar fullnægjandi gögn skortir um bráð eða langvinn eiturhrif blöndunnar í heild skal nota „brúunarreglur“ eða „samlagningaraðferð“ (sjá lið 4.1.3.4 og 4.1.3.5).",
+    "A": [
+      {
+        "index": 0,
+        "text": "Ef ekki hafa verið fundin nóg vel úrtryggingarupplýsinga um fullnægjandi ofhættu, sem eru í hópum og eru í langvænum hluta, skal nota þau aðferðir sem þjáir samanburði (sjá kafla 4.1.3.4 og 4.1.3.5)."
+      },
+      {
+        "index": 1,
+        "text": "Ef nauðsynleg ökutækiöryggisgæslu vegna smitvirkni eða langvinnar eiturverkanar til blönduðar efni er ekki til gögn um að ganga fyrir er \"bryggingarreglur\" eða \"samnefndar aðferðir\" beðið (sjá kafla 4.1.3.4 og 4.1.3.5)."
+      },
+      {
+        "index": 2,
+        "text": "Ef fullnægjandi upplýsingar um fullnægjandi skaðleghverfi eða meðferð með lengdar tíma fyrir sammælingsferlinum eru ekki til gagns skal nota áætlun eða hækkunarreglurnar (sjá kafla 4.1.3.4 og 4.1.3.5)."
+      },
+      {
+        "index": 3,
+        "text": "Ef ekki er fundinn fullnægjandi gögn um viðkomandi þróaðar eða langvinnar eiturhrif, fyrir hringjandi efni (s. kafla 4.1.3.4 og 4.1.3.5), skal beita þeim aðferðum sem eru gjöldum í þeim málum, þ.e. þeim aðferðum sem gerja gildi fyrir hringjandi efni, eða þá aðferð sem gerir gildi fyrir hringjandi efni."
+      },
+      {
+        "index": 4,
+        "text": "Ef fullnægjandi upplifunarþýðir eða langvinnar aukaverkanir fyrir sammála er ekki til að fella, skal nota þáttverurnar eða aðferð með endurskoðun (sjá kafla 4.1.3.4 og 4.1.3.5)."
+      },
+      {
+        "index": 5,
+        "text": "Þegar fullnægjandi upplýsingar um ofbeldi, sem eru til staðar eða langvinnar ofbeldi, fyrir lögregluna sem samsetningu eru ekki hæfir skal nota verktakningasöknuna eða verktakningastefnu (sjá kafla 4.1.3.4 og 4.1.3.5)."
+      },
+      {
+        "index": 6,
+        "text": "Þegar fullnægjandi gagna um ofscaranleg eða langvinn eiturhrif á blöndunni sem hluta er ekki til skulu „stöðvunarskilvirkar” eða „samlensuðarferli“ notaðar (sjá kafla 4.1.3.4 og 4.1.3.5)."
+      },
+      {
+        "index": 7,
+        "text": "Ef nægan upplýsingar um fullnægjandi skemmtun, sjálft fyrir bráðun og varla, eru ekki til fyrir smitandi sólblöndun er beitt aðeins með „brjótdæmi“ eða „haldandi reikningarmörku“ (sjá kafla 4.1.3.4 og 4.1.3.5)."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Ef ekki hafa verið fundin nóg vel úr hagnýta eða langvinnu eiturhrifum vegna blöndu, er að beita „þroskafræðilegu reglum“ eða „öflunaraðferð“ (sjá liðum 4.1.3.4 og 4.1.3.5)."
+      },
+      {
+        "index": 1,
+        "text": "Ef nauðsynlegar gögn um ofskauðuleika eða ofskulu á lengi fyrir hlið skiptu „línustendan til tengslar“ eða „tölfræðileg afleiðing“ (sjá kafla 4.1.3.4 og 4.1.3.5)."
+      },
+      {
+        "index": 2,
+        "text": "Ef fullnægjandi upplýsingar um aukaverkanir í tegundum (sérstaklega ofskotnir) fyrir sammælingsferli er ekki eingöngu fyrir framleiðsluveitinn varðar blöndun, skal nota þau aðferðir sem kalla um að hreyfist prófsönnun eða að samskiptastöðigjaldskrefi (sjá lið 4.1.3.4 og 4.1.3.5)."
+      },
+      {
+        "index": 3,
+        "text": "Ef ekki er greint fyrir fullvirk starfsgeymi við grunni náður að beita „brijandi áætlun“ eða „samnaldiðæmi“ (sjá kafla 4.1.3.4 og 4.1.3.5)."
+      },
+      {
+        "index": 4,
+        "text": "Ef fullnægjandi upplifunarþýðir fyrir sýni og langvinnar eiturhrif af blönduninni sem heilum er fjarlægð er að noti að „geimda“ eða „samsetningarmörk“ (sjá kafla 4.1.3.4 og 4.1.3.5)."
+      },
+      {
+        "index": 5,
+        "text": "Þegar fullnægjandi upplýsingar um ofbeldi, sem eru til staðar eða langvinn, fyrir samsettinguna sem lögu eru ekki til eru að beita að “bridging principles“ eða að aðferðinni að aðskilja (sjá kafla 4.1.3.4 og 4.1.3.5)."
+      },
+      {
+        "index": 6,
+        "text": "Þegar fullnægjandi gagna um ofskilning eða ofskilning hjá langvinni tíma til þess og samsetningarráðstafana eða samsetningarmώðar á staðar eru ekki hægt skal nota þær (sjá lið 4.1.3.4 og 4.1.3.5)."
+      },
+      {
+        "index": 7,
+        "text": "Ef nægan upplýsingar um öryggislegt hætta eða langvinn eiturhrif á blönduninni eftir haldi eru ekki til skulu „bundinna reglum“ eða „skammtaröðunaraðferð“ fyrir beitt (sjá kafla 4.1.3.4 og 4.1.3.5)."
+      }
+    ]
+  },
+  {
+    "card": 19,
+    "id": "ParIce21:norden:test:43",
+    "stratum": "technical_medium",
+    "source": "Work to enhance this partnership continues, and is based on the ministers for Nordic co-operations vision statement “Together we are stronger”.",
+    "reference": "Það starf mun halda áfram og þróast enn frekar á grundvelli yfirlýsingar samstarfsstarfráðherranna um framtíðarsýn; „Saman erum við öflugri“.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Vinnum er að breyta þessu samstarfsföringunni og grundvallar þess hlutdeildarreglur fyrir skiptið við samstarf á Norðurheminum sem „Við tölum við sterkara“."
+      },
+      {
+        "index": 1,
+        "text": "Við hafa verið að vekja þessa samstarfsbundi og er þetta byggja á þáttkvæma tilnefndunum fyrir norðaskrá samstarfs til að færa „Við erum sterkur“."
+      },
+      {
+        "index": 2,
+        "text": "Vinnu til að vaxa þennan samstarf er áfram og er grundvöldur ráðstöfunum „Við höfum stærri hæfi“ um norðursélfstæðina samstarfsminnstjóð ríkjanna."
+      },
+      {
+        "index": 3,
+        "text": "Viðvarðanum er endurhödd í samstarfsskapinu og byggð á munum á aðita aðgerðum, sem samkeppni málsstofuna í Norðurlyndi er að eiga við. E."
+      },
+      {
+        "index": 4,
+        "text": "Vinnu til að auka þessa samstarfskeppni er áfram og hún byggist á ákvörðun framlýsingar frá framlýsingum fyrir samstarfina á Íslandi: „Við erum sterkari saman“."
+      },
+      {
+        "index": 5,
+        "text": "Ákvæðin um að finna aðgerðir í þessa samninga stigi áfram og er byggð á þeim lögbærum ríkisskrafum fyrir „þátttakendum í snöggjum samvinnu“: „Við erum sterkur“."
+      },
+      {
+        "index": 6,
+        "text": "Vinnurinn er að viðeigandi áætlanum um innbúnaðarbundnu bættu sem áfram verður í viðkomandi samfélagskópfæri sem berist „Samt við erstækkum“."
+      },
+      {
+        "index": 7,
+        "text": "Vinnu til að auka þetta samningarkynni continued og byggist á tilmæli yfir öryggismálum Nordsæði Samtöðunarríkisins frá tillögum yfir „Við erum sterkur“."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Vinnum er að finna þessa samanburðaráttar og er grundvætt af miðtali kancellara fyrir norðsæra samstarfsreisinu aðeins."
+      },
+      {
+        "index": 1,
+        "text": "Við hafa verið að vekja þessa samstarfsbundi og er þetta byggjað á miðlunum til að viðskipta á Nauríu í hugsanlega samkeppni „Við erum sterkur“."
+      },
+      {
+        "index": 2,
+        "text": "Vinnu til að vaxa þennan samstarf er áfram og er grundvöld úr álitum reglur og heimsins um Norðursránnar samstarfsmáttmarkað."
+      },
+      {
+        "index": 3,
+        "text": "Viðvarðanum er endurhödd í þessari samstarfsborgarverki og er byggð á tekið fyrir sig af samkeppni málsáðs fyrir Nýsjóðina, „Við erum stærri saman“."
+      },
+      {
+        "index": 4,
+        "text": "Vinnu til að auka þessa samstarfskeppni er áfram og hún byggist á ákvörðun frændiþjónustu forþjóvnvarpais „Við taldum við stærri hæfi“."
+      },
+      {
+        "index": 5,
+        "text": "Ákvæðin um að finna að styrkja þessa samstarfsávinningu er áfram að vera og borgar um þakklæti til minnstjarða frá Noregi."
+      },
+      {
+        "index": 6,
+        "text": "Vinnurinn er að viðeigandi áætlanum um að gera þessa samstarfsborg komið fram, og baseinstur á ráðstöfunum fyrir Erkósku samstarfsríkisins sem sagt er: Við höfum sterkari samstarf."
+      },
+      {
+        "index": 7,
+        "text": "Vinnu til að auka þetta samningarkynni continued og byggist á tilmæli yfirritra áætlun herra fyrir samkeppni í Norder Þjóða: „Samt við erum stærri“."
+      }
+    ]
+  },
+  {
+    "card": 20,
+    "id": "ParIce21:ema:test:709",
+    "stratum": "technical_medium",
+    "source": "The other ingredients are sodium chloride, succinic acid, polysorbate 80, 2- phenoxyethanol and water for injections.",
+    "reference": "Önnur innihaldsefni eru natríumklóríð, succinic sýra, polysorbat 80, 2-fenoxýetanól og vatn fyrir stungulyf.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Hliðarinnar innihaldsefni eru natríumklóríð, súkínasýra, polysorbat 80, 2- fénoxýetanol og vatn til sprauta."
+      },
+      {
+        "index": 1,
+        "text": "Hér aðra innihaldsefni eru natriumklóríð, súkínasaðra, polysorbat 80, 2-fenóxyétóóól og vatn fyrir stungulyf."
+      },
+      {
+        "index": 2,
+        "text": "Aðrar innihaldsefnið eru natríumklistrat, síkínasýra, polysorbat 80, 2- fénonoxýetán og vatn til stungulyfja."
+      },
+      {
+        "index": 3,
+        "text": "Aðrar innihaldsefnið eru nátriumklóríð, súkínusýra, polysorbat 80, 2-formóxyetanol og vatn fyrir stungulyf."
+      },
+      {
+        "index": 4,
+        "text": "Aðrar innihaldsefnið eru natríumkloríð, súkínasýra, polysorbat 80, 2- fesóxyetanol og vatn fyrir stungulyf."
+      },
+      {
+        "index": 5,
+        "text": "Við öðrum innihaldsefnum eru natriumklóríð, súkínásýra, polysorbat 80, 2- fenoxýetanol og vatn til sprauta."
+      },
+      {
+        "index": 6,
+        "text": "Hlutaðeigandi innihaldseftirnar eru natríumklóríð, súkínósýra, polýsorbat 80, 2-fenóxýetanol og vatn fyrir stungulyf."
+      },
+      {
+        "index": 7,
+        "text": "Aðrar innihaldsefni eru natríumklóríð, súkínatsýr, polysorbat 80, 2-fenoxýetanol og vatn fyrir sprauta."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Hliðarinnar innihaldsefni eru natríumklóríð, súkínasýra, polysorbat 80, 2- fénoxýetanol og vatn til sprautur."
+      },
+      {
+        "index": 1,
+        "text": "Hér aðra innihaldsefni eru natriumklóríð, súkínasaðra, polysorbat 80, 2-fenóxyétóll og vatn til sprauta."
+      },
+      {
+        "index": 2,
+        "text": "Aðrar innihaldsefnið eru natríumklistrat, síkínasýra, polysorbat 80, 2- fenoxetylýten og vatn fyrir inndælingar."
+      },
+      {
+        "index": 3,
+        "text": "Og aðrin er súkrólsýra, natriumklóríð, polysorbat 80, 2-fensóxýetán og vatn til stungulyfna."
+      },
+      {
+        "index": 4,
+        "text": "Aðrar innihaldsefnið eru natríumklorít, súkínasýra, polysorbat 80, 2- fenyóxyetanol og vatn fyrir stungulyf."
+      },
+      {
+        "index": 5,
+        "text": "Hlutfallið inniheldur natríumklóríð, súkínasað, polysorbat 80, 2. fenoxéteþýð og vatn fyrir stungulyf."
+      },
+      {
+        "index": 6,
+        "text": "Hlutað ára innihaldsefni eru natríumklóríð, súkínósýra, polysorbát 80, 2- fosóexetóól og vatn til stungulyfna."
+      },
+      {
+        "index": 7,
+        "text": "Aðrar innihaldsefni eru natríumklóríð, súkínatsýr, polysorbat 80, 2- fénoxýetanol og vatn til sprauta."
+      }
+    ]
+  },
+  {
+    "card": 21,
+    "id": "ParIce21:norden:test:100",
+    "stratum": "technical_medium",
+    "source": "These issues are high on the governments agendas,” says Høybråten.",
+    "reference": "Þessi málefni eru ofarlega á dagskránni hjá ríkisstjórnunum,“ segir Høybråten.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Þessar áhættaréttar eru í framanáttun erlenda ríkisgreinina,” segir Høybrætan."
+      },
+      {
+        "index": 1,
+        "text": "Vegna þessara tilvikanna kemur stofnunin á agenda,\" segir Høybrætnir."
+      },
+      {
+        "index": 2,
+        "text": "Þetta vantar margt og stendur á forangaðætti yfirvöldanna,\" segir Hreybræton."
+      },
+      {
+        "index": 3,
+        "text": "Þessar mál eru áframhaldandi áhættu áytskilum yfirvalda,\" segir Høybræt."
+      },
+      {
+        "index": 4,
+        "text": "Þessum markmiðum stendur þungu á regluqartanum vegna þess að Hørbrætn er að segja."
+      },
+      {
+        "index": 5,
+        "text": "Þessar ermörðir eru í heima áætlanum regnunarinnar,” segir Høybratnir."
+      },
+      {
+        "index": 6,
+        "text": "Þessar málsáttir vera hægri á vörslu yfirvaldanna,” segir Høybråten."
+      },
+      {
+        "index": 7,
+        "text": "Þessar markmið um í raun eru yfirvik á háttum yfirvalda,” segir Høybræt."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Þessar áhættaréttar eru í framanstæð eráttur yfirvöldanna,” segir Høybrætan."
+      },
+      {
+        "index": 1,
+        "text": "Vegskipti til þess eru í hátt á áætlunum stjórnvalda,\" segir Høybråten."
+      },
+      {
+        "index": 2,
+        "text": "Þetta vantar margt og stendur á forangaðætti yfirvöldanna,\" segir Hreybræton."
+      },
+      {
+        "index": 3,
+        "text": "Þessar mál eru áframhaldandi áhuga yfirvalda,” segir Hoybraten."
+      },
+      {
+        "index": 4,
+        "text": "Þessum markmiðum stendur þungu á regluqartanum vegna þess að Hørbrætn er að segja.\""
+      },
+      {
+        "index": 5,
+        "text": "Þessar ermörðir eru meiri upptekin á ævintýraðum fólkstofnana,” segir Høybråten."
+      },
+      {
+        "index": 6,
+        "text": "Þessar málsáttir vera hægri á vörslu yfirvaldanna,” segir Høybråten."
+      },
+      {
+        "index": 7,
+        "text": "Þessar málsávin eru í háa stigi á skoðunum Stjórnvöldanna,” segir Høgbrotson."
+      }
+    ]
+  },
+  {
+    "card": 22,
+    "id": "ParIce21:eso:test:763",
+    "stratum": "technical_long",
+    "source": "“The VFTS 352 is the best case yet found for a hot and massive double star that may show this kind of internal mixing,” explains lead author Leonardo A. Almeida of the University of São Paulo, Brazil.",
+    "reference": "„VFTS 352 er besta dæmið sem við höfum fundið til þessa um heitt og massamikið tvístirni þar efnisblöndun af þessu tagi gæti átt sér stað,“ segir Leonardo A. Almeida við São Paulo háskóla í Brasilíu, aðalhöfundur greinarinnar um rannsóknina.",
+    "A": [
+      {
+        "index": 0,
+        "text": "“VFTS 352 er bestu dýrlegur tilfinningur áður sem fullbúið gæti töflustígur sem geta sýnt þessa tegund innihaldsöflunar,” útskýrir leichið aðferðafræðingur Leonardo A. Almeida frá Þýskum heimsóknarþjófa, Þýskalandi."
+      },
+      {
+        "index": 1,
+        "text": "\"Þessi VFTS 352 er besta tilnefndurri besti gert fyrir slíkja heil samanburðaratið sem þótt geti sýnt þetta gerð innri blöndu,\" útskýrifi leiðir athugandagjaldarmannur Leonardo A. Almeida af Þýskulaugungsskóla í São Paulo, Brazíland."
+      },
+      {
+        "index": 2,
+        "text": "Í VFTS 352 er besta tilvistin sem finnst til að stuðla til þess að hár og alvarlegur dáljarhættu geti sýnt þetta gerð innra blöndunar, segir leiðaveitartilkynntur Leonardo Almeida frá Uníverði í São Paulo, Brúþjóðin."
+      },
+      {
+        "index": 3,
+        "text": "VFTS 352 er bestu tilvikur síðar gekur og þungur tveggja stígja sem getur sýnt þennan tegund innri blanda í þessari andliti.“Sá leiðabúnur, Leonardo A. Almeida, stjórnanda þjóðfræðinkolleksins í São Paulo, Brássalandi, sagt um þetta."
+      },
+      {
+        "index": 4,
+        "text": "„Viðskiptaskilfleiðisnotkun 352“ er besti sögga sem komið er fyrir um þann hvarðleg, þrágjasta tveggja stjörnu sem getur sýnt þetta tegund innra blanda, á að Léonardo A. Almeida, leikrænsautarinn að Þýskalandi, í þýsku, University of SaoPaulo, Brazil."
+      },
+      {
+        "index": 5,
+        "text": "„VFTS 352“ er besta tilvísun til þess sama tveggja tímaröðurs sem á sér stað í Búkvæðum og getur sýnt þá eðlilegri innihaldsskiptu í kringum meinskju í salanum,” útskýrir leitið, A. Almeida, fyrirmælið í Váhríðum félögum í São Paulo, Brátil."
+      },
+      {
+        "index": 6,
+        "text": "„The VFTS 352 er besta tilvik sem komist upp til staðar fyrir kyllu og meiriháttu tvö stjörnu sem geta sýnt þennan tegund innri blöndunar“, útskýrir leiðsögnarfræðingur Leonardo A. Almeida frá heiminásáheadarfæri í São Paulo, Bráttíu."
+      },
+      {
+        "index": 7,
+        "text": "„Storfræðin, sem birtist um 352 milljóna ára, er besti koma fyrir þar sem nógu hita og óþurrkað áður hvíldur stuðlari leiðir að að kvörðum fengi þessi tegund innra blanda“ segir leikfólk Leonardo A. Almeida frá Sveitaríu, Portugal."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "“VFTS 352 er bestu dýrlegur tilfinningur áður sem fullbúið gæti töku að staðarþrýsting mun endurteini og mikilvæg, sem getur sýnt þessa gerð inni,” selji leiðbeiningarritinn, Leonardo Almeida, heimskeppisfræðingur í Voronita, byrjunarþingi Vísindanna í Brazilíu."
+      },
+      {
+        "index": 1,
+        "text": "\"Þessi VFTS 352 er besta tilnefndurri besti gert fyrir slík dupleiðstætt starf sem þannig getur sýnt innri blanda,\" útskýrir leikafræðingur Leonardo A. Almeida frá Súpu University í Brasíu."
+      },
+      {
+        "index": 2,
+        "text": "Í VFTS 352 er besta tilvistin sem finnst til að stuðla til þess að hvarðar og mikla duplestar sem geta sýnt þetta gerðir innra blöndunar í sér, segir leikinnar vinnslugripinnur Leonardo A. Almeida frá þjóðunætingu í São Paulo, Bráttaland."
+      },
+      {
+        "index": 3,
+        "text": "VFTS 352 er bestu tilviki síðar gekkin eftir fyrir þann tímu sem kann að sjá eftir þeirri geymi sem er hæfileg og hafa þessu tæki fyrir sér í inndæli,\" útskýrir upprunalega skráður reynslutækisautoran Leônardo A. Almeida, útdóttur fyrirtækis í SãoPaulu, Brazil."
+      },
+      {
+        "index": 4,
+        "text": "„Viðskiptaskilfleiðisnotkun 352“ er aðeins slægt tilboð fyrir helvít, mikilpára dílar sem geta sýnt þetta gerð í innri blöndu“ segir leiðbeitingaforskrifandi Leonardo A. Almeida, í heiminum í São Paulo, Brazil."
+      },
+      {
+        "index": 5,
+        "text": "„VFTS 352“ er besta tilvísun til tíu starðs, sem eru heit og þótt mikilvægur, sem getur sýnt þessa tegund innri blanda,” segir leikamenninn Leonardo Almeida, af þjóðfræðingarskóla Suður-Brunavia."
+      },
+      {
+        "index": 6,
+        "text": "„The VFTS 352 er besta tilvik sem komist upp til að þegar er kosið og gjöfn hundraðstækkur stjörnu sem kannski myndast þessig innri blanda“, útskýrir leiðfileg yfirræðing Leonardo A. Almeida frá Þýskulegríðri þjóðhópalími føroyskri þjónustuna."
+      },
+      {
+        "index": 7,
+        "text": "„Storfræðin, sem birtist um stöðlegum, vöðugum tilvöxtir, sem hvorki eiga eiginlega þátt á, hvort sem þau eiga tilvöxtu að kvöldi, og sem geta sýnt þetta á innræðilegum þætti,“ bíður lýsandi aðila Leonardo A. Almeida frá Þýskulaustur, Bráðalandi."
+      }
+    ]
+  },
+  {
+    "card": 23,
+    "id": "ParIce:314793",
+    "stratum": "technical_long",
+    "source": "In addition, the entity is not entitled to reinvest such cash flows, except for investments in cash or cash equivalents (as defined in IAS 7 Cash-flow statements) during the short settlement period from the collection date to the date of required remittance to the eventual recipients, and interest earned on such investments is passed to the eventual recipients.",
+    "reference": "Auk þess hefur einingin ekki rétt á að endurfjárfesta þess háttar sjóðstreymi ef undan eru skildar fjárfestingar í handbæru fé eða ígildi handbærs fjár (eins og það er skilgreint í IAS-staðli 7, yfirlit um sjóðstreymi) á því stutta greiðslutímabili frá innheimtudegi til þess dags þegar krafist er greiðslu til endanlegra viðtakenda, og vextir sem safnast á slíkar fjárfestingar greiðast endanlegum viðtakendum.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Þar með er að veita einhverju ekki aðstoð til að endurbyrja slæmar fjárfestingar, nema um ræðilegri aðskildar fjárfestingar í vörnu eða vörnusvörunum (þ.e. aðskildar fjárfestingar sem skilgreindar eru í IAS-stöðu fyrir fjárfestingar) sem varðar virðju eða vörnusvöruna á tidinn sem gefur um í samræmi við koma og skuluð ferð að endurheimtinum, og þá innrenslefur vörnusvörun sem tryggður er verðins fyrir endurheimtinum."
+      },
+      {
+        "index": 1,
+        "text": "Einungis getur einingin ekki veitt stjórnarmögnun við endurætlaðar skuldur á efnasprengjum, nema viðboð á efnisbreytingum, sem dæmist fyrir efnisbreytingar eða efnisbreytingareikningar (þar sem sýnt er í ISAS 7, efnalistir annars sjóða) í undirhaldssemi fyrir fjármögnun á einingnum frá þeim dag sem skipti þegar er greitt frumsið til þess dag sem þarf að fylgja innræmda endurnýtingu til ályktanra fjárfestingsreikanda, og áhættuafurðir sem reiknaðar eru af slíkri endurboð er endurleiðin til endurboðanna."
+      },
+      {
+        "index": 2,
+        "text": "Einnig er einingin ekki rétt á endurhöfðun þessara gjaldflaða, að undanskildum því að sjá til fjárfests á gjald eða gjaldsveitingum (sennilega þeim sem skilgreind eru í IAS 7 gjaldflutningsvottorð) á tíðum tengjandraðaunum frá þegar gjöldin eru köluð í þegar kerfi er innihaldið til þar til launafyrirtækja, og innihalds þeirra sem endurverður sækir er haldinn á innihaldsfrjálsri niðurstöðu."
+      },
+      {
+        "index": 3,
+        "text": "Það er ekki einhverja reikninga fyrir um að endurnýja slíkar reiknaðarreinndur nema viðaðvalin sé í efnahagslegu efnisfrum (sjá IAS-staðal 7 um efnisfruminn) fyrir tíðri samningssvið frá því þótt þegar færið hefur verið tekið til og viðmiðanartíðni til þeirra endanlegra aðendursendendur, þar sem er greint á eftirfarandi settu:"
+      },
+      {
+        "index": 4,
+        "text": "Einungis er heimilt að endurskoða svona græðefni, nema viðskipti í græðefni eða græðafjárhæfir (þ.m.t. fjárhæfir, eins og skilgreind er í IAS-stöðu frá græðefnum), á síðari aðilsvithjálpsferð frá frumkvæði til fullkomna viðskiptaskipa, og hvarif í háræði er greitt, er gert til fullkomna viðskiptaskipa."
+      },
+      {
+        "index": 5,
+        "text": "Eftirfarandi er ekki heimilt að endurskoða slíkar gjaldfæra, nema viðskiptum í gjaldi eða gjaldæmi sem kveðið er á um í IAS-skið 7, í tæmuðri skiptismyndinni, frá fengið dagsetningu til dagsetningu þar sem þarf að senda gjald til ákveðnum skipanum og hafið skuldbandalag áslagsins á slíkum skiptum."
+      },
+      {
+        "index": 6,
+        "text": "Einungis er félagi ekki heimilt að endurgreiða slíkar öskur ekki undanfarið ef þau eru í fjárfestingum frá fjárfestingunni til þegar þau eru skuldbúnað til endurgreiningar við gagnavörur, og þar eru innstættir fjárfestingar í öskunum sem eru ösk orð eða öskur í samræmi við ösk (sem skilgreind er í IAS-staðli um öskum áferðum). Samkvæmt IAS-staðli um öskum áferðum eru þeir sem hafa innstætt fjárfestingar á öskunum, nægileg ástæðu, sem innstætt eru fjárfestingar í öskunum sem hafa innstætt er geymd."
+      },
+      {
+        "index": 7,
+        "text": "Efnin er ekki hæfar til að endurgreidda slíkt pánafraðanum, nema viðskipti í pánum eða pánavarð (sem er skilgreind í IAS 7 pánafraðanum), á meðan í nánari samafræðisvinnu fer eftir (fyrirtæki til sendar sem ákveðin er á meðan í nánar samafræðisvinnu sendi eftirlitinn eftir þeirri send eða send er á meðan í nánar samafræðisvinnu sendi eftirlitinn eftir þeirri send og þegar innlendingurinn hefur fengið þau þá skulu innlendingurinn fá fjármun af þeirri send og fyrirhuguð efni á þeim send."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Það er ekki heimilt að endurgreipja slíka réttin meðferð, nema viðskipti á réttar hópum ef í vettvangi sé orðin geymd og vörur í geymdi (þannig sem skilgreint er í IAS-staðli fyrir eigumbrot), á snemma skiptipanum frá þegar aðfangasjáktarinnar er hefst til þess ráðstafana sem aðgerðin ættu að senda til samræmda sjálfstæðar aðila, og hverjar þeirra hafa komið upp á staðbundinni reikningi er tilgreind á samræmdum aðila."
+      },
+      {
+        "index": 1,
+        "text": "Hæfðar einnig er einkennari ekki rétt að endurbæta þessum lækju, nema um verið sé að veita fjárhæð í færi eða færið sem er skilgreint í IAS 7 færiþáttum í rannsóknarmálum, á tímabili lokaðar afturgerðar yfirfræðilegri farið og að reglulegu ósk af að því að færið var veitt, er gefið til að fengið farið aftur."
+      },
+      {
+        "index": 2,
+        "text": "Einnig er einingin ekki rétt að endurhöfða slíkar kauppkjarnir, að undanskildum voru þeirra efnahagslegi efnahagslegir samanburðarbótir (sem er skilgreind í IAS 7 kvörðunarskilningum) á því að tækifærið er á milli þess að kominverðin komið yfir og þess daginn sem þarf að senda að því að verðfari yfirkomandi nautnara, og meðvirkt óðarbog er endurspeglistur á þeim efnahagslegum þeim sem gera verður."
+      },
+      {
+        "index": 3,
+        "text": "Það er ekki einhverju tilhægt að endurgreina svipaðar kortflæði, nema viðskipti í korta eða viðskipta sem eru tilgreind í IAS-bótlaustunum (IAS 7), áður en það er lögð fyrir skuldbreivinn á hér til þess sem þáskurðarlæknir eru, og skuldbreytingar á svipaða korta eru gefnar til þess."
+      },
+      {
+        "index": 4,
+        "text": "Einungis er heimilt að endurskoða svona græðslu, að undanskildu að því er varðar fjármun í græðslu og græðsluþáttar (sem er skilgreind í IAS-7 niðurstöður um græðsluaðstæður) á viðhaldsáætlunum, frá tilkynningardag til þeirra dagana þar sem þarfi er að fara til, og þá stund sem græðsla hefur komist á, er græðsluþáttarinnar undir hún."
+      },
+      {
+        "index": 5,
+        "text": "Þó að ekki verði að endursélda sjóða en að því er varðar fjárfestingar úr sjóðum (sjá IAS 7, staðreyndir um aðskilið) á aðaðernarskilyrði tímabilnið frá þegar fengið er aðskilið til að tilkynna sem á að senda að endurnýtingaraðilnum (sjá IAS 7, staðreyndir um aðskilið) inn í stöðum til að verja sér eftir þeim."
+      },
+      {
+        "index": 6,
+        "text": "Einungis er félagi ekki heimilt að endurgreiða slíkar öskur ekki undantekindi um fjárfestur í öskum eða öskukjölum (sem er skilgreindar í IAS 7,\"Öskubrotastýrslur\") á snöggri endurgreiðslugsvigtinum frá þegar þeir eru laust tilkynnt og þegar viðkvæmt send sé á aðgerðinni til að vernda fyrir endurgreiðslu og innihalds suyurtun sem það á belagi til að vernda fyrir endurgreiðslu."
+      },
+      {
+        "index": 7,
+        "text": "Efnin er ekki hæfar til að endurgreidda slíkt pánafraðanum, nema viðskipti í pánum eða pánavarð (sem er skilgreind í IAS 7 pánafraðanum), á meðan í nánari endurheimtarfrist er rekað upp í þeim vörslu sem kerst er á um til endurgreiddra hluta í aðgerðinni sem verður að eiga, og heilanlegar ástærðar á slíkrum endurgjaldi er gefið upp til endurgreiddra hluta."
+      }
+    ]
+  },
+  {
+    "card": 24,
+    "id": "ParIce:804526",
+    "stratum": "technical_long",
+    "source": "A pensioner who is entitled to draw pensions under the legislation of two or more Member States, of which one is that of the Member State in whose territory he resides, and who is entitled to benefits under the legislation of the latter Member State, taking account where appropriate of the provisions of Article 18 and Annex VI, shall, with the members of his family, receive such benefits from the institution of the place of residence and at the expense of that institution as though the person concerned were a pensioner whose pension was payable solely under the legislation of the latter Member State.",
+    "reference": "Lífeyrisþegi sem á rétt á lífeyri samkvæmt löggjöf tveggja eða fleiri aðildarríkja, að meðtalinni löggjöf þess aðildarríkis sem hann er búsettur í, þar sem hann á rétt á bótum samkvæmt löggjöf þess ríkis, með tilliti til ákvæða 18. gr. og VI. viðauka eftir því sem við á, skal, ásamt aðstandendum, fá bætur frá stofnun á búsetustaðnum og á kostnað hennar eins og sá sem í hlut á væri lífeyrisþegi sem ætti eingöngu rétt á lífeyri samkvæmt löggjöf þess ríkis.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Geðræna efri og hefur rétt á geðrageðin yfir undir skuldbindingu tveggja eða fleiri aðildarríkjna, þar sem ein er ríkið þar sem hann býr, og er rétt á viðbótum yfir undir skuldbindingu þess aðildarríkjns sem hann býr á, skal gefa þessum geðræjum og hafa samhluta þeirra að fengi svona viðbót yfir undir skuldbindingu þess aðildarríkjns sem hann býr á, með tilliti til ákvæða 18. gr. og VI. viðauka, með þeirri aðill sem komi í veg fyrir þessu, þegar geðræjar afurðar eru reiknaðar úr geðræjastofnun sem er á viðskipti við hana og hætta til þess að umhverfið sem varðræstar sést yfir af skuldbindingu þess aðildarríkjans sem hann býr á, sé þeirra geðræjar efurðar ef um er að ræða hafa viðskipti við hana og hætta til viðskiptastofnunarinnar sem er á viðskipti við hana og hætta til þess að um"
+      },
+      {
+        "index": 1,
+        "text": "Veðurstefnir þeirra, sem hafa rétt að fá veðurstefnir samkvæmt löggjöf tveggja eða fleiri aðildarríkjna þar sem hann býr, og hafa rétt að aðstoð samkvæmt löggjöf hinna, skal fela þeim, með þeim aðstæður sem er viðkomandi 18. gr. og VI. viðauka og þeirra frændi, þann aðstoð en að því er varðar, hvort um ríkissjóð er að ræða og þá hagnað birtist á hvort þá ríkissjóð, ef um er að ræða, hafi ábyrgð frá þeim til rekstrarins, frekar eins og um ræðir þeirra hafi verið aðstoð við veðurstefnu þeirra sem veðurstefnin er eftirlit með sér til fullnægis við sami löggjöf aðildarríkanna."
+      },
+      {
+        "index": 2,
+        "text": "Gefur áfréttin, sem á heimiliansröð með þeim löggjöf sem er reglulega fyrir tveimur eða fleiri aðildarríkjum, þar sem hvers konar aðildarríki fær þá aðli sem er aðildarríkið sem hann býr á, og er verndarþróunin úr með þeim löggjöf sem er reglulega fyrir hinum, með viðeigandi takmarka til þeirra í 18. gr. og viðauka VI, að meðvali frændisins á heimildsstöðinni, og með aðstöðu þess þróaðar stöð varðandi þann aðili sem um er að ræða, skal hægt sé að fá þessum verndum frá stöðinni og með þeim aðstöðu sem þróaður er aðili sem verndarinn er á heimildsstöðinni sem er reglulega fyrir aðildarríkið sem hann býr á."
+      },
+      {
+        "index": 3,
+        "text": "Að afmælitunar meðalaverðar, sem hafa rétt á eftirlitsborg og er í samræmi við löggjöf tveggja eða fleiri aðildarríkjanna, þar sem ein af þeim er aðildarríkið þar sem hann býr, og er rétt á viðskiptabräðingum undir löggjöf aðildarríkinna svo sem þann sem er að afmælitunar er að takmarkast á reglum 18. og VI. viðauka, skal með afmælitunum af fjölskyldu sínum fá svona að viðmiðun frá stofninu þar sem hann býr og þá samkvæmt þeim aðfangi sem þau stofna eins og ef við komið var að hlutaðum að er varlega umferðari, sem er um ræðan, væri að afmælitunareiningar úr eftirlitsborgarstofninu, sem er að afmælitunar meðalaverðar, sem hafa rétt á eftirlitsborg og er í samræmi við löggjöf aðildarríkjanna."
+      },
+      {
+        "index": 4,
+        "text": "Hjónastjórni, sem er heimilt að fá heimannsóknir samkvæmt löggjöf tveggja eða fleiri aðildarríkja þar sem einn er aðildarríkið sem hann býr á, og sem er heimilt að fá vöruskyldu samkvæmt löggjöf hennar sem búst er á, skal vera með aðilum sínum fræðogjörnum: þá yfirborð sem hún býr á og á skuldbindingu þessara aðila að hafi gert, annaðhvort með þeim aðilum sem hún býr á, sem hún býr að með skuldbindingu þessrar aðila að hafi gert, og hefðu skulið, hér sem eða eftir staðnum, á því að það var í eðlilegum skuldbindingu um að Fullgjöf gönguforskrifta í VI. viðauka 18. gr. og hafa efni sem hún býr að þegar hún býr á, sem hvorki yfir eða eftir staðnum, þegar þeir umræddar yfirborðs yfirhanda."
+      },
+      {
+        "index": 5,
+        "text": "Íbúðarfrjósemi sem er rétt að fá innbúðir vegna færslu, undir löggjöf tveggja eða fleiri aðildarríkja, þar sem einn er aðildarríkið sem hann býður þátt í, og sem er rétt að ráðstafanum vegna þeirra aðstæðna í löggjöf hinnesns aðildarríkisins, teknu við viðeigandi framsetningu 18. gr. og VI. viðauka, skal, með lífögnum sínum, fá slík ráðstafanir frá fylkismálaþéttinu, og á fjárhæð af þeim hlutdeildararmiðjunum, ef það varðar hann, sem er þeirra búðfrjósmenn, og sé rétt að fá ráðstafanir vegna þeirra aðstæðna í löggjöf hinnesns aðildarríkisins, einungis vegna þeirra aðstæðna í löggjöf hinnesns aðildarríkisins."
+      },
+      {
+        "index": 6,
+        "text": "Rjóslega sem á rétt að fá rjósa með eigin leyfðum reglugerðum tveggja eða fleiri aðildarríkjanna, þar sem einn er aðildarríkið þar sem hann býr, og er réttur að þætti við reglugerð þess aðildarríki sem hann býur í, að taka til þeirra reglum í 18. gr. og VI. viðauka, sem þeir umrænda, fá þessu þætti með þeirri fjölskylda sem þeir fá af stjórnvaldinu þar sem þeir býr að, sem vaðar er að ræða, þegar rjósaðar skulu með stjórnaðarheimilunum sem þeir býr í, ef það er til því að semi það gerist að ræðu þá sem gætu verið rjósaður, sem rjósaðar skulu með stjórnaðarheimilunum sem þeir býr í, sem þeir sjálfum séu rjósaðar, og því skuldar rjósaðar, sem reglur þess aðildarríki sem þeir býr í, sem skuldar rjósaðar, sem reglur þess aðildarríki sem þeir býr í, sem þeir sjálfum"
+      },
+      {
+        "index": 7,
+        "text": "Sjálfboðinn er rétt að fela sálfboð þar sem skuldbindingar eru komnir fram með löggjöf tveggja eða fleiri aðildarríkjanna þar sem hann býr, þar sem einn er að tiltekinn aðildarríki, og er rétt að getað að bjargar til undan skilgreiningu löggjöfs þess aðildarríki, að taldi við viðeigandi skilyrði skilgreiningar 18. gr. og VI. viðauka, þar sem þeir aðildarinnir húsisins, sjá um slíkar bjargar frá stofnun á búsetuveitindi, og af því skyni að viðmiðunari sé sjálfsreiknaður þar sem sjálfboðinn er rétt að fela sjálfsreiknaðarbjarga sem rétt er að fela sjálfsreiknaðarbjarga þar sem skuldbindingar eru komnir fram með löggjöf þess aðildarríkjanna og sem rétt er að fá þær aðgerðir."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Geðræna efri og í einkum fjáraráhæfði sem hefur rétt á fjára á fjarlægðaráætlunum sem flutna með ákvæðum tiltekinnra aðildarríkja, sem eru tveggja eða fleira aðildarríkja sem einn er aðildarríkið í þeirri aðildarríki sem hann býr í, og sem hefur rétt á fjáraráætlunum sem flutna með ákvæðum þeirra aðildarríkja, og teknu framfæri, þar sem við á, á ákvæðum 18. gr. og VI. viðauka, með aðillum eiginbúingjara sínum skaða þannig af því að þeir eru fjáraráhæfður sem hefur rétt á fjáraráætlunum sem flutna með ákvæðum tiltekinnra aðildarríkja sem er varðar aðila aðila fjáraráætlunanna sem flutna með ákvæðum tiltekinnra aðildarríkja sem er varðar."
+      },
+      {
+        "index": 1,
+        "text": "Veð tilvísun til sér hafa þeir stjórnsýslueintölvur, sem hafa rétt að fá veð í samræmi við laglaga tvö eða fleiri aðildarríkjanna, þar sem einn er aðildarríkið þar sem hann býr, og hafa rétt að þeim viðbótum sem hafa samræmi við laglaga afturstaðlið og hafa hafa hafa hafa ákvarðað að taka tillit til ákvæða 18. gr. og VI. viðauka, skuli við hliðina með hjálfum sínum fela svona viðbót frá stofnunu þar sem hann býr og innbyggja hennar á eftir að þessi aðilar séu viðhaldsreikningi aðilans, sem hafi rétt að fá þessi viðbót í samræmi við laglaga afturstaðlið."
+      },
+      {
+        "index": 2,
+        "text": "Gefur áfréttin, sem á heimiliansröð með stuðulum frá tveimur eða fleiri aðildarríkjum, þar sem einn er aðildarríkið, sem á heimsjálfni hans, og er háttarverðar störfum með leyfi þessra aðildarríkjar, annaðhvort í sambandi við 18. gr. eða VI. viðauka, skal, með konum sínum, fá slík starfsemi úr stjórnunarstöðinni þar sem hann býr og er á meðval þessara stofnanna sem aðstoðskerfið gæti gert úr þessu stofnu."
+      },
+      {
+        "index": 3,
+        "text": "Stýringarnir skulu, með þeim hlutdeildum sem hennar er yfirmaður, fá þessu vöru með tilliti til 18. gr. og VI. viðauka ásamt að því tilskildu að þeir séu til neysis þess félags sem stjórnsýr stjórnarinnar á staðnum sem hann býr á og að þeir hafi reikið þá þáttverki sem félagsins er til neysis á stýriskurfum þess staðar og, að því tilskildu, veittu þeirra þá vöru sem emittur við áfram að því að einhverja einstaklingar séu þetta félags, þ.e. stjórnandi þeirra í staðnum sem hann býr á, fulltrúi þess félags sem stjórnsýr stjórnarinnar á stjórkvöldum þess staðar og veittu þeim þá vöru sem félagsins er til neysis á stýriskurfum þess staðar, að þeir séu til neysis vegna þess að þeir hafi samninga við að hafa stjórnandi fulltrúum þess félags sem stjórnsýr stjórnarinnar á stjórkvöldum þess staðar, að því tilskild"
+      },
+      {
+        "index": 4,
+        "text": "Hjóla, sem hefur rétt á fjárhagsleysingu samkvæmt löggjöf tveggja eða fleira aðildarríkja, sem eina er aðildarríkið þar sem hann tekur aðастa, og sem hefur rétt á viðbótum samkvæmt löggjöf önnur aðildarríki, skal, með því að hlutverkum fjölskylduvarpnar sinnum yfir, fá slíkum viðbótum á stjórnsýslu húsastjórnarinnar og, á aðbyrðinginni af hlutverkinu, sem ætti að koma fyrir þessum einstaklinginu sem er að háfnýti, ef hann hefur rétt á fjárhagsleysingu samkvæmt löggjöf önnur aðildarríki."
+      },
+      {
+        "index": 5,
+        "text": "Íbúðarfrjósemi sem er rétt að fá íbúðafyrirtæki í samræmi við löggjöf tvö eða fleiri aðildarríkja, þar sem einn er aðildarríkið sem hann býður þátt í, og sem er rétt að undanþágu samræmi við löggjöf þess aðildarríkis, skal, að því tilskildu að teknu við viðeigandi framsetningu 18. gr. og VI. viðauka, með aðildum viðkennenda sínu, fá slík undanþágu við fyrirtækinu til búa og í fjölbreyttum skrifnum af fyrirtækinu til að því tilskildu að það sé um hann sem íbúðarfrjósemur."
+      },
+      {
+        "index": 6,
+        "text": "Rjóslega sem á rétt til rjósaðar eigi að fela rjósaðar með löggjöf tvö eða fleiri aðildarríkja, þar sem eitt er aðildarríkið í þeim ríkju sem hann býr í, og sem á rétt til ráðstöfunarleysis með löggjöf þess aðildarríkis, skal, með hliðsjón afum fjölskyldu hans, fá slík ráðstöfunar í hættu við heimsókninn í fyrrstöðuna og á þeim skuldheyrðum af þeim heimsókninni sem ef frá þeim er að ræða var páninn á fónalýsingum af rjósaðar eigi að fela ráðstöfunar með löggjöf þess aðildarríkis og taka tillit til gildendum ákvæða 18. gr. og VI. viðauka, ef þar sem um er að ræða."
+      },
+      {
+        "index": 7,
+        "text": "Sjálfboðinn er rétt að fela sálfboð þar sem skuldbindingar eru komnir fram með löggjöf tveggja eða fleiri aðildarríkjanna þar sem hann býr, þar sem einn ríki er aðildarríkið þar sem hann er búsetur og hafa rétt að aðstoðarmaðurinn er skuldbindingið skuldbindingarinnar eigi viðskiptavettung um löggjöf þess aðildarríkjans, að taka tillit til þeirra ákvæða 18. gr. og VI. viðauka, með aðstæðum tilgreindra, skal, meðstöðu þeirra fjölskyldu, fá svona aðstoð og skuldbindingarnar berðu að því ákost af þeim reikislögunum og með aðstoðarmálastefninu, svo því maður sem um ræðir séi að eigi sig rétt að sjálfa skuldbindingarnar sem skulu lækta bara og skulu skuldbindingirnir skulu lækta efri aðildarríki."
+      }
+    ]
+  },
+  {
+    "card": 25,
+    "id": "ParIce:215549",
+    "stratum": "technical_long",
+    "source": "• Without prejudice to the powers laid down in Article 17, where a competent authority disagrees about the procedure or content of an action or inaction of a competent authority of another Member State in cases specified in the acts referred to in Article 1(2), the Authority, at the request of one or more of the competent authorities concerned may assist the authorities in reaching an agreement in accordance with the procedure set out in paragraphs 2 to 4 of this Article.",
+    "reference": "• Ef lögbært yfirvald samþykkir ekki verklagsreglu eða inntak aðgerðar eða aðgerðaleysis lögbærs yfirvalds í öðru aðildarríki, í tilvikum sem tilgreind eru í gerðunum sem um getur í 2. mgr. 1. gr., skal stofnunin, að beiðni eins eða fleiri hlutaðeigandi lögbærra yfirvalda, aðstoða yfirvöldin við að ná samkomulagi í samræmi við verklagsregluna sem sett er fram í 2.–4. mgr. þessar greinar, með fyrirvara um valdheimildirnar sem mælt er fyrir um í 17. gr.",
+    "A": [
+      {
+        "index": 0,
+        "text": "• Þegar lögbær yfirvöld á aðgerðir eða án á því að gera einhverjar lögbær yfirvöld aðra aðildarríkjanna umsæ, sem tilgreint er í gerðum sem um getur í 2. mgr. 1. gr., geta yfirvöldin, við bíð frá undirvöldum og einkum lögbærum yfirvöldum, hjálpa yfirvöldum í að ná samþykk þeirra samdir samkvæmt ræðu sem sett er fram í 2. áætlun til 4. áætlunar þessarar greinar."
+      },
+      {
+        "index": 1,
+        "text": "• Þegar viðkvæm yfirvald sýni óvisskönnun um málsleið og aðgerða eða færðar áfram annars aðildarríkis, sem tilgreint er í málinum, sem um getur í 2. mgr. 1. gr., má yfirvaldinn, við beiðni að einni eða fleiri viðkomandi yfirvalda, staðfest að sameina aðgerðir sínar í samráði í samræmi við málsleiðin sem settar eru fram í 2. til 4. mgr. þessa greinar."
+      },
+      {
+        "index": 2,
+        "text": "• Þar sem lögbær yfirvöld á aðildarríkinu kveða á um áhlutun um aðferðina, ef þær tilgreina, skeiðslu eða þar sem lögbær yfirvöld á öðru aðildarríki hava ósamrýmast á aðferðinni eða afhagnaðri, er yfirvöldin, að því tilskildu að einn eða fleiri lögbæru yfirvöld í aðildarríkjunum hafi áhuga um, geta aðstoðað yfirvöld í að ná samningi, í samræmi við áhættuefnið í 2. til 4. mgr. þessarar greinar."
+      },
+      {
+        "index": 3,
+        "text": "• Þar sem lögbært yfirvöld segja ekki við um áferðina eða innihalds áferðar eða veitja ekki ábyrgð lögbærr yfirvöld annars aðildarríkis í tilfellum sem tilgreindar eru í þeim gerðum sem um getur í 2. mgr. 1. gr. geti yfirvöldin, við þá beiðni einnar eða fleiri lögbærr yfirvöld sem varu í tengslum, hjálpa yfirvöldum að niðurstöðu samþykkingar samkvæmt áferðinni sem sett er fram í 2. til 4. mgr. þessarar greinar."
+      },
+      {
+        "index": 4,
+        "text": "• Þegar lögbært yfirvald er ósamþykkt um áætlunina eða áætlunaraðgerðina eða ekki hafa gefin út á meðan einn eða fleiri lögbærr yfirvald í öðru aðildarríki hefur ákveðið áætlanirnar eða áætlanarauðakerfi, sem tilgreint er í gerðunum sem um getur í 2. mgr. 1. gr., getur yfirvald, þegar einn eða fleiri lögbærr yfirvald er að hagnaðri, aðstoð við að yfirvald þess halda samræmist samkomulag með aðgerðaætlununum sem mælt er fyrir um í 2. til 4. mgr. þessarar greinar."
+      },
+      {
+        "index": 5,
+        "text": "• Betur enn ákvarðanir leyfisstofu og ákvarðanir leyfisstofu um aðferðir eða þátttöku sérstakri lögbættu aðra aðildarríki, sem um getur í skilningum sem kveðið er á um í 2. mgr. 1. gr., getur leyfisstofan, við bífað ákvarðanir um staðsett lögbættu, aðstoð aðalstofu til að ná samkomulag á samræmi við ákvarðanatöku sem sett er fram í 2. til 4. mgr. þessa greinar."
+      },
+      {
+        "index": 6,
+        "text": "• Okkur er heimilt að staðfesta gildi aðgerðar með því að hafa viðbragð með lögbæru yfirvaldi um áætlun eða skilningi yfir tíðni, sem er tilgreint í álitum yfirvalds í annað aðildarríki sem ákvörðun er tilgreint í álitum yfirvalds í eigin lands sínum, sem er tilgreint í 2. mgr. 1. gr., sem má aðgerð sem er um ræða, í samræmi við áætlun eða skilning eða tíðni yfirvalds í annað aðildarríki, sem er tilgreint í 2. mgr. 1. gr., sem má aðgerð sem er um ræða, í samræmi við áætlun eða skilning eða tíðni yfirvalds í eigin lands sínum, sem er tilgreint í 2. til 4. mgr. þessarar greinar."
+      },
+      {
+        "index": 7,
+        "text": "• Þar sem lögbærs yfirvald aðildarríkisinnar er aðeins aðlögunum um aðferðina eða aðgerðirnar eða yfirvald annarra aðildarríkja til einhvers þess sem tilgreint er í aðgerðumum sem aðsetir eru um í 2. mgr. 1. gr. getur yfirvaldann, við beiðni eða með beiðni einhvers eða fleiri lögbæra yfirvalda, aðstoð að lögbærum yfirvaldimennum til að ná samkomulagi í samræmi við aðferðina sem mælt er fyrir um í 2., 3. og 4. mgr. þessarar greinar."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "• Þegar samræmingu er á tímabilinu um aðferðann eða áhættuáætlun eða eftirlit sem samræmingu er á tímabilinu um aðferðann eða áhættuáætlun eða eftirlit sem samræmingu er á tímabilinu um aðferðann eða áhættuáætlun eða eftirlit sem samræmingu er á tímabilinu um aðferðann eða áhættuáætlun eða eftirlit sem samræmingu er á tímabilinu um aðferðann eða áhættuáætlun eða eftirlit sem samræmingu er á tímabilinu um aðferðann eða áhættuáætlun eða eftirlit sem samræmingu er á tímabilinu um aðferðann eða áhættuáætlun eða eftirlit sem samræmingu er á tímabilinu um aðferðann eða áhættuáætlun eða eftirlit sem samræmingu er á tímabilinu um aðferðann eða áhættuáætlun eða eftirlit sem samræmingu er á tímabilinu um aðferðann eða áhættuáætlun eða eft"
+      },
+      {
+        "index": 1,
+        "text": "• Þegar viðkvæm yfirvald sýni óvissu á áætlun eða starfsemi áætlunar eða óætluna yfirkvæms yfirvalda úr öðru aðildarríki, sem er tilgreint í áætlanum (2. mgr. 1. mgr.), sem um getur, sem beitt er í 1. mgr. (2. mgr.), sem um getur, þá getur yfirvald, um kostnað að einu eða fleiri viðkomandi yfirvalda aðstoð aðum þessum að ná samþykki í samræmi við áætlunina sem sett er fram í 2. til 4. mgr. þessarar greinar."
+      },
+      {
+        "index": 2,
+        "text": "• Þar sem lögbært yfirvald samþykkt ekki á aðgerðina, eða ekki hefur greitt bráðefni frá öðru aðildarríki sem tilgreint er í gerðunum sem um getur í 2. mgr. 1. gr., má yfirvaldin, við ósk stjórnvísanda sem ákveðinn er til að bjóða við ákveðinni stjórnvísir, hjálpa stjórnþáttum að ráða samkomulag í samræmi við málsmeðferðina, sem sett er fram í 2. til 4. mgr. þessarar greinar."
+      },
+      {
+        "index": 3,
+        "text": "• Þar sem lögbært yfirvöld í öllum tilfellum hafa ósamræmi um málsmeðferðina eða innlina á orðum ströngs yfirvalda annarra aðildarríkja, sem skýrðar eru í ásetningunum sem um getur í 2. mgr. 1. gr., getur yfirvöldin, um birta kveðið einn eða fleiri lyfjaætlunar yfirvalda sem í tengslum við, aðstoð yfirvöldum til að gera samþykkt í samræmi við málsmeðferðina sem sett er fram í 2. til 4. mgr. þessarar greinar."
+      },
+      {
+        "index": 4,
+        "text": "• Þar sem lögbæra yfirvöldina eiga að gera undir 17. gr., má yfirvöldina, við þau ítal, sem þeirra eiga að gera, hjálpa aðgerðirnar að taka ákvörðun á samþykki samkvæmt aðferðinni, sem sett er fram í 2. til 4. mgr. þessarar greinar."
+      },
+      {
+        "index": 5,
+        "text": "• Að því er varðar hæfið sem mælt er fyrir um í 17. gr. má viðkomandi yfirvöld, þegar þeir eru ósamræmdur við málsmeðferð eða innihald komar, eða stefnunar yfirvöldra annarra aðildarríkis í tilfellum, sem um getur í grein 2. mgr. 1. gr., hjálpa yfirvöldum sínum um að finna samkomulag í samræmi við málsmeðferðina sem sett er fram í 2. til 4. mgr. þessarar greinar."
+      },
+      {
+        "index": 6,
+        "text": "• Okkur er byggð á staðfestri lögbærum yfirvöldum að því skyni að, ef lögbær yfirvöld í öðru aðildarríki samþykkja ekki ákvörðun eða hafa ekki staðfest að ákvörðun eða án staðfestar aðkomulaga, ef tilgreint er í gerðum sem um getur í 2. mgr. 1. gr., geti stöðvað yfirvöldin að því að, með beiðni eða beiðnir eða með heildarbeiðni einnar eða fleiri lögbæra yfirvöldanna, í samræmi við málsmeðferðina sem sett er fram í 2. til 4. mgr. þessarar greinar, að sjá um samningsautakröfur svona settar upp úr rannsókn."
+      },
+      {
+        "index": 7,
+        "text": "• Þar sem lögbærs yfirvald samdir ákvæði á aðferðinni eða efni ágerðar eða ógerð eða yfirtækis yfirvalds frá öðrum aðildarríki í tilvikum sem tilgreindir eru í gerðum að í 2. mgr. 1. gr. sem um er að ræða, má yfirvaldinn, við skýlinga frá einum eða fleiri viðkomandi lögbærum yfirvaldimarkaði, aðstoða yfirvald í að ná samkomulagi í samræmi við aðferðina sem sett er fram í 2. þrögdu, 3. þrögdu og 4. þrögdu í þessari grein."
+      }
+    ]
+  },
+  {
+    "card": 26,
+    "id": "ParIce:290254",
+    "stratum": "technical_long",
+    "source": "(b) When the abovementioned products of animal origin, containing material from bovine, ovine or caprine animals are imported into the Community from third countries or regions thereof, the health certificates shall be accompanied by a declaration signed by the competent authority of the country of production, worded as follows:",
+    "reference": "b) Þegar framangreindar afurðir úr dýraríkinu, sem innihalda efni úr nautgripum, sauðfé eða geitum, eru fluttar inn í Bandalagið frá þriðju löndum eða landsvæðum þeirra skal fylgja heilbrigðisvottorðunum yfirlýsing sem er undirrituð af lögbæra yfirvaldinu í framleiðslulandinu og hljóðar svo:",
+    "A": [
+      {
+        "index": 0,
+        "text": "b) Þegar umtalsvert vörur, sem fást úr dýraríkinu, sem innihalda efni úr kveðju, öfugum, kveðjuþriðum dýrum, færa í borgarann frá þriðju aðildarríkinum eða yfirráðum þeirra, skulu viðhaldsfræðilegir skýrslur vera með skýrslu omræðis yfirvöldu aðildarríkinu um framleiðslu:"
+      },
+      {
+        "index": 1,
+        "text": "b) Þegar umræddar efni af dýra afurð, sem innihalda efnabyrði frá dýrum, og hvísköpunum, eða ræðum, eru fluttin inn í Bandalaginu frá þriðju aðildarríkjum eða yfirráðum þeirra skal viðhaldsveita með skýrslu, sem ákveðinn yfirvöld á landi framleiðslu er laus fyrir eftirfarandi:"
+      },
+      {
+        "index": 2,
+        "text": "b) ef um er að ræða er varanlega útsendur hlutverk með frumlausri afurðum úr dýr í gegnum landið Bandalaginn sem innflutnaðir eru úr þriðju löndum eða sjóðum þeirra, skal fylgja þeim heilbrigðisvottorði sem eru bjargaðar af ákvörðunarleyðandi yfirvöldum í framleiðsluðarlandi frá því að skilgreina:"
+      },
+      {
+        "index": 3,
+        "text": "b) Þegar framkvæmda var gefið upp er að því er varðar afurðir, sem fylgir með efnisfrumum frá dýrum, sem innehaldar efni frá dýrum, með höfðu, eða kappið, sem eru flutt inn í Bandalaginu frá þriðju landi eða yfirráðum þeirra, skulu heilbrigðisvottorð, sem eru viðeigandi yfirvöld skulu fylgja, við skýrslugjöf, sem er gerð með eftirfarandi málum:"
+      },
+      {
+        "index": 4,
+        "text": "b) þegar um er að ræða framleiðsluvörur aðforð sem innihalda efnisfrumum úr floga, hvefnum eða svíðum floga og fer fram inn í bandalaginu frá þrjár landi eða yfirráðum þeirra, skulu heilsufyrirtækja meðhöndlu þess komið með tilgjöf í skýrslu sem lögbæra yfirvaldi á aðildarríkinu, sett úr höfuðið sem hér er gefin á:"
+      },
+      {
+        "index": 5,
+        "text": "b) Þegar umferðir frá veggjafur, sem innihalda efni úr boðva, óvægi eða kappva dýrum, eru fært inn til Bandalagsins frá þriðju lögum eða sviði þeirra skal hava undir þau þeir tilhöldar þegar hertyfisasvefðarfyrirtæki skulu sýna fram á þeirri upplýsingar sem hér segir:"
+      },
+      {
+        "index": 6,
+        "text": "b) Þegar umtekna varða vörur af dýraríki, sem innihalda efni frá dýrum, rúum eða vatnum hvegin, eru inntökuð í Bandalaginu frá þriðju löndum eða yfirráðum þeirra, skal heimilisvottorðið fylgast með þeirri uppgötvun sem er skrifað af lögbærum yfirvöldum í framleiðandarsvæðið, sem hér er skráð hér á eftir:"
+      },
+      {
+        "index": 7,
+        "text": "b) Hvenær sem um getur sem framleiðsluvörur frá dýraríkinu, sem innihalda efni úr dýrum, hreimum, ellum eða gullum, eru frásað til innflutnings á Bandalaginu frá þriðju landi eða yfirráðasvæði þess, skal hliðarfyrirtækið, sem á yfirvöldum landið til framleiðslu, skila síðari til aðgerða:"
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "b) Þegar umtalsvert vörur, sem fást úr dýraríkinu, sem innihalda efni úr kvefn, kreyði eða dúfna þegar þetta vörur er flutt inn í Bandalaginu frá þriðju löndum eða yfirráðum þeirra skal hleðja með upprunalegu gögnum um heilbrigði, sem er skráð af fulltrúum lögbærra yfirvalds í framleiðandaböndunarlandi:"
+      },
+      {
+        "index": 1,
+        "text": "b) Þegar umtölustuðvirki af dýra afurð, sem innihalda efnabyrði frá dýrum, og hvísköpunum eða skjörtum, eru inntökuð inn i ráðsignu, skal sýnilega fylgjast með ákvæðaflokkunni sem gengur frá lögbæru yfirvöldum í landi útbúningararinnar, í því vörslu sem hér er gefin:"
+      },
+      {
+        "index": 2,
+        "text": "b) ef um er að ræða erfjur brezza, sem innihalda efni sem hefst í mörgum dýrum, með fótvöru af fótvöru, fótvöru óttvöru eða fótvöru þurrvöru, sem flutt eru inn í Bandalaginu frá þriðju löndum eða björgum þeirra, skal með áætluninni fyrir heilbrigði fylgja skýrslu sem frákvæmda yfirvöldunum er samþykkt sem hér segir:"
+      },
+      {
+        "index": 3,
+        "text": "b) Þegar framkvæmda var gefið upp um lyf eða lyfjeftir úr dýraríkinu, sem innihalda efnun af dýrum (hvað eigi sér stað í ætti, hvísköpun eða móðurlötu), sem eru tekið inn til Bandalagsins frá þriðju löndum eða yfirráðum þeirra, skulu þær heilsufyrirskírði fylgja umkvæmum yfirvaldi í framleiðandarsíðuneytið með skýrslugjöf:"
+      },
+      {
+        "index": 4,
+        "text": "b) þegar um er að ræða framleiðsluvörur aðforðs landbúa sem innihalda efni úr fótboðs, meðfötis og hlepéðbúum sem eru innflutningarsýnir inn á innlendum bæði í Bandalaginu og frá þriðja landum eða í framleiðsluvirkjum þessum, skulu heilbrigðisvottorð til aðgangsskilyrðis aðeins vera fylgt með tilkynningu sem fulltrúi lögbærra yfirvalds í framleiðsluöryggismálastöðuna skal vera í þessi mál:"
+      },
+      {
+        "index": 5,
+        "text": "b) Þegar umferðir frá veggjafur, sem innihalda efni úr boðva, óvægi eða kappva dýrum, eru innflutningarári til Bandalagsins frá þriðja löndum eða yfirráðum þeirra skal með tilhöldum heilbrigðisvottorðs umferðanna skýra skilgreiningu yfir starfrækslu í þeirri landi sem framleiðsluna er framleidd frá:"
+      },
+      {
+        "index": 6,
+        "text": "b) Þegar umtekna varnaðurfrumferða af dýraríki, sem innihalda efni frá fótíu, fíu og hýru, eru inntökuð í Bandalaginu frá þriðju löndum eða yfirráðum þeirra, skal heimila öryggismarkmiðum, sem fylgja tilskildu skýrslugjöf, sem er skráð af lögbæru yfirvöldum í framleiddu landið, í því málsskipti:"
+      },
+      {
+        "index": 7,
+        "text": "b) Hvenær sem um getur eru fram helstu afurðir frá dýraríkinu, sem innihalda efni úr dýrum af brennu, útiðómi eða hýru, sem eru fluttur inn í Bandalaginu frá þriðja landomaði eða landsvæðum þeirra, bera vitundarkortarfyrirtækið skal taka við skýrslugjöf sem fulltrúyfirvaldi landið framleiðslustöðvar sýnir og á eftirfarandi mæli:"
+      }
+    ]
+  },
+  {
+    "card": 27,
+    "id": "ParIce:419917",
+    "stratum": "technical_long",
+    "source": "• Among those claims, the Authority gave a favourable assessment to the health claim referring to the effect of carbohydrates on the maintenance of brain function and proposed as appropriate conditions of use for that claim that ‘a daily intake of 130 g of glycaemic carbohydrates has been estimated to cover the glucose requirement of the brain (4).",
+    "reference": "• Matvælaöryggisstofnunin mat eina þessara fullyrðinga jákvætt en það er heilsufullyrðing er varðar áhrif kolvetna á viðhald eðlilegrar heilastarfsemi og lagði til að viðeigandi skilyrði fyrir notkun þessarar fullyrðingar yrðu: „áætlað er að dagleg inntaka á 130 g af blóðsykurshækkandi kolvetnum (e. glycaemic carbohydrates) nægi til að uppfylla glúkósaþörf heilans“(4).",
+    "A": [
+      {
+        "index": 0,
+        "text": "• Mjóð vegna þessu sem yfirvaldinn gerði fyrir heilsufarð með tilliti til þess hvernig byrjanptar glóðkarþættir hafa áhrif á heilan íhrifarðar á heilbrigði og komu fram skilyrði við notkun þess vegna sem eftirlitsgerð hefur í raun að daglega innihaldi 130 g af glóðkarþættum sé í staðgildi þess hve mjög glóðkarþættir hafa áhrif á glóðkarþætti heilan (4)."
+      },
+      {
+        "index": 1,
+        "text": "• Í deildri óskaum var sannfærsla Úttektarinnar gæðalega á heilbrigði óskunni að áhrif eituríða í blóði á náhuðaríð og mælti fyrir því að skulu gilda notkunareignisvillagjörð fyrir óskunni að „eigi daglega ítyngd 130 g af eituríðum í blóði að fela á rafmóðugotna þrosksni brjóstans (4.“"
+      },
+      {
+        "index": 2,
+        "text": "• Í þeim ábyrgðum sem tengdar hafa við því að gera lífsgerð að því að þegar mannsfólk bilir á fetuglassætur efni á með áætlunum að sjá til þess að hafi þróun á heilbrigði alinefni, en gefið eftirfarandi skilyrði fyrir notkun á því að því að tilkynna: „Í dag eru 130 g af fræjafetuglassætur innfODAðu í daglega og það er telst nægilega einfalt að gera það við þá tilkynningu að viðbótsskylda lifjahaldsins séu nákvæm og auðkenna skal í áætlunum um þann tilkynningu að þegar mannsfólk bilir á fetuglassætur efni á með áætlunum að sjá til þess að hafi þróun á heilbrigði alinefni (4.“"
+      },
+      {
+        "index": 3,
+        "text": "• Í fyrirkomulagnum þessum sýni var áætlanartækifæri að því er varðar heilsufráætlunina, sem komið var fram vegna áhrifa kornamats á hæfileika heiliðar, og hefur, við vitlaustan, fyrirfallandi notkunarskilyrði fyrir þá sýningu frámæld að 130 g á dag af kornamatskornum hafi útbúið og fullnægt þeirra glúkosmásbræðisfrávirkni heiliðar (4)."
+      },
+      {
+        "index": 4,
+        "text": "• Í viðbættum tillögum komst viðeigandi mat á því að hylkjaveita hafi gert áhrif á stærð fyrirþjálfunar heilir og mælt fyrir um notkunarfjöl þess láti til þess að „einn daga að 130 g af glýkamótoræktum“ sé skaðleg að fyllja glýsúðraþarf hans (4)."
+      },
+      {
+        "index": 5,
+        "text": "• Í hlutaðeigandi kröfum voru þeir með frábendingu sem kveðið var til um heilsueininguna og var höfð stoppað að því að brjóstaverkun er að fullu með þeirri matvæla sem er geymd á 130 gr af glúkamasafni. Þess vegna var rúmsmála með þeim viðmiðunum eftir því að gælulæðisgliquamálið um brjóstaverkun sé þegar náð 4."
+      },
+      {
+        "index": 6,
+        "text": "• Í þeim brýsingum sem stendur fram komið var hagskeiðarstofnunin með viðbótsgreiningu um heilbrigði við heimild að því er varðar áhrif kärlkjum á að háðar verði heilltengdur heilbrigði og hefði þær ráðstafanir sem til þess áfyllt fyrir þá brýsingar sem þeim var ákveðið að gera að því að „130 g á dag af kaffi og kveðjuþekkum á rúmmáli er í raun að ná fullnægjanlegum kvefi í kveðjuþekkum í rúmmáli“ (4)."
+      },
+      {
+        "index": 7,
+        "text": "• Undir þessum komin er framkvæmdastjórnin sem gerði skyni á heilsufari, sem varðar áhrif kerschafna á uppfylling á tíðni hjartblóðþrýstings og lagði fram viðeigandi notkunarskilum á þeim komin, að 130 g á dag hafi gleykómórkerschafna fengið í inntöku."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "• Mjóðarinn skildi svörunarfarskipti við áhrif kveðjuvarna á að gangi í hugur og lýst því sem viðeigandi notkunarskilyrði við útreikninginn um áðferð 130 g á sólarhring með glikosbúnum (4)."
+      },
+      {
+        "index": 1,
+        "text": "• Í deildinni aðstæður, heitið Úttekt til hliðsjálfan, komið fram að hagsmýrslustofnunin hefði gert hæfilegan vörslu um heilbrigði, með tilliti til áhrifa kostnaðarósum á ástand hlutdeildar og gefið upp fyrirfram viðmiðanir til notkunar með þeim áhættu sem skaðlega hefur verið gert um þessara aðstæðna, þar sem áður hefur verið rætt í höfum á 130 g á sólarhring með glikogensókuósum til að fylgja glúkósumkröfunu á hlutdeildi."
+      },
+      {
+        "index": 2,
+        "text": "• Í þeim ábyrgðum sem tengdar hafa við því að gera lífsgerð að því að þegar mannsfólk bilir á fetuglykafóðrum (1) verður að þegar menningarflýrir hafa annaðhvort 130 g á dag úr fetugslykafóðri ert reiknuð til að fylgja glúkosýluútgáfu beins (4)."
+      },
+      {
+        "index": 3,
+        "text": "• Í fyrirkomulagnum þessum sams var markmiði frá heilbrigði að því að stólkarhrattarsýringar hafi áhrif á heilbrigði Learnarinnar og gerði til viðeigandi notkunarstafa fyrir þann markmiðið að 130 g á dag af glúkamasýringum hafi verið tald að gera að komin að glúkumirkröfum um læknarinnar. (4)."
+      },
+      {
+        "index": 4,
+        "text": "• Í viðbættum voru rökstöðvarinnar sem onganga frá sér að markmiðum við heilbrigði ólaga fyrir þær áhrif karborhúðs á að oftu veltur ætti, til þeirra að því er varðar notkun, að það yfirleitt gæti verður að í dag verði 130 gr af reykingarkarborhúðju innað á dag til að hafa öryggi á glúkosýruþætti lífblaðsins (4)."
+      },
+      {
+        "index": 5,
+        "text": "• Í hlutaðeigandi viðbrögðum var framkvæmdastjórnin að vonandi grein fyrir heilbrigði við að þrátt fyrir að kolesýranir hafi áhrif á heilbrigði í heimi og ætlaði að því til staðar að gera viðeigandi viðmiðun um notkun þess viðbragsins að dagleg uppdrift skal ligga 130 g af kolesýranum í gegnum daginn til að taka næringaræði hersins (4)."
+      },
+      {
+        "index": 6,
+        "text": "• Í þeim brögðum sem stendur upp hönnuðu hagsmælibrottingunum, gefi stjórnunin grein fyrir að hagsmælibrottingunum sem skýrðar eru um áhrif kornamasa á viðhöndlunns heili og lagði fram viðkomandi notkunareignarskilyrði fyrir þá brögð þar sem „grænflutning á ákvörðun 130 g daga af kornamasa“ er ráðlagt sem tilgreind má að hafi verið reiknað fyrir vegna glastjóra (4)."
+      },
+      {
+        "index": 7,
+        "text": "• Undir þessum ábyrgðum var að framkvæmdastjórninni voru gerðir gáfaðar matar á heilsufarðarábyrgðaráætluninni, sem var bein á bein, og veittu sem þörfum á björgun á heilbrigði og til viðkomandi skilyrðum fyrir notkun þessar ábyrgðar samkvæmt þeim að „á daginn hafi þeir 130 g af glikämiga, glykaemiðefjum, fyrirhugaðað að greina að þú gæti fengið þig samanburð með glúkósum þar sem þú þarft“ (4)."
+      }
+    ]
+  },
+  {
+    "card": 28,
+    "id": "ParIce21:ema:test:2419",
+    "stratum": "technical_long",
+    "source": "For longer term treatment once clinical response has been observed (after 4 or more days), the dose of Meloxivet can be adjusted to the lowest effective individual dose reflecting that the degree of pain and inflammation associated with chronic musculo-skeletal disorders may vary over time.",
+    "reference": "Þegar klínísk svörun hefur náðst (eftir ≥ 4 daga) í langvarandi meðferð, má minnka skammt Meloxivet í minnsta virkan skammt fyrir hvert og eitt dýr, í samræmi við það að miklir verkir og bólga í tengslum við langvarandi stoðkerfisraskanir getur verið breytilegt frá einum tíma til annars.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Við meiri lengi meðferð, þar sem klínísk töljustur hefur verið settur (eða hafa verið settur eftir 4 eða fleiri daga), má auka skammtinn af Meloxivet, þann minni mæðismæli sem sýnir að hægt er að mæla í fjölskyldu að þæggingu og innsmuninni sem tengist langvinni, efnasjúklingu, verði ekki alls jafn, may hjá öllum."
+      },
+      {
+        "index": 1,
+        "text": "Að er endurskoðað lánlegur áhætta (eða eftir 4 daga eða meira) á meðferð (veldið hefur leitt á móti) má aðaðfa skammta af Meloxivet til þess að það sé það lágmarksgrautasta áhættu skammtur sem er viðkomandi einungis skammtur sem sýnir þannig að þáttur í sársæfirknastæðum og hófnun tengist langvinni efnahaglafengingum (knotheigingu) gildir um að þáttur í efnahaglafengingunni og párgreiningunni verði í því skyni í aðeins aðli."
+      },
+      {
+        "index": 2,
+        "text": "Fyrir lengri meðferð, þegar klínísk sýning hefur verið sett fram (einkum eftir 4 eða meira daga), er hægt að aðlaga skammti Meloxivet á viðnámshækkari hátt til þess að besta sjálfstæða skammtin sýnist, þar sem þá stærð sláms og þurrkorns sem tengist lengi fjarskarum og fótvæðisvæðum getur verið mismunandi með tíma."
+      },
+      {
+        "index": 3,
+        "text": "Nú í lengri tíma meðferð, eftir að klínískt svör hefur verið sért í 4 eða meira daga, má auka skammtinn af Meloxivet til þess minnst samkvæmt einstaklinga sem sýnir að það verður að því tilskildu að greiðslum og sveifnum sem tengjast langvinni, rægglausum eða rægglausum eða ekkert tengjast langviklum eða rægglausum eða rægglausum eða ekkert tengjast langvikum eða rægglausum eða rægglausum eða ekkert tengjast langvikum eða rægglausum eða rægglausum eða ekkert tengjast langvikum eða rægglausum eða rægglausum eða ekkert tengjast langvikum eða rægglausum eða rægglausum eða ekkert tengjast langvikum eða rægglausum eða rægglausum eða ekkert tengjast langvikum eða rægglausum eða rægglausum eða ekkert tengjast langvikum eða rægglausum eða rægglausum eða ekkert tengjast langvikum eða rægg"
+      },
+      {
+        "index": 4,
+        "text": "Fyrir lengra meðferð, þegar klínísk réttur hefur verið sett (ef það stendur fram eftir 4 eða fleiri dagar), má áfylla skammtið af Meloxivet til lágmarksskammans sem veitir út af því að hægt er að taka tillit til þess hvort á móti varðandi verkir og uppblæðingu á tengslum við langvinn, skert þjálfunarsnið may skipta um tíma."
+      },
+      {
+        "index": 5,
+        "text": "Frekari tíma meðferð, ef klínísk svörun hefur verið sátt við (eftir 4 eða fleiri daga), er skammtur af Meloxivet hægt að aðlaga til þess lágsta virkri einkanna skammta sem sýnir það að þróuninn í þjáningar og innreikingu sem tengist langvinni einnar eða tvo fótaskerfum getur mismunir með tíma."
+      },
+      {
+        "index": 6,
+        "text": "Í tiltekinum tíma meðferð, þegar klínískt svörunarviðmiður hefur komið fram (eigi eftir 4 eða fleiri daga), má leiðréttum Meloxivet skammta að því er varðar lágsta virkan scoða sem tekur við á meðferð við átti, þar sem tegund skerta og blæðða tengist langvinnri bælustu- og lyfjaðra hentar af heilbrigðis og má skoða hvernig þessa tegund af hefðbundnu bælustu og hentar af heilbrigðis aðbótistefni."
+      },
+      {
+        "index": 7,
+        "text": "Í línulegu meðferð, þar sem klínískt svörunartilvik hefur komið fram (þrátt fyrir 4 eða fleiri daga), má aðlaga skammta Meloxivet til lágsta virkri skammta, sem tykir að umhverfi sem tengist aldríku skevðis- og skevðisþætti séu umhverfsemið á vegum hve miklu blæðing og bólga sem tengist þeim hafið mismunir á með í gegnum tíma."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Við langtíma meðferð, þar sem klínísk svörun hefur verið sjálfstæð, (ef um 4 eða fleiri daga er komið fram), má auka skammt af Meloxivet til lægra, virkri, einstaklingarhorns skammt sem sýnir að þörf í þungri skömmtun og blæðingu sem tengist aldráslegum skammtafæðum getur verið mismunandi við tíma."
+      },
+      {
+        "index": 1,
+        "text": "Að er endurskoðað lánlegur sýni í klíníki (eftir 4 eða meira daga) má auka skammti Meloxivet í lengra tíma að viðkomandi einungis skammt sem er viðkomandi skammt sem eflir bestu áhorfi þar sem við höfum greint fram að greininn á húð og innsiggingu tengdur liðsættum öðrum lengdar getur mismunast við tíma."
+      },
+      {
+        "index": 2,
+        "text": "Fyrir lenger tíma meðferð, þegar klíníska svörun hefur komið upp (eftir 4 eða meira daga), er hægt að aðlaga skammt af Meloxivet á viðeigandi hámarksskammt sem tilgreinar hversu sint í þáttum og míðað er í viðbótarmyndi vegna þess að þannig getur þýðist fjölgun á þroska og blóðþrýsting sjúkdómsins vegna langdrengra starfsemi vefja og vefjabjóðfinga."
+      },
+      {
+        "index": 3,
+        "text": "Nú áfram meðhæfðing eftir að clínísk viðbæti hefur komið upp (þar 4 eða meira daga) skal ávöxta skammti af Meloxivet samkvæmt því að hægt er að nýtja Lajfsta einkenni skammta sem venjulega gert er við ávöxtandi einungis skammt sem telst ætlað. Það er hægt að hætta ávöxtun þegar það er ákvarðað að þess markmið sé að hætta að hægt sé að nota hlýtið, aúvöxtandi einungis skammt sem teljast hægt að nýtja við það að hafa þessari þraut og hæfni."
+      },
+      {
+        "index": 4,
+        "text": "Fyrir lengra meðferð, þegar klínísk réttur hefur verið að sjá á (eftir 4 eða meira daga), má þykirðast af því að meloxivet er hægt að þykirðast við á gönguðæki með því að auka eða minnka skammtinn í samræmi við virðandi, einleika skammt á að því að þróun þess hvers þar sem um er að ræða sárskeping, þýðing, þyngdar, krabbamörk og íþróun má vera mismununandi með tíma."
+      },
+      {
+        "index": 5,
+        "text": "Freið af þeim tíma sem aðstoðar hefur verið (eins og 4 dögum hér að framan) og eftir það hefur orðið gróður eiginlega greinileg ákvörðun á skammti Meloxivet er hægt að breyta þessu á viðeigandi, einstaklingarlegri skammt sem fær þýðir einungis að þróaður sársaukafur og bólga sem tengist langvinni skelfilyfjuþróaðarar eða lífbasalvaþróaðara getið óðlaðist á milli tíðna."
+      },
+      {
+        "index": 6,
+        "text": "Í tilteknum línum, þegar klínískt svar hefur verið sértætt (eftir 4 eða meira daga) er hægt að auka skammtinn af Meloxivet til þess staðar sem er minnst viðkomandi virkan skammt sem sýnir að þýðing og uppþrýsting á tengdum langvinnum klæfðaútræðum geti breytt síðan á tímum."
+      },
+      {
+        "index": 7,
+        "text": "Í línulegu meðferð, þar sem klínískt svörunartilvist hefur komið fram (þar sem 4 eða meiri daga hefur verið, sem er beitt), má aukið skammt Meloxivet í meðferðinni að því er varðar að lágsta æskileg hægðisskammtinn getur orðið í samræmi við þannig að hægðing og innsigging sem tengja lægt í þróun verði mismunandi með tíma."
+      }
+    ]
+  },
+  {
+    "card": 29,
+    "id": "ParIce21:eso:test:654",
+    "stratum": "technical_long",
+    "source": "Researchers say that the collision between these galaxies could have lasted longer than the collisions observed in the previous study - allowing the effects of even a tiny frictional force to build up over time and create a measurable lag.",
+    "reference": "Stjörnufræðingarnir segja að samruni vetrarbrautanna gæti hafa staðið yfir örlítið lengur en þeir árekstrar sem rannsakaðir voru í hinni rannsókninni. Það gerði jafnvel örlitlum núningskröftum kleift að byggjast upp með tímanum og verða að mælanlegri seinkun á hulduefninu.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Rannsóknarögabærir segja að smit við sambind þessara galáxara gæti gert lengra tímann en smit sem eru greinir í fyrri rannsókninni, sem getur lýst út áhrifir, jafnvel eftir eitur, eftir uppkrefing, sem leiða til að gæta setjanlega lag."
+      },
+      {
+        "index": 1,
+        "text": "Rannsóknir segja að sogli milli þessara galaxra gæti gert lengra af allt en sogurinn sem taldið var í fyrra rannsókninni, sem gerir mögulegt að þannig að orka, eða annan mikilvæg áhrif, hafi komið í þann hátt að takmarkast og geti taldast og hafi komið í tengslum við lágþrýsting."
+      },
+      {
+        "index": 2,
+        "text": "Aðferðarfræðingar segja að samborðið milli þessara galaxa gæti haft lengra gildandi tíma en samborðið sem umræddiði í áföngum þessara rannsóknar, þannig að þykir hafi leitt saman öllu aðeins miklar vökvuskilur og skipti af er regnandi hætti."
+      },
+      {
+        "index": 3,
+        "text": "Rannsóknarar segja að sáttmála milli þessara galaxanna gæti haft lengur síðan en sáttmálin sem sá í fyrra rannsókn. Þess vegna getur verið að rannsóknarlegt áhrif, jafngildi nánast alvöru krafti þegar að längdar, af búið til að fá mælipunnið magla."
+      },
+      {
+        "index": 4,
+        "text": "Rannsóknir segja að hurðin milli þessara galáxra gæti haft lengri tíma en hurðirnir sem sjaldan eru sjáðin í fyrra rannsóknunum, sem getur leitt að þessum þætti bæti í eðlilegan kerfi og skapað mikilvægi í útvíðun."
+      },
+      {
+        "index": 5,
+        "text": "Rannsóknarkarlir segja að smáskotin milli þessara galaxar gæti haft lengra aðferð en smáskotinn sem er aðgerð í fyrstu rannsókninni - því að það getur haft áhrif á meðferð ásamt þannig að innihald verður til viðtala á tíma og laða í mikilvægilega reikni fyrir viðmiðun."
+      },
+      {
+        "index": 6,
+        "text": "Rannsóknaraðilar leggja til þess að hroðshluti milli þessara hrosslaugs geti gert lengri tíma en hroðshrupin sem sjáum eru fram í þann þriðja rannsókn - að því er varðar að lífsgjöf, eðlilega það sem er mikilvægur fyrir og er mikilvægur fyrir einhverja mikilli vatnsskilun, hafi undanfarið þegar og reiknuð (til úrheimtis) til varnar."
+      },
+      {
+        "index": 7,
+        "text": "Rannsóknaraðilar segja að skotur milli þessara rannsóknaröskja gæti liðið lengra en skotur sem eru sjáanlegir í fyrra rannsókninni og því um það reiki áhrif konar ofinnar hreinsunarþægirs að verða að vera samkomulýsing."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Rannsóknarögabærara segja að smágráðurningin milli þessara galaxana gæti haft lengra tíma endur í gegn en umhugunirnir sem eru skaðaðir í fyrra rannsókninni, sem gerir aðsgjunna áhrif snemma að hreinsunarstarfsmanna, þótt það sé smáglæfi, og myndi gera lítinn víst forreiðsla."
+      },
+      {
+        "index": 1,
+        "text": "Rannsóknir segja að sogli milli þessara galaxra gæti gert lengra af allt en sogurinn sem taldið var í fyrra rannsókninni, sem gerir mögulegt að þegar bein orka, eða annan rött, séu orðin að verji á tímabili og satt upphafur fyrir mælað tæknilega lágmæli."
+      },
+      {
+        "index": 2,
+        "text": "Aðferðarfræðingar segja að eitthvað vegna hitastæðunnar milli þessara galaxa gæti haft lengra tíðnnámi en hitastæðurnar í forryðru rannsókninni, sem leitaði til þess að þótt þessi heitt væri lítið, væri hægt að bjarga áhrif þessirra hættu á tímanum og gera mæðilegt háttlaus."
+      },
+      {
+        "index": 3,
+        "text": "Rannsóknarar segja að glæp þessarar rannsógunanna gildi lengi en glæpur sem í fyrstu rannsóknunum sá í ljósi. Þess vegna er mögulegt að þessu verði drept eiginlega nóg tæki og komið út umfestur tæki þegar breytingar af drepi fer fram."
+      },
+      {
+        "index": 4,
+        "text": "Rannsóknir segja að hurðin milli semhlega gildi gildi gildi hefur haft lengra tímabundið þegar hafi komið í gegn en hurðin sem er sjáðan í forrar rannsókn - því að þess vegna hafi eigið lítil kerfið fröskulega einhvert í mánuði og skipti málað í lag við um tímabund."
+      },
+      {
+        "index": 5,
+        "text": "Rannsóknarkarlir segja að smáskotin milli rannsóknarar flokkanna geyms að hafa gert lengri tímann en skotið sem siðast í fyrra rannsókninni, að því er varðar aðræðir, sem gerðast inn í skapinn, sem hægt væri að gera laug."
+      },
+      {
+        "index": 6,
+        "text": "Rannsóknaraðilar leggja til þess að hroðshríkið milli þessara galákons hafi geymt lengra tíma en hroðshríkið sem er að einhverju ástandi áður, að því er varðar að þar séu mögulegur eðlir fyrir þá tiltekinn vandræði sem fyrir hendi verður að þætti á meðan tæki upp sig og skapa málsgefnið."
+      },
+      {
+        "index": 7,
+        "text": "Rannsóknaraðferðirræðingar koma fram og þær sáttsetningu milli þessara galafæra getu gert lengri tímabil en þær sáttsetningar sem fengu þeim eftir í fyrra rannsókninni, þar sem þá líklegir áhrifir, annars staðar, tómu niðri inn á tímann og gera máalegðjar áhrif."
+      }
+    ]
+  },
+  {
+    "card": 30,
+    "id": "ParIce:1179551",
+    "stratum": "technical_long",
+    "source": "2. A company whose shares are officially listed on stock exchanges situated or operating in one or more Member States and in one or more non-member countries must make available to the markets of the Member State or States in which its shares are listed information which is at least equivalent to that which it makes available to the markets of the non-member country or countries in question, if such information may be of importance for the evaluation of the shares.",
+    "reference": "2. Félag, sem hefur fengið hlutabréf sín opinberlega skráð í kauphöllum sem eru staðsettar eða starfa í einu eða fleiri aðildarríkjum og í einu eða fleiri ríkjum utan bandalagsins, verður að birta á mörkuðum í aðildarríkinu eða -ríkjunum, þar sem verðbréf þess eru skráð, upplýsingar sem eru að minnsta kosti jafngildar þeim upplýsingum sem birtar eru í hlutaðeigandi ríki eða ríkjum utan bandalagsins ef þær upplýsingar geta skipt máli við mat á hlutabréfunum.",
+    "A": [
+      {
+        "index": 0,
+        "text": "2. Fyrirtæki sem haldsstjórnir eru opinberlega tillitið til á sögurverum og hafa stöðvaðir eða starfa í eitt eða fleiri aðildarríki og í eitt eða fleiri óaðildarríki þurfa að vernda markaði aðildarríkis eða ríkjanna sem haldsstjórnir eru tilgreindar á sögurverum ef slíkar upplýsingar gilda um mál þegar staðfest um að þeir séu mikilvægar að þegar er framkvæmd þeirra upplýsinga á markaði aðildarríkis eða ríkja sem haldsstjórnir eru tilgreindar á sögurverum, ef sem tilnefndar ríki er það."
+      },
+      {
+        "index": 1,
+        "text": "2. félag sem halda hluta sem eru tilkynntar og á staðnum sem eru á stofnunum eða þeirra sem eru stöðvandi eða framkvæmda í eitt eða fleiri aðildarríkjum og í eitt eða fleiri óaðildarríkjum, verður að leggja til markaðs í aðildarríkinu eða ríkinum sem halda hlutir þeirra er upplýsingar, sem eru að minnsta kosti tiljóst, til markaðs í óaðildarríkinu eða ríkinum sem halda hlutir þeirra, ef þetta gæti verið þörfmætt."
+      },
+      {
+        "index": 2,
+        "text": "2. Fyrirtæki, sem hóp sem á rekstrarbúnaði á vörskuövingunum í einkennum skráð er í ræðum í eitt eða fleiri aðildarríkjum og í eitt eða fleiri óaðildarríkjum, skal bera fyrir markaðir í aðildarríkinum eða aðildarríkjum þar sem hóp er ræðum í skrá að minnsta kosti eins og hún getur fyrir markaðar í óaðildarríkinum eða aðildarríkjum, sem um ræðir, upplýsingar sem hún gerir fyrir markaðar í aðildarríkjum þar sem hóp er ræðum í skrá ef þær upplýsingar geta verið mikilvægir í mat á hópnum."
+      },
+      {
+        "index": 3,
+        "text": "2. Fyrirtæki sem stjórnsýringar hafa til staðar og starfa í eitt eða fleiri aðildarríkjum og í einn eða fleiri óaðildarríkjum að því er varðar að vera til staðar og starfa í einn eða fleiri aðildarríkjum og í einn eða fleiri óaðildarríkjum að því er varðar að vera til staðar og starfa í einn eða fleiri aðildarríkjum og í einn eða fleiri óaðildarríkjum, þarf að veita markaði í þeirri aðildarríkjum eða að þeirra aðildarríkjum hærri upplýsingar en hún veitir markaði í óaðildarríkjum eða að þeirra aðildarríkjum sem einkum er til staðar og starfa í einn eða fleiri óaðildarríkjum. Ef þetta upplýsingar geta verið bara mikilvæg fyrir mat á stjórnsýringum."
+      },
+      {
+        "index": 4,
+        "text": "2. Fyrirtæki sem er óvisslega sett í skrá á markaðsheimilum og gerir handa sína eða fer í einu eða fleiri aðildarríki og á einu eða fleiri aðildarríki sem eiga eða eru aðildarríki, skal gefa markaða í aðildarríki eða aðildarríkinu þar sem skráningu á skráningu er komið fram, þýðilega jafngildu, þýðilega jafngildu, satt skráningu."
+      },
+      {
+        "index": 5,
+        "text": "2. Fyrirtæki sem undir eigin leyfi eru tilgreind á stöðum úr stöðum í eitt eða fleiri aðildarríkjunum og í eitt eða fleiri öðrum aðildarríkjum, skal kveða fram, til markaðanna í aðildarríkjunum eða aðildarríkjunum, sem undir eigin leyfi er tilgreind á stöðum, upplýsingar sem eru minnst öryggi og að þeir eru búin að kveða fram, til markaðanna í öðrum aðildarríkjum eða aðildarríkjunum sem undir eigin leyfi er tilgreind á stöðum, ef þær upplýsingar mynda áhrif á mat á undir eigin leyfis stöðum þeirra."
+      },
+      {
+        "index": 6,
+        "text": "2. Fyrirtæki, sem heimskráer eru almennt skráð á stökuverði í einu eða fleiri aðildarríkjum og þeir virða eða starfa í einu eða fleiri aðildarríkjum og einu eða fleiri aðildarríkjum sem ekki eru aðildarríki, skal láta markaði í aðildarríkjunum eða ríkinum sem skrá heimskráa hennar á framkvæmdastjórnarlandi einu eða fleiri aðildarríkjum, sem ekki eru aðildarríki, meira gildi eftir eftirliti í einu eða fleiri aðildarríkjum sem ekki eru aðildarríki, ef þessi upplýsingar geta verið mikilvægir vegna greiningar heimskráa."
+      },
+      {
+        "index": 7,
+        "text": "2. Fyrirtæki sem hlutfallir eru hentug í alla aðildarríki, sem eru greindir opnaðar við stökuverðir í eða starfa á eða eru ekki tilgreind í einu eða fleiri aðildarríki, og eða tilgreind á einu eða fleiri aðildarríki sem ekki eru aðildarríki, skulu greindar fram til markaða aðildarríkis eða ríkja sem hafa greind þessar hlutarkerfi, ef það er nauðsynlegt að bera fram þær greindir til markaðsins sem henni nær til greindra aðildarríkis, þar sem hlutarkerfin eru samanburðar með þeim sem henni nær til greindra aðildarríkis, að því tilskildu að þær greindir geti sitja við áfenging hlutanna."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "2. Fyrirtæki sem hálferðirnar eru opnaðar athöfrulega á markaðstökum í einum eða fleiri aðildarríkjum og í einum eða fleiri óaðildarríkjum skal fámarki aðildarríkjanna eða aðildarríkja þar sem hálferðirnar eru skráðar með því að gæta upplýsinga sem minnst eru tengdar því sjálfbæru og þeir sem þeir fá að fá á markaði óaðildarríkja eða aðildarríkja sem hálferðirnar eru skráðar á, ef slíkar upplýsingar geta verið að verði mikilvægir fyrir útreikning á hálfernirnar."
+      },
+      {
+        "index": 1,
+        "text": "2. félag sem áhólar eru opinberlega taldar upp á stofnarköru áráðsamninga sem stendur eða starfa á eða eru í eða eitt eða fleiri aðildarríkjum og á eitt eða fleiri óaðildarríkjum, á að gerja fyrir markaði í aðildarríki eða ríkinum sem athólar hlutsemi þess upplýsingar sem, að minnsta kosti, vera lögbær, eins og eftirfarandi er gerð fyrir markaðina í aðildarríkjum sem athólar hlutsemi þess:"
+      },
+      {
+        "index": 2,
+        "text": "2. Fyrirtæki, sem upplýstuð er löglega á skrá á vörskrefum í eitt eða fleiri aðildarríkjum og í einu eða fleiri óaðildarríkjum, skal láta markaði í aðildarríkinu eða ríkjum sem upplýstuð er á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á skrá á"
+      },
+      {
+        "index": 3,
+        "text": "2. Fyrirtæki sem stjórnsýringar eins og þau eru tilgreind á markaðsskráum í sjóðnæmi á einum eða fleiri aðildarríkjum og í einum eða fleiri aðildarríkjum sem eru óaðildarríki, þurfu að láta markaði í aðildarríkinu eða í ríkinum sem stjórnsýringar eru tilgreindar á tilgreina upplýsingar sem eru minnsta kosti jafngildi upplýsingunum sem þau gera til greina á markaði í óaðildarríkinu eða ríkinum sem stjórnsýringar eru tilgreindar á, ef þessu upplýsingastarfsemi getur verið mikilvægt við mat á stjórnsýringum."
+      },
+      {
+        "index": 4,
+        "text": "2. Fyrirtæki sem er opnefn í staðgjöfreglunum og eru vörudýrum eða eru í efnahagsleig just og starfa á efnahagsleigum í eina eða fleiri aðildarríkjum og í eina eða fleiri óaðildarríkjum þarf að veita markaði í aðildarríkinu eða löndum þar sem fjárfestur eru tilgreind á staðgjöfreglum að þessu stólkostöður yfir satt."
+      },
+      {
+        "index": 5,
+        "text": "2. Fyrirtæki sem undir eigin leyfi eru tilgreind á stöðum á staðum eða starfa í eitt eða fleiri aðildarríkjum og eitt eða fleiri óaðildarríkjum skulu veita markaði aðildarríkis eða ríkja þar sem undir eitt eða fleiri áfesta undir eitt eða fleiri aðildarríkjum og eitt eða fleiri óaðildarríkjum aðgengi upplýsingar sem eru minnsta kosti að öðru leyti samanburðarhæfir en þá sem það gerir aðgengi að markaði aðildarríkis eða aðildarríkja þar sem undir eitt eða fleiri áfesta undir eitt eða fleiri aðildarríkjum og eitt eða fleiri óaðildarríkjum, ef slíkar upplýsingar eru breytilegar fyrir mat á undir eitt eða fleiri áfesta."
+      },
+      {
+        "index": 6,
+        "text": "2. Fyrirtæki, sem hefur hliðsjón þeirra í opinberu skrá á gjöfamörkum sem eru staðfestu í eða starfa í eitt eða fleiri aðildarríki og eitt eða fleiri aðildarríki, skulu vera útgjörð á sviði markaða í aðildarríkinu eða aðildarríkjum þar sem hliðsjón þeirra er skráð, þannig að upplýsingar séu minnst sama og upplýsingar sem þeir geta til að markaða í aðildarríkinu eða aðildarríkjum þar sem hliðsjón þeirra er skráð, ef því er nauðsynlegt að meta hliðsjón þeirra."
+      },
+      {
+        "index": 7,
+        "text": "2. Fyrirtæki sem gagnstefnar eru opinni skráð á stolmörkum á stöksmarkaðum sem eru staðsettar eða stofna í eitt eða fleiri aðildarríkjum og eitt eða fleiri óaðildarríkjum með ákveðið staðstætti og skal þessi fyrirtæki láta markaðum í aðildarríkinu eða þeim aðildarríkjum sem gagnstefnir gagnstefnirnar skilgreina, það sem er minnst eins og það sem þau skila markaði í aðildarríkjum sem gagnstefnir gagnstefnirnar, ef innlendum má ákveða af mikilvægi því að gildi gagnstefnana."
+      }
+    ]
+  },
+  {
+    "card": 31,
+    "id": "ParIce21:ema:test:2944",
+    "stratum": "technical_long",
+    "source": "Chemical, physical and microbiological in-use stability has been demonstrated for 28 days at 2-8°C. Once opened, the product may be stored for a maximum of 28 days at 2°C to 8°C. Other in-use storage times and conditions are the responsibility of the user.",
+    "reference": "Sýnt hefur verið fram á efnafræðilegan, eðlisfræðilegan og örverufræðilegan stöðugleika við notkun í 28 daga við 2-8°C. Eftir að penninn hefur verið notaður einu sinni, má nota hann í allt að 28 daga ef hann er geymdur við 2° til 8°C. Notkun og geymsla umfram þennan tíma eða við önnur geymsluskilyrði er á ábyrgð notanda.",
+    "A": [
+      {
+        "index": 0,
+        "text": "Lyfsun, líklegun og geðveitandi notkunarsölublöndun hefur verið sýnd fram fyrir 28 daga á 2-8°C, og með því að einn hreyfing varð að því er varðar má geyma lyfið eftir lok hreyfingar fram að hámarksstigi 28 daga á 2°C til 8°C. Aðrar geymsluherfi sem eru þegar geymslu er að gerð eru ábyrgð viðnotanda."
+      },
+      {
+        "index": 1,
+        "text": "Lifun í notkun, sem við höfum sýnt með lyfjameðferð, var úr stöðum 28 daga við kvarð um 2 - 8°C. Ef lyfjinn er opinn er hægt að geyma lyfið í hámarki að 28 dögum við 2°C til 8°C. Aðrar geymsluýtímar og geymsluþætti við notkun eru skyldu að notaðar aðila."
+      },
+      {
+        "index": 2,
+        "text": "Kvæmsleik, lítilstæð skyns og örverumikstruflugskrást þjálfun hefur verið sýndar fyrir 28 daga á 2-8°C. Ef blöndurinn er opinn má geyma afurðinn fram eftir að hámarksstaðli 28 daga á 2°C að 8°C. Aðrar geymslustigdur tíma og skilyrði, sem við á, eru ákvarðanir umsækjanda."
+      },
+      {
+        "index": 3,
+        "text": "Í vökvum, líkilum og lífræðilegum, notkunarstöðugum 28 daga hefur verið sýnt við meginhitlausvöru 2-8°C. Ennfremur, eftir að bókassetningu er hægt að geyma afurðina upp á 28 daga, við 2°C til 8°C, í vökvum. Aðrar geymsluþolastindar og geymsluþolustundar sem ekki eru sátt við nota þeirra er ábyrgð notandans."
+      },
+      {
+        "index": 4,
+        "text": "Blandt efnaskipta, efnasundis og svæðisbótakerfislegu stöðu á notkun hefur verið sýnt fyrir 28 daga við 2-8°C. Eftir að lyfið er opnað má geyma lyfið framhjá þangað til að hámarki á 28 daga við 2°C til 8°C í innhlutað. Aðrar geymsluþolstöðurnar og geymsluþolstærðir eru ábyrgð við notanda."
+      },
+      {
+        "index": 5,
+        "text": "Matvæla, váhrifleg og sýnatækiþróunstýring hjálpað hefur verið að 28 daga við 2-8°C, þegar lyfjinn er opinn. Eftir að lyfjinn er opinn má geyma lyfjinn á hámarksstað í þeim lagi að 2°C til 8°C. Aðrar geymslutíma og skilyrði fyrir notkun hjálpa að því að notandi sé aðbyrjarð."
+      },
+      {
+        "index": 6,
+        "text": "Lýsýni hefur verið gerð um líffæri við notkun í 28 daga við 2-8°C og ef umbúð er, er liﬁn í hámarksstaðfestu háðar 28 daga á 2°C til 8°C. Samvinnu um öðrum efri staddagstengjum og skilyrðum er einstaklingarinnar einkenni."
+      },
+      {
+        "index": 7,
+        "text": "Eitthvað kemur síðan úr vökvum fyrir staðfestan stöðugleika í vökvunum, með 28 daga starfsemi og 2-8°C, og það má gera framleiðslueintak í framleiðslubúðum eftir að pöntunin var gerð, með 2°C til 8°C, þar sem einhvern starfsemi og stöðugleika fyrir framleiðslueintaki eru ávörðugrið þeirra notendanna."
+      }
+    ],
+    "B": [
+      {
+        "index": 0,
+        "text": "Lyfsun, lífveru og lífveruþekking var sýnd til 28 daugs efnisins við 2-8°C. Ef lyfið er upptökð er stærsti má skalaðar meðan er að halda í lyfjum frá 2°C til 8°C. Aðrar geymsluefni og geymsluefniþætti sem við á eru ábyrgðanum."
+      },
+      {
+        "index": 1,
+        "text": "Lifun í notkun, sem var útbúið sem liðsvegsstæði, hefur verið dæmd fyrir 28 daga á 2-8°C. Ef lyfið er uppkopen getur íðufarð verður að geyma í hámarki 28 daga á 2°C-2°C. Aðrar geymsluþolagengingir og geymsluþolagengingareigningar eru skyldu aðgar notaendurs."
+      },
+      {
+        "index": 2,
+        "text": "Kvörðun, lífið og mikruflóðvirkni í notkun hefur verið sýnd til 28 daga við 2-8°C. Af því að áburðin hefur verið tekið frá má gista vöruna eftir 28 daga, eftir 2°C eða 8°C. Ýmsar innstöðunartíma og skilyrði fyrir notkun vera ábyrgð vinnunarmanns."
+      },
+      {
+        "index": 3,
+        "text": "Í vökvum, líkilum og lífverufræðilegum notkunarsögunum hefur verið sýnt 28 dagar og 2-8°C. Enn þegar lyfið er opnað má geyma afurðina út fyrir hámarki 28 dagar á 2°C til 8°C. Aðrar geymsluþáttar og skilyrði þegar lyfið er notuð eru viðskipunaráttir notanda."
+      },
+      {
+        "index": 4,
+        "text": "Blandt öðrum efnisfræðilegu, efnislegum og vaxtbólvafræðilegu efnihlutastjórnun eru 28 daga sem eru gerðar á 2-8°C. Einu sinni þegar áttu upp einhvern af kjölinni má geyma þau í hámarki 28 daga á 2°C til 8°C. Þar til að geyma önnur efnihlutastjórnun í notkun er að því er varðar notandanir."
+      },
+      {
+        "index": 5,
+        "text": "Matvæla, váhrifleg og sýnatæknilega gjöf í notkun hafa verið sýnt fram fyrir 28 daga við 2-8°C. Ef umbúð er farið skal leyfa eigið að afurðin sé geymd inn í hámarksgildi 28 daga við 2°C og 8°C. Heimildir fyrir önnur notkunareyðilegan geymislag og stöðu eru aðvalinn af notendum."
+      },
+      {
+        "index": 6,
+        "text": "Lífsemið sem stendur við notkun hefur verið uppgötvað í 28 daga í 2-8°C. Ef umbun er gerð er verður að geyma vörunni fyrir hámarksstað í 28 daga í 2°C til 8°C. Aðrar geymsluþolstengdir sem geymsla er gerð með á notkunarferli og skírteymi er öllum ábyrgð."
+      },
+      {
+        "index": 7,
+        "text": "Með hvetnir stöðugleika meðan viðnotkun hefur verið gerð hefur verið sýnt á 28 daga á 2-8°C. Eftir að lyfið er opnað má geyma lyfið í hámarki 28 daga á 2°C-2°C í ínotkun. Íðnaðarfyrirkomulag fyrir önnur geymslu tíma og skilyrði er einstaklingarþáttur."
+      }
+    ]
+  }
+]

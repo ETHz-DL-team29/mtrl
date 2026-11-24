@@ -1,0 +1,57 @@
+{
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "transformers": "5.22.1",
+    "cuda_build": "13.0",
+    "gpu": "Tesla T4",
+    "vram_bytes": 15637086208
+  },
+  "dtype": "torch.float16",
+  "attention": "sdpa",
+  "kernel_functions": {
+    "chunk_gated_delta_rule": "None",
+    "causal_conv1d_fn": "<function causal_conv1d_fn at 0x79693c324cc0>"
+  },
+  "representative_target_tokens": 457,
+  "step_seconds": [
+    4.228616620999674,
+    2.0572105400005967,
+    2.098807203999968
+  ],
+  "updates": [
+    {
+      "mean_loss": 2.7641089708591187,
+      "overflow_retries": 0,
+      "physical_target_tokens": 457,
+      "grad_norm": 5.49379301071167,
+      "loss_scale": 512.0
+    },
+    {
+      "mean_loss": 2.2819044083943774,
+      "overflow_retries": 0,
+      "physical_target_tokens": 457,
+      "grad_norm": 4.010262966156006,
+      "loss_scale": 512.0
+    },
+    {
+      "mean_loss": 1.9205949311705073,
+      "overflow_retries": 0,
+      "physical_target_tokens": 457,
+      "grad_norm": 3.4055111408233643,
+      "loss_scale": 512.0
+    }
+  ],
+  "target_tokens_per_second": 219.9220639323324,
+  "estimate_140k_train_seconds": 636.5891511598238,
+  "peak_vram_bytes": 2945203712,
+  "generation": {
+    "raw_output": "Hver er hans?",
+    "hypothesis": "Hver er hans?",
+    "prompt_tokens": 33,
+    "completion_tokens": 6,
+    "truncated": false,
+    "generation_seconds": 0.6519930459999159
+  },
+  "note": "Speed estimate excludes dev generation, model download and checkpoint IO; preflight adapter is discarded"
+}

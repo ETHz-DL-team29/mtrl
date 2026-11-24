@@ -1,0 +1,217 @@
+{
+  "matched_prefix_updates": 28,
+  "same_group_order": true,
+  "same_token_budget_prefix": true,
+  "same_initial_adapter_sha256": true,
+  "max_abs_mean_loss_difference": 0.010140527192471271,
+  "max_abs_grad_norm_difference": 0.1146242618560791,
+  "bitwise_training_replay_established": false,
+  "note": "Matching initial weights,seed andorder,with numerical loss/gradient differences;their cause is not isolated. A final weights unavailable,no bitwise model-equivalence claim. Known A work is a lower bound.",
+  "known_A_target_tokens": 29762,
+  "current_B_updates": 48,
+  "unix": 1794923986.869234,
+  "checks": [
+    {
+      "step": 1,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0,
+      "abs_grad_norm_difference": 0.002042531967163086
+    },
+    {
+      "step": 2,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0011910340991962975,
+      "abs_grad_norm_difference": 0.0353851318359375
+    },
+    {
+      "step": 3,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.002463893639884862,
+      "abs_grad_norm_difference": 0.01882767677307129
+    },
+    {
+      "step": 4,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.010140527192471271,
+      "abs_grad_norm_difference": 0.050830841064453125
+    },
+    {
+      "step": 5,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.000674664716183937,
+      "abs_grad_norm_difference": 0.005110740661621094
+    },
+    {
+      "step": 6,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0034863577142867364,
+      "abs_grad_norm_difference": 0.1146242618560791
+    },
+    {
+      "step": 7,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0017112620618071617,
+      "abs_grad_norm_difference": 0.04002642631530762
+    },
+    {
+      "step": 8,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.002904485316280958,
+      "abs_grad_norm_difference": 0.05102944374084473
+    },
+    {
+      "step": 9,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0034332275390625,
+      "abs_grad_norm_difference": 0.0024292469024658203
+    },
+    {
+      "step": 10,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0025532018000156143,
+      "abs_grad_norm_difference": 0.020137310028076172
+    },
+    {
+      "step": 11,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0005971300131957236,
+      "abs_grad_norm_difference": 0.03523445129394531
+    },
+    {
+      "step": 12,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0011055496071992188,
+      "abs_grad_norm_difference": 0.01718592643737793
+    },
+    {
+      "step": 13,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0036800908396736887,
+      "abs_grad_norm_difference": 0.01264333724975586
+    },
+    {
+      "step": 14,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.003176708756206459,
+      "abs_grad_norm_difference": 0.014184713363647461
+    },
+    {
+      "step": 15,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.00037128528889818213,
+      "abs_grad_norm_difference": 0.0012969970703125
+    },
+    {
+      "step": 16,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0006256434868263661,
+      "abs_grad_norm_difference": 0.0047473907470703125
+    },
+    {
+      "step": 17,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.002618299642570765,
+      "abs_grad_norm_difference": 0.01736164093017578
+    },
+    {
+      "step": 18,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0033083779471261288,
+      "abs_grad_norm_difference": 0.01867055892944336
+    },
+    {
+      "step": 19,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0043989544042313256,
+      "abs_grad_norm_difference": 0.08302640914916992
+    },
+    {
+      "step": 20,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.003617327163861983,
+      "abs_grad_norm_difference": 0.01105344295501709
+    },
+    {
+      "step": 21,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0012544096036313235,
+      "abs_grad_norm_difference": 0.01264941692352295
+    },
+    {
+      "step": 22,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0026806014623397267,
+      "abs_grad_norm_difference": 0.019152283668518066
+    },
+    {
+      "step": 23,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0015709843467828222,
+      "abs_grad_norm_difference": 0.006385087966918945
+    },
+    {
+      "step": 24,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0022599474131630437,
+      "abs_grad_norm_difference": 0.01223456859588623
+    },
+    {
+      "step": 25,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0004853025545292766,
+      "abs_grad_norm_difference": 0.011418700218200684
+    },
+    {
+      "step": 26,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.00148973010835185,
+      "abs_grad_norm_difference": 0.005801081657409668
+    },
+    {
+      "step": 27,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0013089771113121706,
+      "abs_grad_norm_difference": 0.001986384391784668
+    },
+    {
+      "step": 28,
+      "group_ids_equal": true,
+      "target_tokens_equal": true,
+      "abs_mean_loss_difference": 0.0020796189285778865,
+      "abs_grad_norm_difference": 0.0057718753814697266
+    }
+  ],
+  "initial_checkpoint_rng_comparison": {
+    "torch_CPU_rng_equal": true,
+    "CUDA_rng_equal": true,
+    "python_rng_equal": true,
+    "numpy_rng_array_equal": true
+  }
+}

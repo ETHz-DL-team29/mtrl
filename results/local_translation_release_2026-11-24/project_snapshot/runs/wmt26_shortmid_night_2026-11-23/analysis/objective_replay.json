@@ -1,0 +1,5532 @@
+{
+  "UTC": "2026-11-24T03:04:44.683506+00:00",
+  "passed": true,
+  "actual_updates": 240,
+  "max_loss_delta": 2.4089716853248344e-08,
+  "rows": [
+    {
+      "step": 1,
+      "tokens": 1311,
+      "loss_delta": 1.69016221929566e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 2,
+      "tokens": 1311,
+      "loss_delta": 3.761367377286273e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.454893094887666e-08
+    },
+    {
+      "step": 3,
+      "tokens": 1637,
+      "loss_delta": 1.4975191951391818e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 4,
+      "tokens": 1637,
+      "loss_delta": 8.550116187971968e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.098402007710831e-09
+    },
+    {
+      "step": 5,
+      "tokens": 1201,
+      "loss_delta": 7.899666512947712e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 6,
+      "tokens": 1201,
+      "loss_delta": 2.0438512290596456e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 8.02315502923534e-09
+    },
+    {
+      "step": 7,
+      "tokens": 805,
+      "loss_delta": 5.1997879647880385e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 8,
+      "tokens": 805,
+      "loss_delta": 1.706830578263041e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.1812941735911409e-09
+    },
+    {
+      "step": 9,
+      "tokens": 700,
+      "loss_delta": 3.3713877210794774e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 10,
+      "tokens": 700,
+      "loss_delta": 1.0746295332764166e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 7.6059464282352e-09
+    },
+    {
+      "step": 11,
+      "tokens": 857,
+      "loss_delta": 1.3991573524774203e-11,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 12,
+      "tokens": 857,
+      "loss_delta": 1.93003844460235e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.0796126326262367e-08
+    },
+    {
+      "step": 13,
+      "tokens": 1140,
+      "loss_delta": 7.8263774246079e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 14,
+      "tokens": 1140,
+      "loss_delta": 8.808207361404863e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 6.20049600552619e-09
+    },
+    {
+      "step": 15,
+      "tokens": 1676,
+      "loss_delta": 8.885628657341604e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 16,
+      "tokens": 1676,
+      "loss_delta": 2.2912140122677283e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.3953394934217442e-08
+    },
+    {
+      "step": 17,
+      "tokens": 1140,
+      "loss_delta": 3.4130240682272994e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 18,
+      "tokens": 1140,
+      "loss_delta": 5.923985428504114e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.5400545061439175e-08
+    },
+    {
+      "step": 19,
+      "tokens": 1289,
+      "loss_delta": 4.761786867590878e-10,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 20,
+      "tokens": 1289,
+      "loss_delta": 2.1921712389794124e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 5.150218251870342e-09
+    },
+    {
+      "step": 21,
+      "tokens": 1298,
+      "loss_delta": 3.0803198186601932e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 22,
+      "tokens": 1298,
+      "loss_delta": 6.634580777126198e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 7.649401334575145e-09
+    },
+    {
+      "step": 23,
+      "tokens": 1136,
+      "loss_delta": 5.405267920321338e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 24,
+      "tokens": 1136,
+      "loss_delta": 6.778163424633887e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 7.692846359930172e-10
+    },
+    {
+      "step": 25,
+      "tokens": 1491,
+      "loss_delta": 1.3719206035101017e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 26,
+      "tokens": 1491,
+      "loss_delta": 4.1971051183142816e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.3641684448728597e-08
+    },
+    {
+      "step": 27,
+      "tokens": 1075,
+      "loss_delta": 6.182844815988409e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 28,
+      "tokens": 1075,
+      "loss_delta": 1.553745564934067e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.1298982860452611e-08
+    },
+    {
+      "step": 29,
+      "tokens": 1196,
+      "loss_delta": 8.75178462859949e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 30,
+      "tokens": 1196,
+      "loss_delta": 2.3469161627119595e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 9.84531134395894e-09
+    },
+    {
+      "step": 31,
+      "tokens": 1509,
+      "loss_delta": 2.4089716853248344e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 32,
+      "tokens": 1509,
+      "loss_delta": 1.4323775207603084e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.9728518535776516e-08
+    },
+    {
+      "step": 33,
+      "tokens": 1288,
+      "loss_delta": 9.005737450912266e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 34,
+      "tokens": 1288,
+      "loss_delta": 1.7186286553616537e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.851717417762245e-09
+    },
+    {
+      "step": 35,
+      "tokens": 774,
+      "loss_delta": 1.9064137005142534e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 36,
+      "tokens": 774,
+      "loss_delta": 2.3157676040663766e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.8589009997960204e-08
+    },
+    {
+      "step": 37,
+      "tokens": 1006,
+      "loss_delta": 7.767193242746995e-10,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 38,
+      "tokens": 1006,
+      "loss_delta": 1.486123784580004e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 4.085471072556857e-09
+    },
+    {
+      "step": 39,
+      "tokens": 886,
+      "loss_delta": 4.3360437081141345e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 40,
+      "tokens": 886,
+      "loss_delta": 8.968585315377586e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.1480335288259766e-09
+    },
+    {
+      "step": 41,
+      "tokens": 861,
+      "loss_delta": 6.806983698925961e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 42,
+      "tokens": 861,
+      "loss_delta": 1.6914993954120217e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.0944771472741763e-08
+    },
+    {
+      "step": 43,
+      "tokens": 1492,
+      "loss_delta": 1.0179006182213512e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 44,
+      "tokens": 1492,
+      "loss_delta": 7.3013579574704446e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 8.023032238568817e-09
+    },
+    {
+      "step": 45,
+      "tokens": 2088,
+      "loss_delta": 3.508962976087049e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 46,
+      "tokens": 2088,
+      "loss_delta": 1.3215707809349775e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 7.213323161003871e-09
+    },
+    {
+      "step": 47,
+      "tokens": 1576,
+      "loss_delta": 3.441047813010356e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 48,
+      "tokens": 1576,
+      "loss_delta": 6.193931351324011e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 5.8224681742657936e-09
+    },
+    {
+      "step": 49,
+      "tokens": 2294,
+      "loss_delta": 6.212132683258709e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 50,
+      "tokens": 2294,
+      "loss_delta": 1.3749338462903937e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 3.728056308105465e-09
+    },
+    {
+      "step": 51,
+      "tokens": 1561,
+      "loss_delta": 2.4796053374638583e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 52,
+      "tokens": 1561,
+      "loss_delta": 1.2522127763522906e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.7307139055233733e-09
+    },
+    {
+      "step": 53,
+      "tokens": 1724,
+      "loss_delta": 3.840355094694714e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 54,
+      "tokens": 1724,
+      "loss_delta": 9.93721413836135e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.4489842376240745e-09
+    },
+    {
+      "step": 55,
+      "tokens": 789,
+      "loss_delta": 9.096625376570078e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 56,
+      "tokens": 789,
+      "loss_delta": 1.0878755896115422e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 8.34038915709101e-09
+    },
+    {
+      "step": 57,
+      "tokens": 1612,
+      "loss_delta": 2.20813578186152e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 58,
+      "tokens": 1612,
+      "loss_delta": 6.467574972107704e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.9419834346455787e-09
+    },
+    {
+      "step": 59,
+      "tokens": 711,
+      "loss_delta": 6.2570779460480175e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 60,
+      "tokens": 711,
+      "loss_delta": 1.124269161621727e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 9.74264890984955e-10
+    },
+    {
+      "step": 61,
+      "tokens": 773,
+      "loss_delta": 3.574838931819091e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 62,
+      "tokens": 773,
+      "loss_delta": 1.2614031659474723e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.1170820652116618e-09
+    },
+    {
+      "step": 63,
+      "tokens": 1198,
+      "loss_delta": 3.2005467772572294e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 64,
+      "tokens": 1198,
+      "loss_delta": 2.6582011145200035e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.004057725850771e-08
+    },
+    {
+      "step": 65,
+      "tokens": 1656,
+      "loss_delta": 1.5777088073487544e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 66,
+      "tokens": 1656,
+      "loss_delta": 9.676201019256925e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 4.083020921363811e-09
+    },
+    {
+      "step": 67,
+      "tokens": 1400,
+      "loss_delta": 8.146411606055337e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 68,
+      "tokens": 1400,
+      "loss_delta": 1.1683033854584246e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.4260669140296898e-08
+    },
+    {
+      "step": 69,
+      "tokens": 1736,
+      "loss_delta": 3.3323215298253217e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 70,
+      "tokens": 1736,
+      "loss_delta": 1.6853054438104031e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.0138941464177265e-08
+    },
+    {
+      "step": 71,
+      "tokens": 1489,
+      "loss_delta": 6.529891002915456e-10,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 72,
+      "tokens": 1489,
+      "loss_delta": 4.715861423587597e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.7784996697578492e-08
+    },
+    {
+      "step": 73,
+      "tokens": 921,
+      "loss_delta": 5.484160226637558e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 74,
+      "tokens": 921,
+      "loss_delta": 1.154079544906858e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.580620445640335e-08
+    },
+    {
+      "step": 75,
+      "tokens": 930,
+      "loss_delta": 9.027820442597534e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 76,
+      "tokens": 930,
+      "loss_delta": 1.134291156140721e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 5.547605375078035e-09
+    },
+    {
+      "step": 77,
+      "tokens": 1081,
+      "loss_delta": 1.1964393547073127e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 78,
+      "tokens": 1081,
+      "loss_delta": 2.753024912205415e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.2876289035013144e-08
+    },
+    {
+      "step": 79,
+      "tokens": 916,
+      "loss_delta": 1.4591313428347075e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 80,
+      "tokens": 916,
+      "loss_delta": 1.094881470209419e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 5.158403038052484e-09
+    },
+    {
+      "step": 81,
+      "tokens": 2121,
+      "loss_delta": 7.05374760337496e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 82,
+      "tokens": 2121,
+      "loss_delta": 1.299919084873924e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 3.0418678687027523e-09
+    },
+    {
+      "step": 83,
+      "tokens": 1044,
+      "loss_delta": 2.0613429095595048e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 84,
+      "tokens": 1044,
+      "loss_delta": 1.1996998977581441e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 6.516296058300952e-09
+    },
+    {
+      "step": 85,
+      "tokens": 1303,
+      "loss_delta": 3.848272409068265e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 86,
+      "tokens": 1303,
+      "loss_delta": 1.4052841582241904e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 7.3362320662795355e-09
+    },
+    {
+      "step": 87,
+      "tokens": 1300,
+      "loss_delta": 1.4687986830269617e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 88,
+      "tokens": 1300,
+      "loss_delta": 3.894358793776753e-11,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.1935362143056238e-08
+    },
+    {
+      "step": 89,
+      "tokens": 641,
+      "loss_delta": 4.567984671728295e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 90,
+      "tokens": 641,
+      "loss_delta": 1.2783586342268727e-10,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 5.6624451794107244e-09
+    },
+    {
+      "step": 91,
+      "tokens": 896,
+      "loss_delta": 8.070076419619543e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 92,
+      "tokens": 896,
+      "loss_delta": 8.168223243620876e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 7.533415558036438e-09
+    },
+    {
+      "step": 93,
+      "tokens": 442,
+      "loss_delta": 1.3242901317211953e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 94,
+      "tokens": 442,
+      "loss_delta": 2.5427291591717527e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 7.788378830753118e-10
+    },
+    {
+      "step": 95,
+      "tokens": 849,
+      "loss_delta": 1.3365959847591591e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 96,
+      "tokens": 849,
+      "loss_delta": 5.90895361286814e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.361205109213671e-08
+    },
+    {
+      "step": 97,
+      "tokens": 1566,
+      "loss_delta": 1.269417647213611e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 98,
+      "tokens": 1566,
+      "loss_delta": 6.544311516309964e-10,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.055813308476928e-08
+    },
+    {
+      "step": 99,
+      "tokens": 1957,
+      "loss_delta": 3.4238120914797943e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 100,
+      "tokens": 1957,
+      "loss_delta": 1.0895696244545006e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.278201849392758e-09
+    },
+    {
+      "step": 101,
+      "tokens": 1323,
+      "loss_delta": 3.8490090767395735e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 102,
+      "tokens": 1323,
+      "loss_delta": 7.869735044185866e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 8.774442283865369e-09
+    },
+    {
+      "step": 103,
+      "tokens": 1139,
+      "loss_delta": 1.0859433813986685e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 104,
+      "tokens": 1139,
+      "loss_delta": 7.879316189091101e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 5.862638818854293e-09
+    },
+    {
+      "step": 105,
+      "tokens": 846,
+      "loss_delta": 1.1746113318111817e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 106,
+      "tokens": 846,
+      "loss_delta": 1.6892752065233996e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.4719329977097573e-08
+    },
+    {
+      "step": 107,
+      "tokens": 1425,
+      "loss_delta": 7.85966812293093e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 108,
+      "tokens": 1425,
+      "loss_delta": 1.0120136222091514e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.4630273326154963e-08
+    },
+    {
+      "step": 109,
+      "tokens": 1135,
+      "loss_delta": 9.840017897722042e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 110,
+      "tokens": 1135,
+      "loss_delta": 8.204427900948552e-10,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.056893577684349e-08
+    },
+    {
+      "step": 111,
+      "tokens": 745,
+      "loss_delta": 3.915617630481649e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 112,
+      "tokens": 745,
+      "loss_delta": 5.638947160775676e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 4.322054270033959e-09
+    },
+    {
+      "step": 113,
+      "tokens": 441,
+      "loss_delta": 1.0594850207226725e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 114,
+      "tokens": 441,
+      "loss_delta": 8.067114130134653e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 6.510938121984111e-09
+    },
+    {
+      "step": 115,
+      "tokens": 1782,
+      "loss_delta": 2.994003447942539e-10,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 116,
+      "tokens": 1782,
+      "loss_delta": 4.896554071931458e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.5106248474339168e-09
+    },
+    {
+      "step": 117,
+      "tokens": 997,
+      "loss_delta": 1.2496201781675431e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 118,
+      "tokens": 997,
+      "loss_delta": 5.290155325951562e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.0440851516690941e-08
+    },
+    {
+      "step": 119,
+      "tokens": 1334,
+      "loss_delta": 1.0460909883550779e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 120,
+      "tokens": 1334,
+      "loss_delta": 1.2132936145353712e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.7975128052682976e-09
+    },
+    {
+      "step": 121,
+      "tokens": 1007,
+      "loss_delta": 9.93304774023207e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 122,
+      "tokens": 1007,
+      "loss_delta": 1.2919271118183584e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 8.486850555655678e-09
+    },
+    {
+      "step": 123,
+      "tokens": 982,
+      "loss_delta": 4.705662607728915e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 124,
+      "tokens": 982,
+      "loss_delta": 3.4197423642856606e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.1886547019178693e-09
+    },
+    {
+      "step": 125,
+      "tokens": 1203,
+      "loss_delta": 1.8047665098497312e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 126,
+      "tokens": 1203,
+      "loss_delta": 4.349210672160986e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.1581978154318051e-08
+    },
+    {
+      "step": 127,
+      "tokens": 1291,
+      "loss_delta": 1.0489823048381863e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 128,
+      "tokens": 1291,
+      "loss_delta": 2.3788342806002616e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 5.470309094590675e-09
+    },
+    {
+      "step": 129,
+      "tokens": 1454,
+      "loss_delta": 3.683015697975023e-11,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 130,
+      "tokens": 1454,
+      "loss_delta": 4.009897866443651e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 4.371271122849407e-10
+    },
+    {
+      "step": 131,
+      "tokens": 1245,
+      "loss_delta": 4.709724443774377e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 132,
+      "tokens": 1245,
+      "loss_delta": 7.054262625427743e-10,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 4.341473180957678e-09
+    },
+    {
+      "step": 133,
+      "tokens": 1073,
+      "loss_delta": 3.939080039580545e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 134,
+      "tokens": 1073,
+      "loss_delta": 1.0014040985328876e-10,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 9.797465505556602e-09
+    },
+    {
+      "step": 135,
+      "tokens": 826,
+      "loss_delta": 7.212112407284366e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 136,
+      "tokens": 826,
+      "loss_delta": 4.582683317891356e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 3.6211478260383956e-09
+    },
+    {
+      "step": 137,
+      "tokens": 1351,
+      "loss_delta": 8.949891027940082e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 138,
+      "tokens": 1351,
+      "loss_delta": 4.606567533677053e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.521493708800392e-08
+    },
+    {
+      "step": 139,
+      "tokens": 713,
+      "loss_delta": 3.960733348067069e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 140,
+      "tokens": 713,
+      "loss_delta": 5.857682633218786e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 5.239629508047017e-09
+    },
+    {
+      "step": 141,
+      "tokens": 1189,
+      "loss_delta": 1.713459256945382e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 142,
+      "tokens": 1189,
+      "loss_delta": 8.395334302746527e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 8.330319656302265e-09
+    },
+    {
+      "step": 143,
+      "tokens": 1426,
+      "loss_delta": 2.7303719771221147e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 144,
+      "tokens": 1426,
+      "loss_delta": 1.445229596587494e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 8.735530521164492e-09
+    },
+    {
+      "step": 145,
+      "tokens": 1876,
+      "loss_delta": 1.0082584572801423e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 146,
+      "tokens": 1876,
+      "loss_delta": 1.1184523168727978e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.8880050300928986e-08
+    },
+    {
+      "step": 147,
+      "tokens": 1180,
+      "loss_delta": 1.9716414608600408e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 148,
+      "tokens": 1180,
+      "loss_delta": 9.092429493345877e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 6.72572619819789e-09
+    },
+    {
+      "step": 149,
+      "tokens": 1029,
+      "loss_delta": 1.6511290310688986e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 150,
+      "tokens": 1029,
+      "loss_delta": 3.5654774133142553e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 6.857314716057772e-09
+    },
+    {
+      "step": 151,
+      "tokens": 699,
+      "loss_delta": 8.120759788904884e-10,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 152,
+      "tokens": 699,
+      "loss_delta": 1.5016938169527816e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 7.042531890988357e-09
+    },
+    {
+      "step": 153,
+      "tokens": 2021,
+      "loss_delta": 9.618635957164834e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 154,
+      "tokens": 2021,
+      "loss_delta": 9.785278596088909e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 8.000922036011104e-09
+    },
+    {
+      "step": 155,
+      "tokens": 1168,
+      "loss_delta": 1.0070722710614488e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 156,
+      "tokens": 1168,
+      "loss_delta": 2.401477615723846e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.4128040626282257e-08
+    },
+    {
+      "step": 157,
+      "tokens": 567,
+      "loss_delta": 3.267944387319588e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 158,
+      "tokens": 567,
+      "loss_delta": 1.1017078749286924e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.479135480764171e-09
+    },
+    {
+      "step": 159,
+      "tokens": 1169,
+      "loss_delta": 8.19398553869588e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 160,
+      "tokens": 1169,
+      "loss_delta": 1.1256836151152944e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.390378079335619e-08
+    },
+    {
+      "step": 161,
+      "tokens": 1077,
+      "loss_delta": 4.940300904476835e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 162,
+      "tokens": 1077,
+      "loss_delta": 1.873166562832429e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.0975335912609694e-09
+    },
+    {
+      "step": 163,
+      "tokens": 1513,
+      "loss_delta": 7.010079792688084e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 164,
+      "tokens": 1513,
+      "loss_delta": 1.5990177474104438e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.476052252120553e-09
+    },
+    {
+      "step": 165,
+      "tokens": 863,
+      "loss_delta": 1.3266220635910209e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 166,
+      "tokens": 863,
+      "loss_delta": 1.081653905332658e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.925964692757077e-09
+    },
+    {
+      "step": 167,
+      "tokens": 684,
+      "loss_delta": 4.4796071210079225e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 168,
+      "tokens": 684,
+      "loss_delta": 1.963079154093661e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.478455824432956e-08
+    },
+    {
+      "step": 169,
+      "tokens": 827,
+      "loss_delta": 1.7399797182932053e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 170,
+      "tokens": 827,
+      "loss_delta": 4.442376848323715e-11,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.0699462649199631e-08
+    },
+    {
+      "step": 171,
+      "tokens": 1914,
+      "loss_delta": 1.6383054034924127e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 172,
+      "tokens": 1914,
+      "loss_delta": 7.05847196663667e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.7569374561053905e-09
+    },
+    {
+      "step": 173,
+      "tokens": 2080,
+      "loss_delta": 1.4789447259737354e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 174,
+      "tokens": 2080,
+      "loss_delta": 1.0065358366229127e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.7964890908217512e-08
+    },
+    {
+      "step": 175,
+      "tokens": 929,
+      "loss_delta": 2.589708329725493e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 176,
+      "tokens": 929,
+      "loss_delta": 4.698834592253842e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 7.99332144918452e-09
+    },
+    {
+      "step": 177,
+      "tokens": 724,
+      "loss_delta": 4.5511315896473725e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 178,
+      "tokens": 724,
+      "loss_delta": 1.2445756196466373e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 7.526800294144209e-10
+    },
+    {
+      "step": 179,
+      "tokens": 939,
+      "loss_delta": 3.994942401625706e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 180,
+      "tokens": 939,
+      "loss_delta": 6.7740395862103675e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.2443235331005553e-10
+    },
+    {
+      "step": 181,
+      "tokens": 982,
+      "loss_delta": 1.4775499033916478e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 182,
+      "tokens": 982,
+      "loss_delta": 2.9738847200783125e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.0254069815474054e-08
+    },
+    {
+      "step": 183,
+      "tokens": 743,
+      "loss_delta": 8.883366479917054e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 184,
+      "tokens": 743,
+      "loss_delta": 9.698276386832516e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 8.042074672864885e-09
+    },
+    {
+      "step": 185,
+      "tokens": 1470,
+      "loss_delta": 1.3925668111702816e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 186,
+      "tokens": 1470,
+      "loss_delta": 2.066680980863933e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 3.405810633516637e-09
+    },
+    {
+      "step": 187,
+      "tokens": 827,
+      "loss_delta": 5.094683588197091e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 188,
+      "tokens": 827,
+      "loss_delta": 1.2182798835719266e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 5.292443372439948e-09
+    },
+    {
+      "step": 189,
+      "tokens": 1264,
+      "loss_delta": 1.3802583694912107e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 190,
+      "tokens": 1264,
+      "loss_delta": 5.931859251354348e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.8608438123735027e-08
+    },
+    {
+      "step": 191,
+      "tokens": 716,
+      "loss_delta": 5.931328128302993e-10,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 192,
+      "tokens": 716,
+      "loss_delta": 1.4745506610874815e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.4108841428495111e-08
+    },
+    {
+      "step": 193,
+      "tokens": 548,
+      "loss_delta": 4.439077674889269e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 194,
+      "tokens": 548,
+      "loss_delta": 1.3211968385648531e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 5.3682254197440216e-09
+    },
+    {
+      "step": 195,
+      "tokens": 1575,
+      "loss_delta": 2.39194681075916e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 196,
+      "tokens": 1575,
+      "loss_delta": 8.701664342206095e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.7789401063339483e-09
+    },
+    {
+      "step": 197,
+      "tokens": 1315,
+      "loss_delta": 3.326224772177977e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 198,
+      "tokens": 1315,
+      "loss_delta": 8.592341959191407e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 4.179743884336062e-09
+    },
+    {
+      "step": 199,
+      "tokens": 602,
+      "loss_delta": 3.3348541983446722e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 200,
+      "tokens": 602,
+      "loss_delta": 8.824455194345049e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 4.906698936046894e-09
+    },
+    {
+      "step": 201,
+      "tokens": 690,
+      "loss_delta": 1.1214338567142046e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 202,
+      "tokens": 690,
+      "loss_delta": 2.2899365416037543e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.6812774778228743e-08
+    },
+    {
+      "step": 203,
+      "tokens": 1467,
+      "loss_delta": 8.141216279247687e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 204,
+      "tokens": 1467,
+      "loss_delta": 5.789181453663694e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 9.798077904576985e-09
+    },
+    {
+      "step": 205,
+      "tokens": 1965,
+      "loss_delta": 3.1355267236798934e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 206,
+      "tokens": 1965,
+      "loss_delta": 7.045590289141146e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 8.899182946109363e-09
+    },
+    {
+      "step": 207,
+      "tokens": 1376,
+      "loss_delta": 4.0386641010636826e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 208,
+      "tokens": 1376,
+      "loss_delta": 4.355580559417538e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 8.259375849917205e-09
+    },
+    {
+      "step": 209,
+      "tokens": 1255,
+      "loss_delta": 9.069820324251673e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 210,
+      "tokens": 1255,
+      "loss_delta": 1.3732383514174218e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 9.932965561176843e-10
+    },
+    {
+      "step": 211,
+      "tokens": 1920,
+      "loss_delta": 6.5037359803232775e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 212,
+      "tokens": 1920,
+      "loss_delta": 6.551081883562904e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.8363608522697916e-08
+    },
+    {
+      "step": 213,
+      "tokens": 1020,
+      "loss_delta": 3.083864701797223e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 214,
+      "tokens": 1020,
+      "loss_delta": 3.2256616405712535e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 9.334059192234179e-09
+    },
+    {
+      "step": 215,
+      "tokens": 917,
+      "loss_delta": 4.4019464219557936e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 216,
+      "tokens": 917,
+      "loss_delta": 5.648812936506764e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 8.895382763718374e-09
+    },
+    {
+      "step": 217,
+      "tokens": 1096,
+      "loss_delta": 1.7738466008554443e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 218,
+      "tokens": 1096,
+      "loss_delta": 7.592600020922546e-10,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 2.0723581295456484e-08
+    },
+    {
+      "step": 219,
+      "tokens": 884,
+      "loss_delta": 1.559227839724453e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 220,
+      "tokens": 884,
+      "loss_delta": 7.351895437920919e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 9.647526444389598e-09
+    },
+    {
+      "step": 221,
+      "tokens": 561,
+      "loss_delta": 2.685645445615892e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 222,
+      "tokens": 561,
+      "loss_delta": 2.1596197583712007e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 6.512211658815659e-09
+    },
+    {
+      "step": 223,
+      "tokens": 682,
+      "loss_delta": 2.9802834505820996e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 224,
+      "tokens": 682,
+      "loss_delta": 1.1636018884542132e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 3.2555290685465366e-09
+    },
+    {
+      "step": 225,
+      "tokens": 1491,
+      "loss_delta": 4.869162580078967e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 226,
+      "tokens": 1491,
+      "loss_delta": 1.4805458317668219e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 7.09972314272278e-09
+    },
+    {
+      "step": 227,
+      "tokens": 1150,
+      "loss_delta": 3.917347108153835e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 228,
+      "tokens": 1150,
+      "loss_delta": 4.899689336548829e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 5.716257245325096e-09
+    },
+    {
+      "step": 229,
+      "tokens": 956,
+      "loss_delta": 1.790945001328703e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 230,
+      "tokens": 956,
+      "loss_delta": 1.1233161399323843e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.63162117150506e-08
+    },
+    {
+      "step": 231,
+      "tokens": 1254,
+      "loss_delta": 2.1537762892598344e-10,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 232,
+      "tokens": 1254,
+      "loss_delta": 1.0594298321432716e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.8024191694721026e-08
+    },
+    {
+      "step": 233,
+      "tokens": 1457,
+      "loss_delta": 1.864530805792408e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 234,
+      "tokens": 1457,
+      "loss_delta": 5.5404138035210215e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.2591223841340593e-08
+    },
+    {
+      "step": 235,
+      "tokens": 1044,
+      "loss_delta": 3.614896458559169e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 236,
+      "tokens": 1044,
+      "loss_delta": 1.0353192267040234e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 3.253651792434198e-10
+    },
+    {
+      "step": 237,
+      "tokens": 1704,
+      "loss_delta": 7.646245782366723e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 238,
+      "tokens": 1704,
+      "loss_delta": 1.254875484080209e-08,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 1.7779246741511656e-08
+    },
+    {
+      "step": 239,
+      "tokens": 1643,
+      "loss_delta": 7.698680566095226e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 0.0
+    },
+    {
+      "step": 240,
+      "tokens": 1643,
+      "loss_delta": 8.678557924385322e-09,
+      "clip_fraction_delta": 0.0,
+      "ratio_mean_delta": 9.033614412068403e-09
+    }
+  ],
+  "global_active_token_denominator_verified": true,
+  "old_logps_bound_to_actual_rollouts": true,
+  "sampler_teacher_checks": [
+    {
+      "id": "ParIce21:ema:269236",
+      "rollout_start_step": 0,
+      "mean": 7.694690665011818e-06,
+      "p99": 5.193948745727538e-05,
+      "maximum": 9.179115295410156e-05,
+      "tokens": 311
+    },
+    {
+      "id": "ParIce21:ema:31343",
+      "rollout_start_step": 0,
+      "mean": 2.329402894944643e-06,
+      "p99": 6.008148193359375e-05,
+      "maximum": 7.343292236328125e-05,
+      "tokens": 187
+    },
+    {
+      "id": "ParIce21:ema:190868",
+      "rollout_start_step": 0,
+      "mean": 2.955029884280488e-06,
+      "p99": 3.5350322723388654e-05,
+      "maximum": 0.00010371208190917969,
+      "tokens": 392
+    },
+    {
+      "id": "ParIce21:ema:307980",
+      "rollout_start_step": 0,
+      "mean": 2.741340592111872e-06,
+      "p99": 3.0457973480224613e-05,
+      "maximum": 3.528594970703125e-05,
+      "tokens": 421
+    },
+    {
+      "id": "ParIce21:eso:3185",
+      "rollout_start_step": 2,
+      "mean": 4.520798786884412e-06,
+      "p99": 4.225254058837891e-05,
+      "maximum": 6.389617919921875e-05,
+      "tokens": 540
+    },
+    {
+      "id": "ParIce21:ema:190491",
+      "rollout_start_step": 2,
+      "mean": 4.830780316143173e-06,
+      "p99": 4.69350814819336e-05,
+      "maximum": 7.224082946777344e-05,
+      "tokens": 777
+    },
+    {
+      "id": "ParIce21:ema:284803",
+      "rollout_start_step": 2,
+      "mean": 1.7857808925347879e-06,
+      "p99": 2.2679567337036173e-05,
+      "maximum": 3.695487976074219e-05,
+      "tokens": 227
+    },
+    {
+      "id": "OpenSubtitles18:1004375",
+      "rollout_start_step": 2,
+      "mean": 1.6511871115321272e-06,
+      "p99": 1.793861389160156e-05,
+      "maximum": 1.8596649169921875e-05,
+      "tokens": 93
+    },
+    {
+      "id": "OpenSubtitles18:248417",
+      "rollout_start_step": 4,
+      "mean": 4.515101435331992e-06,
+      "p99": 3.2955408096313475e-05,
+      "maximum": 3.4749507904052734e-05,
+      "tokens": 87
+    },
+    {
+      "id": "ParIce21:ema:20178",
+      "rollout_start_step": 4,
+      "mean": 6.287956009553926e-06,
+      "p99": 6.145238876342775e-05,
+      "maximum": 9.703636169433594e-05,
+      "tokens": 346
+    },
+    {
+      "id": "ParIce21:ema:34028",
+      "rollout_start_step": 4,
+      "mean": 3.934784840347467e-06,
+      "p99": 4.0758848190307505e-05,
+      "maximum": 0.00010669231414794922,
+      "tokens": 684
+    },
+    {
+      "id": "OpenSubtitles18:466836",
+      "rollout_start_step": 4,
+      "mean": 1.0259295858564395e-06,
+      "p99": 6.301403045654329e-06,
+      "maximum": 2.193450927734375e-05,
+      "tokens": 84
+    },
+    {
+      "id": "ParIce21:tatoeba:3921",
+      "rollout_start_step": 6,
+      "mean": 2.868043806722935e-06,
+      "p99": 1.316070556640624e-05,
+      "maximum": 7.05718994140625e-05,
+      "tokens": 121
+    },
+    {
+      "id": "ParIce21:ema:78985",
+      "rollout_start_step": 6,
+      "mean": 2.8971086961525493e-06,
+      "p99": 3.7255287170410154e-05,
+      "maximum": 6.532669067382812e-05,
+      "tokens": 288
+    },
+    {
+      "id": "ParIce21:tatoeba:8308",
+      "rollout_start_step": 6,
+      "mean": 3.842585414480435e-06,
+      "p99": 2.4044513702392553e-05,
+      "maximum": 3.075599670410156e-05,
+      "tokens": 121
+    },
+    {
+      "id": "ParIce21:ema:94250",
+      "rollout_start_step": 6,
+      "mean": 6.9829621985336005e-06,
+      "p99": 4.220008850097656e-05,
+      "maximum": 5.221366882324219e-05,
+      "tokens": 275
+    },
+    {
+      "id": "OpenSubtitles18:1026457",
+      "rollout_start_step": 8,
+      "mean": 2.988366822957065e-06,
+      "p99": 4.1596889495849616e-05,
+      "maximum": 5.53131103515625e-05,
+      "tokens": 152
+    },
+    {
+      "id": "ParIce21:ema:76091",
+      "rollout_start_step": 8,
+      "mean": 4.190969567548439e-06,
+      "p99": 4.8537254333496144e-05,
+      "maximum": 6.210803985595703e-05,
+      "tokens": 183
+    },
+    {
+      "id": "ParIce21:ema:305345",
+      "rollout_start_step": 8,
+      "mean": 3.8927062021110895e-06,
+      "p99": 3.876686096191407e-05,
+      "maximum": 0.00010275840759277344,
+      "tokens": 248
+    },
+    {
+      "id": "ParIce21:ema:390387",
+      "rollout_start_step": 8,
+      "mean": 3.1491611054708556e-06,
+      "p99": 4.28009033203125e-05,
+      "maximum": 4.506111145019531e-05,
+      "tokens": 117
+    },
+    {
+      "id": "ParIce21:tatoeba:7723",
+      "rollout_start_step": 10,
+      "mean": 1.4469295514384706e-06,
+      "p99": 1.6931891441345218e-05,
+      "maximum": 2.3365020751953125e-05,
+      "tokens": 87
+    },
+    {
+      "id": "ParIce21:ema:397010",
+      "rollout_start_step": 10,
+      "mean": 4.735438578377811e-06,
+      "p99": 3.9044618606567386e-05,
+      "maximum": 5.173683166503906e-05,
+      "tokens": 220
+    },
+    {
+      "id": "ParIce21:tatoeba:5895",
+      "rollout_start_step": 10,
+      "mean": 5.265569384175015e-06,
+      "p99": 4.6515464782714775e-05,
+      "maximum": 8.869171142578125e-05,
+      "tokens": 181
+    },
+    {
+      "id": "ParIce21:ema:26913",
+      "rollout_start_step": 10,
+      "mean": 3.2253506624478446e-06,
+      "p99": 4.00543212890625e-05,
+      "maximum": 4.673004150390625e-05,
+      "tokens": 369
+    },
+    {
+      "id": "ParIce21:eea:662825",
+      "rollout_start_step": 12,
+      "mean": 1.21595766622875e-06,
+      "p99": 6.495118141173984e-06,
+      "maximum": 4.673004150390625e-05,
+      "tokens": 479
+    },
+    {
+      "id": "ParIce21:ema:392047",
+      "rollout_start_step": 12,
+      "mean": 2.7250516006981954e-06,
+      "p99": 2.734303474426269e-05,
+      "maximum": 3.790855407714844e-05,
+      "tokens": 215
+    },
+    {
+      "id": "ParIce21:ema:105256",
+      "rollout_start_step": 12,
+      "mean": 1.4418339992900062e-06,
+      "p99": 3.170967102050781e-05,
+      "maximum": 4.458427429199219e-05,
+      "tokens": 356
+    },
+    {
+      "id": "OpenSubtitles18:220434",
+      "rollout_start_step": 12,
+      "mean": 4.496400968731803e-06,
+      "p99": 2.413034439086914e-05,
+      "maximum": 2.6464462280273438e-05,
+      "tokens": 90
+    },
+    {
+      "id": "ParIce21:eea:1002150",
+      "rollout_start_step": 14,
+      "mean": 4.391954734017538e-06,
+      "p99": 4.213333129882812e-05,
+      "maximum": 8.606910705566406e-05,
+      "tokens": 657
+    },
+    {
+      "id": "OpenSubtitles18:1415496",
+      "rollout_start_step": 14,
+      "mean": 6.941419532798439e-06,
+      "p99": 4.76062297821045e-05,
+      "maximum": 4.887580871582031e-05,
+      "tokens": 72
+    },
+    {
+      "id": "ParIce21:eea:2773594",
+      "rollout_start_step": 14,
+      "mean": 4.568114358164492e-06,
+      "p99": 4.5108795166015636e-05,
+      "maximum": 6.139278411865234e-05,
+      "tokens": 441
+    },
+    {
+      "id": "ParIce21:ema:24862",
+      "rollout_start_step": 14,
+      "mean": 2.7424341277998265e-06,
+      "p99": 3.3307075500488265e-05,
+      "maximum": 6.872415542602539e-05,
+      "tokens": 506
+    },
+    {
+      "id": "ParIce21:ema:255470",
+      "rollout_start_step": 16,
+      "mean": 9.466196819987418e-07,
+      "p99": 1.9293464720249175e-06,
+      "maximum": 4.0531158447265625e-06,
+      "tokens": 288
+    },
+    {
+      "id": "ParIce21:ema:363368",
+      "rollout_start_step": 16,
+      "mean": 3.7384174871258467e-06,
+      "p99": 3.850460052490229e-05,
+      "maximum": 0.0001316070556640625,
+      "tokens": 486
+    },
+    {
+      "id": "ParIce21:ema:42050",
+      "rollout_start_step": 16,
+      "mean": 3.2322892900996173e-06,
+      "p99": 2.887964248657227e-05,
+      "maximum": 3.170967102050781e-05,
+      "tokens": 242
+    },
+    {
+      "id": "ParIce21:ted2020:1188",
+      "rollout_start_step": 16,
+      "mean": 5.1045162043619125e-06,
+      "p99": 4.607439041137695e-05,
+      "maximum": 4.661083221435547e-05,
+      "tokens": 124
+    },
+    {
+      "id": "ParIce21:ema:392199",
+      "rollout_start_step": 18,
+      "mean": 2.439294352470874e-06,
+      "p99": 3.103911876678468e-05,
+      "maximum": 4.589557647705078e-05,
+      "tokens": 230
+    },
+    {
+      "id": "ParIce21:eea:1407335",
+      "rollout_start_step": 18,
+      "mean": 3.2092465449131743e-06,
+      "p99": 4.265308380126949e-05,
+      "maximum": 9.441375732421875e-05,
+      "tokens": 381
+    },
+    {
+      "id": "ParIce21:ema:261695",
+      "rollout_start_step": 18,
+      "mean": 5.1194983902639255e-06,
+      "p99": 5.04446029663086e-05,
+      "maximum": 6.937980651855469e-05,
+      "tokens": 589
+    },
+    {
+      "id": "OpenSubtitles18:906925",
+      "rollout_start_step": 18,
+      "mean": 2.3567127841948256e-06,
+      "p99": 3.993511199951172e-05,
+      "maximum": 3.993511199951172e-05,
+      "tokens": 89
+    },
+    {
+      "id": "ParIce21:eea:540724",
+      "rollout_start_step": 20,
+      "mean": 4.3415890395866015e-06,
+      "p99": 4.391193389892577e-05,
+      "maximum": 9.238719940185547e-05,
+      "tokens": 492
+    },
+    {
+      "id": "ParIce21:eso:9328",
+      "rollout_start_step": 20,
+      "mean": 6.169864037173128e-06,
+      "p99": 5.476951599121089e-05,
+      "maximum": 0.00019979476928710938,
+      "tokens": 549
+    },
+    {
+      "id": "OpenSubtitles18:580171",
+      "rollout_start_step": 20,
+      "mean": 5.6854785562165945e-06,
+      "p99": 4.696846008300781e-05,
+      "maximum": 4.863739013671875e-05,
+      "tokens": 160
+    },
+    {
+      "id": "OpenSubtitles18:1527586",
+      "rollout_start_step": 20,
+      "mean": 1.8649694567036782e-06,
+      "p99": 1.0223388671874958e-05,
+      "maximum": 1.52587890625e-05,
+      "tokens": 97
+    },
+    {
+      "id": "OpenSubtitles18:7953",
+      "rollout_start_step": 22,
+      "mean": 3.3396096270061974e-06,
+      "p99": 3.0517578125e-05,
+      "maximum": 3.0517578125e-05,
+      "tokens": 127
+    },
+    {
+      "id": "ParIce21:eea:316092",
+      "rollout_start_step": 22,
+      "mean": 9.484361574257505e-07,
+      "p99": 4.820525646209717e-06,
+      "maximum": 8.672475814819336e-06,
+      "tokens": 514
+    },
+    {
+      "id": "ParIce21:eso:9059",
+      "rollout_start_step": 22,
+      "mean": 5.712058193075445e-06,
+      "p99": 4.703283309936525e-05,
+      "maximum": 7.200241088867188e-05,
+      "tokens": 395
+    },
+    {
+      "id": "OpenSubtitles18:1559742",
+      "rollout_start_step": 22,
+      "mean": 4.935517038688886e-06,
+      "p99": 4.4276714324951384e-05,
+      "maximum": 8.463859558105469e-05,
+      "tokens": 100
+    },
+    {
+      "id": "ParIce21:ema:126300",
+      "rollout_start_step": 24,
+      "mean": 4.865364174006629e-06,
+      "p99": 5.462050437927246e-05,
+      "maximum": 6.222724914550781e-05,
+      "tokens": 282
+    },
+    {
+      "id": "ParIce21:ema:303672",
+      "rollout_start_step": 24,
+      "mean": 3.5585691058893826e-06,
+      "p99": 3.6571025848388696e-05,
+      "maximum": 6.389617919921875e-05,
+      "tokens": 403
+    },
+    {
+      "id": "ParIce21:eso:5335",
+      "rollout_start_step": 24,
+      "mean": 4.6568205108243885e-06,
+      "p99": 4.1513442993164036e-05,
+      "maximum": 8.249282836914062e-05,
+      "tokens": 600
+    },
+    {
+      "id": "ParIce21:ema:157972",
+      "rollout_start_step": 24,
+      "mean": 3.453773683014174e-06,
+      "p99": 3.999471664428711e-05,
+      "maximum": 5.435943603515625e-05,
+      "tokens": 206
+    },
+    {
+      "id": "ParIce21:eea:1238122",
+      "rollout_start_step": 26,
+      "mean": 3.985237920048438e-06,
+      "p99": 4.1124820709228504e-05,
+      "maximum": 5.2928924560546875e-05,
+      "tokens": 418
+    },
+    {
+      "id": "ParIce21:eea:2453993",
+      "rollout_start_step": 26,
+      "mean": 7.322965098164203e-06,
+      "p99": 5.7296752929687485e-05,
+      "maximum": 6.437301635742188e-05,
+      "tokens": 218
+    },
+    {
+      "id": "ParIce21:tatoeba:2236",
+      "rollout_start_step": 26,
+      "mean": 3.905920483007589e-06,
+      "p99": 4.884958267211915e-05,
+      "maximum": 7.891654968261719e-05,
+      "tokens": 170
+    },
+    {
+      "id": "ParIce21:ema:238021",
+      "rollout_start_step": 26,
+      "mean": 2.749205238724354e-06,
+      "p99": 2.4437904357910156e-05,
+      "maximum": 4.0411949157714844e-05,
+      "tokens": 269
+    },
+    {
+      "id": "ParIce21:eea:613789",
+      "rollout_start_step": 28,
+      "mean": 9.884733752610293e-07,
+      "p99": 1.9068247638642788e-06,
+      "maximum": 4.029273986816406e-05,
+      "tokens": 513
+    },
+    {
+      "id": "ParIce21:tatoeba:6709",
+      "rollout_start_step": 28,
+      "mean": 2.4332543776644775e-06,
+      "p99": 1.6622543334960944e-05,
+      "maximum": 1.9311904907226562e-05,
+      "tokens": 95
+    },
+    {
+      "id": "ParIce21:ema:302741",
+      "rollout_start_step": 28,
+      "mean": 8.149610481069658e-06,
+      "p99": 5.945920944213859e-05,
+      "maximum": 0.000102996826171875,
+      "tokens": 400
+    },
+    {
+      "id": "ParIce21:ema:299452",
+      "rollout_start_step": 28,
+      "mean": 2.0566226896064226e-06,
+      "p99": 2.4704933166503826e-05,
+      "maximum": 5.53131103515625e-05,
+      "tokens": 188
+    },
+    {
+      "id": "ParIce21:ema:196043",
+      "rollout_start_step": 30,
+      "mean": 4.266794222290231e-06,
+      "p99": 4.272460937499974e-05,
+      "maximum": 0.00010132789611816406,
+      "tokens": 1091
+    },
+    {
+      "id": "ParIce21:ema:339554",
+      "rollout_start_step": 30,
+      "mean": 4.037987049880047e-06,
+      "p99": 4.4255256652832046e-05,
+      "maximum": 9.012222290039062e-05,
+      "tokens": 192
+    },
+    {
+      "id": "OpenSubtitles18:1284378",
+      "rollout_start_step": 30,
+      "mean": 2.2131387813529654e-06,
+      "p99": 1.5764236450195314e-05,
+      "maximum": 1.6689300537109375e-05,
+      "tokens": 98
+    },
+    {
+      "id": "OpenSubtitles18:373461",
+      "rollout_start_step": 30,
+      "mean": 6.1296366815621894e-06,
+      "p99": 4.0348768234252946e-05,
+      "maximum": 4.291534423828125e-05,
+      "tokens": 128
+    },
+    {
+      "id": "OpenSubtitles18:142119",
+      "rollout_start_step": 32,
+      "mean": 7.654438095299536e-06,
+      "p99": 6.43372535705568e-05,
+      "maximum": 8.487701416015625e-05,
+      "tokens": 158
+    },
+    {
+      "id": "ParIce21:ema:94027",
+      "rollout_start_step": 32,
+      "mean": 3.7264787562764866e-06,
+      "p99": 4.9101114273071084e-05,
+      "maximum": 7.486343383789062e-05,
+      "tokens": 398
+    },
+    {
+      "id": "ParIce21:ema:96959",
+      "rollout_start_step": 32,
+      "mean": 4.862605093682815e-06,
+      "p99": 5.0849914550781243e-05,
+      "maximum": 9.66787338256836e-05,
+      "tokens": 597
+    },
+    {
+      "id": "OpenSubtitles18:19891",
+      "rollout_start_step": 32,
+      "mean": 3.374731975074812e-06,
+      "p99": 3.820896148681636e-05,
+      "maximum": 4.6133995056152344e-05,
+      "tokens": 135
+    },
+    {
+      "id": "ParIce21:ema:105600",
+      "rollout_start_step": 34,
+      "mean": 8.26950185725446e-07,
+      "p99": 2.026466972893104e-06,
+      "maximum": 6.67572021484375e-06,
+      "tokens": 209
+    },
+    {
+      "id": "ParIce21:ema:97472",
+      "rollout_start_step": 34,
+      "mean": 2.8575727685269196e-06,
+      "p99": 3.7670135498046875e-05,
+      "maximum": 0.00011110305786132812,
+      "tokens": 251
+    },
+    {
+      "id": "ParIce21:ema:213885",
+      "rollout_start_step": 34,
+      "mean": 2.892692826666971e-06,
+      "p99": 3.9720535278320345e-05,
+      "maximum": 4.4345855712890625e-05,
+      "tokens": 233
+    },
+    {
+      "id": "OpenSubtitles18:1559219",
+      "rollout_start_step": 34,
+      "mean": 2.0253553036947083e-06,
+      "p99": 1.5497207641601562e-05,
+      "maximum": 1.5497207641601562e-05,
+      "tokens": 81
+    },
+    {
+      "id": "ParIce21:ema:345828",
+      "rollout_start_step": 36,
+      "mean": 5.0088407945202194e-06,
+      "p99": 5.061149597167963e-05,
+      "maximum": 6.651878356933594e-05,
+      "tokens": 399
+    },
+    {
+      "id": "ParIce21:ema:97467",
+      "rollout_start_step": 36,
+      "mean": 2.8777014829417122e-06,
+      "p99": 4.5472383499145364e-05,
+      "maximum": 6.103515625e-05,
+      "tokens": 331
+    },
+    {
+      "id": "OpenSubtitles18:534046",
+      "rollout_start_step": 36,
+      "mean": 3.994068332820925e-06,
+      "p99": 3.508567810058593e-05,
+      "maximum": 5.054473876953125e-05,
+      "tokens": 104
+    },
+    {
+      "id": "ParIce21:tatoeba:8621",
+      "rollout_start_step": 36,
+      "mean": 4.1420955268502565e-06,
+      "p99": 4.104614257812499e-05,
+      "maximum": 0.00014483928680419922,
+      "tokens": 172
+    },
+    {
+      "id": "ParIce21:ema:61278",
+      "rollout_start_step": 38,
+      "mean": 2.26426183149085e-06,
+      "p99": 4.2138099670410186e-05,
+      "maximum": 4.279613494873047e-05,
+      "tokens": 224
+    },
+    {
+      "id": "ParIce21:ema:277652",
+      "rollout_start_step": 38,
+      "mean": 2.6574505114365596e-06,
+      "p99": 3.123283386230469e-05,
+      "maximum": 4.482269287109375e-05,
+      "tokens": 147
+    },
+    {
+      "id": "ParIce21:ema:363531",
+      "rollout_start_step": 38,
+      "mean": 3.374188560665247e-06,
+      "p99": 5.104064941406255e-05,
+      "maximum": 6.580352783203125e-05,
+      "tokens": 245
+    },
+    {
+      "id": "ParIce21:ema:168901",
+      "rollout_start_step": 38,
+      "mean": 5.716408995279262e-06,
+      "p99": 5.470752716064457e-05,
+      "maximum": 8.726119995117188e-05,
+      "tokens": 270
+    },
+    {
+      "id": "OpenSubtitles18:678238",
+      "rollout_start_step": 40,
+      "mean": 2.2487555798654604e-06,
+      "p99": 2.67767906188964e-05,
+      "maximum": 3.62396240234375e-05,
+      "tokens": 102
+    },
+    {
+      "id": "OpenSubtitles18:1237362",
+      "rollout_start_step": 40,
+      "mean": 2.6262184324265115e-06,
+      "p99": 2.3369789123535155e-05,
+      "maximum": 4.7147274017333984e-05,
+      "tokens": 115
+    },
+    {
+      "id": "ParIce21:ema:61077",
+      "rollout_start_step": 40,
+      "mean": 1.5350769848695385e-06,
+      "p99": 5.9604644775390625e-06,
+      "maximum": 6.771087646484375e-05,
+      "tokens": 322
+    },
+    {
+      "id": "ParIce21:ema:40703",
+      "rollout_start_step": 40,
+      "mean": 3.4938104206674577e-06,
+      "p99": 3.961801528930675e-05,
+      "maximum": 6.67572021484375e-05,
+      "tokens": 322
+    },
+    {
+      "id": "ParIce21:ema:188364",
+      "rollout_start_step": 42,
+      "mean": 1.6352135372549606e-06,
+      "p99": 1.5900433063507083e-05,
+      "maximum": 3.933906555175781e-05,
+      "tokens": 627
+    },
+    {
+      "id": "ParIce21:eea:1193439",
+      "rollout_start_step": 42,
+      "mean": 5.265880327482117e-06,
+      "p99": 4.62794303894043e-05,
+      "maximum": 5.936622619628906e-05,
+      "tokens": 690
+    },
+    {
+      "id": "OpenSubtitles18:326637",
+      "rollout_start_step": 42,
+      "mean": 6.584989246848322e-06,
+      "p99": 4.546642303466798e-05,
+      "maximum": 5.6743621826171875e-05,
+      "tokens": 87
+    },
+    {
+      "id": "OpenSubtitles18:629821",
+      "rollout_start_step": 42,
+      "mean": 2.9353240930421718e-06,
+      "p99": 2.6226043701171875e-05,
+      "maximum": 2.6226043701171875e-05,
+      "tokens": 88
+    },
+    {
+      "id": "ParIce21:ema:51447",
+      "rollout_start_step": 44,
+      "mean": 5.973414322840327e-06,
+      "p99": 4.73213195800781e-05,
+      "maximum": 9.584426879882812e-05,
+      "tokens": 393
+    },
+    {
+      "id": "ParIce21:ema:344437",
+      "rollout_start_step": 44,
+      "mean": 2.942258728237747e-06,
+      "p99": 4.0160417556762924e-05,
+      "maximum": 5.9604644775390625e-05,
+      "tokens": 403
+    },
+    {
+      "id": "ParIce21:ema:142075",
+      "rollout_start_step": 44,
+      "mean": 3.6315699580671055e-06,
+      "p99": 4.300355911254872e-05,
+      "maximum": 9.274482727050781e-05,
+      "tokens": 708
+    },
+    {
+      "id": "ParIce21:eea:322584",
+      "rollout_start_step": 44,
+      "mean": 4.675589469517746e-06,
+      "p99": 4.77796792984008e-05,
+      "maximum": 6.866455078125e-05,
+      "tokens": 584
+    },
+    {
+      "id": "ParIce21:ema:19197",
+      "rollout_start_step": 46,
+      "mean": 1.0129637816203859e-06,
+      "p99": 4.1711330413818235e-06,
+      "maximum": 4.6253204345703125e-05,
+      "tokens": 238
+    },
+    {
+      "id": "ParIce21:ema:21455",
+      "rollout_start_step": 46,
+      "mean": 3.794975316367581e-06,
+      "p99": 3.407716751098634e-05,
+      "maximum": 4.6253204345703125e-05,
+      "tokens": 202
+    },
+    {
+      "id": "ParIce21:ema:99958",
+      "rollout_start_step": 46,
+      "mean": 4.3168824071268495e-06,
+      "p99": 5.1844120025634804e-05,
+      "maximum": 0.00011682510375976562,
+      "tokens": 692
+    },
+    {
+      "id": "ParIce21:ema:351706",
+      "rollout_start_step": 46,
+      "mean": 2.5135214773445726e-06,
+      "p99": 3.057718276977539e-05,
+      "maximum": 5.245208740234375e-05,
+      "tokens": 444
+    },
+    {
+      "id": "ParIce21:eea:2345030",
+      "rollout_start_step": 48,
+      "mean": 4.733872693996546e-06,
+      "p99": 4.8217773437499894e-05,
+      "maximum": 6.771087646484375e-05,
+      "tokens": 769
+    },
+    {
+      "id": "ParIce21:eso:10058",
+      "rollout_start_step": 48,
+      "mean": 5.3296724734227384e-06,
+      "p99": 4.3147802352905265e-05,
+      "maximum": 6.29425048828125e-05,
+      "tokens": 536
+    },
+    {
+      "id": "ParIce21:eea:2027576",
+      "rollout_start_step": 48,
+      "mean": 5.822458872439404e-06,
+      "p99": 4.611492156982429e-05,
+      "maximum": 0.0001266002655029297,
+      "tokens": 644
+    },
+    {
+      "id": "ParIce21:ema:151803",
+      "rollout_start_step": 48,
+      "mean": 2.492616624564285e-06,
+      "p99": 3.753662109375001e-05,
+      "maximum": 9.942054748535156e-05,
+      "tokens": 345
+    },
+    {
+      "id": "ParIce21:ema:307179",
+      "rollout_start_step": 50,
+      "mean": 3.6442979253811546e-06,
+      "p99": 4.295825958251949e-05,
+      "maximum": 7.581710815429688e-05,
+      "tokens": 698
+    },
+    {
+      "id": "ParIce21:ema:275801",
+      "rollout_start_step": 50,
+      "mean": 5.7454028645511e-06,
+      "p99": 4.132032394409174e-05,
+      "maximum": 7.164478302001953e-05,
+      "tokens": 280
+    },
+    {
+      "id": "ParIce21:eso:9315",
+      "rollout_start_step": 50,
+      "mean": 6.952956486564631e-06,
+      "p99": 5.749106407165527e-05,
+      "maximum": 7.987022399902344e-05,
+      "tokens": 254
+    },
+    {
+      "id": "ParIce21:eea:2027578",
+      "rollout_start_step": 50,
+      "mean": 7.098668286869995e-06,
+      "p99": 4.981994628906237e-05,
+      "maximum": 6.937980651855469e-05,
+      "tokens": 329
+    },
+    {
+      "id": "ParIce21:ema:48360",
+      "rollout_start_step": 52,
+      "mean": 5.35979866819279e-06,
+      "p99": 4.825592041015626e-05,
+      "maximum": 7.18832015991211e-05,
+      "tokens": 445
+    },
+    {
+      "id": "ParIce21:ema:319347",
+      "rollout_start_step": 52,
+      "mean": 3.716914662351319e-06,
+      "p99": 4.493474960327145e-05,
+      "maximum": 0.00010037422180175781,
+      "tokens": 480
+    },
+    {
+      "id": "ParIce21:ema:353522",
+      "rollout_start_step": 52,
+      "mean": 3.856723664325824e-06,
+      "p99": 4.9595832824707054e-05,
+      "maximum": 6.341934204101562e-05,
+      "tokens": 539
+    },
+    {
+      "id": "ParIce21:ema:371304",
+      "rollout_start_step": 52,
+      "mean": 3.086493297661701e-06,
+      "p99": 3.838539123535156e-05,
+      "maximum": 4.57763671875e-05,
+      "tokens": 260
+    },
+    {
+      "id": "OpenSubtitles18:239773",
+      "rollout_start_step": 54,
+      "mean": 3.1406288946848635e-06,
+      "p99": 2.5076866149902335e-05,
+      "maximum": 2.7179718017578125e-05,
+      "tokens": 85
+    },
+    {
+      "id": "ParIce21:ema:353530",
+      "rollout_start_step": 54,
+      "mean": 4.683684358406308e-06,
+      "p99": 4.3851137161254886e-05,
+      "maximum": 4.875659942626953e-05,
+      "tokens": 242
+    },
+    {
+      "id": "ParIce21:ema:48039",
+      "rollout_start_step": 54,
+      "mean": 2.537604987128538e-06,
+      "p99": 4.1515827178954914e-05,
+      "maximum": 6.222724914550781e-05,
+      "tokens": 193
+    },
+    {
+      "id": "ParIce21:eso:7793",
+      "rollout_start_step": 54,
+      "mean": 6.947266590943272e-06,
+      "p99": 5.9890747070312484e-05,
+      "maximum": 9.918212890625e-05,
+      "tokens": 269
+    },
+    {
+      "id": "ParIce21:ema:259408",
+      "rollout_start_step": 56,
+      "mean": 2.5509722904089525e-06,
+      "p99": 4.52280044555663e-05,
+      "maximum": 7.510185241699219e-05,
+      "tokens": 247
+    },
+    {
+      "id": "OpenSubtitles18:735973",
+      "rollout_start_step": 56,
+      "mean": 4.5644126183513684e-06,
+      "p99": 3.9762258529663053e-05,
+      "maximum": 4.100799560546875e-05,
+      "tokens": 116
+    },
+    {
+      "id": "ParIce21:eea:2394452",
+      "rollout_start_step": 56,
+      "mean": 5.579689085091942e-06,
+      "p99": 4.083156585693359e-05,
+      "maximum": 7.557868957519531e-05,
+      "tokens": 613
+    },
+    {
+      "id": "ParIce21:ema:90691",
+      "rollout_start_step": 56,
+      "mean": 5.266452364631355e-06,
+      "p99": 5.175769329071034e-05,
+      "maximum": 9.107589721679688e-05,
+      "tokens": 636
+    },
+    {
+      "id": "OpenSubtitles18:428631",
+      "rollout_start_step": 58,
+      "mean": 1.2176357461524482e-06,
+      "p99": 7.510185241699219e-06,
+      "maximum": 7.510185241699219e-06,
+      "tokens": 93
+    },
+    {
+      "id": "ParIce21:ema:281464",
+      "rollout_start_step": 58,
+      "mean": 3.2646483977653012e-06,
+      "p99": 4.839897155761719e-05,
+      "maximum": 6.127357482910156e-05,
+      "tokens": 207
+    },
+    {
+      "id": "ParIce21:ema:211864",
+      "rollout_start_step": 58,
+      "mean": 3.6540889886015215e-06,
+      "p99": 4.095315933227536e-05,
+      "maximum": 8.20159912109375e-05,
+      "tokens": 288
+    },
+    {
+      "id": "OpenSubtitles18:961271",
+      "rollout_start_step": 58,
+      "mean": 3.0259053692901486e-06,
+      "p99": 1.9431114196777344e-05,
+      "maximum": 1.9431114196777344e-05,
+      "tokens": 123
+    },
+    {
+      "id": "ParIce21:eea:1100308",
+      "rollout_start_step": 60,
+      "mean": 4.291159244700424e-06,
+      "p99": 4.8547983169555664e-05,
+      "maximum": 6.818771362304688e-05,
+      "tokens": 276
+    },
+    {
+      "id": "ParIce21:ema:322427",
+      "rollout_start_step": 60,
+      "mean": 4.272477529003186e-06,
+      "p99": 4.743814468383776e-05,
+      "maximum": 0.00015687942504882812,
+      "tokens": 185
+    },
+    {
+      "id": "ParIce21:ema:246468",
+      "rollout_start_step": 60,
+      "mean": 3.3618862599179726e-06,
+      "p99": 2.62558460235596e-05,
+      "maximum": 3.457069396972656e-05,
+      "tokens": 224
+    },
+    {
+      "id": "OpenSubtitles18:754034",
+      "rollout_start_step": 60,
+      "mean": 1.7702654701326734e-06,
+      "p99": 8.58306884765625e-06,
+      "maximum": 8.58306884765625e-06,
+      "tokens": 88
+    },
+    {
+      "id": "ParIce21:ema:293821",
+      "rollout_start_step": 62,
+      "mean": 4.751865681996037e-06,
+      "p99": 4.41145896911621e-05,
+      "maximum": 6.532669067382812e-05,
+      "tokens": 500
+    },
+    {
+      "id": "ParIce21:ema:27260",
+      "rollout_start_step": 62,
+      "mean": 1.1667688758746024e-06,
+      "p99": 1.2010335922241211e-05,
+      "maximum": 2.2292137145996094e-05,
+      "tokens": 318
+    },
+    {
+      "id": "OpenSubtitles18:1441255",
+      "rollout_start_step": 62,
+      "mean": 9.695778323092734e-07,
+      "p99": 3.4486502408981366e-06,
+      "maximum": 5.125999450683594e-06,
+      "tokens": 95
+    },
+    {
+      "id": "ParIce21:ema:321187",
+      "rollout_start_step": 62,
+      "mean": 3.5921066559022586e-06,
+      "p99": 5.3281784057617205e-05,
+      "maximum": 9.500980377197266e-05,
+      "tokens": 285
+    },
+    {
+      "id": "ParIce21:ema:202695",
+      "rollout_start_step": 64,
+      "mean": 6.411087394275807e-06,
+      "p99": 6.222724914550776e-05,
+      "maximum": 0.00017642974853515625,
+      "tokens": 481
+    },
+    {
+      "id": "ParIce21:tatoeba:7676",
+      "rollout_start_step": 64,
+      "mean": 2.0211212154563894e-06,
+      "p99": 2.7238130569458016e-05,
+      "maximum": 3.355741500854492e-05,
+      "tokens": 120
+    },
+    {
+      "id": "ParIce21:eea:518400",
+      "rollout_start_step": 64,
+      "mean": 5.039988687993124e-06,
+      "p99": 5.226850509643555e-05,
+      "maximum": 9.250640869140625e-05,
+      "tokens": 755
+    },
+    {
+      "id": "ParIce21:ema:302396",
+      "rollout_start_step": 64,
+      "mean": 1.7281269946541518e-06,
+      "p99": 2.205371856689453e-05,
+      "maximum": 3.516674041748047e-05,
+      "tokens": 300
+    },
+    {
+      "id": "ParIce21:eea:133320",
+      "rollout_start_step": 66,
+      "mean": 5.851405968884785e-06,
+      "p99": 5.078315734863281e-05,
+      "maximum": 0.00010657310485839844,
+      "tokens": 730
+    },
+    {
+      "id": "ParIce21:ema:374954",
+      "rollout_start_step": 66,
+      "mean": 1.5492321613695044e-06,
+      "p99": 1.1889338493347146e-05,
+      "maximum": 1.3880431652069092e-05,
+      "tokens": 159
+    },
+    {
+      "id": "ParIce21:tatoeba:7301",
+      "rollout_start_step": 66,
+      "mean": 1.269567016793161e-06,
+      "p99": 8.141994476318408e-06,
+      "maximum": 1.341104507446289e-05,
+      "tokens": 161
+    },
+    {
+      "id": "ParIce21:eso:4160",
+      "rollout_start_step": 66,
+      "mean": 2.9313226636418222e-06,
+      "p99": 4.358172416687011e-05,
+      "maximum": 6.389617919921875e-05,
+      "tokens": 350
+    },
+    {
+      "id": "ParIce21:ema:34555",
+      "rollout_start_step": 68,
+      "mean": 1.1863877680233996e-06,
+      "p99": 2.2798776626586914e-06,
+      "maximum": 7.128715515136719e-05,
+      "tokens": 310
+    },
+    {
+      "id": "ParIce21:eea:1598672",
+      "rollout_start_step": 68,
+      "mean": 4.917282461305583e-06,
+      "p99": 5.058288574218749e-05,
+      "maximum": 9.489059448242188e-05,
+      "tokens": 885
+    },
+    {
+      "id": "ParIce21:ema:203100",
+      "rollout_start_step": 68,
+      "mean": 2.7985685469126084e-06,
+      "p99": 3.008842468261717e-05,
+      "maximum": 4.696846008300781e-05,
+      "tokens": 237
+    },
+    {
+      "id": "OpenSubtitles18:1551875",
+      "rollout_start_step": 68,
+      "mean": 6.275467019297534e-06,
+      "p99": 5.38396835327148e-05,
+      "maximum": 0.0001125335693359375,
+      "tokens": 304
+    },
+    {
+      "id": "OpenSubtitles18:214529",
+      "rollout_start_step": 70,
+      "mean": 1.2768669061339704e-06,
+      "p99": 1.0114908218383763e-05,
+      "maximum": 1.8835067749023438e-05,
+      "tokens": 96
+    },
+    {
+      "id": "ParIce21:ema:335676",
+      "rollout_start_step": 70,
+      "mean": 4.326452443214451e-06,
+      "p99": 5.356073379516602e-05,
+      "maximum": 9.435415267944336e-05,
+      "tokens": 248
+    },
+    {
+      "id": "ParIce21:eea:2916262",
+      "rollout_start_step": 70,
+      "mean": 2.3797348020268748e-06,
+      "p99": 3.0442476272583015e-05,
+      "maximum": 0.00010800361633300781,
+      "tokens": 729
+    },
+    {
+      "id": "ParIce21:ema:133275",
+      "rollout_start_step": 70,
+      "mean": 3.6603055719047336e-06,
+      "p99": 4.954934120178225e-05,
+      "maximum": 6.818771362304688e-05,
+      "tokens": 416
+    },
+    {
+      "id": "OpenSubtitles18:779936",
+      "rollout_start_step": 72,
+      "mean": 4.0232746163508575e-06,
+      "p99": 3.786087036132813e-05,
+      "maximum": 5.817413330078125e-05,
+      "tokens": 145
+    },
+    {
+      "id": "ParIce21:ema:163348",
+      "rollout_start_step": 72,
+      "mean": 2.0594297118949255e-06,
+      "p99": 3.025114536285389e-05,
+      "maximum": 5.447864532470703e-05,
+      "tokens": 280
+    },
+    {
+      "id": "ParIce21:ema:247428",
+      "rollout_start_step": 72,
+      "mean": 3.251867820991717e-06,
+      "p99": 3.746628761291501e-05,
+      "maximum": 7.62939453125e-05,
+      "tokens": 178
+    },
+    {
+      "id": "ParIce21:eea:3295271",
+      "rollout_start_step": 72,
+      "mean": 8.661283836367013e-06,
+      "p99": 5.5764913558959936e-05,
+      "maximum": 0.00011861324310302734,
+      "tokens": 318
+    },
+    {
+      "id": "ParIce21:eea:3364233",
+      "rollout_start_step": 74,
+      "mean": 5.981949031116205e-06,
+      "p99": 5.2461624145507695e-05,
+      "maximum": 6.961822509765625e-05,
+      "tokens": 349
+    },
+    {
+      "id": "ParIce21:ema:367561",
+      "rollout_start_step": 74,
+      "mean": 4.876399353320576e-06,
+      "p99": 3.918707370758054e-05,
+      "maximum": 8.392333984375e-05,
+      "tokens": 206
+    },
+    {
+      "id": "OpenSubtitles18:1260628",
+      "rollout_start_step": 74,
+      "mean": 2.3797004092726243e-06,
+      "p99": 2.0875930786132786e-05,
+      "maximum": 2.4080276489257812e-05,
+      "tokens": 97
+    },
+    {
+      "id": "ParIce21:ema:95189",
+      "rollout_start_step": 74,
+      "mean": 1.391956187531299e-06,
+      "p99": 1.36843323707581e-05,
+      "maximum": 2.765655517578125e-05,
+      "tokens": 278
+    },
+    {
+      "id": "ParIce21:ema:53275",
+      "rollout_start_step": 76,
+      "mean": 4.210764393974386e-06,
+      "p99": 3.763318061828611e-05,
+      "maximum": 7.236003875732422e-05,
+      "tokens": 250
+    },
+    {
+      "id": "ParIce21:ema:247829",
+      "rollout_start_step": 76,
+      "mean": 3.86144124254288e-06,
+      "p99": 4.3413639068603686e-05,
+      "maximum": 6.628036499023438e-05,
+      "tokens": 377
+    },
+    {
+      "id": "ParIce21:eea:2864057",
+      "rollout_start_step": 76,
+      "mean": 2.4955963413673523e-06,
+      "p99": 1.8775463104248047e-05,
+      "maximum": 6.318092346191406e-05,
+      "tokens": 244
+    },
+    {
+      "id": "ParIce21:tatoeba:828",
+      "rollout_start_step": 76,
+      "mean": 2.8405350728159345e-06,
+      "p99": 3.121376037597655e-05,
+      "maximum": 8.225440979003906e-05,
+      "tokens": 210
+    },
+    {
+      "id": "ParIce21:eea:3169307",
+      "rollout_start_step": 78,
+      "mean": 3.731719709776371e-06,
+      "p99": 3.503322601318359e-05,
+      "maximum": 3.790855407714844e-05,
+      "tokens": 205
+    },
+    {
+      "id": "ParIce21:eea:1431126",
+      "rollout_start_step": 78,
+      "mean": 7.565545212168431e-06,
+      "p99": 5.140304565429707e-05,
+      "maximum": 0.0002307891845703125,
+      "tokens": 271
+    },
+    {
+      "id": "ParIce21:eso:2045",
+      "rollout_start_step": 78,
+      "mean": 6.4316181792597794e-06,
+      "p99": 6.024360656738245e-05,
+      "maximum": 8.916854858398438e-05,
+      "tokens": 274
+    },
+    {
+      "id": "OpenSubtitles18:1567377",
+      "rollout_start_step": 78,
+      "mean": 6.492801946317094e-06,
+      "p99": 4.452466964721676e-05,
+      "maximum": 5.245208740234375e-05,
+      "tokens": 166
+    },
+    {
+      "id": "ParIce21:ema:254267",
+      "rollout_start_step": 80,
+      "mean": 3.380201020760444e-06,
+      "p99": 3.587722778320313e-05,
+      "maximum": 8.821487426757812e-05,
+      "tokens": 777
+    },
+    {
+      "id": "ParIce21:ema:380097",
+      "rollout_start_step": 80,
+      "mean": 6.226447190615743e-06,
+      "p99": 4.300594329833984e-05,
+      "maximum": 8.499622344970703e-05,
+      "tokens": 575
+    },
+    {
+      "id": "ParIce21:ema:99999",
+      "rollout_start_step": 80,
+      "mean": 3.0407481875539777e-06,
+      "p99": 3.8743019104003906e-05,
+      "maximum": 9.179115295410156e-05,
+      "tokens": 637
+    },
+    {
+      "id": "ParIce21:tatoeba:1535",
+      "rollout_start_step": 80,
+      "mean": 3.6724188376093947e-06,
+      "p99": 3.0059814453124983e-05,
+      "maximum": 4.935264587402344e-05,
+      "tokens": 132
+    },
+    {
+      "id": "OpenSubtitles18:1342574",
+      "rollout_start_step": 82,
+      "mean": 3.18134654701925e-06,
+      "p99": 2.4223327636718674e-05,
+      "maximum": 3.62396240234375e-05,
+      "tokens": 91
+    },
+    {
+      "id": "OpenSubtitles18:979323",
+      "rollout_start_step": 82,
+      "mean": 5.500820691354975e-06,
+      "p99": 4.184246063232422e-05,
+      "maximum": 4.935264587402344e-05,
+      "tokens": 176
+    },
+    {
+      "id": "ParIce21:ema:20103",
+      "rollout_start_step": 82,
+      "mean": 3.9931436826056775e-06,
+      "p99": 4.924297332763648e-05,
+      "maximum": 8.869171142578125e-05,
+      "tokens": 455
+    },
+    {
+      "id": "ParIce21:ema:106405",
+      "rollout_start_step": 82,
+      "mean": 1.011884693976155e-06,
+      "p99": 5.3942203521728516e-06,
+      "maximum": 9.5367431640625e-06,
+      "tokens": 322
+    },
+    {
+      "id": "OpenSubtitles18:1355221",
+      "rollout_start_step": 84,
+      "mean": 6.874443329252244e-07,
+      "p99": 1.9725412130355835e-06,
+      "maximum": 1.9725412130355835e-06,
+      "tokens": 80
+    },
+    {
+      "id": "ParIce21:statisl:1198",
+      "rollout_start_step": 84,
+      "mean": 3.887200566330588e-06,
+      "p99": 4.394173622131356e-05,
+      "maximum": 8.690357208251953e-05,
+      "tokens": 490
+    },
+    {
+      "id": "ParIce21:ema:184955",
+      "rollout_start_step": 84,
+      "mean": 5.93755456167213e-06,
+      "p99": 7.703781127929692e-05,
+      "maximum": 0.00011539459228515625,
+      "tokens": 285
+    },
+    {
+      "id": "ParIce21:eea:1352998",
+      "rollout_start_step": 84,
+      "mean": 4.67596563527969e-06,
+      "p99": 3.89611721038818e-05,
+      "maximum": 7.56978988647461e-05,
+      "tokens": 448
+    },
+    {
+      "id": "ParIce21:ema:40719",
+      "rollout_start_step": 86,
+      "mean": 7.811451939876361e-06,
+      "p99": 6.339669227600089e-05,
+      "maximum": 9.870529174804688e-05,
+      "tokens": 354
+    },
+    {
+      "id": "ParIce21:eea:2991701",
+      "rollout_start_step": 86,
+      "mean": 5.481694723892223e-06,
+      "p99": 5.773305892944384e-05,
+      "maximum": 0.00012087821960449219,
+      "tokens": 466
+    },
+    {
+      "id": "ParIce21:ema:258102",
+      "rollout_start_step": 86,
+      "mean": 2.394651614704794e-06,
+      "p99": 3.9588212966918895e-05,
+      "maximum": 7.033348083496094e-05,
+      "tokens": 288
+    },
+    {
+      "id": "ParIce21:ema:370857",
+      "rollout_start_step": 86,
+      "mean": 5.599813639863467e-06,
+      "p99": 5.578756332397462e-05,
+      "maximum": 6.866455078125e-05,
+      "tokens": 192
+    },
+    {
+      "id": "OpenSubtitles18:1007005",
+      "rollout_start_step": 88,
+      "mean": 1.65635371761002e-06,
+      "p99": 1.113295555114745e-05,
+      "maximum": 2.6941299438476562e-05,
+      "tokens": 90
+    },
+    {
+      "id": "ParIce21:ema:105657",
+      "rollout_start_step": 88,
+      "mean": 1.0811002174418e-06,
+      "p99": 7.271766662597656e-06,
+      "maximum": 1.4185905456542969e-05,
+      "tokens": 247
+    },
+    {
+      "id": "ParIce21:ema:340401",
+      "rollout_start_step": 88,
+      "mean": 1.5835031949480604e-06,
+      "p99": 2.589225769042973e-05,
+      "maximum": 3.6716461181640625e-05,
+      "tokens": 161
+    },
+    {
+      "id": "ParIce21:tatoeba:700",
+      "rollout_start_step": 88,
+      "mean": 5.280492355840916e-06,
+      "p99": 5.375385284423839e-05,
+      "maximum": 6.0558319091796875e-05,
+      "tokens": 143
+    },
+    {
+      "id": "ParIce21:ema:278628",
+      "rollout_start_step": 90,
+      "mean": 2.7569535067515826e-06,
+      "p99": 3.5881996154785156e-05,
+      "maximum": 3.5881996154785156e-05,
+      "tokens": 152
+    },
+    {
+      "id": "ParIce21:ema:286238",
+      "rollout_start_step": 90,
+      "mean": 3.494536338647021e-06,
+      "p99": 5.4800510406494234e-05,
+      "maximum": 7.343292236328125e-05,
+      "tokens": 142
+    },
+    {
+      "id": "ParIce21:ema:344717",
+      "rollout_start_step": 90,
+      "mean": 1.974808006000143e-06,
+      "p99": 2.4127960205077973e-05,
+      "maximum": 4.5418739318847656e-05,
+      "tokens": 485
+    },
+    {
+      "id": "ParIce21:tatoeba:4154",
+      "rollout_start_step": 90,
+      "mean": 2.50709194186782e-06,
+      "p99": 2.127170562744142e-05,
+      "maximum": 2.6464462280273438e-05,
+      "tokens": 117
+    },
+    {
+      "id": "OpenSubtitles18:298877",
+      "rollout_start_step": 92,
+      "mean": 6.469257437411401e-07,
+      "p99": 2.5033950805664062e-06,
+      "maximum": 2.5033950805664062e-06,
+      "tokens": 49
+    },
+    {
+      "id": "OpenSubtitles18:433587",
+      "rollout_start_step": 92,
+      "mean": 2.015513254520718e-06,
+      "p99": 1.9311904907226562e-05,
+      "maximum": 1.9311904907226562e-05,
+      "tokens": 101
+    },
+    {
+      "id": "OpenSubtitles18:14986",
+      "rollout_start_step": 92,
+      "mean": 3.056378538916981e-06,
+      "p99": 2.0384788513183594e-05,
+      "maximum": 2.0384788513183594e-05,
+      "tokens": 99
+    },
+    {
+      "id": "OpenSubtitles18:349325",
+      "rollout_start_step": 92,
+      "mean": 4.351542309926405e-06,
+      "p99": 5.109786987304686e-05,
+      "maximum": 6.4849853515625e-05,
+      "tokens": 193
+    },
+    {
+      "id": "ParIce21:ema:208894",
+      "rollout_start_step": 94,
+      "mean": 2.7091192009720544e-06,
+      "p99": 3.075599670410156e-05,
+      "maximum": 4.2438507080078125e-05,
+      "tokens": 176
+    },
+    {
+      "id": "OpenSubtitles18:1448768",
+      "rollout_start_step": 94,
+      "mean": 6.34018010878077e-06,
+      "p99": 4.068374633789065e-05,
+      "maximum": 4.780292510986328e-05,
+      "tokens": 139
+    },
+    {
+      "id": "ParIce21:ema:95107",
+      "rollout_start_step": 94,
+      "mean": 2.644493976339652e-06,
+      "p99": 2.927184104919435e-05,
+      "maximum": 5.435943603515625e-05,
+      "tokens": 239
+    },
+    {
+      "id": "ParIce21:ema:107485",
+      "rollout_start_step": 94,
+      "mean": 1.1762754470885861e-06,
+      "p99": 1.089811325073243e-05,
+      "maximum": 2.3603439331054688e-05,
+      "tokens": 295
+    },
+    {
+      "id": "ParIce21:ema:357517",
+      "rollout_start_step": 96,
+      "mean": 4.258270053208057e-06,
+      "p99": 3.9577484130859375e-05,
+      "maximum": 5.459785461425781e-05,
+      "tokens": 147
+    },
+    {
+      "id": "ParIce21:eea:2992807",
+      "rollout_start_step": 96,
+      "mean": 1.970922358025426e-06,
+      "p99": 3.0646324157714835e-05,
+      "maximum": 6.270408630371094e-05,
+      "tokens": 624
+    },
+    {
+      "id": "ParIce21:ema:247522",
+      "rollout_start_step": 96,
+      "mean": 2.078675590914495e-06,
+      "p99": 3.222703933715821e-05,
+      "maximum": 5.245208740234375e-05,
+      "tokens": 384
+    },
+    {
+      "id": "ParIce21:eea:1536365",
+      "rollout_start_step": 96,
+      "mean": 5.707154031920603e-06,
+      "p99": 4.8375129699707026e-05,
+      "maximum": 9.775161743164062e-05,
+      "tokens": 411
+    },
+    {
+      "id": "ParIce21:eea:2720900",
+      "rollout_start_step": 98,
+      "mean": 3.4666607916913876e-06,
+      "p99": 3.6678314208984355e-05,
+      "maximum": 5.036592483520508e-05,
+      "tokens": 709
+    },
+    {
+      "id": "OpenSubtitles18:381404",
+      "rollout_start_step": 98,
+      "mean": 3.4820504783927376e-06,
+      "p99": 3.178119659423826e-05,
+      "maximum": 5.364418029785156e-05,
+      "tokens": 119
+    },
+    {
+      "id": "ParIce21:ema:264421",
+      "rollout_start_step": 98,
+      "mean": 2.2113373832877956e-06,
+      "p99": 3.201901912689181e-05,
+      "maximum": 9.85860824584961e-05,
+      "tokens": 895
+    },
+    {
+      "id": "ParIce21:ema:76189",
+      "rollout_start_step": 98,
+      "mean": 4.864955153105667e-06,
+      "p99": 7.034063339233365e-05,
+      "maximum": 0.0002289414405822754,
+      "tokens": 234
+    },
+    {
+      "id": "ParIce21:ema:396779",
+      "rollout_start_step": 100,
+      "mean": 5.553708216961536e-06,
+      "p99": 4.7248601913452104e-05,
+      "maximum": 8.702278137207031e-05,
+      "tokens": 444
+    },
+    {
+      "id": "OpenSubtitles18:800398",
+      "rollout_start_step": 100,
+      "mean": 3.0761440081998143e-06,
+      "p99": 2.181291580200197e-05,
+      "maximum": 2.5272369384765625e-05,
+      "tokens": 120
+    },
+    {
+      "id": "ParIce21:ema:312765",
+      "rollout_start_step": 100,
+      "mean": 2.6103437339866286e-06,
+      "p99": 3.542900085449214e-05,
+      "maximum": 0.00010192394256591797,
+      "tokens": 505
+    },
+    {
+      "id": "OpenSubtitles18:1534168",
+      "rollout_start_step": 100,
+      "mean": 5.743418732103108e-06,
+      "p99": 4.297018051147461e-05,
+      "maximum": 8.726119995117188e-05,
+      "tokens": 254
+    },
+    {
+      "id": "ParIce21:ema:387269",
+      "rollout_start_step": 102,
+      "mean": 3.670027840849366e-06,
+      "p99": 4.949688911437982e-05,
+      "maximum": 5.4717063903808594e-05,
+      "tokens": 262
+    },
+    {
+      "id": "ParIce21:ted2020:1015",
+      "rollout_start_step": 102,
+      "mean": 2.8505000972288136e-06,
+      "p99": 5.340576171875008e-05,
+      "maximum": 5.793571472167969e-05,
+      "tokens": 133
+    },
+    {
+      "id": "ParIce21:ema:41985",
+      "rollout_start_step": 102,
+      "mean": 1.6136147912105778e-06,
+      "p99": 1.790523529052735e-05,
+      "maximum": 4.1961669921875e-05,
+      "tokens": 491
+    },
+    {
+      "id": "ParIce21:ema:333168",
+      "rollout_start_step": 102,
+      "mean": 1.59441001298691e-06,
+      "p99": 1.4543533325195312e-05,
+      "maximum": 6.4849853515625e-05,
+      "tokens": 253
+    },
+    {
+      "id": "OpenSubtitles18:302317",
+      "rollout_start_step": 104,
+      "mean": 2.5568679946207428e-06,
+      "p99": 1.827001571655279e-05,
+      "maximum": 4.57763671875e-05,
+      "tokens": 84
+    },
+    {
+      "id": "ParIce21:eea:3278797",
+      "rollout_start_step": 104,
+      "mean": 2.053412372013041e-06,
+      "p99": 2.1756291389465406e-05,
+      "maximum": 3.4332275390625e-05,
+      "tokens": 390
+    },
+    {
+      "id": "ParIce21:ema:258238",
+      "rollout_start_step": 104,
+      "mean": 4.305536766170147e-06,
+      "p99": 3.394961357116705e-05,
+      "maximum": 4.9233436584472656e-05,
+      "tokens": 260
+    },
+    {
+      "id": "OpenSubtitles18:813076",
+      "rollout_start_step": 104,
+      "mean": 9.94374540803327e-07,
+      "p99": 1.907128535094671e-06,
+      "maximum": 1.5020370483398438e-05,
+      "tokens": 112
+    },
+    {
+      "id": "ParIce21:ema:154946",
+      "rollout_start_step": 106,
+      "mean": 2.0616925126027317e-06,
+      "p99": 2.219080924987796e-05,
+      "maximum": 8.7738037109375e-05,
+      "tokens": 196
+    },
+    {
+      "id": "ParIce21:ema:96616",
+      "rollout_start_step": 106,
+      "mean": 4.4225973182345684e-06,
+      "p99": 4.270076751708974e-05,
+      "maximum": 5.5789947509765625e-05,
+      "tokens": 511
+    },
+    {
+      "id": "ParIce21:ema:364480",
+      "rollout_start_step": 106,
+      "mean": 4.1479119222471705e-06,
+      "p99": 4.235744476318345e-05,
+      "maximum": 6.937980651855469e-05,
+      "tokens": 299
+    },
+    {
+      "id": "ParIce21:ema:82480",
+      "rollout_start_step": 106,
+      "mean": 3.4116230436063336e-06,
+      "p99": 4.32467460632324e-05,
+      "maximum": 5.698204040527344e-05,
+      "tokens": 419
+    },
+    {
+      "id": "OpenSubtitles18:40293",
+      "rollout_start_step": 108,
+      "mean": 2.059164933684986e-06,
+      "p99": 1.9755363464355418e-05,
+      "maximum": 2.008676528930664e-05,
+      "tokens": 105
+    },
+    {
+      "id": "ParIce21:eea:1712988",
+      "rollout_start_step": 108,
+      "mean": 5.275387966265434e-06,
+      "p99": 3.90481948852539e-05,
+      "maximum": 6.175041198730469e-05,
+      "tokens": 538
+    },
+    {
+      "id": "ParIce21:ema:350308",
+      "rollout_start_step": 108,
+      "mean": 3.39955151404767e-06,
+      "p99": 4.458427429199219e-05,
+      "maximum": 0.00010418891906738281,
+      "tokens": 222
+    },
+    {
+      "id": "ParIce21:ema:375457",
+      "rollout_start_step": 108,
+      "mean": 3.3704199623756453e-06,
+      "p99": 3.959536552429201e-05,
+      "maximum": 7.200241088867188e-05,
+      "tokens": 270
+    },
+    {
+      "id": "ParIce21:ema:153641",
+      "rollout_start_step": 110,
+      "mean": 1.484296830085441e-06,
+      "p99": 2.966001629829169e-06,
+      "maximum": 5.626678466796875e-05,
+      "tokens": 200
+    },
+    {
+      "id": "OpenSubtitles18:1227326",
+      "rollout_start_step": 110,
+      "mean": 1.5673731847224797e-06,
+      "p99": 1.8491744995117134e-05,
+      "maximum": 1.8596649169921875e-05,
+      "tokens": 102
+    },
+    {
+      "id": "OpenSubtitles18:1375987",
+      "rollout_start_step": 110,
+      "mean": 4.200246132553867e-06,
+      "p99": 4.55290079116822e-05,
+      "maximum": 6.264448165893555e-05,
+      "tokens": 106
+    },
+    {
+      "id": "ParIce21:ema:65426",
+      "rollout_start_step": 110,
+      "mean": 3.2697700064736247e-06,
+      "p99": 4.0245056152343644e-05,
+      "maximum": 4.9591064453125e-05,
+      "tokens": 337
+    },
+    {
+      "id": "OpenSubtitles18:597724",
+      "rollout_start_step": 112,
+      "mean": 2.7083611634545243e-06,
+      "p99": 2.2387504577636666e-05,
+      "maximum": 2.5272369384765625e-05,
+      "tokens": 108
+    },
+    {
+      "id": "OpenSubtitles18:721350",
+      "rollout_start_step": 112,
+      "mean": 2.882538609025919e-06,
+      "p99": 2.396106719970703e-05,
+      "maximum": 3.5762786865234375e-05,
+      "tokens": 102
+    },
+    {
+      "id": "OpenSubtitles18:719662",
+      "rollout_start_step": 112,
+      "mean": 1.7000694886145799e-06,
+      "p99": 2.1219253540039062e-05,
+      "maximum": 2.2411346435546875e-05,
+      "tokens": 112
+    },
+    {
+      "id": "ParIce21:tatoeba:4074",
+      "rollout_start_step": 112,
+      "mean": 7.1143372864554765e-06,
+      "p99": 3.740429878234862e-05,
+      "maximum": 4.100799560546875e-05,
+      "tokens": 119
+    },
+    {
+      "id": "ParIce21:ema:375621",
+      "rollout_start_step": 114,
+      "mean": 1.514840272121594e-06,
+      "p99": 1.4511048793792673e-05,
+      "maximum": 2.1576881408691406e-05,
+      "tokens": 228
+    },
+    {
+      "id": "ParIce21:statisl:1637",
+      "rollout_start_step": 114,
+      "mean": 8.353248882866355e-06,
+      "p99": 6.286621093750007e-05,
+      "maximum": 7.581710815429688e-05,
+      "tokens": 705
+    },
+    {
+      "id": "ParIce21:ema:157557",
+      "rollout_start_step": 114,
+      "mean": 4.423150714745266e-06,
+      "p99": 4.766225814819335e-05,
+      "maximum": 0.00013947486877441406,
+      "tokens": 775
+    },
+    {
+      "id": "OpenSubtitles18:1521037",
+      "rollout_start_step": 114,
+      "mean": 1.8566196654073547e-06,
+      "p99": 9.645223617553695e-06,
+      "maximum": 1.2516975402832031e-05,
+      "tokens": 74
+    },
+    {
+      "id": "ParIce21:ema:76795",
+      "rollout_start_step": 116,
+      "mean": 3.102609061185197e-06,
+      "p99": 3.552436828613281e-05,
+      "maximum": 0.0001277923583984375,
+      "tokens": 447
+    },
+    {
+      "id": "ParIce21:ema:320709",
+      "rollout_start_step": 116,
+      "mean": 4.572740130875006e-06,
+      "p99": 4.6110153198242534e-05,
+      "maximum": 8.225440979003906e-05,
+      "tokens": 291
+    },
+    {
+      "id": "OpenSubtitles18:1392368",
+      "rollout_start_step": 116,
+      "mean": 6.9077763397658906e-06,
+      "p99": 6.1023235321044906e-05,
+      "maximum": 9.226799011230469e-05,
+      "tokens": 162
+    },
+    {
+      "id": "OpenSubtitles18:932433",
+      "rollout_start_step": 116,
+      "mean": 3.1390190528814932e-06,
+      "p99": 2.3288726806640593e-05,
+      "maximum": 2.7179718017578125e-05,
+      "tokens": 97
+    },
+    {
+      "id": "ParIce21:ema:187721",
+      "rollout_start_step": 118,
+      "mean": 2.1328119559753262e-06,
+      "p99": 1.8709897994995007e-05,
+      "maximum": 3.2007694244384766e-05,
+      "tokens": 187
+    },
+    {
+      "id": "ParIce21:eea:1224116",
+      "rollout_start_step": 118,
+      "mean": 2.905659182038557e-06,
+      "p99": 3.618597984313961e-05,
+      "maximum": 6.29425048828125e-05,
+      "tokens": 182
+    },
+    {
+      "id": "ParIce21:ema:159419",
+      "rollout_start_step": 118,
+      "mean": 5.214041850020524e-06,
+      "p99": 4.4586658477783215e-05,
+      "maximum": 5.650520324707031e-05,
+      "tokens": 515
+    },
+    {
+      "id": "ParIce21:eea:2582764",
+      "rollout_start_step": 118,
+      "mean": 6.052206938294249e-06,
+      "p99": 4.613637924194336e-05,
+      "maximum": 8.20159912109375e-05,
+      "tokens": 450
+    },
+    {
+      "id": "OpenSubtitles18:698640",
+      "rollout_start_step": 120,
+      "mean": 4.401860749680964e-06,
+      "p99": 3.814697265625e-05,
+      "maximum": 3.814697265625e-05,
+      "tokens": 88
+    },
+    {
+      "id": "ParIce21:tatoeba:7768",
+      "rollout_start_step": 120,
+      "mean": 6.80785267652964e-06,
+      "p99": 5.355000495910644e-05,
+      "maximum": 6.341934204101562e-05,
+      "tokens": 132
+    },
+    {
+      "id": "OpenSubtitles18:1179650",
+      "rollout_start_step": 120,
+      "mean": 2.8248767394809786e-06,
+      "p99": 2.4694204330444357e-05,
+      "maximum": 3.3020973205566406e-05,
+      "tokens": 136
+    },
+    {
+      "id": "ParIce21:ema:21153",
+      "rollout_start_step": 120,
+      "mean": 5.407729334007023e-06,
+      "p99": 4.571676254272461e-05,
+      "maximum": 7.2479248046875e-05,
+      "tokens": 651
+    },
+    {
+      "id": "ParIce21:ema:364594",
+      "rollout_start_step": 122,
+      "mean": 7.008963870556674e-06,
+      "p99": 5.215167999267581e-05,
+      "maximum": 6.270408630371094e-05,
+      "tokens": 208
+    },
+    {
+      "id": "ParIce21:ema:328851",
+      "rollout_start_step": 122,
+      "mean": 6.087602632387501e-06,
+      "p99": 6.163597106933582e-05,
+      "maximum": 0.00010013580322265625,
+      "tokens": 240
+    },
+    {
+      "id": "ParIce21:ema:49613",
+      "rollout_start_step": 122,
+      "mean": 5.153121552936568e-06,
+      "p99": 6.128549575805664e-05,
+      "maximum": 8.344650268554688e-05,
+      "tokens": 320
+    },
+    {
+      "id": "ParIce21:ema:332700",
+      "rollout_start_step": 122,
+      "mean": 3.002567742998644e-06,
+      "p99": 3.1054019927978516e-05,
+      "maximum": 5.5789947509765625e-05,
+      "tokens": 214
+    },
+    {
+      "id": "ParIce21:ema:27563",
+      "rollout_start_step": 124,
+      "mean": 4.661215019465595e-06,
+      "p99": 4.404544830322266e-05,
+      "maximum": 6.437301635742188e-05,
+      "tokens": 527
+    },
+    {
+      "id": "OpenSubtitles18:967754",
+      "rollout_start_step": 124,
+      "mean": 2.3740205373480953e-06,
+      "p99": 1.3232231140136719e-05,
+      "maximum": 1.3232231140136719e-05,
+      "tokens": 89
+    },
+    {
+      "id": "OpenSubtitles18:1420441",
+      "rollout_start_step": 124,
+      "mean": 5.931454426909954e-06,
+      "p99": 5.918145179748551e-05,
+      "maximum": 9.012222290039062e-05,
+      "tokens": 246
+    },
+    {
+      "id": "ParIce21:ema:283625",
+      "rollout_start_step": 124,
+      "mean": 5.768791667312025e-06,
+      "p99": 4.36544418334961e-05,
+      "maximum": 6.592273712158203e-05,
+      "tokens": 341
+    },
+    {
+      "id": "ParIce21:ema:359145",
+      "rollout_start_step": 126,
+      "mean": 3.2920969485971317e-06,
+      "p99": 4.528522491455071e-05,
+      "maximum": 6.222724914550781e-05,
+      "tokens": 559
+    },
+    {
+      "id": "ParIce21:eso:8678",
+      "rollout_start_step": 126,
+      "mean": 6.188691948533319e-06,
+      "p99": 6.133794784545895e-05,
+      "maximum": 6.604194641113281e-05,
+      "tokens": 338
+    },
+    {
+      "id": "ParIce21:ema:285190",
+      "rollout_start_step": 126,
+      "mean": 5.482910528092976e-06,
+      "p99": 5.838394165039061e-05,
+      "maximum": 8.058547973632812e-05,
+      "tokens": 253
+    },
+    {
+      "id": "OpenSubtitles18:1095674",
+      "rollout_start_step": 126,
+      "mean": 3.744903361421295e-06,
+      "p99": 2.9575824737548743e-05,
+      "maximum": 4.38690185546875e-05,
+      "tokens": 141
+    },
+    {
+      "id": "ParIce21:ema:347868",
+      "rollout_start_step": 128,
+      "mean": 4.535650336011189e-06,
+      "p99": 5.822777748107908e-05,
+      "maximum": 8.869171142578125e-05,
+      "tokens": 672
+    },
+    {
+      "id": "ParIce21:tatoeba:7780",
+      "rollout_start_step": 128,
+      "mean": 2.0966930187813392e-06,
+      "p99": 3.5171508789062685e-05,
+      "maximum": 5.53131103515625e-05,
+      "tokens": 149
+    },
+    {
+      "id": "ParIce21:ema:277345",
+      "rollout_start_step": 128,
+      "mean": 4.776102570010379e-06,
+      "p99": 3.7956237792968774e-05,
+      "maximum": 7.152557373046875e-05,
+      "tokens": 189
+    },
+    {
+      "id": "ParIce21:ema:169976",
+      "rollout_start_step": 128,
+      "mean": 3.9275791983111e-06,
+      "p99": 3.458738327026367e-05,
+      "maximum": 5.555152893066406e-05,
+      "tokens": 444
+    },
+    {
+      "id": "ParIce21:statisl:1045",
+      "rollout_start_step": 130,
+      "mean": 5.237530938802201e-06,
+      "p99": 4.480600357055656e-05,
+      "maximum": 5.6743621826171875e-05,
+      "tokens": 435
+    },
+    {
+      "id": "ParIce21:ema:102321",
+      "rollout_start_step": 130,
+      "mean": 9.643675059860105e-07,
+      "p99": 1.135021448135357e-05,
+      "maximum": 2.47955322265625e-05,
+      "tokens": 323
+    },
+    {
+      "id": "ParIce21:tatoeba:283",
+      "rollout_start_step": 130,
+      "mean": 3.8118675703601954e-06,
+      "p99": 5.406379699707028e-05,
+      "maximum": 6.151199340820312e-05,
+      "tokens": 137
+    },
+    {
+      "id": "ParIce21:ema:342072",
+      "rollout_start_step": 130,
+      "mean": 2.202872141684306e-06,
+      "p99": 3.392279148101803e-05,
+      "maximum": 0.00010156631469726562,
+      "tokens": 350
+    },
+    {
+      "id": "ParIce21:ema:68389",
+      "rollout_start_step": 132,
+      "mean": 3.352023640599912e-06,
+      "p99": 3.8967132568359415e-05,
+      "maximum": 0.000110626220703125,
+      "tokens": 245
+    },
+    {
+      "id": "OpenSubtitles18:966723",
+      "rollout_start_step": 132,
+      "mean": 2.8024881629193402e-06,
+      "p99": 2.6118457317352295e-05,
+      "maximum": 9.989738464355469e-05,
+      "tokens": 154
+    },
+    {
+      "id": "ParIce21:eea:13306",
+      "rollout_start_step": 132,
+      "mean": 4.97601889291414e-06,
+      "p99": 4.526376724243166e-05,
+      "maximum": 0.0001342296600341797,
+      "tokens": 384
+    },
+    {
+      "id": "ParIce21:eso:7373",
+      "rollout_start_step": 132,
+      "mean": 2.773924564119876e-06,
+      "p99": 3.2608509063720726e-05,
+      "maximum": 5.435943603515625e-05,
+      "tokens": 290
+    },
+    {
+      "id": "ParIce21:ema:353674",
+      "rollout_start_step": 134,
+      "mean": 4.170577863253825e-06,
+      "p99": 3.929734230041503e-05,
+      "maximum": 5.2928924560546875e-05,
+      "tokens": 368
+    },
+    {
+      "id": "ParIce21:ema:190774",
+      "rollout_start_step": 134,
+      "mean": 2.771868647030106e-06,
+      "p99": 3.1667947769165036e-05,
+      "maximum": 4.64320182800293e-05,
+      "tokens": 295
+    },
+    {
+      "id": "OpenSubtitles18:837375",
+      "rollout_start_step": 134,
+      "mean": 6.890115233915139e-07,
+      "p99": 1.8998980522155762e-06,
+      "maximum": 1.8998980522155762e-06,
+      "tokens": 64
+    },
+    {
+      "id": "OpenSubtitles18:1384902",
+      "rollout_start_step": 134,
+      "mean": 1.1520854913573149e-06,
+      "p99": 6.780624389648417e-06,
+      "maximum": 1.1920928955078125e-05,
+      "tokens": 99
+    },
+    {
+      "id": "ParIce21:ema:345483",
+      "rollout_start_step": 136,
+      "mean": 2.1100370057955867e-06,
+      "p99": 3.0794143676757425e-05,
+      "maximum": 6.151199340820312e-05,
+      "tokens": 385
+    },
+    {
+      "id": "ParIce21:ema:167603",
+      "rollout_start_step": 136,
+      "mean": 2.8165715448961934e-06,
+      "p99": 2.9113292694091787e-05,
+      "maximum": 8.273124694824219e-05,
+      "tokens": 563
+    },
+    {
+      "id": "ParIce21:ema:97248",
+      "rollout_start_step": 136,
+      "mean": 2.202987952797675e-06,
+      "p99": 3.9577484130859375e-05,
+      "maximum": 7.534027099609375e-05,
+      "tokens": 277
+    },
+    {
+      "id": "OpenSubtitles18:1248517",
+      "rollout_start_step": 136,
+      "mean": 5.4626981557767466e-06,
+      "p99": 4.678964614868164e-05,
+      "maximum": 5.424022674560547e-05,
+      "tokens": 126
+    },
+    {
+      "id": "ParIce21:ema:93305",
+      "rollout_start_step": 138,
+      "mean": 2.0384147897221083e-06,
+      "p99": 2.63291597366333e-05,
+      "maximum": 4.076957702636719e-05,
+      "tokens": 179
+    },
+    {
+      "id": "ParIce21:ema:225606",
+      "rollout_start_step": 138,
+      "mean": 3.81344169841924e-06,
+      "p99": 3.4252405166626036e-05,
+      "maximum": 5.054473876953125e-05,
+      "tokens": 128
+    },
+    {
+      "id": "OpenSubtitles18:685018",
+      "rollout_start_step": 138,
+      "mean": 8.484597680597455e-07,
+      "p99": 5.1120296120643616e-06,
+      "maximum": 2.193450927734375e-05,
+      "tokens": 176
+    },
+    {
+      "id": "ParIce21:ema:246574",
+      "rollout_start_step": 138,
+      "mean": 2.9187963866846806e-06,
+      "p99": 4.406929016113301e-05,
+      "maximum": 5.507469177246094e-05,
+      "tokens": 230
+    },
+    {
+      "id": "ParIce21:ema:329738",
+      "rollout_start_step": 140,
+      "mean": 5.589807511305939e-06,
+      "p99": 3.822922706604003e-05,
+      "maximum": 6.413459777832031e-05,
+      "tokens": 307
+    },
+    {
+      "id": "ParIce21:ema:244439",
+      "rollout_start_step": 140,
+      "mean": 4.2119588151318016e-06,
+      "p99": 3.856658935546884e-05,
+      "maximum": 5.435943603515625e-05,
+      "tokens": 397
+    },
+    {
+      "id": "ParIce21:ema:143704",
+      "rollout_start_step": 140,
+      "mean": 1.516173497179124e-06,
+      "p99": 1.8149614334106445e-05,
+      "maximum": 4.410743713378906e-05,
+      "tokens": 333
+    },
+    {
+      "id": "OpenSubtitles18:540241",
+      "rollout_start_step": 140,
+      "mean": 6.274079274641502e-06,
+      "p99": 5.4001808166503906e-05,
+      "maximum": 6.413459777832031e-05,
+      "tokens": 152
+    },
+    {
+      "id": "ParIce21:ema:188580",
+      "rollout_start_step": 142,
+      "mean": 4.1706715356028955e-06,
+      "p99": 4.171848297119141e-05,
+      "maximum": 6.437301635742188e-05,
+      "tokens": 802
+    },
+    {
+      "id": "OpenSubtitles18:1064365",
+      "rollout_start_step": 142,
+      "mean": 5.918238787711269e-06,
+      "p99": 5.2661895751953124e-05,
+      "maximum": 6.0439109802246094e-05,
+      "tokens": 115
+    },
+    {
+      "id": "ParIce21:ema:281289",
+      "rollout_start_step": 142,
+      "mean": 4.532299129993355e-06,
+      "p99": 5.025386810302739e-05,
+      "maximum": 6.961822509765625e-05,
+      "tokens": 264
+    },
+    {
+      "id": "ParIce21:ema:381158",
+      "rollout_start_step": 142,
+      "mean": 1.7124647898788922e-06,
+      "p99": 2.2530555725097656e-05,
+      "maximum": 5.066394805908203e-05,
+      "tokens": 245
+    },
+    {
+      "id": "ParIce21:ema:260619",
+      "rollout_start_step": 144,
+      "mean": 3.5825027681055216e-06,
+      "p99": 4.079341888427754e-05,
+      "maximum": 8.416175842285156e-05,
+      "tokens": 806
+    },
+    {
+      "id": "OpenSubtitles18:1010639",
+      "rollout_start_step": 144,
+      "mean": 5.130980478071127e-06,
+      "p99": 4.568099975585945e-05,
+      "maximum": 6.628036499023438e-05,
+      "tokens": 81
+    },
+    {
+      "id": "ParIce21:eso:3399",
+      "rollout_start_step": 144,
+      "mean": 4.943391012619354e-06,
+      "p99": 4.6977996826171866e-05,
+      "maximum": 0.00020456314086914062,
+      "tokens": 538
+    },
+    {
+      "id": "ParIce21:ema:92150",
+      "rollout_start_step": 144,
+      "mean": 5.179094538030786e-06,
+      "p99": 5.2362680435180664e-05,
+      "maximum": 0.000152587890625,
+      "tokens": 451
+    },
+    {
+      "id": "ParIce21:tatoeba:718",
+      "rollout_start_step": 146,
+      "mean": 6.199949199586099e-06,
+      "p99": 8.660674095153818e-05,
+      "maximum": 8.928775787353516e-05,
+      "tokens": 214
+    },
+    {
+      "id": "OpenSubtitles18:741327",
+      "rollout_start_step": 146,
+      "mean": 5.548326494564221e-06,
+      "p99": 5.4521560668945273e-05,
+      "maximum": 8.0108642578125e-05,
+      "tokens": 138
+    },
+    {
+      "id": "ParIce21:eea:233002",
+      "rollout_start_step": 146,
+      "mean": 6.1900738628660985e-06,
+      "p99": 5.431175231933582e-05,
+      "maximum": 8.130073547363281e-05,
+      "tokens": 511
+    },
+    {
+      "id": "ParIce21:ema:31605",
+      "rollout_start_step": 146,
+      "mean": 3.367752192673379e-06,
+      "p99": 4.029273986816406e-05,
+      "maximum": 0.00010406970977783203,
+      "tokens": 317
+    },
+    {
+      "id": "OpenSubtitles18:109898",
+      "rollout_start_step": 148,
+      "mean": 3.022916832709908e-06,
+      "p99": 3.0813217163085926e-05,
+      "maximum": 3.7789344787597656e-05,
+      "tokens": 129
+    },
+    {
+      "id": "OpenSubtitles18:968808",
+      "rollout_start_step": 148,
+      "mean": 4.592501458206215e-06,
+      "p99": 3.5152435302734374e-05,
+      "maximum": 8.749961853027344e-05,
+      "tokens": 129
+    },
+    {
+      "id": "ParIce21:ema:178435",
+      "rollout_start_step": 148,
+      "mean": 4.788387658086106e-06,
+      "p99": 4.240036010742191e-05,
+      "maximum": 7.283687591552734e-05,
+      "tokens": 580
+    },
+    {
+      "id": "ParIce21:ema:316407",
+      "rollout_start_step": 148,
+      "mean": 2.2671740187464254e-06,
+      "p99": 2.1421909332275386e-05,
+      "maximum": 2.2172927856445312e-05,
+      "tokens": 191
+    },
+    {
+      "id": "ParIce21:ema:161995",
+      "rollout_start_step": 150,
+      "mean": 2.4797117953765763e-06,
+      "p99": 2.3365020751953125e-05,
+      "maximum": 3.123283386230469e-05,
+      "tokens": 163
+    },
+    {
+      "id": "ParIce21:tatoeba:2581",
+      "rollout_start_step": 150,
+      "mean": 2.9537628367542742e-06,
+      "p99": 3.899335861206044e-05,
+      "maximum": 5.0067901611328125e-05,
+      "tokens": 304
+    },
+    {
+      "id": "ParIce21:ema:354938",
+      "rollout_start_step": 150,
+      "mean": 1.3517676670070995e-06,
+      "p99": 1.4543533325195312e-05,
+      "maximum": 2.288818359375e-05,
+      "tokens": 146
+    },
+    {
+      "id": "OpenSubtitles18:844973",
+      "rollout_start_step": 150,
+      "mean": 2.482550450812871e-06,
+      "p99": 3.405809402465828e-05,
+      "maximum": 4.601478576660156e-05,
+      "tokens": 86
+    },
+    {
+      "id": "ParIce21:eso:3924",
+      "rollout_start_step": 152,
+      "mean": 3.716719546466927e-06,
+      "p99": 4.4474601745605514e-05,
+      "maximum": 5.435943603515625e-05,
+      "tokens": 440
+    },
+    {
+      "id": "ParIce21:ema:373534",
+      "rollout_start_step": 152,
+      "mean": 4.3305772677865255e-06,
+      "p99": 4.3287277221679674e-05,
+      "maximum": 6.92605972290039e-05,
+      "tokens": 394
+    },
+    {
+      "id": "ParIce21:eea:2337265",
+      "rollout_start_step": 152,
+      "mean": 6.28509673186073e-06,
+      "p99": 5.3045153617858835e-05,
+      "maximum": 6.580352783203125e-05,
+      "tokens": 356
+    },
+    {
+      "id": "ParIce21:ema:22648",
+      "rollout_start_step": 152,
+      "mean": 3.0251279477689013e-06,
+      "p99": 4.342794418334966e-05,
+      "maximum": 0.000110626220703125,
+      "tokens": 831
+    },
+    {
+      "id": "ParIce21:ema:173033",
+      "rollout_start_step": 154,
+      "mean": 2.1899626294873494e-06,
+      "p99": 1.6435980796813965e-05,
+      "maximum": 0.00010180473327636719,
+      "tokens": 227
+    },
+    {
+      "id": "OpenSubtitles18:18405",
+      "rollout_start_step": 154,
+      "mean": 4.9250666180200886e-06,
+      "p99": 4.384517669677731e-05,
+      "maximum": 5.1021575927734375e-05,
+      "tokens": 71
+    },
+    {
+      "id": "ParIce21:ema:179825",
+      "rollout_start_step": 154,
+      "mean": 3.743417053203093e-06,
+      "p99": 3.3454895019531235e-05,
+      "maximum": 7.104873657226562e-05,
+      "tokens": 685
+    },
+    {
+      "id": "ParIce21:ema:401508",
+      "rollout_start_step": 154,
+      "mean": 7.230754649016662e-07,
+      "p99": 1.6723133740015328e-06,
+      "maximum": 2.86102294921875e-06,
+      "tokens": 185
+    },
+    {
+      "id": "ParIce21:ema:57702",
+      "rollout_start_step": 156,
+      "mean": 6.078518312084278e-06,
+      "p99": 5.4605007171630846e-05,
+      "maximum": 7.62939453125e-05,
+      "tokens": 243
+    },
+    {
+      "id": "OpenSubtitles18:1296496",
+      "rollout_start_step": 156,
+      "mean": 4.575404678193577e-06,
+      "p99": 4.8519372940063475e-05,
+      "maximum": 6.771087646484375e-05,
+      "tokens": 110
+    },
+    {
+      "id": "OpenSubtitles18:1444796",
+      "rollout_start_step": 156,
+      "mean": 3.230280286475187e-06,
+      "p99": 2.6345252990722656e-05,
+      "maximum": 2.6345252990722656e-05,
+      "tokens": 89
+    },
+    {
+      "id": "ParIce21:ema:225579",
+      "rollout_start_step": 156,
+      "mean": 2.8322882225779723e-06,
+      "p99": 3.3235549926757834e-05,
+      "maximum": 5.793571472167969e-05,
+      "tokens": 125
+    },
+    {
+      "id": "ParIce21:eea:2789131",
+      "rollout_start_step": 158,
+      "mean": 4.483759761156277e-06,
+      "p99": 3.90261411666871e-05,
+      "maximum": 0.00011372566223144531,
+      "tokens": 466
+    },
+    {
+      "id": "ParIce21:eea:2607914",
+      "rollout_start_step": 158,
+      "mean": 7.225867145345612e-06,
+      "p99": 4.3191909790039055e-05,
+      "maximum": 4.363059997558594e-05,
+      "tokens": 222
+    },
+    {
+      "id": "ParIce21:ema:179435",
+      "rollout_start_step": 158,
+      "mean": 5.9866573510568865e-06,
+      "p99": 6.362199783325215e-05,
+      "maximum": 0.0001138448715209961,
+      "tokens": 328
+    },
+    {
+      "id": "OpenSubtitles18:988629",
+      "rollout_start_step": 158,
+      "mean": 2.4602251600711147e-06,
+      "p99": 2.1755695343017578e-05,
+      "maximum": 7.176399230957031e-05,
+      "tokens": 153
+    },
+    {
+      "id": "ParIce21:ema:387901",
+      "rollout_start_step": 160,
+      "mean": 4.442298516481924e-06,
+      "p99": 4.9367547035217075e-05,
+      "maximum": 5.9604644775390625e-05,
+      "tokens": 286
+    },
+    {
+      "id": "ParIce21:ema:94303",
+      "rollout_start_step": 160,
+      "mean": 4.961400955872498e-06,
+      "p99": 6.450176239013679e-05,
+      "maximum": 0.00010967254638671875,
+      "tokens": 233
+    },
+    {
+      "id": "ParIce21:tatoeba:7918",
+      "rollout_start_step": 160,
+      "mean": 9.151906962100699e-06,
+      "p99": 8.218765258789117e-05,
+      "maximum": 0.00010442733764648438,
+      "tokens": 260
+    },
+    {
+      "id": "ParIce21:ema:375715",
+      "rollout_start_step": 160,
+      "mean": 2.3700610241561336e-06,
+      "p99": 3.382444381713848e-05,
+      "maximum": 6.67572021484375e-05,
+      "tokens": 298
+    },
+    {
+      "id": "ParIce21:eea:1876",
+      "rollout_start_step": 162,
+      "mean": 3.6394538342936465e-06,
+      "p99": 4.455566406249997e-05,
+      "maximum": 5.078315734863281e-05,
+      "tokens": 279
+    },
+    {
+      "id": "ParIce21:ted2020:205",
+      "rollout_start_step": 162,
+      "mean": 5.393474029987323e-06,
+      "p99": 4.514217376708958e-05,
+      "maximum": 8.320808410644531e-05,
+      "tokens": 859
+    },
+    {
+      "id": "ParIce21:ema:370299",
+      "rollout_start_step": 162,
+      "mean": 3.267533766579356e-06,
+      "p99": 3.555953502655034e-05,
+      "maximum": 7.343292236328125e-05,
+      "tokens": 252
+    },
+    {
+      "id": "ParIce21:tatoeba:2108",
+      "rollout_start_step": 162,
+      "mean": 5.873100263204655e-06,
+      "p99": 5.024790763854982e-05,
+      "maximum": 5.340576171875e-05,
+      "tokens": 123
+    },
+    {
+      "id": "OpenSubtitles18:644368",
+      "rollout_start_step": 164,
+      "mean": 2.1971675301929715e-06,
+      "p99": 1.3053417205810547e-05,
+      "maximum": 1.3053417205810547e-05,
+      "tokens": 105
+    },
+    {
+      "id": "ParIce21:eea:2334611",
+      "rollout_start_step": 164,
+      "mean": 9.432893310913689e-06,
+      "p99": 5.355477333068852e-05,
+      "maximum": 0.00011205673217773438,
+      "tokens": 566
+    },
+    {
+      "id": "OpenSubtitles18:786803",
+      "rollout_start_step": 164,
+      "mean": 3.1218897869881145e-06,
+      "p99": 1.828193664550781e-05,
+      "maximum": 3.0994415283203125e-05,
+      "tokens": 105
+    },
+    {
+      "id": "OpenSubtitles18:1231466",
+      "rollout_start_step": 164,
+      "mean": 2.609995342037559e-06,
+      "p99": 3.2176971435546884e-05,
+      "maximum": 4.5299530029296875e-05,
+      "tokens": 87
+    },
+    {
+      "id": "OpenSubtitles18:234994",
+      "rollout_start_step": 166,
+      "mean": 3.137123228677073e-06,
+      "p99": 2.3305416107177734e-05,
+      "maximum": 2.3305416107177734e-05,
+      "tokens": 89
+    },
+    {
+      "id": "ParIce21:tatoeba:3340",
+      "rollout_start_step": 166,
+      "mean": 5.421960726353598e-06,
+      "p99": 5.40900230407715e-05,
+      "maximum": 5.900859832763672e-05,
+      "tokens": 272
+    },
+    {
+      "id": "ParIce21:tatoeba:9112",
+      "rollout_start_step": 166,
+      "mean": 8.732783744032964e-07,
+      "p99": 1.8954160623252392e-06,
+      "maximum": 1.9073486328125e-06,
+      "tokens": 103
+    },
+    {
+      "id": "ParIce21:tatoeba:4076",
+      "rollout_start_step": 166,
+      "mean": 5.057990853432867e-06,
+      "p99": 5.869269371032716e-05,
+      "maximum": 6.031990051269531e-05,
+      "tokens": 220
+    },
+    {
+      "id": "ParIce21:ema:397133",
+      "rollout_start_step": 168,
+      "mean": 3.7601367687428976e-06,
+      "p99": 4.8923492431640575e-05,
+      "maximum": 6.67572021484375e-05,
+      "tokens": 241
+    },
+    {
+      "id": "ParIce21:ema:208871",
+      "rollout_start_step": 168,
+      "mean": 5.6081641043786874e-06,
+      "p99": 4.279851913452148e-05,
+      "maximum": 7.140636444091797e-05,
+      "tokens": 233
+    },
+    {
+      "id": "ParIce21:ema:332738",
+      "rollout_start_step": 168,
+      "mean": 1.5550287678601001e-06,
+      "p99": 2.4271011352539106e-05,
+      "maximum": 4.100799560546875e-05,
+      "tokens": 202
+    },
+    {
+      "id": "ParIce21:tatoeba:2112",
+      "rollout_start_step": 168,
+      "mean": 5.781038460054634e-06,
+      "p99": 4.941225051879883e-05,
+      "maximum": 0.0001201629638671875,
+      "tokens": 151
+    },
+    {
+      "id": "ParIce21:ema:43832",
+      "rollout_start_step": 170,
+      "mean": 3.813330334457709e-06,
+      "p99": 4.57763671875e-05,
+      "maximum": 7.62939453125e-05,
+      "tokens": 368
+    },
+    {
+      "id": "ParIce21:ema:155203",
+      "rollout_start_step": 170,
+      "mean": 2.541432711973783e-06,
+      "p99": 3.528594970703125e-05,
+      "maximum": 6.699562072753906e-05,
+      "tokens": 427
+    },
+    {
+      "id": "ParIce21:ema:20355",
+      "rollout_start_step": 170,
+      "mean": 5.7761584835390265e-06,
+      "p99": 5.242824554443359e-05,
+      "maximum": 9.489059448242188e-05,
+      "tokens": 282
+    },
+    {
+      "id": "ParIce21:ema:29782",
+      "rollout_start_step": 170,
+      "mean": 4.20428918504159e-06,
+      "p99": 4.1341781616210905e-05,
+      "maximum": 9.036064147949219e-05,
+      "tokens": 837
+    },
+    {
+      "id": "ParIce21:ema:134892",
+      "rollout_start_step": 172,
+      "mean": 4.724019067725401e-06,
+      "p99": 4.7769546508789e-05,
+      "maximum": 5.9604644775390625e-05,
+      "tokens": 393
+    },
+    {
+      "id": "ParIce21:ema:115881",
+      "rollout_start_step": 172,
+      "mean": 3.5265162532975106e-06,
+      "p99": 3.655433654785152e-05,
+      "maximum": 9.989738464355469e-05,
+      "tokens": 240
+    },
+    {
+      "id": "ParIce21:ema:249046",
+      "rollout_start_step": 172,
+      "mean": 6.528897215451255e-06,
+      "p99": 5.1612854003906146e-05,
+      "maximum": 0.00022363662719726562,
+      "tokens": 795
+    },
+    {
+      "id": "ParIce21:ema:337897",
+      "rollout_start_step": 172,
+      "mean": 4.250912357092518e-06,
+      "p99": 5.1027238368988046e-05,
+      "maximum": 8.177757263183594e-05,
+      "tokens": 652
+    },
+    {
+      "id": "ParIce21:ema:48244",
+      "rollout_start_step": 174,
+      "mean": 4.0983252824110924e-06,
+      "p99": 3.3553838729858395e-05,
+      "maximum": 4.9591064453125e-05,
+      "tokens": 124
+    },
+    {
+      "id": "ParIce21:ema:175590",
+      "rollout_start_step": 174,
+      "mean": 3.459115597378524e-06,
+      "p99": 3.5305023193359385e-05,
+      "maximum": 4.4345855712890625e-05,
+      "tokens": 397
+    },
+    {
+      "id": "ParIce21:ema:291223",
+      "rollout_start_step": 174,
+      "mean": 3.950211008043885e-06,
+      "p99": 2.7704238891601567e-05,
+      "maximum": 3.123283386230469e-05,
+      "tokens": 173
+    },
+    {
+      "id": "ParIce21:ema:107183",
+      "rollout_start_step": 174,
+      "mean": 1.612721557062335e-06,
+      "p99": 1.6230344772338844e-05,
+      "maximum": 5.9604644775390625e-05,
+      "tokens": 235
+    },
+    {
+      "id": "ParIce21:ted2020:718",
+      "rollout_start_step": 176,
+      "mean": 6.307901585475295e-06,
+      "p99": 4.792213439941405e-05,
+      "maximum": 6.961822509765625e-05,
+      "tokens": 281
+    },
+    {
+      "id": "ParIce21:ema:94422",
+      "rollout_start_step": 176,
+      "mean": 5.595523617346541e-06,
+      "p99": 3.779172897338864e-05,
+      "maximum": 6.937980651855469e-05,
+      "tokens": 162
+    },
+    {
+      "id": "ParIce21:ema:176979",
+      "rollout_start_step": 176,
+      "mean": 2.557656959977533e-06,
+      "p99": 2.7112960815429653e-05,
+      "maximum": 4.220008850097656e-05,
+      "tokens": 193
+    },
+    {
+      "id": "OpenSubtitles18:872417",
+      "rollout_start_step": 176,
+      "mean": 1.3687296028696105e-06,
+      "p99": 9.606480598449677e-06,
+      "maximum": 1.52587890625e-05,
+      "tokens": 88
+    },
+    {
+      "id": "ParIce21:ema:86523",
+      "rollout_start_step": 178,
+      "mean": 3.401778802547132e-06,
+      "p99": 5.749702453613283e-05,
+      "maximum": 5.91278076171875e-05,
+      "tokens": 239
+    },
+    {
+      "id": "OpenSubtitles18:398748",
+      "rollout_start_step": 178,
+      "mean": 3.15173360414011e-06,
+      "p99": 3.311216831207268e-05,
+      "maximum": 4.887580871582031e-05,
+      "tokens": 102
+    },
+    {
+      "id": "OpenSubtitles18:979567",
+      "rollout_start_step": 178,
+      "mean": 3.38481253369206e-06,
+      "p99": 2.8014183044433594e-05,
+      "maximum": 3.3736228942871094e-05,
+      "tokens": 176
+    },
+    {
+      "id": "ParIce21:ema:168773",
+      "rollout_start_step": 178,
+      "mean": 4.7429788261858985e-06,
+      "p99": 5.195140838623052e-05,
+      "maximum": 0.00010311603546142578,
+      "tokens": 422
+    },
+    {
+      "id": "OpenSubtitles18:1392590",
+      "rollout_start_step": 180,
+      "mean": 5.102396435107643e-06,
+      "p99": 5.093812942504868e-05,
+      "maximum": 6.139278411865234e-05,
+      "tokens": 131
+    },
+    {
+      "id": "ParIce21:ema:358792",
+      "rollout_start_step": 180,
+      "mean": 2.803839221851219e-06,
+      "p99": 3.3974647521972656e-05,
+      "maximum": 3.3974647521972656e-05,
+      "tokens": 231
+    },
+    {
+      "id": "ParIce21:ema:160711",
+      "rollout_start_step": 180,
+      "mean": 3.955050876343587e-06,
+      "p99": 5.506038665771464e-05,
+      "maximum": 7.450580596923828e-05,
+      "tokens": 399
+    },
+    {
+      "id": "ParIce21:ema:302360",
+      "rollout_start_step": 180,
+      "mean": 1.374124480623335e-06,
+      "p99": 8.451938629150395e-06,
+      "maximum": 5.269050598144531e-05,
+      "tokens": 221
+    },
+    {
+      "id": "ParIce21:tatoeba:3825",
+      "rollout_start_step": 182,
+      "mean": 5.16912097116408e-06,
+      "p99": 3.6549568176269554e-05,
+      "maximum": 4.4345855712890625e-05,
+      "tokens": 111
+    },
+    {
+      "id": "ParIce21:tatoeba:3251",
+      "rollout_start_step": 182,
+      "mean": 3.5440298579257465e-06,
+      "p99": 3.252029418945312e-05,
+      "maximum": 3.62396240234375e-05,
+      "tokens": 79
+    },
+    {
+      "id": "ParIce21:ema:123480",
+      "rollout_start_step": 182,
+      "mean": 2.3350725376995265e-06,
+      "p99": 2.9385089874267578e-05,
+      "maximum": 4.696846008300781e-05,
+      "tokens": 216
+    },
+    {
+      "id": "ParIce21:ema:59312",
+      "rollout_start_step": 182,
+      "mean": 6.384145104474493e-06,
+      "p99": 6.693601608276367e-05,
+      "maximum": 9.393692016601562e-05,
+      "tokens": 337
+    },
+    {
+      "id": "ParIce21:ema:215172",
+      "rollout_start_step": 184,
+      "mean": 3.424167115855841e-06,
+      "p99": 5.011558532714846e-05,
+      "maximum": 0.00010824203491210938,
+      "tokens": 397
+    },
+    {
+      "id": "ParIce21:ema:346076",
+      "rollout_start_step": 184,
+      "mean": 3.0545080203336696e-06,
+      "p99": 3.62396240234375e-05,
+      "maximum": 8.940696716308594e-05,
+      "tokens": 526
+    },
+    {
+      "id": "ParIce21:ema:179580",
+      "rollout_start_step": 184,
+      "mean": 6.035186495033502e-06,
+      "p99": 6.322860717773433e-05,
+      "maximum": 0.00016951560974121094,
+      "tokens": 388
+    },
+    {
+      "id": "OpenSubtitles18:783062",
+      "rollout_start_step": 184,
+      "mean": 5.809218886661642e-06,
+      "p99": 4.094839096069336e-05,
+      "maximum": 4.094839096069336e-05,
+      "tokens": 159
+    },
+    {
+      "id": "OpenSubtitles18:1419925",
+      "rollout_start_step": 186,
+      "mean": 2.9212188351962837e-06,
+      "p99": 3.427267074584961e-05,
+      "maximum": 7.43865966796875e-05,
+      "tokens": 111
+    },
+    {
+      "id": "ParIce21:ema:370448",
+      "rollout_start_step": 186,
+      "mean": 2.6432102752475353e-06,
+      "p99": 3.514647483825683e-05,
+      "maximum": 3.528594970703125e-05,
+      "tokens": 210
+    },
+    {
+      "id": "ParIce21:ema:135018",
+      "rollout_start_step": 186,
+      "mean": 6.315992454589653e-06,
+      "p99": 6.744503974914532e-05,
+      "maximum": 0.00013780593872070312,
+      "tokens": 398
+    },
+    {
+      "id": "OpenSubtitles18:1532915",
+      "rollout_start_step": 186,
+      "mean": 3.737883448425068e-06,
+      "p99": 3.22747230529785e-05,
+      "maximum": 5.7220458984375e-05,
+      "tokens": 108
+    },
+    {
+      "id": "ParIce21:eea:1297025",
+      "rollout_start_step": 188,
+      "mean": 4.091205473585451e-06,
+      "p99": 4.165470600128164e-05,
+      "maximum": 0.00012636184692382812,
+      "tokens": 596
+    },
+    {
+      "id": "ParIce21:ema:381098",
+      "rollout_start_step": 188,
+      "mean": 5.13880904864598e-06,
+      "p99": 5.12361526489259e-05,
+      "maximum": 6.747245788574219e-05,
+      "tokens": 236
+    },
+    {
+      "id": "ParIce21:ema:109880",
+      "rollout_start_step": 188,
+      "mean": 5.020165650154293e-06,
+      "p99": 7.577419281005851e-05,
+      "maximum": 0.00010323524475097656,
+      "tokens": 319
+    },
+    {
+      "id": "OpenSubtitles18:772002",
+      "rollout_start_step": 188,
+      "mean": 1.4873636403141401e-06,
+      "p99": 1.4114379882812484e-05,
+      "maximum": 2.5510787963867188e-05,
+      "tokens": 113
+    },
+    {
+      "id": "ParIce21:ema:390569",
+      "rollout_start_step": 190,
+      "mean": 3.846606695682168e-06,
+      "p99": 4.2505264282226556e-05,
+      "maximum": 0.00013947486877441406,
+      "tokens": 219
+    },
+    {
+      "id": "ParIce21:ema:194129",
+      "rollout_start_step": 190,
+      "mean": 2.309575683079948e-06,
+      "p99": 2.3167133331298944e-05,
+      "maximum": 6.532669067382812e-05,
+      "tokens": 249
+    },
+    {
+      "id": "OpenSubtitles18:148511",
+      "rollout_start_step": 190,
+      "mean": 4.5562655992219855e-06,
+      "p99": 4.198908805847169e-05,
+      "maximum": 0.00010418891906738281,
+      "tokens": 112
+    },
+    {
+      "id": "ParIce21:ema:148106",
+      "rollout_start_step": 190,
+      "mean": 9.14724837992467e-07,
+      "p99": 2.1457672119140625e-06,
+      "maximum": 2.1457672119140625e-06,
+      "tokens": 136
+    },
+    {
+      "id": "OpenSubtitles18:617560",
+      "rollout_start_step": 192,
+      "mean": 7.003066991929507e-06,
+      "p99": 7.303714752197268e-05,
+      "maximum": 7.867813110351562e-05,
+      "tokens": 92
+    },
+    {
+      "id": "ParIce21:ema:63138",
+      "rollout_start_step": 192,
+      "mean": 4.5114862053523926e-06,
+      "p99": 5.105972290039067e-05,
+      "maximum": 0.00011897087097167969,
+      "tokens": 189
+    },
+    {
+      "id": "OpenSubtitles18:954139",
+      "rollout_start_step": 192,
+      "mean": 6.5042357744946485e-06,
+      "p99": 9.41085815429687e-05,
+      "maximum": 0.000110626220703125,
+      "tokens": 157
+    },
+    {
+      "id": "OpenSubtitles18:193138",
+      "rollout_start_step": 192,
+      "mean": 4.026941129805809e-06,
+      "p99": 2.6205778121948237e-05,
+      "maximum": 2.86102294921875e-05,
+      "tokens": 110
+    },
+    {
+      "id": "ParIce21:ema:51538",
+      "rollout_start_step": 194,
+      "mean": 3.7779523979202476e-06,
+      "p99": 4.093170166015624e-05,
+      "maximum": 6.866455078125e-05,
+      "tokens": 517
+    },
+    {
+      "id": "ParIce21:ema:287594",
+      "rollout_start_step": 194,
+      "mean": 2.8967187471749276e-06,
+      "p99": 3.561019897460942e-05,
+      "maximum": 7.319450378417969e-05,
+      "tokens": 433
+    },
+    {
+      "id": "ParIce21:ema:100073",
+      "rollout_start_step": 194,
+      "mean": 4.122836789763956e-06,
+      "p99": 3.4637451171875054e-05,
+      "maximum": 5.316734313964844e-05,
+      "tokens": 465
+    },
+    {
+      "id": "ParIce21:ema:96999",
+      "rollout_start_step": 194,
+      "mean": 3.863687186855813e-06,
+      "p99": 3.923416137695311e-05,
+      "maximum": 4.1484832763671875e-05,
+      "tokens": 160
+    },
+    {
+      "id": "ParIce21:ema:281935",
+      "rollout_start_step": 196,
+      "mean": 4.414637321836778e-06,
+      "p99": 6.365776062011719e-05,
+      "maximum": 6.818771362304688e-05,
+      "tokens": 240
+    },
+    {
+      "id": "OpenSubtitles18:929952",
+      "rollout_start_step": 196,
+      "mean": 1.6568180158095668e-06,
+      "p99": 1.8239021301269518e-05,
+      "maximum": 2.193450927734375e-05,
+      "tokens": 116
+    },
+    {
+      "id": "ParIce21:ema:20686",
+      "rollout_start_step": 196,
+      "mean": 3.5967784673321796e-06,
+      "p99": 3.6269128322601305e-05,
+      "maximum": 6.4849853515625e-05,
+      "tokens": 350
+    },
+    {
+      "id": "ParIce21:eea:3402174",
+      "rollout_start_step": 196,
+      "mean": 3.167642932163134e-06,
+      "p99": 4.303455352783203e-05,
+      "maximum": 6.771087646484375e-05,
+      "tokens": 609
+    },
+    {
+      "id": "OpenSubtitles18:881536",
+      "rollout_start_step": 198,
+      "mean": 2.473593332859429e-06,
+      "p99": 2.3365020751953125e-05,
+      "maximum": 2.3365020751953125e-05,
+      "tokens": 91
+    },
+    {
+      "id": "OpenSubtitles18:1110531",
+      "rollout_start_step": 198,
+      "mean": 4.584035727122818e-06,
+      "p99": 4.8122406005859355e-05,
+      "maximum": 5.817413330078125e-05,
+      "tokens": 107
+    },
+    {
+      "id": "OpenSubtitles18:1300599",
+      "rollout_start_step": 198,
+      "mean": 2.1103438660993765e-06,
+      "p99": 1.2035369873046934e-05,
+      "maximum": 2.3365020751953125e-05,
+      "tokens": 89
+    },
+    {
+      "id": "ParIce21:ema:239178",
+      "rollout_start_step": 198,
+      "mean": 6.72050226442133e-06,
+      "p99": 5.132913589477548e-05,
+      "maximum": 0.00015497207641601562,
+      "tokens": 315
+    },
+    {
+      "id": "OpenSubtitles18:1311364",
+      "rollout_start_step": 200,
+      "mean": 1.215775004226316e-06,
+      "p99": 5.358979105949411e-06,
+      "maximum": 2.7179718017578125e-05,
+      "tokens": 128
+    },
+    {
+      "id": "OpenSubtitles18:1287138",
+      "rollout_start_step": 200,
+      "mean": 4.082409134298359e-06,
+      "p99": 3.4954547882080075e-05,
+      "maximum": 3.62396240234375e-05,
+      "tokens": 99
+    },
+    {
+      "id": "ParIce21:ema:371566",
+      "rollout_start_step": 200,
+      "mean": 3.328355263336953e-06,
+      "p99": 3.606796264648437e-05,
+      "maximum": 5.9604644775390625e-05,
+      "tokens": 344
+    },
+    {
+      "id": "ParIce21:ema:163863",
+      "rollout_start_step": 200,
+      "mean": 1.1641415362302586e-06,
+      "p99": 6.723403930664046e-06,
+      "maximum": 1.049041748046875e-05,
+      "tokens": 119
+    },
+    {
+      "id": "ParIce21:ema:325434",
+      "rollout_start_step": 202,
+      "mean": 4.060629856255604e-06,
+      "p99": 3.977775573730472e-05,
+      "maximum": 8.678436279296875e-05,
+      "tokens": 427
+    },
+    {
+      "id": "ParIce21:ema:105134",
+      "rollout_start_step": 202,
+      "mean": 1.7657143609912438e-06,
+      "p99": 2.9325485229492188e-05,
+      "maximum": 7.390975952148438e-05,
+      "tokens": 276
+    },
+    {
+      "id": "ParIce21:ema:178448",
+      "rollout_start_step": 202,
+      "mean": 3.6124520357816436e-06,
+      "p99": 3.8088560104369994e-05,
+      "maximum": 0.00013017654418945312,
+      "tokens": 275
+    },
+    {
+      "id": "ParIce21:ema:372712",
+      "rollout_start_step": 202,
+      "mean": 3.43706121724704e-06,
+      "p99": 3.58819961547852e-05,
+      "maximum": 0.00010013580322265625,
+      "tokens": 489
+    },
+    {
+      "id": "ParIce21:ema:58055",
+      "rollout_start_step": 204,
+      "mean": 3.5941696984359465e-06,
+      "p99": 5.1975250244140625e-05,
+      "maximum": 7.772445678710938e-05,
+      "tokens": 285
+    },
+    {
+      "id": "ParIce21:eea:854216",
+      "rollout_start_step": 204,
+      "mean": 3.748381360038006e-06,
+      "p99": 3.320276737213133e-05,
+      "maximum": 8.392333984375e-05,
+      "tokens": 620
+    },
+    {
+      "id": "ParIce21:eea:518572",
+      "rollout_start_step": 204,
+      "mean": 6.492310897500935e-06,
+      "p99": 5.4705739021301246e-05,
+      "maximum": 0.00011587142944335938,
+      "tokens": 812
+    },
+    {
+      "id": "ParIce21:ema:353369",
+      "rollout_start_step": 204,
+      "mean": 1.9464159699341066e-06,
+      "p99": 3.877878189086914e-05,
+      "maximum": 6.937980651855469e-05,
+      "tokens": 248
+    },
+    {
+      "id": "ParIce21:tatoeba:6702",
+      "rollout_start_step": 206,
+      "mean": 6.109387698896135e-06,
+      "p99": 5.9604644775390625e-05,
+      "maximum": 7.152557373046875e-05,
+      "tokens": 152
+    },
+    {
+      "id": "ParIce21:eea:2946043",
+      "rollout_start_step": 206,
+      "mean": 4.536233318558704e-06,
+      "p99": 4.0321350097656224e-05,
+      "maximum": 5.459785461425781e-05,
+      "tokens": 545
+    },
+    {
+      "id": "ParIce21:eea:232968",
+      "rollout_start_step": 206,
+      "mean": 8.60955753974987e-06,
+      "p99": 6.074309349060055e-05,
+      "maximum": 7.796287536621094e-05,
+      "tokens": 406
+    },
+    {
+      "id": "ParIce21:ema:388274",
+      "rollout_start_step": 206,
+      "mean": 7.27029998469602e-06,
+      "p99": 6.194114685058571e-05,
+      "maximum": 0.000102996826171875,
+      "tokens": 273
+    },
+    {
+      "id": "ParIce21:ema:220824",
+      "rollout_start_step": 208,
+      "mean": 4.169571609506299e-06,
+      "p99": 5.0115585327148394e-05,
+      "maximum": 7.367134094238281e-05,
+      "tokens": 399
+    },
+    {
+      "id": "ParIce21:ema:60457",
+      "rollout_start_step": 208,
+      "mean": 1.7887629373849179e-06,
+      "p99": 9.156763553619375e-06,
+      "maximum": 0.00011205673217773438,
+      "tokens": 184
+    },
+    {
+      "id": "ParIce21:ema:268725",
+      "rollout_start_step": 208,
+      "mean": 3.455881220507503e-06,
+      "p99": 3.842949867248524e-05,
+      "maximum": 5.435943603515625e-05,
+      "tokens": 280
+    },
+    {
+      "id": "ParIce21:ema:102613",
+      "rollout_start_step": 208,
+      "mean": 8.017044864706806e-06,
+      "p99": 7.061243057250969e-05,
+      "maximum": 0.00011897087097167969,
+      "tokens": 392
+    },
+    {
+      "id": "ParIce21:tatoeba:6414",
+      "rollout_start_step": 210,
+      "mean": 2.005987071127139e-06,
+      "p99": 2.0853281021118114e-05,
+      "maximum": 3.5762786865234375e-05,
+      "tokens": 157
+    },
+    {
+      "id": "ParIce21:eea:1431221",
+      "rollout_start_step": 210,
+      "mean": 3.9623558934410775e-06,
+      "p99": 4.8459768295288044e-05,
+      "maximum": 9.369850158691406e-05,
+      "tokens": 608
+    },
+    {
+      "id": "ParIce21:ema:172650",
+      "rollout_start_step": 210,
+      "mean": 3.972365273336588e-06,
+      "p99": 4.427433013916006e-05,
+      "maximum": 8.0108642578125e-05,
+      "tokens": 586
+    },
+    {
+      "id": "ParIce21:eea:85793",
+      "rollout_start_step": 210,
+      "mean": 6.596172249631366e-06,
+      "p99": 5.997657775878916e-05,
+      "maximum": 0.0001062154769897461,
+      "tokens": 569
+    },
+    {
+      "id": "OpenSubtitles18:108181",
+      "rollout_start_step": 212,
+      "mean": 1.4651228768384912e-06,
+      "p99": 9.551644325256348e-06,
+      "maximum": 1.1652708053588867e-05,
+      "tokens": 132
+    },
+    {
+      "id": "OpenSubtitles18:1088180",
+      "rollout_start_step": 212,
+      "mean": 5.153276171798914e-06,
+      "p99": 4.112720489501951e-05,
+      "maximum": 7.534027099609375e-05,
+      "tokens": 118
+    },
+    {
+      "id": "OpenSubtitles18:229825",
+      "rollout_start_step": 212,
+      "mean": 4.429188059373086e-06,
+      "p99": 3.365278244018554e-05,
+      "maximum": 3.457069396972656e-05,
+      "tokens": 71
+    },
+    {
+      "id": "ParIce21:eea:660552",
+      "rollout_start_step": 212,
+      "mean": 5.244951703137952e-06,
+      "p99": 4.08077239990234e-05,
+      "maximum": 0.0001068115234375,
+      "tokens": 699
+    },
+    {
+      "id": "ParIce21:ema:154944",
+      "rollout_start_step": 214,
+      "mean": 3.9575626601481195e-06,
+      "p99": 7.449150085449236e-05,
+      "maximum": 7.62939453125e-05,
+      "tokens": 208
+    },
+    {
+      "id": "ParIce21:ema:383676",
+      "rollout_start_step": 214,
+      "mean": 4.5525057993542914e-06,
+      "p99": 4.208087921142581e-05,
+      "maximum": 5.2928924560546875e-05,
+      "tokens": 277
+    },
+    {
+      "id": "ParIce21:tatoeba:2317",
+      "rollout_start_step": 214,
+      "mean": 7.992871534107897e-06,
+      "p99": 5.86652755737304e-05,
+      "maximum": 6.723403930664062e-05,
+      "tokens": 175
+    },
+    {
+      "id": "ParIce21:ema:353366",
+      "rollout_start_step": 214,
+      "mean": 1.1325504388979773e-06,
+      "p99": 2.518296241760254e-06,
+      "maximum": 2.86102294921875e-06,
+      "tokens": 257
+    },
+    {
+      "id": "ParIce21:ema:314931",
+      "rollout_start_step": 216,
+      "mean": 3.3774466681017786e-06,
+      "p99": 3.639936447143556e-05,
+      "maximum": 4.601478576660156e-05,
+      "tokens": 383
+    },
+    {
+      "id": "ParIce21:ema:212991",
+      "rollout_start_step": 216,
+      "mean": 1.573411463226547e-06,
+      "p99": 1.9818544387817383e-05,
+      "maximum": 5.459785461425781e-05,
+      "tokens": 281
+    },
+    {
+      "id": "ParIce21:tatoeba:738",
+      "rollout_start_step": 216,
+      "mean": 4.5836285949008015e-06,
+      "p99": 4.4839978218078706e-05,
+      "maximum": 6.42538070678711e-05,
+      "tokens": 202
+    },
+    {
+      "id": "ParIce21:ema:93013",
+      "rollout_start_step": 216,
+      "mean": 4.357094508030148e-06,
+      "p99": 4.7876834869384786e-05,
+      "maximum": 8.344650268554688e-05,
+      "tokens": 230
+    },
+    {
+      "id": "OpenSubtitles18:1337118",
+      "rollout_start_step": 218,
+      "mean": 3.5972511642836452e-06,
+      "p99": 3.283739089965815e-05,
+      "maximum": 5.3882598876953125e-05,
+      "tokens": 193
+    },
+    {
+      "id": "ParIce21:ema:157139",
+      "rollout_start_step": 218,
+      "mean": 3.764305412374088e-06,
+      "p99": 3.146171569824129e-05,
+      "maximum": 0.00010836124420166016,
+      "tokens": 193
+    },
+    {
+      "id": "ParIce21:ema:379012",
+      "rollout_start_step": 218,
+      "mean": 3.8846845149982815e-06,
+      "p99": 3.0192136764526355e-05,
+      "maximum": 4.2438507080078125e-05,
+      "tokens": 222
+    },
+    {
+      "id": "ParIce21:ema:62334",
+      "rollout_start_step": 218,
+      "mean": 5.691023618504192e-06,
+      "p99": 5.614757537841797e-05,
+      "maximum": 0.00012111663818359375,
+      "tokens": 276
+    },
+    {
+      "id": "OpenSubtitles18:1257645",
+      "rollout_start_step": 220,
+      "mean": 5.455047434682047e-06,
+      "p99": 4.578828811645519e-05,
+      "maximum": 6.008148193359375e-05,
+      "tokens": 196
+    },
+    {
+      "id": "OpenSubtitles18:110414",
+      "rollout_start_step": 220,
+      "mean": 4.3928889386666855e-06,
+      "p99": 2.7322769165039027e-05,
+      "maximum": 4.082918167114258e-05,
+      "tokens": 108
+    },
+    {
+      "id": "OpenSubtitles18:401764",
+      "rollout_start_step": 220,
+      "mean": 3.6991927090577268e-06,
+      "p99": 4.153788089752188e-05,
+      "maximum": 4.5299530029296875e-05,
+      "tokens": 119
+    },
+    {
+      "id": "OpenSubtitles18:6169",
+      "rollout_start_step": 220,
+      "mean": 4.4417608549554846e-06,
+      "p99": 2.8447508811950676e-05,
+      "maximum": 4.744529724121094e-05,
+      "tokens": 138
+    },
+    {
+      "id": "ParIce21:ema:363246",
+      "rollout_start_step": 222,
+      "mean": 2.287905732634025e-06,
+      "p99": 4.691123962402342e-05,
+      "maximum": 5.078315734863281e-05,
+      "tokens": 257
+    },
+    {
+      "id": "ParIce21:ema:385663",
+      "rollout_start_step": 222,
+      "mean": 1.6629100698921391e-06,
+      "p99": 1.178741455078125e-05,
+      "maximum": 2.574920654296875e-05,
+      "tokens": 154
+    },
+    {
+      "id": "ParIce21:tatoeba:9215",
+      "rollout_start_step": 222,
+      "mean": 2.404347158876233e-06,
+      "p99": 1.6125142574310257e-05,
+      "maximum": 2.086162567138672e-05,
+      "tokens": 102
+    },
+    {
+      "id": "ParIce21:ema:68039",
+      "rollout_start_step": 222,
+      "mean": 6.503095781121933e-06,
+      "p99": 5.2995681762695184e-05,
+      "maximum": 9.083747863769531e-05,
+      "tokens": 169
+    },
+    {
+      "id": "ParIce21:eso:347",
+      "rollout_start_step": 224,
+      "mean": 5.649031696575489e-06,
+      "p99": 5.5541992187499954e-05,
+      "maximum": 9.107589721679688e-05,
+      "tokens": 268
+    },
+    {
+      "id": "ParIce21:ema:291508",
+      "rollout_start_step": 224,
+      "mean": 2.4377252965439953e-06,
+      "p99": 3.0741691589355604e-05,
+      "maximum": 5.173683166503906e-05,
+      "tokens": 265
+    },
+    {
+      "id": "ParIce21:ema:253322",
+      "rollout_start_step": 224,
+      "mean": 1.5333481461594029e-06,
+      "p99": 1.638621091842654e-05,
+      "maximum": 4.601478576660156e-05,
+      "tokens": 880
+    },
+    {
+      "id": "OpenSubtitles18:412815",
+      "rollout_start_step": 224,
+      "mean": 3.4654556523095475e-06,
+      "p99": 2.837598323822029e-05,
+      "maximum": 4.2557716369628906e-05,
+      "tokens": 78
+    },
+    {
+      "id": "ParIce21:ema:246059",
+      "rollout_start_step": 226,
+      "mean": 3.1806313708142597e-06,
+      "p99": 2.6984214782714866e-05,
+      "maximum": 4.4345855712890625e-05,
+      "tokens": 199
+    },
+    {
+      "id": "ParIce21:eea:2758221",
+      "rollout_start_step": 226,
+      "mean": 7.197634794077386e-06,
+      "p99": 6.146907806396488e-05,
+      "maximum": 7.534027099609375e-05,
+      "tokens": 403
+    },
+    {
+      "id": "ParIce21:eea:1444762",
+      "rollout_start_step": 226,
+      "mean": 6.890545969014729e-06,
+      "p99": 6.756067276000996e-05,
+      "maximum": 0.00012040138244628906,
+      "tokens": 447
+    },
+    {
+      "id": "ParIce21:tatoeba:7970",
+      "rollout_start_step": 226,
+      "mean": 4.391968042846832e-06,
+      "p99": 4.9591064453125e-05,
+      "maximum": 5.340576171875e-05,
+      "tokens": 101
+    },
+    {
+      "id": "OpenSubtitles18:917646",
+      "rollout_start_step": 228,
+      "mean": 4.520523396718519e-06,
+      "p99": 3.0443072319030792e-05,
+      "maximum": 5.0067901611328125e-05,
+      "tokens": 106
+    },
+    {
+      "id": "ParIce21:ema:330428",
+      "rollout_start_step": 228,
+      "mean": 2.7781803906169726e-06,
+      "p99": 3.893494606018046e-05,
+      "maximum": 8.153915405273438e-05,
+      "tokens": 324
+    },
+    {
+      "id": "ParIce21:ema:211696",
+      "rollout_start_step": 228,
+      "mean": 3.5508640521467885e-06,
+      "p99": 4.143714904785166e-05,
+      "maximum": 5.3882598876953125e-05,
+      "tokens": 415
+    },
+    {
+      "id": "OpenSubtitles18:54701",
+      "rollout_start_step": 228,
+      "mean": 4.843346984286269e-06,
+      "p99": 4.550218582153322e-05,
+      "maximum": 6.389617919921875e-05,
+      "tokens": 111
+    },
+    {
+      "id": "ParIce21:eso:6951",
+      "rollout_start_step": 230,
+      "mean": 4.116175842543826e-06,
+      "p99": 4.834890365600581e-05,
+      "maximum": 9.632110595703125e-05,
+      "tokens": 518
+    },
+    {
+      "id": "ParIce21:ema:302221",
+      "rollout_start_step": 230,
+      "mean": 2.5586622482391246e-06,
+      "p99": 3.118634223937986e-05,
+      "maximum": 5.2928924560546875e-05,
+      "tokens": 319
+    },
+    {
+      "id": "ParIce21:ema:233832",
+      "rollout_start_step": 230,
+      "mean": 1.3671617605998005e-06,
+      "p99": 3.5725533962249756e-06,
+      "maximum": 0.00010156631469726562,
+      "tokens": 265
+    },
+    {
+      "id": "ParIce21:tatoeba:6216",
+      "rollout_start_step": 230,
+      "mean": 2.6035239857803484e-06,
+      "p99": 4.587411880493166e-05,
+      "maximum": 4.696846008300781e-05,
+      "tokens": 152
+    },
+    {
+      "id": "ParIce21:ema:128513",
+      "rollout_start_step": 232,
+      "mean": 2.3945720454860644e-06,
+      "p99": 5.571365356445311e-05,
+      "maximum": 6.020069122314453e-05,
+      "tokens": 253
+    },
+    {
+      "id": "ParIce21:ema:315165",
+      "rollout_start_step": 232,
+      "mean": 1.3857876363469284e-06,
+      "p99": 1.011133193969716e-05,
+      "maximum": 2.288818359375e-05,
+      "tokens": 159
+    },
+    {
+      "id": "ParIce21:ema:332343",
+      "rollout_start_step": 232,
+      "mean": 1.5128192159880477e-06,
+      "p99": 2.6922821998596876e-05,
+      "maximum": 3.528594970703125e-05,
+      "tokens": 519
+    },
+    {
+      "id": "ParIce21:eso:392",
+      "rollout_start_step": 232,
+      "mean": 4.921818884949435e-06,
+      "p99": 4.997849464416504e-05,
+      "maximum": 7.450580596923828e-05,
+      "tokens": 526
+    },
+    {
+      "id": "ParIce21:ema:296574",
+      "rollout_start_step": 234,
+      "mean": 4.450396851827878e-06,
+      "p99": 5.471348762512193e-05,
+      "maximum": 0.00012731552124023438,
+      "tokens": 280
+    },
+    {
+      "id": "ParIce21:ema:193551",
+      "rollout_start_step": 234,
+      "mean": 4.154671786603295e-06,
+      "p99": 4.714488983154292e-05,
+      "maximum": 6.771087646484375e-05,
+      "tokens": 299
+    },
+    {
+      "id": "ParIce21:ema:201639",
+      "rollout_start_step": 234,
+      "mean": 4.310954820738701e-06,
+      "p99": 3.550052642822266e-05,
+      "maximum": 7.617473602294922e-05,
+      "tokens": 345
+    },
+    {
+      "id": "ParIce21:ema:304868",
+      "rollout_start_step": 234,
+      "mean": 4.954218630596567e-06,
+      "p99": 3.568649291992189e-05,
+      "maximum": 7.414817810058594e-05,
+      "tokens": 120
+    },
+    {
+      "id": "ParIce21:ema:246779",
+      "rollout_start_step": 236,
+      "mean": 3.132851845629429e-06,
+      "p99": 4.7721862792968715e-05,
+      "maximum": 6.198883056640625e-05,
+      "tokens": 747
+    },
+    {
+      "id": "ParIce21:ema:130580",
+      "rollout_start_step": 236,
+      "mean": 2.8864278730763183e-06,
+      "p99": 3.306388854980465e-05,
+      "maximum": 3.802776336669922e-05,
+      "tokens": 262
+    },
+    {
+      "id": "ParIce21:ema:197999",
+      "rollout_start_step": 236,
+      "mean": 3.303310229501463e-06,
+      "p99": 4.3666362762451126e-05,
+      "maximum": 5.7697296142578125e-05,
+      "tokens": 506
+    },
+    {
+      "id": "ParIce21:ema:104839",
+      "rollout_start_step": 236,
+      "mean": 3.1082722731423533e-06,
+      "p99": 4.06837463378907e-05,
+      "maximum": 5.8591365814208984e-05,
+      "tokens": 189
+    },
+    {
+      "id": "ParIce21:ema:55773",
+      "rollout_start_step": 238,
+      "mean": 3.837337755886803e-06,
+      "p99": 4.5757293701171784e-05,
+      "maximum": 7.343292236328125e-05,
+      "tokens": 535
+    },
+    {
+      "id": "ParIce21:ema:362812",
+      "rollout_start_step": 238,
+      "mean": 3.7653890967904603e-06,
+      "p99": 4.285573959350586e-05,
+      "maximum": 7.796287536621094e-05,
+      "tokens": 651
+    },
+    {
+      "id": "ParIce21:ema:396777",
+      "rollout_start_step": 238,
+      "mean": 3.486963107551541e-06,
+      "p99": 4.687547683715826e-05,
+      "maximum": 6.127357482910156e-05,
+      "tokens": 227
+    },
+    {
+      "id": "ParIce21:ema:351095",
+      "rollout_start_step": 238,
+      "mean": 2.880807305416511e-06,
+      "p99": 3.548622131347657e-05,
+      "maximum": 4.172325134277344e-05,
+      "tokens": 230
+    }
+  ]
+}

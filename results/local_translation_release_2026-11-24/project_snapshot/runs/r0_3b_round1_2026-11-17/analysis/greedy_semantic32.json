@@ -1,0 +1,322 @@
+[
+  {
+    "id": "ParIce21:ema:dev:1057",
+    "stratum": "technical_medium",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留14/250 ml、盐浓度与稀释步骤，但把输液袋写成不可靠的infusínskáp，聚烯烃等关键容器术语失准，不能作为可靠的完整配制说明。",
+      "en": "Volumes, concentration and dilution are retained, but the infusion-bag/container term and polyolefin terminology are materially unreliable."
+    }
+  },
+  {
+    "id": "ParIce21:eso:dev:471",
+    "stratum": "technical_long",
+    "old_SFT200": "P",
+    "selected_3B": "B",
+    "note": {
+      "zh": "岩石固体核心、逐渐吸积气体与盘中引力不稳定形成气团的两种机制丢失，输出基本不可理解。",
+      "en": "Loses both formation mechanisms, including the rocky solid core and gravitational instability in the disc; the output is largely incoherent."
+    }
+  },
+  {
+    "id": "ParIce21:ema:dev:1351",
+    "stratum": "technical_medium",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留血液相关数量下降的条件，但platelet被译成血型/血液分组，细胞及凝血解释错误。",
+      "en": "Retains a decreased blood-related count condition, but replaces platelets with blood groups and corrupts the clotting explanation."
+    }
+  },
+  {
+    "id": "ParIce21:ema:dev:2509",
+    "stratum": "technical_long",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留358、两周/每月和药名，但随机双盲、慢性肾衰/非透析、非劣效性及纠正贫血均不可靠，临床结论不能正确使用。",
+      "en": "Keeps n358, the dosing intervals and drug name, but corrupts the design, CRF/non-dialysis population, non-inferiority and anaemia outcome."
+    }
+  },
+  {
+    "id": "ParIce21:eea:dev:2030",
+    "stratum": "technical_medium",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留内市场和跨境/境内相同要求的框架，但费用变成义务，支付变成交易，并遗漏欧元，关键金融规定不完整。",
+      "en": "Keeps the market and cross-border/domestic equality frame, but changes charges to obligations and payments to transactions, omitting euro."
+    }
+  },
+  {
+    "id": "ParIce21:eso:dev:277",
+    "stratum": "technical_long",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留Centaurus A、ALMA及新中心图像，但星系、天文学家、遮挡的尘带和前所未有的观测质量等核心术语严重失准。",
+      "en": "Retains Centaurus A, ALMA and a new central image, but corrupts galaxy, astronomers, obscuring dust lanes and unprecedented quality."
+    }
+  },
+  {
+    "id": "ParIce21:opensubtitles:dev:2435",
+    "stratum": "general",
+    "old_SFT200": "B",
+    "selected_3B": "B",
+    "note": {
+      "zh": "核心的说出名字将被处死完全遗漏，仅保留提及Sparta或Leonidas。",
+      "en": "Loses the central claim that uttering the names is punishable by death."
+    }
+  },
+  {
+    "id": "ParIce21:eea:dev:373",
+    "stratum": "technical_medium",
+    "old_SFT200": "P",
+    "selected_3B": "G",
+    "note": {
+      "zh": "语法和监管用途用词生硬，但GLP合规检查可在生成健康/环境安全监管数据的各试验场所进行这一主要规定保留。",
+      "en": "Awkward grammar and regulatory-purpose wording, but preserves GLP compliance inspection at facilities producing health/environmental safety data for authorities."
+    }
+  },
+  {
+    "id": "ParIce21:opensubtitles:dev:969",
+    "stratum": "general",
+    "old_SFT200": "G",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留有这些孩子，但extra错成更年幼，running around遗漏。",
+      "en": "Retains having these children but changes extra to younger and omits running around."
+    }
+  },
+  {
+    "id": "ParIce21:opensubtitles:dev:1368",
+    "stratum": "general",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留询问想要哪种信息，但short version误成缺少信息，长短版本对比不可靠。",
+      "en": "Keeps the choice question but renders short as lacking information, corrupting the long/short-version contrast."
+    }
+  },
+  {
+    "id": "ParIce21:opensubtitles:dev:2119",
+    "stratum": "general",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留从商店回来的框架，但酒铺的词被造为不可靠复合词，just的刚刚含义也弱化。",
+      "en": "Keeps coming from a shop, but the liquor-store compound is unreliable and the just/recency meaning is weakened."
+    }
+  },
+  {
+    "id": "ParIce21:norden:dev:25",
+    "stratum": "technical_medium",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留UN及邻近叙利亚的改善条件主题，但支持错成管理，难民错成转移，并丢失归属引述。",
+      "en": "Keeps UN and conditions near Syria, but changes support to administration and refugees to transfers, losing attribution."
+    }
+  },
+  {
+    "id": "ParIce21:eea:dev:803",
+    "stratum": "technical_long",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留委员会与成员国协调行动框架，但互补性及政策/工具用词失准，后半重复并丢失就业、社会基金、教育培训和青年完整清单。",
+      "en": "Keeps Commission/Member-State coordination but corrupts complementarity and instruments/policies; repeated text replaces much of the employment/fund/education/youth list."
+    }
+  },
+  {
+    "id": "ParIce21:eea:dev:1354",
+    "stratum": "technical_long",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留必要时新测试、低剂量与14C线索，但毒性抑制、表面活性剂、监测降解和化学分析均误译，不能正确执行。",
+      "en": "Keeps retesting, a low dose and 14C, but corrupts toxic inhibition, surfactant, degradation monitoring and chemical analysis."
+    }
+  },
+  {
+    "id": "ParIce21:eso:dev:635",
+    "stratum": "technical_short",
+    "old_SFT200": "B",
+    "selected_3B": "B",
+    "note": {
+      "zh": "婴幼恒星系统被译成儿童行政体系，复杂有机分子的天文学发现核心丢失。",
+      "en": "Replaces the infant star system with a child/administrative construction, losing the astronomical discovery."
+    }
+  },
+  {
+    "id": "ParIce21:ema:dev:1873",
+    "stratum": "technical_long",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留VEGFR抑制、VEGF及较低血浆水平的一些联系，但组织器官清单大多错误，重复给药与临床比较表达严重受损。",
+      "en": "Keeps some VEGFR/VEGF and lower-plasma-exposure relations, but corrupts most organs and the repeat-dose/clinical comparison."
+    }
+  },
+  {
+    "id": "ParIce21:eso:dev:861",
+    "stratum": "technical_medium",
+    "old_SFT200": "P",
+    "selected_3B": "B",
+    "note": {
+      "zh": "成像和将光分成颜色的主要操作丢失/错成股份，运动与中央天体化学组成也不可靠。",
+      "en": "Loses imaging and splitting light into colours, using shares instead; motions and central-object chemical composition are also corrupted."
+    }
+  },
+  {
+    "id": "ParIce21:ema:dev:2348",
+    "stratum": "technical_short",
+    "old_SFT200": "G",
+    "selected_3B": "P",
+    "note": {
+      "zh": "药名保留，但句式成为“什么被用于Memantine”，用途询问的论元关系不可靠，不只是词形问题。",
+      "en": "Keeps the drug name, but the wording asks what is used for Memantine rather than what Memantine is used for."
+    }
+  },
+  {
+    "id": "ParIce21:eea:dev:35",
+    "stratum": "technical_medium",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留报告研究、例外论证和含活性成分的植保产品，但厌氧降解被错成不可靠剂量/实施概念，关键条件不可靠。",
+      "en": "Keeps study reporting, an exception and active-substance plant products, but corrupts anaerobic degradation and the exposure condition."
+    }
+  },
+  {
+    "id": "ParIce21:eea:dev:2130",
+    "stratum": "technical_medium",
+    "old_SFT200": "P",
+    "selected_3B": "B",
+    "note": {
+      "zh": "未表达有效选择取决于可靠认可的调解系统是否可得，关键依赖关系和调解概念丢失。",
+      "en": "Loses the dependence of effective choice on available reliable recognised mediation systems."
+    }
+  },
+  {
+    "id": "ParIce21:eea:dev:1729",
+    "stratum": "technical_long",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留承运人、成员国主管机关、行动计划与问题，但纠正性/系统性及受影响责任领域的关系失准。",
+      "en": "Keeps carrier, competent authorities, an action plan and problems, but corrupts corrective/systematic action and affected responsibility areas."
+    }
+  },
+  {
+    "id": "ParIce21:eso:dev:801",
+    "stratum": "technical_long",
+    "old_SFT200": "P",
+    "selected_3B": "B",
+    "note": {
+      "zh": "亮/大星系随回望过去更罕见、数量多的暗星系更难找到的核心对比和时间关系基本丢失，后半不可理解。",
+      "en": "Loses the central bright/massive versus numerous/faint contrast and lookback-time relation; much of the sentence is incoherent."
+    }
+  },
+  {
+    "id": "ParIce21:opensubtitles:dev:543",
+    "stratum": "general",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留我与Sky High的女孩，但freshman和most amazing均变成不可靠词，约会/一起去的关系也弱化。",
+      "en": "Keeps me and a girl at Sky High, but corrupts freshman and most amazing and weakens going with her."
+    }
+  },
+  {
+    "id": "ParIce21:norden:dev:207",
+    "stratum": "technical_medium",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留初创企业获得美国市场机会与成功，但Nordic错成Nordland这一地名/范围，主语地域不可靠。",
+      "en": "Keeps startup access and success in the USA, but changes Nordic to Nordland, corrupting the geographic scope."
+    }
+  },
+  {
+    "id": "ParIce21:eea:dev:372",
+    "stratum": "technical_long",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留附件、GLP和研究责任线索，但OECD共识文件及研究主管角色错误，权威来源和说明关系受损。",
+      "en": "Keeps Annex, GLP and study responsibilities, but corrupts OECD consensus documents and the study-director role."
+    }
+  },
+  {
+    "id": "ParIce21:eea:dev:616",
+    "stratum": "technical_short",
+    "old_SFT200": "B",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留每年天数与培训，但职业培训被错成加工/工作操作培训，optional用词不可靠。",
+      "en": "Keeps annual training days, but misstates vocational training as processing-related training and corrupts optional."
+    }
+  },
+  {
+    "id": "ParIce21:eso:dev:804",
+    "stratum": "technical_medium",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留574、大型新星系和引述者，但最大隐藏样本与早期宇宙被严重误译。",
+      "en": "Keeps 574, new large galaxies and attribution, but corrupts the largest hidden sample and early Universe."
+    }
+  },
+  {
+    "id": "ParIce21:opensubtitles:dev:3120",
+    "stratum": "general",
+    "old_SFT200": "G",
+    "selected_3B": "G",
+    "note": {
+      "zh": "自然地保留不知道发生什么的核心感叹；出了问题的负面意味仅隐含。",
+      "en": "Retains the central exclamation of not knowing what happened; wrongness is implicit rather than explicit."
+    }
+  },
+  {
+    "id": "ParIce21:norden:dev:717",
+    "stratum": "technical_short",
+    "old_SFT200": "P",
+    "selected_3B": "B",
+    "note": {
+      "zh": "网攻和虚假信息两种核心威胁未可靠保留，错成网络问题和不可理解表达。",
+      "en": "Fails to retain cyberattacks and disinformation as the two threats, replacing them with network problems and incoherent wording."
+    }
+  },
+  {
+    "id": "ParIce21:eea:dev:937",
+    "stratum": "technical_long",
+    "old_SFT200": "P",
+    "selected_3B": "B",
+    "note": {
+      "zh": "两年、VHS/IHN及批准线索尚在，但检查/采样、控制期、疾病无发生历史等核心概念错成给药/感染、互惠及生育力，无法表达原方案。",
+      "en": "Keeps two years, VHS/IHN and approval fragments, but corrupts inspection/sampling, the control period and documented disease freedom, losing the scheme."
+    }
+  },
+  {
+    "id": "ParIce21:opensubtitles:dev:2151",
+    "stratum": "general",
+    "old_SFT200": "P",
+    "selected_3B": "G",
+    "note": {
+      "zh": "准确保留询问能否回电话。",
+      "en": "Accurately preserves asking permission to call back."
+    }
+  },
+  {
+    "id": "ParIce21:opensubtitles:dev:1573",
+    "stratum": "general",
+    "old_SFT200": "P",
+    "selected_3B": "P",
+    "note": {
+      "zh": "保留500词以上的个人判断，但novel错成新书，作品体裁含义丢失。",
+      "en": "Retains the 500-word threshold and personal judgement, but changes novel to new book."
+    }
+  }
+]

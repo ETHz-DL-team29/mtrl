@@ -1,0 +1,176 @@
+{
+  "UTC": "2026-11-21T23:29:09.091925+00:00",
+  "models": {
+    "before": {
+      "reviewed": 128,
+      "roles": {
+        "greedy": {
+          "n": 64,
+          "counts": {
+            "F": 44,
+            "P": 16,
+            "U": 4
+          },
+          "strata": {
+            "general": {
+              "F": 7,
+              "P": 7,
+              "U": 2
+            },
+            "technical_short": {
+              "F": 8,
+              "P": 7,
+              "U": 1
+            },
+            "technical_medium": {
+              "F": 14,
+              "P": 1,
+              "U": 1
+            },
+            "technical_long": {
+              "F": 15,
+              "P": 1
+            }
+          }
+        },
+        "g8": {
+          "n": 64,
+          "counts": {
+            "F": 40,
+            "P": 16,
+            "U": 8
+          },
+          "strata": {
+            "general": {},
+            "technical_short": {
+              "U": 3,
+              "F": 5,
+              "P": 8
+            },
+            "technical_medium": {
+              "P": 6,
+              "F": 17,
+              "U": 1
+            },
+            "technical_long": {
+              "F": 18,
+              "P": 2,
+              "U": 4
+            }
+          }
+        }
+      }
+    },
+    "after": {
+      "reviewed": 128,
+      "roles": {
+        "greedy": {
+          "n": 64,
+          "counts": {
+            "F": 42,
+            "P": 16,
+            "U": 6
+          },
+          "strata": {
+            "general": {
+              "P": 8,
+              "F": 7,
+              "U": 1
+            },
+            "technical_short": {
+              "F": 7,
+              "U": 2,
+              "P": 7
+            },
+            "technical_medium": {
+              "F": 15,
+              "P": 1
+            },
+            "technical_long": {
+              "F": 13,
+              "U": 3
+            }
+          }
+        },
+        "g8": {
+          "n": 64,
+          "counts": {
+            "F": 31,
+            "U": 16,
+            "P": 17
+          },
+          "strata": {
+            "general": {},
+            "technical_short": {
+              "P": 9,
+              "U": 4,
+              "F": 3
+            },
+            "technical_medium": {
+              "F": 15,
+              "P": 4,
+              "U": 5
+            },
+            "technical_long": {
+              "F": 13,
+              "U": 7,
+              "P": 4
+            }
+          }
+        }
+      }
+    }
+  },
+  "labels_sha256": "2f987b27395d18b5f29bbb477bbb53e7046552b813254ce777ad26af8a4f2f36",
+  "cards_sha256": "8d76cbb40b95b217ae7568ba368c8a33c9342bcd86637a029641223bb2255e8f",
+  "paired": {
+    "greedy": {
+      "n": 64,
+      "before_P": 16,
+      "after_P": 16,
+      "net_confirmed_P_gain": 0,
+      "gain95CI_sources": [
+        -4.0,
+        5.0
+      ],
+      "transitions": {
+        "F->F": 38,
+        "P->U": 1,
+        "P->F": 2,
+        "F->U": 3,
+        "U->F": 2,
+        "P->P": 13,
+        "F->P": 3,
+        "U->U": 2
+      },
+      "interpretation": "Conditional on saved AI annotations; U is uncertainty, not confirmed wrong. G8 candidates are not independent sources."
+    },
+    "g8": {
+      "n": 64,
+      "before_P": 16,
+      "after_P": 17,
+      "net_confirmed_P_gain": 1,
+      "gain95CI_sources": [
+        -4.0,
+        6.0
+      ],
+      "transitions": {
+        "U->U": 5,
+        "P->U": 3,
+        "F->F": 29,
+        "P->P": 13,
+        "U->F": 2,
+        "F->U": 8,
+        "F->P": 3,
+        "U->P": 1
+      },
+      "interpretation": "Conditional on saved AI annotations; U is uncertainty, not confirmed wrong. G8 candidates are not independent sources."
+    }
+  },
+  "not_native_certified": true,
+  "not_used_for_checkpoint_selection": true,
+  "g8_mixed_known_good_and_wrong_lower_bound": {
+    "before": 11,
+    "after": 8
+  }
+}

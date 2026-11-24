@@ -1,0 +1,25 @@
+{
+  "UTC": "2026-11-20T13:36:19.622454+00:00",
+  "status": "Completed bounded run; no automatic continuation",
+  "selected_full_state": {
+    "tag": "t2999996",
+    "step": 2543,
+    "target_tokens": 2999996,
+    "full_state": "D:\\deep learning project\\runs\\r0_3b_filtered_sft_resume_2026-11-20\\snapshots\\t2999996\\files",
+    "archive_sha256": "df0c4458b67725f7a2c089feab7bec7abb90038fe9e36b899ead35904c06187d",
+    "adapter_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0",
+    "optimizer_rng_sha256": "3576678e88cb77f43945e8c2d01f3ddf17354cc68ea8aacdc044655cf54fd7da",
+    "resume_history": "D:\\deep learning project\\runs\\r0_3b_filtered_sft_resume_2026-11-20\\snapshots\\t2999996\\resume_updates.jsonl",
+    "resume_history_sha256": "3dd4a5870a5c43bd0048972f3be158230c411f382e45cb43dfa1c12645fabd29",
+    "protocol_sha256": "19d4cb8839551ed006fd46cd06ae7db22ec7535f42abb3274750bfd4f3074634",
+    "execution_manifest_sha256": "f7fc2eaa12792a4412de86d628f682c4e49f848a1310bb6c7c51c19a8ed0dd2a"
+  },
+  "selected_adapter_sha256": "8eb880545d238f4af2695d08d6aba4f8f2f6f7a204b411d77d19539936b01ce0",
+  "base": "Qwen/Qwen2.5-3B-Instruct",
+  "base_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "training_source": "D:\\deep learning project\\experiments\\r0_3b_filtered_sft_resume_2026-11-20\\source",
+  "execution_manifest": "D:\\deep learning project\\experiments\\r0_3b_filtered_sft_resume_2026-11-20\\control_evidence\\execution_source_manifest.json",
+  "inference_adapter": "D:\\deep learning project\\runs\\r0_3b_filtered_sft_resume_2026-11-20\\final_selected_adapter",
+  "resume_note": "Full Adam/RNG/cursor state and exact update-history prefix are retained. Any future SFT must explicitly define a new budget/token target/LR continuation; do not reset warmup or silently reuse the expired allocation budget.",
+  "original_A_preserved": true
+}
