@@ -1,0 +1,5 @@
+base: _base_sft.yaml
+run_name: quick_sft
+data: {directions: [en-is, en-kk], train_limit: 20, val_limit: 4}
+schedule: {steps: 6, ckpt_every: 3, val_every: 3}
+eval: {limit: 8}

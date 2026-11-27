@@ -1,0 +1,8 @@
+# Colab T4 (Turing, 16 GB, compute capability 7.5): no bf16, so fp16. The free-tier card;
+# fp16 may overflow with Qwen3.5. Prefer colab_L4_24G when it is available.
+# NOT yet tested.
+base: _colab.yaml
+name: colab_T4_16G
+gpu: {match: "T4", mem_gb: 16}
+dtype: fp16
+scoring: {batch_size: 8}

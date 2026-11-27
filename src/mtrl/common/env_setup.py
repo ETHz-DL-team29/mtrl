@@ -19,6 +19,9 @@ def setup_env(env_cfg: EnvConfig) -> None:
         if key in env_cfg.paths:
             os.environ[var] = str(env_cfg.path(key))
     os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+    # Training and the MetricX service share one GPU; expandable segments let freed
+    # memory be returned and reused instead of fragmenting.
+    os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
 
 def check_capabilities(env_cfg: EnvConfig) -> dict:
@@ -50,6 +53,36 @@ def check_capabilities(env_cfg: EnvConfig) -> dict:
         raise RuntimeError(f"vLLM needs compute capability >= 7.0, '{name}' has {cap}")
     return {"gpu_name": name, "gpu_mem_gb": round(mem_gb, 2), "compute_capability": cap,
             "n_gpus_visible": n}
+
+
+def gpu_info() -> tuple[str, float]:
+    """(name, total memory in GB) of GPU 0, via NVML."""
+    import pynvml
+
+    pynvml.nvmlInit()
+    try:
+        h = pynvml.nvmlDeviceGetHandleByIndex(0)
+        name = pynvml.nvmlDeviceGetName(h)
+        return (name.decode() if isinstance(name, bytes) else name), pynvml.nvmlDeviceGetMemoryInfo(h).total / 1e9
+    finally:
+        pynvml.nvmlShutdown()
+
+
+def pick_env(provider: str, gpu_name: str, mem_gb: float) -> str:
+    """The env config of `provider` whose gpu.match is in `gpu_name` and whose gpu.mem_gb is
+    within 15% of `mem_gb` (the check_capabilities rule). Exactly one must match."""
+    from mtrl.common.config import REPO_ROOT, load_env
+
+    hits = []
+    for p in sorted((REPO_ROOT / "configs" / "env").glob(f"{provider}_*.yaml")):
+        env = load_env(p.stem)
+        expected = float(env.gpu["mem_gb"])
+        if env.gpu["match"].lower() in gpu_name.lower() and abs(mem_gb - expected) / expected <= 0.15:
+            hits.append(env.name)
+    if len(hits) != 1:
+        raise RuntimeError(f"{len(hits)} {provider} env configs match GPU '{gpu_name}' ({mem_gb:.1f} GB): {hits}; "
+                           f"add or fix a configs/env/{provider}_<gpu>_<mem>G.yaml")
+    return hits[0]
 
 
 def gpu_mem_used_gb() -> float:

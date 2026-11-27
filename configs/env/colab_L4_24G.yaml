@@ -1,0 +1,8 @@
+# Colab L4 (Ada, 24 GB, compute capability 8.9, same generation as the local 4070 SUPER):
+# bf16 like the local server. Default Colab card for tests and mid-size runs.
+# NOT yet tested.
+base: _colab.yaml
+name: colab_L4_24G
+gpu: {match: "L4", mem_gb: 24}
+dtype: bf16
+scoring: {batch_size: 16}

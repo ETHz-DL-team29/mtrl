@@ -6,6 +6,7 @@ The env name defaults to MTRL_ENV (set once per machine in the git-ignored .env)
 """
 from __future__ import annotations
 
+import copy
 import datetime as _dt
 import os
 import re
@@ -33,16 +34,17 @@ class EnvConfig:
     name: str
     n_gpus: int
     gpu: dict              # {match: str, mem_gb: int}
-    paths: dict            # hf_home, data_dir, runs_dir, fasttext_lid (+ optional torch_home, pip_cache)
+    paths: dict            # hf_home, data_dir, runs_dir, fasttext_lid (+ optional torch_home, pip_cache, ckpt_dir)
     dtype: str             # bf16 / fp16 / fp32
     attn_impl: str
     use_vllm: bool
     vllm: dict
     scoring: dict
     python: dict = field(default_factory=dict)   # {generate, score}: interpreter per env; empty = one env
+    train: dict = field(default_factory=dict)    # training memory knobs (micro_batch, grad_checkpointing)
 
     def path(self, key: str) -> Path:
-        p = Path(self.paths[key]).expanduser()
+        p = Path(os.path.expandvars(str(self.paths[key]))).expanduser()   # ${USER} etc.
         return p if p.is_absolute() else (REPO_ROOT / p).resolve()
 
     def python_for(self, group: str, default: str) -> str:
@@ -105,12 +107,38 @@ def _read_yaml(path: Path) -> dict:
         return yaml.safe_load(f) or {}
 
 
+def deep_merge(base: dict, child: dict) -> dict:
+    """Recursive dict merge; the child wins."""
+    out = copy.deepcopy(base)
+    for k, v in child.items():
+        out[k] = deep_merge(out[k], v) if isinstance(v, dict) and isinstance(out.get(k), dict) else v
+    return out
+
+
+def read_yaml_with_base(path, _seen=()) -> dict:
+    """Read a YAML that may name a parent with `base: <file>` (relative to its own directory)."""
+    path = Path(path).resolve()
+    if path in _seen:
+        raise ValueError(f"cyclic `base:` chain at {path}")
+    d = _read_yaml(path)
+    parent = d.pop("base", None)
+    if parent:
+        d = deep_merge(read_yaml_with_base(path.parent / parent, _seen + (path,)), d)
+    return d
+
+
+def env_config_path(env_name: str) -> Path:
+    return REPO_ROOT / "configs" / "env" / f"{env_name}.yaml"
+
+
 def load_env(env_name: str) -> EnvConfig:
-    path = REPO_ROOT / "configs" / "env" / f"{env_name}.yaml"
+    """configs/env/{env_name}.yaml. Files starting with `_` are shared bases (`base: _colab.yaml`),
+    not envs of their own."""
+    path = env_config_path(env_name)
     m = ENV_NAME_RE.match(env_name)
     if not m:
         raise ValueError(f"env name {env_name!r} does not follow [provider]_[gpu]_[gdram]G")
-    d = _read_yaml(path)
+    d = read_yaml_with_base(path)
     if d.get("name") != env_name:
         raise ValueError(f"{path.name}: name field {d.get('name')!r} != file name {env_name!r}")
     env = EnvConfig(**d)
@@ -144,7 +172,7 @@ def resolve_env_name(env_name: str | None) -> str:
 def load_config(exp_path: str, env_name: str | None = None) -> Config:
     env_name = resolve_env_name(env_name)
     exp_d = _read_yaml(Path(exp_path))
-    env_d = _read_yaml(REPO_ROOT / "configs" / "env" / f"{env_name}.yaml")
+    env_d = read_yaml_with_base(env_config_path(env_name))
     clash = set(exp_d) & set(env_d)
     if clash:
         raise ValueError(f"keys defined in both experiment and env config: {sorted(clash)}")

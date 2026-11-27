@@ -1,0 +1,5 @@
+# LoRA SFT on (source, reference) pairs.
+base: _common.yaml
+method: sft
+sft: {batch_size: 1, grad_accum: 8, max_len: 1024}
+schedule: {steps: 1000}        # optimizer updates (each = batch_size * grad_accum examples)

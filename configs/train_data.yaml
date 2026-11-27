@@ -1,0 +1,42 @@
+# Data for post-training, built once for all runs by scripts/prepare_train_data.py.
+# Why these directions and these datasets: docs/data.md (the pilot behind it:
+# docs/language_selection.md).
+directions: [en-hy, en-kk, en-be, en-is, en-cs]
+
+# Training pairs (SFT targets; the English side is also the RL source pool).
+# Same rule for every direction: the human-translated, general-domain corpora of the
+# WMT26 constrained mtdata recipe (TED2020 talks, QED educational-video subtitles,
+# Wikimedia translated articles, Tatoeba sentences, News Commentary where it exists).
+# Left out on purpose: web-mined corpora (NLLB, CCMatrix, CCAligned, ParaCrawl, HPLT,
+# WikiMatrix), software strings (GNOME, KDE, Ubuntu, translatewiki), entity lists and
+# titles (XLEnt, wikititles), religious text (Bible, Tanzil), OpenSubtitles.
+train:
+  split: wmt_train
+  corpora:                     # mtdata dataset ids, read in this order (dedup keeps the first)
+    en-hy: [OPUS-ted2020-v1-eng-hye, OPUS-qed-v2.0a-eng-hye, OPUS-wikimedia-v20230407-eng-hye,
+            OPUS-tatoeba-v20230412-eng-hye]
+    en-kk: [OPUS-ted2020-v1-eng-kaz, OPUS-qed-v2.0a-eng-kaz, OPUS-wikimedia-v20230407-eng-kaz,
+            OPUS-tatoeba-v20230412-eng-kaz, Statmt-news_commentary-18.1-eng-kaz]
+    en-be: [OPUS-ted2020-v1-bel-eng, OPUS-qed-v2.0a-bel-eng, OPUS-wikimedia-v20230407-bel-eng,
+            OPUS-tatoeba-v20230412-bel-eng]
+    en-is: [OPUS-ted2020-v1-eng-isl, OPUS-qed-v2.0a-eng-isl, OPUS-wikimedia-v20230407-eng-isl,
+            OPUS-tatoeba-v20230412-eng-isl]
+    en-cs: [OPUS-ted2020-v1-ces-eng, OPUS-qed-v2.0a-ces-eng, OPUS-wikimedia-v20230407-ces-eng,
+            OPUS-tatoeba-v20230412-ces-eng, Statmt-news_commentary-18.1-ces-eng]
+  filter: {min_words: 4, max_words: 80, copy_ratio_max: 0.8}
+  cap: 20000                   # pairs per direction after cleaning; equal for every direction
+  seed: 0
+
+# Development: NTREX-128 (professional translations of newstest2019, all five languages).
+dev:
+  val_split: ntrex_val         # 200 sentences, validation during training
+  dev_split: ntrex_dev         # 1797 sentences, model selection / development evaluation
+
+# Test: WMT26 General MT, English->X documents. Human reference where WMT26 has one
+# (is, cs), otherwise the WMT26 PseudoRef synthetic reference (hy, kk, be).
+test:
+  split: wmt26_test
+  pseudoref: true
+
+# Sentences that must never be trained on (normalised English side).
+decontaminate: [ntrex, flores_plus, wmt26_test]

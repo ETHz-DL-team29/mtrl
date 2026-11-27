@@ -1,0 +1,26 @@
+# Pilot (proposal: headroom, reward variance at G=8 T=1.0, gate failure) on 120 WMT24++ sources.
+run_name: pilot_langs
+seed: 0
+directions: [en-is, en-et, en-arz, en-cs, en-lij, en-lld, en-sme]
+split: wmt24pp_pilot
+n_per_direction: null
+limit: null
+models:
+  - {name: Qwen/Qwen3.5-0.8B, n_params: 0.8e9}
+  - {name: Qwen/Qwen3.5-2B,   n_params: 2.0e9}
+thinking: [false]
+greedy: true
+sampling: {n: 8, temperature: 1.0, top_p: 1.0}
+max_tokens: {thinking_off: 512, thinking_on: 2048}
+chunk_size: 120
+prompt_template: |
+  Translate the following English text into {tgt_lang_name}.
+  Output only the translation, nothing else.
+
+  {src}
+metrics: [metricx24_qe, chrf]
+scorer_params: {metricx24_qe: 1.2e9, metricx24_ref: 1.2e9, cometkiwi22: 0.56e9, comet22: 0.56e9}
+gate:
+  copy_ratio_max: 0.8
+analysis:
+  low_variance_eps: 0.02

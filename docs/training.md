@@ -1,0 +1,155 @@
+# Post-training: how to run it
+
+This is the training half of mtrl (the zero-shot half is in the main README). The design
+and the migration from `results/ym` are described in [train_merge_plan.md](train_merge_plan.md).
+
+## 1. The flow
+
+![Post-training flow: data, optional SFT, RL loop (rollout, reward, advantage, mask, update), checkpoints, evaluation](figures/training_flow.png)
+
+(Figure source: `docs/figures/make_training_flow.py`.)
+
+Every box is chosen in the training YAML; a new method is usually one registered
+function plus one YAML.
+
+| Knob (YAML) | Options | Code |
+|---|---|---|
+| `method` | `rl`, `sft` | `train/rl.py`, `train/sft.py` |
+| `init.from` | `base`, a run name, an adapter dir | `train/common.py` |
+| `adapter` | LoRA `targets: all/attn/mlp`, `layers`, `r`, `alpha` | `train/policy.py` |
+| `algorithm` | `group`, `prompts_per_step`, `ppo_epochs`, `clip_low/high`, `zero_var_retries`, `ent_coef` | `train/rl.py`, `train/losses.py` |
+| `reward` | `mode: qe/ref`, `gate: main/ym_compat` | `scoring/reward.py`, `scoring/rule_gate.py` |
+| `mask` | `full`, `randpos`, `semi`, `block`, `vocab`, `content`, `highent`, `lowent`, `translation` | `train/masks.py` |
+
+`ppo_epochs: 1` (default) is purely on-policy: the importance ratio is exactly 1 and the
+clip never acts. That is what `results/ym` ran under the name "DAPO". Set `ppo_epochs > 1`
+to reuse each batch of rollouts for several updates with the clip active.
+
+## 2. Two processes, two envs
+
+Training and evaluation run in the `mtrl` env (transformers 5.x, peft). MetricX needs
+the `mtrl-score` env (transformers 4.x), so it runs as a small HTTP service
+(`scripts/scorer_server.py`, port 8765) that the trainer starts on its own when nothing
+answers. Both share the GPU: Qwen3.5-0.8B + LoRA training and MetricX-24-large fit in
+12 GB with G = 8 and 224 new tokens.
+
+## 3. Commands
+
+```bash
+conda activate mtrl
+python scripts/prepare_train_data.py                                 # configs/train_data.yaml -> data/processed (once)
+python scripts/train.py configs/train/quick_rl.yaml                   # 6-step smoke test
+python scripts/train.py configs/train/ym/wide_all_ref.yaml            # a real run; re-run to resume
+python scripts/eval_adapter.py configs/train/ym/wide_all_ref.yaml     # latest checkpoint on NTREX-128 (ntrex_dev)
+python scripts/eval_adapter.py configs/train/quick_rl.yaml --base     # base model, same data and prompt
+python scripts/compare_runs.py --split ntrex_dev                      # table over runs/*/eval
+python scripts/run_experiments.py configs/train/ym/sft_full.yaml configs/train/ym/wide_all_ref.yaml
+                                         # all of the above for a list of configs: data, train, eval, compare
+```
+
+`scripts/prepare_train_data.py` needs the `mtdata` tool (env config `python.mtdata`, e.g. a
+conda env with `pip install mtdata==0.5.1`).
+
+Historical (FLORES+ era, en-lij / en-lld): `scripts/check_language_drift.py` reports, for en-lij and en-lld, how many outputs are closer
+to the Italian FLORES+ reference than to the target one: MetricX cannot tell these
+languages from Italian, and RL from the base model drifts into Italian (see
+train_merge_plan.md, section 3). Watch it on every RL run for these directions.
+
+`scripts/convert_ym_ckpt.py` turns a `results/ym` checkpoint (`latest.pt`) into an adapter
+directory for `eval_adapter.py --adapter` or `init.from`.
+
+## 4. Outputs
+
+`runs/{run_name}/`:
+
+| File | Content |
+|---|---|
+| `config.resolved.yaml` | merged config, env, git commit |
+| `train_log.jsonl` | one line per step: reward, MetricX, gate pass and reasons, entropy, ratio, clip fraction, grad norm, token counts, B_test / B_back FLOPs, timings, VRAM, one sample |
+| `val_log.jsonl` | in-training greedy validation (`data.val_limit` per direction) |
+| `ckpt/step_NNNNNN/` | `adapter/` (PEFT) + `trainer_state.pt`; `ckpt/latest` names the newest |
+| `eval/{split}_summary.json` | per direction: chrF++, reference MetricX, QE on all outputs, reward, gate pass (main and ym gate), truncation rate, gate reasons |
+| `eval/{split}_segments.jsonl` | every output with its scores |
+
+## 5. Platforms
+
+One env config per machine (`configs/env/`); the training YAML never changes. Env configs
+may share a parent with `base:` (files starting with `_` are bases, e.g. `_colab.yaml`).
+On Colab, `setup/colab_setup.sh` picks the file from the GPU
+(`python scripts/pick_env.py colab`). Training checks at start that the GPU matches the env
+(name, memory within 15%, bf16 support).
+
+| Env | GPU | dtype | vLLM | Status |
+|---|---|---|---|---|
+| `local_4070S_12G` | RTX 4070 SUPER | bf16 | yes | tested |
+| `dinfk_1080Ti_11G` | GTX 1080 Ti (D-INFK student cluster) | fp16 | no | written, not tested |
+| `colab_L4_24G` | L4 (Colab) | bf16 | no | smoke test passed 2026-11-23 (`setup/colab_smoke_test.ipynb`) |
+| `colab_A100_40G`, `colab_A100_80G` | A100 (Colab) | bf16 | no | written, not tested |
+| `colab_T4_16G` | T4 (Colab free tier) | fp16 | no | written, not tested; fp16 may overflow |
+
+Speed (`python scripts/bench_speed.py`, Qwen3.5-2B, 2026-11-23):
+
+| | 4070 SUPER + Ryzen 7 9700X | Colab L4 + Xeon 2.20 GHz |
+|---|---|---|
+| train fwd+bwd, batch 1 / 4 / 8 x 128 tok | 86 / 122 / 281 ms | 254 / 264 / 450 ms |
+| generation, per decoding step (8 seqs) | 15 ms | 49 ms |
+| smoke test, SFT / RL s/step | 1.1 / 1.3-1.9 | 4.1 / 5.8 |
+
+Small batches and token-by-token decoding are bound by CPU-side kernel-launch overhead,
+so the slow Colab CPU costs ~3x there (an A100 would not help); at batch 8 the gap is the
+GPU gap (~1.6x). Run RL (generation-heavy) locally; SFT and large-batch work fit on Colab.
+Fewer kernel launches in rollouts (vLLM or CUDA graphs) would speed up both.
+
+Set `max_hours` in `schedule` below the job limit (12 h on the cluster); the run stops
+with a checkpoint and the same command resumes it.
+
+## 6. Running on Colab
+
+The experiment is a training YAML; the notebook only runs it, with the same command as on
+the server (`scripts/run_experiments.py`).
+
+1. Open `setup/colab_run.ipynb` in Colab (File → Open notebook → GitHub, or
+   `https://colab.research.google.com/github/ETHz-DL-team29/mtrl/blob/<commit>/setup/colab_run.ipynb`;
+   use a commit or `main` in the link, Colab cannot open branch names with a `/`).
+2. Runtime → Change runtime type → **L4** (or A100).
+3. In the first code cell set `REF` (branch or commit of the code) and `CONFIGS`
+   (training YAMLs), then Runtime → Run all.
+
+| Piece | Role |
+|---|---|
+| `setup/colab_setup.sh` | Idempotent install: runtime packages, scorer venv and mtdata venv (Python 3.12), editable `mtrl`, fastText model, `MTRL_ENV` for this GPU. A second run takes ~20 s. |
+| `scripts/run_experiments.py` | Data for the configs' directions → train each config → evaluate → compare. Works on every platform. |
+| `scripts/data_cache.py` | Keeps `data/processed` as one archive on Drive (`mtrl/data_cache`), keyed by a hash of the data config and code, so a new session skips the data build. |
+| Drive `mtrl/runs`, `mtrl/ckpt` | Logs, resolved configs, checkpoints. Run all again after a disconnect: training resumes. |
+| `setup/colab_smoke_test.ipynb` | Checks a fresh runtime (setup, tests, SFT, RL, resume). |
+| `setup/make_colab_notebooks.py` | Writes both notebooks; edit it, not the `.ipynb` files. |
+
+**Trying a variation without committing it**: put a YAML on Drive that inherits from one
+in the repo, and list its path in `CONFIGS`:
+
+```yaml
+# /content/drive/MyDrive/mtrl/configs/try_lr.yaml
+base: /content/mtrl/configs/train/ym/wide_all_ref.yaml
+run_name: try_lr_5e-5
+optim: {lr: 5.0e-5}
+```
+
+The merged config and the git commit are saved in `runs/try_lr_5e-5/config.resolved.yaml`;
+configs worth keeping move into `configs/train/`. Overriding parameters inside the notebook
+is deliberately not supported: those changes would not be recorded anywhere.
+
+## 7. Data
+
+Which directions and datasets, and why: [data.md](data.md) (pilot behind it:
+[language_selection.md](language_selection.md)). Built by `scripts/prepare_train_data.py`
+from `configs/train_data.yaml`.
+
+| Split | Source | Use |
+|---|---|---|
+| `wmt_train` | WMT26 mtdata recipe corpora (TED2020, QED, Wikimedia, Tatoeba, News Commentary), cleaned with the reward gate, deduplicated, decontaminated, 20k pairs per direction | training (SFT targets, RL sources) |
+| `ntrex_val` | NTREX-128, 200 sentences | validation during training |
+| `ntrex_dev` | NTREX-128, 1797 sentences | model selection, development evaluation |
+| `wmt26_test` | WMT26 General MT, 198 documents per direction; human reference (is, cs) or PseudoRef (hy, kk, be) | final evaluation only |
+
+Default directions: en-hy, en-kk, en-be, en-is (low-resource) and en-cs (mid-resource
+control); default model Qwen3.5-2B. The `ym/` presets keep ym's Qwen3.5-0.8B.

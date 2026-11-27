@@ -9,7 +9,7 @@ Compute-efficient reinforcement learning (GRPO-style) for low-resource English-t
 3. When sampling G = 8 translations per segment at T = 1.0, how much does the reward vary within a group? Near-zero variance means GRPO gets no learning signal.
 4. How often do outputs fail the rule-based gate (parse failure, empty output, copied source, wrong language, abnormal length), and for which reasons?
 
-Training code (SFT, GRPO) exists only as documented placeholder modules.
+**Post-training (added 2026-11-21):** LoRA SFT and group policy-gradient RL (GRPO / DAPO family) on MetricX rewards, trained on WMT26 mtdata corpora (en-hy, en-kk, en-be, en-is, en-cs control) and developed on NTREX-128; WMT26 stays the untouched test set. Usage, outputs and platforms: [docs/training.md](docs/training.md). The migration from the `results/ym` scripts and the exploration results: [docs/train_merge_plan.md](docs/train_merge_plan.md).
 
 **Core data convention:** every model output is split into a *reasoning* part and a *translation* part, and the tokens of each part are counted separately (`Rollout.reasoning`, `Rollout.translation`). Both planned methods, selective token updates and reasoning-prefix reuse, depend on this split.
 
@@ -24,7 +24,8 @@ Code is developed on a laptop; all scripts run on a single-GPU Linux server (RTX
 | `configs/zeroshot.yaml` | Experiment config: directions, models, thinking settings, sampling, prompt template, metrics |
 | `configs/quick.yaml` | Quick end-to-end check: en-is only, Qwen3.5-0.8B, thinking off, 5 documents; results go to `runs/quick/` |
 | `configs/env/local_4070S_12G.yaml` | Hardware and paths: dtype, vLLM memory settings, scoring batch size |
-| `configs/env/euler_1080Ti_11G.yaml` | Placeholder (comments only) for the Euler cluster; not used yet |
+| `configs/env/dinfk_1080Ti_11G.yaml`, `colab_T4_16G.yaml` | D-INFK student cluster (GTX 1080 Ti, fp16, no vLLM) and Google Colab T4; written for training, not yet tested |
+| `configs/train/` | Training configs (`base:` inheritance): `_common`, `_base_rl`, `_base_sft`, `quick_*` smoke tests, `ym/` presets of the results/ym runs, `explore/` |
 | `configs/languages.yaml` | Per target language: English name, fastText label, allowed length ratio, WMT26 language code |
 | `src/mtrl/common/` | Shared foundation used by every stage |
 | `src/mtrl/common/config.py` | Loads and merges the experiment and env configs; writes `config.resolved.yaml` |
@@ -42,7 +43,14 @@ Code is developed on a laptop; all scripts run on a single-GPU Linux server (RTX
 | `src/mtrl/scoring/metrics.py` | MetricX-24 (QE and reference-based), CometKiwi22, chrF++, COMET-22 behind one signature |
 | `src/mtrl/scoring/reward.py` | `reward = gate * (1 - MetricX_QE / 25)` |
 | `src/mtrl/analysis/zeroshot_stats.py` | Summary tables and figures |
-| `src/mtrl/train/` | Placeholders: `sft.py`, `grpo.py`, `masks.py`, `prefixes.py` |
+| `src/mtrl/train/` | Training: `policy` (LoRA), `advantage`, `losses`, `masks`, `rl`, `sft`, `checkpoint`, `evaluate`; `prefixes.py` is still a placeholder (see docs/training.md) |
+| `src/mtrl/common/train_config.py` | Training config loader and validation |
+| `src/mtrl/data/flores_converter.py` | FLORES+ dev/devtest -> `Segment` rows (training / validation data) |
+| `src/mtrl/generation/hf_generate.py` | HF generation for training rollouts and adapter evaluation |
+| `src/mtrl/scoring/server.py`, `client.py` | MetricX HTTP service (scoring env) and its client (training env) |
+| `scripts/train.py`, `eval_adapter.py`, `compare_runs.py` | Train a config, evaluate adapters / the base model, tabulate runs |
+| `scripts/prepare_train_data.py`, `scorer_server.py`, `convert_ym_ckpt.py` | training / dev / test data (`configs/train_data.yaml`, rationale in `docs/data.md`), scoring service, results/ym checkpoint conversion |
+| `scripts/check_rollout_logprobs.py`, `check_language_drift.py`, `run_explore.sh` | Diagnostics: rollout/forward log-prob match; drift of lij/lld outputs into Italian; the 2026-11-22 exploration batch |
 | `scripts/run.py` | **Main entry point**: runs all stages for one config |
 | `scripts/` (others) | One script per stage: `download.py`, `prepare_data.py`, `generate.py`, `score.py`, `analyze.py` |
 | `scripts/verify_metricx.py` | One-off check that our MetricX scores match the official implementation (Section 3.7) |

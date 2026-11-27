@@ -59,13 +59,13 @@ class Score(_Record):
     model: str
     thinking: bool
     gate_ok: bool
-    gate_reason: str       # ok / parse_fail / empty / copy_source / wrong_lang / length_ratio
+    gate_reason: str       # ok / parse_fail / empty / copy_source / wrong_script / wrong_lang / length_ratio
     metrics: dict          # {"metricx24_qe": 3.2, ...}; missing metrics are omitted
     reward: float
 
 
 # Value set of Score.gate_reason, in the order the gate checks them ("ok" first).
-GATE_REASONS = ["ok", "parse_fail", "empty", "copy_source", "wrong_lang", "length_ratio"]
+GATE_REASONS = ["ok", "parse_fail", "empty", "copy_source", "wrong_script", "wrong_lang", "length_ratio"]
 
 
 def direction_of(seg_id: str) -> str:
